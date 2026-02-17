@@ -1,0 +1,13 @@
+title: Tech Review
+description: Daily tech trend analysis
+url: "https://paulseongminpark.github.io"
+baseurl: "/tech-review"
+markdown: kramdown
+permalink: /:categories/:year/:month/:day/:title/
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"

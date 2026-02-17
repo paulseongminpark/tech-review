@@ -1,0 +1,17 @@
+---
+layout: null
+---
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script>
+    (function() {
+      var saved = localStorage.getItem('tech-review-lang');
+      var lang = saved || (navigator.language.startsWith('ko') ? 'ko' : 'en');
+      window.location.replace('{{ site.baseurl }}/' + lang + '/');
+    })();
+  </script>
+</head>
+<body></body>
+</html>
