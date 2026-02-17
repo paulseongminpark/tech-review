@@ -1,0 +1,31 @@
+---
+layout: null
+---
+{
+  "posts": [
+    {%- assign pairs = site.posts | map: "pair" | uniq -%}
+    {%- assign count = 0 -%}
+    {%- for p in pairs -%}
+      {%- if count >= 5 -%}{%- break -%}{%- endif -%}
+      {%- assign ko_post = site.posts | where: "pair", p | where: "lang", "ko" | first -%}
+      {%- assign en_post = site.posts | where: "pair", p | where: "lang", "en" | first -%}
+      {%- if ko_post and en_post -%}
+        {%- if count > 0 -%},{%- endif -%}
+        {
+          "date": "{{ ko_post.date | date: '%Y-%m-%d' }}",
+          "pair": "{{ p }}",
+          "title": {
+            "ko": {{ ko_post.title | jsonify }},
+            "en": {{ en_post.title | jsonify }}
+          },
+          "tags": {{ ko_post.tags | jsonify }},
+          "url": {
+            "ko": "{{ ko_post.url | prepend: site.baseurl }}",
+            "en": "{{ en_post.url | prepend: site.baseurl }}"
+          }
+        }
+        {%- assign count = count | plus: 1 -%}
+      {%- endif -%}
+    {%- endfor -%}
+  ]
+}
