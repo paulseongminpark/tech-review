@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: 'en' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title }} | {{ site.title }}</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, 'Noto Sans KR', sans-serif; max-width: 720px; margin: 0 auto; padding: 2rem 1rem; color: #1a1a1a; line-height: 1.7; }
+    a { color: #0066cc; text-decoration: none; }
+    .lang-toggle { position: fixed; top: 1rem; right: 1rem; display: flex; gap: 0.5rem; }
+    .lang-toggle a { padding: 0.25rem 0.75rem; border: 1px solid #ccc; border-radius: 4px; font-size: 0.85rem; }
+    .lang-toggle a.active { background: #1a1a1a; color: #fff; border-color: #1a1a1a; }
+    .post-list { list-style: none; }
+    .post-list li { padding: 1rem 0; border-bottom: 1px solid #eee; }
+    .post-meta { color: #666; font-size: 0.85rem; }
+    .post-tags { display: flex; gap: 0.5rem; margin-top: 0.5rem; }
+    .post-tags span { background: #f0f0f0; padding: 0.15rem 0.5rem; border-radius: 3px; font-size: 0.8rem; }
+    h1 { margin-bottom: 1.5rem; }
+    h2 { margin: 1.5rem 0 0.5rem; font-size: 1.1rem; }
+    .content p { margin: 0.5rem 0; }
+  </style>
+</head>
+<body>
+  {% include lang-toggle.html %}
+  {{ content }}
+</body>
+</html>

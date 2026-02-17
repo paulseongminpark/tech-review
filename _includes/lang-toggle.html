@@ -1,0 +1,15 @@
+{% assign current_lang = page.lang | default: page.url | split: '/' | last %}
+{% if page.pair %}
+  {% assign other_lang = 'en' %}
+  {% if page.lang == 'en' %}{% assign other_lang = 'ko' %}{% endif %}
+  {% assign paired = site.posts | where: "pair", page.pair | where: "lang", other_lang | first %}
+  <div class="lang-toggle">
+    <a href="{{ site.baseurl }}/ko/" {% if page.lang == 'ko' %}class="active"{% endif %} onclick="localStorage.setItem('tech-review-lang','ko')">KO</a>
+    <a href="{{ site.baseurl }}/en/" {% if page.lang == 'en' %}class="active"{% endif %} onclick="localStorage.setItem('tech-review-lang','en')">EN</a>
+  </div>
+{% else %}
+  <div class="lang-toggle">
+    <a href="{{ site.baseurl }}/ko/" {% if page.url contains '/ko' %}class="active"{% endif %} onclick="localStorage.setItem('tech-review-lang','ko')">KO</a>
+    <a href="{{ site.baseurl }}/en/" {% if page.url contains '/en' %}class="active"{% endif %} onclick="localStorage.setItem('tech-review-lang','en')">EN</a>
+  </div>
+{% endif %}

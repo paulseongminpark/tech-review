@@ -1,0 +1,18 @@
+---
+layout: default
+title: Tech Review
+lang: ko
+---
+<h1>Tech Review</h1>
+<ul class="post-list">
+  {% assign ko_posts = site.posts | where: "lang", "ko" %}
+  {% for post in ko_posts %}
+  <li>
+    <p class="post-meta">{{ post.date | date: "%Y-%m-%d" }}</p>
+    <a href="{{ post.url | prepend: site.baseurl }}"><strong>{{ post.title }}</strong></a>
+    <div class="post-tags">
+      {% for tag in post.tags %}<span>{{ tag }}</span>{% endfor %}
+    </div>
+  </li>
+  {% endfor %}
+</ul>
