@@ -1,0 +1,38 @@
+# Tech Review Comments Style Guide
+# Claude API가 자동 생성하는 Comments 섹션의 프롬프트 가이드
+
+version: "1.0"
+
+comments:
+  model: claude-haiku-4-5-20251001
+  max_tokens: 400
+
+  prompt_ko: |
+    아래는 오늘의 Daily Tech Review 포스트 본문입니다.
+    3개 토픽을 종합하여 취업 준비생 관점에서 간결한 코멘트 3개를 작성하세요.
+
+    [포스트 본문]
+    {post_body}
+
+    출력 형식 (이 줄들만 출력):
+    - **산업 연관성**: (이 소식들이 산업 전체에 미치는 통합 인사이트, 2문장)
+    - **직무 연관성**: (개발자/PM/데이터 직무 지원자에게 실질적 의미, 2문장)
+    - **자소서/면접**: (면접에서 활용할 수 있는 포인트 1~2개, 구체적으로)
+
+  prompt_en: |
+    Below is today's Daily Tech Review post content.
+    Synthesize the topics and write 3 concise comments from a job seeker's perspective.
+
+    [Post Content]
+    {post_body}
+
+    Output format (these lines only):
+    - **Industry Insight**: (Integrated insight on how these news items affect the industry, 2 sentences)
+    - **Career Relevance**: (Practical meaning for developer/PM/data job applicants, 2 sentences)
+    - **Interview Prep**: (1-2 specific points to use in interviews or cover letters)
+
+rules:
+  - 각 항목: 한 단락, 최대 3문장
+  - 구체적 수치/사례 인용 우선
+  - 미래 예측보다 현재 변화에 집중
+  - 취업 지원서에 바로 쓸 수 있는 언어 사용
