@@ -116,19 +116,18 @@ async function main() {
     raw = await fetchGist(GIST_ID);
   }
 
-  const topics = parseTopics(raw);
-  const spotlight = parseSpotlight(raw);
-
-  if (topics.length === 0) {
-    console.error("TOPIC_START/TOPIC_END 마커를 찾지 못했습니다.");
-    console.error("원문 앞 300자:", raw.slice(0, 300));
+  if (!raw || raw.trim().length === 0) {
+    console.error("콘텐츠가 비어 있습니다.");
     process.exit(1);
   }
 
-  console.log(`토픽 ${topics.length}건 파싱 완료`);
+  const frontMatter = `---\nlayout: post\ntitle: "${POST_DATE} Daily Tech Review"\ndate: ${POST_DATE}\nlang: ${LANG}\npair: ${POST_DATE}-daily\ntags: [daily, tech-review]\n---`;
 
-  const summaryLines = buildSummary(topics);
-  const post = buildPost(topics, spotlight, summaryLines, LANG);
+  const commentsPlaceholder = LANG === "en"
+    ? "## Comments\n- **Industry Insight**: \n- **Career Relevance**: \n- **Interview Prep**: "
+    : "## Comments\n- **산업 연관성**: \n- **직무 연관성**: \n- **자소서/면접**: ";
+
+  const post = `${frontMatter}\n\n${raw}\n\n---\n\n${commentsPlaceholder}\n`;
 
   const dir = path.join("_posts", LANG);
   fs.mkdirSync(dir, { recursive: true });

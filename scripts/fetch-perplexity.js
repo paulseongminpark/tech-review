@@ -56,7 +56,7 @@ function callPerplexityAPI(prompt) {
     const body = JSON.stringify({
       model: "sonar-pro",
       messages: [{ role: "user", content: prompt }],
-      max_tokens: 2000,
+      max_tokens: 4000,
       temperature: 0.2,
     });
 
@@ -100,15 +100,12 @@ async function main() {
   const prompt = getPromptFile();
   const content = await callPerplexityAPI(prompt);
 
-  // TOPIC_START 마커 확인
-  if (!content.includes("TOPIC_START")) {
-    console.error("경고: TOPIC_START 마커 없음. 응답 앞 500자:");
-    console.error(content.slice(0, 500));
-    // 마커 없이도 저장 (parse-content.js에서 에러 처리)
-  } else {
-    const topicCount = (content.match(/TOPIC_START/g) || []).length;
-    console.log(`토픽 ${topicCount}건 감지`);
+  // 응답 확인
+  if (!content || content.trim().length === 0) {
+    console.error("경고: 빈 응답");
+    process.exit(1);
   }
+  console.log(`응답 수신 완료 (${content.length}자)`);
 
   fs.writeFileSync(OUTPUT_FILE, content, "utf8");
   console.log(`저장 완료: ${OUTPUT_FILE}`);
