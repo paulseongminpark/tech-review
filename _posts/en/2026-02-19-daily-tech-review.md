@@ -3,6 +3,7 @@ layout: post
 title: "2026-02-19 Daily Tech Review"
 date: 2026-02-19
 lang: en
+permalink: /en/2026/02/19/daily-tech-review/
 pair: 2026-02-19-daily-tech-review
 tags: [daily, claude-opus-4-6, glm-5, openai-frontier, snowflake, sovereign-ai]
 ---

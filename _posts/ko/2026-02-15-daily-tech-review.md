@@ -3,8 +3,9 @@ layout: post
 title: "2026-02-15 Daily Tech Review"
 date: 2026-02-15
 lang: ko
-pair: 2026-02-15-daily
-tags: [daily, tech-review]
+permalink: /ko/2026/02/15/daily-tech-review/
+pair: 2026-02-15-daily-tech-review
+tags: [daily, neuromorphic, science-ai, seedance, chinese-models, sovereign-ai]
 ---
 
 ## 오늘의 핵심 요약
@@ -62,6 +63,3 @@ DeepSeek 충격 이후 저가 오픈웨이트 모델 러시가 계속되면서 �
 - [MarketingProfs — AI Update February 13, 2026](https://www.marketingprofs.com/opinions/2026/54304/ai-update-february-13-2026-ai-news-and-views-from-the-past-week)
 
 ## Comments
-- **산업 연관성**: 
-- **직무 연관성**: 
-- **자소서/면접**: 

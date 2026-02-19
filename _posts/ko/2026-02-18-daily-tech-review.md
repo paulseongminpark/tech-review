@@ -3,8 +3,9 @@ layout: post
 title: "2026-02-18 Daily Tech Review"
 date: 2026-02-18
 lang: ko
-pair: 2026-02-18-daily
-tags: [daily, tech-review]
+permalink: /ko/2026/02/18/daily-tech-review/
+pair: 2026-02-18-daily-tech-review
+tags: [daily, agentic-ai, capex, physical-ai, openai-frontier, ma]
 ---
 
 ## 오늘의 핵심 요약
@@ -62,6 +63,3 @@ TEKsystems 조사에 따르면 기업들은 AI로 생산성 향상을 체감하�
 - [AI Weekly Newsletter 02-17-2026](https://ai-weekly.ai/newsletter-02-17-2026/)
 
 ## Comments
-- **산업 연관성**: 
-- **직무 연관성**: 
-- **자소서/면접**: 

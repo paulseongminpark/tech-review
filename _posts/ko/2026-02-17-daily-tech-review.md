@@ -3,8 +3,9 @@ layout: post
 title: "2026-02-17 Daily Tech Review"
 date: 2026-02-17
 lang: ko
-pair: 2026-02-17-daily
-tags: [daily, tech-review]
+permalink: /ko/2026/02/17/daily-tech-review/
+pair: 2026-02-17-daily-tech-review
+tags: [daily, neuromorphic, seedance, kling, sovereign-ai, large-action-models]
 ---
 
 ## 오늘의 핵심 요약
@@ -62,6 +63,3 @@ Talk→Action 전환이 본격화되면서 Reasoning·Perception·World Model을
 - [Enterprise Technology News Week of February 6 – LinkedIn](https://www.linkedin.com/pulse/enterprise-technology-news-week-february-6th-2026-ri3te)
 
 ## Comments
-- **산업 연관성**: 
-- **직무 연관성**: 
-- **자소서/면접**: 

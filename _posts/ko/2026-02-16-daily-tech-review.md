@@ -3,8 +3,9 @@ layout: post
 title: "2026-02-16 Daily Tech Review"
 date: 2026-02-16
 lang: ko
-pair: 2026-02-16-daily
-tags: [daily, tech-review]
+permalink: /ko/2026/02/16/daily-tech-review/
+pair: 2026-02-16-daily-tech-review
+tags: [daily, claude-opus-4-6, openai-frontier, minimax, voxtral, ai-slop]
 ---
 
 ## 오늘의 핵심 요약
@@ -63,6 +64,3 @@ Nature가 AI가 생성한 저품질 논문을 "AI slop"으로 규정하며 학�
 - [MarketingProfs — AI Update February 13, 2026](https://www.marketingprofs.com/opinions/2026/54304/ai-update-february-13-2026-ai-news-and-views-from-the-past-week)
 
 ## Comments
-- **산업 연관성**: 
-- **직무 연관성**: 
-- **자소서/면접**: 

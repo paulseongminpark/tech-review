@@ -3,6 +3,7 @@ layout: post
 title: "2026-02-16 Daily Tech Review"
 date: 2026-02-16
 lang: en
+permalink: /en/2026/02/16/daily-tech-review/
 pair: 2026-02-16-daily-tech-review
 tags: [daily, claude-opus-4-6, openai-frontier, minimax, voxtral, ai-slop]
 ---

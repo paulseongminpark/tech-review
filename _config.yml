@@ -3,18 +3,11 @@ description: Daily tech trend analysis
 url: "https://paulseongminpark.github.io"
 baseurl: "/tech-review"
 markdown: kramdown
-permalink: /:categories/:year/:month/:day/:title/
+permalink: /:year/:month/:day/:title/
 
 defaults:
   - scope:
-      path: "_posts/ko"
+      path: ""
       type: "posts"
     values:
       layout: "post"
-      permalink: /ko/:year/:month/:day/:title/
-  - scope:
-      path: "_posts/en"
-      type: "posts"
-    values:
-      layout: "post"
-      permalink: /en/:year/:month/:day/:title/

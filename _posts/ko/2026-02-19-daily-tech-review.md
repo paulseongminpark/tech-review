@@ -3,8 +3,9 @@ layout: post
 title: "2026-02-19 Daily Tech Review"
 date: 2026-02-19
 lang: ko
-pair: 2026-02-19-daily
-tags: [daily, tech-review]
+permalink: /ko/2026/02/19/daily-tech-review/
+pair: 2026-02-19-daily-tech-review
+tags: [daily, claude-opus-4-6, glm-5, openai-frontier, snowflake, sovereign-ai]
 ---
 
 ## 오늘의 핵심 요약
@@ -73,6 +74,3 @@ OpenAI가 미국에서 ChatGPT 무료·Go(월 8달러) 구간에 광고 테스�
 - [Yahoo Finance: Reddit AI 검색](https://finance.yahoo.com/news/reddit-looks-ai-search-next-232027624.html)
 
 ## Comments
-- **산업 연관성**: 
-- **직무 연관성**: 
-- **자소서/면접**: 

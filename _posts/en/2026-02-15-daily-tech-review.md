@@ -3,6 +3,7 @@ layout: post
 title: "2026-02-15 Daily Tech Review"
 date: 2026-02-15
 lang: en
+permalink: /en/2026/02/15/daily-tech-review/
 pair: 2026-02-15-daily-tech-review
 tags: [daily, neuromorphic, science-ai, seedance, chinese-models, sovereign-ai]
 ---
