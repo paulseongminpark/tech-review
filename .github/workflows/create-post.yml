@@ -11,6 +11,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 jobs:
   create-post:
@@ -71,7 +72,15 @@ jobs:
           git add _posts/ko/ _posts/en/
           if git diff --cached --quiet; then
             echo "변경사항 없음"
+            echo "CHANGED=false" >> $GITHUB_ENV
           else
             git commit -m "[tech-review] ${POST_DATE} daily post 자동 생성"
             git push
+            echo "CHANGED=true" >> $GITHUB_ENV
           fi
+
+      - name: Trigger deploy
+        if: env.CHANGED == 'true'
+        run: gh workflow run deploy.yml --repo paulseongminpark/tech-review
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
