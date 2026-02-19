@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Claude Opus 4.6 title: "2026-02-19 Daily Tech Review" GLM-5 Signal Agent-as-Labor-Unit Tipping Point"
+title: "Claude Opus 4.6 & GLM-5 Signal Agent-as-Labor-Unit Tipping Point"
 date: 2026-02-19
 lang: en
 permalink: /en/2026/02/19/daily-tech-review/

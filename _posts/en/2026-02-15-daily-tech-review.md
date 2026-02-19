@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "China AI Price War title: "2026-02-15 Daily Tech Review" OpenAI Ads vs Anthropic No-Ad Stance"
+title: "China AI Price War & OpenAI Ads vs Anthropic No-Ad Stance"
 date: 2026-02-15
 lang: en
 permalink: /en/2026/02/15/daily-tech-review/

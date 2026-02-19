@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Claude Opus 4.6 title: "2026-02-19 Daily Tech Review" GLM-5, 에이전트가 새 노동 단위로"
+title: "Claude Opus 4.6 & GLM-5, 에이전트가 새 노동 단위로"
 date: 2026-02-19
 lang: ko
 permalink: /ko/2026/02/19/daily-tech-review/
