@@ -1,11 +1,12 @@
 #!/usr/bin/env node
 /**
  * parse-content.js
- * Gist에서 Perplexity 원문 fetch → TOPIC_START/END 파싱 → Jekyll 포스트 생성
+ * 콘텐츠 소스(CONTENT_FILE 또는 GIST_ID) → TOPIC_START/END 파싱 → Jekyll 포스트 생성
  *
  * 환경변수:
- *   GIST_ID       - 파싱할 Gist ID
- *   GITHUB_TOKEN  - Gist 접근 토큰
+ *   CONTENT_FILE  - 로컬 콘텐츠 파일 경로 (fetch-perplexity.js 출력)
+ *   GIST_ID       - Gist ID (CONTENT_FILE 없을 때 fallback)
+ *   GITHUB_TOKEN  - Gist 접근 토큰 (GIST_ID 사용 시 필요)
  *   LANG          - "ko" 또는 "en" (기본: "ko")
  *   POST_DATE     - YYYY-MM-DD (기본: 오늘)
  */
@@ -14,13 +15,14 @@ const https = require("https");
 const fs = require("fs");
 const path = require("path");
 
+const CONTENT_FILE = process.env.CONTENT_FILE;
 const GIST_ID = process.env.GIST_ID;
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 const LANG = process.env.LANG || "ko";
 const POST_DATE = process.env.POST_DATE || new Date().toISOString().slice(0, 10);
 
-if (!GIST_ID) {
-  console.error("GIST_ID 환경변수가 필요합니다.");
+if (!CONTENT_FILE && !GIST_ID) {
+  console.error("CONTENT_FILE 또는 GIST_ID 환경변수가 필요합니다.");
   process.exit(1);
 }
 
@@ -105,8 +107,14 @@ function buildPost(topics, spotlight, summaryLines, lang) {
 }
 
 async function main() {
-  console.log(`Gist ${GIST_ID} 로드 중...`);
-  const raw = await fetchGist(GIST_ID);
+  let raw;
+  if (CONTENT_FILE) {
+    console.log(`로컬 파일 로드: ${CONTENT_FILE}`);
+    raw = fs.readFileSync(CONTENT_FILE, "utf8");
+  } else {
+    console.log(`Gist ${GIST_ID} 로드 중...`);
+    raw = await fetchGist(GIST_ID);
+  }
 
   const topics = parseTopics(raw);
   const spotlight = parseSpotlight(raw);
