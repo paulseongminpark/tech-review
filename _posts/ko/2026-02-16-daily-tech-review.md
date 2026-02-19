@@ -64,3 +64,4 @@ Nature가 AI가 생성한 저품질 논문을 "AI slop"으로 규정하며 학�
 - [MarketingProfs — AI Update February 13, 2026](https://www.marketingprofs.com/opinions/2026/54304/ai-update-february-13-2026-ai-news-and-views-from-the-past-week)
 
 ## Comments
+

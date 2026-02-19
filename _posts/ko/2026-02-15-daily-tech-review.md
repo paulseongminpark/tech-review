@@ -63,3 +63,4 @@ DeepSeek 충격 이후 저가 오픈웨이트 모델 러시가 계속되면서 �
 - [MarketingProfs — AI Update February 13, 2026](https://www.marketingprofs.com/opinions/2026/54304/ai-update-february-13-2026-ai-news-and-views-from-the-past-week)
 
 ## Comments
+

@@ -63,3 +63,4 @@ As Canada and Germany launch the Sovereign Technology Alliance, and Chile pursue
 - [MarketingProfs — AI Update February 13, 2026](https://www.marketingprofs.com/opinions/2026/54304/ai-update-february-13-2026-ai-news-and-views-from-the-past-week)
 
 ## Comments
+

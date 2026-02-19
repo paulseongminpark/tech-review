@@ -63,3 +63,4 @@ Talk→Action 전환이 본격화되면서 Reasoning·Perception·World Model을
 - [Enterprise Technology News Week of February 6 – LinkedIn](https://www.linkedin.com/pulse/enterprise-technology-news-week-february-6th-2026-ri3te)
 
 ## Comments
+
