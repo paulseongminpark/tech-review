@@ -16,7 +16,7 @@ tags: ["india-ai-summit", "google", "tata-group", "openai-tcs", "ai-infrastructu
 
 ### Tata Group의 AI 기반 데이터센터 및 OpenAI 파트너십
 
-Tata Group은 인도 최초의 AI 기반 데이터센터 구축을 발표했으며, OpenAI와의 협력을 통해 100MW 규모의 AI 인프라를 구축하고 1GW까지 확장할 계획이다. Tata의 HyperVault는 고급 AI 워크로드를 위한 친환경 에너지 데이터센터를 제공하며, 엔터프라이즈 AI 도입, 산업별 솔루션, 청년 AI 교육 등을 포함한 종합적인 이니셔티브를 추진���다.
+Tata Group은 인도 최초의 AI 기반 데이터센터 구축을 발표했으며, OpenAI와의 협력을 통해 100MW 규모의 AI 인프라를 구축하고 1GW까지 확장할 계획이다. Tata의 HyperVault는 고급 AI 워크로드를 위한 친환경 에너지 데이터센터를 제공하며, 엔터프라이즈 AI 도입, 산업별 솔루션, 청년 AI 교육 등을 포함한 종합적인 이니셔티브를 추진한다.
 
 ### Google의 15억 달러 Vizag AI Hub
 
