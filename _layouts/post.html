@@ -10,9 +10,19 @@ layout: default
     </div>
   </header>
   <div class="content">
-    {{ content }}
+    {{ content | split: '<h2 id="comments">Comments</h2>' | first }}
   </div>
   <footer style="margin-top:2rem; padding-top:1rem; border-top:1px solid #eee;">
+    <nav class="post-nav">
+      <ul style="list-style:none; display:flex; gap:1rem; flex-wrap:wrap; padding:0; margin-bottom:1rem;">
+        {% assign lang_posts = site.posts | where: "lang", page.lang | sort: "date" | reverse %}
+        {% for p in lang_posts %}
+          {% unless p.url == page.url %}
+            <li><a href="{{ p.url | prepend: site.baseurl }}">{{ p.date | date: "%Y-%m-%d" }}</a></li>
+          {% endunless %}
+        {% endfor %}
+      </ul>
+    </nav>
     <a href="{{ site.baseurl }}/{{ page.lang }}/">&larr; {% if page.lang == 'ko' %}목록으로{% else %}Back to list{% endif %}</a>
   </footer>
 </article>
