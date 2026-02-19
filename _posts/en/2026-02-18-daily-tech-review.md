@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "2026-02-18 Daily Tech Review"
+title: "Big Tech $650B AI CapEx and Multi-Agent Orchestration Goes Enterprise"
 date: 2026-02-18
 lang: en
 permalink: /en/2026/02/18/daily-tech-review/

@@ -1,11 +1,11 @@
 ---
 layout: post
-title: "2026-02-20 Daily Tech Review"
+title: "인도 AI Summit: 구글 $150억·타타 AI 데이터센터·OpenAI-TCS 발표"
 date: 2026-02-20
 lang: ko
 permalink: /ko/2026/02/20/daily-tech-review/
 pair: 2026-02-20-daily-tech-review
-tags: [tech-review]
+tags: ["india-ai-summit", "google", "tata-group", "openai-tcs", "ai-infrastructure"]
 ---
 
 ## 오늘의 핵심 요약

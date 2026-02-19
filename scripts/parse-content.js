@@ -71,18 +71,35 @@ async function main() {
     process.exit(1);
   }
 
+  // TITLE: / TAGS: 첫 줄에서 추출
+  let title = `${POST_DATE} Daily Tech Review`;
+  let tags = ["tech-review"];
+  const lines = raw.trim().split("\n");
+  let bodyStart = 0;
+  for (let i = 0; i < Math.min(5, lines.length); i++) {
+    if (lines[i].startsWith("TITLE:")) {
+      title = lines[i].replace(/^TITLE:\s*/, "").trim().replace(/"/g, "'");
+      bodyStart = i + 1;
+    } else if (lines[i].startsWith("TAGS:")) {
+      tags = lines[i].replace(/^TAGS:\s*/, "").split(",").map(t => t.trim().toLowerCase().replace(/\s+/g, "-")).filter(Boolean);
+      bodyStart = Math.max(bodyStart, i + 1);
+    }
+  }
+  raw = lines.slice(bodyStart).join("\n").trim();
+
   const [y, m, d] = POST_DATE.split("-");
   const permalink = `/${LANG}/${y}/${m}/${d}/daily-tech-review/`;
+  const tagsStr = tags.map(t => `"${t}"`).join(", ");
 
   const frontMatter = [
     "---",
     `layout: post`,
-    `title: "${POST_DATE} Daily Tech Review"`,
+    `title: "${title}"`,
     `date: ${POST_DATE}`,
     `lang: ${LANG}`,
     `permalink: ${permalink}`,
     `pair: ${POST_DATE}-daily-tech-review`,
-    `tags: [tech-review]`,
+    `tags: [${tagsStr}]`,
     "---",
   ].join("\n");
 

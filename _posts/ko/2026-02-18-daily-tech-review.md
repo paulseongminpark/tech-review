@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "2026-02-18 Daily Tech Review"
+title: "빅테크 $6,500억 AI CapEx와 멀티에이전트 오케스트레이션 표준화"
 date: 2026-02-18
 lang: ko
 permalink: /ko/2026/02/18/daily-tech-review/

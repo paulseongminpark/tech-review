@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "2026-02-16 Daily Tech Review"
+title: "MiniMax M2.5 Cuts Top Model Price 10x, Multi-Agent Becomes Standard"
 date: 2026-02-16
 lang: en
 permalink: /en/2026/02/16/daily-tech-review/

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "2026-02-15 Daily Tech Review"
+title: "중국 AI 저가 공세·OpenAI 광고 도입 vs Anthropic 무광고 선언"
 date: 2026-02-15
 lang: ko
 permalink: /ko/2026/02/15/daily-tech-review/

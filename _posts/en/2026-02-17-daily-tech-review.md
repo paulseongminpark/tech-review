@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "2026-02-17 Daily Tech Review"
+title: "Multipolar AI Models title: "2026-02-17 Daily Tech Review" LAM Rise as Sovereign AI Governance Emerges"
 date: 2026-02-17
 lang: en
 permalink: /en/2026/02/17/daily-tech-review/

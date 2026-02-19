@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "2026-02-16 Daily Tech Review"
+title: "MiniMax M2.5, 최고 성능 1/10 가격으로 멀티에이전트 경쟁 격화"
 date: 2026-02-16
 lang: ko
 permalink: /ko/2026/02/16/daily-tech-review/

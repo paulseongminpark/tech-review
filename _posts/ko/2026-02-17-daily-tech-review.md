@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "2026-02-17 Daily Tech Review"
+title: "중국·중남미 AI 다극화와 행동형 에이전트(LAM) 부상"
 date: 2026-02-17
 lang: ko
 permalink: /ko/2026/02/17/daily-tech-review/

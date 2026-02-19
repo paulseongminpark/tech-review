@@ -1,11 +1,11 @@
 ---
 layout: post
-title: "2026-02-20 Daily Tech Review"
+title: "India AI Summit: Google $15B Hub, Tata AI Data Center, OpenAI-TCS Deal"
 date: 2026-02-20
 lang: en
 permalink: /en/2026/02/20/daily-tech-review/
 pair: 2026-02-20-daily-tech-review
-tags: [tech-review]
+tags: ["india-ai-summit", "google", "tata-group", "openai-tcs", "ai-infrastructure"]
 ---
 
 ## Today's Key Summary
