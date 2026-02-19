@@ -102,6 +102,9 @@ function callPerplexityAPI(prompt) {
               content = content.replace(/\[(\d+)\]/g, "");
             }
 
+            // 인코딩 대체 문자(U+FFFD) 제거
+            content = content.replace(/\ufffd+/g, "");
+
             // 한자(CJK) 제거 - 괄호 내 한자 패턴 포함
             content = content.replace(/（[\u4e00-\u9fff\u3400-\u4dbf]+）/g, "");
             content = content.replace(/\([\u4e00-\u9fff\u3400-\u4dbf]+\)/g, "");
