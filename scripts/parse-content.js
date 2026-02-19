@@ -108,6 +108,13 @@ async function main() {
   const dir = path.join("_posts", LANG);
   fs.mkdirSync(dir, { recursive: true });
   const filepath = path.join(dir, `${POST_DATE}-daily-tech-review.md`);
+
+  // 이미 존재하는 파일은 덮어쓰지 않음 (comments 보호)
+  if (fs.existsSync(filepath)) {
+    console.log(`이미 존재함, 건너뜀: ${filepath}`);
+    return;
+  }
+
   fs.writeFileSync(filepath, post, "utf8");
   console.log(`포스트 저장: ${filepath}`);
 
