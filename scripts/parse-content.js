@@ -96,12 +96,9 @@ function buildPost(topics, spotlight, summaryLines, lang) {
 
   if (spotlight) parts.push(`## 🤖 AI Agent & Dev Spotlight\n${spotlight}`);
 
-  const commentsPlaceholder = lang === "en"
-    ? "## Comments\n- **Industry Insight**: \n- **Career Relevance**: \n- **Interview Prep**: "
-    : "## Comments\n- **산업 연관성**: \n- **직무 연관성**: \n- **자소서/면접**: ";
-  parts.push(commentsPlaceholder);
+  parts.push("## Comments\n");
 
-  const frontMatter = `---\nlayout: post\ntitle: "${POST_DATE} Daily Tech Review"\ndate: ${POST_DATE}\nlang: ${lang}\npair: ${POST_DATE}-daily\ntags: [daily, tech-review]\n---`;
+  const frontMatter = `---\nlayout: post\ntitle: "${POST_DATE} Daily Tech Review"\ndate: ${POST_DATE}\nlang: ${lang}\npair: ${POST_DATE}-daily-tech-review\ntags: [daily, tech-review]\n---`;
 
   return `${frontMatter}\n\n${parts.join(sep)}\n`;
 }
@@ -121,17 +118,13 @@ async function main() {
     process.exit(1);
   }
 
-  const frontMatter = `---\nlayout: post\ntitle: "${POST_DATE} Daily Tech Review"\ndate: ${POST_DATE}\nlang: ${LANG}\npair: ${POST_DATE}-daily\ntags: [daily, tech-review]\n---`;
+  const frontMatter = `---\nlayout: post\ntitle: "${POST_DATE} Daily Tech Review"\ndate: ${POST_DATE}\nlang: ${LANG}\npair: ${POST_DATE}-daily-tech-review\ntags: [daily, tech-review]\n---`;
 
-  const commentsPlaceholder = LANG === "en"
-    ? "## Comments\n- **Industry Insight**: \n- **Career Relevance**: \n- **Interview Prep**: "
-    : "## Comments\n- **산업 연관성**: \n- **직무 연관성**: \n- **자소서/면접**: ";
-
-  const post = `${frontMatter}\n\n${raw}\n\n---\n\n${commentsPlaceholder}\n`;
+  const post = `${frontMatter}\n\n${raw}\n\n---\n\n## Comments\n`;
 
   const dir = path.join("_posts", LANG);
   fs.mkdirSync(dir, { recursive: true });
-  const filepath = path.join(dir, `${POST_DATE}-daily.md`);
+  const filepath = path.join(dir, `${POST_DATE}-daily-tech-review.md`);
   fs.writeFileSync(filepath, post, "utf8");
   console.log(`포스트 저장: ${filepath}`);
 
