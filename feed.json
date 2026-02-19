@@ -1,27 +1,25 @@
 ---
 layout: null
 ---
+{%- assign ko_posts = site.posts | where: "lang", "ko" | sort: "date" | reverse -%}
 {
   "posts": [
-    {%- assign pairs = site.posts | map: "pair" | uniq -%}
     {%- assign count = 0 -%}
-    {%- for p in pairs -%}
-      {%- if count >= 5 -%}{%- break -%}{%- endif -%}
-      {%- assign ko_post = site.posts | where: "pair", p | where: "lang", "ko" | first -%}
-      {%- assign en_post = site.posts | where: "pair", p | where: "lang", "en" | first -%}
-      {%- if ko_post and en_post -%}
+    {%- for ko in ko_posts -%}
+      {%- if count < 10 -%}
+        {%- assign en = site.posts | where: "pair", ko.pair | where: "lang", "en" | first -%}
         {%- if count > 0 -%},{%- endif -%}
         {
-          "date": "{{ ko_post.date | date: '%Y-%m-%d' }}",
-          "pair": "{{ p }}",
+          "date": "{{ ko.date | date: '%Y-%m-%d' }}",
+          "pair": "{{ ko.pair }}",
           "title": {
-            "ko": {{ ko_post.title | jsonify }},
-            "en": {{ en_post.title | jsonify }}
+            "ko": "{{ ko.title | escape }}",
+            "en": "{{ en.title | default: ko.title | escape }}"
           },
-          "tags": {{ ko_post.tags | jsonify }},
+          "tags": [{% for tag in ko.tags %}"{{ tag }}"{% unless forloop.last %},{% endunless %}{% endfor %}],
           "url": {
-            "ko": "{{ ko_post.url | prepend: site.baseurl }}",
-            "en": "{{ en_post.url | prepend: site.baseurl }}"
+            "ko": "{{ ko.url }}",
+            "en": "{{ en.url | default: ko.url }}"
           }
         }
         {%- assign count = count | plus: 1 -%}

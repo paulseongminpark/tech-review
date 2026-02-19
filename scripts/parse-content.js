@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * parse-content.js
- * 콘텐츠 소스(CONTENT_FILE 또는 GIST_ID) → TOPIC_START/END 파싱 → Jekyll 포스트 생성
+ * 콘텐츠 소스(CONTENT_FILE 또는 GIST_ID) → front matter 추가 → Jekyll 포스트 저장
  *
  * 환경변수:
  *   CONTENT_FILE  - 로컬 콘텐츠 파일 경로 (fetch-perplexity.js 출력)
@@ -56,53 +56,6 @@ async function fetchGist(gistId) {
   return Object.values(res.body.files)[0].content;
 }
 
-function parseTopics(raw) {
-  const topics = [];
-  const re = /TOPIC_START\s*([\s\S]*?)\s*TOPIC_END/g;
-  let m;
-  while ((m = re.exec(raw)) !== null) topics.push(m[1].trim());
-  return topics;
-}
-
-function parseSpotlight(raw) {
-  const m = /SPOTLIGHT_START\s*([\s\S]*?)\s*SPOTLIGHT_END/.exec(raw);
-  return m ? m[1].trim() : null;
-}
-
-function buildSummary(topics) {
-  return topics.map((topic, i) => {
-    const lines = topic.split("\n").filter((l) => l.trim());
-    let title = "", sentence = "";
-    for (const line of lines) {
-      if (line.startsWith("## ")) title = line.slice(3).trim();
-      else if (!sentence && !line.startsWith("**Source**")) {
-        const sm = line.match(/^(.+?[.!?。])/);
-        sentence = sm ? sm[1] : line.slice(0, 80) + "…";
-      }
-      if (title && sentence) break;
-    }
-    return `${i + 1}. **${title || `Topic ${i + 1}`}** — ${sentence}`;
-  });
-}
-
-function buildPost(topics, spotlight, summaryLines, lang) {
-  const sep = "\n\n---\n\n";
-  const parts = [];
-
-  const summaryHeader = lang === "en" ? "## Today's Highlights" : "## 오늘의 핵심";
-  if (summaryLines.length > 0) parts.push(`${summaryHeader}\n${summaryLines.join("\n")}`);
-
-  parts.push(topics.join(sep));
-
-  if (spotlight) parts.push(`## 🤖 AI Agent & Dev Spotlight\n${spotlight}`);
-
-  parts.push("## Comments\n");
-
-  const frontMatter = `---\nlayout: post\ntitle: "${POST_DATE} Daily Tech Review"\ndate: ${POST_DATE}\nlang: ${lang}\npair: ${POST_DATE}-daily-tech-review\ntags: [daily, tech-review]\n---`;
-
-  return `${frontMatter}\n\n${parts.join(sep)}\n`;
-}
-
 async function main() {
   let raw;
   if (CONTENT_FILE) {
@@ -118,9 +71,22 @@ async function main() {
     process.exit(1);
   }
 
-  const frontMatter = `---\nlayout: post\ntitle: "${POST_DATE} Daily Tech Review"\ndate: ${POST_DATE}\nlang: ${LANG}\npair: ${POST_DATE}-daily-tech-review\ntags: [daily, tech-review]\n---`;
+  const [y, m, d] = POST_DATE.split("-");
+  const permalink = `/${LANG}/${y}/${m}/${d}/daily-tech-review/`;
 
-  const post = `${frontMatter}\n\n${raw}\n\n---\n\n## Comments\n`;
+  const frontMatter = [
+    "---",
+    `layout: post`,
+    `title: "${POST_DATE} Daily Tech Review"`,
+    `date: ${POST_DATE}`,
+    `lang: ${LANG}`,
+    `permalink: ${permalink}`,
+    `pair: ${POST_DATE}-daily-tech-review`,
+    `tags: [tech-review]`,
+    "---",
+  ].join("\n");
+
+  const post = `${frontMatter}\n\n${raw.trim()}\n\n## Comments\n\n`;
 
   const dir = path.join("_posts", LANG);
   fs.mkdirSync(dir, { recursive: true });

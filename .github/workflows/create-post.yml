@@ -3,7 +3,7 @@ name: Create Daily Post
 on:
   schedule:
     - cron: "0 0 * * *"   # 매일 09:00 KST (00:00 UTC)
-  workflow_dispatch:        # 수동 실행 가능
+  workflow_dispatch:
     inputs:
       post_date:
         description: "날짜 (YYYY-MM-DD, 기본: 오늘)"
@@ -27,14 +27,6 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-
-      - name: Install Python dependencies
-        run: pip install anthropic
-
       - name: Set POST_DATE
         run: |
           if [ -n "${{ github.event.inputs.post_date }}" ]; then
@@ -43,7 +35,7 @@ jobs:
             echo "POST_DATE=$(TZ=Asia/Seoul date +%Y-%m-%d)" >> $GITHUB_ENV
           fi
 
-      # ── KO 콘텐츠 fetch ────────────────────────────────────────────────────
+      # ── KO 콘텐츠 fetch ──────────────────────────────────────────────────
       - name: Fetch KO content from Perplexity
         env:
           PERPLEXITY_API_KEY: ${{ secrets.PERPLEXITY_API_KEY }}
@@ -57,14 +49,7 @@ jobs:
           LANG: ko
         run: node scripts/parse-content.js
 
-      - name: Generate KO Comments
-        env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-        run: |
-          POST_FILE="_posts/ko/${POST_DATE}-daily.md"
-          [ -f "$POST_FILE" ] && python3 scripts/generate_comments.py "$POST_FILE" || echo "KO 포스트 없음"
-
-      # ── EN 콘텐츠 fetch ────────────────────────────────────────────────────
+      # ── EN 콘텐츠 fetch ──────────────────────────────────────────────────
       - name: Fetch EN content from Perplexity
         env:
           PERPLEXITY_API_KEY: ${{ secrets.PERPLEXITY_API_KEY }}
@@ -78,14 +63,7 @@ jobs:
           LANG: en
         run: node scripts/parse-content.js
 
-      - name: Generate EN Comments
-        env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-        run: |
-          POST_FILE="_posts/en/${POST_DATE}-daily.md"
-          [ -f "$POST_FILE" ] && python3 scripts/generate_comments.py "$POST_FILE" || echo "EN 포스트 없음"
-
-      # ── 커밋 + Push ────────────────────────────────────────────────────────
+      # ── 커밋 + Push ──────────────────────────────────────────────────────
       - name: Commit and push
         run: |
           git config user.name "tech-review-bot"
