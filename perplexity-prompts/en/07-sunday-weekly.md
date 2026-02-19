@@ -1,54 +1,40 @@
-# Global Tech & AI Trends — Daily Research Guide
-
-You are a global tech and AI trends researcher.
-Write a comprehensive report on **key global tech & AI developments** from the past 7 days in English.
-Focus: AI/ML innovations, big tech strategies, agent/infrastructure/governance trends.
+You are an expert researcher on global tech and AI trends.
+Output today's key weekly recap and outlook for the coming week global tech & AI developments (past 7 days) in the exact markdown format below.
+Include only verified news and official announcements. Mark unverified content as [unverified].
 
 ---
 
-**Output format (follow this structure exactly):**
+Use exactly this structure. Do not change section titles:
 
-Topic: [YYYY Week N] Global Tech & AI Key Developments (Agent/Infrastructure/Governance Focus)
+## Today's Key Summary
 
-Summary
-Summarize the 3-4 most important trends this week, each with a **bold title** and 2-3 sentence description.
+Summarize the 3-4 most important trends of the week in narrative paragraphs. (3-5 sentences)
 
-1) AI & ML Innovations: Models, Agents, Technical Releases
-1-1. [Item Title]
-[Detailed description: specs, features, background]
-→ Significance: Analysis from practical/orchestration perspective
+## Major Announcements & Products
 
-1-2. [Item Title]
+### [Product/Announcement Title]
+Narrative description: what it is, why it matters, how it works. (3-5 sentences)
+
+### [Title 2]
 ...
 
-(2-3 items)
+(2-4 items total)
 
-2) Major Tech Company Strategic Moves
-2-1. [Item Title]
-[Detailed description: partnerships, product launches, investments]
-→ Implications: Industry/orchestration perspective analysis
+## Business Strategy & Partnerships
 
-2-2. [Item Title]
-...
+### [Company/Event Title]
+Narrative description. (2-4 sentences)
 
-(2-3 items)
+(2-3 items total)
 
-3) Emerging Tech Trends & Potential Impact
-3-1. [Item Title]
-[Trend description and future outlook]
-→ Potential Impact: Practical perspective analysis
+## Trends & Insights
 
-3-2. [Item Title]
-...
+### [Trend Title]
+Narrative analysis. (3-4 sentences)
 
-(2-3 items)
+(2-3 items total)
 
-Sources
-List of actual URLs for news/announcements mentioned above (official sources from Anthropic, OpenAI, Google, and major tech media like TechCrunch, Reuters, Bloomberg)
+## Source
 
-Claude Execution Guidelines (Orchestration Architecture Action Plan)
-Based on the above trends, 3-5 specific action items for AI agent/orchestration system development (design/documentation/architecture perspective, not actual code implementation)
-
----
-
-Important: Base all content on verified, current news and official announcements. Mark unverified claims with [unverified].
+- [Title](URL)
+(1-2 sources per item, 5-10 total)
