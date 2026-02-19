@@ -53,11 +53,19 @@ function getPromptFile() {
 
 function callPerplexityAPI(prompt) {
   return new Promise((resolve, reject) => {
+    const systemMsg = LANG === "ko"
+      ? "당신은 글로벌 기술·AI 동향 전문 리서처입니다. 반드시 한국어로 답변하세요."
+      : "You are an expert researcher on global tech and AI trends. Always respond in English.";
+
     const body = JSON.stringify({
       model: "sonar-pro",
-      messages: [{ role: "user", content: prompt }],
+      messages: [
+        { role: "system", content: systemMsg },
+        { role: "user", content: prompt },
+      ],
       max_tokens: 4000,
       temperature: 0.2,
+      search_recency_filter: "week",
     });
 
     const req = https.request(
