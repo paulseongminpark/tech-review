@@ -13,8 +13,8 @@ layout: null
           "date": "{{ ko.date | date: '%Y-%m-%d' }}",
           "pair": "{{ ko.pair }}",
           "title": {
-            "ko": "{{ ko.title | escape }}",
-            "en": "{{ en.title | default: ko.title | escape }}"
+            "ko": "{{ ko.title | replace: '"', '\"' }}",
+            "en": "{{ en.title | default: ko.title | replace: '"', '\"' }}"
           },
           "tags": [{% for tag in ko.tags %}"{{ tag }}"{% unless forloop.last %},{% endunless %}{% endfor %}],
           "url": {
