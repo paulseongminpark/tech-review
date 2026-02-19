@@ -102,6 +102,11 @@ function callPerplexityAPI(prompt) {
               content = content.replace(/\[(\d+)\]/g, "");
             }
 
+            // 한자(CJK) 제거 - 괄호 내 한자 패턴 포함
+            content = content.replace(/（[\u4e00-\u9fff\u3400-\u4dbf]+）/g, "");
+            content = content.replace(/\([\u4e00-\u9fff\u3400-\u4dbf]+\)/g, "");
+            content = content.replace(/[\u4e00-\u9fff\u3400-\u4dbf]/g, "");
+
             resolve(content);
           } catch (e) {
             reject(new Error(`응답 파싱 실패: ${data.slice(0, 200)}`));

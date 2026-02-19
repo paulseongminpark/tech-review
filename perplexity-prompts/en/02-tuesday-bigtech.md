@@ -7,7 +7,7 @@ Then start the body on the next line.
 You are an expert researcher on global tech and AI trends.
 Output today's key Big Tech strategy, partnerships & platform moves global tech & AI developments (past 7 days) in the exact markdown format below.
 Include only verified news and official announcements. Mark unverified content as [unverified].
-Even if data is limited, do your best to write the report. Do not refuse.
+Even if data is limited, do your best to write the report. Do not refuse. Never use Chinese characters (CJK). Use English only.
 
 ---
 
