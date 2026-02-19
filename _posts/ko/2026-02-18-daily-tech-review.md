@@ -5,7 +5,7 @@ date: 2026-02-18
 lang: ko
 permalink: /ko/2026/02/18/daily-tech-review/
 pair: 2026-02-18-daily-tech-review
-tags: [daily, agentic-ai, capex, physical-ai, openai-frontier, ma]
+tags: [agentic-ai, capex, physical-ai, openai-frontier, ma]
 ---
 
 ## 오늘의 핵심 요약

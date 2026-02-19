@@ -5,7 +5,7 @@ date: 2026-02-15
 lang: ko
 permalink: /ko/2026/02/15/daily-tech-review/
 pair: 2026-02-15-daily-tech-review
-tags: [daily, neuromorphic, science-ai, seedance, chinese-models, sovereign-ai]
+tags: [neuromorphic, science-ai, seedance, chinese-models, sovereign-ai]
 ---
 
 ## 오늘의 핵심 요약

@@ -5,7 +5,7 @@ date: 2026-02-19
 lang: ko
 permalink: /ko/2026/02/19/daily-tech-review/
 pair: 2026-02-19-daily-tech-review
-tags: [daily, claude-opus-4-6, glm-5, openai-frontier, snowflake, sovereign-ai]
+tags: [claude-opus-4-6, glm-5, openai-frontier, snowflake, sovereign-ai]
 ---
 
 ## 오늘의 핵심 요약

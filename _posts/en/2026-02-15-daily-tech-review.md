@@ -5,7 +5,7 @@ date: 2026-02-15
 lang: en
 permalink: /en/2026/02/15/daily-tech-review/
 pair: 2026-02-15-daily-tech-review
-tags: [daily, neuromorphic, science-ai, seedance, chinese-models, sovereign-ai]
+tags: [neuromorphic, science-ai, seedance, chinese-models, sovereign-ai]
 ---
 
 ## Today's Key Summary

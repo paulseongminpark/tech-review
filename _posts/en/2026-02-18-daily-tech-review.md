@@ -5,7 +5,7 @@ date: 2026-02-18
 lang: en
 permalink: /en/2026/02/18/daily-tech-review/
 pair: 2026-02-18-daily-tech-review
-tags: [daily, agentic-ai, capex, physical-ai, openai-frontier, ma]
+tags: [agentic-ai, capex, physical-ai, openai-frontier, ma]
 ---
 
 ## Today's Key Summary
