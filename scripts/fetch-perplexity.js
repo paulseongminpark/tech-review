@@ -89,7 +89,20 @@ function callPerplexityAPI(prompt) {
           }
           try {
             const json = JSON.parse(data);
-            resolve(json.choices[0].message.content);
+            let content = json.choices[0].message.content;
+            const citations = json.citations || [];
+
+            // [title][n] → [title](url) 변환
+            if (citations.length > 0) {
+              content = content.replace(/\[([^\]]+)\]\[(\d+)\]/g, (_, title, n) => {
+                const url = citations[parseInt(n, 10) - 1];
+                return url ? `[${title}](${url})` : title;
+              });
+              // 본문 내 [n] 인용 마커 제거
+              content = content.replace(/\[(\d+)\]/g, "");
+            }
+
+            resolve(content);
           } catch (e) {
             reject(new Error(`응답 파싱 실패: ${data.slice(0, 200)}`));
           }
