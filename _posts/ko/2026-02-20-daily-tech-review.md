@@ -50,4 +50,5 @@ AI Impact Summit은 118개국의 참여 속에서 AI의 책임 있는 개발과 
 
 ## Comments
 
+- test
 - i love puya
