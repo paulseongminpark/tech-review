@@ -31,7 +31,7 @@ SpaceX announced the acquisition of xAI to form a vertically integrated "innovat
 NVIDIA CEO Jensen Huang announced major processors to "surprise the world" at GTC 2026 (March 16-19), likely Rubin GPUs with HBM4 following talks with SK Hynix. Focus remains on AI data center hardware, not consumer GPUs. This reinforces NVIDIA's lead amid intensifying competition.
 
 ### OpenAI Enters AI Hardware with Smart Speaker [unverified]
-Reports indicate OpenAI assembled a 200-person team for AI-powered devices, starting with a $200-300 camera-equipped smart speaker slated for 2027 release. Aiming to compete with Meta's glasses and others in physical AI interfaces. OpenAI has not confirmed, keeping plans speculative.(https://www.ainvest.com/news/openai-enters-ai-hardware-market-smart-speaker-development-2602/)
+Reports indicate OpenAI assembled a 200-person team for AI-powered devices, starting with a $200-300 camera-equipped smart speaker slated for 2027 release. Aiming to compete with Meta's glasses and others in physical AI interfaces. OpenAI has not confirmed, keeping plans speculative.
 
 ## Trends & Insights
 
@@ -42,7 +42,7 @@ NVIDIA's Meta deal pioneers standalone Grace and Vera CPU deployments, hinting a
 New data shows China adding power capacity six times faster than the US, enabling massive AI data center builds despite US restrictions. This infrastructure edge supports domestic chip and model scaling. Global competition intensifies as energy becomes the new bottleneck.
 
 ### Hardware Shortages Grip Data Centers
-Western Digital's 2026 HDD sellout and chip benchmark races highlight supply constraints amid AI boom, from storage to power. CES 2026 previews like Rubin AI chips and Ryzen AI Max+ signal innovation, but production lags demand. Hyperscalers secure multi-year deals to front-run shortages.(https://www.microcenter.com/site/mc-news/article/everything-seen-at-ces-2026.aspx)
+Western Digital's 2026 HDD sellout and chip benchmark races highlight supply constraints amid AI boom, from storage to power. CES 2026 previews like Rubin AI chips and Ryzen AI Max+ signal innovation, but production lags demand. Hyperscalers secure multi-year deals to front-run shortages.
 
 ## Source
 - [AI News - February 2026: Key Events & Releases](https://dentro.de/ai/news/)

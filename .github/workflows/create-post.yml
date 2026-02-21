@@ -50,13 +50,13 @@ jobs:
           LANG: ko
         run: node scripts/parse-content.js
 
-      # ── EN 콘텐츠 fetch ──────────────────────────────────────────────────
-      - name: Fetch EN content from Perplexity
+      # ── EN 번역 (KO → EN via Perplexity) ────────────────────────────────
+      - name: Translate KO to EN via Perplexity
         env:
           PERPLEXITY_API_KEY: ${{ secrets.PERPLEXITY_API_KEY }}
-          LANG: en
+          INPUT_FILE: /tmp/perplexity-ko.md
           OUTPUT_FILE: /tmp/perplexity-en.md
-        run: node scripts/fetch-perplexity.js
+        run: node scripts/translate-perplexity.js
 
       - name: Parse EN content
         env:
