@@ -75,9 +75,3 @@ In healthcare, legal, finance, and manufacturing, small, domain-specific models 
 
 ## Comments
 
-- **Industry Insight**: This week's AI agent news signals a reshaping of the middleware market. Orchestration capability now outweighs platform lock-in.
-- **Career Relevance**: Developers with multi-agent design experience will command premium salaries. PMs should incorporate agent workflows into product specs.
-- **Interview Prep**: Be ready to explain "why multi-agent over a single model API." Cite real orchestration design decisions to stand out.
-```
-
----
