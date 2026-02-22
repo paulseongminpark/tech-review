@@ -36,6 +36,54 @@ const PROMPT_FILES = {
   6: "06-saturday-usecase.md",
 };
 
+// 요일 인덱스(0=일~6=토) → keywords-log.md 섹션 헤더 매핑
+const DAY_SECTION = {
+  0: "## 일 (주간 종합)",
+  1: "## 월 (AI/ML 혁신)",
+  2: "## 화 (빅테크 동향)",
+  3: "## 수 (AI × Industry: 비즈니스 모델)",
+  4: "## 목 (오픈소스 & 개발자)",
+  5: "## 금 (AI 하드웨어 & 인프라)",
+  6: "## 토 (AI 실사용 사례)",
+};
+
+function getKeywordsBlock(day) {
+  const logPath = path.join("perplexity-prompts", "keywords-log.md");
+  if (!fs.existsSync(logPath)) return "";
+
+  const log = fs.readFileSync(logPath, "utf8");
+  const sectionHeader = DAY_SECTION[day];
+  if (!sectionHeader) return "";
+
+  // 해당 요일 섹션 추출
+  const sectionStart = log.indexOf(sectionHeader);
+  if (sectionStart === -1) return "";
+
+  const nextSection = log.indexOf("\n## ", sectionStart + sectionHeader.length);
+  const section = nextSection === -1
+    ? log.slice(sectionStart)
+    : log.slice(sectionStart, nextSection);
+
+  // 테이블 행에서 날짜·키워드 추출 (최근 4주)
+  const rows = [];
+  const rowRegex = /\|\s*([\d-]+)\s*\|\s*([^|]+)\s*\|/g;
+  let match;
+  while ((match = rowRegex.exec(section)) !== null) {
+    const date = match[1].trim();
+    const keywords = match[2].trim();
+    if (date && date !== "날짜") rows.push(`- ${date}: ${keywords}`);
+  }
+
+  if (rows.length === 0) return "";
+
+  const recent = rows.slice(-4); // 최근 4주
+  return [
+    "[같은 요일 이전 키워드 — 아래와 실질적으로 겹치는 뉴스는 제외]",
+    ...recent,
+    "같은 기업이어도 다른 사건이면 포함 가능. 같은 기업 + 비슷한 사건이면 반드시 제외.",
+  ].join("\n");
+}
+
 function getPromptFile() {
   // POST_DATE 기준 KST 요일 계산
   const date = new Date(POST_DATE + "T00:00:00+09:00");
@@ -48,7 +96,20 @@ function getPromptFile() {
   }
 
   console.log(`프롬프트 파일: ${filepath} (요일: ${day})`);
-  return fs.readFileSync(filepath, "utf8");
+  let prompt = fs.readFileSync(filepath, "utf8");
+
+  // {KEYWORDS_BLOCK} 치환 (ko만, en은 keywords-log 없음)
+  if (LANG === "ko") {
+    const keywordsBlock = getKeywordsBlock(day);
+    prompt = prompt.replace("{KEYWORDS_BLOCK}", keywordsBlock);
+  } else {
+    prompt = prompt.replace("{KEYWORDS_BLOCK}", "");
+  }
+
+  // {DATE} 치환
+  prompt = prompt.replace(/\{DATE\}/g, POST_DATE);
+
+  return prompt;
 }
 
 function callPerplexityAPI(prompt) {
