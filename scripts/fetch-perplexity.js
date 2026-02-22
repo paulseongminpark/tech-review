@@ -86,8 +86,11 @@ function getKeywordsBlock(day) {
 
 function getPromptFile() {
   // POST_DATE 기준 KST 요일 계산
-  const date = new Date(POST_DATE + "T00:00:00+09:00");
-  const day = date.getDay();
+  // Date.UTC로 파싱해야 KST 날짜 그대로 요일 계산 가능
+  // ("+09:00" 파싱 시 UTC 전날로 변환되어 요일이 1 밀림)
+  const [y, m, d] = POST_DATE.split("-").map(Number);
+  const date = new Date(Date.UTC(y, m - 1, d));
+  const day = date.getUTCDay();
   const filename = PROMPT_FILES[day];
   const filepath = path.join("perplexity-prompts", LANG, filename);
 
