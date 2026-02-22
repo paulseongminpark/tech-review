@@ -4,11 +4,11 @@
   {% assign paired = site.posts | where: "pair", page.pair | where: "lang", other_lang | first %}
   <div class="lang-toggle">
     {% if page.lang == 'ko' %}
-      <a href="{{ site.baseurl }}/ko/" class="active" onclick="localStorage.setItem('tech-review-lang','ko')">KO</a>
+      <a href="{{ page.url | prepend: site.baseurl }}" class="active" onclick="localStorage.setItem('tech-review-lang','ko')">KO</a>
       {% if paired %}<a href="{{ paired.url | prepend: site.baseurl }}" onclick="localStorage.setItem('tech-review-lang','en')">EN</a>{% else %}<a href="{{ site.baseurl }}/en/" onclick="localStorage.setItem('tech-review-lang','en')">EN</a>{% endif %}
     {% else %}
       {% if paired %}<a href="{{ paired.url | prepend: site.baseurl }}" onclick="localStorage.setItem('tech-review-lang','ko')">KO</a>{% else %}<a href="{{ site.baseurl }}/ko/" onclick="localStorage.setItem('tech-review-lang','ko')">KO</a>{% endif %}
-      <a href="{{ site.baseurl }}/en/" class="active" onclick="localStorage.setItem('tech-review-lang','en')">EN</a>
+      <a href="{{ page.url | prepend: site.baseurl }}" class="active" onclick="localStorage.setItem('tech-review-lang','en')">EN</a>
     {% endif %}
   </div>
 {% else %}
