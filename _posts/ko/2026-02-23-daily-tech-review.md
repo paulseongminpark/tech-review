@@ -1,11 +1,11 @@
 ---
 layout: post
-title: "2026-02-23 Daily Tech Review"
+title: "2026-02-23 AI/ML 혁신 — 새로운 모델, 논문, 벤치마크"
 date: 2026-02-23
 lang: ko
 permalink: /ko/2026/02/23/daily-tech-review/
 pair: 2026-02-23-daily-tech-review
-tags: ["tech-review"]
+tags: ["ai-ml", "models", "research", "benchmarks"]
 ---
 
 ## Today in One Line

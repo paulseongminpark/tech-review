@@ -101,6 +101,22 @@ function getPromptFile() {
   console.log(`프롬프트 파일: ${filepath} (요일: ${day})`);
   let prompt = fs.readFileSync(filepath, "utf8");
 
+  // TITLE: / TAGS: 추출 후 프롬프트에서 제거 (Perplexity에 보내지 않음)
+  let titleLine = "";
+  let tagsLine = "";
+  const lines = prompt.split("\n");
+  const promptLines = [];
+  for (const line of lines) {
+    if (line.startsWith("TITLE:")) {
+      titleLine = line;
+    } else if (line.startsWith("TAGS:")) {
+      tagsLine = line;
+    } else {
+      promptLines.push(line);
+    }
+  }
+  prompt = promptLines.join("\n").trim();
+
   // {KEYWORDS_BLOCK} 치환 (ko만, en은 keywords-log 없음)
   if (LANG === "ko") {
     const keywordsBlock = getKeywordsBlock(day);
@@ -110,9 +126,10 @@ function getPromptFile() {
   }
 
   // {DATE} 치환
+  titleLine = titleLine.replace(/\{DATE\}/g, POST_DATE);
   prompt = prompt.replace(/\{DATE\}/g, POST_DATE);
 
-  return prompt;
+  return { prompt, titleLine, tagsLine };
 }
 
 function callPerplexityAPI(prompt) {
@@ -190,7 +207,7 @@ function callPerplexityAPI(prompt) {
 async function main() {
   console.log(`Perplexity API 호출 중... (lang: ${LANG}, date: ${POST_DATE})`);
 
-  const prompt = getPromptFile();
+  const { prompt, titleLine, tagsLine } = getPromptFile();
   const content = await callPerplexityAPI(prompt);
 
   // 응답 확인
@@ -229,7 +246,10 @@ async function main() {
 
   console.log(`응답 수신 완료 (${content.length}자)`);
 
-  fs.writeFileSync(OUTPUT_FILE, content, "utf8");
+  // TITLE/TAGS를 콘텐츠 앞에 붙여서 parse-content.js가 추출할 수 있게
+  const header = [titleLine, tagsLine].filter(Boolean).join("\n");
+  const output = header ? `${header}\n\n${content}` : content;
+  fs.writeFileSync(OUTPUT_FILE, output, "utf8");
   console.log(`저장 완료: ${OUTPUT_FILE}`);
 
   // GitHub Actions output
