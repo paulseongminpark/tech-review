@@ -21,6 +21,7 @@ Search the following sources for the most significant AI business/industry adopt
 2. 수치, 날짜, 기업명 구체 명시. 추측은 [미확인] 표시
 3. 각 항목에 실제 기사 URL 포함 필수
 4. 영어 소스여도 한국어로 작성. 고유명사는 원문 유지
+5. 분량: 항목당 리드 2문장 + Why it matters 2문장 + 불릿 3개(각 1~2문장) + What's next 1문장 = 최소 8문장. 3항목 합계 25문장 이상
 
 형식:
 

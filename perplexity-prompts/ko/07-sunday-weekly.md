@@ -20,6 +20,7 @@ Search the following sources for this week's most impactful AI/Tech stories (Mon
 2. 수치, 날짜, 기업명 구체 명시. 추측은 [미확인] 표시
 3. 출처 URL 최소 3개 (실제 기사 링크)
 4. 각 항목: Why it matters + 불릿 3개 + What's next
+5. 분량: 항목당 리드 2문장 + Why it matters 2문장 + 불릿 3개(각 1~2문장) + What's next 1문장 = 최소 8문장. 3항목 합계 25문장 이상
 
 형식:
 

@@ -19,6 +19,7 @@ Search the following sources for the most significant open-source and developer 
 3. 각 항목에 실제 기사/릴리스 URL 포함 필수
 4. 영어 소스여도 한국어로 작성. 프로젝트명·라이브러리명은 원문 유지
 5. GitHub star 수, 다운로드 수, 버전 번호 등 구체적 수치 포함
+6. 분량: 항목당 리드 2문장 + Why it matters 2문장 + 불릿 3개(각 1~2문장) + What's next 1문장 = 최소 8문장. 3항목 합계 25문장 이상
 
 형식:
 
