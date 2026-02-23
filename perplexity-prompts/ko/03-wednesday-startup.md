@@ -1,4 +1,3 @@
-TITLE: {DATE} AI × Industry — 산업별 AI 비즈니스 모델
 TAGS: ai-industry, business-model, enterprise-ai, vertical-ai
 
 Search the following sources for the most significant AI business/industry adoption news from the past 48 hours:

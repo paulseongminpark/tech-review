@@ -1,4 +1,3 @@
-TITLE: {DATE} 빅테크 동향 — 제품 발표, 전략, 시장
 TAGS: bigtech, google, microsoft, meta, apple, nvidia
 
 Search the following sources for the most significant Big Tech news from the past 48 hours:

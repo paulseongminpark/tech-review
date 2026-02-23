@@ -1,4 +1,3 @@
-TITLE: {DATE} 오픈소스 & 개발자 — 릴리스, 도구, 커뮤니티
 TAGS: opensource, developer-tools, github, frameworks
 
 Search the following sources for the most significant open-source and developer ecosystem news from the past 48 hours:

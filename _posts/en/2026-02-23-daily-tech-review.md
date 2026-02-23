@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "2026-02-23 AI/ML Innovation — New Models, Papers, Benchmarks"
+title: "LF AI Open Model Initiative Phase II, Microsoft AI-RAN Founded — Open-Source AI Infra Accelerates"
 date: 2026-02-23
 lang: en
 permalink: /en/2026/02/23/daily-tech-review/

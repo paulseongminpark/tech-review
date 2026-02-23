@@ -1,4 +1,3 @@
-TITLE: {DATE} AI 실사용 사례 — 기업 도입, 사회 영향, 규제
 TAGS: ai-usecase, enterprise, adoption, regulation
 
 Search the following sources for the most significant AI real-world adoption and impact news from the past 48 hours:

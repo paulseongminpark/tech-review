@@ -71,13 +71,16 @@ async function main() {
     process.exit(1);
   }
 
-  // TITLE: / TAGS: 첫 줄에서 추출
+  // TAGS: 추출 + Today in One Line에서 제목 추출
   let title = `${POST_DATE} Daily Tech Review`;
   let tags = ["tech-review"];
   const lines = raw.trim().split("\n");
   let bodyStart = 0;
+
+  // 헤더에서 TITLE:/TAGS: 추출 (fetch-perplexity.js가 붙여준 것)
   for (let i = 0; i < Math.min(5, lines.length); i++) {
     if (lines[i].startsWith("TITLE:")) {
+      // TITLE은 fallback용으로만 보관 (Today in One Line 우선)
       title = lines[i].replace(/^TITLE:\s*/, "").trim().replace(/"/g, "'");
       bodyStart = i + 1;
     } else if (lines[i].startsWith("TAGS:")) {
@@ -86,6 +89,23 @@ async function main() {
     }
   }
   raw = lines.slice(bodyStart).join("\n").trim();
+
+  // 본문에서 "## Today in One Line" 다음 비어있지 않은 줄을 제목으로 사용
+  const bodyLines = raw.split("\n");
+  for (let i = 0; i < bodyLines.length; i++) {
+    if (bodyLines[i].match(/^##\s*Today in One Line/i)) {
+      // 다음 비어있지 않은 줄 찾기
+      for (let j = i + 1; j < bodyLines.length; j++) {
+        const candidate = bodyLines[j].trim();
+        if (candidate && !candidate.startsWith("#") && !candidate.startsWith("---")) {
+          title = candidate.replace(/"/g, "'");
+          console.log(`제목 추출 (Today in One Line): ${title}`);
+          break;
+        }
+      }
+      break;
+    }
+  }
 
   const [y, m, d] = POST_DATE.split("-");
   const permalink = `/${LANG}/${y}/${m}/${d}/daily-tech-review/`;

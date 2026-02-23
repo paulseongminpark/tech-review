@@ -1,4 +1,3 @@
-TITLE: {DATE} AI/ML 혁신 — 새로운 모델, 논문, 벤치마크
 TAGS: ai-ml, models, research, benchmarks
 
 Search the following sources for the most significant AI/ML innovation news from the past 48 hours:

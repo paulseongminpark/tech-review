@@ -1,4 +1,3 @@
-TITLE: {DATE} AI 하드웨어 & 인프라 — 칩, 데이터센터, 클라우드
 TAGS: hardware, chips, datacenter, cloud, infrastructure
 
 Search the following sources for the most significant AI hardware and infrastructure news from the past 48 hours:

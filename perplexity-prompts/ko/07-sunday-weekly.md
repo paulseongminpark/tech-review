@@ -1,4 +1,3 @@
-TITLE: {DATE} 주간 Tech Review — 이번 주를 관통한 AI 흐름
 TAGS: weekly-review, ai-trends, tech-summary
 
 Search the following sources for this week's most impactful AI/Tech stories (Monday through Saturday):
