@@ -38,6 +38,8 @@ jobs:
 
       # ── KO 콘텐츠 fetch ──────────────────────────────────────────────────
       - name: Fetch KO content from Perplexity
+        id: fetch_ko
+        continue-on-error: true
         env:
           PERPLEXITY_API_KEY: ${{ secrets.PERPLEXITY_API_KEY }}
           LANG: ko
@@ -45,6 +47,7 @@ jobs:
         run: node scripts/fetch-perplexity.js
 
       - name: Parse KO content
+        if: steps.fetch_ko.outcome == 'success'
         env:
           CONTENT_FILE: /tmp/perplexity-ko.md
           LANG: ko
@@ -52,6 +55,7 @@ jobs:
 
       # ── EN 번역 (KO → EN via Perplexity) ────────────────────────────────
       - name: Translate KO to EN via Perplexity
+        if: steps.fetch_ko.outcome == 'success'
         env:
           PERPLEXITY_API_KEY: ${{ secrets.PERPLEXITY_API_KEY }}
           INPUT_FILE: /tmp/perplexity-ko.md
@@ -59,6 +63,7 @@ jobs:
         run: node scripts/translate-perplexity.js
 
       - name: Parse EN content
+        if: steps.fetch_ko.outcome == 'success'
         env:
           CONTENT_FILE: /tmp/perplexity-en.md
           LANG: en

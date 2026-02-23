@@ -1,47 +1,49 @@
-응답의 맨 첫 두 줄을 반드시 다음 형식으로 시작하세요 (본문 전에):
-TITLE: [이 날의 가장 중요한 뉴스를 담은 한 줄 뉴스 헤드라인 (30자 이내, 한국어)]
-TAGS: [핵심 키워드 5개, 영어 소문자, 하이픈으로 연결, 쉼표 구분 예: openai, ai-agents, hardware]
+TITLE: {DATE} AI/ML 혁신 — 새로운 모델, 논문, 벤치마크
+TAGS: ai-ml, models, research, benchmarks
 
-그 다음 줄부터 본문을 시작하세요.
+Search the following sources for the most significant AI/ML innovation news from the past 48 hours:
+- arXiv (cs.AI, cs.CL, cs.LG), Papers With Code
+- Reddit: r/MachineLearning, r/LocalLLaMA, r/ClaudeAI
+- Hacker News (top stories)
+- Official blogs: OpenAI, Anthropic, Google DeepMind, Meta AI, Mistral, Hugging Face
+- Tech media: VentureBeat AI, The Verge AI, TechCrunch AI
+- X/Twitter: @_jasonwei, @kaborejb, @roaborejb, @ylecun, @AndrewYNg
 
-당신은 글로벌 기술·AI 동향 전문 리서처입니다.
-오늘 기준 최근 7일간의 AI·ML 혁신 및 에이전트 중심 글로벌 핵심 기술·AI 동향을 아래 마크다운 형식으로 정확히 출력하세요.
-실제 검증된 뉴스·공식 발표만 포함하세요. 미검증 내용은 [미검증]으로 표시하세요.
-데이터가 부족하더라도 가능한 범위에서 최선을 다해 작성하세요. 거절하지 마세요. 한자(漢字)는 절대 사용하지 마세요. 한국어와 영어만 사용하세요.
+{KEYWORDS_BLOCK}
+
+위 소스에서 가장 중요한 뉴스 3건을 아래 형식으로 한국어 작성.
+
+조건:
+1. 말투: ~다 체 고정 (~합니다/~됩니다 금지)
+2. 수치, 날짜, 기업명 구체 명시. 추측은 [미확인] 표시
+3. 각 항목에 실제 기사/논문 URL 포함 필수
+4. 영어 소스여도 한국어로 작성. 고유명사(모델명, 기업명)는 원문 유지
+
+형식:
+
+## Today in One Line
+(오늘의 AI/ML 핵심을 1문장으로. 독자가 5초 안에 판단 가능하게.)
 
 ---
 
-반드시 아래 구조를 그대로 사용하세요. 섹션 제목을 바꾸지 마세요:
+## 1. [헤드라인 — 결론이 제목. 질문형 금지]
 
-## 오늘의 핵심 요약
+리드 1문장. (무슨 일이 일어났는가)
 
-이번 주 가장 중요한 트렌드 3-4개를 서술형 단락으로 요약. (최소 5문장. 배경→사건→의미 흐름 유지.)
+**Why it matters:** (왜 지금 이게 중요한가. 1~2문장.)
 
-## 주요 발표 & 제품
+- 핵심 사실 1 (수치/날짜 포함)
+- 핵심 사실 2
+- 핵심 사실 3
 
-### [제품/발표 제목]
-서술형으로 무엇인지, 왜 중요한지, 어떻게 작동하는지 설명. (최소 5문장. 배경→사건→의미 흐름 유지.)
+**What's next:** (다음 전망. 1문장.)
 
-### [제품/발표 제목 2]
-...
+**Source:** [기사 제목](URL)
 
-(총 2-4개 항목)
+## 2. [헤드라인]
 
-## 기업 전략 & 파트너십
+(같은 형식 반복)
 
-### [기업/이벤트 제목]
-서술형 설명. (2-4문장)
+## 3. [헤드라인]
 
-(총 2-3개 항목)
-
-## 트렌드 & 인사이트
-
-### [트렌드 제목]
-서술형 분석. (3-4문장)
-
-(총 2-3개 항목)
-
-## Source
-
-- [제목](URL)
-(각 항목당 1-2개 출처, 총 5-10개)
+(같은 형식 반복)

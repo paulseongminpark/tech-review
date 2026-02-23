@@ -198,6 +198,35 @@ async function main() {
     console.error("경고: 빈 응답");
     process.exit(1);
   }
+
+  // 응답 품질 검증 — Perplexity가 뉴스 대신 거부/에러 메시지를 반환한 경우 감지
+  const rejectPatterns = [
+    "죄송하지만",
+    "죄송합니다",
+    "작성할 수 없습니다",
+    "제공된 검색 결과로는",
+    "요청하신 형식의",
+    "검색 결과의 성격",
+    "권장사항:",
+    "I apologize",
+    "I cannot",
+    "I'm unable to",
+    "prompt injection",
+  ];
+  const lowerContent = content.toLowerCase();
+  const rejected = rejectPatterns.some((p) => lowerContent.includes(p.toLowerCase()));
+  if (rejected) {
+    console.error("경고: Perplexity가 콘텐츠 생성을 거부했습니다. 응답 일부:");
+    console.error(content.slice(0, 300));
+    process.exit(1);
+  }
+
+  // 최소 길이 검증 (정상 포스트는 보통 1000자 이상)
+  if (content.trim().length < 500) {
+    console.error(`경고: 응답이 너무 짧습니다 (${content.trim().length}자). 최소 500자 필요.`);
+    process.exit(1);
+  }
+
   console.log(`응답 수신 완료 (${content.length}자)`);
 
   fs.writeFileSync(OUTPUT_FILE, content, "utf8");
