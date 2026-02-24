@@ -549,6 +549,20 @@ function validateContent(content) {
   return true;
 }
 
+// ─── 거부 패턴 검사 ──────────────────────────────────────────────
+const REJECT_PATTERNS = [
+  "죄송하지만", "죄송합니다", "작성할 수 없습니다",
+  "제공된 검색 결과로는", "요청하신 형식의", "검색 결과의 성격",
+  "권장사항:", "I apologize", "I cannot", "I'm unable to", "prompt injection",
+  "이 요청을 수행할 수 없습니다", "실시간 데이터 접근 불가",
+];
+
+function isRejected(content) {
+  if (!content || content.trim().length === 0) return true;
+  const lower = content.toLowerCase();
+  return REJECT_PATTERNS.some((p) => lower.includes(p.toLowerCase()));
+}
+
 // ─── main ────────────────────────────────────────────────────────
 async function main() {
   console.log(`Perplexity 파이프라인 시작 (lang: ${LANG}, date: ${POST_DATE}, deep: ${USE_DEEP_RESEARCH})`);
@@ -561,8 +575,17 @@ async function main() {
   if (USE_DEEP_RESEARCH) {
     try {
       content = await submitDeepResearch(prompt, domainFilter);
+      if (isRejected(content)) {
+        console.warn("Deep Research 응답이 거부됨:");
+        console.warn(content.slice(0, 200));
+        content = null;
+      }
     } catch (err) {
       console.warn(`Deep Research 실패: ${err.message}`);
+      content = null;
+    }
+
+    if (!content) {
       console.log("sonar-pro 폴백으로 전환...");
       content = await callWithRetry(
         () => callSonarPro(prompt, domainFilter), 2, 10000
@@ -574,21 +597,14 @@ async function main() {
     );
   }
 
-  // 응답 확인
+  // 최종 응답 확인
   if (!content || content.trim().length === 0) {
     console.error("빈 응답");
     process.exit(1);
   }
 
-  // 거부 패턴 검사
-  const rejectPatterns = [
-    "죄송하지만", "죄송합니다", "작성할 수 없습니다",
-    "제공된 검색 결과로는", "요청하신 형식의", "검색 결과의 성격",
-    "권장사항:", "I apologize", "I cannot", "I'm unable to", "prompt injection",
-  ];
-  const lowerContent = content.toLowerCase();
-  if (rejectPatterns.some((p) => lowerContent.includes(p.toLowerCase()))) {
-    console.error("Perplexity가 콘텐츠 생성을 거부:");
+  if (isRejected(content)) {
+    console.error("최종 응답도 거부됨:");
     console.error(content.slice(0, 300));
     process.exit(1);
   }
