@@ -2,7 +2,7 @@ name: Create Daily Post
 
 on:
   schedule:
-    - cron: "0 22 * * *"  # 매일 07:00 KST (22:00 UTC 전날)
+    - cron: "30 21 * * *"  # 매일 06:30 KST (21:30 UTC 전날)
   workflow_dispatch:
     inputs:
       post_date:
@@ -16,6 +16,7 @@ permissions:
 jobs:
   create-post:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
 
     steps:
       - name: Checkout repository
@@ -40,10 +41,12 @@ jobs:
       - name: Fetch KO content from Perplexity
         id: fetch_ko
         continue-on-error: true
+        timeout-minutes: 20
         env:
           PERPLEXITY_API_KEY: ${{ secrets.PERPLEXITY_API_KEY }}
           LANG: ko
           OUTPUT_FILE: /tmp/perplexity-ko.md
+          USE_DEEP_RESEARCH: "true"
         run: node scripts/fetch-perplexity.js
 
       - name: Parse KO content
@@ -56,6 +59,7 @@ jobs:
       # ── EN 번역 (KO → EN via Perplexity) ────────────────────────────────
       - name: Translate KO to EN via Perplexity
         if: steps.fetch_ko.outcome == 'success'
+        timeout-minutes: 5
         env:
           PERPLEXITY_API_KEY: ${{ secrets.PERPLEXITY_API_KEY }}
           INPUT_FILE: /tmp/perplexity-ko.md

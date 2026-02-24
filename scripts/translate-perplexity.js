@@ -28,6 +28,27 @@ if (!fs.existsSync(INPUT_FILE)) {
 
 const koContent = fs.readFileSync(INPUT_FILE, "utf8");
 
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+async function callWithRetry(fn, retries = 2, delayMs = 10000) {
+  let lastError;
+  for (let i = 0; i <= retries; i++) {
+    try {
+      return await fn();
+    } catch (err) {
+      lastError = err;
+      console.error(`번역 시도 ${i + 1}/${retries + 1} 실패: ${err.message}`);
+      if (i < retries) {
+        console.log(`${delayMs / 1000}초 후 재시도...`);
+        await sleep(delayMs);
+      }
+    }
+  }
+  throw lastError;
+}
+
 function callPerplexityTranslate(content) {
   return new Promise((resolve, reject) => {
     const systemMsg =
@@ -47,7 +68,7 @@ function callPerplexityTranslate(content) {
         { role: "system", content: systemMsg },
         { role: "user", content: userMsg },
       ],
-      max_tokens: 4000,
+      max_tokens: 10000,
       temperature: 0.1,
     });
 
@@ -92,7 +113,7 @@ async function main() {
   console.log(`번역 중: ${INPUT_FILE} → ${OUTPUT_FILE}`);
   console.log(`입력 크기: ${koContent.length}자`);
 
-  const translated = await callPerplexityTranslate(koContent);
+  const translated = await callWithRetry(() => callPerplexityTranslate(koContent));
 
   if (!translated || translated.trim().length === 0) {
     console.error("경고: 번역 결과가 비어 있습니다.");

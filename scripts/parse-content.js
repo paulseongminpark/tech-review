@@ -90,6 +90,9 @@ async function main() {
   }
   raw = lines.slice(bodyStart).join("\n").trim();
 
+  // 브라켓 헤드라인 제거: ## 1. [제목] → ## 1. 제목
+  raw = raw.replace(/^(##\s*\d+\.?\s*)\[([^\]]+)\]/gm, "$1$2");
+
   // 본문에서 "## Today in One Line" 다음 비어있지 않은 줄을 제목으로 사용
   const bodyLines = raw.split("\n");
   for (let i = 0; i < bodyLines.length; i++) {
