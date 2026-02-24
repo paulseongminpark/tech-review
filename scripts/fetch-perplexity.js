@@ -323,8 +323,9 @@ function callSonarPro(prompt, domainFilter = []) {
       search_recency_filter: "week",
     };
 
+    // Perplexity API: search_domain_filter 최대 20개
     if (domainFilter.length > 0) {
-      requestBody.search_domain_filter = domainFilter;
+      requestBody.search_domain_filter = domainFilter.slice(0, 20);
     }
 
     const body = JSON.stringify(requestBody);
@@ -377,6 +378,7 @@ function submitDeepResearch(prompt, domainFilter = []) {
       ? "당신은 글로벌 기술·AI 동향 전문 리서처입니다. 반드시 한국어로 답변하세요."
       : "You are an expert researcher on global tech and AI trends. Always respond in English.";
 
+    // deep research는 도메인 필터 미지원 — 자체 검색으로 소스 결정
     const requestBody = {
       model: "sonar-deep-research",
       messages: [
@@ -385,10 +387,6 @@ function submitDeepResearch(prompt, domainFilter = []) {
       ],
       temperature: 0.2,
     };
-
-    if (domainFilter.length > 0) {
-      requestBody.search_domain_filter = domainFilter;
-    }
 
     const body = JSON.stringify(requestBody);
 
