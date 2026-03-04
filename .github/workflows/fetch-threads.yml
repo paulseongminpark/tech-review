@@ -1,0 +1,42 @@
+name: Fetch Threads
+
+on:
+  schedule:
+    - cron: '0 23 * * *'  # 매일 08:00 KST
+  workflow_dispatch:
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Playwright
+        working-directory: blog
+        run: |
+          npm install playwright
+          npx playwright install chromium --with-deps
+
+      - name: Set POST_DATE (KST)
+        run: echo "POST_DATE=$(TZ=Asia/Seoul date +%Y-%m-%d)" >> $GITHUB_ENV
+
+      - name: Fetch Threads
+        working-directory: blog
+        env:
+          THREADS_COOKIES: ${{ secrets.THREADS_COOKIES }}
+          POST_DATE: ${{ env.POST_DATE }}
+        run: node scripts/fetch-threads.js
+
+      - name: Commit and push
+        working-directory: blog
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add _data/sources/
+          git diff --cached --quiet || git commit -m "[auto] threads picks ${{ env.POST_DATE }}"
+          git push
