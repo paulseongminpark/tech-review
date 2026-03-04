@@ -49,6 +49,18 @@ async function main() {
     process.exit(1);
   }
 
+  // Cookie-Editor 내보내기 sameSite 값 정규화 (Chrome 내부 → Playwright 허용값)
+  const sameSiteMap = {
+    no_restriction: "None",
+    lax: "Lax",
+    strict: "Strict",
+    unspecified: "None",
+  };
+  cookies = cookies.map((c) => ({
+    ...c,
+    sameSite: sameSiteMap[c.sameSite?.toLowerCase()] || "None",
+  }));
+
   const browser = await chromium.launch({ headless: true });
   const context = await browser.newContext({
     userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
