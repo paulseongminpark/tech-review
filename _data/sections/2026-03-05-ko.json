@@ -1,0 +1,40 @@
+{
+  "date": "2026-03-05",
+  "lang": "ko",
+  "post_url": "/ko/2026/03/05/daily-tech-review/",
+  "post_title": "다중 에이전트 코딩 시대에 Git 병합 문제를 해결하는 Weave, Claude가 52년 오래된 수학 문제를 풀다, DeepSeek V4 출시 임박.",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "Weave: 에이전트-친화적 Git 병합 알고리즘 출시",
+      "lead": "Ataraxy Labs가 개발한 Weave는 Git의 라인 기반 병합의 한계를 극복하는 엔티티 수준 의미적 병합 드라이버다. Claude Code, Cursor, Codex가 동시에 코드를 작성할 때 여러 에이전트가 같은 파일에 서로 다른 함수를 추가해도 Git이 충돌로 표시하던 문제를 tree-sitter 파서로 코드 구조를 이해한 뒤 함수 단위로 병합한다.",
+      "tags": [
+        "opensource",
+        "developer-tools"
+      ],
+      "anchor": "weave-에이전트-친화적-git-병합-알고리즘-출시"
+    },
+    {
+      "index": 2,
+      "title": "Claude Opus 4.6이 52년 오래된 Knuth 수학 문제 해결",
+      "lead": "Stanford 컴퓨터 과학과 Donald Knuth 교수는 지난 몇 주간 고민하던 열린 문제가 Anthropic의 Claude Opus 4.6이 3주 전 출시된 후 짧은 시간 내에 해결됐다고 발표했다. 해밀턴 사이클 분해(Hamiltonian cycle decomposition) 문제로, Knuth가 31번의 탐색 시도를 거쳐 순수 수학적 프레이밍을 찾도록 Claude를 유도한 후 최종적으로 일반화된 구성을 도출했다.",
+      "tags": [
+        "opensource",
+        "developer-tools"
+      ],
+      "anchor": "claude-opus-46이-52년-오래된-knuth-수학-문제-해결"
+    },
+    {
+      "index": 3,
+      "title": "DeepSeek V4 3월 3일 출시 예정, 네이티브 멀티모달·코딩 최적화",
+      "lead": "Financial Times가 2월 28일 보도한 바에 따르면 DeepSeek V4는 1조 파라미터 규모로 3월 초 출시될 예정이며, 사진·영상·텍스트 생성을 네이티브로 지원하는 멀티모달 모델이다. 경신된 FlashMLA 라이브러리 코드에서 발견된 'Model1'로 추정되는 이 모델은 코딩과 장문맥 소프트웨어 엔지니어링 작업에 최적화돼 있다.",
+      "tags": [
+        "opensource",
+        "developer-tools",
+        "deepseek"
+      ],
+      "anchor": "deepseek-v4-3월-3일-출시-예정-네이티브-멀티모달·코딩-최적화"
+    }
+  ]
+}

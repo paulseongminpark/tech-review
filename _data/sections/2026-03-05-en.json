@@ -1,0 +1,43 @@
+{
+  "date": "2026-03-05",
+  "lang": "en",
+  "post_url": "/en/2026/03/05/daily-tech-review/",
+  "post_title": "Weave solves Git merge issues in the multi-agent coding era, Claude solves a 52-year-old math problem, DeepSeek V4 launch imminent.",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "Weave: Agent-Friendly Git Merge Algorithm Released",
+      "lead": "Weave, developed by Ataraxy Labs, is an entity-level semantic merge driver that overcomes the limitations of Git's line-based merging. When Claude Code, Cursor, and Codex write code simultaneously, even if multiple agents add different functions to t",
+      "tags": [
+        "opensource",
+        "developer-tools"
+      ],
+      "anchor": "weave-agent-friendly-git-merge-algorithm-released"
+    },
+    {
+      "index": 2,
+      "title": "Claude Opus 4.6 Solves 52-Year-Old Knuth Math Problem",
+      "lead": "Stanford Computer Science professor Donald Knuth announced that an open problem he had been pondering for the past few weeks was solved in a short time after the release of Anthropic's Claude Opus 4.6 three weeks ago. This is the Hamiltonian cycle de",
+      "tags": [
+        "opensource",
+        "developer-tools",
+        "ma"
+      ],
+      "anchor": "claude-opus-46-solves-52-year-old-knuth-math-problem"
+    },
+    {
+      "index": 3,
+      "title": "DeepSeek V4 Scheduled for Release on March 3, Native Multimodal and Coding Optimized",
+      "lead": "According to a Financial Times report on February 28, DeepSeek V4 is a 1 trillion parameter model scheduled for release in early March, supporting photo, video, and text generation natively as a multimodal model. This model, presumed to be 'Model1' d",
+      "tags": [
+        "opensource",
+        "developer-tools",
+        "multimodal",
+        "ma",
+        "deepseek"
+      ],
+      "anchor": "deepseek-v4-scheduled-for-release-on-march-3-native-multimod"
+    }
+  ]
+}
