@@ -24,19 +24,18 @@ const fs = require("fs");
 const path = require("path");
 
 const SERVICE = process.argv[2];
-if (!["twitter", "threads"].includes(SERVICE)) {
-  console.error("사용법: node scripts/export-cookies.js twitter|threads");
+if (!["twitter"].includes(SERVICE)) {
+  console.error("사용법: node scripts/export-cookies.js twitter");
   process.exit(1);
 }
 
 const URLS = {
   twitter: "https://x.com/login",
-  threads: "https://www.threads.net/login",
 };
 
 async function main() {
   console.log(`\n${SERVICE.toUpperCase()} 쿠키 추출 시작...`);
-  const browser = await chromium.launch({ headless: false });
+  const browser = await chromium.launch({ headless: false, channel: 'chrome' });
   const context = await browser.newContext();
   const page = await context.newPage();
 

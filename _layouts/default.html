@@ -33,13 +33,11 @@
   {% assign lang = page.lang | default: 'ko' %}
   <nav class="site-nav">
     <a href="{{ site.baseurl }}/{{ lang }}/"
-       {% unless page.url contains 'daily-digest' or page.url contains '/twitter/' or page.url contains '/threads/' or page.url contains '/youtube/' %}class="active"{% endunless %}>Home</a>
+       {% unless page.url contains 'daily-digest' or page.url contains '/twitter/' or page.url contains '/youtube/' %}class="active"{% endunless %}>Home</a>
     <a href="{{ site.baseurl }}/{{ lang }}/daily-digest/"
        {% if page.url contains 'daily-digest' %}class="active"{% endif %}>Daily Digest</a>
     <a href="{{ site.baseurl }}/{{ lang }}/twitter/"
        {% if page.url contains '/twitter/' %}class="active"{% endif %}>Twitter</a>
-    <a href="{{ site.baseurl }}/{{ lang }}/threads/"
-       {% if page.url contains '/threads/' %}class="active"{% endif %}>Threads</a>
     <a href="{{ site.baseurl }}/{{ lang }}/youtube/"
        {% if page.url contains '/youtube/' %}class="active"{% endif %}>YouTube</a>
   </nav>
