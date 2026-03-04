@@ -38,9 +38,9 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git stash -u
+          git stash -u || true
           git pull --rebase origin master
-          git stash pop
+          git stash pop || true
           git add _data/sources/ config/youtube-processed.json
           git diff --cached --quiet || git commit -m "[auto] youtube picks ${{ env.POST_DATE }}"
           git push
