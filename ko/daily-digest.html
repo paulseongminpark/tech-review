@@ -132,6 +132,16 @@ function selectDate(d) {
 
 function selectTag(t) {
   activeTag = t === 'all' ? null : t;
+
+  // 날짜 선택된 상태에서 특정 태그 클릭 → 해당 섹션으로 직접 이동
+  if (activeTag && activeDate) {
+    const matches = SECTIONS.filter(s => s.date === activeDate && (s.tags || []).includes(activeTag));
+    if (matches.length === 1) {
+      window.location.href = matches[0].post_url + '#' + matches[0].anchor;
+      return;
+    }
+  }
+
   renderTagToggle();
   renderCards();
 }

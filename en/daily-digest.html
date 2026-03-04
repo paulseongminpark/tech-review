@@ -132,6 +132,16 @@ function selectDate(d) {
 
 function selectTag(t) {
   activeTag = t === 'all' ? null : t;
+
+  // When date is selected and a specific tag is clicked → navigate directly to that section
+  if (activeTag && activeDate) {
+    const matches = SECTIONS.filter(s => s.date === activeDate && (s.tags || []).includes(activeTag));
+    if (matches.length === 1) {
+      window.location.href = matches[0].post_url + '#' + matches[0].anchor;
+      return;
+    }
+  }
+
   renderTagToggle();
   renderCards();
 }

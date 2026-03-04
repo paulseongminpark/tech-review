@@ -148,17 +148,34 @@ async function main() {
 
   // "Following" 탭 클릭 → HomeLatestTimeline 트리거
   console.log("  Following 탭 클릭...");
-  await page.click('[aria-label="Latest tweets"]').catch(async () => {
-    // 한국어 UI 또는 다른 aria-label 시도
-    await page.click('[href="/home?lang=en"]').catch(() => {});
-    await page.click('a[href="/following"]').catch(() => {});
-  });
-  await page.waitForTimeout(4000);
+  const tabSelectors = [
+    '[aria-label="Following"]',
+    '[aria-label="Latest tweets"]',
+    '[data-testid="ScrollSnap-SwipeableList"] a:last-child',
+    'nav[aria-label="Primary"] a[href="/following"]',
+    'a[href="/following"]',
+  ];
+  let tabClicked = false;
+  for (const sel of tabSelectors) {
+    try {
+      await page.click(sel, { timeout: 3000 });
+      console.log(`  탭 클릭 성공: ${sel}`);
+      tabClicked = true;
+      break;
+    } catch (_) {
+      console.log(`  탭 클릭 실패: ${sel}`);
+    }
+  }
+  if (!tabClicked) {
+    console.log("  모든 selector 실패 → x.com/following 직접 접근");
+    await page.goto("https://x.com/following", { waitUntil: "domcontentloaded", timeout: 60000 });
+  }
+  await page.waitForTimeout(6000);
 
   // 스크롤로 추가 트윗 로드
-  for (let i = 0; i < 6; i++) {
+  for (let i = 0; i < 8; i++) {
     await page.evaluate(() => window.scrollBy(0, 2000));
-    await page.waitForTimeout(2500);
+    await page.waitForTimeout(3000);
   }
 
   await browser.close();
