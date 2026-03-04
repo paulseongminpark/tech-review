@@ -17,7 +17,6 @@ jobs:
           node-version: '20'
 
       - name: Install Playwright
-        working-directory: blog
         run: |
           npm install playwright
           npx playwright install chromium --with-deps
@@ -26,14 +25,12 @@ jobs:
         run: echo "POST_DATE=$(TZ=Asia/Seoul date +%Y-%m-%d)" >> $GITHUB_ENV
 
       - name: Fetch Twitter
-        working-directory: blog
         env:
           TWITTER_COOKIES: ${{ secrets.TWITTER_COOKIES }}
           POST_DATE: ${{ env.POST_DATE }}
         run: node scripts/fetch-twitter.js
 
       - name: Commit and push
-        working-directory: blog
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"

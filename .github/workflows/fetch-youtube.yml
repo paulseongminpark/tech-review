@@ -23,21 +23,18 @@ jobs:
         run: echo "POST_DATE=$(TZ=Asia/Seoul date +%Y-%m-%d)" >> $GITHUB_ENV
 
       - name: Fetch new videos
-        working-directory: blog
         env:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
           POST_DATE: ${{ env.POST_DATE }}
         run: node scripts/fetch-youtube.js
 
       - name: Summarize with Gemini
-        working-directory: blog
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           POST_DATE: ${{ env.POST_DATE }}
         run: node scripts/summarize-youtube.js
 
       - name: Commit and push
-        working-directory: blog
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
