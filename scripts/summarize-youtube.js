@@ -2,7 +2,8 @@
 /**
  * summarize-youtube.js
  * _data/sources/youtube-YYYY-MM-DD.json (summary 없는 항목)
- * → 제목 + 설명 텍스트 → Gemini Smart Brevity 요약
+ * → Gemini에 YouTube URL 직접 전달 → Smart Brevity 요약
+ * → 실패 시 제목+설명 텍스트로 폴백
  * → 같은 파일에 summary 필드 추가
  *
  * 환경변수:
@@ -26,30 +27,19 @@ if (!GEMINI_API_KEY) {
 
 const DATA_DIR = path.join(__dirname, "..", "_data", "sources");
 
-function buildPrompt(video) {
-  return `YouTube 영상 정보를 보고 Smart Brevity 형식으로 요약하세요.
-
-제목: ${video.title}
-채널: ${video.channel}
-설명: ${video.description || "(없음)"}
-
-반드시 아래 JSON 형식으로만 응답하세요 (코드블록 없이 순수 JSON):
+const BREVITY_FORMAT = `반드시 아래 JSON 형식으로만 응답하세요 (코드블록 없이 순수 JSON):
 {
   "one_line": "한 문장 핵심 요약",
   "why_it_matters": "핵심 의미 1~2문장",
   "points": ["포인트 1", "포인트 2", "포인트 3"],
   "whats_next": "다음 전망 1문장"
 }`;
-}
 
-async function summarize(video) {
+function geminiRequest(body) {
   const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`;
-  const body = JSON.stringify({
-    contents: [{ parts: [{ text: buildPrompt(video) }] }],
-    generationConfig: { temperature: 0.3 },
-  });
-
   const urlObj = new URL(url);
+  const bodyStr = JSON.stringify(body);
+
   return new Promise((resolve, reject) => {
     const req = https.request(
       {
@@ -58,7 +48,7 @@ async function summarize(video) {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Content-Length": Buffer.byteLength(body),
+          "Content-Length": Buffer.byteLength(bodyStr),
         },
       },
       (res) => {
@@ -67,24 +57,63 @@ async function summarize(video) {
         res.on("end", () => {
           try {
             const json = JSON.parse(data);
-            if (json.error) return reject(new Error(`Gemini 오류: ${JSON.stringify(json.error)}`));
-            const text = json.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
+            if (json.error) {
+              return reject(new Error(`Gemini API 오류 [${json.error.code}]: ${json.error.message}`));
+            }
+            const candidate = json.candidates?.[0];
+            if (!candidate) {
+              return reject(new Error(`후보 없음. promptFeedback: ${JSON.stringify(json.promptFeedback)}`));
+            }
+            const finishReason = candidate.finishReason;
+            const text = candidate.content?.parts?.[0]?.text?.trim();
             if (!text) {
-              const reason = json.candidates?.[0]?.finishReason || "unknown";
-              return reject(new Error(`빈 응답 (finishReason: ${reason})`));
+              return reject(new Error(`빈 응답. finishReason: ${finishReason}`));
             }
             const match = text.match(/\{[\s\S]*\}/);
-            if (!match) return reject(new Error(`JSON 파싱 실패: ${text.slice(0, 100)}`));
+            if (!match) return reject(new Error(`JSON 없음: ${text.slice(0, 150)}`));
             resolve(JSON.parse(match[0]));
           } catch (e) {
-            reject(new Error(`응답 처리 실패: ${e.message} (raw: ${data.slice(0, 200)})`));
+            reject(new Error(`파싱 실패: ${e.message} | raw: ${data.slice(0, 300)}`));
           }
         });
       }
     );
     req.on("error", reject);
-    req.write(body);
+    req.write(bodyStr);
     req.end();
+  });
+}
+
+// 1차: Gemini가 YouTube 영상 직접 시청
+async function summarizeByVideo(video) {
+  return geminiRequest({
+    contents: [{
+      parts: [
+        {
+          file_data: {
+            mime_type: "video/youtube",
+            file_uri: video.url,
+          },
+        },
+        { text: `이 유튜브 영상을 보고 Smart Brevity 형식으로 요약하세요.\n\n${BREVITY_FORMAT}` },
+      ],
+    }],
+    generationConfig: { temperature: 0.3 },
+  });
+}
+
+// 2차 폴백: 제목 + 설명 텍스트 기반 요약
+async function summarizeByText(video) {
+  const prompt = `YouTube 영상 정보를 보고 Smart Brevity 형식으로 요약하세요.
+
+제목: ${video.title}
+채널: ${video.channel}
+설명: ${video.description || "(없음)"}
+
+${BREVITY_FORMAT}`;
+  return geminiRequest({
+    contents: [{ parts: [{ text: prompt }] }],
+    generationConfig: { temperature: 0.3 },
   });
 }
 
@@ -102,11 +131,19 @@ async function main() {
   for (const video of pending) {
     console.log(`\n처리 중: ${video.title}`);
     try {
-      const summary = await summarize(video);
+      const summary = await summarizeByVideo(video);
       video.summary = summary;
-      console.log(`  요약 완료: ${summary.one_line}`);
+      console.log(`  [영상] 요약 완료: ${summary.one_line}`);
     } catch (e) {
-      console.error(`  요약 실패: ${e.message}`);
+      console.error(`  [영상] 실패: ${e.message}`);
+      console.log(`  [텍스트] 폴백 시도...`);
+      try {
+        const summary = await summarizeByText(video);
+        video.summary = summary;
+        console.log(`  [텍스트] 요약 완료: ${summary.one_line}`);
+      } catch (e2) {
+        console.error(`  [텍스트] 폴백도 실패: ${e2.message}`);
+      }
     }
     await new Promise((r) => setTimeout(r, 1000));
   }
