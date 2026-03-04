@@ -42,6 +42,9 @@ function parseTweetsFromGraphQL(json) {
     const instructions =
       json?.data?.home?.home_timeline_urt?.instructions ||
       json?.data?.timeline_by_id?.timeline?.instructions ||
+      json?.data?.timeline?.instructions ||
+      json?.data?.user?.result?.timeline_v2?.timeline?.instructions ||
+      json?.data?.user_result?.result?.timeline_v2?.timeline?.instructions ||
       [];
 
     for (const inst of instructions) {
@@ -116,13 +119,18 @@ async function main() {
   const seen = new Set();
   const capturedJSON = [];
 
-  // HomeLatestTimeline = "Following" 탭 (팔로잉 최신순)
-  await page.route("**/graphql/**/HomeLatestTimeline", async (route) => {
+  // 모든 GraphQL 응답 캡처 (엔드포인트 무관)
+  await page.route("**/graphql/**", async (route) => {
     try {
       const response = await route.fetch();
       const body = await response.text();
-      console.log(`  HomeLatestTimeline 응답 수신 (${body.length}자)`);
-      try { capturedJSON.push({ endpoint: "HomeLatestTimeline", json: JSON.parse(body) }); } catch (_) {}
+      const reqUrl = route.request().url();
+      const epMatch = reqUrl.match(/graphql\/[^/]+\/([^?]+)/);
+      const endpoint = epMatch ? epMatch[1] : "unknown";
+      if (body.length > 500) {
+        console.log(`  GraphQL: ${endpoint} (${body.length}자)`);
+        try { capturedJSON.push({ endpoint, json: JSON.parse(body) }); } catch (_) {}
+      }
       await route.fulfill({ response });
     } catch (_) {
       await route.continue();

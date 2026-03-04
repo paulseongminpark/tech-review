@@ -1,6 +1,32 @@
 ---
 layout: default
 ---
+<script>
+// extract-sections.js anchor 형식에 맞게 h2 id를 재정의
+// kramdown이 생성하는 id와 불일치를 JavaScript로 해소
+window.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.content h2').forEach(function(h) {
+    var text = h.textContent.trim();
+    var match = text.match(/^(\d+)\.\s+(.+)/);
+    if (match) {
+      var anchor = match[2]
+        .toLowerCase()
+        .replace(/[^\w\s\uAC00-\uD7A3·\-]/g, '')
+        .replace(/\s+/g, '-')
+        .slice(0, 60);
+      h.id = anchor;
+    }
+  });
+  // URL hash로 지정된 섹션 스크롤
+  if (window.location.hash) {
+    var hash = decodeURIComponent(window.location.hash.slice(1));
+    var target = document.getElementById(hash);
+    if (target) {
+      setTimeout(function() { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 100);
+    }
+  }
+});
+</script>
 <article>
   <header>
     <p class="post-meta">{{ page.date | date: "%Y-%m-%d" }}</p>

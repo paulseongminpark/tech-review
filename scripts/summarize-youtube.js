@@ -110,7 +110,7 @@ async function summarizeByVideo(video) {
             file_uri: video.url,
           },
         },
-        { text: `이 유튜브 영상을 보고 Smart Brevity 형식으로 요약하세요.\n\n${BREVITY_FORMAT}` },
+        { text: `이 유튜브 영상을 보고 Smart Brevity 형식으로 요약하세요. 반드시 한국어로 작성하세요.\n\n${BREVITY_FORMAT}` },
       ],
     }],
     generationConfig: { temperature: 0.3 },
@@ -119,7 +119,7 @@ async function summarizeByVideo(video) {
 
 // 2차 폴백: 제목 + 설명 텍스트 기반 요약
 async function summarizeByText(video) {
-  const prompt = `YouTube 영상 정보를 보고 Smart Brevity 형식으로 요약하세요.
+  const prompt = `YouTube 영상 정보를 보고 Smart Brevity 형식으로 요약하세요. 반드시 한국어로 작성하세요.
 
 제목: ${video.title}
 채널: ${video.channel}

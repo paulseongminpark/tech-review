@@ -29,6 +29,7 @@ const SECTIONS = [];
 SECTIONS.push({
   date: {{ d.date | jsonify }},
   post_url: {{ d.post_url | prepend: site.baseurl | jsonify }},
+  post_title: {{ d.post_title | jsonify }},
   index: {{ s.index }},
   title: {{ s.title | jsonify }},
   tags: {{ s.tags | jsonify }},
@@ -90,18 +91,25 @@ function renderCards() {
   if (activeTag) filtered = filtered.filter(s => (s.tags || []).includes(activeTag));
 
   if (activeTag) {
+    // Group by date — show one entry per date even if multiple sections match
+    const dateGroups = {};
+    filtered.forEach(s => {
+      if (!dateGroups[s.date]) dateGroups[s.date] = [];
+      dateGroups[s.date].push(s);
+    });
+    const dates = Object.keys(dateGroups).sort((a, b) => b.localeCompare(a));
+
     document.getElementById('card-grid').style.gridTemplateColumns = '1fr';
-    document.getElementById('card-grid').innerHTML = filtered.map(s =>
-      `<a href="${s.post_url}#${s.anchor}"
+    document.getElementById('card-grid').innerHTML = dates.map(date => {
+      const sections = dateGroups[date];
+      const first = sections[0];
+      return `<a href="${first.post_url}#${first.anchor}"
           style="display:block; padding:0.75rem; border:1px solid #eee; border-radius:6px;
                  text-decoration:none; color:#1a1a1a;">
-         <div style="font-size:0.75rem; color:#999; margin-bottom:0.3rem;">${s.date}</div>
-         <div style="font-size:0.9rem; font-weight:600; line-height:1.4;">${s.title}</div>
-         <div style="display:flex; gap:0.3rem; margin-top:0.5rem; flex-wrap:wrap;">
-           ${(s.tags||[]).map(t => `<span style="background:#f0f0f0; padding:0.1rem 0.4rem; border-radius:3px; font-size:0.72rem;">${t}</span>`).join('')}
-         </div>
-       </a>`
-    ).join('');
+         <div style="font-size:0.75rem; color:#999; margin-bottom:0.3rem;">${date}${sections.length > 1 ? ` · ${sections.length} sections` : ''}</div>
+         <div style="font-size:0.9rem; font-weight:600; line-height:1.4;">${first.post_title || first.title}</div>
+       </a>`;
+    }).join('');
     return;
   }
 
@@ -132,19 +140,6 @@ function selectDate(d) {
 
 function selectTag(t) {
   activeTag = t === 'all' ? null : t;
-
-  if (activeTag) {
-    // Navigate directly to the most recent section with this tag (date filter applies if selected)
-    const pool = activeDate
-      ? SECTIONS.filter(s => s.date === activeDate)
-      : SECTIONS; // already sorted by date descending
-    const matches = pool.filter(s => (s.tags || []).includes(activeTag));
-    if (matches.length > 0) {
-      window.location.href = matches[0].post_url + '#' + matches[0].anchor;
-      return;
-    }
-  }
-
   renderTagToggle();
   renderCards();
 }
