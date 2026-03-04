@@ -133,10 +133,13 @@ function selectDate(d) {
 function selectTag(t) {
   activeTag = t === 'all' ? null : t;
 
-  // 날짜 선택된 상태에서 특정 태그 클릭 → 해당 섹션으로 직접 이동
-  if (activeTag && activeDate) {
-    const matches = SECTIONS.filter(s => s.date === activeDate && (s.tags || []).includes(activeTag));
-    if (matches.length === 1) {
+  if (activeTag) {
+    // 날짜 선택 여부와 무관: 해당 태그의 가장 최신 섹션으로 바로 이동
+    const pool = activeDate
+      ? SECTIONS.filter(s => s.date === activeDate)
+      : SECTIONS; // 이미 날짜 내림차순 정렬
+    const matches = pool.filter(s => (s.tags || []).includes(activeTag));
+    if (matches.length > 0) {
       window.location.href = matches[0].post_url + '#' + matches[0].anchor;
       return;
     }

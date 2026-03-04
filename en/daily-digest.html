@@ -133,10 +133,13 @@ function selectDate(d) {
 function selectTag(t) {
   activeTag = t === 'all' ? null : t;
 
-  // When date is selected and a specific tag is clicked → navigate directly to that section
-  if (activeTag && activeDate) {
-    const matches = SECTIONS.filter(s => s.date === activeDate && (s.tags || []).includes(activeTag));
-    if (matches.length === 1) {
+  if (activeTag) {
+    // Navigate directly to the most recent section with this tag (date filter applies if selected)
+    const pool = activeDate
+      ? SECTIONS.filter(s => s.date === activeDate)
+      : SECTIONS; // already sorted by date descending
+    const matches = pool.filter(s => (s.tags || []).includes(activeTag));
+    if (matches.length > 0) {
       window.location.href = matches[0].post_url + '#' + matches[0].anchor;
       return;
     }

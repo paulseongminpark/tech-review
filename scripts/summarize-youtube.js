@@ -29,11 +29,16 @@ const DATA_DIR = path.join(__dirname, "..", "_data", "sources");
 
 const BREVITY_FORMAT = `반드시 아래 JSON 형식으로만 응답하세요 (코드블록 없이 순수 JSON):
 {
-  "one_line": "한 문장 핵심 요약",
-  "why_it_matters": "핵심 의미 1~2문장",
-  "points": ["포인트 1", "포인트 2", "포인트 3"],
-  "whats_next": "다음 전망 1문장"
-}`;
+  "one_line": "핵심을 담은 한 문장 (50자 이내)",
+  "why_it_matters": "왜 중요한지 1~2문장 (100자 이내)",
+  "points": ["핵심 포인트 1 (마크다운 금지, 1문장)", "핵심 포인트 2 (마크다운 금지, 1문장)", "핵심 포인트 3 (마크다운 금지, 1문장)"],
+  "whats_next": "다음 전망 한 문장 (50자 이내)"
+}
+
+규칙:
+- points는 반드시 정확히 3개. 그 이상 절대 금지.
+- **bold**, *italic*, 콜론(:) 기반 서브헤딩 등 마크다운 사용 금지.
+- 각 항목은 짧고 명확하게. 부연 설명 없이 핵심만.`;
 
 async function geminiRequest(body, retries = 3) {
   const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`;
