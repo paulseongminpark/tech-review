@@ -11,12 +11,9 @@
       "lead": "1M 토큰 컨텍스트와 병렬 에이전트 팀 기능을 갖춘 Anthropic의 새 플래그십 모델이 출시됐다.",
       "tags": [
         "ai-models",
-        "ai-tech",
         "anthropic",
-        "company",
         "geopolitics",
-        "openai",
-        "policy"
+        "openai"
       ],
       "anchor": "claude-opus-46-에이전트-팀으로-지식-노동-전-영역-공략"
     },
@@ -26,12 +23,9 @@
       "lead": "Zhipu AI가 화웨이 Ascend·MindSpore 기반으로 학습한 744B MoE 모델 GLM-5를 공개했다.",
       "tags": [
         "ai-models",
-        "ai-tech",
         "anthropic",
-        "company",
         "geopolitics",
-        "openai",
-        "policy"
+        "openai"
       ],
       "anchor": "glm-5-미국-gpu-없이-프런티어급-성능-달성"
     },
@@ -41,12 +35,9 @@
       "lead": "OpenAI가 AI 모델이 아닌 \"AI 동료\"를 운영하는 엔드투엔드 기업 플랫폼 Frontier를 공개했다.",
       "tags": [
         "ai-models",
-        "ai-tech",
         "anthropic",
-        "company",
         "geopolitics",
-        "openai",
-        "policy"
+        "openai"
       ],
       "anchor": "openai-frontier-ai-동료를-채용·온보딩·평가하는-엔터프라이즈-플랫폼-출시"
     },
@@ -56,12 +47,9 @@
       "lead": "Snowflake와 OpenAI가 GPT-5.2를 Snowflake 플랫폼에 네이티브로 통합하는 2억 달러 멀티이어 파트너십을 체결했다.",
       "tags": [
         "ai-models",
-        "ai-tech",
         "anthropic",
-        "company",
         "geopolitics",
-        "openai",
-        "policy"
+        "openai"
       ],
       "anchor": "snowflake-openai-2억-달러-파트너십-데이터가-있는-곳에서-에이전트를-돌린다"
     },
@@ -71,12 +59,9 @@
       "lead": "Alphabet·Amazon·Meta·Microsoft의 2026년 합산 AI 인프라 투자가 사상 최대 규모를 기록했다.",
       "tags": [
         "ai-models",
-        "ai-tech",
         "anthropic",
-        "company",
         "geopolitics",
         "openai",
-        "policy",
         "capex"
       ],
       "anchor": "빅테크-4사-2026년-capex-6500억-달러-ai-인프라가-국가급-유틸리티로"
@@ -87,12 +72,9 @@
       "lead": "Google이 인도 AI Impact Summit에서 150억 달러 투자와 해저 케이블 이니셔티브를 발표했다.",
       "tags": [
         "ai-models",
-        "ai-tech",
         "anthropic",
-        "company",
         "geopolitics",
         "openai",
-        "policy",
         "google"
       ],
       "anchor": "google-인도-150억-달러-ai-인프라-투자로-신흥-시장-거점-확보"
@@ -103,12 +85,9 @@
       "lead": "OpenAI가 미국 ChatGPT 무료·Go 구간에 광고 테스트를 시작했다.",
       "tags": [
         "ai-models",
-        "ai-tech",
         "anthropic",
-        "company",
         "geopolitics",
-        "openai",
-        "policy"
+        "openai"
       ],
       "anchor": "chatgpt-광고-도입-유료-구독-차별화-신호"
     },
@@ -118,12 +97,9 @@
       "lead": "2026년 2월, 멀티스텝 작업마다 스스로 검증·수정하는 자기 검증 AI가 제조·산업 도메인에서 주요 트렌드로 부상했다.",
       "tags": [
         "ai-models",
-        "ai-tech",
         "anthropic",
-        "company",
         "geopolitics",
-        "openai",
-        "policy"
+        "openai"
       ],
       "anchor": "self-validating-ai-제조-현장에서-자율-노동자로-진화"
     },
@@ -133,12 +109,9 @@
       "lead": "에이전트들이 Reddit 스타일로 상호작용하는 Moltbook 환경에서 위험 지침 증폭 패턴이 arXiv 연구로 보고됐다.",
       "tags": [
         "ai-models",
-        "ai-tech",
         "anthropic",
-        "company",
         "geopolitics",
-        "openai",
-        "policy"
+        "openai"
       ],
       "anchor": "openclaw·moltbook-에이전트-간-위험-지침-공유-패턴-확인"
     },
@@ -148,12 +121,9 @@
       "lead": "2026년 2월, 국가 AI 주권 경쟁·에이전트 가시성 최적화·자연어 개발 전환이 동시에 구조적 트렌드로 확인됐다.",
       "tags": [
         "ai-models",
-        "ai-tech",
         "anthropic",
-        "company",
         "geopolitics",
-        "openai",
-        "policy"
+        "openai"
       ],
       "anchor": "sovereign-ai·agent-seo·영어의-프로그래밍-언어화-3개-구조-트렌드"
     }

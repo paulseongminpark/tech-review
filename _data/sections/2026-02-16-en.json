@@ -11,9 +11,7 @@
       "lead": "Anthropic unveiled Claude Opus 4.6 with substantially improved code planning, refactoring, and debugging capabilities.",
       "tags": [
         "ai-models",
-        "ai-tech",
         "anthropic",
-        "company",
         "openai"
       ],
       "anchor": "claude-opus-46-agent-teams-and-1m-token-context-set-the-mult"
@@ -24,9 +22,7 @@
       "lead": "OpenAI launched Frontier, a full-stack enterprise platform built on the GPT-5 family for connecting and operating agents across real business systems.",
       "tags": [
         "ai-models",
-        "ai-tech",
         "anthropic",
-        "company",
         "openai",
         "enterprise"
       ],
@@ -38,9 +34,7 @@
       "lead": "MiniMax released M2.5 and M2.5 Lightning under a modified MIT license, raising the bar in the low-cost model competition.",
       "tags": [
         "ai-models",
-        "ai-tech",
         "anthropic",
-        "company",
         "openai",
         "ma"
       ],
@@ -52,9 +46,7 @@
       "lead": "Mistral released Voxtral Transcribe 2 under the Apache 2.0 license, entering the real-time speech transcription market.",
       "tags": [
         "ai-models",
-        "ai-tech",
         "anthropic",
-        "company",
         "openai"
       ],
       "anchor": "mistral-voxtral-transcribe-2-open-source-real-time-multiling"
@@ -65,9 +57,7 @@
       "lead": "Nature officially characterized low-quality AI-generated papers as \"AI slop,\" formalizing a quality crisis in academic publishing.",
       "tags": [
         "ai-models",
-        "ai-tech",
         "anthropic",
-        "company",
         "openai",
         "research"
       ],
@@ -79,9 +69,7 @@
       "lead": "Security vulnerabilities were flagged in agent-specific social networks OpenClaw and Moltbook, including prompt injection attacks, malicious skill distribution, and the exposure of millions of agent IDs.",
       "tags": [
         "ai-models",
-        "ai-tech",
         "anthropic",
-        "company",
         "openai",
         "security"
       ],

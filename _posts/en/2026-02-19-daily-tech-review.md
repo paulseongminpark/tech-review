@@ -5,7 +5,7 @@ date: 2026-02-19
 lang: en
 permalink: /en/2026/02/19/daily-tech-review/
 pair: 2026-02-19-daily-tech-review
-tags: ["ai-models", "ai-tech", "anthropic", "company", "geopolitics", "openai", "policy"]
+tags: ["ai-models", "anthropic", "geopolitics", "openai"]
 ---
 
 ## Today in One Line

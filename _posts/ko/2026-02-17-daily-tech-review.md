@@ -5,7 +5,7 @@ date: 2026-02-17
 lang: ko
 permalink: /ko/2026/02/17/daily-tech-review/
 pair: 2026-02-17-daily-tech-review
-tags: ["agents", "ai-tech", "chips", "geopolitics", "hardware", "media-ai", "policy"]
+tags: ["agents", "chips", "geopolitics", "media-ai"]
 ---
 
 ## Today in One Line

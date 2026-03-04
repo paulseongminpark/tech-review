@@ -11,12 +11,9 @@
       "lead": "Anthropic's new flagship model ships with 1M token context and parallel agent team capability.",
       "tags": [
         "ai-models",
-        "ai-tech",
         "anthropic",
-        "company",
         "geopolitics",
-        "openai",
-        "policy"
+        "openai"
       ],
       "anchor": "claude-opus-46-deploys-agent-teams-across-all-knowledge-work"
     },
@@ -26,12 +23,9 @@
       "lead": "Zhipu AI released GLM-5, a 744B MoE model trained entirely on Huawei Ascend hardware with MindSpore.",
       "tags": [
         "ai-models",
-        "ai-tech",
         "anthropic",
-        "company",
         "geopolitics",
         "openai",
-        "policy",
         "ma"
       ],
       "anchor": "glm-5-achieves-frontier-performance-without-us-gpus"
@@ -42,12 +36,9 @@
       "lead": "OpenAI unveiled Frontier, an end-to-end enterprise platform for operating AI \"colleagues\" — not just AI models.",
       "tags": [
         "ai-models",
-        "ai-tech",
         "anthropic",
-        "company",
         "geopolitics",
-        "openai",
-        "policy"
+        "openai"
       ],
       "anchor": "openai-frontier-treats-ai-as-a-colleague-to-hire-onboard-and"
     },
@@ -57,12 +48,9 @@
       "lead": "Snowflake and OpenAI signed a multi-year $200M partnership to natively integrate GPT-5.2 into the Snowflake platform.",
       "tags": [
         "ai-models",
-        "ai-tech",
         "anthropic",
-        "company",
         "geopolitics",
         "openai",
-        "policy",
         "agents"
       ],
       "anchor": "snowflake-openai-200m-partnership-run-agents-where-your-data"
@@ -73,12 +61,9 @@
       "lead": "The combined 2026 AI infrastructure investment of Alphabet, Amazon, Meta, and Microsoft hit an all-time record.",
       "tags": [
         "ai-models",
-        "ai-tech",
         "anthropic",
-        "company",
         "geopolitics",
         "openai",
-        "policy",
         "ma",
         "capex"
       ],
@@ -90,12 +75,9 @@
       "lead": "At India's AI Impact Summit, Google announced $15 billion in investment and a submarine cable initiative.",
       "tags": [
         "ai-models",
-        "ai-tech",
         "anthropic",
-        "company",
         "geopolitics",
         "openai",
-        "policy",
         "investment",
         "ma",
         "india",
@@ -109,12 +91,9 @@
       "lead": "OpenAI began testing ads in the ChatGPT Free and Go ($8/month) tiers in the US.",
       "tags": [
         "ai-models",
-        "ai-tech",
         "anthropic",
-        "company",
         "geopolitics",
-        "openai",
-        "policy"
+        "openai"
       ],
       "anchor": "chatgpt-adds-ads-sharpening-the-value-of-paid-subscriptions"
     },
@@ -124,12 +103,9 @@
       "lead": "As of February 2026, self-validating AI — which verifies and corrects its own results at each step — is emerging as a major trend in manufacturing and industrial domains.",
       "tags": [
         "ai-models",
-        "ai-tech",
         "anthropic",
-        "company",
         "geopolitics",
         "openai",
-        "policy",
         "ma"
       ],
       "anchor": "self-validating-ai-becomes-autonomous-worker-in-manufacturin"
@@ -140,12 +116,9 @@
       "lead": "An arXiv study reported patterns of dangerous instruction amplification in the Moltbook environment, where agents interact Reddit-style.",
       "tags": [
         "ai-models",
-        "ai-tech",
         "anthropic",
-        "company",
         "geopolitics",
         "openai",
-        "policy",
         "agents"
       ],
       "anchor": "openclaw-and-moltbook-confirm-agents-amplify-dangerous-instr"
@@ -156,12 +129,9 @@
       "lead": "February 2026 confirms three simultaneous structural trends: national AI sovereignty competition, agent visibility optimization, and natural-language-driven development.",
       "tags": [
         "ai-models",
-        "ai-tech",
         "anthropic",
-        "company",
         "geopolitics",
-        "openai",
-        "policy"
+        "openai"
       ],
       "anchor": "sovereign-ai-agent-seo-and-english-as-a-programming-language"
     }

@@ -5,7 +5,7 @@ date: 2026-03-02
 lang: ko
 permalink: /ko/2026/03/02/daily-tech-review/
 pair: 2026-03-02-daily-tech-review
-tags: ["ai-models", "ai-tech", "benchmarks", "research"]
+tags: ["ai-models", "benchmarks", "research"]
 ---
 
 

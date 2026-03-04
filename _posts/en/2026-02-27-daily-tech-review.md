@@ -5,7 +5,7 @@ date: 2026-02-27
 lang: en
 permalink: /en/2026/02/27/daily-tech-review/
 pair: 2026-02-27-daily-tech-review
-tags: ["amd", "chips", "datacenter", "hardware", "infrastructure", "nvidia"]
+tags: ["amd", "chips", "datacenter", "nvidia"]
 ---
 
 ## Today in One Line

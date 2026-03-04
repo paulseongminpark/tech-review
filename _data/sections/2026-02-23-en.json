@@ -11,7 +11,6 @@
       "lead": "LF AI & Data under the Linux Foundation transitions the Open Model Initiative to Phase II, enhancing community-led initiatives for evaluation, benchmarking, and model development.[1][2]",
       "tags": [
         "ai-models",
-        "ai-tech",
         "benchmarks",
         "research",
         "multimodal"
@@ -24,7 +23,6 @@
       "lead": "LF Edge's EdgeLake project advances to Stage 2, introducing the Model Context Protocol (MCP) to support real-time AI inference at the edge.[2]",
       "tags": [
         "ai-models",
-        "ai-tech",
         "benchmarks",
         "research"
       ],
@@ -36,7 +34,6 @@
       "lead": "Microsoft joins as a founding member of the AI-RAN Alliance, promoting the integration of AI and RAN to intelligentize 5G/6G networks.",
       "tags": [
         "ai-models",
-        "ai-tech",
         "benchmarks",
         "research",
         "microsoft"

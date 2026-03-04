@@ -5,7 +5,7 @@ date: 2026-02-25
 lang: en
 permalink: /en/2026/02/25/daily-tech-review/
 pair: 2026-02-25-daily-tech-review
-tags: ["business", "enterprise"]
+tags: ["enterprise"]
 ---
 
 ## February 24, 2026 (Tue) AI × Enterprise Adoption Status

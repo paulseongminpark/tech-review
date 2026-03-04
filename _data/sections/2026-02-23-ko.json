@@ -11,7 +11,6 @@
       "lead": "Linux Foundation의 LF AI & Data가 Open Model Initiative를 Phase II로 전환하며 평가, 벤치마킹, 모델 개발을 위한 커뮤니티 주도 이니셔티브를 강화한다.",
       "tags": [
         "ai-models",
-        "ai-tech",
         "benchmarks",
         "research"
       ],
@@ -23,7 +22,6 @@
       "lead": "LF Edge의 EdgeLake 프로젝트가 Stage 2로 승격되며 Model Context Protocol(MCP)을 도입해 엣지에서 실시간 AI 추론을 지원한다.",
       "tags": [
         "ai-models",
-        "ai-tech",
         "benchmarks",
         "research"
       ],
@@ -35,7 +33,6 @@
       "lead": "Microsoft가 AI-RAN Alliance 창립 멤버로 참여하며 AI와 RAN 융합을 통해 5G/6G 네트워크를 지능화한다.",
       "tags": [
         "ai-models",
-        "ai-tech",
         "benchmarks",
         "research",
         "microsoft"

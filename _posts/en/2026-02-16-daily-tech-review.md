@@ -5,7 +5,7 @@ date: 2026-02-16
 lang: en
 permalink: /en/2026/02/16/daily-tech-review/
 pair: 2026-02-16-daily-tech-review
-tags: ["ai-models", "ai-tech", "anthropic", "company", "openai"]
+tags: ["ai-models", "anthropic", "openai"]
 ---
 
 ## Today in One Line

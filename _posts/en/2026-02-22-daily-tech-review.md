@@ -5,7 +5,7 @@ date: 2026-02-22
 lang: en
 permalink: /en/2026/02/22/daily-tech-review/
 pair: 2026-02-22-daily-tech-review
-tags: ["ai-tech", "datacenter", "google", "india", "infrastructure", "policy", "quantum"]
+tags: ["datacenter", "google", "india", "quantum"]
 ---
 
 ## Today in One Line

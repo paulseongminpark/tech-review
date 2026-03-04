@@ -32,9 +32,11 @@ function normalizeTags(rawTags) {
     if (!t) continue;
 
     if (tier2All.has(t)) { result.add(t); continue; }
-    if (tier1All.has(t)) { result.add(t); continue; }
+    if (taxonomy.tier1[t]) continue; // tier1 카테고리는 포스트 태그에서도 제외
     if (taxonomy.fallback_map[t]) {
-      taxonomy.fallback_map[t].forEach((m) => result.add(m));
+      taxonomy.fallback_map[t]
+        .filter((m) => !taxonomy.tier1[m])
+        .forEach((m) => result.add(m));
       continue;
     }
     // misc는 버림 — 재매핑 후에는 misc 없어야 함

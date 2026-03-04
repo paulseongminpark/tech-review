@@ -11,7 +11,6 @@
       "lead": "OpenAI has signed a contract with the U.S. Department of Defense to deploy AI models in classified environments (classified systems), and immediately after, the Trump administration designated Anthropic as a \"supply chain risk\" and ordered all federa",
       "tags": [
         "ai-models",
-        "ai-tech",
         "benchmarks",
         "research",
         "openai",
@@ -25,7 +24,6 @@
       "lead": "Anthropic officially announced that three companies—DeepSeek, Moonshot AI, and MiniMax—collected over 16 million Claude conversations without authorization through approximately 24,000 fake accounts, marking this as evidence that China has replicated",
       "tags": [
         "ai-models",
-        "ai-tech",
         "benchmarks",
         "research"
       ],
@@ -37,7 +35,6 @@
       "lead": "Anthropic released Claude Opus 4.6 (1M token context, β release) on February 5 and followed with Claude Sonnet 4.6 at the end of February, dramatically closing the performance gap with OpenAI's GPT-5.2 and setting new industry standards for price-per",
       "tags": [
         "ai-models",
-        "ai-tech",
         "benchmarks",
         "research",
         "llm",

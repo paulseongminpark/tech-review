@@ -5,7 +5,7 @@ date: 2026-02-28
 lang: en
 permalink: /en/2026/02/28/daily-tech-review/
 pair: 2026-02-28-daily-tech-review
-tags: ["business", "enterprise", "regulation"]
+tags: ["enterprise", "regulation"]
 ---
 
 

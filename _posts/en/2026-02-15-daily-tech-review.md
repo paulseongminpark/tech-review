@@ -5,7 +5,7 @@ date: 2026-02-15
 lang: en
 permalink: /en/2026/02/15/daily-tech-review/
 pair: 2026-02-15-daily-tech-review
-tags: ["ai-tech", "china", "chips", "geopolitics", "hardware", "media-ai", "policy", "research"]
+tags: ["china", "chips", "geopolitics", "media-ai", "research"]
 ---
 
 ## Today in One Line

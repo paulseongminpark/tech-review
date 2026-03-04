@@ -10,7 +10,6 @@
       "title": "Inception Labs Achieves 1,000 Tokens/Sec with Mercury 2 — Official Launch of Diffusion-Based Inference LLM",
       "lead": "Inception Labs announced Mercury 2 on February 25, completely abandoning traditional autoregressive token generation in favor of Diffusion-based parallel refinement generation, achieving 1,009 tokens/sec on NVIDIA Blackwell GPUs. This is approximatel",
       "tags": [
-        "developer",
         "developer-tools",
         "opensource",
         "llm"
@@ -22,7 +21,6 @@
       "title": "Alibaba Qwen Releases Qwen3-Coder-Next Open Source for Coding Agents — Sonnet-Level Performance with 3B Active Parameters",
       "lead": "Alibaba's Qwen team released Qwen3-Coder-Next in early February, a Mixture-of-Experts structure activating only 3B out of 80B total parameters, surpassing existing DeepSeek V3.2 (37B active)·Kimi K2.5·GLM-4.7 (each 32B active) on coding benchmarks. I",
       "tags": [
-        "developer",
         "developer-tools",
         "opensource",
         "agents",
@@ -35,7 +33,6 @@
       "title": "GitHub Agentic Workflows, Technical Preview Begins — Activates Low-Level Repository Automation Beyond CI/CD",
       "lead": "GitHub's Agentic Workflows, announced on February 13, enables direct execution of AI agents (GitHub Copilot CLI, Claude Code, OpenAI Codex) within GitHub Actions. By describing automation intent in Markdown files, a compiler converts them to YAML for",
       "tags": [
-        "developer",
         "developer-tools",
         "opensource",
         "ma"

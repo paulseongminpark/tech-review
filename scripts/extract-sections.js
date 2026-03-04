@@ -47,14 +47,14 @@ function normalizeTags(rawTags) {
       continue;
     }
     if (taxonomy.fallback_map[t]) {
-      taxonomy.fallback_map[t].forEach((m) => result.add(m));
+      // fallback 결과에서 tier1 카테고리는 제외 — tier2만 태그로 사용
+      taxonomy.fallback_map[t]
+        .filter((m) => !taxonomy.tier1[m])
+        .forEach((m) => result.add(m));
       continue;
     }
-    // tier1 카테고리 자체이면 그대로 통과
-    if (taxonomy.tier1[t]) {
-      result.add(t);
-      continue;
-    }
+    // tier1 카테고리는 섹션 태그로 사용하지 않음 (너무 광범위)
+    if (taxonomy.tier1[t]) continue;
     console.warn(`  ⚠️  unknown tag: "${t}" → misc`);
     result.add("misc");
   }

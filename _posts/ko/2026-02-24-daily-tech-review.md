@@ -5,7 +5,7 @@ date: 2026-02-24
 lang: ko
 permalink: /ko/2026/02/24/daily-tech-review/
 pair: 2026-02-24-daily-tech-review
-tags: ["apple", "company", "google", "meta", "microsoft", "nvidia"]
+tags: ["apple", "google", "meta", "microsoft", "nvidia"]
 ---
 
 ## Today in One Line

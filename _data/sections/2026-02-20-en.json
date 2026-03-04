@@ -10,14 +10,10 @@
       "title": "Anthropic Claude Sonnet 4.6 Closes the Gap with Opus-Class Intelligence at Sonnet Pricing",
       "lead": "Anthropic released Claude Sonnet 4.6, its second major model upgrade in under two weeks, approaching Opus-class intelligence while maintaining Sonnet 4.5 pricing.",
       "tags": [
-        "business",
-        "company",
         "datacenter",
         "google",
         "india",
-        "infrastructure",
         "openai",
-        "policy",
         "intel",
         "anthropic"
       ],
@@ -28,14 +24,10 @@
       "title": "Moonshot AI Open-Sources Kimi K2.5 and Ships Kimi Code Agent",
       "lead": "Moonshot AI released Kimi K2.5, a native multimodal model trained on 15 trillion tokens, alongside Kimi Code — a coding agent supporting image and video inputs in terminals and IDEs.",
       "tags": [
-        "business",
-        "company",
         "datacenter",
         "google",
         "india",
-        "infrastructure",
-        "openai",
-        "policy"
+        "openai"
       ],
       "anchor": "moonshot-ai-open-sources-kimi-k25-and-ships-kimi-code-agent"
     },
@@ -44,14 +36,10 @@
       "title": "OpenAI GPT-5.3-Codex-Spark Delivers 1,000+ Tokens Per Second for Real-Time Coding",
       "lead": "OpenAI unveiled a research preview of GPT-5.3-Codex-Spark, its first model optimized for real-time coding, in partnership with Cerebras.",
       "tags": [
-        "business",
-        "company",
         "datacenter",
         "google",
         "india",
-        "infrastructure",
-        "openai",
-        "policy"
+        "openai"
       ],
       "anchor": "openai-gpt-53-codex-spark-delivers-1000-tokens-per-second-fo"
     },
@@ -60,14 +48,10 @@
       "title": "DeepSeek V3.2 and Allen AI OLMo 3 Advance Open Reasoning and Math Benchmarks",
       "lead": "DeepSeek launched V3.2, a 685B-parameter flagship with a reasoning-enhanced Speciale variant; Allen AI released OLMo 3 in fully open 7B and 32B sizes.",
       "tags": [
-        "business",
-        "company",
         "datacenter",
         "google",
         "india",
-        "infrastructure",
         "openai",
-        "policy",
         "benchmarks",
         "ma",
         "deepseek"
@@ -79,14 +63,10 @@
       "title": "Meta-NVIDIA Long-Term AI Infrastructure Deal Scales Training and Private AI Features",
       "lead": "Meta and NVIDIA announced a multi-year partnership supplying Vera Rubin platform chips, Spectrum-X Ethernet, and Confidential Computing for WhatsApp.",
       "tags": [
-        "business",
-        "company",
         "datacenter",
         "google",
         "india",
-        "infrastructure",
         "openai",
-        "policy",
         "nvidia",
         "meta"
       ],
@@ -97,14 +77,10 @@
       "title": "OpenAI-Snowflake $200M Integration Embeds AI Agents in Enterprise Data Workflows",
       "lead": "OpenAI and Snowflake agreed on a $200 million deal to natively integrate OpenAI models into Snowflake Cortex AI.",
       "tags": [
-        "business",
-        "company",
         "datacenter",
         "google",
         "india",
-        "infrastructure",
         "openai",
-        "policy",
         "agents",
         "enterprise"
       ],
@@ -115,14 +91,10 @@
       "title": "Open-Source Surge in Reasoning and Coding Models Challenges Proprietary Ecosystems",
       "lead": "Labs including Moonshot, DeepSeek, Prime Intellect, and Allen AI released open models with full weights, training stacks, and MIT licenses — topping benchmarks in math, code, and reasoning.",
       "tags": [
-        "business",
-        "company",
         "datacenter",
         "google",
         "india",
-        "infrastructure",
-        "openai",
-        "policy"
+        "openai"
       ],
       "anchor": "open-source-surge-in-reasoning-and-coding-models-challenges-"
     },
@@ -131,14 +103,10 @@
       "title": "Real-Time Developer Tools Race Intensifies as Latency Becomes the Key Metric",
       "lead": "OpenAI's Codex-Spark and Moonshot's Kimi Code exemplify a surge in low-latency coding agents supporting multimodal inputs and 1,000+ tokens-per-second speeds.",
       "tags": [
-        "business",
-        "company",
         "datacenter",
         "google",
         "india",
-        "infrastructure",
         "openai",
-        "policy",
         "developer-tools"
       ],
       "anchor": "real-time-developer-tools-race-intensifies-as-latency-become"
