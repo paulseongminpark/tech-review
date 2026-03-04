@@ -59,6 +59,18 @@ async function getPlaylistItems(playlistId) {
   }));
 }
 
+async function getVideoDescriptions(videoIds) {
+  const ids = videoIds.join(",");
+  const url = `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${ids}&key=${API_KEY}`;
+  const data = await httpsGet(url);
+  if (data.error) throw new Error(`YouTube API 오류: ${data.error.message}`);
+  const map = {};
+  for (const item of (data.items || [])) {
+    map[item.id] = (item.snippet.description || "").slice(0, 800);
+  }
+  return map;
+}
+
 async function main() {
   const sources = JSON.parse(fs.readFileSync(SOURCES_FILE, "utf8"));
   const processedData = JSON.parse(fs.readFileSync(PROCESSED_FILE, "utf8"));
@@ -85,6 +97,13 @@ async function main() {
   if (newVideos.length === 0) {
     console.log("처리할 신규 영상 없음.");
     return;
+  }
+
+  // 영상 설명 가져오기 (Gemini 텍스트 요약에 사용)
+  const ids = newVideos.map((v) => v.video_id);
+  const descriptions = await getVideoDescriptions(ids);
+  for (const v of newVideos) {
+    v.description = descriptions[v.video_id] || "";
   }
 
   if (DRY_RUN) {

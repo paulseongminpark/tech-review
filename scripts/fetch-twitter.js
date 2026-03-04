@@ -15,7 +15,9 @@
  *   npx playwright install chromium
  */
 
-const { chromium } = require("playwright");
+const { chromium } = require("playwright-extra");
+const StealthPlugin = require("playwright-extra-plugin-stealth");
+chromium.use(StealthPlugin());
 const fs = require("fs");
 const path = require("path");
 
@@ -63,15 +65,11 @@ async function main() {
 
   const browser = await chromium.launch({
     headless: true,
-    args: ["--disable-blink-features=AutomationControlled", "--no-sandbox"],
+    args: ["--no-sandbox", "--disable-setuid-sandbox"],
   });
   const context = await browser.newContext({
     userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
     locale: "en-US",
-  });
-  // 봇 감지 우회: navigator.webdriver 숨기기
-  await context.addInitScript(() => {
-    Object.defineProperty(navigator, "webdriver", { get: () => undefined });
   });
   await context.addCookies(cookies);
   const page = await context.newPage();

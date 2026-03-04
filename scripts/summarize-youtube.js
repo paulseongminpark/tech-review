@@ -2,7 +2,7 @@
 /**
  * summarize-youtube.js
  * _data/sources/youtube-YYYY-MM-DD.json (summary 없는 항목)
- * → Gemini에 YouTube URL 직접 전달 → Smart Brevity 요약
+ * → 제목 + 설명 텍스트 → Gemini Smart Brevity 요약
  * → 같은 파일에 summary 필드 추가
  *
  * 환경변수:
@@ -26,7 +26,12 @@ if (!GEMINI_API_KEY) {
 
 const DATA_DIR = path.join(__dirname, "..", "_data", "sources");
 
-const SMART_BREVITY_PROMPT = `이 유튜브 영상을 보고 Smart Brevity 형식으로 요약하세요.
+function buildPrompt(video) {
+  return `YouTube 영상 정보를 보고 Smart Brevity 형식으로 요약하세요.
+
+제목: ${video.title}
+채널: ${video.channel}
+설명: ${video.description || "(없음)"}
 
 반드시 아래 JSON 형식으로만 응답하세요 (코드블록 없이 순수 JSON):
 {
@@ -35,21 +40,12 @@ const SMART_BREVITY_PROMPT = `이 유튜브 영상을 보고 Smart Brevity 형�
   "points": ["포인트 1", "포인트 2", "포인트 3"],
   "whats_next": "다음 전망 1문장"
 }`;
+}
 
-async function summarize(videoUrl) {
+async function summarize(video) {
   const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`;
   const body = JSON.stringify({
-    contents: [{
-      parts: [
-        {
-          file_data: {
-            mime_type: "video/youtube",
-            file_uri: videoUrl,
-          },
-        },
-        { text: SMART_BREVITY_PROMPT },
-      ],
-    }],
+    contents: [{ parts: [{ text: buildPrompt(video) }] }],
     generationConfig: { temperature: 0.3 },
   });
 
@@ -72,15 +68,16 @@ async function summarize(videoUrl) {
           try {
             const json = JSON.parse(data);
             if (json.error) return reject(new Error(`Gemini 오류: ${JSON.stringify(json.error)}`));
-            const candidate = json.candidates?.[0];
-            const finishReason = candidate?.finishReason;
-            const text = candidate?.content?.parts?.[0]?.text?.trim();
-            if (!text) return reject(new Error(`빈 응답 (finishReason: ${finishReason}, raw: ${data.slice(0, 300)})`));
+            const text = json.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
+            if (!text) {
+              const reason = json.candidates?.[0]?.finishReason || "unknown";
+              return reject(new Error(`빈 응답 (finishReason: ${reason})`));
+            }
             const match = text.match(/\{[\s\S]*\}/);
             if (!match) return reject(new Error(`JSON 파싱 실패: ${text.slice(0, 100)}`));
             resolve(JSON.parse(match[0]));
           } catch (e) {
-            reject(new Error(`응답 처리 실패: ${e.message} (raw: ${data.slice(0, 300)})`));
+            reject(new Error(`응답 처리 실패: ${e.message} (raw: ${data.slice(0, 200)})`));
           }
         });
       }
@@ -105,7 +102,7 @@ async function main() {
   for (const video of pending) {
     console.log(`\n처리 중: ${video.title}`);
     try {
-      const summary = await summarize(video.url);
+      const summary = await summarize(video);
       video.summary = summary;
       console.log(`  요약 완료: ${summary.one_line}`);
     } catch (e) {
