@@ -69,13 +69,19 @@ async function summarize(videoUrl) {
         let data = "";
         res.on("data", (chunk) => (data += chunk));
         res.on("end", () => {
-          const json = JSON.parse(data);
-          if (json.error) return reject(new Error(`Gemini 오류: ${json.error.message}`));
-          const text = json.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
-          if (!text) return reject(new Error("빈 응답"));
-          const match = text.match(/\{[\s\S]*\}/);
-          if (!match) return reject(new Error(`JSON 파싱 실패: ${text.slice(0, 100)}`));
-          resolve(JSON.parse(match[0]));
+          try {
+            const json = JSON.parse(data);
+            if (json.error) return reject(new Error(`Gemini 오류: ${JSON.stringify(json.error)}`));
+            const candidate = json.candidates?.[0];
+            const finishReason = candidate?.finishReason;
+            const text = candidate?.content?.parts?.[0]?.text?.trim();
+            if (!text) return reject(new Error(`빈 응답 (finishReason: ${finishReason}, raw: ${data.slice(0, 300)})`));
+            const match = text.match(/\{[\s\S]*\}/);
+            if (!match) return reject(new Error(`JSON 파싱 실패: ${text.slice(0, 100)}`));
+            resolve(JSON.parse(match[0]));
+          } catch (e) {
+            reject(new Error(`응답 처리 실패: ${e.message} (raw: ${data.slice(0, 300)})`));
+          }
         });
       }
     );

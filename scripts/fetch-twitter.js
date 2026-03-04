@@ -61,9 +61,17 @@ async function main() {
     sameSite: sameSiteMap[c.sameSite?.toLowerCase()] || "None",
   }));
 
-  const browser = await chromium.launch({ headless: true });
+  const browser = await chromium.launch({
+    headless: true,
+    args: ["--disable-blink-features=AutomationControlled", "--no-sandbox"],
+  });
   const context = await browser.newContext({
     userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    locale: "en-US",
+  });
+  // 봇 감지 우회: navigator.webdriver 숨기기
+  await context.addInitScript(() => {
+    Object.defineProperty(navigator, "webdriver", { get: () => undefined });
   });
   await context.addCookies(cookies);
   const page = await context.newPage();
@@ -71,9 +79,9 @@ async function main() {
   console.log("following 피드 로딩...");
   try {
     await page.goto("https://x.com/following", { waitUntil: "domcontentloaded", timeout: 60000 });
-    // 트윗 렌더링 대기 (SPA 특성상 시간 필요)
-    await page.waitForSelector('[data-testid="tweet"]', { timeout: 20000 }).catch(() => {});
-    await page.waitForTimeout(3000);
+    await page.waitForTimeout(5000); // JS 초기 렌더링 대기
+    await page.waitForSelector('[data-testid="tweet"]', { timeout: 30000 }).catch(() => {});
+    await page.waitForTimeout(2000);
   } catch (e) {
     console.error("페이지 로딩 실패:", e.message);
     await browser.close();
@@ -90,10 +98,14 @@ async function main() {
     process.exit(1);
   }
 
-  // 페이지 HTML 일부 로그 (디버그용)
-  const html = await page.content();
-  console.log(`  HTML 길이: ${html.length}자`);
-  console.log(`  tweet 셀렉터 존재: ${html.includes('data-testid="tweet"')}`);
+  // 디버그: 실제 존재하는 data-testid 목록 확인
+  const foundTestIds = await page.evaluate(() => {
+    const els = document.querySelectorAll("[data-testid]");
+    const ids = [...new Set([...els].map((e) => e.getAttribute("data-testid")))];
+    return ids.slice(0, 30).join(", ");
+  });
+  console.log(`  발견된 testIds: ${foundTestIds || "(없음)"}`);
+  console.log(`  tweet 셀렉터 존재: ${foundTestIds.includes("tweet")}`);
 
   const items = [];
   const seen = new Set();
