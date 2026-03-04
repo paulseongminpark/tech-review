@@ -123,9 +123,13 @@ function renderCards() {
     return;
   }
 
-  const tagCounts = {};
-  filtered.forEach(s => { (s.tags || []).forEach(t => { tagCounts[t] = (tagCounts[t] || 0) + 1; }); });
-  const tags = Object.keys(tagCounts).sort((a, b) => tagCounts[b] - tagCounts[a]);
+  // 태그 카드: 날짜(포스트) 기준 카운트
+  const tagDateCounts = {};
+  filtered.forEach(s => { (s.tags || []).forEach(t => {
+    if (!tagDateCounts[t]) tagDateCounts[t] = new Set();
+    tagDateCounts[t].add(s.date);
+  }); });
+  const tags = Object.keys(tagDateCounts).sort((a, b) => tagDateCounts[b].size - tagDateCounts[a].size);
 
   document.getElementById('card-grid').style.gridTemplateColumns = 'repeat(auto-fill,minmax(140px,1fr))';
   document.getElementById('card-grid').innerHTML = tags.map(t =>
@@ -135,7 +139,7 @@ function renderCards() {
                 cursor:pointer; border:1px solid #eee; transition:border-color 0.15s;"
          onmouseover="this.style.borderColor='#999'" onmouseout="this.style.borderColor='#eee'">
        <div style="font-size:1rem; font-weight:700; color:#1a1a1a;">#${t}</div>
-       <div style="font-size:0.78rem; color:#888;">${tagCounts[t]}개 섹션</div>
+       <div style="font-size:0.78rem; color:#888;">${tagDateCounts[t].size}개 포스트</div>
      </div>`
   ).join('');
 }
