@@ -1,0 +1,122 @@
+---
+layout: default
+title: Topics
+lang: en
+permalink: /en/topics/
+---
+
+<h1>Topics</h1>
+<p style="color:#666; font-size:0.9rem; margin-bottom:1.5rem;">Browse sections from all dates, grouped by topic.</p>
+
+<div id="tag-index" style="display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:2rem;"></div>
+
+<div id="topic-header" style="display:none; margin-bottom:1rem;">
+  <h2 id="topic-title" style="font-size:1.2rem;"></h2>
+  <p id="topic-count" style="color:#666; font-size:0.85rem; margin-top:0.25rem;"></p>
+  <a href="/tech-review/en/topics/" style="font-size:0.85rem; color:#666; margin-top:0.5rem; display:inline-block;">← All topics</a>
+</div>
+
+<ul id="section-list" style="list-style:none; padding:0;"></ul>
+
+{% comment %} 섹션 데이터 수집 {% endcomment %}
+<script>
+const SECTIONS = [];
+{% for item in site.data.sections %}
+  {% assign d = item[1] %}
+  {% if d.lang == 'en' %}
+    {% for s in d.sections %}
+SECTIONS.push({
+  date: {{ d.date | jsonify }},
+  post_url: {{ d.post_url | prepend: site.baseurl | jsonify }},
+  post_title: {{ d.post_title | jsonify }},
+  source_type: {{ d.source_type | default: "perplexity" | jsonify }},
+  index: {{ s.index }},
+  title: {{ s.title | jsonify }},
+  lead: {{ s.lead | jsonify }},
+  tags: {{ s.tags | jsonify }},
+  anchor: {{ s.anchor | jsonify }}
+});
+    {% endfor %}
+  {% endif %}
+{% endfor %}
+
+SECTIONS.sort((a, b) => b.date.localeCompare(a.date));
+
+const tagCount = {};
+SECTIONS.forEach(s => {
+  (s.tags || []).forEach(t => {
+    tagCount[t] = (tagCount[t] || 0) + 1;
+  });
+});
+const allTags = Object.keys(tagCount).sort((a, b) => tagCount[b] - tagCount[a]);
+
+function renderTagIndex() {
+  const el = document.getElementById('tag-index');
+  el.innerHTML = allTags.map(t =>
+    `<a href="#${t}" onclick="filterTag('${t}'); return false;"
+       style="background:#f0f0f0; padding:0.3rem 0.75rem; border-radius:4px;
+              font-size:0.85rem; color:#333; text-decoration:none;">
+       ${t} <span style="color:#999;">${tagCount[t]}</span>
+     </a>`
+  ).join('');
+}
+
+function renderSections(tag) {
+  const filtered = tag
+    ? SECTIONS.filter(s => (s.tags || []).includes(tag))
+    : SECTIONS;
+
+  const header = document.getElementById('topic-header');
+  const tagIndex = document.getElementById('tag-index');
+  const title = document.getElementById('topic-title');
+  const count = document.getElementById('topic-count');
+
+  if (tag) {
+    header.style.display = 'block';
+    tagIndex.style.display = 'none';
+    title.textContent = '#' + tag;
+    count.textContent = filtered.length + ' sections';
+  } else {
+    header.style.display = 'none';
+    tagIndex.style.display = 'flex';
+  }
+
+  document.getElementById('section-list').innerHTML = filtered.map(s => {
+    const sourceLabel = s.source_type !== 'perplexity'
+      ? `<span style="background:#e8f4ff; color:#0066cc; padding:0.1rem 0.4rem; border-radius:3px; font-size:0.75rem; margin-left:0.5rem;">${s.source_type}</span>`
+      : '';
+    const tags = (s.tags || []).map(t =>
+      `<a href="#${t}" onclick="filterTag('${t}'); return false;"
+         style="background:#f0f0f0; padding:0.1rem 0.4rem; border-radius:3px;
+                font-size:0.75rem; color:#555; text-decoration:none;">${t}</a>`
+    ).join(' ');
+
+    return `<li style="padding:1rem 0; border-bottom:1px solid #eee;">
+      <div style="font-size:0.8rem; color:#999; margin-bottom:0.3rem;">
+        ${s.date}${sourceLabel}
+      </div>
+      <a href="${s.post_url}#${s.anchor}" style="font-weight:600; color:#1a1a1a; line-height:1.4; display:block; margin-bottom:0.4rem;">
+        ${s.title}
+      </a>
+      <p style="font-size:0.88rem; color:#555; margin-bottom:0.5rem; line-height:1.5;">
+        ${s.lead ? s.lead.slice(0, 150) + (s.lead.length > 150 ? '…' : '') : ''}
+      </p>
+      <div style="display:flex; gap:0.35rem; flex-wrap:wrap;">${tags}</div>
+    </li>`;
+  }).join('');
+}
+
+function filterTag(tag) {
+  history.pushState(null, '', '#' + tag);
+  renderSections(tag);
+}
+
+renderTagIndex();
+const initHash = location.hash.slice(1);
+renderSections(initHash || null);
+
+window.addEventListener('popstate', () => {
+  const tag = location.hash.slice(1);
+  renderSections(tag || null);
+});
+</script>

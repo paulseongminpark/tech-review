@@ -3,7 +3,10 @@ layout: default
 title: Tech Review
 lang: en
 ---
-<h1>Tech Review</h1>
+<div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:1.5rem;">
+  <h1 style="margin-bottom:0;">Tech Review</h1>
+  <a href="{{ site.baseurl }}/en/topics/" style="font-size:0.9rem; color:#0066cc;">Topics →</a>
+</div>
 <ul class="post-list">
   {% assign en_posts = site.posts | where: "lang", "en" %}
   {% for post in en_posts %}
