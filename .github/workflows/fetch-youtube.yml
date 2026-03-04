@@ -41,7 +41,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          git pull --rebase origin master
           git add _data/sources/ config/youtube-processed.json
           git diff --cached --quiet || git commit -m "[auto] youtube picks ${{ env.POST_DATE }}"
-          git pull --rebase origin master
           git push
