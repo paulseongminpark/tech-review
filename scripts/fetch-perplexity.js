@@ -318,7 +318,7 @@ function callSonarPro(prompt, domainFilter = []) {
         { role: "system", content: systemMsg },
         { role: "user", content: prompt },
       ],
-      max_tokens: 10000,
+      max_tokens: 7500,
       temperature: 0.2,
       search_recency_filter: "week",
     };

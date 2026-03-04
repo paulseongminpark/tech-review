@@ -68,7 +68,7 @@ function callPerplexityTranslate(content) {
         { role: "system", content: systemMsg },
         { role: "user", content: userMsg },
       ],
-      max_tokens: 10000,
+      max_tokens: 7500,
       temperature: 0.1,
     });
 
