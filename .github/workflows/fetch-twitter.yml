@@ -37,7 +37,9 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          git stash -u
           git pull --rebase origin master
+          git stash pop
           git add _data/sources/
           git diff --cached --quiet || git commit -m "[auto] twitter picks ${{ env.POST_DATE }}"
           git push
