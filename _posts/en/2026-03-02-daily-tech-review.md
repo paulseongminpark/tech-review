@@ -26,7 +26,7 @@ OpenAI has signed a contract with the U.S. Department of Defense to deploy AI mo
 
 **What's next:** xAI's Grok has already received Pentagon classified system approval, and negotiations between Google and OpenAI are accelerating, with additional contracts expected within the next few months.
 
-**Source:** OpenAI announces deal with the Pentagon
+**Source:** [OpenAI announces deal with the Pentagon](https://techcrunch.com/2026/02/28/openais-sam-altman-announces-pentagon-deal-with-technical-safeguards/)
 
 ---
 

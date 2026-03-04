@@ -8,10 +8,6 @@ pair: 2026-03-01-daily-tech-review
 tags: ["weekly-review", "ai-trends", "tech-summary"]
 ---
 
-## 2월 23-28일 주요 동향
-
----
-
 ## Today in One Line
 
 **프론티어 모델 한 달 집중전, AI 버블 공포 vs 투자 확대 역설, 에너지 위기의 제도화 — 2월은 AI 산업의 분기점.**

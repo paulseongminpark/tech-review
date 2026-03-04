@@ -8,10 +8,6 @@ pair: 2026-03-01-daily-tech-review
 tags: ["weekly-review", "ai-trends", "tech-summary"]
 ---
 
-## Major Trends from February 23-28
-
----
-
 ## Today in One Line
 
 **Frontier model blitz in one month, AI bubble fears vs. investment expansion paradox, institutionalization of energy crisis — February is a turning point for the AI industry.**

@@ -14,19 +14,19 @@ Government-enterprise AI collaborations, marketing automation entering execution
 
 ---
 
-## 1. OpenAI Signs $200 Million AI Contract with U.S. Department of Defense — Turning Point for Government Agencies Adopting Business AI
+## 1. OpenAI Signs $200 Million AI Contract with U.S. Department of War — Turning Point for Government Agencies Adopting Business AI
 
-OpenAI has signed a $200 million contract with the U.S. Department of Defense (Department of Defense), beginning operations of advanced AI systems in a classified environment equipped with cloud deployment-based safety measures. This contract was concluded right after negotiations with Anthropic broke down, and it is interpreted as a signal presenting new standards for government AI adoption.
+OpenAI has signed a $200 million contract with the U.S. Department of War (Department of War), beginning operations of advanced AI systems in a classified environment equipped with cloud deployment-based safety measures. This contract was concluded right after negotiations with Anthropic broke down, and it is interpreted as a signal presenting new standards for government AI adoption.
 
 **Why it matters:** The introduction of enterprise AI in the defense sector serves as the starting gun to trigger large-scale adoption by private companies. By explicitly stating three red lines in the contract conditions—"no mass surveillance," "no fully autonomous weapons," and "no high-risk automated decisions"—OpenAI is establishing a governance model for future government-enterprise AI collaborations.
 
 - Includes conditions for cloud-only deployment and retention of OpenAI's proprietary safety stack: Establishes a structure allowing companies to enter government usage environments while maintaining control over AI safety
 - OpenAI's contract-based response in preparation for Anthropic's supply chain risk designation: U.S. government acknowledges differing governance options per company, effectively starting coexistence of multiple AI governance models
-- Sequential adoption of OpenAI models by U.S. federal agencies ahead of schedule: If expanded beyond the Department of Defense to other agencies, rapid expansion of the government AI adoption market is anticipated
+- Sequential adoption of OpenAI models by U.S. federal agencies ahead of schedule: If expanded beyond the Department of War to other agencies, rapid expansion of the government AI adoption market is anticipated
 
-**What's next:** Over the next 6 months, removal of Anthropic's existing Department of Defense systems is expected to proceed, while competition among other U.S. federal agencies to adopt OpenAI, Google, or xAI models will accelerate.
+**What's next:** Over the next 6 months, removal of Anthropic's existing Department of War systems is expected to proceed, while competition among other U.S. federal agencies to adopt OpenAI, Google, or xAI models will accelerate.
 
-**Source:** OpenAI - Our agreement with the Department of Defense
+**Source:** OpenAI - Our agreement with the Department of War
 
 ---
 
@@ -42,7 +42,7 @@ On March 3, 2026, LiveRamp live-deployed AI agents from Newton Research and Sema
 
 **What's next:** LiveRamp plans to expand onboarding of additional partner agents (audience planning, segmentation, optimization), and as trust in agent autonomous execution by marketing teams increases, an average reduction of 20-40 hours of repetitive work per quarter is expected.
 
-**Source:** LiveRamp - Agentic AI Upgrades for Smarter Growth, Planning, and Measurement
+**Source:** [LiveRamp - Agentic AI Upgrades for Smarter Growth, Planning, and Measurement](https://liveramp.com/blog/semantiq-ai-agent-joins-liveramp-clean-room)
 
 ---
 

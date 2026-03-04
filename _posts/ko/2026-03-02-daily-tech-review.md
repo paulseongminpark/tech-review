@@ -26,7 +26,7 @@ OpenAI가 미국 국방부와 분류된 환경(classified systems)에서의 AI �
 
 **What's next:** xAI의 Grok도 이미 Pentagon 분류 시스템 승인을 받았으며, Google과 OpenAI의 협상이 가속화되어 향후 수주 내 추가 계약이 체결될 것으로 예상된다.
 
-**Source:** OpenAI announces deal with the Pentagon
+**Source:** [OpenAI announces deal with the Pentagon](https://techcrunch.com/2026/02/28/openais-sam-altman-announces-pentagon-deal-with-technical-safeguards/)
 
 ---
 

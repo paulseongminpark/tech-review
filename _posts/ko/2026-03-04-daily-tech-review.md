@@ -16,7 +16,7 @@ tags: ["ai-industry", "business-model", "enterprise-ai", "vertical-ai"]
 
 ## 1. OpenAI, 미국 국방부와 2억 달러 규모 AI 계약 체결 — 정부 기관의 비즈니스 AI 도입 분기점
 
-OpenAI가 미국 국방부(Department of Defense)와 2억 달러 규모의 계약을 체결하며 클라우드 배포 기반 안전장치를 갖춘 분류된 환경(classified environment)에서 고급 AI 시스템을 운영하기 시작했다. 이 계약은 국방부가 Anthropic과의 협상 결렬 직후 체결되었으며, 정부 AI 도입의 새로운 표준을 제시하는 신호로 해석된다.
+OpenAI가 미국 국방부(Department of War)와 2억 달러 규모의 계약을 체결하며 클라우드 배포 기반 안전장치를 갖춘 분류된 환경(classified environment)에서 고급 AI 시스템을 운영하기 시작했다. 이 계약은 국방부가 Anthropic과의 협상 결렬 직후 체결되었으며, 정부 AI 도입의 새로운 표준을 제시하는 신호로 해석된다.
 
 **Why it matters:** 국방 분야 엔터프라이즈 AI 도입은 민간 기업의 대규모 도입을 촉발하는 신호탄이다. OpenAI가 '대중 감시 금지', '완전 자율 무기 금지', '고위험 자동화 결정 금지'라는 3대 적색선을 계약 조건에 명시함으로써, 향후 정부-기업 AI 협력의 거버넌스 모델이 정립되고 있다.
 
@@ -26,7 +26,7 @@ OpenAI가 미국 국방부(Department of Defense)와 2억 달러 규모의 계�
 
 **What's next:** 향후 6개월 내 Anthropic의 기존 국방부 시스템 제거 진행과 동시에, 다른 미 연방 기관들의 OpenAI 또는 Google, xAI 모델 채택 경쟁이 가속화될 전망이다.
 
-**Source:** OpenAI - Our agreement with the Department of Defense
+**Source:** [OpenAI - Our agreement with the Department of War](https://openai.com/index/our-agreement-with-the-department-of-war/)
 
 ---
 
@@ -42,7 +42,7 @@ LiveRamp가 2026년 3월 3일 뉴턴 리서치(Newton Research)와 시맨틱IQ(S
 
 **What's next:** LiveRamp는 추가 파트너 에이전트 온보딩(audience planning, segmentation, optimization) 확대할 예정이며, 마케팅팀의 에이전트 자율 실행 신뢰도 증대에 따라 분기당 평균 20~40시간의 반복 작업 감소 예상된다.
 
-**Source:** LiveRamp - Agentic AI Upgrades for Smarter Growth, Planning, and Measurement
+**Source:** [LiveRamp - Agentic AI Upgrades for Smarter Growth, Planning, and Measurement](https://liveramp.com/blog/semantiq-ai-agent-joins-liveramp-clean-room)
 
 ---
 

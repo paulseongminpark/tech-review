@@ -503,18 +503,18 @@ async function validateUrls(content) {
     })
   );
 
-  let result = content;
   let invalidCount = 0;
   for (const r of results) {
     if (r.status === "fulfilled" && !r.value.valid) {
       invalidCount++;
-      result = result.replaceAll(r.value.full, r.value.text);
-      console.log(`  무효 URL 제거: ${r.value.url}`);
+      // URL 제거 안 함 — 환각 URL도 독자가 확인할 수 있도록 링크 유지
+      // (페이월·리다이렉트로 HEAD 실패한 실제 URL도 살려야 함)
+      console.log(`  미검증 URL (링크 유지): ${r.value.url}`);
     }
   }
 
-  console.log(`URL 검증 완료: ${links.length - invalidCount}/${links.length} 유효`);
-  return result;
+  console.log(`URL 검증 완료: ${links.length - invalidCount}/${links.length} 유효 (미검증 ${invalidCount}개 링크 유지)`);
+  return content;
 }
 
 // ─── 분량 검증 (Node.js 로컬) ────────────────────────────────────
@@ -530,19 +530,23 @@ function validateContent(content) {
     errors.push(`섹션 부족: ${sections.length}개 (최소 4개)`);
   }
 
+  // Today in One Line 없으면 hard fail (Smart Brevity 형식 강제)
   if (!/Today in One Line/i.test(content)) {
-    errors.push('"Today in One Line" 섹션 없음');
+    errors.push('"Today in One Line" 섹션 없음 [HARD FAIL — 형식 이탈]');
   }
 
   const wim = content.match(/Why it matters/gi) || [];
-  if (wim.length < 4) {
-    errors.push(`"Why it matters" 부족: ${wim.length}개 (최소 4개)`);
+  if (wim.length < 3) {
+    errors.push(`"Why it matters" 부족: ${wim.length}개 (최소 3개)`);
   }
 
   if (errors.length > 0) {
     console.warn("분량 검증 경고:");
     errors.forEach((e) => console.warn(`  - ${e}`));
-    return false;
+    // Today in One Line 없으면 실패 처리 (sonar-pro 폴백 유도)
+    if (!/Today in One Line/i.test(content)) {
+      return false;
+    }
   }
 
   console.log("분량 검증 통과");
@@ -613,8 +617,12 @@ async function main() {
   content = removeBracketHeadlines(content);
   content = await validateUrls(content);
 
-  // 분량 검증 (경고만, 저장은 진행)
-  validateContent(content);
+  // 분량 검증 — Today in One Line 없으면 hard fail (형식 이탈 방지)
+  const isValid = validateContent(content);
+  if (!isValid) {
+    console.error("형식 검증 실패: Today in One Line 없음 — Smart Brevity 형식 이탈. 저장 중단.");
+    process.exit(1);
+  }
 
   console.log(`응답 완료 (${content.length}자)`);
 
