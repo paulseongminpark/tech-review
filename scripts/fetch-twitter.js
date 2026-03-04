@@ -116,28 +116,23 @@ async function main() {
   const seen = new Set();
   const capturedJSON = [];
 
-  // page.route()로 graphql 응답 인터셉트 (response 이벤트보다 신뢰성 높음)
-  await page.route("**/*graphql*", async (route) => {
-    const url = route.request().url();
-    const endpoint = url.split("/").slice(-1)[0].split("?")[0];
+  // HomeLatestTimeline = "Following" 탭 (팔로잉 최신순)
+  await page.route("**/graphql/**/HomeLatestTimeline", async (route) => {
     try {
       const response = await route.fetch();
-      const ct = response.headers()["content-type"] || "";
-      if (ct.includes("json")) {
-        const body = await response.text();
-        console.log(`  graphql: ${endpoint}`);
-        try { capturedJSON.push({ endpoint, json: JSON.parse(body) }); } catch (_) {}
-      }
+      const body = await response.text();
+      console.log(`  HomeLatestTimeline 응답 수신 (${body.length}자)`);
+      try { capturedJSON.push({ endpoint: "HomeLatestTimeline", json: JSON.parse(body) }); } catch (_) {}
       await route.fulfill({ response });
     } catch (_) {
       await route.continue();
     }
   });
 
-  console.log("following 피드 로딩...");
+  console.log("홈 피드 로딩...");
   try {
-    await page.goto("https://x.com/following", { waitUntil: "domcontentloaded", timeout: 60000 });
-    await page.waitForTimeout(6000);
+    await page.goto("https://x.com/home", { waitUntil: "domcontentloaded", timeout: 60000 });
+    await page.waitForTimeout(4000);
   } catch (e) {
     console.error("페이지 로딩 실패:", e.message);
     await browser.close();
@@ -150,6 +145,15 @@ async function main() {
     await browser.close();
     process.exit(1);
   }
+
+  // "Following" 탭 클릭 → HomeLatestTimeline 트리거
+  console.log("  Following 탭 클릭...");
+  await page.click('[aria-label="Latest tweets"]').catch(async () => {
+    // 한국어 UI 또는 다른 aria-label 시도
+    await page.click('[href="/home?lang=en"]').catch(() => {});
+    await page.click('a[href="/following"]').catch(() => {});
+  });
+  await page.waitForTimeout(4000);
 
   // 스크롤로 추가 트윗 로드
   for (let i = 0; i < 6; i++) {
