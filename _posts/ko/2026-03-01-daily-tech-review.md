@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "**프론티어 모델 한 달 집중전, AI 버블 공포 vs 투자 확대 역설, 에너지 위기의 제도화 — 2월은 AI 산업의 분기점.**"
+title: "프론티어 모델 한 달 집중전, AI 버블 공포 vs 투자 확대 역설, 에너지 위기의 제도화 — 2월은 AI 산업의 분기점."
 date: 2026-03-01
 lang: ko
 permalink: /ko/2026/03/01/daily-tech-review/
@@ -8,7 +8,6 @@ pair: 2026-03-01-daily-tech-review
 tags: ["weekly-review", "ai-trends", "tech-summary"]
 ---
 
-# 이번 주 AI/Tech 주간 종합 분석
 ## 2월 23-28일 주요 동향
 
 ---

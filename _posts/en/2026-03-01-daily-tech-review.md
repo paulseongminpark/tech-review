@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "**Frontier model blitz in one month, AI bubble fears vs. investment expansion paradox, institutionalization of energy crisis — February is a turning point for the AI industry.**"
+title: "Frontier model blitz in one month, AI bubble fears vs. investment expansion paradox, institutionalization of energy crisis — February is a turning point for the AI industry."
 date: 2026-03-01
 lang: en
 permalink: /en/2026/03/01/daily-tech-review/
@@ -8,7 +8,6 @@ pair: 2026-03-01-daily-tech-review
 tags: ["weekly-review", "ai-trends", "tech-summary"]
 ---
 
-# This Week's AI/Tech Comprehensive Analysis
 ## Major Trends from February 23-28
 
 ---

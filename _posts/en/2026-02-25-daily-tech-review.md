@@ -8,7 +8,6 @@ pair: 2026-02-25-daily-tech-review
 tags: ["ai-industry", "business-model", "enterprise-ai", "vertical-ai"]
 ---
 
-# Global Technology & AI Trends Report
 ## February 24, 2026 (Tue) AI × Enterprise Adoption Status
 
 ---

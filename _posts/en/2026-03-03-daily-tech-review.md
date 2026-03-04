@@ -8,7 +8,6 @@ pair: 2026-03-03-daily-tech-review
 tags: ["bigtech", "google", "microsoft", "meta", "apple", "nvidia"]
 ---
 
-# Global Big Tech Essential News (March 1-2)
 
 ## Today in One Line
 Anthropic's Pentagon refusal deepens divisions in U.S. AI industry, Paramount's $11 billion WBD acquisition reshapes streaming wars, Apple's three new product announcements accelerate AI device competition.

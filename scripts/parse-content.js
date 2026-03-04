@@ -90,6 +90,9 @@ async function main() {
   }
   raw = lines.slice(bodyStart).join("\n").trim();
 
+  // H1 헤더 제거 (fetch-perplexity.js 통과 후에도 잔존할 경우 방어)
+  raw = raw.replace(/^#\s+[^\n]+\n?/gm, "");
+
   // 브라켓 헤드라인 제거: ## 1. [제목] → ## 1. 제목
   raw = raw.replace(/^(##\s*\d+\.?\s*)\[([^\]]+)\]/gm, "$1$2");
 
@@ -101,7 +104,7 @@ async function main() {
       for (let j = i + 1; j < bodyLines.length; j++) {
         const candidate = bodyLines[j].trim();
         if (candidate && !candidate.startsWith("#") && !candidate.startsWith("---")) {
-          title = candidate.replace(/"/g, "'");
+          title = candidate.replace(/"/g, "'").replace(/\*\*/g, "");
           console.log(`제목 추출 (Today in One Line): ${title}`);
           break;
         }

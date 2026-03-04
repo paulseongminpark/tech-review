@@ -8,7 +8,6 @@ pair: 2026-03-02-daily-tech-review
 tags: ["ai-ml", "models", "research", "benchmarks"]
 ---
 
-# 글로벌 AI 동향 속보: 최근 48시간 핵심 뉴스
 
 ## Today in One Line
 미국 국방부의 AI 정책 격변이 산업을 뒤흔들고 있으며, OpenAI와 Anthropic 간 대립으로 미국 AI 진영의 균이 심화되는 한편 중국의 모델 추출 공격이 국제 AI 경쟁의 긴장을 가중시키고 있다.

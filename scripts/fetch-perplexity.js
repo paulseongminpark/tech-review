@@ -441,11 +441,13 @@ function submitDeepResearch(prompt, domainFilter = []) {
   });
 }
 
-// ─── 후처리: 브라켓 제목 제거 ────────────────────────────────────
+// ─── 후처리: 브라켓 제목 제거 + H1 헤더 제거 ─────────────────────
 function removeBracketHeadlines(content) {
   // ## 1. [제목] → ## 1. 제목
-  // ## 1. [제목 — 부제] → ## 1. 제목 — 부제
-  return content.replace(/^(##\s*\d+\.?\s*)\[([^\]]+)\]/gm, "$1$2");
+  content = content.replace(/^(##\s*\d+\.?\s*)\[([^\]]+)\]/gm, "$1$2");
+  // H1 헤더 제거 (Perplexity가 자체 문서 제목으로 삽입하는 줄)
+  content = content.replace(/^#\s+[^\n]+\n?/gm, "");
+  return content;
 }
 
 // ─── URL 검증 ────────────────────────────────────────────────────

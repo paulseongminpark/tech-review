@@ -8,7 +8,6 @@ pair: 2026-02-26-daily-tech-review
 tags: ["opensource", "developer-tools", "github", "frameworks"]
 ---
 
-# 글로벌 AI·개발자 생태계 핵심 뉴스 (2월 24-25일)
 
 ## Today in One Line
 

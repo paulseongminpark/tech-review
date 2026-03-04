@@ -8,7 +8,6 @@ pair: 2026-03-03-daily-tech-review
 tags: ["bigtech", "google", "microsoft", "meta", "apple", "nvidia"]
 ---
 
-# 글로벌 빅테크 핵심 뉴스 (3월 1-2일)
 
 ## Today in One Line
 Anthropic의 Pentagon 거부로 미국 AI 업계 분열 심화, Paramount의 110억 달러 WBD 인수로 스트리밍 전쟁 재편, Apple의 신제품 3종 발표로 AI 기기 경쟁 가속화.

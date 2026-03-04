@@ -8,7 +8,6 @@ pair: 2026-03-04-daily-tech-review
 tags: ["ai-industry", "business-model", "enterprise-ai", "vertical-ai"]
 ---
 
-# Global Technology & AI Trends Report (March 3, 2026)
 
 ## Today in One Line
 Government-enterprise AI collaborations, marketing automation entering execution phase, and AI integrations via acquisitions in the medical industry are progressing simultaneously, marking the enterprise AI market's shift from pilot to full-scale operations.
@@ -17,7 +16,7 @@ Government-enterprise AI collaborations, marketing automation entering execution
 
 ## 1. OpenAI Signs $200 Million AI Contract with U.S. Department of Defense — Turning Point for Government Agencies Adopting Business AI
 
-OpenAI has signed a $200 million contract with the U.S. Department of Defense (Department of War), beginning operations of advanced AI systems in a classified environment equipped with cloud deployment-based safety measures. This contract was concluded right after negotiations with Anthropic broke down, and it is interpreted as a signal presenting new standards for government AI adoption.
+OpenAI has signed a $200 million contract with the U.S. Department of Defense (Department of Defense), beginning operations of advanced AI systems in a classified environment equipped with cloud deployment-based safety measures. This contract was concluded right after negotiations with Anthropic broke down, and it is interpreted as a signal presenting new standards for government AI adoption.
 
 **Why it matters:** The introduction of enterprise AI in the defense sector serves as the starting gun to trigger large-scale adoption by private companies. By explicitly stating three red lines in the contract conditions—"no mass surveillance," "no fully autonomous weapons," and "no high-risk automated decisions"—OpenAI is establishing a governance model for future government-enterprise AI collaborations.
 
@@ -27,7 +26,7 @@ OpenAI has signed a $200 million contract with the U.S. Department of Defense (D
 
 **What's next:** Over the next 6 months, removal of Anthropic's existing Department of Defense systems is expected to proceed, while competition among other U.S. federal agencies to adopt OpenAI, Google, or xAI models will accelerate.
 
-**Source:** OpenAI - Our agreement with the Department of War
+**Source:** OpenAI - Our agreement with the Department of Defense
 
 ---
 

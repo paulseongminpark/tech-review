@@ -8,7 +8,6 @@ pair: 2026-02-27-daily-tech-review
 tags: ["hardware", "chips", "datacenter", "cloud", "infrastructure"]
 ---
 
-# Changes in the AI Hardware and Infrastructure Market Landscape in February 2026: Stalemate Between Massive Capital Investment and Supply Chain Crisis
 
 Technical news released between February 24 and 26 clearly shows that the AI infrastructure market has entered a stage of unprecedented capital investment. The multi-year 6-gigawatt contract between Meta and AMD, the expansion of the strategic partnership between Meta and NVIDIA, and TSMC's earnings announcement along with dividend increase have made structural changes in the global semiconductor industry and data center market visible. At the same time, DRAM shortages leading to price surges and procurement crises are affecting the consumer sector and automotive industry, clearly indicating a trend of intensifying supply chain bottlenecks.
 

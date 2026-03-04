@@ -8,7 +8,6 @@ pair: 2026-03-04-daily-tech-review
 tags: ["ai-industry", "business-model", "enterprise-ai", "vertical-ai"]
 ---
 
-# 글로벌 기술·AI 동향 리포트 (2026년 3월 3일)
 
 ## Today in One Line
 정부-기업 AI 협력, 마케팅 자동화 실행 단계, 의료 산업 AI 통합 인수 합병이 동시 진행되며 엔터프라이즈 AI 시장이 파일럿에서 본격 운영 전환을 맞했다.
@@ -17,7 +16,7 @@ tags: ["ai-industry", "business-model", "enterprise-ai", "vertical-ai"]
 
 ## 1. OpenAI, 미국 국방부와 2억 달러 규모 AI 계약 체결 — 정부 기관의 비즈니스 AI 도입 분기점
 
-OpenAI가 미국 국방부(Department of War)와 2억 달러 규모의 계약을 체결하며 클라우드 배포 기반 안전장치를 갖춘 분류된 환경(classified environment)에서 고급 AI 시스템을 운영하기 시작했다. 이 계약은 국방부가 Anthropic과의 협상 결렬 직후 체결되었으며, 정부 AI 도입의 새로운 표준을 제시하는 신호로 해석된다.
+OpenAI가 미국 국방부(Department of Defense)와 2억 달러 규모의 계약을 체결하며 클라우드 배포 기반 안전장치를 갖춘 분류된 환경(classified environment)에서 고급 AI 시스템을 운영하기 시작했다. 이 계약은 국방부가 Anthropic과의 협상 결렬 직후 체결되었으며, 정부 AI 도입의 새로운 표준을 제시하는 신호로 해석된다.
 
 **Why it matters:** 국방 분야 엔터프라이즈 AI 도입은 민간 기업의 대규모 도입을 촉발하는 신호탄이다. OpenAI가 '대중 감시 금지', '완전 자율 무기 금지', '고위험 자동화 결정 금지'라는 3대 적색선을 계약 조건에 명시함으로써, 향후 정부-기업 AI 협력의 거버넌스 모델이 정립되고 있다.
 
@@ -27,7 +26,7 @@ OpenAI가 미국 국방부(Department of War)와 2억 달러 규모의 계약을
 
 **What's next:** 향후 6개월 내 Anthropic의 기존 국방부 시스템 제거 진행과 동시에, 다른 미 연방 기관들의 OpenAI 또는 Google, xAI 모델 채택 경쟁이 가속화될 전망이다.
 
-**Source:** OpenAI - Our agreement with the Department of War
+**Source:** OpenAI - Our agreement with the Department of Defense
 
 ---
 

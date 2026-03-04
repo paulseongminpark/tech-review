@@ -8,7 +8,6 @@ pair: 2026-03-02-daily-tech-review
 tags: ["ai-ml", "models", "research", "benchmarks"]
 ---
 
-# Global AI Trends Breaking News: Key News from the Last 48 Hours
 
 ## Today in One Line
 The U.S. Department of Defense's AI policy upheaval is shaking the industry, the rift between OpenAI and Anthropic is deepening within the U.S. AI camp, and China's model extraction attacks are heightening tensions in the international AI competition.

@@ -8,7 +8,6 @@ pair: 2026-02-28-daily-tech-review
 tags: ["ai-usecase", "enterprise", "adoption", "regulation"]
 ---
 
-# 지난 48시간 AI 실무 도입 핵심 뉴스
 
 ## Today in One Line
 엔터프라이즈급 AI Agent 프로덕션 배포가 실험 단계를 벗고 본격적인 비즈니스 프로세스 자동화로 전환되면서, 업계 표준화와 옵저버빌리티 인프라 구축이 동시에 가속화되고 있다.

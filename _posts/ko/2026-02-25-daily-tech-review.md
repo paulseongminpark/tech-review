@@ -8,7 +8,6 @@ pair: 2026-02-25-daily-tech-review
 tags: ["ai-industry", "business-model", "enterprise-ai", "vertical-ai"]
 ---
 
-# 글로벌 기술·AI 동향 리포트
 ## 2026년 2월 24일(화) AI × 엔터프라이즈 입양 현황
 
 ---
