@@ -1,0 +1,49 @@
+---
+layout: default
+title: YouTube
+lang: en
+permalink: /en/youtube/
+---
+
+<div id="feed"></div>
+
+<script>
+const ALL_ITEMS = [];
+{% for item in site.data.sources %}
+  {% assign key = item[0] %}
+  {% if key contains 'youtube' %}
+    {% for entry in item[1] %}
+ALL_ITEMS.push({
+  title: {{ entry.title | jsonify }},
+  channel: {{ entry.channel | jsonify }},
+  url: {{ entry.url | jsonify }},
+  playlist: {{ entry.playlist | jsonify }},
+  published_at: {{ entry.published_at | jsonify }},
+  summary: {{ entry.summary | jsonify }}
+});
+    {% endfor %}
+  {% endif %}
+{% endfor %}
+
+ALL_ITEMS.sort((a, b) => b.published_at.localeCompare(a.published_at));
+
+document.getElementById('feed').innerHTML = ALL_ITEMS.length === 0
+  ? '<p style="color:#999; margin-top:2rem;">No videos collected yet.</p>'
+  : ALL_ITEMS.map(item => {
+    const s = item.summary || {};
+    return `
+    <div style="padding:1.25rem 0; border-bottom:1px solid #eee;">
+      <div style="font-size:0.78rem; color:#999; margin-bottom:0.4rem;">
+        ${item.channel} · ${item.published_at ? item.published_at.slice(0,10) : ''} · ${item.playlist}
+      </div>
+      <a href="${item.url}" target="_blank" rel="noopener"
+         style="font-weight:700; font-size:1rem; color:#1a1a1a; display:block; margin-bottom:0.75rem;">
+        ${item.title} ↗
+      </a>
+      ${s.one_line ? `<p style="font-weight:600; margin-bottom:0.5rem;">${s.one_line}</p>` : ''}
+      ${s.why_it_matters ? `<p style="font-size:0.88rem; color:#444; margin-bottom:0.5rem;">${s.why_it_matters}</p>` : ''}
+      ${s.points ? `<ul style="list-style:none; padding-left:1rem;">${s.points.map(p => `<li style="font-size:0.88rem; color:#444; margin:0.2rem 0;">· ${p}</li>`).join('')}</ul>` : ''}
+      ${s.whats_next ? `<p style="font-size:0.85rem; color:#666; margin-top:0.5rem; font-style:italic;">${s.whats_next}</p>` : ''}
+    </div>
+  `}).join('');
+</script>

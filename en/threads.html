@@ -1,0 +1,39 @@
+---
+layout: default
+title: Threads
+lang: en
+permalink: /en/threads/
+---
+
+<div id="feed"></div>
+
+<script>
+const ALL_ITEMS = [];
+{% for item in site.data.sources %}
+  {% assign key = item[0] %}
+  {% if key contains 'threads' %}
+    {% for entry in item[1] %}
+ALL_ITEMS.push({
+  author: {{ entry.author | jsonify }},
+  text: {{ entry.text | jsonify }},
+  url: {{ entry.url | jsonify }},
+  timestamp: {{ entry.timestamp | jsonify }}
+});
+    {% endfor %}
+  {% endif %}
+{% endfor %}
+
+ALL_ITEMS.sort((a, b) => b.timestamp.localeCompare(a.timestamp));
+
+document.getElementById('feed').innerHTML = ALL_ITEMS.length === 0
+  ? '<p style="color:#999; margin-top:2rem;">No threads collected yet.</p>'
+  : ALL_ITEMS.map(item => `
+    <div style="padding:1rem 0; border-bottom:1px solid #eee;">
+      <div style="font-size:0.8rem; color:#999; margin-bottom:0.4rem;">
+        <strong>${item.author}</strong> · ${item.timestamp ? item.timestamp.slice(0,10) : ''}
+      </div>
+      <p style="font-size:0.9rem; line-height:1.6; white-space:pre-wrap;">${item.text}</p>
+      ${item.url ? `<a href="${item.url}" target="_blank" rel="noopener" style="font-size:0.8rem; color:#0066cc; display:inline-block; margin-top:0.4rem;">→ View original</a>` : ''}
+    </div>
+  `).join('');
+</script>
