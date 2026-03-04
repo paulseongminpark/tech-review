@@ -23,10 +23,26 @@
     .content p { margin: 0.5rem 0; }
     .content ul { list-style: none; padding-left: 1rem; }
     .content li { margin: 0.25rem 0; }
+    .site-nav { display:flex; gap:1rem; margin-bottom:2rem; border-bottom:1px solid #eee; padding-bottom:0.75rem; }
+    .site-nav a { color:#666; font-size:0.9rem; text-decoration:none; padding:0.25rem 0; }
+    .site-nav a.active { color:#1a1a1a; font-weight:600; border-bottom:2px solid #1a1a1a; }
   </style>
 </head>
 <body>
   {% include lang-toggle.html %}
+  {% assign lang = page.lang | default: 'ko' %}
+  <nav class="site-nav">
+    <a href="{{ site.baseurl }}/{{ lang }}/"
+       {% unless page.url contains 'daily-digest' or page.url contains '/twitter/' or page.url contains '/threads/' or page.url contains '/youtube/' %}class="active"{% endunless %}>Home</a>
+    <a href="{{ site.baseurl }}/{{ lang }}/daily-digest/"
+       {% if page.url contains 'daily-digest' %}class="active"{% endif %}>Daily Digest</a>
+    <a href="{{ site.baseurl }}/{{ lang }}/twitter/"
+       {% if page.url contains '/twitter/' %}class="active"{% endif %}>Twitter</a>
+    <a href="{{ site.baseurl }}/{{ lang }}/threads/"
+       {% if page.url contains '/threads/' %}class="active"{% endif %}>Threads</a>
+    <a href="{{ site.baseurl }}/{{ lang }}/youtube/"
+       {% if page.url contains '/youtube/' %}class="active"{% endif %}>YouTube</a>
+  </nav>
   {{ content }}
 </body>
 </html>
