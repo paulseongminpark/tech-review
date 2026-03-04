@@ -5,6 +5,9 @@ on:
     - cron: '0 22 * * *'  # 매일 07:00 KST
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   fetch:
     runs-on: ubuntu-latest

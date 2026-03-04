@@ -70,7 +70,8 @@ async function main() {
 
   console.log("following 피드 로딩...");
   try {
-    await page.goto("https://x.com/following", { waitUntil: "networkidle", timeout: 30000 });
+    await page.goto("https://x.com/following", { waitUntil: "domcontentloaded", timeout: 60000 });
+    await page.waitForTimeout(3000); // JS 렌더링 대기
   } catch (e) {
     console.error("페이지 로딩 실패:", e.message);
     await browser.close();
