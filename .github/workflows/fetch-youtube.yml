@@ -28,9 +28,11 @@ jobs:
           POST_DATE: ${{ env.POST_DATE }}
         run: node scripts/fetch-youtube.js
 
-      - name: Summarize with Gemini
+      - name: Install yt-dlp
+        run: pip install yt-dlp
+
+      - name: Extract transcripts
         env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           POST_DATE: ${{ env.POST_DATE }}
         run: node scripts/summarize-youtube.js
 
