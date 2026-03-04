@@ -35,12 +35,12 @@ const BREVITY_FORMAT = `반드시 아래 JSON 형식으로만 응답하세요 (�
   "whats_next": "다음 전망 1문장"
 }`;
 
-function geminiRequest(body) {
+async function geminiRequest(body, retries = 3) {
   const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`;
   const urlObj = new URL(url);
   const bodyStr = JSON.stringify(body);
 
-  return new Promise((resolve, reject) => {
+  const result = await new Promise((resolve, reject) => {
     const req = https.request(
       {
         hostname: urlObj.hostname,
@@ -58,16 +58,15 @@ function geminiRequest(body) {
           try {
             const json = JSON.parse(data);
             if (json.error) {
-              return reject(new Error(`Gemini API 오류 [${json.error.code}]: ${json.error.message}`));
+              return reject(Object.assign(new Error(`Gemini API 오류 [${json.error.code}]: ${json.error.message}`), { code: json.error.code, raw: json.error.message }));
             }
             const candidate = json.candidates?.[0];
             if (!candidate) {
               return reject(new Error(`후보 없음. promptFeedback: ${JSON.stringify(json.promptFeedback)}`));
             }
-            const finishReason = candidate.finishReason;
             const text = candidate.content?.parts?.[0]?.text?.trim();
             if (!text) {
-              return reject(new Error(`빈 응답. finishReason: ${finishReason}`));
+              return reject(new Error(`빈 응답. finishReason: ${candidate.finishReason}`));
             }
             const match = text.match(/\{[\s\S]*\}/);
             if (!match) return reject(new Error(`JSON 없음: ${text.slice(0, 150)}`));
@@ -81,7 +80,18 @@ function geminiRequest(body) {
     req.on("error", reject);
     req.write(bodyStr);
     req.end();
+  }).catch(async (e) => {
+    if (e.code === 429 && retries > 0) {
+      const match = (e.raw || "").match(/retry in ([\d.]+)s/);
+      const waitMs = match ? (parseFloat(match[1]) + 3) * 1000 : 65000;
+      console.log(`  Rate limit — ${Math.round(waitMs / 1000)}s 후 재시도 (남은 횟수: ${retries - 1})`);
+      await new Promise((r) => setTimeout(r, waitMs));
+      return geminiRequest(body, retries - 1);
+    }
+    throw e;
   });
+
+  return result;
 }
 
 // 1차: Gemini가 YouTube 영상 직접 시청

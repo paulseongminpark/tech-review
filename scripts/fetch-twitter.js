@@ -1,18 +1,14 @@
 #!/usr/bin/env node
 /**
  * fetch-twitter.js
- * GitHub Actions / 로컬: Playwright 쿠키 로그인 → following 피드
- * → 필터(280자+ OR 스레드 OR 외부링크) → JSON 저장
+ * X.com 내부 GraphQL API 응답 인터셉트 → following 피드 트윗 수집
+ * DOM 렌더링 불필요 — API 응답에서 직접 파싱
  *
  * 환경변수:
  *   TWITTER_COOKIES  - GitHub Secret: 쿠키 JSON 문자열
  *   POST_DATE        - YYYY-MM-DD (기본: 오늘 KST)
  *   MAX_ITEMS        - 최대 수집 수 (기본: 30)
  *   DRY_RUN          - "true"이면 파일 저장 생략
- *
- * 사전 설치:
- *   npm install playwright
- *   npx playwright install chromium
  */
 
 const { chromium } = require("playwright-extra");
@@ -23,13 +19,12 @@ const path = require("path");
 
 const COOKIES_JSON = process.env.TWITTER_COOKIES;
 const POST_DATE = process.env.POST_DATE ||
-  new Date(Date.now() + 9 * 60 * 60 * 1000).toISOString().slice(0, 10); // KST
+  new Date(Date.now() + 9 * 60 * 60 * 1000).toISOString().slice(0, 10);
 const MAX_ITEMS = parseInt(process.env.MAX_ITEMS || "30");
 const DRY_RUN = process.env.DRY_RUN === "true";
 
 if (!COOKIES_JSON) {
   console.error("TWITTER_COOKIES 환경변수가 필요합니다.");
-  console.error("로컬: node scripts/export-cookies.js twitter 실행 후 출력값 사용");
   process.exit(1);
 }
 
@@ -42,6 +37,62 @@ function shouldInclude(text, hasThread, hasLink) {
   return false;
 }
 
+// GraphQL 응답에서 트윗 목록 추출
+function parseTweetsFromGraphQL(json) {
+  const tweets = [];
+  try {
+    const instructions =
+      json?.data?.home?.home_timeline_urt?.instructions ||
+      json?.data?.timeline_by_id?.timeline?.instructions ||
+      [];
+
+    for (const inst of instructions) {
+      if (inst.type !== "TimelineAddEntries") continue;
+      for (const entry of (inst.entries || [])) {
+        const result =
+          entry.content?.itemContent?.tweet_results?.result ||
+          entry.content?.items?.[0]?.item?.itemContent?.tweet_results?.result;
+        if (!result) continue;
+
+        // 리트윗이면 원본 트윗 사용
+        const tweet = result.tweet || result;
+        const legacy = tweet.legacy;
+        const userLegacy = tweet.core?.user_results?.result?.legacy ||
+                           tweet.core?.user_results?.result?.user?.legacy;
+        if (!legacy || !userLegacy) continue;
+
+        const tweetId = legacy.id_str || tweet.rest_id;
+        const screenName = userLegacy.screen_name;
+        if (!tweetId || !screenName) continue;
+
+        // 본문에서 t.co 링크 제거한 실제 텍스트
+        const text = legacy.full_text.replace(/https:\/\/t\.co\/\S+/g, "").trim();
+
+        // 외부 링크 확인 (t.co → expanded_url 기준)
+        const urls = legacy.entities?.urls || [];
+        const externalLinks = urls.filter(
+          (u) => u.expanded_url &&
+            !u.expanded_url.includes("twitter.com") &&
+            !u.expanded_url.includes("x.com")
+        );
+
+        tweets.push({
+          text,
+          timestamp: legacy.created_at,
+          author: "@" + screenName,
+          url: `https://x.com/${screenName}/status/${tweetId}`,
+          is_thread: /\d+\/\d+/.test(legacy.full_text),
+          has_external_link: externalLinks.length > 0,
+          source_type: "twitter",
+        });
+      }
+    }
+  } catch (e) {
+    // 파싱 오류는 무시 (다른 구조의 GraphQL 응답)
+  }
+  return tweets;
+}
+
 async function main() {
   let cookies;
   try {
@@ -51,7 +102,7 @@ async function main() {
     process.exit(1);
   }
 
-  // Cookie-Editor 내보내기 sameSite 값 정규화 (Chrome 내부 → Playwright 허용값)
+  // sameSite 정규화
   const sameSiteMap = {
     no_restriction: "None",
     lax: "Lax",
@@ -74,12 +125,36 @@ async function main() {
   await context.addCookies(cookies);
   const page = await context.newPage();
 
+  const items = [];
+  const seen = new Set();
+
+  // GraphQL 응답 인터셉트
+  page.on("response", async (response) => {
+    const url = response.url();
+    if (!url.includes("graphql") || !url.includes("HomeTimeline") && !url.includes("HomeLatestTimeline") && !url.includes("Following")) return;
+    try {
+      const json = await response.json();
+      const tweets = parseTweetsFromGraphQL(json);
+      if (tweets.length > 0) {
+        console.log(`  GraphQL 응답: ${tweets.length}개 트윗 파싱됨`);
+      }
+      for (const t of tweets) {
+        if (!t.text || !t.url) continue;
+        if (seen.has(t.url)) continue;
+        if (!shouldInclude(t.text, t.is_thread, t.has_external_link)) continue;
+        seen.add(t.url);
+        items.push(t);
+        console.log(`  [${items.length}] ${t.author}: ${t.text.slice(0, 60)}...`);
+      }
+    } catch (e) {
+      // 다른 타입의 응답 무시
+    }
+  });
+
   console.log("following 피드 로딩...");
   try {
     await page.goto("https://x.com/following", { waitUntil: "domcontentloaded", timeout: 60000 });
-    await page.waitForTimeout(5000); // JS 초기 렌더링 대기
-    await page.waitForSelector('[data-testid="tweet"]', { timeout: 30000 }).catch(() => {});
-    await page.waitForTimeout(2000);
+    await page.waitForTimeout(5000);
   } catch (e) {
     console.error("페이지 로딩 실패:", e.message);
     await browser.close();
@@ -88,69 +163,18 @@ async function main() {
 
   console.log(`  현재 URL: ${page.url()}`);
 
-  // 세션 만료 감지
   if (page.url().includes("/login") || page.url().includes("/i/flow")) {
     console.error("세션 만료 — TWITTER_COOKIES Secret 갱신 필요");
-    console.error("로컬에서: node scripts/export-cookies.js twitter");
     await browser.close();
     process.exit(1);
   }
 
-  // 디버그: 실제 존재하는 data-testid 목록 확인
-  const foundTestIds = await page.evaluate(() => {
-    const els = document.querySelectorAll("[data-testid]");
-    const ids = [...new Set([...els].map((e) => e.getAttribute("data-testid")))];
-    return ids.slice(0, 30).join(", ");
-  });
-  console.log(`  발견된 testIds: ${foundTestIds || "(없음)"}`);
-  console.log(`  tweet 셀렉터 존재: ${foundTestIds.includes("tweet")}`);
-
-  const items = [];
-  const seen = new Set();
+  // 스크롤로 추가 트윗 로드
   let scrollCount = 0;
-
-  while (items.length < MAX_ITEMS && scrollCount < 10) {
-    const tweets = await page.$$eval('[data-testid="tweet"]', (els) =>
-      els.map((el) => {
-        const textEl = el.querySelector('[data-testid="tweetText"]');
-        const text = textEl ? textEl.innerText : "";
-        const timeEl = el.querySelector("time");
-        const userEl = el.querySelector('[data-testid="User-Name"]');
-        const tweetLinkEl = el.querySelector('a[href*="/status/"]');
-        const hasThread = /\d+\/\d+/.test(text) || el.querySelector('[aria-label*="Thread"]') !== null;
-        const externalLinks = [...el.querySelectorAll('a[href^="http"]')]
-          .filter(a => !a.href.includes("x.com") && !a.href.includes("twitter.com"));
-        const hasLink = externalLinks.length > 0;
-        const userText = userEl ? userEl.innerText : "";
-        const userLines = userText.split("\n").filter(Boolean);
-
-        return {
-          text,
-          timestamp: timeEl ? timeEl.getAttribute("datetime") : "",
-          author: userLines.length >= 2 ? "@" + userLines[1] : (userLines[0] || ""),
-          url: tweetLinkEl ? "https://x.com" + tweetLinkEl.getAttribute("href") : "",
-          is_thread: hasThread,
-          has_external_link: hasLink,
-          source_type: "twitter",
-        };
-      })
-    );
-
-    for (const t of tweets) {
-      if (!t.text || !t.url) continue;
-      if (seen.has(t.url)) continue;
-      if (!shouldInclude(t.text, t.is_thread, t.has_external_link)) continue;
-      seen.add(t.url);
-      items.push(t);
-      console.log(`  [${items.length}] ${t.author}: ${t.text.slice(0, 60)}...`);
-      if (items.length >= MAX_ITEMS) break;
-    }
-
-    if (items.length < MAX_ITEMS) {
-      await page.evaluate(() => window.scrollBy(0, 1500));
-      await page.waitForTimeout(2000);
-      scrollCount++;
-    }
+  while (items.length < MAX_ITEMS && scrollCount < 8) {
+    await page.evaluate(() => window.scrollBy(0, 2000));
+    await page.waitForTimeout(2500);
+    scrollCount++;
   }
 
   await browser.close();
