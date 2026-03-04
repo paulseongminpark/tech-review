@@ -19,9 +19,6 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install yt-dlp
-        run: pip install yt-dlp
-
       - name: Set POST_DATE (KST)
         run: echo "POST_DATE=$(TZ=Asia/Seoul date +%Y-%m-%d)" >> $GITHUB_ENV
 

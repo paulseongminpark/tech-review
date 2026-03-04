@@ -71,12 +71,16 @@ async function main() {
   console.log("following 피드 로딩...");
   try {
     await page.goto("https://x.com/following", { waitUntil: "domcontentloaded", timeout: 60000 });
-    await page.waitForTimeout(3000); // JS 렌더링 대기
+    // 트윗 렌더링 대기 (SPA 특성상 시간 필요)
+    await page.waitForSelector('[data-testid="tweet"]', { timeout: 20000 }).catch(() => {});
+    await page.waitForTimeout(3000);
   } catch (e) {
     console.error("페이지 로딩 실패:", e.message);
     await browser.close();
     process.exit(1);
   }
+
+  console.log(`  현재 URL: ${page.url()}`);
 
   // 세션 만료 감지
   if (page.url().includes("/login") || page.url().includes("/i/flow")) {
@@ -85,6 +89,11 @@ async function main() {
     await browser.close();
     process.exit(1);
   }
+
+  // 페이지 HTML 일부 로그 (디버그용)
+  const html = await page.content();
+  console.log(`  HTML 길이: ${html.length}자`);
+  console.log(`  tweet 셀렉터 존재: ${html.includes('data-testid="tweet"')}`);
 
   const items = [];
   const seen = new Set();

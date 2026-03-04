@@ -2,7 +2,7 @@
 /**
  * summarize-youtube.js
  * _data/sources/youtube-YYYY-MM-DD.json (summary 없는 항목)
- * → yt-dlp transcript 추출 → Gemini Smart Brevity 요약
+ * → Gemini에 YouTube URL 직접 전달 → Smart Brevity 요약
  * → 같은 파일에 summary 필드 추가
  *
  * 환경변수:
@@ -11,7 +11,7 @@
  *   DRY_RUN         - "true"이면 파일 저장 생략
  */
 
-const { execSync } = require("child_process");
+const https = require("https");
 const fs = require("fs");
 const path = require("path");
 
@@ -26,7 +26,7 @@ if (!GEMINI_API_KEY) {
 
 const DATA_DIR = path.join(__dirname, "..", "_data", "sources");
 
-const SMART_BREVITY_PROMPT = `다음 유튜브 영상 트랜스크립트를 Smart Brevity 형식으로 요약하세요.
+const SMART_BREVITY_PROMPT = `이 유튜브 영상을 보고 Smart Brevity 형식으로 요약하세요.
 
 반드시 아래 JSON 형식으로만 응답하세요 (코드블록 없이 순수 JSON):
 {
@@ -34,59 +34,26 @@ const SMART_BREVITY_PROMPT = `다음 유튜브 영상 트랜스크립트를 Smar
   "why_it_matters": "핵심 의미 1~2문장",
   "points": ["포인트 1", "포인트 2", "포인트 3"],
   "whats_next": "다음 전망 1문장"
-}
+}`;
 
-트랜스크립트:
-`;
-
-function getTranscript(videoId) {
-  const tmpBase = `/tmp/transcript-${videoId}`;
-  const vttFile = `${tmpBase}.en.vtt`;
-
-  // 기존 임시 파일 정리
-  try { fs.unlinkSync(vttFile); } catch (_) {}
-
-  try {
-    execSync(
-      `yt-dlp --write-auto-sub --sub-lang en --skip-download ` +
-      `--sub-format vtt --output "${tmpBase}" ` +
-      `"https://www.youtube.com/watch?v=${videoId}"`,
-      { stdio: "pipe" }
-    );
-  } catch (e) {
-    console.error(`  yt-dlp 실패 (${videoId}): ${e.message.slice(0, 100)}`);
-    return null;
-  }
-
-  if (!fs.existsSync(vttFile)) {
-    console.log(`  VTT 파일 없음 (자막 미제공 영상)`);
-    return null;
-  }
-
-  const vtt = fs.readFileSync(vttFile, "utf8");
-  const lines = vtt.split("\n").filter(
-    (l) =>
-      l.trim() &&
-      !l.startsWith("WEBVTT") &&
-      !/^\d{2}:\d{2}/.test(l) &&
-      !/^NOTE/.test(l) &&
-      !/^align:/.test(l) &&
-      !/^position:/.test(l)
-  );
-  const unique = [...new Set(lines)];
-  return unique.join(" ").slice(0, 8000);
-}
-
-async function summarize(transcript) {
+async function summarize(videoUrl) {
   const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`;
   const body = JSON.stringify({
-    contents: [{ parts: [{ text: SMART_BREVITY_PROMPT + transcript }] }],
+    contents: [{
+      parts: [
+        {
+          file_data: {
+            mime_type: "video/youtube",
+            file_uri: videoUrl,
+          },
+        },
+        { text: SMART_BREVITY_PROMPT },
+      ],
+    }],
     generationConfig: { temperature: 0.3 },
   });
 
-  const https = require("https");
   const urlObj = new URL(url);
-
   return new Promise((resolve, reject) => {
     const req = https.request(
       {
@@ -103,7 +70,7 @@ async function summarize(transcript) {
         res.on("data", (chunk) => (data += chunk));
         res.on("end", () => {
           const json = JSON.parse(data);
-          if (json.error) return reject(new Error(json.error.message));
+          if (json.error) return reject(new Error(`Gemini 오류: ${json.error.message}`));
           const text = json.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
           if (!text) return reject(new Error("빈 응답"));
           const match = text.match(/\{[\s\S]*\}/);
@@ -127,26 +94,17 @@ async function main() {
 
   const videos = JSON.parse(fs.readFileSync(inFile, "utf8"));
   const pending = videos.filter((v) => !v.summary);
-
   console.log(`요약 대상: ${pending.length}개`);
 
   for (const video of pending) {
     console.log(`\n처리 중: ${video.title}`);
-    const transcript = getTranscript(video.video_id);
-    if (!transcript) {
-      console.log("  transcript 없음 — 건너뜀");
-      continue;
-    }
-    console.log(`  transcript ${transcript.length}자 추출`);
-
     try {
-      const summary = await summarize(transcript);
+      const summary = await summarize(video.url);
       video.summary = summary;
       console.log(`  요약 완료: ${summary.one_line}`);
     } catch (e) {
       console.error(`  요약 실패: ${e.message}`);
     }
-
     await new Promise((r) => setTimeout(r, 1000));
   }
 
