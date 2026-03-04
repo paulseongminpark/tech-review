@@ -309,8 +309,14 @@ function postProcess(content, citations = []) {
 function callSonarPro(prompt, domainFilter = []) {
   return new Promise((resolve, reject) => {
     const systemMsg = LANG === "ko"
-      ? "당신은 글로벌 기술·AI 동향 전문 리서처입니다. 반드시 한국어로 답변하세요."
-      : "You are an expert researcher on global tech and AI trends. Always respond in English.";
+      ? "당신은 글로벌 기술·AI 동향 전문 리서처입니다. 반드시 한국어로 답변하세요. " +
+        "응답은 반드시 Smart Brevity 형식을 따르세요: " +
+        "## Today in One Line → ## 1. [헤드라인] → 리드 1문장 → **Why it matters:** → 불릿 3개 → **What's next:** → **Source:** [제목](URL) 순서. " +
+        "아카데믹 리포트·에세이·목차 형식 금지. 3개 항목만 작성."
+      : "You are an expert researcher on global tech and AI trends. Always respond in English. " +
+        "You MUST follow Smart Brevity format exactly: " +
+        "## Today in One Line → ## 1. [Headline] → lead sentence → **Why it matters:** → 3 bullets → **What's next:** → **Source:** [title](URL). " +
+        "No academic reports, essays, or table-of-contents format. Exactly 3 items.";
 
     const requestBody = {
       model: "sonar-pro",
@@ -375,8 +381,14 @@ function callSonarPro(prompt, domainFilter = []) {
 function submitDeepResearch(prompt, domainFilter = []) {
   return new Promise((resolve, reject) => {
     const systemMsg = LANG === "ko"
-      ? "당신은 글로벌 기술·AI 동향 전문 리서처입니다. 반드시 한국어로 답변하세요."
-      : "You are an expert researcher on global tech and AI trends. Always respond in English.";
+      ? "당신은 글로벌 기술·AI 동향 전문 리서처입니다. 반드시 한국어로 답변하세요. " +
+        "응답은 반드시 Smart Brevity 형식을 따르세요: " +
+        "## Today in One Line → ## 1. [헤드라인] → 리드 1문장 → **Why it matters:** → 불릿 3개 → **What's next:** → **Source:** [제목](URL) 순서. " +
+        "아카데믹 리포트·에세이·목차 형식 금지. 3개 항목만 작성."
+      : "You are an expert researcher on global tech and AI trends. Always respond in English. " +
+        "You MUST follow Smart Brevity format exactly: " +
+        "## Today in One Line → ## 1. [Headline] → lead sentence → **Why it matters:** → 3 bullets → **What's next:** → **Source:** [title](URL). " +
+        "No academic reports, essays, or table-of-contents format. Exactly 3 items.";
 
     // deep research는 도메인 필터 미지원 — 자체 검색으로 소스 결정
     const requestBody = {
