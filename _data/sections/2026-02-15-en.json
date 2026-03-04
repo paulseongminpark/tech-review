@@ -1,0 +1,95 @@
+{
+  "date": "2026-02-15",
+  "lang": "en",
+  "post_url": "/en/2026/02/15/daily-tech-review/",
+  "post_title": "China AI Price War & OpenAI Ads vs Anthropic No-Ad Stance",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "Sandia National Labs Solves PDEs on Neuromorphic Hardware — HPC's Energy Efficiency Inflection",
+      "lead": "Sandia National Laboratories successfully performed physics simulations based on partial differential equations (PDEs) using brain-inspired neuromorphic hardware, publishing the results in Nature Machine Intelligence.",
+      "tags": [
+        "hardware",
+        "chips",
+        "ai-tech",
+        "research",
+        "media-ai",
+        "policy",
+        "china",
+        "geopolitics",
+        "energy",
+        "eu"
+      ],
+      "anchor": "sandia-national-labs-solves-pdes-on-neuromorphic-hardware-hp"
+    },
+    {
+      "index": 2,
+      "title": "DOE Genesis/SYNAPS-I — Petabyte Science Data Interpreted in Real Time",
+      "lead": "A public-private consortium led by Lawrence Berkeley National Laboratory built an ML pipeline that interprets petabytes of X-ray and neutron scattering data on the fly.",
+      "tags": [
+        "hardware",
+        "chips",
+        "ai-tech",
+        "research",
+        "media-ai",
+        "policy",
+        "china",
+        "geopolitics"
+      ],
+      "anchor": "doe-genesissynaps-i-petabyte-science-data-interpreted-in-rea"
+    },
+    {
+      "index": 3,
+      "title": "China's Big Three Multimodal Releases — Seedance 2.0, Kling 3.0, Qwen 3.5",
+      "lead": "ByteDance, Kuaishou, and Alibaba released a quad-modal video model, 4K video generation, and a math/coding open-weight model in rapid succession.",
+      "tags": [
+        "hardware",
+        "chips",
+        "ai-tech",
+        "research",
+        "media-ai",
+        "policy",
+        "china",
+        "geopolitics",
+        "multimodal"
+      ],
+      "anchor": "chinas-big-three-multimodal-releases-seedance-20-kling-30-qw"
+    },
+    {
+      "index": 4,
+      "title": "OpenAI Launches Ads and Frontier vs. Anthropic Holds No-Ads Line and Opens Free Tier",
+      "lead": "OpenAI concretized a dual revenue structure with advertising and an enterprise agent platform, while Anthropic reaffirmed its no-ads principle and significantly expanded free-plan capabilities.",
+      "tags": [
+        "hardware",
+        "chips",
+        "ai-tech",
+        "research",
+        "media-ai",
+        "policy",
+        "china",
+        "geopolitics",
+        "openai",
+        "anthropic"
+      ],
+      "anchor": "openai-launches-ads-and-frontier-vs-anthropic-holds-no-ads-l"
+    },
+    {
+      "index": 5,
+      "title": "Canada-Germany Sovereign Technology Alliance — First Official Democratic AI Governance Model",
+      "lead": "Canada and Germany signed an AI joint declaration and launched an alliance to build sovereign AI capabilities.",
+      "tags": [
+        "hardware",
+        "chips",
+        "ai-tech",
+        "research",
+        "media-ai",
+        "policy",
+        "china",
+        "geopolitics",
+        "ma"
+      ],
+      "anchor": "canada-germany-sovereign-technology-alliance-first-official-"
+    }
+  ]
+}

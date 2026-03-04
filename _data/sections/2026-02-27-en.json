@@ -1,0 +1,55 @@
+{
+  "date": "2026-02-27",
+  "lang": "en",
+  "post_url": "/en/2026/02/27/daily-tech-review/",
+  "post_title": "Meta's 6GW AMD deal, DRAM prices up 90%, Rubin unveiled — AI infrastructure is restructuring the entire semiconductor supply chain.",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "Meta goes dual-vendor: 6GW AMD deal + NVIDIA partnership simultaneously — hyperscalers hit $63B",
+      "lead": "Meta announced a multi-year contract with AMD for up to 6GW of Instinct GPUs (estimated $6B potential revenue) on February 24, while simultaneously finalizing a multi-generation partnership with NVIDIA covering millions of Grace CPUs, Blackwell and R",
+      "tags": [
+        "hardware",
+        "chips",
+        "datacenter",
+        "infrastructure",
+        "nvidia",
+        "amd",
+        "meta"
+      ],
+      "anchor": "meta-goes-dual-vendor-6gw-amd-deal-nvidia-partnership-simult"
+    },
+    {
+      "index": 2,
+      "title": "DRAM prices surge 90% — AI demand shock hits smartphones and auto industry",
+      "lead": "DRAM prices jumped 90% in Q1 2026 versus Q4 2025. AI data center demand for high-bandwidth memory is absorbing the majority of output from the big three — Samsung, SK Hynix, Micron (93% of global supply) — structurally squeezing consumer and automoti",
+      "tags": [
+        "hardware",
+        "chips",
+        "datacenter",
+        "infrastructure",
+        "nvidia",
+        "amd",
+        "ma"
+      ],
+      "anchor": "dram-prices-surge-90-ai-demand-shock-hits-smartphones-and-au"
+    },
+    {
+      "index": 3,
+      "title": "NVIDIA Rubin, TSMC 2nm, China split — three forces reshaping the semiconductor ecosystem",
+      "lead": "NVIDIA unveiled the Rubin platform targeting up to 10x lower inference token cost versus Blackwell and 4x more efficient MoE training. TSMC raised its dividend 28% and guided for 100K 2nm wafers/month in 2026. Meanwhile, NVIDIA still hasn't booked re",
+      "tags": [
+        "hardware",
+        "chips",
+        "datacenter",
+        "infrastructure",
+        "nvidia",
+        "amd",
+        "tsmc",
+        "china"
+      ],
+      "anchor": "nvidia-rubin-tsmc-2nm-china-split-three-forces-reshaping-the"
+    }
+  ]
+}

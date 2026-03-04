@@ -1,0 +1,169 @@
+{
+  "date": "2026-02-19",
+  "lang": "en",
+  "post_url": "/en/2026/02/19/daily-tech-review/",
+  "post_title": "Claude Opus 4.6 & GLM-5 Signal Agent-as-Labor-Unit Tipping Point",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "Claude Opus 4.6 Deploys Agent Teams Across All Knowledge Work",
+      "lead": "Anthropic's new flagship model ships with 1M token context and parallel agent team capability.",
+      "tags": [
+        "company",
+        "anthropic",
+        "ai-tech",
+        "ai-models",
+        "openai",
+        "policy",
+        "geopolitics"
+      ],
+      "anchor": "claude-opus-46-deploys-agent-teams-across-all-knowledge-work"
+    },
+    {
+      "index": 2,
+      "title": "GLM-5 Achieves Frontier Performance Without US GPUs",
+      "lead": "Zhipu AI released GLM-5, a 744B MoE model trained entirely on Huawei Ascend hardware with MindSpore.",
+      "tags": [
+        "company",
+        "anthropic",
+        "ai-tech",
+        "ai-models",
+        "openai",
+        "policy",
+        "geopolitics",
+        "ma"
+      ],
+      "anchor": "glm-5-achieves-frontier-performance-without-us-gpus"
+    },
+    {
+      "index": 3,
+      "title": "OpenAI Frontier Treats AI as a Colleague to Hire, Onboard, and Evaluate",
+      "lead": "OpenAI unveiled Frontier, an end-to-end enterprise platform for operating AI \"colleagues\" — not just AI models.",
+      "tags": [
+        "company",
+        "anthropic",
+        "ai-tech",
+        "ai-models",
+        "openai",
+        "policy",
+        "geopolitics"
+      ],
+      "anchor": "openai-frontier-treats-ai-as-a-colleague-to-hire-onboard-and"
+    },
+    {
+      "index": 4,
+      "title": "Snowflake-OpenAI $200M Partnership: Run Agents Where Your Data Lives",
+      "lead": "Snowflake and OpenAI signed a multi-year $200M partnership to natively integrate GPT-5.2 into the Snowflake platform.",
+      "tags": [
+        "company",
+        "anthropic",
+        "ai-tech",
+        "ai-models",
+        "openai",
+        "policy",
+        "geopolitics",
+        "agents"
+      ],
+      "anchor": "snowflake-openai-200m-partnership-run-agents-where-your-data"
+    },
+    {
+      "index": 5,
+      "title": "Big Tech's $650B 2026 CapEx Makes AI Infrastructure a National-Scale Utility",
+      "lead": "The combined 2026 AI infrastructure investment of Alphabet, Amazon, Meta, and Microsoft hit an all-time record.",
+      "tags": [
+        "company",
+        "anthropic",
+        "ai-tech",
+        "ai-models",
+        "openai",
+        "policy",
+        "geopolitics",
+        "ma",
+        "capex"
+      ],
+      "anchor": "big-techs-650b-2026-capex-makes-ai-infrastructure-a-national"
+    },
+    {
+      "index": 6,
+      "title": "Google Secures Emerging Market Foothold with $15B India AI Investment",
+      "lead": "At India's AI Impact Summit, Google announced $15 billion in investment and a submarine cable initiative.",
+      "tags": [
+        "company",
+        "anthropic",
+        "ai-tech",
+        "ai-models",
+        "openai",
+        "policy",
+        "geopolitics",
+        "investment",
+        "ma",
+        "india",
+        "google"
+      ],
+      "anchor": "google-secures-emerging-market-foothold-with-15b-india-ai-in"
+    },
+    {
+      "index": 7,
+      "title": "ChatGPT Adds Ads, Sharpening the Value of Paid Subscriptions",
+      "lead": "OpenAI began testing ads in the ChatGPT Free and Go ($8/month) tiers in the US.",
+      "tags": [
+        "company",
+        "anthropic",
+        "ai-tech",
+        "ai-models",
+        "openai",
+        "policy",
+        "geopolitics"
+      ],
+      "anchor": "chatgpt-adds-ads-sharpening-the-value-of-paid-subscriptions"
+    },
+    {
+      "index": 8,
+      "title": "Self-Validating AI Becomes Autonomous Worker in Manufacturing",
+      "lead": "As of February 2026, self-validating AI — which verifies and corrects its own results at each step — is emerging as a major trend in manufacturing and industrial domains.",
+      "tags": [
+        "company",
+        "anthropic",
+        "ai-tech",
+        "ai-models",
+        "openai",
+        "policy",
+        "geopolitics",
+        "ma"
+      ],
+      "anchor": "self-validating-ai-becomes-autonomous-worker-in-manufacturin"
+    },
+    {
+      "index": 9,
+      "title": "OpenClaw and Moltbook Confirm Agents Amplify Dangerous Instructions Between Each Other",
+      "lead": "An arXiv study reported patterns of dangerous instruction amplification in the Moltbook environment, where agents interact Reddit-style.",
+      "tags": [
+        "company",
+        "anthropic",
+        "ai-tech",
+        "ai-models",
+        "openai",
+        "policy",
+        "geopolitics",
+        "agents"
+      ],
+      "anchor": "openclaw-and-moltbook-confirm-agents-amplify-dangerous-instr"
+    },
+    {
+      "index": 10,
+      "title": "Sovereign AI, Agent SEO, and English as a Programming Language — Three Structural Trends",
+      "lead": "February 2026 confirms three simultaneous structural trends: national AI sovereignty competition, agent visibility optimization, and natural-language-driven development.",
+      "tags": [
+        "company",
+        "anthropic",
+        "ai-tech",
+        "ai-models",
+        "openai",
+        "policy",
+        "geopolitics"
+      ],
+      "anchor": "sovereign-ai-agent-seo-and-english-as-a-programming-language"
+    }
+  ]
+}

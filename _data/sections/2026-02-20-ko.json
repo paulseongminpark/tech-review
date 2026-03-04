@@ -1,0 +1,105 @@
+{
+  "date": "2026-02-20",
+  "lang": "ko",
+  "post_url": "/ko/2026/02/20/daily-tech-review/",
+  "post_title": "인도 AI Summit: 구글 $150억·타타 AI 데이터센터·OpenAI-TCS 발표",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "타타 그룹, 인도 최초 AI 기반 데이터센터 구축 — OpenAI와 100MW 인프라 파트너십",
+      "lead": "Tata Group이 OpenAI와 협력해 100MW 규모 AI 인프라를 구축하고 1GW까지 확장 계획을 밝혔다.",
+      "tags": [
+        "policy",
+        "india",
+        "google",
+        "business",
+        "company",
+        "openai",
+        "infrastructure",
+        "datacenter"
+      ],
+      "anchor": "타타-그룹-인도-최초-ai-기반-데이터센터-구축-openai와-100mw-인프라-파트너십"
+    },
+    {
+      "index": 2,
+      "title": "Google CEO, Visakhapatnam에 15억 달러 AI Hub 투자 발표",
+      "lead": "Sundar Pichai가 인도 AI Impact Summit에서 Vizag AI Hub 구축을 위한 15억 달러 투자를 공식 발표했다.",
+      "tags": [
+        "policy",
+        "india",
+        "google",
+        "business",
+        "company",
+        "openai",
+        "infrastructure",
+        "datacenter"
+      ],
+      "anchor": "google-ceo-visakhapatnam에-15억-달러-ai-hub-투자-발표"
+    },
+    {
+      "index": 3,
+      "title": "Jio, AI 변혁 주도 및 일자리 손실 없는 전환 약속",
+      "lead": "Mukesh Ambani가 Jio의 AI 교육 이니셔티브를 통해 일자리 손실 없이 고급 기술 일자리를 창출하겠다고 선언했다.",
+      "tags": [
+        "policy",
+        "india",
+        "google",
+        "business",
+        "company",
+        "openai",
+        "infrastructure",
+        "datacenter"
+      ],
+      "anchor": "jio-ai-변혁-주도-및-일자리-손실-없는-전환-약속"
+    },
+    {
+      "index": 4,
+      "title": "UN, 30억 달러 글로벌 AI 펀드 촉구 — AI가 소수 억만장자의 손에 좌우되면 안 된다",
+      "lead": "Antonio Guterres UN 사무총장이 AI Impact Summit에서 기술 기업들에 글로벌 AI 펀드 조성을 요청했다.",
+      "tags": [
+        "policy",
+        "india",
+        "google",
+        "business",
+        "company",
+        "openai",
+        "infrastructure",
+        "datacenter"
+      ],
+      "anchor": "un-30억-달러-글로벌-ai-펀드-촉구-ai가-소수-억만장자의-손에-좌우되면-안-된다"
+    },
+    {
+      "index": 5,
+      "title": "인도, AI 스택 전 5개 층 참여 — 소형 언어모델 중심 민주화 전략 추진",
+      "lead": "인도 정부가 38,000개 GPU를 스타트업에 저가로 배포하며 대규모 기업 중심이 아닌 분산형 AI 민주화를 추진하고 있다.",
+      "tags": [
+        "policy",
+        "india",
+        "google",
+        "business",
+        "company",
+        "openai",
+        "infrastructure",
+        "datacenter"
+      ],
+      "anchor": "인도-ai-스택-전-5개-층-참여-소형-언어모델-중심-민주화-전략-추진"
+    },
+    {
+      "index": 6,
+      "title": "AI 거버넌스 국제 합의 — 118개국이 책임 있는 AI 개발 로드맵 모색",
+      "lead": "PM Modi가 AI의 진정한 영향을 위한 협력적 로드맵 필요성을 강조하며 글로벌 AI 거버넌스 구축을 촉구했다.",
+      "tags": [
+        "policy",
+        "india",
+        "google",
+        "business",
+        "company",
+        "openai",
+        "infrastructure",
+        "datacenter"
+      ],
+      "anchor": "ai-거버넌스-국제-합의-118개국이-책임-있는-ai-개발-로드맵-모색"
+    }
+  ]
+}

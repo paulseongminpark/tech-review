@@ -1,0 +1,88 @@
+{
+  "date": "2026-02-16",
+  "lang": "ko",
+  "post_url": "/ko/2026/02/16/daily-tech-review/",
+  "post_title": "MiniMax M2.5, 최고 성능 1/10 가격으로 멀티에이전트 경쟁 격화",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "Claude Opus 4.6 — 에이전트 팀과 100만 토큰 컨텍스트로 멀티에이전트 표준 제시",
+      "lead": "Anthropic이 코드 플래닝·리팩터링·디버깅 능력을 대폭 향상시킨 Claude Opus 4.6을 발표했다.",
+      "tags": [
+        "company",
+        "anthropic",
+        "openai",
+        "ai-tech",
+        "ai-models"
+      ],
+      "anchor": "claude-opus-46-에이전트-팀과-100만-토큰-컨텍스트로-멀티에이전트-표준-제시"
+    },
+    {
+      "index": 2,
+      "title": "OpenAI Frontier — CRM·ERP 연결하는 풀스택 엔터프라이즈 에이전트 플랫폼",
+      "lead": "OpenAI가 GPT-5 계열 위에 에이전트를 실제 업무 시스템에 연결·운영하는 풀스택 엔터프라이즈 플랫폼 Frontier를 출시했다.",
+      "tags": [
+        "company",
+        "anthropic",
+        "openai",
+        "ai-tech",
+        "ai-models"
+      ],
+      "anchor": "openai-frontier-crm·erp-연결하는-풀스택-엔터프라이즈-에이전트-플랫폼"
+    },
+    {
+      "index": 3,
+      "title": "MiniMax M2.5 / M2.5 Lightning — 최고 성능 대비 1/10~1/20 가격의 오픈웨이트",
+      "lead": "MiniMax가 수정 MIT 라이선스로 M2.5와 M2.5 Lightning을 공개하며 저비용 모델 경쟁을 한 단계 끌어올렸다.",
+      "tags": [
+        "company",
+        "anthropic",
+        "openai",
+        "ai-tech",
+        "ai-models",
+        "ma"
+      ],
+      "anchor": "minimax-m25-m25-lightning-최고-성능-대비-110120-가격의-오픈웨이트"
+    },
+    {
+      "index": 4,
+      "title": "Mistral Voxtral Transcribe 2 — 오픈소스 실시간 다국어 전사",
+      "lead": "Mistral이 Apache 2.0 라이선스로 Voxtral Transcribe 2를 출시해 실시간 음성 전사 시장에 진입했다.",
+      "tags": [
+        "company",
+        "anthropic",
+        "openai",
+        "ai-tech",
+        "ai-models"
+      ],
+      "anchor": "mistral-voxtral-transcribe-2-오픈소스-실시간-다국어-전사"
+    },
+    {
+      "index": 5,
+      "title": "AI slop과 연구 품질 위기 — ICML 2026에 2만 4천 건 제출",
+      "lead": "Nature가 AI가 생성한 저품질 논문을 \"AI slop\"으로 규정하며 학술 출판의 품질 위기를 공식화했다.",
+      "tags": [
+        "company",
+        "anthropic",
+        "openai",
+        "ai-tech",
+        "ai-models"
+      ],
+      "anchor": "ai-slop과-연구-품질-위기-icml-2026에-2만-4천-건-제출"
+    },
+    {
+      "index": 6,
+      "title": "에이전트 보안 — 프롬프트 인젝션과 수백만 ID 노출",
+      "lead": "에이전트 전용 소셜 네트워크 OpenClaw·Moltbook에서 프롬프트 인젝션, 악성 스킬 배포, 수백만 에이전트 ID 노출 등의 보안 취약점이 경고됐다.",
+      "tags": [
+        "company",
+        "anthropic",
+        "openai",
+        "ai-tech",
+        "ai-models"
+      ],
+      "anchor": "에이전트-보안-프롬프트-인젝션과-수백만-id-노출"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "date": "2026-03-02",
+  "lang": "en",
+  "post_url": "/en/2026/03/02/daily-tech-review/",
+  "post_title": "The U.S. Department of Defense's AI policy upheaval is shaking the industry, the rift between OpenAI and Anthropic is deepening within the U.S. AI camp, and China's model extraction attacks are heightening tensions in the international AI competition.",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "U.S. Department of Defense's Choice: Contract with OpenAI, Anthropic Designated as Supply Chain Risk",
+      "lead": "OpenAI has signed a contract with the U.S. Department of Defense to deploy AI models in classified environments (classified systems), and immediately after, the Trump administration designated Anthropic as a \"supply chain risk\" and ordered all federa",
+      "tags": [
+        "ai-tech",
+        "ai-models",
+        "research",
+        "benchmarks",
+        "openai",
+        "anthropic"
+      ],
+      "anchor": "us-department-of-defenses-choice-contract-with-openai-anthro"
+    },
+    {
+      "index": 2,
+      "title": "Chinese AI Companies Caught Illegally Extracting Over 16 Million Claude Conversations",
+      "lead": "Anthropic officially announced that three companies—DeepSeek, Moonshot AI, and MiniMax—collected over 16 million Claude conversations without authorization through approximately 24,000 fake accounts, marking this as evidence that China has replicated",
+      "tags": [
+        "ai-tech",
+        "ai-models",
+        "research",
+        "benchmarks"
+      ],
+      "anchor": "chinese-ai-companies-caught-illegally-extracting-over-16-mil"
+    },
+    {
+      "index": 3,
+      "title": "Frontier LLM Performance Competition Heats Up: Anthropic's New Model Releases Redefine Industry Standards",
+      "lead": "Anthropic released Claude Opus 4.6 (1M token context, β release) on February 5 and followed with Claude Sonnet 4.6 at the end of February, dramatically closing the performance gap with OpenAI's GPT-5.2 and setting new industry standards for price-per",
+      "tags": [
+        "ai-tech",
+        "ai-models",
+        "research",
+        "benchmarks",
+        "llm",
+        "ma",
+        "anthropic"
+      ],
+      "anchor": "frontier-llm-performance-competition-heats-up-anthropics-new"
+    }
+  ]
+}

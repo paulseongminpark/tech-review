@@ -1,0 +1,91 @@
+{
+  "date": "2026-02-16",
+  "lang": "en",
+  "post_url": "/en/2026/02/16/daily-tech-review/",
+  "post_title": "MiniMax M2.5 Cuts Top Model Price 10x, Multi-Agent Becomes Standard",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "Claude Opus 4.6 — Agent Teams and 1M Token Context Set the Multi-Agent Standard",
+      "lead": "Anthropic unveiled Claude Opus 4.6 with substantially improved code planning, refactoring, and debugging capabilities.",
+      "tags": [
+        "company",
+        "anthropic",
+        "openai",
+        "ai-tech",
+        "ai-models"
+      ],
+      "anchor": "claude-opus-46-agent-teams-and-1m-token-context-set-the-mult"
+    },
+    {
+      "index": 2,
+      "title": "OpenAI Frontier — Full-Stack Enterprise Agent Platform Connecting CRM and ERP",
+      "lead": "OpenAI launched Frontier, a full-stack enterprise platform built on the GPT-5 family for connecting and operating agents across real business systems.",
+      "tags": [
+        "company",
+        "anthropic",
+        "openai",
+        "ai-tech",
+        "ai-models",
+        "enterprise"
+      ],
+      "anchor": "openai-frontier-full-stack-enterprise-agent-platform-connect"
+    },
+    {
+      "index": 3,
+      "title": "MiniMax M2.5 / M2.5 Lightning — Top-Model Performance at 1/10–1/20 the Price",
+      "lead": "MiniMax released M2.5 and M2.5 Lightning under a modified MIT license, raising the bar in the low-cost model competition.",
+      "tags": [
+        "company",
+        "anthropic",
+        "openai",
+        "ai-tech",
+        "ai-models",
+        "ma"
+      ],
+      "anchor": "minimax-m25-m25-lightning-top-model-performance-at-110120-th"
+    },
+    {
+      "index": 4,
+      "title": "Mistral Voxtral Transcribe 2 — Open-Source Real-Time Multilingual Transcription",
+      "lead": "Mistral released Voxtral Transcribe 2 under the Apache 2.0 license, entering the real-time speech transcription market.",
+      "tags": [
+        "company",
+        "anthropic",
+        "openai",
+        "ai-tech",
+        "ai-models"
+      ],
+      "anchor": "mistral-voxtral-transcribe-2-open-source-real-time-multiling"
+    },
+    {
+      "index": 5,
+      "title": "AI Slop and the Research Quality Crisis — 24,000 Papers Submitted to ICML 2026",
+      "lead": "Nature officially characterized low-quality AI-generated papers as \"AI slop,\" formalizing a quality crisis in academic publishing.",
+      "tags": [
+        "company",
+        "anthropic",
+        "openai",
+        "ai-tech",
+        "ai-models",
+        "research"
+      ],
+      "anchor": "ai-slop-and-the-research-quality-crisis-24000-papers-submitt"
+    },
+    {
+      "index": 6,
+      "title": "Agent Security — Prompt Injection and Millions of ID Exposures",
+      "lead": "Security vulnerabilities were flagged in agent-specific social networks OpenClaw and Moltbook, including prompt injection attacks, malicious skill distribution, and the exposure of millions of agent IDs.",
+      "tags": [
+        "company",
+        "anthropic",
+        "openai",
+        "ai-tech",
+        "ai-models",
+        "security"
+      ],
+      "anchor": "agent-security-prompt-injection-and-millions-of-id-exposures"
+    }
+  ]
+}

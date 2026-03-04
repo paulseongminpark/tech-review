@@ -1,0 +1,46 @@
+{
+  "date": "2026-02-26",
+  "lang": "en",
+  "post_url": "/en/2026/02/26/daily-tech-review/",
+  "post_title": "Diffusion-based inference LLMs achieve 1,000+ tokens/sec, transforming AI generation paradigms, while open-weight coding models significantly reduce cloud API dependency, rapidly expanding the local AI development ecosystem.",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "Inception Labs Achieves 1,000 Tokens/Sec with Mercury 2 — Official Launch of Diffusion-Based Inference LLM",
+      "lead": "Inception Labs announced Mercury 2 on February 25, completely abandoning traditional autoregressive token generation in favor of Diffusion-based parallel refinement generation, achieving 1,009 tokens/sec on NVIDIA Blackwell GPUs. This is approximatel",
+      "tags": [
+        "opensource",
+        "developer-tools",
+        "developer",
+        "llm"
+      ],
+      "anchor": "inception-labs-achieves-1000-tokenssec-with-mercury-2-offici"
+    },
+    {
+      "index": 2,
+      "title": "Alibaba Qwen Releases Qwen3-Coder-Next Open Source for Coding Agents — Sonnet-Level Performance with 3B Active Parameters",
+      "lead": "Alibaba's Qwen team released Qwen3-Coder-Next in early February, a Mixture-of-Experts structure activating only 3B out of 80B total parameters, surpassing existing DeepSeek V3.2 (37B active)·Kimi K2.5·GLM-4.7 (each 32B active) on coding benchmarks. I",
+      "tags": [
+        "opensource",
+        "developer-tools",
+        "developer",
+        "agents",
+        "ma"
+      ],
+      "anchor": "alibaba-qwen-releases-qwen3-coder-next-open-source-for-codin"
+    },
+    {
+      "index": 3,
+      "title": "GitHub Agentic Workflows, Technical Preview Begins — Activates Low-Level Repository Automation Beyond CI/CD",
+      "lead": "GitHub's Agentic Workflows, announced on February 13, enables direct execution of AI agents (GitHub Copilot CLI, Claude Code, OpenAI Codex) within GitHub Actions. By describing automation intent in Markdown files, a compiler converts them to YAML for",
+      "tags": [
+        "opensource",
+        "developer-tools",
+        "developer",
+        "ma"
+      ],
+      "anchor": "github-agentic-workflows-technical-preview-begins-activates-"
+    }
+  ]
+}

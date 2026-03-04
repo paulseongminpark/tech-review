@@ -1,0 +1,42 @@
+{
+  "date": "2026-03-01",
+  "lang": "ko",
+  "post_url": "/ko/2026/03/01/daily-tech-review/",
+  "post_title": "프론티어 모델 한 달 집중전, AI 버블 공포 vs 투자 확대 역설, 에너지 위기의 제도화 — 2월은 AI 산업의 분기점.",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "프론티어 모델 경쟁, 한 달 만에 성능 정체 돌파",
+      "lead": "Google의 Gemini 3.1 Pro가 2월 19일 공개되며 ARC-AGI-2 벤마크에서 77.1%를 기록했다. 이는 같은 시리즈의 Gemini 3 Pro 성능의 2배 이상 상승이며, 불과 3주 전 Anthropic의 Claude Opus 4.6(68.8%)과 OpenAI의 GPT-5.3-Codex를 차례로 압박했다.",
+      "tags": [
+        "media",
+        "weekly",
+        "ai-tech"
+      ],
+      "anchor": "프론티어-모델-경쟁-한-달-만에-성능-정체-돌파"
+    },
+    {
+      "index": 2,
+      "title": "\"2028년 AI 대실업\"이 시장을 흔들었지만, 현실은 투자 가속화",
+      "lead": "2월 22일 Citrini Research의 바이럴 에세이 \"The 2028 Global Intelligence Crisis\"는 AI로 인한 화이트칼라 실업 시나리오(S&P 500 -38%, 실업률 10.2%)를 제시했다. 이는 2월 24일 월요일 다우지수를 1.7% 하락시켰고 소프트웨어 주식(IGV Software Index)을 -27% 연중 낙폭까지 몰아갔다. 하지만 같은 주에 현실은 정반대로 움직였다.",
+      "tags": [
+        "media",
+        "weekly",
+        "ai-tech"
+      ],
+      "anchor": "2028년-ai-대실업이-시장을-흔들었지만-현실은-투자-가속화"
+    },
+    {
+      "index": 3,
+      "title": "AI 데이터센터 전력 위기의 규제화 — White House Rate Payer Protection Pledge",
+      "lead": "미국 전기 요금이 작년 대비 6% 상승했으며, AI 데이터센터 수요가 주요 원인으로 지목되었다. 트럼프 대통령은 2월 24일 국정 연설에서 대형 테크 기업들에 자체 전력 생산 의무를 부과하겠다고 선언했고, 2월 26일 Taylor Rodgers 백악관 대변인은 Amazon·Google·Meta·Microsoft·xAI·Oracle·OpenAI가 3월 4일 백악관에서 정식으로 \"Rate Payer Protection Pledge\"에 서명할 예정이",
+      "tags": [
+        "media",
+        "weekly",
+        "ai-tech"
+      ],
+      "anchor": "ai-데이터센터-전력-위기의-규제화-white-house-rate-payer-protection-pledge"
+    }
+  ]
+}

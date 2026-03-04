@@ -1,0 +1,54 @@
+{
+  "date": "2026-02-22",
+  "lang": "ko",
+  "post_url": "/ko/2026/02/22/daily-tech-review/",
+  "post_title": "Google 인도 AI Hub 150억 달러 — 이번 주 AI는 인프라 전쟁이었다",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "Google, 인도 비사카파트남에 AI Hub 150억 달러 투자 확정",
+      "lead": "Sundar Pichai가 India AI Impact Summit 2026에서 기가와트급 AI 컴퓨트와 해저 케이블 게이트웨이를 포함한 풀스택 AI Hub 구축을 발표했다.",
+      "tags": [
+        "google",
+        "policy",
+        "india",
+        "infrastructure",
+        "datacenter",
+        "ai-tech",
+        "quantum"
+      ],
+      "anchor": "google-인도-비사카파트남에-ai-hub-150억-달러-투자-확정"
+    },
+    {
+      "index": 2,
+      "title": "Quantum AI, 2026년 실용화 원년 — 금융·신약 분야 첫 적용",
+      "lead": "양자 컴퓨팅과 딥러닝의 융합(Quantum AI)이 올해 Quantum Utility 단계에 진입하며 산업 적용이 시작됐다.",
+      "tags": [
+        "google",
+        "policy",
+        "india",
+        "infrastructure",
+        "datacenter",
+        "ai-tech",
+        "quantum"
+      ],
+      "anchor": "quantum-ai-2026년-실용화-원년-금융·신약-분야-첫-적용"
+    },
+    {
+      "index": 3,
+      "title": "Arizona 대학 AI 헬스 심포지엄 — 의료 AI 책임론 본격 시작",
+      "lead": "Arizona 대학이 AI 헬스 이노베이션 심포지엄을 열어 임상 현장 AI 적용의 책임 원칙을 공론화했다.",
+      "tags": [
+        "google",
+        "policy",
+        "india",
+        "infrastructure",
+        "datacenter",
+        "ai-tech",
+        "quantum"
+      ],
+      "anchor": "arizona-대학-ai-헬스-심포지엄-의료-ai-책임론-본격-시작"
+    }
+  ]
+}

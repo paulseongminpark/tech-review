@@ -1,0 +1,47 @@
+{
+  "date": "2026-02-23",
+  "lang": "en",
+  "post_url": "/en/2026/02/23/daily-tech-review/",
+  "post_title": "LF AI Open Model Initiative Phase II, Microsoft AI-RAN Founded — Open-Source AI Infra Accelerates",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "[LF AI & Data Open Model Initiative Enters Phase II — Strengthening Governance and Accelerating Multimodal AI Development]",
+      "lead": "LF AI & Data under the Linux Foundation transitions the Open Model Initiative to Phase II, enhancing community-led initiatives for evaluation, benchmarking, and model development.[1][2]",
+      "tags": [
+        "ai-tech",
+        "ai-models",
+        "research",
+        "benchmarks",
+        "multimodal"
+      ],
+      "anchor": "lf-ai-data-open-model-initiative-enters-phase-ii-strengtheni"
+    },
+    {
+      "index": 2,
+      "title": "[LF Edge EdgeLake Project Promoted to Stage 2 — Standardizing Real-Time AI Inference at the Edge]",
+      "lead": "LF Edge's EdgeLake project advances to Stage 2, introducing the Model Context Protocol (MCP) to support real-time AI inference at the edge.[2]",
+      "tags": [
+        "ai-tech",
+        "ai-models",
+        "research",
+        "benchmarks"
+      ],
+      "anchor": "lf-edge-edgelake-project-promoted-to-stage-2-standardizing-r"
+    },
+    {
+      "index": 3,
+      "title": "[Microsoft AI-RAN Alliance Founded — Advancing AI-Native Telecom Networks]",
+      "lead": "Microsoft joins as a founding member of the AI-RAN Alliance, promoting the integration of AI and RAN to intelligentize 5G/6G networks.",
+      "tags": [
+        "ai-tech",
+        "ai-models",
+        "research",
+        "benchmarks",
+        "microsoft"
+      ],
+      "anchor": "microsoft-ai-ran-alliance-founded-advancing-ai-native-teleco"
+    }
+  ]
+}

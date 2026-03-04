@@ -73,12 +73,17 @@ jobs:
           LANG: en
         run: node scripts/parse-content.js
 
+      # ── 섹션 추출 ────────────────────────────────────────────────────────
+      - name: Extract sections
+        if: steps.fetch_ko.outcome == 'success'
+        run: node scripts/extract-sections.js --date ${{ env.POST_DATE }}
+
       # ── 커밋 + Push ──────────────────────────────────────────────────────
       - name: Commit and push
         run: |
           git config user.name "tech-review-bot"
           git config user.email "bot@tech-review.local"
-          git add _posts/ko/ _posts/en/
+          git add _posts/ko/ _posts/en/ _data/sections/
           if git diff --cached --quiet; then
             echo "변경사항 없음"
             echo "CHANGED=false" >> $GITHUB_ENV

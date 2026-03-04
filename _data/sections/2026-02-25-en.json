@@ -1,0 +1,44 @@
+{
+  "date": "2026-02-25",
+  "lang": "en",
+  "post_url": "/en/2026/02/25/daily-tech-review/",
+  "post_title": "Enterprise agents are transitioning from pilots to full production deployment, with concrete ROI cases emerging in finance, legal, and manufacturing sectors.",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "Anthropic Accelerates Enterprise Automation with Specialized Agent Plugins for Finance, Legal, and HR",
+      "lead": "Anthropic officially launched pre-configured agent plugins for the Claude Cowork platform on February 24. Specialized agents for finance, legal, HR, and engineering teams automate repetitive tasks such as market analysis, financial modeling, job post",
+      "tags": [
+        "business",
+        "enterprise",
+        "ma",
+        "anthropic"
+      ],
+      "anchor": "anthropic-accelerates-enterprise-automation-with-specialized"
+    },
+    {
+      "index": 2,
+      "title": "OpenAI Strengthens Enterprise Implementation by Forming Frontier Alliance with McKinsey, BCG, Accenture, and Capgemini",
+      "lead": "OpenAI officially announced a multi-year \"Frontier Alliances\" partnership with four major global consulting firms on February 24. McKinsey and Boston Consulting Group handle strategy, operating models, and change management, while Accenture and Capge",
+      "tags": [
+        "business",
+        "enterprise",
+        "openai"
+      ],
+      "anchor": "openai-strengthens-enterprise-implementation-by-forming-fron"
+    },
+    {
+      "index": 3,
+      "title": "Goldman Sachs Begins Full Operations of Transaction Accounting and Customer Onboarding Automation Using Anthropic Claude",
+      "lead": "After six months of joint development of autonomous agents based on Anthropic's Claude model, Goldman Sachs has entered the phase of executing transaction accounting, customer due diligence, and compliance verification with \"digital collaborators.\" G",
+      "tags": [
+        "business",
+        "enterprise",
+        "ma",
+        "anthropic"
+      ],
+      "anchor": "goldman-sachs-begins-full-operations-of-transaction-accounti"
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "date": "2026-03-03",
+  "lang": "en",
+  "post_url": "/en/2026/03/03/daily-tech-review/",
+  "post_title": "Anthropic's Pentagon refusal deepens divisions in U.S. AI industry, Paramount's $11 billion WBD acquisition reshapes streaming wars, Apple's three new product announcements accelerate AI device competition.",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "Trump Administration Designates Anthropic Supply Chain Risk While OpenAI Secures Pentagon Deal, Deepening AI Industry Divide",
+      "lead": "In contract negotiations with the Pentagon, Defense Secretary Pete Hegseth designated Anthropic as a \"supply chain risk\" on February 27 after the company demanded clauses prohibiting mass surveillance and autonomous weapons, and President Trump direc",
+      "tags": [
+        "company",
+        "google",
+        "microsoft",
+        "meta",
+        "apple",
+        "nvidia",
+        "openai",
+        "anthropic"
+      ],
+      "anchor": "trump-administration-designates-anthropic-supply-chain-risk-"
+    },
+    {
+      "index": 2,
+      "title": "Paramount Acquires Warner Bros. Discovery for $11 Billion in Cash, Creating Streaming Powerhouse",
+      "lead": "Paramount Skydance CEO David Ellison announced on March 2 the acquisition agreement for Warner Bros. Discovery at $31 per share in cash, totaling $11 billion in enterprise value.",
+      "tags": [
+        "company",
+        "google",
+        "microsoft",
+        "meta",
+        "apple",
+        "nvidia"
+      ],
+      "anchor": "paramount-acquires-warner-bros-discovery-for-11-billion-in-c"
+    },
+    {
+      "index": 3,
+      "title": "Apple Announces iPhone 17e and iPad Air M4 Simultaneously, Strengthening AI Device Lineup",
+      "lead": "Apple announced the new iPhone 17e ($599) and M4-powered iPad Air (11-inch $599, 13-inch $799) on March 2, with both devices featuring enhanced AI performance and significantly improved storage capacity.",
+      "tags": [
+        "company",
+        "google",
+        "microsoft",
+        "meta",
+        "apple",
+        "nvidia",
+        "eu"
+      ],
+      "anchor": "apple-announces-iphone-17e-and-ipad-air-m4-simultaneously-st"
+    }
+  ]
+}

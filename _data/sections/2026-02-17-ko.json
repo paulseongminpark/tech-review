@@ -1,0 +1,116 @@
+{
+  "date": "2026-02-17",
+  "lang": "ko",
+  "post_url": "/ko/2026/02/17/daily-tech-review/",
+  "post_title": "중국·중남미 AI 다극화와 행동형 에이전트(LAM) 부상",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "Sandia 뉴로모픽 PDE 시뮬레이션 — 에너지 효율형 HPC의 첫 실증",
+      "lead": "Sandia National Labs가 뇌 영감 하드웨어로 편미분방정식(PDE) 기반 물리 시뮬레이션에 성공하고 Nature Machine Intelligence에 게재했다.",
+      "tags": [
+        "hardware",
+        "chips",
+        "ai-tech",
+        "media-ai",
+        "policy",
+        "geopolitics",
+        "agents"
+      ],
+      "anchor": "sandia-뉴로모픽-pde-시뮬레이션-에너지-효율형-hpc의-첫-실증"
+    },
+    {
+      "index": 2,
+      "title": "DOE Genesis/SYNAPS-I — 페타바이트 실험 데이터의 실시간 해석",
+      "lead": "로렌스 버클리 국립연구소 주도, 아르곤·브룩헤이븐·SLAC·오크리지 참여 컨소시엄이 ML 파이프라인 Genesis/SYNAPS-I를 공개했다.",
+      "tags": [
+        "hardware",
+        "chips",
+        "ai-tech",
+        "media-ai",
+        "policy",
+        "geopolitics",
+        "agents"
+      ],
+      "anchor": "doe-genesissynaps-i-페타바이트-실험-데이터의-실시간-해석"
+    },
+    {
+      "index": 3,
+      "title": "ByteDance Seedance 2.0 & Kuaishou Kling 3.0 — 콘텐츠 한계비용 0 수렴 시대",
+      "lead": "ByteDance Seedance 2.0은 쿼드모달 구조에 멀티-샷 스토리보딩과 상용 광고 수준의 물리 일관성을 결합했고, Kuaishou Kling 3.0은 4K·15초·다국어 입모양 싱크로 영상 품질을 한 단계 끌어올렸다.",
+      "tags": [
+        "hardware",
+        "chips",
+        "ai-tech",
+        "media-ai",
+        "policy",
+        "geopolitics",
+        "agents"
+      ],
+      "anchor": "bytedance-seedance-20-kuaishou-kling-30-콘텐츠-한계비용-0-수렴-시대"
+    },
+    {
+      "index": 4,
+      "title": "Alibaba Qwen 3.5 & Latam-GPT — AI 주권의 신흥 지역 확장",
+      "lead": "Alibaba Qwen 3.5는 수학·코딩 추론 강화 오픈웨이트로 Meta Llama와 개발자 마인드쉐어를 정면 경쟁하고, 칠레 CENIA 주도 Latam-GPT는 중남미 8개국이 협력해 스페인어·포르투갈어 중심 오픈소스 LLM을 개발한다.",
+      "tags": [
+        "hardware",
+        "chips",
+        "ai-tech",
+        "media-ai",
+        "policy",
+        "geopolitics",
+        "agents"
+      ],
+      "anchor": "alibaba-qwen-35-latam-gpt-ai-주권의-신흥-지역-확장"
+    },
+    {
+      "index": 5,
+      "title": "OpenAI 전방위 확장 vs Anthropic 차별화 전략",
+      "lead": "OpenAI는 광고 도입·Frontier 출시·Snowflake 파트너십으로 엔터프라이즈 AI 운영체제 전략을 구체화하고, Anthropic은 무광고 공언·무료 티어 확장·규제 PAC 투자로 차별화를 강화했다.",
+      "tags": [
+        "hardware",
+        "chips",
+        "ai-tech",
+        "media-ai",
+        "policy",
+        "geopolitics",
+        "agents",
+        "openai",
+        "anthropic"
+      ],
+      "anchor": "openai-전방위-확장-vs-anthropic-차별화-전략"
+    },
+    {
+      "index": 6,
+      "title": "행동형/에이전트 AI(LAM) — Talk→Action 전환과 거버넌스 필수화",
+      "lead": "Talk→Action 전환이 본격화되면서 Reasoning·Perception·World Model을 결합한 Large Action Model(LAM) 개념이 등장했다.",
+      "tags": [
+        "hardware",
+        "chips",
+        "ai-tech",
+        "media-ai",
+        "policy",
+        "geopolitics",
+        "agents"
+      ],
+      "anchor": "행동형에이전트-ailam-talkaction-전환과-거버넌스-필수화"
+    },
+    {
+      "index": 7,
+      "title": "캐나다-독일 Sovereign Technology Alliance & OPAQUE 데이터 계보 추적",
+      "lead": "캐나다와 독일이 AI 공동선언에 서명하고 Sovereign Technology Alliance를 출범시키며, 민주주의 국가 간 AI 거버넌스 협력의 첫 공식 모델을 제시했다.",
+      "tags": [
+        "hardware",
+        "chips",
+        "ai-tech",
+        "media-ai",
+        "policy",
+        "geopolitics",
+        "agents"
+      ],
+      "anchor": "캐나다-독일-sovereign-technology-alliance-opaque-데이터-계보-추적"
+    }
+  ]
+}

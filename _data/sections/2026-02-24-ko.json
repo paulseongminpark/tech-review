@@ -1,0 +1,55 @@
+{
+  "date": "2026-02-24",
+  "lang": "ko",
+  "post_url": "/ko/2026/02/24/daily-tech-review/",
+  "post_title": "빅테크의 AI 경쟁이 고조되는 가운데 IBM 주가 25년 만에 최악을 기록했고, VC 충성도가 붕괴되며, 중국 AI 랩의 모 추출 적발로 정책 논쟁이 심화했다.",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "IBM 주가 25년 만에 최악 하락 - Anthropic COBOL 도구 발표에 당황",
+      "lead": "Anthropic이 2월 23일 Claude 코드 도구로 COBOL 레거시 코드를 현대화할 수 있다고 발표하자 IBM 주가가 13.2% 급락해 $40억 시장가를 순간에 증발시켰다. 이는 2000년 10월 닷컴 붕괴 이후 최악의 단일 거래일 손실이며, IBM의 메인프레임 사업을 중심으로 구축된 장기 수익 모델에 대한 투자자들의 근본적 우려를 드러냈다.",
+      "tags": [
+        "company",
+        "google",
+        "microsoft",
+        "meta",
+        "apple",
+        "nvidia",
+        "anthropic"
+      ],
+      "anchor": "ibm-주가-25년-만에-최악-하락---anthropic-cobol-도구-발표에-당황"
+    },
+    {
+      "index": 2,
+      "title": "OpenAI 투자자 충성도 붕괴 - 최소 12개 VC가 Anthropic $300억 펀드라운드에 동시 투자",
+      "lead": "Anthropic이 2월 중순 $300억 규모의 거대 펀드라운드를 마감하면서 Founders Fund, Iconiq, Insight Partners, Sequoia Capital을 포함한 최소 12개의 OpenAI 직접 투자자들이 동시에 Anthropic에도 출자했으며, BlackRock의 계열사까지 포함되어 실리콘밸리의 구조적 투자 원칙에 균열이 생겼다. 특히 BlackRock의 Adebayo Ogunlesi는 OpenAI 이사로 재직하면서 ",
+      "tags": [
+        "company",
+        "google",
+        "microsoft",
+        "meta",
+        "apple",
+        "nvidia",
+        "openai",
+        "anthropic"
+      ],
+      "anchor": "openai-투자자-충성도-붕괴---최소-12개-vc가-anthropic-300억-펀드라운드에-동시-투자"
+    },
+    {
+      "index": 3,
+      "title": "Anthropic이 중 AI 랩의 대규모 Claude 모델 추출 적발 - 1,600만 쿼리로 불법 증류",
+      "lead": "Anthropic이 2월 23일 DeepSeek, Moonshot AI, MiniMax 등 중국 AI 랩 3곳이 약 24,000개의 가짜 계정으로 Claude에 접근해 1,600만 건의 쿼리를 생성하며 불법적으로 모델 증류(distillation)를 시행했음을 적발하고 공개했다. 이들은 Claude의 추론 능력, 도구 사용, 코딩 등 가장 차별화된 기능을 표적으로 삼았으며, DeepSeek의 경우 정치적으로 민감한 쿼리에 대한 검열 회피 방안까",
+      "tags": [
+        "company",
+        "google",
+        "microsoft",
+        "meta",
+        "apple",
+        "nvidia",
+        "anthropic"
+      ],
+      "anchor": "anthropic이-중-ai-랩의-대규모-claude-모델-추출-적발---1600만-쿼리로-불법-증류"
+    }
+  ]
+}

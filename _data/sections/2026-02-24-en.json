@@ -1,0 +1,55 @@
+{
+  "date": "2026-02-24",
+  "lang": "en",
+  "post_url": "/en/2026/02/24/daily-tech-review/",
+  "post_title": "Amid intensifying AI competition among big tech companies, IBM's stock recorded its worst performance in 25 years, VC loyalty collapsed, and the detection of model distillation by a Chinese AI lab intensified policy debates.",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "IBM Stock's Worst Drop in 25 Years - Caught Off Guard by Anthropic's COBOL Tool Announcement",
+      "lead": "Anthropic announced on February 23 that its Claude code tool can modernize COBOL legacy code, causing IBM's stock to plummet 13.2% and evaporate $4 billion in market value in an instant. This marks the worst single-day loss since the dot-com collapse",
+      "tags": [
+        "company",
+        "google",
+        "microsoft",
+        "meta",
+        "apple",
+        "nvidia",
+        "anthropic"
+      ],
+      "anchor": "ibm-stocks-worst-drop-in-25-years---caught-off-guard-by-anth"
+    },
+    {
+      "index": 2,
+      "title": "OpenAI Investor Loyalty Collapses - At Least 12 VCs Simultaneously Invest in Anthropic's $30 Billion Funding Round",
+      "lead": "Anthropic closed a massive $30 billion funding round in mid-February, with at least 12 direct OpenAI investors including Founders Fund, Iconiq, Insight Partners, and Sequoia Capital also investing in Anthropic simultaneously, and even a BlackRock aff",
+      "tags": [
+        "company",
+        "google",
+        "microsoft",
+        "meta",
+        "apple",
+        "nvidia",
+        "openai",
+        "anthropic"
+      ],
+      "anchor": "openai-investor-loyalty-collapses---at-least-12-vcs-simultan"
+    },
+    {
+      "index": 3,
+      "title": "Anthropic Detects Large-Scale Claude Model Distillation by Chinese AI Labs - Illegal Distillation with 16 Million Queries",
+      "lead": "On February 23, Anthropic detected and disclosed that three Chinese AI labs—DeepSeek, Moonshot AI, and MiniMax—accessed Claude using about 24,000 fake accounts to generate 16 million queries for illegal model distillation. They targeted Claude's most",
+      "tags": [
+        "company",
+        "google",
+        "microsoft",
+        "meta",
+        "apple",
+        "nvidia",
+        "anthropic"
+      ],
+      "anchor": "anthropic-detects-large-scale-claude-model-distillation-by-c"
+    }
+  ]
+}
