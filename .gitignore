@@ -10,3 +10,6 @@ scripts/__pycache__/
 
 # 로컬 쿠키 파일 (GitHub Secret용, 절대 커밋 금지)
 cookies-*.json
+
+node_modules/
+package-lock.json
