@@ -1,0 +1,142 @@
+---
+layout: default
+title: Daily Digest
+lang: en
+permalink: /en/daily-digest/
+---
+
+<div style="display:flex; gap:1.5rem; min-height:60vh;">
+
+  <!-- Left: Date panel -->
+  <div id="date-panel" style="width:120px; flex-shrink:0; border-right:1px solid #eee; padding-right:1rem;">
+    <p style="font-size:0.75rem; color:#999; margin-bottom:0.75rem; text-transform:uppercase; letter-spacing:0.05em;">Dates</p>
+    <div id="date-list"></div>
+  </div>
+
+  <!-- Right: Tag toggle + Card grid -->
+  <div style="flex:1; min-width:0;">
+    <div id="tag-toggle" style="display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:1.25rem;"></div>
+    <div id="card-grid" style="display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:0.75rem;"></div>
+  </div>
+</div>
+
+<script>
+const SECTIONS = [];
+{% for item in site.data.sections %}
+  {% assign d = item[1] %}
+  {% if d.lang == 'en' %}
+    {% for s in d.sections %}
+SECTIONS.push({
+  date: {{ d.date | jsonify }},
+  post_url: {{ d.post_url | prepend: site.baseurl | jsonify }},
+  index: {{ s.index }},
+  title: {{ s.title | jsonify }},
+  tags: {{ s.tags | jsonify }},
+  anchor: {{ s.anchor | jsonify }}
+});
+    {% endfor %}
+  {% endif %}
+{% endfor %}
+
+SECTIONS.sort((a, b) => b.date.localeCompare(a.date));
+
+const tagMap = {};
+SECTIONS.forEach(s => {
+  (s.tags || []).forEach(t => {
+    if (!tagMap[t]) tagMap[t] = { count: 0 };
+    tagMap[t].count++;
+  });
+});
+const allTags = Object.keys(tagMap).sort((a, b) => tagMap[b].count - tagMap[a].count);
+const allDates = [...new Set(SECTIONS.map(s => s.date))];
+
+let activeDate = null;
+let activeTag = null;
+
+function renderDateList() {
+  document.getElementById('date-list').innerHTML =
+    ['all', ...allDates].map(d =>
+      `<div onclick="selectDate('${d}')"
+           style="padding:0.3rem 0; font-size:0.82rem; cursor:pointer;
+                  color:${d === (activeDate || 'all') ? '#1a1a1a' : '#999'};
+                  font-weight:${d === (activeDate || 'all') ? '600' : '400'}">
+         ${d === 'all' ? 'All' : d.slice(5)}
+       </div>`
+    ).join('');
+}
+
+function renderTagToggle() {
+  let filtered = SECTIONS;
+  if (activeDate) filtered = filtered.filter(s => s.date === activeDate);
+  const tMap = {};
+  filtered.forEach(s => { (s.tags || []).forEach(t => { tMap[t] = (tMap[t] || 0) + 1; }); });
+  const tags = Object.keys(tMap).sort((a, b) => tMap[b] - tMap[a]);
+
+  document.getElementById('tag-toggle').innerHTML =
+    ['all', ...tags].map(t => {
+      const count = t === 'all' ? filtered.length : tMap[t];
+      const isActive = t === (activeTag || 'all');
+      return `<button onclick="selectTag('${t}')"
+        style="background:${isActive ? '#1a1a1a' : '#f0f0f0'}; color:${isActive ? '#fff' : '#444'};
+               border:none; padding:0.3rem 0.65rem; border-radius:4px; font-size:0.8rem; cursor:pointer;">
+        ${t === 'all' ? 'All' : t} <span style="opacity:0.6;">${count}</span>
+      </button>`;
+    }).join('');
+}
+
+function renderCards() {
+  let filtered = SECTIONS;
+  if (activeDate) filtered = filtered.filter(s => s.date === activeDate);
+  if (activeTag) filtered = filtered.filter(s => (s.tags || []).includes(activeTag));
+
+  if (activeTag) {
+    document.getElementById('card-grid').style.gridTemplateColumns = '1fr';
+    document.getElementById('card-grid').innerHTML = filtered.map(s =>
+      `<a href="${s.post_url}#${s.anchor}"
+          style="display:block; padding:0.75rem; border:1px solid #eee; border-radius:6px;
+                 text-decoration:none; color:#1a1a1a;">
+         <div style="font-size:0.75rem; color:#999; margin-bottom:0.3rem;">${s.date}</div>
+         <div style="font-size:0.9rem; font-weight:600; line-height:1.4;">${s.title}</div>
+         <div style="display:flex; gap:0.3rem; margin-top:0.5rem; flex-wrap:wrap;">
+           ${(s.tags||[]).map(t => `<span style="background:#f0f0f0; padding:0.1rem 0.4rem; border-radius:3px; font-size:0.72rem;">${t}</span>`).join('')}
+         </div>
+       </a>`
+    ).join('');
+    return;
+  }
+
+  const tagCounts = {};
+  filtered.forEach(s => { (s.tags || []).forEach(t => { tagCounts[t] = (tagCounts[t] || 0) + 1; }); });
+  const tags = Object.keys(tagCounts).sort((a, b) => tagCounts[b] - tagCounts[a]);
+
+  document.getElementById('card-grid').style.gridTemplateColumns = 'repeat(auto-fill,minmax(140px,1fr))';
+  document.getElementById('card-grid').innerHTML = tags.map(t =>
+    `<div onclick="selectTag('${t}')"
+         style="aspect-ratio:1; background:#f8f8f8; border-radius:8px; padding:1rem;
+                display:flex; flex-direction:column; justify-content:space-between;
+                cursor:pointer; border:1px solid #eee; transition:border-color 0.15s;"
+         onmouseover="this.style.borderColor='#999'" onmouseout="this.style.borderColor='#eee'">
+       <div style="font-size:1rem; font-weight:700; color:#1a1a1a;">#${t}</div>
+       <div style="font-size:0.78rem; color:#888;">${tagCounts[t]} sections</div>
+     </div>`
+  ).join('');
+}
+
+function selectDate(d) {
+  activeDate = d === 'all' ? null : d;
+  activeTag = null;
+  renderDateList();
+  renderTagToggle();
+  renderCards();
+}
+
+function selectTag(t) {
+  activeTag = t === 'all' ? null : t;
+  renderTagToggle();
+  renderCards();
+}
+
+renderDateList();
+renderTagToggle();
+renderCards();
+</script>
