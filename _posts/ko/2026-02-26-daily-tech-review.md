@@ -5,7 +5,7 @@ date: 2026-02-26
 lang: ko
 permalink: /ko/2026/02/26/daily-tech-review/
 pair: 2026-02-26-daily-tech-review
-tags: ["opensource", "developer-tools", "github", "frameworks"]
+tags: ["developer", "developer-tools", "opensource"]
 ---
 
 

@@ -5,7 +5,7 @@ date: 2026-02-20
 lang: ko
 permalink: /ko/2026/02/20/daily-tech-review/
 pair: 2026-02-20-daily-tech-review
-tags: ["india-ai-summit", "google", "tata-group", "openai-tcs", "ai-infrastructure"]
+tags: ["business", "company", "datacenter", "google", "india", "infrastructure", "openai", "policy"]
 ---
 
 ## Today in One Line

@@ -5,7 +5,7 @@ date: 2026-03-04
 lang: en
 permalink: /en/2026/03/04/daily-tech-review/
 pair: 2026-03-04-daily-tech-review
-tags: ["ai-industry", "business-model", "enterprise-ai", "vertical-ai"]
+tags: ["business", "enterprise"]
 ---
 
 

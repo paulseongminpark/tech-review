@@ -5,7 +5,7 @@ date: 2026-02-17
 lang: en
 permalink: /en/2026/02/17/daily-tech-review/
 pair: 2026-02-17-daily-tech-review
-tags: [neuromorphic, seedance, kling, sovereign-ai, large-action-models]
+tags: ["agents", "ai-tech", "chips", "geopolitics", "hardware", "media-ai", "policy"]
 ---
 
 ## Today in One Line

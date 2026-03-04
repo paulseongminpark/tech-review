@@ -5,7 +5,7 @@ date: 2026-02-19
 lang: en
 permalink: /en/2026/02/19/daily-tech-review/
 pair: 2026-02-19-daily-tech-review
-tags: [claude-opus-4-6, glm-5, openai-frontier, snowflake, sovereign-ai]
+tags: ["ai-models", "ai-tech", "anthropic", "company", "geopolitics", "openai", "policy"]
 ---
 
 ## Today in One Line

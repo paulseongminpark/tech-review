@@ -10,14 +10,14 @@
       "title": "OpenAI Frontier — Onboarding AI Agents Like New Employees",
       "lead": "OpenAI Frontier is a full-stack enterprise platform that allows companies to onboard AI agents like new employees, assigning roles and permissions for management.",
       "tags": [
-        "ai-tech",
         "agents",
+        "ai-tech",
         "capex",
-        "hardware",
-        "robotics",
         "company",
+        "hardware",
+        "ma",
         "openai",
-        "ma"
+        "robotics"
       ],
       "anchor": "openai-frontier-onboarding-ai-agents-like-new-employees"
     },
@@ -26,14 +26,14 @@
       "title": "Claude Opus 4.6 — Leads Agentic Coding Benchmarks with Official Parallel Multi-Agent Support",
       "lead": "Claude Opus 4.6 supports parallel subtask delegation through agent teams functionality, providing 1M context and 128k output.",
       "tags": [
-        "ai-tech",
         "agents",
+        "ai-tech",
         "capex",
-        "hardware",
-        "robotics",
         "company",
-        "openai",
+        "hardware",
         "ma",
+        "openai",
+        "robotics",
         "benchmarks"
       ],
       "anchor": "claude-opus-46-leads-agentic-coding-benchmarks-with-official"
@@ -43,14 +43,14 @@
       "title": "Google Gemini Deep Think & GLM-5 — Eroding the \"Open-Source Lags One Generation\" Myth",
       "lead": "Google Gemini Deep Think is a specialized reasoning mode for advanced research problems in mathematics, physics, and computer science, while GLM-5 is a 754B-parameter open-source model under an MIT license.",
       "tags": [
-        "ai-tech",
         "agents",
+        "ai-tech",
         "capex",
-        "hardware",
-        "robotics",
         "company",
-        "openai",
+        "hardware",
         "ma",
+        "openai",
+        "robotics",
         "google"
       ],
       "anchor": "google-gemini-deep-think-glm-5-eroding-the-open-source-lags-"
@@ -60,14 +60,14 @@
       "title": "Neuromorphic Vision Chip — Robot Motion Recognition 4x Faster Than Humans",
       "lead": "Beihang University and the Beijing Aerospace Research Institute announced a neuromorphic vision chip that mimics the lateral geniculate nucleus (LGN) structure of the human brain.",
       "tags": [
-        "ai-tech",
         "agents",
+        "ai-tech",
         "capex",
-        "hardware",
-        "robotics",
         "company",
-        "openai",
+        "hardware",
         "ma",
+        "openai",
+        "robotics",
         "eu"
       ],
       "anchor": "neuromorphic-vision-chip-robot-motion-recognition-4x-faster-"
@@ -77,14 +77,14 @@
       "title": "Big Tech $650B CAPEX — AI Infrastructure Elevated to a National-Scale Energy Project",
       "lead": "Amazon ~$200B, Alphabet $175–185B, Meta $115–135B, and Microsoft ~$105B combine for a total of $650 billion in Big Tech AI infrastructure investment for 2026.",
       "tags": [
-        "ai-tech",
         "agents",
+        "ai-tech",
         "capex",
-        "hardware",
-        "robotics",
         "company",
-        "openai",
+        "hardware",
         "ma",
+        "openai",
+        "robotics",
         "energy"
       ],
       "anchor": "big-tech-650b-capex-ai-infrastructure-elevated-to-a-national"
@@ -94,14 +94,14 @@
       "title": "M&A \"The Great Rebound\" — Devon-Coterra $21.4B, Alphabet-Wiz $30B, PANW-CyberArk $25B",
       "lead": "Large M&A deals in AI and security have surged, re-igniting the M&A market.",
       "tags": [
-        "ai-tech",
         "agents",
+        "ai-tech",
         "capex",
-        "hardware",
-        "robotics",
         "company",
+        "hardware",
+        "ma",
         "openai",
-        "ma"
+        "robotics"
       ],
       "anchor": "ma-the-great-rebound-devon-coterra-214b-alphabet-wiz-30b-pan"
     },
@@ -110,14 +110,14 @@
       "title": "AAIF (Agentic AI Foundation) Launch — Agent Interoperability Standards Formalized Under Linux Foundation",
       "lead": "The Agentic AI Foundation, with OpenAI, Anthropic, Block, Microsoft, AWS, and Cloudflare, launched under the Linux Foundation.",
       "tags": [
-        "ai-tech",
         "agents",
+        "ai-tech",
         "capex",
-        "hardware",
-        "robotics",
         "company",
+        "hardware",
+        "ma",
         "openai",
-        "ma"
+        "robotics"
       ],
       "anchor": "aaif-agentic-ai-foundation-launch-agent-interoperability-sta"
     },
@@ -126,14 +126,14 @@
       "title": "Labor Market and the Productivity Paradox — Adaptation Period Required Before AI Benefits Distribute",
       "lead": "According to TEKsystems research, companies report experiencing productivity gains from AI while simultaneously rescheduling digital transformation timelines due to increasing system complexity.",
       "tags": [
-        "ai-tech",
         "agents",
+        "ai-tech",
         "capex",
-        "hardware",
-        "robotics",
         "company",
+        "hardware",
+        "ma",
         "openai",
-        "ma"
+        "robotics"
       ],
       "anchor": "labor-market-and-the-productivity-paradox-adaptation-period-"
     }

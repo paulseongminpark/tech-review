@@ -10,10 +10,10 @@
       "title": "[LF AI & Data Open Model Initiative Phase II 진입 — 거버넌스 강화와 멀티모달 AI 개발 가속]",
       "lead": "Linux Foundation의 LF AI & Data가 Open Model Initiative를 Phase II로 전환하며 평가, 벤치마킹, 모델 개발을 위한 커뮤니티 주도 이니셔티브를 강화한다.",
       "tags": [
-        "ai-tech",
         "ai-models",
-        "research",
-        "benchmarks"
+        "ai-tech",
+        "benchmarks",
+        "research"
       ],
       "anchor": "lf-ai-data-open-model-initiative-phase-ii-진입-거버넌스-강화와-멀티모달-a"
     },
@@ -22,10 +22,10 @@
       "title": "[LF Edge EdgeLake 프로젝트 Stage 2 승격  엣지 실시간 AI 추론 표준화]",
       "lead": "LF Edge의 EdgeLake 프로젝트가 Stage 2로 승격되며 Model Context Protocol(MCP)을 도입해 엣지에서 실시간 AI 추론을 지원한다.",
       "tags": [
-        "ai-tech",
         "ai-models",
-        "research",
-        "benchmarks"
+        "ai-tech",
+        "benchmarks",
+        "research"
       ],
       "anchor": "lf-edge-edgelake-프로젝트-stage-2-승격-엣지-실시간-ai-추론-표준화"
     },
@@ -34,10 +34,10 @@
       "title": "[Microsoft AI-RAN 얼라이언스 창립 — 텔레콤 네트워크 AI 네이티브화 추진]",
       "lead": "Microsoft가 AI-RAN Alliance 창립 멤버로 참여하며 AI와 RAN 융합을 통해 5G/6G 네트워크를 지능화한다.",
       "tags": [
-        "ai-tech",
         "ai-models",
-        "research",
+        "ai-tech",
         "benchmarks",
+        "research",
         "microsoft"
       ],
       "anchor": "microsoft-ai-ran-얼라이언스-창립-텔레콤-네트워크-ai-네이티브화-추진"

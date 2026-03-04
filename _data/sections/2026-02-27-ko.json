@@ -10,12 +10,12 @@
       "title": "Meta, AMD·NVIDIA 동시 계약으로 GPU 이중화 선언 — 하이퍼스케일러 630억 달러 시대",
       "lead": "Meta가 2월 24일 AMD와 최대 6GW 규모의 Instinct GPU 다년 계약(잠재 수익 60억 달러 추정)을 발표했으며, 같은 달 NVIDIA와도 Grace CPU·Blackwell·Rubin GPU 수백만 개 멀티제너레이션 파트너십을 동시에 체결했다. Amazon·Google·Meta·Microsoft 4사의 2026년 AI 인프라 지출 합계는 630억 달러로, 2025년 388억 달러 대비 62% 급증했다.",
       "tags": [
-        "hardware",
+        "amd",
         "chips",
         "datacenter",
+        "hardware",
         "infrastructure",
         "nvidia",
-        "amd",
         "meta"
       ],
       "anchor": "meta-amd·nvidia-동시-계약으로-gpu-이중화-선언-하이퍼스케일러-630억-달러-시대"
@@ -25,12 +25,12 @@
       "title": "DRAM 가격 90% 폭등 — AI 수요 충격이 스마트폰·자동차까지 강타",
       "lead": "2026년 1분기 DRAM 가격이 직전 분기 대비 90% 급등했다. AI 데이터센터 고대역폭 메모리 수요가 Samsung·SK Hynix·Micron 3사(시장 93%) 생산의 대부분을 흡수하면서, 소비자·자동차 부문 공급이 구조적으로 줄었다. Micron은 소비자 브랜드 Crucial을 완전 철수하고 AI 서버 고객에 집중하기로 결정했다.",
       "tags": [
-        "hardware",
+        "amd",
         "chips",
         "datacenter",
+        "hardware",
         "infrastructure",
-        "nvidia",
-        "amd"
+        "nvidia"
       ],
       "anchor": "dram-가격-90-폭등-ai-수요-충격이-스마트폰·자동차까지-강타"
     },
@@ -39,12 +39,12 @@
       "title": "NVIDIA Rubin·TSMC 2nm·중국 분리 — 반도체 생태계 3대 재편",
       "lead": "NVIDIA가 Rubin 플랫폼을 공개했다. Blackwell 대비 추론 토큰 비용 최대 10배 감소, MoE 모델 훈련 4배 효율화가 목표다. TSMC는 2월 26일 배당을 28% 인상하며 2nm 2026년 월 10만 웨이퍼 생산 가이던스를 제시했다. 반면 NVIDIA는 트럼프 행정부로부터 H200 중국 판매 승인을 받았음에도 아직 중국에서 수익을 창출하지 못했다.",
       "tags": [
-        "hardware",
+        "amd",
         "chips",
         "datacenter",
+        "hardware",
         "infrastructure",
         "nvidia",
-        "amd",
         "tsmc"
       ],
       "anchor": "nvidia-rubin·tsmc-2nm·중국-분리-반도체-생태계-3대-재편"

@@ -10,10 +10,10 @@
       "title": "미국 국방부의 선택: OpenAI와 계약, Anthropic은 공급망 위험으로 지정",
       "lead": "OpenAI가 미국 국방부와 분류된 환경(classified systems)에서의 AI 모델 배포 계약을 체결했으며, 직후 트럼프 정부는 Anthropic을 \"공급망 위험(supply chain risk)\"으로 지정하고 모든 연방기관에 6개월 내 사용 중단을 명령했다.",
       "tags": [
-        "ai-tech",
         "ai-models",
-        "research",
+        "ai-tech",
         "benchmarks",
+        "research",
         "openai",
         "anthropic"
       ],
@@ -24,10 +24,10 @@
       "title": "중국 AI 기업들, 16백만 건 이상의 Claude 대화 불법 추출 적발",
       "lead": "Anthropic이 DeepSeek, Moonshot AI, MiniMax 3개사가 약 24,000개의 가짜 계정을 통해 16백만 건 이상의 Claude 대화를 무단으로 수집했음을 공식 발표했으며, 이는 중국이 미국의 frontier AI 기술을 대규모로 \"증류(distillation)\" 기법으로 복제했다는 증거로 기록된다.",
       "tags": [
-        "ai-tech",
         "ai-models",
-        "research",
-        "benchmarks"
+        "ai-tech",
+        "benchmarks",
+        "research"
       ],
       "anchor": "중국-ai-기업들-16백만-건-이상의-claude-대화-불법-추출-적발"
     },
@@ -36,10 +36,10 @@
       "title": "Frontier LLM 성능 경쟁 고조: Anthropic의 새 모델 연쇄 출시로 업계 기준 재정의",
       "lead": "Anthropic이 2월 5일 Claude Opus 4.6(1M 토큰 컨텍스트, β 공개), 2월 말 Claude Sonnet 4.6을 잇따라 출시하면서, OpenAI의 GPT-5.2와의 성능 격차를 급격히 좁혔고 또한 가격 대비 성능에서 새로운 산업 표준을 제시했다.",
       "tags": [
-        "ai-tech",
         "ai-models",
-        "research",
+        "ai-tech",
         "benchmarks",
+        "research",
         "llm",
         "anthropic"
       ],

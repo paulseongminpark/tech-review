@@ -5,7 +5,7 @@ date: 2026-02-23
 lang: en
 permalink: /en/2026/02/23/daily-tech-review/
 pair: 2026-02-23-daily-tech-review
-tags: ["ai-ml", "models", "research", "benchmarks"]
+tags: ["ai-models", "ai-tech", "benchmarks", "research"]
 ---
 
 ## Today in One Line

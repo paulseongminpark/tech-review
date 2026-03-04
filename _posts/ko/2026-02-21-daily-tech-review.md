@@ -5,7 +5,7 @@ date: 2026-02-21
 lang: ko
 permalink: /ko/2026/02/21/daily-tech-review/
 pair: 2026-02-21-daily-tech-review
-tags: ["nvidia", "ai-chips", "data-centers", "partnerships", "infrastructure"]
+tags: ["business", "chips", "datacenter", "hardware", "infrastructure", "nvidia"]
 ---
 
 ## Today in One Line

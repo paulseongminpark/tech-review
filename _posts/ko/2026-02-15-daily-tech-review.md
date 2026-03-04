@@ -5,7 +5,7 @@ date: 2026-02-15
 lang: ko
 permalink: /ko/2026/02/15/daily-tech-review/
 pair: 2026-02-15-daily-tech-review
-tags: [neuromorphic, science-ai, seedance, chinese-models, sovereign-ai]
+tags: ["ai-tech", "china", "chips", "geopolitics", "hardware", "media-ai", "policy", "research"]
 ---
 
 ## Today in One Line

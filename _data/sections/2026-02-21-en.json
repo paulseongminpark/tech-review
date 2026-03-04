@@ -10,12 +10,12 @@
       "title": "NVIDIA-Meta Deploy Millions of Blackwell and Rubin GPUs with First Large-Scale Grace CPUs",
       "lead": "NVIDIA and Meta announced a multiyear partnership on February 17, 2026, covering on-premises, cloud, and AI infrastructure.",
       "tags": [
-        "nvidia",
-        "hardware",
-        "chips",
-        "infrastructure",
-        "datacenter",
         "business",
+        "chips",
+        "datacenter",
+        "hardware",
+        "infrastructure",
+        "nvidia",
         "meta"
       ],
       "anchor": "nvidia-meta-deploy-millions-of-blackwell-and-rubin-gpus-with"
@@ -25,12 +25,12 @@
       "title": "SemiAnalysis InferenceX v2 Shows NVIDIA GB300 Delivers 100x H100 Inference Performance",
       "lead": "SemiAnalysis released InferenceX v2 on February 16, 2026 — an open-source suite benchmarking AI inference across leading hardware platforms.",
       "tags": [
-        "nvidia",
-        "hardware",
-        "chips",
-        "infrastructure",
-        "datacenter",
         "business",
+        "chips",
+        "datacenter",
+        "hardware",
+        "infrastructure",
+        "nvidia",
         "ma"
       ],
       "anchor": "semianalysis-inferencex-v2-shows-nvidia-gb300-delivers-100x-"
@@ -40,12 +40,12 @@
       "title": "Western Digital Sold Out of Hard Drives for All of 2026, Long-Term Agreements Extend to 2028",
       "lead": "Western Digital reported all 2026 hard drives sold out due to surging AI data center demand, with long-term agreements extending into 2027–2028.",
       "tags": [
-        "nvidia",
-        "hardware",
+        "business",
         "chips",
-        "infrastructure",
         "datacenter",
-        "business"
+        "hardware",
+        "infrastructure",
+        "nvidia"
       ],
       "anchor": "western-digital-sold-out-of-hard-drives-for-all-of-2026-long"
     },
@@ -54,12 +54,12 @@
       "title": "SpaceX Acquires xAI to Deploy One Million Solar-Powered Orbital Data Centers",
       "lead": "SpaceX announced the acquisition of xAI to form a vertically integrated \"innovation engine,\" deploying solar-powered orbital data centers to bypass terrestrial power limits.",
       "tags": [
-        "nvidia",
-        "hardware",
-        "chips",
-        "infrastructure",
-        "datacenter",
         "business",
+        "chips",
+        "datacenter",
+        "hardware",
+        "infrastructure",
+        "nvidia",
         "xai"
       ],
       "anchor": "spacex-acquires-xai-to-deploy-one-million-solar-powered-orbi"
@@ -69,12 +69,12 @@
       "title": "NVIDIA Teases World-Surprising Chips at GTC 2026 — Rubin GPUs with HBM4 Expected",
       "lead": "Jensen Huang announced major processors to \"surprise the world\" at GTC 2026 (March 16–19), likely Rubin GPUs with HBM4 following talks with SK Hynix.",
       "tags": [
-        "nvidia",
-        "hardware",
-        "chips",
-        "infrastructure",
-        "datacenter",
         "business",
+        "chips",
+        "datacenter",
+        "hardware",
+        "infrastructure",
+        "nvidia",
         "hbm"
       ],
       "anchor": "nvidia-teases-world-surprising-chips-at-gtc-2026-rubin-gpus-"
@@ -84,12 +84,12 @@
       "title": "OpenAI Reportedly Building AI Smart Speaker with Camera for 2027 Release [Unverified]",
       "lead": "Reports indicate OpenAI assembled a 200-person team for AI-powered devices, starting with a $200–300 camera-equipped smart speaker slated for 2027 release.",
       "tags": [
-        "nvidia",
-        "hardware",
-        "chips",
-        "infrastructure",
-        "datacenter",
         "business",
+        "chips",
+        "datacenter",
+        "hardware",
+        "infrastructure",
+        "nvidia",
         "ma",
         "openai"
       ],
@@ -100,12 +100,12 @@
       "title": "CPU Supercycle, China's 6x Power Advantage, and Hardware Shortages — Three Structural Infrastructure Trends",
       "lead": "February 2026 confirms three simultaneous structural trends reshaping AI infrastructure competition.",
       "tags": [
-        "nvidia",
-        "hardware",
-        "chips",
-        "infrastructure",
-        "datacenter",
         "business",
+        "chips",
+        "datacenter",
+        "hardware",
+        "infrastructure",
+        "nvidia",
         "china"
       ],
       "anchor": "cpu-supercycle-chinas-6x-power-advantage-and-hardware-shorta"

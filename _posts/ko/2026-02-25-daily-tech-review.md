@@ -5,7 +5,7 @@ date: 2026-02-25
 lang: ko
 permalink: /ko/2026/02/25/daily-tech-review/
 pair: 2026-02-25-daily-tech-review
-tags: ["ai-industry", "business-model", "enterprise-ai", "vertical-ai"]
+tags: ["business", "enterprise"]
 ---
 
 ## 2026년 2월 24일(화) AI × 엔터프라이즈 입양 현황

@@ -5,7 +5,7 @@ date: 2026-03-03
 lang: en
 permalink: /en/2026/03/03/daily-tech-review/
 pair: 2026-03-03-daily-tech-review
-tags: ["bigtech", "google", "microsoft", "meta", "apple", "nvidia"]
+tags: ["apple", "company", "google", "meta", "microsoft", "nvidia"]
 ---
 
 

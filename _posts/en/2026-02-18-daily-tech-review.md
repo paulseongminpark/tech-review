@@ -5,7 +5,7 @@ date: 2026-02-18
 lang: en
 permalink: /en/2026/02/18/daily-tech-review/
 pair: 2026-02-18-daily-tech-review
-tags: [agentic-ai, capex, physical-ai, openai-frontier, ma]
+tags: ["agents", "ai-tech", "capex", "company", "hardware", "ma", "openai", "robotics"]
 ---
 
 ## Today in One Line

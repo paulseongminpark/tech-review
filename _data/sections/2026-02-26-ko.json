@@ -10,9 +10,9 @@
       "title": "Inception Labs, Mercury 2로 1,000 토큰/초 달성 — Diffusion 기반 추론 LLM 본격 출시",
       "lead": "Inception Labs가 2월 25일 발표한 Mercury 2는 기존의 자동회귀 토큰 생성 방식을 완전히 버리고 Diffusion 기반의 병렬 정제 생성을 통해 1,009 토큰/초를 NVIDIA Blackwell GPU에서 달성했다. 이는 Claude Haiku의 약 11배, GPT-5 Mini의 약 14배 빠른 속도로, 추론 LLM 성능 기준(AIME 2025: 91.1%, GPQA, LiveCodeBench)에서는 속도 최적화 모델들과 ",
       "tags": [
-        "opensource",
-        "developer-tools",
         "developer",
+        "developer-tools",
+        "opensource",
         "llm"
       ],
       "anchor": "inception-labs-mercury-2로-1000-토큰초-달성-diffusion-기반-추론-llm-본격"
@@ -22,9 +22,9 @@
       "title": "Alibaba Qwen, 코딩 에이전트용 Qwen3-Coder-Next 오픈소스 공개 — 3B 활성 파라미터로 Claude Sonnet 급 성능",
       "lead": "Alibaba의 Qwen 팀이 2월 초 공개한 Qwen3-Coder-Next는 80B 총 파라미터 중 3B만 활성화되는 Mixture-of-Experts 구조로, 기존 DeepSeek V3.2(37B 활성)·Kimi K2.5·GLM-4.7(각 32B 활성)을 코딩 벤치마크에서 추월했다. 256K 네이티브 컨텍스트 길이를 지원하며 로컬 하드웨어(64GB MacBook, RTX 5090, AMD Radeon 7900 XTX)에서 20~40 토큰/초",
       "tags": [
-        "opensource",
+        "developer",
         "developer-tools",
-        "developer"
+        "opensource"
       ],
       "anchor": "alibaba-qwen-코딩-에이전트용-qwen3-coder-next-오픈소스-공개-3b-활성-파라미터로-c"
     },
@@ -33,9 +33,9 @@
       "title": "GitHub Agentic Workflows, 기술 프리뷰 시작 — CI/CD 외 저수준 리포지토리 자동화 활성화",
       "lead": "GitHub가 2월 13일 발표한 Agentic Workflows는 GitHub Actions 내에서 AI 에이전트(GitHub Copilot CLI, Claude Code, OpenAI Codex)를 직접 실행하는 기능으로, 마크다운 파일로 자동화 의도를 기술하면 컴파일러가 이를 YAML로 변환해 이슈 트리아지·PR 리뷰·CI 실패 분석·문서 갱신·테스트 커버리지 모니터링을 에이전트가 자동 수행한다. 리드전용 기본 실행 권한에 Safe Out",
       "tags": [
-        "opensource",
+        "developer",
         "developer-tools",
-        "developer"
+        "opensource"
       ],
       "anchor": "github-agentic-workflows-기술-프리뷰-시작-cicd-외-저수준-리포지토리-자동화-활성화"
     }

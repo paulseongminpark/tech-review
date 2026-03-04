@@ -5,7 +5,7 @@ date: 2026-02-28
 lang: en
 permalink: /en/2026/02/28/daily-tech-review/
 pair: 2026-02-28-daily-tech-review
-tags: ["ai-usecase", "enterprise", "adoption", "regulation"]
+tags: ["business", "enterprise", "regulation"]
 ---
 
 

@@ -5,7 +5,7 @@ date: 2026-03-01
 lang: en
 permalink: /en/2026/03/01/daily-tech-review/
 pair: 2026-03-01-daily-tech-review
-tags: ["weekly-review", "ai-trends", "tech-summary"]
+tags: ["ai-tech", "media", "weekly"]
 ---
 
 ## Today in One Line

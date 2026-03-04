@@ -5,7 +5,7 @@ date: 2026-02-22
 lang: ko
 permalink: /ko/2026/02/22/daily-tech-review/
 pair: 2026-02-22-daily-tech-review
-tags: ["google", "india-ai", "data-centers", "quantum-ai", "ai-health"]
+tags: ["ai-tech", "datacenter", "google", "india", "infrastructure", "policy", "quantum"]
 ---
 
 ## Today in One Line

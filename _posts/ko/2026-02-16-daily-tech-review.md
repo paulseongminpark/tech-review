@@ -5,7 +5,7 @@ date: 2026-02-16
 lang: ko
 permalink: /ko/2026/02/16/daily-tech-review/
 pair: 2026-02-16-daily-tech-review
-tags: [claude-opus-4-6, openai-frontier, minimax, voxtral, ai-slop]
+tags: ["ai-models", "ai-tech", "anthropic", "company", "openai"]
 ---
 
 ## Today in One Line
