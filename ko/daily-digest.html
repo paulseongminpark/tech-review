@@ -41,13 +41,16 @@ SECTIONS.push({
 
 SECTIONS.sort((a, b) => b.date.localeCompare(a.date));
 
-const tagMap = {};
+// 태그 카운트 = 해당 태그가 사용된 날짜(포스트) 수 (섹션 수 아님)
+const tagDateMap = {};
 SECTIONS.forEach(s => {
   (s.tags || []).forEach(t => {
-    if (!tagMap[t]) tagMap[t] = { count: 0 };
-    tagMap[t].count++;
+    if (!tagDateMap[t]) tagDateMap[t] = new Set();
+    tagDateMap[t].add(s.date);
   });
 });
+const tagMap = {};
+Object.keys(tagDateMap).forEach(t => { tagMap[t] = { count: tagDateMap[t].size }; });
 const allTags = Object.keys(tagMap).sort((a, b) => tagMap[b].count - tagMap[a].count);
 const allDates = [...new Set(SECTIONS.map(s => s.date))];
 
@@ -69,13 +72,20 @@ function renderDateList() {
 function renderTagToggle() {
   let filtered = SECTIONS;
   if (activeDate) filtered = filtered.filter(s => s.date === activeDate);
+  // 날짜 기준 카운트
+  const tDateMap = {};
+  filtered.forEach(s => { (s.tags || []).forEach(t => {
+    if (!tDateMap[t]) tDateMap[t] = new Set();
+    tDateMap[t].add(s.date);
+  }); });
   const tMap = {};
-  filtered.forEach(s => { (s.tags || []).forEach(t => { tMap[t] = (tMap[t] || 0) + 1; }); });
+  Object.keys(tDateMap).forEach(t => { tMap[t] = tDateMap[t].size; });
   const tags = Object.keys(tMap).sort((a, b) => tMap[b] - tMap[a]);
+  const allDateCount = [...new Set(filtered.map(s => s.date))].length;
 
   document.getElementById('tag-toggle').innerHTML =
     ['all', ...tags].map(t => {
-      const count = t === 'all' ? filtered.length : tMap[t];
+      const count = t === 'all' ? allDateCount : tMap[t];
       const isActive = t === (activeTag || 'all');
       return `<button onclick="selectTag('${t}')"
         style="background:${isActive ? '#1a1a1a' : '#f0f0f0'}; color:${isActive ? '#fff' : '#444'};
@@ -106,7 +116,7 @@ function renderCards() {
       return `<a href="${first.post_url}#${first.anchor}"
           style="display:block; padding:0.75rem; border:1px solid #eee; border-radius:6px;
                  text-decoration:none; color:#1a1a1a;">
-         <div style="font-size:0.75rem; color:#999; margin-bottom:0.3rem;">${date}${sections.length > 1 ? ` · ${sections.length}개 섹션` : ''}</div>
+         <div style="font-size:0.75rem; color:#999; margin-bottom:0.3rem;">${date}</div>
          <div style="font-size:0.9rem; font-weight:600; line-height:1.4;">${first.post_title || first.title}</div>
        </a>`;
     }).join('');
