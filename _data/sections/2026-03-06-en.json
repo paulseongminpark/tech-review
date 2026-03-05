@@ -1,0 +1,50 @@
+{
+  "date": "2026-03-06",
+  "lang": "en",
+  "post_url": "/en/2026/03/06/daily-tech-review/",
+  "post_title": "While NVIDIA invests $4B in strengthening optical technology, Amazon pours $50B into OpenAI, intensifying the AI infrastructure competition.",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "NVIDIA Invests $4 Billion in Optical Technology…Data Center Expansion Kicks Off in Earnest",
+      "lead": "NVIDIA is accelerating the construction of multi-gigawatt-scale AI factories by investing $2 billion each in Lumentum and Coherent.(http://nvidianews.nvidia.com/news/nvidia-announces-strategic-partnership-with-lumentum-to-develop-state-of-the-art-opt",
+      "tags": [
+        "chips",
+        "datacenter",
+        "cloud",
+        "nvidia"
+      ],
+      "anchor": "nvidia-invests-4-billion-in-optical-technologydata-center-ex"
+    },
+    {
+      "index": 2,
+      "title": "Amazon Invests $50 Billion in OpenAI…Strengthens AWS Exclusive Position",
+      "lead": "Amazon is committing up to $50 billion total, starting with an initial $15 billion investment in OpenAI, which has agreed to consume approximately 2GW of AWS's custom AI chip Trainium by 2027.(https://www.geekwire.com/2026/filings-how-amazons-50b-ope",
+      "tags": [
+        "chips",
+        "datacenter",
+        "cloud",
+        "aws",
+        "ma",
+        "openai",
+        "amazon"
+      ],
+      "anchor": "amazon-invests-50-billion-in-openaistrengthens-aws-exclusive"
+    },
+    {
+      "index": 3,
+      "title": "NVIDIA Upgrades Vera Rubin HBM4 Bandwidth to 22.2TB/s…Intensifies Competition with AMD",
+      "lead": "NVIDIA has decided to set the HBM4 memory bandwidth of the Vera Rubin NVL72 server at 22.2TB/s, a 10% increase over the previous spec, overwhelming AMD's Instinct MI455X (19.6TB/s).(https://www.letsdatascience.com/blog/nvidia-just-shipped-the-most-po",
+      "tags": [
+        "chips",
+        "datacenter",
+        "cloud",
+        "nvidia",
+        "amd",
+        "hbm"
+      ],
+      "anchor": "nvidia-upgrades-vera-rubin-hbm4-bandwidth-to-222tbsintensifi"
+    }
+  ]
+}
