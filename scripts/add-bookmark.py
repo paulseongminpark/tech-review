@@ -6,8 +6,8 @@ Usage:
   python add-bookmark.py <bookmarks-raw.json>
 
 Setup:
-  pip install google-generativeai python-dotenv
-  .env에 GEMINI_API_KEY=your_key_here 추가
+  pip install groq python-dotenv
+  .env에 GROQ_API_KEY=your_key_here 추가
 """
 
 import json, os, re, sys
@@ -15,18 +15,19 @@ from datetime import datetime
 from pathlib import Path
 
 from dotenv import load_dotenv
-import google.generativeai as genai
+from groq import Groq
 
 # ── Paths ──────────────────────────────────────────────────────────────────
-SCRIPT_DIR   = Path(__file__).parent
-BLOG_DIR     = SCRIPT_DIR.parent
+SCRIPT_DIR     = Path(__file__).parent
+BLOG_DIR       = SCRIPT_DIR.parent
 BOOKMARKS_JSON = BLOG_DIR / "_data" / "bookmarks.json"
 
 load_dotenv(BLOG_DIR / ".env")
-genai.configure(api_key=os.environ["GEMINI_API_KEY"])
-model = genai.GenerativeModel("gemini-2.0-flash")
+client = Groq(api_key=os.environ["GROQ_API_KEY"])
 
 # ── Prompt ─────────────────────────────────────────────────────────────────
+SYSTEM = "You are a concise tech summarizer. Output ONLY valid JSON, no markdown, no explanation."
+
 PROMPT = """\
 다음 트위터 스레드/게시글을 아래 JSON 포맷으로 요약해줘.
 반드시 JSON만 출력해. 마크다운 코드블록 없이 순수 JSON만.
@@ -54,12 +55,9 @@ PROMPT = """\
 
 # ── Tweet extraction ────────────────────────────────────────────────────────
 def extract_tweets(raw):
-    """prinsss exporter 다양한 JSON 구조에서 tweet 목록 추출"""
-    # 최상위가 list인 경우
     if isinstance(raw, list):
         items = raw
     elif isinstance(raw, dict):
-        # { data: [...] } / { tweets: [...] } / { bookmarks: [...] }
         items = raw.get("data") or raw.get("tweets") or raw.get("bookmarks") or []
     else:
         return []
@@ -69,7 +67,6 @@ def extract_tweets(raw):
         if not isinstance(item, dict):
             continue
 
-        # text
         text = (
             item.get("full_text")
             or item.get("text")
@@ -78,7 +75,6 @@ def extract_tweets(raw):
         if not text:
             continue
 
-        # author
         user = item.get("user") or item.get("author") or {}
         if isinstance(user, dict):
             author = (
@@ -89,22 +85,14 @@ def extract_tweets(raw):
         else:
             author = item.get("screen_name") or "unknown"
 
-        # id
-        tweet_id = (
-            item.get("rest_id")
-            or item.get("id_str")
-            or item.get("id")
-            or ""
-        )
+        tweet_id = item.get("rest_id") or item.get("id_str") or item.get("id") or ""
 
-        # url
         url = (
             item.get("url")
             or item.get("tweet_url")
             or (f"https://x.com/{author}/status/{tweet_id}" if tweet_id else "")
         )
 
-        # date
         created = item.get("created_at") or item.get("timestamp") or ""
         try:
             dt = datetime.strptime(created, "%a %b %d %H:%M:%S +0000 %Y")
@@ -132,10 +120,17 @@ def load_existing(path):
     return bms, seen
 
 
-# ── Gemini ─────────────────────────────────────────────────────────────────
+# ── Groq ───────────────────────────────────────────────────────────────────
 def summarize(text):
-    resp = model.generate_content(PROMPT + text)
-    raw = resp.text.strip()
+    resp = client.chat.completions.create(
+        model="llama-3.3-70b-versatile",
+        messages=[
+            {"role": "system", "content": SYSTEM},
+            {"role": "user", "content": PROMPT + text},
+        ],
+        temperature=0.3,
+    )
+    raw = resp.choices[0].message.content.strip()
     raw = re.sub(r"^```json\s*", "", raw)
     raw = re.sub(r"\s*```$", "", raw.strip())
     return json.loads(raw)
