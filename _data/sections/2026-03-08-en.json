@@ -1,0 +1,37 @@
+{
+  "date": "2026-03-08",
+  "lang": "en",
+  "post_url": "/en/2026/03/08/daily-tech-review/",
+  "post_title": "This week in AI/Tech can be characterized as a period where the transition to the 'agentic era,' explosive growth in AI infrastructure capital expenditure, and large-scale realignment of government, regulatory, and education systems are all accelerating simultaneously.",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "The End of the Chatbot Era: Transition to 'Agent Operating Systems (AOS)' and Network-Level Agent Platforms Begins",
+      "lead": "At MWC 2026 and telecommunications and cloud industry announcements, multi-agent orchestration 'Agent Operating Systems' and network-level agent platforms—rather than single chatbots—have come to the forefront.[1][2] Solutions announced by Huawei, Am",
+      "tags": [
+        "weekly"
+      ],
+      "anchor": "the-end-of-the-chatbot-era-transition-to-agent-operating-sys"
+    },
+    {
+      "index": 2,
+      "title": "AI Infrastructure Cost Explosion: Oracle's Review of 20,000-30,000 Employee Layoffs Reveals 'Shadows of the AI Bubble'",
+      "lead": "Reports that Oracle is considering **layoffs of 20,000-30,000 employees** to offset surging AI data center costs have brought to the surface the reality that mega-scale AI infrastructure investments are pressuring actual financial statements. This de",
+      "tags": [
+        "weekly"
+      ],
+      "anchor": "ai-infrastructure-cost-explosion-oracles-review-of-20000-300"
+    },
+    {
+      "index": 3,
+      "title": "Government, Research, and Education Systems Begin Realigning Around 'Foundational AI + Agent Capabilities'",
+      "lead": "The UK government announced plans to establish a **£40 million Fundamental AI Research Lab**, and the industry has identified insufficient agent workflow and AI utilization education as the greatest risks, confirming an accelerating realignment of pu",
+      "tags": [
+        "weekly",
+        "research"
+      ],
+      "anchor": "government-research-and-education-systems-begin-realigning-a"
+    }
+  ]
+}
