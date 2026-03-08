@@ -1,0 +1,36 @@
+{
+  "twitter": [
+    {
+      "author": "jamesquint",
+      "date": "2026-03-08",
+      "url": "",
+      "why": "시맨틱 레이어가 죽었다. 컨텍스트 관리가 그 자리를 대체하며 데이터 팀 생산성을 5배 높인다.",
+      "apply_point": "mcp-memory recall 전략에 quirk store 패턴 적용 — 사용자 수정을 영구 지식으로 변환"
+    },
+    {
+      "author": "ashpreetbedi",
+      "date": "2026-03-08",
+      "url": "https://github.com/agno-agi/pal",
+      "why": "AI에게 메모리는 있지만, 당신이 여전히 시스템 간 통합 레이어다. Pal이 그 역할을 대신한다.",
+      "apply_point": "daily-memo + Obsidian + Orchestration 간 컨텍스트 그래프 구축의 레퍼런스 아키텍처"
+    },
+    {
+      "author": "aidenbai",
+      "date": "2026-03-08",
+      "url": "https://x.com/aidenybai/status/2029603067927351506",
+      "why": "React 컴포넌트를 클릭 한 번으로 선택해 Claude Code/Codex에 직접 전달. UI 수정 워크플로우를 극적으로 단축한다.",
+      "apply_point": "portfolio UI 수정 작업 시 즉시 활용 — 컴포넌트 특정 없이 클릭으로 대상 지정"
+    }
+  ],
+  "youtube": [
+    {
+      "title": "일론 머스크 문샷 인터뷰: 교육, 의료, 풍요",
+      "channel": "Paula",
+      "video_id": "_dPiFfDVCAg",
+      "url": "https://www.youtube.com/watch?v=_dPiFfDVCAg",
+      "why": "Elon Musk는 AI와 로봇이 2026년 AGI, 2030년 인간 전체 지능 초과, 3년 내 최고 외과의 능가, 100GW급 우주 태양광 AI 인프라로 이어질 만큼 빠르게 전개되지만, 가장 위험한 구간은 다음 3~7년의 사회적 전환기라고 본다.",
+      "section_count": 12,
+      "published_at": "2026-03-08"
+    }
+  ]
+}
