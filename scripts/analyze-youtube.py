@@ -95,8 +95,8 @@ recall 결과를 바탕으로 아래 작업을 수행하라.
 규칙:
 - sections는 영상 흐름에 따라 3-6개
 - body는 최소 3문장 이상, 표면적 요약 금지 — 왜 중요한지, 어떻게 작동하는지 깊이 분석
-- highlights는 섹션당 1-3개, 독자가 밑줄 칠 문장
-- apply_points는 반드시 recall 결과 기반 — Paul의 실제 프로젝트명, 파일명, 패턴을 그대로 언급
+- highlights는 반드시 body에서 그대로 복사한 문장만. 요약·변형 금지. body에 없는 문장은 highlights 불가.
+- apply_points: recall 기반, Paul 프로젝트와 연결. backtick·파일경로·코드 금지. 한 문장으로 읽기 좋게.
 - 전부 한국어 (기술명/고유명사는 영어 유지)
 - 팟캐스트 안 봐도 될 수준으로 완성도 높게
 
