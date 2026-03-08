@@ -90,7 +90,10 @@ recall 결과를 바탕으로 아래 작업을 수행하라.
   ],
   "key_takeaways": ["핵심 요점 1", "핵심 요점 2", "핵심 요점 3", "핵심 요점 4", "핵심 요점 5"],
   "tech_stack": ["언급된 실제 기술/도구/서비스명"],
-  "apply_points": ["recall로 파악한 Paul의 실제 프로젝트(orchestration, mcp-memory, tech-review 등)에 구체적으로 적용 가능한 것. 일반론 금지 — Paul의 현재 작업과 직접 연결되는 것만."]
+  "apply_points": [
+    {{"text": "적용 포인트 내용. Paul의 실제 프로젝트와 직접 연결. 일반론 금지.", "key": false}},
+    {{"text": "당장 시스템에 반영 가능한 것 (key=true는 최대 2개)", "key": true}}
+  ]
 }}
 
 규칙:
@@ -98,7 +101,7 @@ recall 결과를 바탕으로 아래 작업을 수행하라.
 - body는 최소 5문장 이상. 해당 섹션에서 발언자가 한 모든 주요 주장과 근거를 포함. 한 단락만으로 부족하면 여러 단락 사용.
 - body에 등장한 수치·인명·사례는 생략 없이 전부 기록.
 - highlights는 반드시 body에서 그대로 복사한 문장만. 요약·변형 금지. body에 없는 문장은 highlights 불가.
-- apply_points: recall 기반, Paul 프로젝트와 연결. backtick·파일경로·코드 금지. 한 문장으로 읽기 좋게.
+- apply_points: recall 기반, Paul 프로젝트와 연결. backtick·파일경로·코드 금지. 한 문장으로 읽기 좋게. key=true는 최대 2개 — orchestration·mcp-memory·tech-review 중 당장 반영 가능한 것만.
 - 전부 한국어 (기술명·인명·고유명사는 영어 유지)
 - 영상을 안 봐도 될 수준 = 이 JSON만으로 영상의 모든 주요 내용이 복원 가능해야 함
 

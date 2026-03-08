@@ -139,11 +139,10 @@ nav.site-nav {
   line-height: 1.8;
 }
 .yt-section-body mark {
-  background: rgba(37, 99, 235, 0.14);
+  background: rgba(212, 99, 45, 0.12);
   color: inherit;
   border-radius: 2px;
-  padding: 0 3px;
-  font-weight: 600;
+  padding: 1px 2px;
 }
 .yt-quote {
   border-left: 3px solid #2563eb;
@@ -154,6 +153,13 @@ nav.site-nav {
   color: #1d4ed8;
   font-style: italic;
   line-height: 1.7;
+}
+.yt-apply-key {
+  background: rgba(37, 99, 235, 0.14);
+  color: inherit;
+  border-radius: 2px;
+  padding: 0 3px;
+  font-weight: 600;
 }
 
 /* ── Key Takeaways ── */
@@ -293,7 +299,13 @@ function renderMain(videos) {
     const applyHtml = (s.apply_points||[]).length ? `
       <div class="yt-apply">
         <p class="yt-row-label">적용 포인트</p>
-        <ul>${(s.apply_points||[]).map(p=>`<li>${escHtml(p)}</li>`).join('')}</ul>
+        <ul>${(s.apply_points||[]).map(p=>{
+          const text = typeof p === 'object' ? (p.text||'') : p;
+          const key  = typeof p === 'object' ? p.key : false;
+          return key
+            ? `<li><mark class="yt-apply-key">${escHtml(text)}</mark></li>`
+            : `<li>${escHtml(text)}</li>`;
+        }).join('')}</ul>
       </div>` : '';
     return `
     <article class="yt-article" id="${vid}">
