@@ -75,7 +75,10 @@ recall 결과를 바탕으로 아래 작업을 수행하라.
 반드시 JSON만 출력. 마크다운 코드블록 없이 순수 JSON만.
 
 {{
-  "why_watch": "한 문장 — 이 영상을 왜 봐야 하는가 (임팩트 중심)",
+  "smart_brevity": {{
+    "why": "한 문장 핵심 (왜 중요한가, 임팩트·의미 중심, 구체적 수치나 결과 포함)",
+    "what": "2-3줄 설명 (무슨 내용인가 — 핵심 메커니즘, 작동 방식, 차별점을 명확하게)"
+  }},
   "sections": [
     {{
       "heading": "섹션 제목 (명확하고 구체적으로)",
@@ -133,13 +136,9 @@ def analyze_with_codex(title: str, transcript: str) -> dict | None:
     try:
         out_path = BLOG_DIR / "_codex_out.json"
         result = subprocess.run(
-            [
-                "codex", "exec",
-                f"파일 {tf_path} 을 읽고 지시대로 JSON을 만들어서 {out_path} 에 저장해라. 순수 JSON만.",
-                "--full-auto",
-            ],
+            f'codex exec "파일 {tf_path} 을 읽고 지시대로 JSON을 만들어서 {out_path} 에 저장해라. 순수 JSON만." --full-auto',
             capture_output=True, text=True, timeout=300,
-            cwd=str(BLOG_DIR),
+            cwd=str(BLOG_DIR), shell=True,
         )
 
         # 출력 파일 우선 시도
