@@ -11,6 +11,55 @@ Usage: python scripts/analyze-youtube.py
 import json, os, re, subprocess, sys, tempfile
 from pathlib import Path
 
+sys.stdout.reconfigure(encoding="utf-8")
+sys.stderr.reconfigure(encoding="utf-8")
+
+# ── Whisper fallback (자막 없는 영상) ─────────────────────────────────────
+def extract_transcript_whisper(video_url: str, video_id: str) -> str | None:
+    """yt-dlp 오디오 추출 → openai-whisper STT → transcript 반환"""
+    import imageio_ffmpeg
+    ffmpeg_dir = str(Path(imageio_ffmpeg.get_ffmpeg_exe()).parent)
+    # openai-whisper가 내부적으로 ffmpeg를 subprocess로 호출하므로 PATH에 추가
+    if ffmpeg_dir not in os.environ.get("PATH", ""):
+        os.environ["PATH"] = ffmpeg_dir + os.pathsep + os.environ.get("PATH", "")
+
+    tmp_dir = Path(tempfile.gettempdir())
+    audio_path = tmp_dir / f"yt_audio_{video_id}.mp3"
+
+    # 이전 임시 파일 정리
+    for f in tmp_dir.glob(f"yt_audio_{video_id}*"):
+        f.unlink(missing_ok=True)
+
+    # 오디오 다운로드
+    print("  [Whisper] 오디오 다운로드 중...")
+    r = subprocess.run(
+        [
+            "yt-dlp", "-x", "--audio-format", "mp3",
+            "--ffmpeg-location", ffmpeg_dir,
+            "-o", str(audio_path), video_url,
+        ],
+        capture_output=True, text=True, timeout=120,
+    )
+    if not audio_path.exists():
+        print(f"  [Whisper] 다운로드 실패: {r.stderr[-200:]}")
+        return None
+
+    # Whisper STT
+    print("  [Whisper] STT 처리 중 (medium, GPU)...")
+    try:
+        import whisper, torch
+        device = "cuda" if torch.cuda.is_available() else "cpu"
+        model = whisper.load_model("medium", device=device)
+        result = model.transcribe(str(audio_path), fp16=(device == "cuda"))
+        transcript = result["text"].strip()
+        print(f"  [Whisper] 완료: {len(transcript)}자 ({result.get('language','?')})")
+        return transcript[:80000]
+    except Exception as e:
+        print(f"  [Whisper] STT 실패: {e}")
+        return None
+    finally:
+        audio_path.unlink(missing_ok=True)
+
 SCRIPT_DIR = Path(__file__).parent
 BLOG_DIR   = SCRIPT_DIR.parent
 DATA_DIR   = BLOG_DIR / "_data" / "sources"
@@ -55,18 +104,16 @@ recall 결과를 바탕으로 아래 작업을 수행하라.
 """
 
 def find_pending():
-    """transcript 있는데 summary 없는 영상 목록 반환"""
+    """summary 없는 영상 목록 반환 (transcript 없으면 Whisper 대상 포함)"""
     pending = []
     for f in sorted(DATA_DIR.glob("youtube-*.json")):
         try:
             videos = json.loads(f.read_text(encoding="utf-8"))
         except Exception:
             continue
-        changed = False
         for v in videos:
-            if v.get("transcript") and not v.get("summary"):
+            if not v.get("summary"):
                 pending.append((f, videos, v))
-                changed = True
     return pending
 
 def analyze_with_codex(title: str, transcript: str) -> dict | None:
@@ -89,11 +136,10 @@ def analyze_with_codex(title: str, transcript: str) -> dict | None:
             [
                 "codex", "exec",
                 f"파일 {tf_path} 을 읽고 지시대로 JSON을 만들어서 {out_path} 에 저장해라. 순수 JSON만.",
-                "-m", "o3",
-                "--approval-mode", "full-auto",
+                "--full-auto",
             ],
             capture_output=True, text=True, timeout=300,
-            cwd=str(BLOG_DIR)
+            cwd=str(BLOG_DIR),
         )
 
         # 출력 파일 우선 시도
@@ -140,6 +186,17 @@ def main():
         title = video.get("title", "")
         print(f"\n분석 중: {title}")
 
+        # transcript 없으면 Whisper로 추출
+        if not video.get("transcript"):
+            video_id = video.get("video_id") or ""
+            transcript = extract_transcript_whisper(video.get("url", ""), video_id)
+            if transcript:
+                video["transcript"] = transcript
+                updated_files.add(filepath)
+            else:
+                print("  Whisper 실패 — 건너뜀")
+                continue
+
         summary = analyze_with_codex(title, video["transcript"])
         if not summary:
             print("  실패 — 건너뜀")
@@ -153,16 +210,10 @@ def main():
         print("\n저장된 파일 없음.")
         return
 
+    # pending의 videos는 이미 in-memory 수정됨 — 파일 재읽기 없이 직접 저장
+    file_videos = {filepath: videos for (filepath, videos, _) in pending}
     for filepath in updated_files:
-        videos = json.loads(filepath.read_text(encoding="utf-8"))
-        # 업데이트된 video 반영
-        for v in videos:
-            match = next(
-                (p[2] for p in pending if p[2]["url"] == v.get("url") and p[2].get("summary")),
-                None
-            )
-            if match:
-                v["summary"] = match["summary"]
+        videos = file_videos[filepath]
         filepath.write_text(json.dumps(videos, ensure_ascii=False, indent=2), encoding="utf-8")
         print(f"저장: {filepath.name}")
 
