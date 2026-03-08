@@ -1,0 +1,171 @@
+#!/usr/bin/env python3
+"""
+analyze-youtube.py — transcript → Codex CLI (GPT-5.4 xhigh) → summary JSON
+
+매일 09:00 KST Task Scheduler 자동 실행
+GitHub Actions가 07:00에 transcript 추출 → 09:00에 분석
+
+Usage: python scripts/analyze-youtube.py
+"""
+
+import json, os, re, subprocess, sys, tempfile
+from pathlib import Path
+
+SCRIPT_DIR = Path(__file__).parent
+BLOG_DIR   = SCRIPT_DIR.parent
+DATA_DIR   = BLOG_DIR / "_data" / "sources"
+
+PROMPT_TEMPLATE = """\
+다음은 YouTube 영상의 자막 전체 텍스트다.
+이 내용을 읽고, 팟캐스트/영상을 전혀 보지 않아도 될 만큼 깊이 있는 분석 리포트를 아래 JSON 형식으로 만들어라.
+반드시 JSON만 출력. 마크다운 코드블록 없이 순수 JSON만.
+
+{{
+  "why_watch": "한 문장 — 이 영상을 왜 봐야 하는가 (임팩트 중심)",
+  "sections": [
+    {{
+      "heading": "섹션 제목 (명확하고 구체적으로)",
+      "body": "2-4문단 분량의 깊이 있는 설명. 수치, 사례, 맥락 전부 포함.",
+      "highlights": ["핵심 문장 1 (그대로 인용 또는 핵심 요약)", "핵심 문장 2"],
+      "quote": "인상적인 발언 (있을 경우만, 없으면 생략)"
+    }}
+  ],
+  "key_takeaways": ["핵심 요점 1", "핵심 요점 2", "핵심 요점 3"],
+  "tech_stack": ["언급된 실제 기술/도구명"],
+  "apply_points": ["내 프로젝트에 적용 가능한 구체적인 것"]
+}}
+
+규칙:
+- sections는 영상 흐름에 따라 3-6개
+- body는 최소 3문장 이상, 표면적 요약 금지 — 왜 중요한지, 어떻게 작동하는지 깊이 분석
+- highlights는 섹션당 1-3개, 독자가 밑줄 칠 문장
+- 전부 한국어 (기술명/고유명사는 영어 유지)
+- 팟캐스트 안 봐도 될 수준으로 완성도 높게
+
+영상 제목: {title}
+
+자막 내용:
+{transcript}
+"""
+
+def find_pending():
+    """transcript 있는데 summary 없는 영상 목록 반환"""
+    pending = []
+    for f in sorted(DATA_DIR.glob("youtube-*.json")):
+        try:
+            videos = json.loads(f.read_text(encoding="utf-8"))
+        except Exception:
+            continue
+        changed = False
+        for v in videos:
+            if v.get("transcript") and not v.get("summary"):
+                pending.append((f, videos, v))
+                changed = True
+    return pending
+
+def analyze_with_codex(title: str, transcript: str) -> dict | None:
+    """Codex CLI (GPT-5.4 xhigh) 로 분석"""
+    prompt = PROMPT_TEMPLATE.format(
+        title=title,
+        transcript=transcript[:60000]  # 토큰 제한 여유
+    )
+
+    # 임시 파일로 전달 (프롬프트 길이 제한 우회)
+    with tempfile.NamedTemporaryFile(
+        mode="w", suffix=".txt", delete=False, encoding="utf-8", dir=BLOG_DIR
+    ) as tf:
+        tf.write(prompt)
+        tf_path = tf.name
+
+    try:
+        out_path = BLOG_DIR / "_codex_out.json"
+        result = subprocess.run(
+            [
+                "codex", "exec",
+                f"파일 {tf_path} 을 읽고 지시대로 JSON을 만들어서 {out_path} 에 저장해라. 순수 JSON만.",
+                "-m", "o3",
+                "--approval-mode", "full-auto",
+            ],
+            capture_output=True, text=True, timeout=300,
+            cwd=str(BLOG_DIR)
+        )
+
+        # 출력 파일 우선 시도
+        if out_path.exists():
+            raw = out_path.read_text(encoding="utf-8").strip()
+            out_path.unlink()
+        else:
+            raw = (result.stdout or "").strip()
+
+        # 코드블록 제거
+        raw = re.sub(r"^```json\s*", "", raw)
+        raw = re.sub(r"\s*```$", "", raw.strip())
+
+        # JSON 파싱
+        return json.loads(raw)
+
+    except subprocess.TimeoutExpired:
+        print("  Codex 타임아웃 (5분 초과)")
+        return None
+    except json.JSONDecodeError as e:
+        print(f"  JSON 파싱 실패: {e}")
+        print(f"  출력: {raw[:300]}")
+        return None
+    except Exception as e:
+        print(f"  오류: {e}")
+        return None
+    finally:
+        try:
+            os.unlink(tf_path)
+        except Exception:
+            pass
+
+def main():
+    pending = find_pending()
+    print(f"분석 대상: {len(pending)}개 영상")
+
+    if not pending:
+        print("처리할 영상 없음.")
+        return
+
+    updated_files = set()
+
+    for (filepath, videos, video) in pending:
+        title = video.get("title", "")
+        print(f"\n분석 중: {title}")
+
+        summary = analyze_with_codex(title, video["transcript"])
+        if not summary:
+            print("  실패 — 건너뜀")
+            continue
+
+        video["summary"] = summary
+        updated_files.add(filepath)
+        print(f"  완료: {summary.get('why_watch', '')[:60]}")
+
+    if not updated_files:
+        print("\n저장된 파일 없음.")
+        return
+
+    for filepath in updated_files:
+        videos = json.loads(filepath.read_text(encoding="utf-8"))
+        # 업데이트된 video 반영
+        for v in videos:
+            match = next(
+                (p[2] for p in pending if p[2]["url"] == v.get("url") and p[2].get("summary")),
+                None
+            )
+            if match:
+                v["summary"] = match["summary"]
+        filepath.write_text(json.dumps(videos, ensure_ascii=False, indent=2), encoding="utf-8")
+        print(f"저장: {filepath.name}")
+
+    # git push
+    os.chdir(BLOG_DIR)
+    os.system("git add _data/sources/")
+    os.system(f'git commit -m "[auto] youtube summary {len(updated_files)}개 분석"')
+    os.system("git push")
+    print("git push 완료")
+
+if __name__ == "__main__":
+    main()
