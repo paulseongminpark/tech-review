@@ -1,0 +1,46 @@
+{
+  "date": "2026-03-09",
+  "lang": "ko",
+  "post_url": "/ko/2026/03/09/daily-tech-review/",
+  "post_title": "Pentagon과 OpenAI 협약 체결, Anthropic 공급망 위험 지정으로 AI 업계 대분열 가시화하며 ChatGPT 앱 제거 295% 폭증.",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "Pentagon의 Anthropic 공급망 위험 지정, OpenAI와 협약 체결",
+      "lead": "Anthropic이 자율무기와 대량 감시 금지를 요구하다가 Pentagon(국방부)으로부터 공급망 위험으로 지정되었고, OpenAI는 같은 날 Pentagon과 협약을 체결해 군사 AI 사용 시장을 선점했다. 이 결정으로 미국 국방부 계약업체들은 Anthropic의 Claude 기술 사용 금지를 받게 되었다.",
+      "tags": [
+        "ai-models",
+        "research",
+        "benchmarks",
+        "openai",
+        "anthropic"
+      ],
+      "anchor": "pentagon의-anthropic-공급망-위험-지정-openai와-협약-체결"
+    },
+    {
+      "index": 2,
+      "title": "OpenAI $110B 펀딩 라운드 완료, AWS와 Stateful Runtime 협력",
+      "lead": "OpenAI가 역대 최대 규모 민간 펀딩인 $110B를 조달했으며, Amazon $50B, Nvidia $30B, SoftBank $30B이 참여했다. 동시에 AWS와 Stateful Runtime Environment 개발에 합의해 에이전트가 메모리와 컨스트를 다중 스텝 작업 간 유지하는 기술 구현 예정이다.",
+      "tags": [
+        "ai-models",
+        "research",
+        "benchmarks",
+        "aws",
+        "openai"
+      ],
+      "anchor": "openai-110b-펀딩-라운드-완료-aws와-stateful-runtime-협력"
+    },
+    {
+      "index": 3,
+      "title": "Claude Opus 4.6, 2주간 Firefox 22개 보안 취약점 발견",
+      "lead": "Anthropic의 Claude Opus 4.6이 2월 1-14일 Mozilla와의 협력으로 Firefox에서 22개의 새로운 보안 취약점을 발견했으며, 이 중 14개는 고위험도 CVE로 분류되어 3월 초 Firefox 148에 대부분 수정됨.",
+      "tags": [
+        "ai-models",
+        "research",
+        "benchmarks"
+      ],
+      "anchor": "claude-opus-46-2주간-firefox-22개-보안-취약점-발견"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "date": "2026-03-09",
+  "lang": "en",
+  "post_url": "/en/2026/03/09/daily-tech-review/",
+  "post_title": "Pentagon designates Anthropic as supply-chain risk while signing agreement with OpenAI, marking visible AI industry split, with ChatGPT app removals surging 295%.",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "Pentagon's Anthropic Supply-Chain Risk Designation, Agreement with OpenAI",
+      "lead": "Anthropic was designated a supply-chain risk by the Pentagon after demanding bans on autonomous weapons and mass surveillance, while OpenAI signed an agreement with the Pentagon on the same day to secure the military AI market.[1][2] This decision pr",
+      "tags": [
+        "ai-models",
+        "research",
+        "benchmarks",
+        "openai",
+        "anthropic"
+      ],
+      "anchor": "pentagons-anthropic-supply-chain-risk-designation-agreement-"
+    },
+    {
+      "index": 2,
+      "title": "OpenAI Completes $110B Funding Round, Partners with AWS on Stateful Runtime",
+      "lead": "OpenAI secured $110B in the largest private funding round in history, with Amazon contributing $50B, Nvidia $30B, and SoftBank $30B. Simultaneously, OpenAI agreed with AWS to develop a Stateful Runtime Environment enabling agents to maintain memory a",
+      "tags": [
+        "ai-models",
+        "research",
+        "benchmarks",
+        "aws",
+        "openai"
+      ],
+      "anchor": "openai-completes-110b-funding-round-partners-with-aws-on-sta"
+    },
+    {
+      "index": 3,
+      "title": "Claude Opus 4.6 Discovers 22 Firefox Security Vulnerabilities in Two Weeks",
+      "lead": "Anthropic's Claude Opus 4.6 discovered 22 new security vulnerabilities in Firefox during February 1-14 through collaboration with Mozilla, with 14 classified as high-risk CVEs and most patched by early March in Firefox 148.",
+      "tags": [
+        "ai-models",
+        "research",
+        "benchmarks",
+        "security"
+      ],
+      "anchor": "claude-opus-46-discovers-22-firefox-security-vulnerabilities"
+    }
+  ]
+}
