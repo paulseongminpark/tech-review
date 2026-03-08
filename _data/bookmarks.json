@@ -8,7 +8,17 @@
       "why": "시맨틱 레이어가 죽었다. 컨텍스트 관리가 그 자리를 대체하며 데이터 팀 생산성을 5배 높인다.",
       "what": "DBT 모델을 직접 읽는 컨텍스트 서브에이전트를 SQL 생성 전에 먼저 실행한다. 사용자 수정사항은 'quirk'으로 학습·저장되어 다음 질문부터 자동 적용된다. Opus 4.6이 데이터 분석에서 Codex 5.3을 압도한다는 실전 검증 포함."
     },
-    "tech_stack": ["Claude Agent SDK", "DBT", "pgvector", "OpenAI text-embedding-3-small", "pg_textsearch (BM25)", "PostgreSQL", "Slack", "Notion", "Haiku (SQL 스코어링)"],
+    "tech_stack": [
+      "Claude Agent SDK",
+      "DBT",
+      "pgvector",
+      "OpenAI text-embedding-3-small",
+      "pg_textsearch (BM25)",
+      "PostgreSQL",
+      "Slack",
+      "Notion",
+      "Haiku (SQL 스코어링)"
+    ],
     "apply_points": [
       "mcp-memory recall 전략에 quirk store 패턴 적용 — 사용자 수정을 영구 지식으로 변환",
       "컨텍스트 서브에이전트 패턴을 오케스트레이션에 도입 — 실행 전 컨텍스트 수집 분리",
@@ -28,7 +38,15 @@
       "why": "AI에게 메모리는 있지만, 당신이 여전히 시스템 간 통합 레이어다. Pal이 그 역할을 대신한다.",
       "what": "컨텍스트 그래프(SQL/파일/이메일/캘린더) 위를 내비게이션하는 개인 에이전트. Classify → Recall → Retrieve → Act → Learn 5단계 루프로 동작. 발견한 경로를 Knowledge Map에 저장해 다음 질문부터 직행. 스케줄드 태스크로 당신이 도착하기 전에 브리핑을 완성한다."
     },
-    "tech_stack": ["PostgreSQL (pal_* 테이블)", "Markdown context/ 디렉토리", "Gmail + Google Calendar", "Exa web search", "Docker", "Agno framework", "Python cron"],
+    "tech_stack": [
+      "PostgreSQL (pal_* 테이블)",
+      "Markdown context/ 디렉토리",
+      "Gmail + Google Calendar",
+      "Exa web search",
+      "Docker",
+      "Agno framework",
+      "Python cron"
+    ],
     "apply_points": [
       "daily-memo + Obsidian + Orchestration 간 컨텍스트 그래프 구축의 레퍼런스 아키텍처",
       "5단계 루프(Classify→Recall→Retrieve→Act→Learn)를 현재 오케스트레이션 에이전트 설계에 적용",
@@ -48,7 +66,12 @@
       "why": "React 컴포넌트를 클릭 한 번으로 선택해 Claude Code/Codex에 직접 전달. UI 수정 워크플로우를 극적으로 단축한다.",
       "what": "npx react-grab@latest 설치 후 페이지 위 요소 선택 → 자연어로 변경 지시. 컴포넌트 트리와 선택된 요소의 컨텍스트를 에이전트에게 자동 주입. 완전 오픈소스."
     },
-    "tech_stack": ["React", "npx", "Claude Code", "Codex CLI"],
+    "tech_stack": [
+      "React",
+      "npx",
+      "Claude Code",
+      "Codex CLI"
+    ],
     "apply_points": [
       "portfolio UI 수정 작업 시 즉시 활용 — 컴포넌트 특정 없이 클릭으로 대상 지정",
       "monet-lab UI 실험에 적용 가능"
@@ -66,7 +89,12 @@
       "why": "에이전트를 제대로 쓰는 7가지 원칙. Plan → Verify → Learn 루프가 실수율을 극적으로 낮춘다.",
       "what": "비자명한 모든 작업은 플랜 모드로 시작. 수정 받을 때마다 tasks/lessons.md 즉시 업데이트. 완료 선언 전 반드시 작동 증명. 서브에이전트로 메인 컨텍스트 보호. 단순 수정엔 과도한 우아함 추구 금지."
     },
-    "tech_stack": ["tasks/todo.md", "tasks/lessons.md", "플랜 모드", "서브에이전트"],
+    "tech_stack": [
+      "tasks/todo.md",
+      "tasks/lessons.md",
+      "플랜 모드",
+      "서브에이전트"
+    ],
     "apply_points": [
       "lessons.md 패턴 = 현재 common-mistakes.md와 동일 개념 — 에이전트가 직접 갱신하도록 지시 추가",
       "'Would a staff engineer approve this?' 자기 검증 질문을 에이전트 지시에 삽입",
@@ -85,7 +113,14 @@
       "why": "나이브 메모리는 컨텍스트를 오염시킨다. 인지 과정으로서의 메모리가 에이전트 시스템을 복리로 성장시킨다.",
       "what": "encode/consolidate/recall/extract/forget 5개 인지 연산. 충돌하는 기억을 자동 감지·해결(PostgreSQL 이전 → MySQL 이전 시 구버전 자동 폐기). 복합 스코어링 = 유사도×w + 최신성×w + 중요도×w. 원자 메모리 추출로 500자 요약을 개별 사실로 분해."
     },
-    "tech_stack": ["CrewAI v1.10.1", "LanceDB", "pgvector", "CrewAI Flows", "Python", "pip install crewai"],
+    "tech_stack": [
+      "CrewAI v1.10.1",
+      "LanceDB",
+      "pgvector",
+      "CrewAI Flows",
+      "Python",
+      "pip install crewai"
+    ],
     "apply_points": [
       "mcp-memory v2.1 recall에 복합 스코어링 공식 직접 적용 — 현재 similarity-only 개선",
       "extract_memories() 패턴 = 현재 enrichment 파이프라인과 동일 구조 — 원자 분해 로직 참고",
@@ -105,7 +140,10 @@
       "why": "도구를 팔면 모델에 지고, 일을 팔면 모델이 강해질수록 내가 강해진다. 다음 $1조 기업은 서비스 회사로 위장한 소프트웨어 회사다.",
       "what": "코파일럿(도구 판매)은 생산성 향상이 상한선. 오토파일럿(결과 판매)은 노동 예산 전체가 TAM. 아웃소싱이 이미 존재하는 곳이 진입 웨지 — 예산선이 있고, 성과 기반 계약이 이미 있고, 치환이 조직 개편 없이 가능. 인텔리전스 비율 높은 분야: 보험($140-200B), 회계($50-80B), 법률($20-25B), IT MSP($100B+)."
     },
-    "tech_stack": ["비즈니스 모델 프레임워크 (기술 스택 아님)", "레퍼런스: Crosby, WithCoverage, Anterior, Rillet, Harvey, Mercor"],
+    "tech_stack": [
+      "비즈니스 모델 프레임워크 (기술 스택 아님)",
+      "레퍼런스: Crosby, WithCoverage, Anterior, Rillet, Harvey, Mercor"
+    ],
     "apply_points": [
       "tech-review 블로그 'AI 비즈니스 모델' 카테고리 소재로 활용",
       "포트폴리오 'HOW I AI' 섹션에서 오토파일럿 관점으로 내 시스템 포지셔닝 재검토",
@@ -125,7 +163,15 @@
       "why": "복잡한 하네스와 플러그인이 오히려 에이전트 성능을 망친다. 단순함이 최강이다.",
       "what": "CLAUDE.md는 IF-ELSE 디렉토리여야 한다 — 컨텍스트를 직접 담지 말고 어디서 찾을지만 지시. Rules(선호)와 Skills(레시피)만 추가, 나머지는 제거. TASK_CONTRACT.md = 테스트+스크린샷+검증 조건 명시, 이것이 충족되기 전까지 세션 종료 금지. 버그 탐색은 찾기(+10점)→반박(-2배 패널티)→심판 3에이전트 구조로."
     },
-    "tech_stack": ["Claude Code", "Codex CLI", "CLAUDE.md", "rules/*.md", "skills/*.md", "stop-hook", "TASK_CONTRACT.md"],
+    "tech_stack": [
+      "Claude Code",
+      "Codex CLI",
+      "CLAUDE.md",
+      "rules/*.md",
+      "skills/*.md",
+      "stop-hook",
+      "TASK_CONTRACT.md"
+    ],
     "apply_points": [
       "현재 CLAUDE.md 구조 재검토 — 14개 파일을 직접 읽히는 구조 → IF-ELSE 디렉토리로 단순화",
       "TASK_CONTRACT.md 패턴 도입 — 구현 완료 기준을 명시적 계약으로 에이전트에 주입",
@@ -146,7 +192,16 @@
       "why": "에이전트 빌딩은 쉽다. 프로덕션에서 살아남는 런타임 설계가 진짜 난이도다.",
       "what": "Build(에이전트 정의) → Serve(API화) → Connect(Slack/Discord/MCP 연결) 3단계. 6개 기둥: 내구성(중간 실패 시 재개)/격리(사용자별 완전 분리)/거버넌스(자동실행·사용자승인·관리자승인 3계층)/영속성/확장성/조합성. UserFeedbackTools로 에이전트가 구조화된 질문을 사용자에게 던진다."
     },
-    "tech_stack": ["Agno framework", "Docker", "PostgreSQL", "AgentOS", "REST API", "MCP", "Python", "OpenAI"],
+    "tech_stack": [
+      "Agno framework",
+      "Docker",
+      "PostgreSQL",
+      "AgentOS",
+      "REST API",
+      "MCP",
+      "Python",
+      "OpenAI"
+    ],
     "apply_points": [
       "6개 기둥을 mcp-memory + 오케스트레이션 설계 체크리스트로 활용",
       "check_access 거버넌스 레이어 설계에 3계층(자동/사용자승인/관리자승인) 직접 참고",
@@ -155,6 +210,124 @@
     "explore_points": [
       "에이전트가 act/ask/wait 3가지 모드를 자연스럽게 전환하는 런타임 — 현재 세션 기반 구조와 비교",
       "MCP 클라이언트가 에이전트를 발견·호출하는 조합성 기둥 — mcp-memory를 서비스로 노출하는 구조"
+    ]
+  },
+  {
+    "id": "bm-009",
+    "author": "unknown",
+    "date": "2026-03-06",
+    "url": "https://x.com/svpino/status/2029952780694352026",
+    "smart_brevity": {
+      "why": "클라우드 코드를 통해 웹사이트 파싱 능력 부여",
+      "what": "클라우드 코드에 웹사이트 파싱 능력 부여 방법 소개\n영상 녹화 및 공유\n많은 사람들이 좋아하고 메시지 보내고 있음"
+    },
+    "tech_stack": [
+      "Claude Code"
+    ],
+    "apply_points": [
+      "웹사이트 파싱 자동화"
+    ],
+    "explore_points": [
+      "클라우드 코드의 다양한 활용 방법"
+    ]
+  },
+  {
+    "id": "bm-010",
+    "author": "unknown",
+    "date": "2026-03-05",
+    "url": "https://x.com/aidenybai/status/2029603067927351506",
+    "smart_brevity": {
+      "why": "리액트 프로젝트에서 요소 선택 및 코드 수정을 간단하게 할 수 있다",
+      "what": "React Grab은 페이지의 요소를 선택하고 Claude Code 또는 Codex에 변경 지시를 줄 수 있는 도구이다. 오픈 소스이며 쉽게 사용할 수 있다. 리액트 프로젝트에서 코드 수정을 간단하게 할 수 있다"
+    },
+    "tech_stack": [
+      "React",
+      "Claude Code",
+      "Codex"
+    ],
+    "apply_points": [
+      "리액트 프로젝트에서 요소 선택 및 코드 수정 자동화"
+    ],
+    "explore_points": [
+      "React Grab의 오픈 소스 코드를 분석하여 커스터마이징 방법探索"
+    ]
+  },
+  {
+    "id": "bm-011",
+    "author": "unknown",
+    "date": "2026-03-05",
+    "url": "https://x.com/JackCulpan/status/2029478582352003150",
+    "smart_brevity": {
+      "why": "작업의 효율성을 높이고 실수를 줄이기 위해 계획 모드를 사용하는 것이 중요하다",
+      "what": "계획 모드는 3개 이상의 단계 또는 아키텍처 결정이 필요한 작업에 사용된다. 계획 모드를 사용하면 작업을 체계적으로 진행할 수 있고, 오류를 줄일 수 있다. 또한, 계획 모드는 확인 단계에서도 사용되어야 한다."
+    },
+    "tech_stack": [],
+    "apply_points": [
+      "작업의 효율성을 높이기 위해 계획 모드를 사용",
+      "오류가 발생할 경우 즉시 계획을 재검토"
+    ],
+    "explore_points": [
+      "계획 모드의 구체적인 적용 방법",
+      "계획 모드의 효과적인 사용을 위한 전략"
+    ]
+  },
+  {
+    "id": "bm-012",
+    "author": "unknown",
+    "date": "2026-03-05",
+    "url": "https://x.com/sawyerhood/status/2029348435137315041",
+    "smart_brevity": {
+      "why": "구글 워크스페이스에서 제공하는 공식 CLI 도구가 출시됨으로써 작업 자동화와 효율성이 향상된다.",
+      "what": "구글 워크스페이스에서 제공하는 공식 CLI 도구는 사용자들이 명령줄 인터페이스를 통해 구글 워크스페이스 서비스를 제어할 수 있도록 해준다. 이 도구를 사용하면 자동화 스크립트를 작성하거나 워크플로우를 최적화할 수 있다. 또한, 개발자들은 이 도구를 사용하여 구글 워크스페이스와 통합된 애플리케이션을 개발할 수 있다."
+    },
+    "tech_stack": [
+      "Google Workspace CLI"
+    ],
+    "apply_points": [
+      "작업 자동화",
+      "워크플로우 최적화",
+      "애플리케이션 개발"
+    ],
+    "explore_points": [
+      "구글 워크스페이스 API 연동",
+      "CLI 도구를 활용한 자동화 스크립트 작성"
+    ]
+  },
+  {
+    "id": "bm-013",
+    "author": "unknown",
+    "date": "2026-03-04",
+    "url": "https://x.com/trq212/status/2029285398858612916",
+    "smart_brevity": {
+      "why": "클로드의 사고 과정을 이해하는 데 도움이 된다",
+      "what": "클로드의 생각을 이해하기 위한 창으로서의 논문, 클로드의 사고 과정을 분석, 클로드의 생각을 이해하는 데 도움이 되는 논문"
+    },
+    "tech_stack": [],
+    "apply_points": [],
+    "explore_points": [
+      "클로드의 사고 과정을 더深く 분석"
+    ]
+  },
+  {
+    "id": "bm-014",
+    "author": "unknown",
+    "date": "2026-03-02",
+    "url": "https://x.com/MillieMarconnni/status/2028436636841996451",
+    "smart_brevity": {
+      "why": "깃허브 저장소를 인터랙티브 지식 그래프로 변환",
+      "what": "GitNexus라는 툴이 개발되어 공개되었습니다. 이 툴은 코드베이스를 시각화하여 AI 에이전트와 대화할 수 있습니다. 서버나 설정이 필요 없습니다."
+    },
+    "tech_stack": [
+      "GitHub",
+      "AI"
+    ],
+    "apply_points": [
+      "코드베이스 시각화",
+      "인터랙티브 지식 그래프 생성"
+    ],
+    "explore_points": [
+      "GitNexus의 확장 가능성",
+      "AI 에이전트의 활용 가능성"
     ]
   }
 ]
