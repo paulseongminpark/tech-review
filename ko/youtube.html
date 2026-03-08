@@ -5,45 +5,423 @@ lang: ko
 permalink: /ko/youtube/
 ---
 
-<div id="feed"></div>
+<style>
+/* ── 레이아웃 ── */
+.yt-layout {
+  display: flex;
+  gap: 0;
+  min-height: 100vh;
+}
+
+/* ── TOC 사이드바 (포트폴리오 P12TocSidebar 스타일) ── */
+.yt-toc {
+  position: fixed;
+  left: 0; top: 0;
+  width: 200px;
+  height: 100vh;
+  overflow-y: auto;
+  border-right: 1px solid #e8e8e8;
+  background: #fafafa;
+  z-index: 10;
+  padding: 80px 16px 24px;
+  box-sizing: border-box;
+  opacity: 0.96;
+  transform: translateX(-3px);
+  transition: opacity 0.3s, transform 0.3s;
+}
+.yt-toc:hover {
+  opacity: 1;
+  transform: translateX(0);
+}
+.yt-toc-group {
+  margin-bottom: 2px;
+}
+.yt-toc-group-link {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  color: #4f4f4f;
+  text-decoration: none;
+  padding: 5px 0;
+  letter-spacing: 0.02em;
+  transition: color 0.15s;
+  cursor: pointer;
+}
+.yt-toc-group-link:hover,
+.yt-toc-group-link.active { color: #D4632D; font-weight: 600; }
+.yt-toc-sub {
+  border-left: 2px solid rgba(212,99,45,0.2);
+  margin-left: 4px;
+  margin-bottom: 4px;
+}
+.yt-toc-sub-link {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  color: #6f6f6f;
+  text-decoration: none;
+  padding: 3px 0 3px 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-left: 2px solid transparent;
+  margin-left: -2px;
+  transition: color 0.15s;
+}
+.yt-toc-sub-link:hover,
+.yt-toc-sub-link.active {
+  color: #D4632D;
+  font-weight: 600;
+  border-left-color: #D4632D;
+}
+
+/* ── 메인 콘텐츠 ── */
+.yt-main {
+  margin-left: 200px;
+  flex: 1;
+  max-width: 760px;
+  padding: 0 2rem 4rem;
+}
+
+/* ── 영상 카드 ── */
+.yt-article {
+  padding: 3rem 0 2.5rem;
+  border-bottom: 1px solid #eee;
+}
+.yt-article:last-child { border-bottom: none; }
+
+.yt-eyebrow {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #999;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+.yt-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.4;
+  margin-bottom: 0.4rem;
+}
+.yt-title a { color: inherit; text-decoration: none; }
+.yt-title a:hover { color: #D4632D; }
+
+.yt-meta {
+  font-size: 0.75rem;
+  color: #aaa;
+  margin-bottom: 1.5rem;
+}
+
+/* ── Smart Brevity 블록 ── */
+.yt-sb {
+  background: #fafafa;
+  border-left: 3px solid #D4632D;
+  padding: 1rem 1.2rem;
+  margin-bottom: 2rem;
+  border-radius: 0 6px 6px 0;
+}
+.yt-sb-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #D4632D;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.35rem;
+}
+.yt-sb-why {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.5;
+  margin-bottom: 0.6rem;
+}
+.yt-sb-what {
+  font-size: 0.88rem;
+  color: #444;
+  line-height: 1.7;
+  white-space: pre-line;
+}
+
+/* ── 섹션 ── */
+.yt-section {
+  margin-bottom: 2rem;
+  scroll-margin-top: 2rem;
+}
+.yt-section-heading {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+.yt-section-body {
+  font-size: 0.9rem;
+  color: #333;
+  line-height: 1.8;
+}
+.yt-section-body mark {
+  background: rgba(212, 99, 45, 0.12);
+  color: inherit;
+  border-radius: 2px;
+  padding: 1px 2px;
+}
+.yt-quote {
+  border-left: 3px solid #e0e0e0;
+  padding: 0.5rem 1rem;
+  margin: 0.75rem 0;
+  font-size: 0.88rem;
+  color: #555;
+  font-style: italic;
+  line-height: 1.7;
+}
+
+/* ── Key Takeaways ── */
+.yt-takeaways {
+  background: #f8f8f8;
+  border-radius: 8px;
+  padding: 1.1rem 1.3rem;
+  margin: 1.5rem 0;
+}
+.yt-takeaways-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.6rem;
+}
+.yt-takeaways ul {
+  list-style: none;
+  padding: 0; margin: 0;
+}
+.yt-takeaways li {
+  font-size: 0.88rem;
+  color: #333;
+  padding: 0.2rem 0 0.2rem 1rem;
+  position: relative;
+  line-height: 1.6;
+}
+.yt-takeaways li::before {
+  content: '›';
+  position: absolute; left: 0;
+  color: #D4632D;
+}
+
+/* ── Tech/Apply ── */
+.yt-tags {
+  display: flex; flex-wrap: wrap; gap: 0.3rem;
+  margin-top: 0.5rem;
+}
+.yt-tag {
+  background: #f0f4ff; color: #2244aa;
+  font-size: 0.7rem; padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+}
+.yt-apply ul { list-style: none; padding: 0; margin: 0.4rem 0 0; }
+.yt-apply li {
+  font-size: 0.82rem; color: #444;
+  padding: 0.15rem 0 0.15rem 0.9rem;
+  position: relative; line-height: 1.5;
+}
+.yt-apply li::before { content: '›'; position: absolute; left: 0; color: #0066cc; }
+
+.yt-row-label {
+  font-size: 0.68rem; font-weight: 700; color: #aaa;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  margin: 1rem 0 0.35rem;
+}
+
+@media (max-width: 768px) {
+  .yt-toc { display: none; }
+  .yt-main { margin-left: 0; }
+}
+</style>
+
+<div id="yt-toc" class="yt-toc"></div>
+<div class="yt-main" id="yt-main"></div>
 
 <script>
-const ALL_ITEMS = [];
+const ALL_VIDEOS = [];
 {% for item in site.data.sources %}
   {% assign key = item[0] %}
   {% if key contains 'youtube' %}
-    {% for entry in item[1] %}
-ALL_ITEMS.push({
-  title: {{ entry.title | jsonify }},
-  channel: {{ entry.channel | jsonify }},
-  url: {{ entry.url | jsonify }},
-  playlist: {{ entry.playlist | jsonify }},
-  published_at: {{ entry.published_at | jsonify }},
-  summary: {{ entry.summary | jsonify }}
+    {% for v in item[1] %}
+ALL_VIDEOS.push({
+  video_id:     {{ v.video_id | jsonify }},
+  title:        {{ v.title | jsonify }},
+  channel:      {{ v.channel | jsonify }},
+  url:          {{ v.url | jsonify }},
+  thumbnail:    {{ v.thumbnail | jsonify }},
+  published_at: {{ v.published_at | jsonify }},
+  playlist:     {{ v.playlist | jsonify }},
+  summary:      {{ v.summary | jsonify }}
 });
     {% endfor %}
   {% endif %}
 {% endfor %}
 
-ALL_ITEMS.sort((a, b) => b.published_at.localeCompare(a.published_at));
+ALL_VIDEOS.sort((a, b) => (b.published_at || '').localeCompare(a.published_at || ''));
 
-document.getElementById('feed').innerHTML = ALL_ITEMS.length === 0
-  ? '<p style="color:#999; margin-top:2rem;">아직 수집된 영상이 없습니다.</p>'
-  : ALL_ITEMS.map(item => {
-    const s = item.summary || {};
+/* ── 하이라이트 삽입 ── */
+function applyHighlights(body, highlights) {
+  if (!highlights || !highlights.length) return escHtml(body);
+  let result = escHtml(body);
+  highlights.forEach(h => {
+    if (!h) return;
+    const safe = escHtml(h);
+    result = result.replace(safe, `<mark>${safe}</mark>`);
+  });
+  return result;
+}
+
+function escHtml(str) {
+  return (str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+/* ── TOC 데이터 구성 ── */
+function buildTocData(videos) {
+  return videos.map((v, vi) => {
+    const vid = `v${vi}`;
+    const s = v.summary || {};
+    const subItems = (s.sections || []).map(sec => ({
+      id: `${vid}-${sec.id}`,
+      label: sec.heading
+    }));
+    return {
+      id: vid,
+      label: v.title.length > 40 ? v.title.slice(0, 38) + '…' : v.title,
+      items: subItems
+    };
+  });
+}
+
+/* ── TOC 렌더링 ── */
+function renderToc(tocData, activeGroup, activeItem) {
+  const toc = document.getElementById('yt-toc');
+  toc.innerHTML = tocData.map(group => {
+    const isActive = activeGroup === group.id;
     return `
-    <div style="padding:1.25rem 0; border-bottom:1px solid #eee;">
-      <div style="font-size:0.78rem; color:#999; margin-bottom:0.4rem;">
-        ${item.channel} · ${item.published_at ? item.published_at.slice(0,10) : ''} · ${item.playlist}
-      </div>
-      <a href="${item.url}" target="_blank" rel="noopener"
-         style="font-weight:700; font-size:1rem; color:#1a1a1a; display:block; margin-bottom:0.75rem;">
-        ${item.title} ↗
+    <div class="yt-toc-group">
+      <a class="yt-toc-group-link ${isActive ? 'active' : ''}"
+         onclick="scrollToId('${group.id}')" href="#${group.id}">
+        ${group.label}
       </a>
-      ${s.one_line ? `<p style="font-weight:600; margin-bottom:0.5rem;">${s.one_line}</p>` : ''}
-      ${s.why_it_matters ? `<p style="font-size:0.88rem; color:#444; margin-bottom:0.5rem;">${s.why_it_matters}</p>` : ''}
-      ${s.points ? `<ul style="list-style:none; padding-left:1rem;">${s.points.map(p => `<li style="font-size:0.88rem; color:#444; margin:0.2rem 0;">· ${p}</li>`).join('')}</ul>` : ''}
-      ${s.whats_next ? `<p style="font-size:0.85rem; color:#666; margin-top:0.5rem; font-style:italic;">${s.whats_next}</p>` : ''}
-    </div>
-  `}).join('');
+      ${group.items.length ? `
+      <div class="yt-toc-sub">
+        ${group.items.map(item => `
+          <a class="yt-toc-sub-link ${activeItem === item.id ? 'active' : ''}"
+             onclick="scrollToId('${item.id}')" href="#${item.id}">
+            ${item.label}
+          </a>
+        `).join('')}
+      </div>` : ''}
+    </div>`;
+  }).join('');
+}
+
+function scrollToId(id) {
+  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+/* ── 메인 콘텐츠 렌더링 ── */
+function renderMain(videos) {
+  const main = document.getElementById('yt-main');
+  if (!videos.length) {
+    main.innerHTML = '<p style="color:#bbb;margin-top:3rem;">아직 수집된 영상이 없습니다.</p>';
+    return;
+  }
+
+  main.innerHTML = videos.map((v, vi) => {
+    const vid = `v${vi}`;
+    const s = v.summary || {};
+    const sb = s.smart_brevity || {};
+    const date = (v.published_at || '').slice(0, 10);
+
+    const sectionsHtml = (s.sections || []).map(sec => `
+      <div class="yt-section" id="${vid}-${sec.id}">
+        <h3 class="yt-section-heading">${escHtml(sec.heading)}</h3>
+        <div class="yt-section-body">
+          ${applyHighlights(sec.body, sec.highlights)}
+        </div>
+        ${sec.quote ? `<blockquote class="yt-quote">"${escHtml(sec.quote)}"</blockquote>` : ''}
+      </div>
+    `).join('');
+
+    const takeawaysHtml = (s.key_takeaways || []).length ? `
+      <div class="yt-takeaways">
+        <p class="yt-takeaways-label">핵심 요점</p>
+        <ul>${(s.key_takeaways || []).map(t => `<li>${escHtml(t)}</li>`).join('')}</ul>
+      </div>` : '';
+
+    const techHtml = (s.tech_stack || []).length ? `
+      <p class="yt-row-label">Tech / Stack</p>
+      <div class="yt-tags">
+        ${(s.tech_stack || []).map(t => `<span class="yt-tag">${escHtml(t)}</span>`).join('')}
+      </div>` : '';
+
+    const applyHtml = (s.apply_points || []).length ? `
+      <div class="yt-apply">
+        <p class="yt-row-label">적용 포인트</p>
+        <ul>${(s.apply_points || []).map(p => `<li>${escHtml(p)}</li>`).join('')}</ul>
+      </div>` : '';
+
+    return `
+    <article class="yt-article" id="${vid}">
+      <p class="yt-eyebrow">${escHtml(v.playlist || '')} · ${date}</p>
+      <h2 class="yt-title">
+        <a href="${v.url}" target="_blank" rel="noopener">${escHtml(v.title)} ↗</a>
+      </h2>
+      <p class="yt-meta">${escHtml(v.channel || '')}</p>
+
+      ${sb.why || sb.what ? `
+      <div class="yt-sb">
+        ${sb.why ? `<p class="yt-sb-label">Why it matters</p>
+        <p class="yt-sb-why">${escHtml(sb.why)}</p>` : ''}
+        ${sb.what ? `<p class="yt-sb-label" style="margin-top:0.5rem;">What's happening</p>
+        <p class="yt-sb-what">${escHtml(sb.what)}</p>` : ''}
+      </div>` : ''}
+
+      ${sectionsHtml}
+      ${takeawaysHtml}
+      ${techHtml}
+      ${applyHtml}
+    </article>`;
+  }).join('');
+}
+
+/* ── IntersectionObserver: 활성 섹션 감지 ── */
+function initObserver(tocData) {
+  const allIds = [];
+  tocData.forEach(g => {
+    allIds.push(g.id);
+    g.items.forEach(i => allIds.push(i.id));
+  });
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        const group = tocData.find(g => g.id === id || g.items.some(i => i.id === id));
+        const activeGroup = group ? group.id : '';
+        renderToc(tocData, activeGroup, id);
+      }
+    });
+  }, { rootMargin: '-10% 0px -80% 0px' });
+
+  allIds.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) obs.observe(el);
+  });
+}
+
+/* ── 초기화 ── */
+const tocData = buildTocData(ALL_VIDEOS);
+renderToc(tocData, '', '');
+renderMain(ALL_VIDEOS);
+initObserver(tocData);
 </script>

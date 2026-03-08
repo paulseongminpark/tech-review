@@ -29,7 +29,7 @@
   </style>
 </head>
 <body>
-  {% include lang-toggle.html %}
+  {% unless page.url contains '/twitter/' or page.url contains '/youtube/' %}{% include lang-toggle.html %}{% endunless %}
   {% assign lang = page.lang | default: 'ko' %}
   <nav class="site-nav">
     <a href="{{ site.baseurl }}/{{ lang }}/"
