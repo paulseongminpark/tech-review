@@ -23,7 +23,7 @@
             "Musk는 장기보다 다음 3~7년이 더 걱정된다고 하며, AI와 robotics를 supersonic tsunami라고 부르고 이미 singularity 한복판에 있다고 규정한다.",
             "그는 장기적으로는 abundance for all을 믿지만, 단기적으로는 universal high income과 social unrest가 동시에 올 가능성이 높고 전환은 분명히 bumpy할 것이라고 본다."
           ],
-          "quote": "내 걱정은 장기가 아니라 다음 3~7년이다."
+          "quote": "How do we head towards Star Trek and not Terminator?"
         },
         {
           "heading": "Grok 데모와 제품 진화 속도",
@@ -32,7 +32,7 @@
             "대화 시점 기준으로 Grok 4.2는 외부에 아직 공개되지 않았고 Grok 5는 Q1에 나온다고 말하며, 앱 업데이트가 너무 자주 이뤄져 자신도 계속 버전을 따라가야 한다고 한다.",
             "즉석 데모에서 Grok은 문맥 없는 사진만 보고 Peter Diamandis를 Moonshots 진행자라고 맞히고 재킷 로고를 abundance가 아니라 Sundance처럼 잘못 읽는 등, 인상적인 성능과 여전한 실수를 동시에 보여준다."
           ],
-          "quote": "우리는 Grok 앱을 너무 자주 업데이트한다."
+          "quote": "We're in the singularity."
         },
         {
           "heading": "에너지 문명론과 원자 수준 제조",
@@ -40,8 +40,7 @@
           "highlights": [
             "Musk는 미래의 통화는 사실상 wattage가 될 것이라고 말하며, 에너지를 얼마나 일로 바꿀 수 있는지가 intelligence와 matter manipulation까지 포함한 문명의 핵심 변수가 된다고 본다.",
             "그는 이미 반도체 제조가 2~3 nanometer와 4~5 silicon atom per nanometer 수준의 원자 단위 정렬에 가까워졌다고 지적하며, 2 nanometer 같은 표현이 marketing number일 뿐 실제로는 원자를 정확한 자리에 놓는 문제가 핵심이라고 말한다."
-          ],
-          "quote": "미래의 통화는 사실상 와트가 될 것이다."
+          ]
         },
         {
           "heading": "태양, 배터리, 중국: 지상 에너지 해법",
@@ -50,7 +49,7 @@
             "중국에 대해서는 solar 생산능력이 연간 1500 gigawatt 수준이고 지난 1년 전력 추가분 500 terawatt hours 중 70%가 solar였다고 언급하면서, China가 미국을 압도적으로 앞서 달리고 있다고 평가한다.",
             "미국의 현실적 해법으로 그는 peak power 1.1 terawatt와 average 0.5 terawatt 사이의 간극을 battery로 메워 밤에 충전하고 낮에 방전하면 신규 발전소 없이도 연간 에너지 throughput을 두 배 가까이 늘릴 수 있다고 주장하며, Tesla Megapack과 광활한 미국 사막 solar를 그 수단으로 제시한다."
           ],
-          "quote": "태양이 전부다."
+          "quote": "The sun is everything."
         },
         {
           "heading": "우주 인프라: Starship, 궤도 데이터센터, 달 제조",
@@ -58,8 +57,7 @@
           "highlights": [
             "Musk는 지상 solar를 넘어 100 gigawatts per year 규모의 solar-powered AI satellites 경로가 있다고 말하며, 이를 위해 약 50만 기의 Starlink V3급 위성을 8000회의 Starship flight로 올릴 수 있고 시간당 한 번 꼴 발사도 1만 회 수준이면 합리적이라고 본다.",
             "이미 9000기의 Starlink가 올라가 있고 fully and rapidly reusable Starship이 launch cost를 well below 100 dollars per kilogram로 끌어내리면 orbital data center는 speculative idea가 아니라 경제성이 성립하는 infrastructure category가 된다는 것이 그의 주장이다."
-          ],
-          "quote": "완전 재사용 로켓이 있으면 데이터센터는 결국 궤도로 간다."
+          ]
         },
         {
           "heading": "교육 붕괴와 창업 중심 진로 전환",
@@ -67,8 +65,7 @@
           "highlights": [
             "두 사람은 오늘날에는 학교보다 회사를 만들거나 founding team에 들어가는 편이 더 직접적인 배움이 될 수 있다고 보고, MIT의 Foundations of AI Ventures 수강생들 사이에서도 창업 의향이 80% 수준까지 높아졌다고 전한다.",
             "결론적으로 그는 지금 college의 핵심 가치는 social experience에 더 가깝고, 능력이 있다면 grad school보다 회사를 만드는 편이 낫다고 본다."
-          ],
-          "quote": "나는 우주의 본질과 삶의 의미가 궁금했다."
+          ]
         },
         {
           "heading": "개인화 AI 교사와 교육의 재설계",
@@ -77,7 +74,7 @@
             "그의 핵심 주장은 AI가 infinitely patient한 individualized teacher가 되어 모든 질문에 답할 수 있다는 것이며, 대량생산식 교실보다 훨씬 나은 학습 경험을 제공할 수 있다는 점이다.",
             "그는 뇌를 biological computer 혹은 meat computer로 보며, 교육이 아무리 좋아져도 임의의 아이를 Einstein, Shakespeare, Newton 수준으로 만들 수는 없고 원래 하드웨어 차이가 존재한다고 말한다."
           ],
-          "quote": "이제 교육은 사실상 사회적 경험에 더 가깝다."
+          "quote": "You could do it on your phone at home."
         },
         {
           "heading": "건강, 장수, 그리고 인구 감소",
@@ -86,7 +83,7 @@
             "Musk는 완전한 immortality는 원치 않지만 120세에서 150세 정도의 수명 연장은 원하고, bowhead whale의 200년 수명과 Greenland shark의 500년 수명을 예로 들며 노화는 hardware보다 software 혹은 program에 가까운 문제라고 본다.",
             "그는 몸 전체가 비슷한 속도로 늙는다는 점 자체가 명백한 clock의 존재를 암시하며, 장수 해법은 나중에 돌아보면 매우 obvious해 보일 것이라고 말한다."
           ],
-          "quote": "해결책이 오기 전에 멍청한 일로 죽지만 말아야 한다."
+          "quote": "I don't think it's a particularly hard problem."
         },
         {
           "heading": "UHI, UHSS, 화이트칼라 자동화 이후 경제",
@@ -95,7 +92,7 @@
             "Musk는 humanoid robot이 atoms를 움직이기 전까지는 bits를 다루는 white collar work가 blue collar보다 먼저 사라질 것이며, anything short of shaping atoms는 AI가 지금도 절반 이상 대체할 수 있다고 말한다.",
             "그렇다고 그의 해법이 단순한 tax and redistribute식 UBI는 아니며, 오히려 universal high income보다 universal high stuff and services에 가까운 가격 붕괴가 현실에 더 가까울 수 있다고 본다."
           ],
-          "quote": "우리는 사실상 모든 것을 비화폐화하고 있다."
+          "quote": "The transition will be bumpy."
         },
         {
           "heading": "AGI 타임라인과 사회의 과소반응",
@@ -104,7 +101,7 @@
             "그는 2026년에 AGI에 도달할 수 있다고 보고, 2030년이면 AI가 모든 인간 지능을 합친 것보다 더 높은 총지능을 가질 것이라는 전망을 다시 확인한다.",
             "한때는 속도를 늦춰야 한다고 조언했지만 이제는 그것이 pointless하다고 판단했으며, spectator가 아니라 participant가 되어 좋은 방향으로 steer하는 것만이 남은 선택이라고 정리한다."
           ],
-          "quote": "우리는 이미 singularity 한가운데 있다."
+          "quote": "I think we'll hit AGI next year in 26."
         },
         {
           "heading": "AI 안전 원리와 다중지성의 미래",
@@ -113,7 +110,7 @@
             "Musk는 AI safety의 최우선 원리를 maximally truth seeking이라고 정의하며, 거짓 전제를 동시에 강제하면 AI는 결국 insane해진다고 본다.",
             "여기에 curiosity와 beauty를 더한 truth, curiosity, beauty의 삼각형이 중요하며, truth는 광기를 막고 curiosity는 sentience와 humanity 관심을 낳고 beauty는 좋은 미래를 만든다고 말한다."
           ],
-          "quote": "Truth는 AI가 미쳐버리는 것을 막는다."
+          "quote": "Truth will prevent AI from going insane."
         },
         {
           "heading": "Optimus와 로봇 의료 혁명",
@@ -122,7 +119,7 @@
             "그런 맥락에서 그는 Optimus가 3년 안에 최고의 human surgeon보다 나은 수술을 하고, 그 수가 지구상의 모든 surgeon 수보다 많아질 수 있다고 말하며, 4년이면 어떤 human보다 낫고 5년이면 비교가 안 될 것이라고까지 단언한다.",
             "이 예측의 근거는 AI software capability, AI chip capability, electromechanical dexterity라는 세 개의 exponential이 서로 곱해지고, 나중에는 Optimus가 Optimus를 만드는 recursive effect까지 추가된다는 데 있다."
           ],
-          "quote": "손으로 레이저를 드는 안과의보다 로봇을 더 믿게 될 것이다."
+          "quote": "Three years."
         }
       ],
       "key_takeaways": [
