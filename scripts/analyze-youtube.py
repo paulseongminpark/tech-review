@@ -16,6 +16,11 @@ BLOG_DIR   = SCRIPT_DIR.parent
 DATA_DIR   = BLOG_DIR / "_data" / "sources"
 
 PROMPT_TEMPLATE = """\
+먼저 mcp-memory의 recall 도구를 호출해서 Paul의 현재 프로젝트 컨텍스트를 파악하라.
+recall 쿼리: "Paul orchestration mcp-memory tech-review 프로젝트 현재 작업"
+
+recall 결과를 바탕으로 아래 작업을 수행하라.
+
 다음은 YouTube 영상의 자막 전체 텍스트다.
 이 내용을 읽고, 팟캐스트/영상을 전혀 보지 않아도 될 만큼 깊이 있는 분석 리포트를 아래 JSON 형식으로 만들어라.
 반드시 JSON만 출력. 마크다운 코드블록 없이 순수 JSON만.
@@ -32,13 +37,14 @@ PROMPT_TEMPLATE = """\
   ],
   "key_takeaways": ["핵심 요점 1", "핵심 요점 2", "핵심 요점 3"],
   "tech_stack": ["언급된 실제 기술/도구명"],
-  "apply_points": ["내 프로젝트에 적용 가능한 구체적인 것"]
+  "apply_points": ["recall로 파악한 Paul의 실제 프로젝트(orchestration, mcp-memory, tech-review 등)에 구체적으로 적용 가능한 것. 일반론 금지 — Paul의 현재 작업과 직접 연결되는 것만."]
 }}
 
 규칙:
 - sections는 영상 흐름에 따라 3-6개
 - body는 최소 3문장 이상, 표면적 요약 금지 — 왜 중요한지, 어떻게 작동하는지 깊이 분석
 - highlights는 섹션당 1-3개, 독자가 밑줄 칠 문장
+- apply_points는 반드시 recall 결과 기반 — Paul의 실제 프로젝트명, 파일명, 패턴을 그대로 언급
 - 전부 한국어 (기술명/고유명사는 영어 유지)
 - 팟캐스트 안 봐도 될 수준으로 완성도 높게
 
