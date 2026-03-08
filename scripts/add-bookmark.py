@@ -138,11 +138,18 @@ def summarize(text):
 
 # ── Main ───────────────────────────────────────────────────────────────────
 def main():
-    if len(sys.argv) < 2:
-        print("Usage: python add-bookmark.py <bookmarks-raw.json>")
-        sys.exit(1)
+    if len(sys.argv) >= 2:
+        raw_path = Path(sys.argv[1])
+    else:
+        # inbox/ 폴더에서 최신 파일 자동 선택
+        inbox = BLOG_DIR / "inbox"
+        files = sorted(inbox.glob("*.json"), key=lambda f: f.stat().st_mtime, reverse=True)
+        if not files:
+            print("inbox/ 폴더에 JSON 파일 없음. bookmarks-raw.json을 inbox/에 넣어주세요.")
+            sys.exit(1)
+        raw_path = files[0]
+        print(f"파일 자동 선택: {raw_path.name}")
 
-    raw_path = Path(sys.argv[1])
     if not raw_path.exists():
         print(f"파일 없음: {raw_path}")
         sys.exit(1)

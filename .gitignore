@@ -13,3 +13,5 @@ cookies-*.json
 
 node_modules/
 package-lock.json
+.playwright-profile/
+_data/bookmarks-raw.json
