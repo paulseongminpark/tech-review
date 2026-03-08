@@ -6,16 +6,16 @@ Usage:
   python add-bookmark.py <bookmarks-raw.json>
 
 Setup:
-  pip install groq python-dotenv
-  .env에 GROQ_API_KEY=your_key_here 추가
+  pip install anthropic python-dotenv
+  .env에 ANTHROPIC_API_KEY=your_key_here 추가
 """
 
 import json, os, re, sys
 from datetime import datetime
 from pathlib import Path
 
+import anthropic
 from dotenv import load_dotenv
-from groq import Groq
 
 # ── Paths ──────────────────────────────────────────────────────────────────
 SCRIPT_DIR     = Path(__file__).parent
@@ -23,7 +23,7 @@ BLOG_DIR       = SCRIPT_DIR.parent
 BOOKMARKS_JSON = BLOG_DIR / "_data" / "bookmarks.json"
 
 load_dotenv(BLOG_DIR / ".env")
-client = Groq(api_key=os.environ["GROQ_API_KEY"])
+client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
 
 # ── Prompt ─────────────────────────────────────────────────────────────────
 SYSTEM = "You are a concise tech summarizer. Output ONLY valid JSON, no markdown, no explanation."
@@ -34,21 +34,21 @@ PROMPT = """\
 
 {
   "smart_brevity": {
-    "why": "한 문장 핵심 (왜 중요한가, 임팩트 중심)",
-    "what": "2-3줄 설명 (무슨 일인가, Smart Brevity 스타일)"
+    "why": "한 문장 핵심 (왜 중요한가, 임팩트·의미 중심, 구체적 수치나 결과 포함)",
+    "what": "2-3줄 설명 (무슨 일인가 — 핵심 메커니즘, 작동 방식, 차별점을 명확하게)"
   },
-  "tech_stack": ["기술/도구명만"],
-  "apply_points": ["실제 프로젝트 적용 가능한 것"],
-  "explore_points": ["더 파볼 가치 있는 것"]
+  "tech_stack": ["실제 기술/도구/라이브러리명만"],
+  "apply_points": ["내 프로젝트에 실제로 적용 가능한 구체적인 것 (추상적 표현 금지)"],
+  "explore_points": ["더 파볼 가치 있는 개념/구현/원리"]
 }
 
 규칙:
-- why: 한 문장, 핵심만
-- what: 2-3줄, 짧고 명확하게
-- tech_stack: 실제 기술명만, 없으면 []
-- apply_points: 구체적으로, 없으면 []
+- why: 한 문장, 핵심 임팩트만. "~가 중요하다" 같은 뻔한 표현 금지. 독자가 왜 읽어야 하는지 즉시 알게.
+- what: 2-3줄. 구체적 숫자·기술명·작동 원리 포함. "소개됩니다" "됩니다" 같은 수동형 금지.
+- tech_stack: 실제 기술명만. "비즈니스 모델 프레임워크" 같은 추상 표현 제외. 없으면 []
+- apply_points: "자동화", "최적화" 같은 막연한 표현 금지. "XXX 패턴을 YYY에 적용" 수준으로 구체적으로.
 - explore_points: 없으면 []
-- 전부 한국어
+- 전부 한국어. 단, 고유명사(라이브러리명, 회사명)는 영어 유지.
 
 트위터 내용:
 """
@@ -120,17 +120,17 @@ def load_existing(path):
     return bms, seen
 
 
-# ── Groq ───────────────────────────────────────────────────────────────────
+# ── Claude Haiku ────────────────────────────────────────────────────────────
 def summarize(text):
-    resp = client.chat.completions.create(
-        model="llama-3.3-70b-versatile",
+    resp = client.messages.create(
+        model="claude-haiku-4-5-20251001",
+        max_tokens=1024,
+        system=SYSTEM,
         messages=[
-            {"role": "system", "content": SYSTEM},
             {"role": "user", "content": PROMPT + text},
         ],
-        temperature=0.3,
     )
-    raw = resp.choices[0].message.content.strip()
+    raw = resp.content[0].text.strip()
     raw = re.sub(r"^```json\s*", "", raw)
     raw = re.sub(r"\s*```$", "", raw.strip())
     return json.loads(raw)

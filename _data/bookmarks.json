@@ -61,7 +61,7 @@
     "id": "bm-003",
     "author": "aidenbai",
     "date": "2026-03-08",
-    "url": "",
+    "url": "https://x.com/aidenybai/status/2029603067927351506",
     "smart_brevity": {
       "why": "React 컴포넌트를 클릭 한 번으로 선택해 Claude Code/Codex에 직접 전달. UI 수정 워크플로우를 극적으로 단축한다.",
       "what": "npx react-grab@latest 설치 후 페이지 위 요소 선택 → 자연어로 변경 지시. 컴포넌트 트리와 선택된 요소의 컨텍스트를 에이전트에게 자동 주입. 완전 오픈소스."
@@ -84,7 +84,7 @@
     "id": "bm-004",
     "author": "jackculpan",
     "date": "2026-03-08",
-    "url": "",
+    "url": "https://x.com/JackCulpan/status/2029478582352003150",
     "smart_brevity": {
       "why": "에이전트를 제대로 쓰는 7가지 원칙. Plan → Verify → Learn 루프가 실수율을 극적으로 낮춘다.",
       "what": "비자명한 모든 작업은 플랜 모드로 시작. 수정 받을 때마다 tasks/lessons.md 즉시 업데이트. 완료 선언 전 반드시 작동 증명. 서브에이전트로 메인 컨텍스트 보호. 단순 수정엔 과도한 우아함 추구 금지."
@@ -214,120 +214,107 @@
   },
   {
     "id": "bm-009",
-    "author": "unknown",
+    "author": "svpino",
     "date": "2026-03-06",
     "url": "https://x.com/svpino/status/2029952780694352026",
     "smart_brevity": {
-      "why": "클라우드 코드를 통해 웹사이트 파싱 능력 부여",
-      "what": "클라우드 코드에 웹사이트 파싱 능력 부여 방법 소개\n영상 녹화 및 공유\n많은 사람들이 좋아하고 메시지 보내고 있음"
+      "why": "Claude Code에서 Playwright MCP를 연동하면 브라우저 직접 제어를 통해 모든 웹사이트 파싱이 가능해져 AI 웹 크롤링의 한계를 돌파한다.",
+      "what": "Claude Code와 Playwright MCP(Model Context Protocol)를 통합하면 AI 모델이 브라우저 자동화 기능을 직접 실행할 수 있게 된다. 이를 통해 동적 렌더링 콘텐츠, 자바스크립트 기반 페이지 등 전통 파싱이 불가능한 모든 웹사이트에 접근 가능해진다. 비디오 시연으로 실제 작동 능력을 증명하며 큰 관심을 받았다."
     },
     "tech_stack": [
-      "Claude Code"
+      "Claude Code",
+      "Playwright MCP",
+      "Playwright",
+      "Model Context Protocol"
     ],
     "apply_points": [
-      "웹사이트 파싱 자동화"
+      "동적 콘텐츠 렌더링이 필요한 웹 크롤링 프로젝트에 Playwright MCP 연동 패턴 적용",
+      "API 미지원 사이트의 데이터 수집 자동화에 Claude Code + 브라우저 제어 조합 활용",
+      "AI 에이전트의 웹 상호작용 능력 확장에 MCP 기반 통합 구조 도입"
     ],
     "explore_points": [
-      "클라우드 코드의 다양한 활용 방법"
+      "Playwright MCP의 성능 최적화 및 대규모 크롤링 시 안정성 검증",
+      "다른 AI 모델(GPT-4, Gemini 등)과의 MCP 호환성 및 확장 가능성",
+      "웹 파싱 자동화의 윤리, 로봇 배제 표준(robots.txt) 준수 메커니즘"
     ]
   },
   {
     "id": "bm-010",
-    "author": "unknown",
+    "author": "sawyerhood",
     "date": "2026-03-05",
-    "url": "https://x.com/aidenybai/status/2029603067927351506",
+    "url": "https://x.com/sawyerhood/status/2029348435137315041",
     "smart_brevity": {
-      "why": "리액트 프로젝트에서 요소 선택 및 코드 수정을 간단하게 할 수 있다",
-      "what": "React Grab은 페이지의 요소를 선택하고 Claude Code 또는 Codex에 변경 지시를 줄 수 있는 도구이다. 오픈 소스이며 쉽게 사용할 수 있다. 리액트 프로젝트에서 코드 수정을 간단하게 할 수 있다"
+      "why": "Google Workspace 서비스를 CLI 환경에서 직접 제어할 수 있어 반복적인 관리 작업과 자동화 스크립트 작성이 가능해진다.",
+      "what": "공식 CLI 도구를 통해 Gmail, Calendar, Drive 등 Google Workspace 서비스를 명령줄에서 직접 조작할 수 있다. 배치 작업 자동화, 사용자 계정 관리, 파일 동기화 등을 스크립트로 작성하고 실행할 수 있으며, API 호출 없이 쉽게 접근 가능하다."
     },
     "tech_stack": [
-      "React",
-      "Claude Code",
-      "Codex"
+      "Google Workspace CLI",
+      "Gmail API",
+      "Google Calendar API",
+      "Google Drive API"
     ],
     "apply_points": [
-      "리액트 프로젝트에서 요소 선택 및 코드 수정 자동화"
+      "대량 사용자 계정 생성/관리 프로세스를 CLI 스크립트로 자동화",
+      "정기적인 이메일 백업 및 아카이빙 작업을 배치 스크립트로 운영",
+      "Drive 파일 일괄 이동/삭제/공유 설정을 자동화 스크립트로 처리"
     ],
     "explore_points": [
-      "React Grab의 오픈 소스 코드를 분석하여 커스터마이징 방법探索"
+      "CLI 도구의 인증 메커니즘(OAuth, 서비스 계정 등) 구현 방식",
+      "기존 Google Workspace API와의 호환성 및 차별점",
+      "엔터프라이즈 환경에서의 대규모 배포 및 마이그레이션 전략"
     ]
   },
   {
     "id": "bm-011",
-    "author": "unknown",
-    "date": "2026-03-05",
-    "url": "https://x.com/JackCulpan/status/2029478582352003150",
+    "author": "trq212",
+    "date": "2026-03-04",
+    "url": "https://x.com/trq212/status/2029285398858612916",
     "smart_brevity": {
-      "why": "작업의 효율성을 높이고 실수를 줄이기 위해 계획 모드를 사용하는 것이 중요하다",
-      "what": "계획 모드는 3개 이상의 단계 또는 아키텍처 결정이 필요한 작업에 사용된다. 계획 모드를 사용하면 작업을 체계적으로 진행할 수 있고, 오류를 줄일 수 있다. 또한, 계획 모드는 확인 단계에서도 사용되어야 한다."
+      "why": "Claude의 내부 사고 메커니즘을 분석함으로써 대규모 언어모델의 블랙박스를 투명화하고 AI 안전성과 신뢰도 향상에 기여한다.",
+      "what": "Anthropic이 Claude의 내부 표현, 추론 과정, 행동 결정 메커니즘을 심층 분석한 연구다. 모델이 계획 수립부터 최종 행동 선택까지 어떤 논리 구조와 정보 처리 방식을 사용하는지 구체적으로 밝혀낸다."
     },
-    "tech_stack": [],
+    "tech_stack": [
+      "Claude",
+      "Anthropic",
+      "내부 표현 분석(Interpretability)",
+      "추론 경로 추적"
+    ],
     "apply_points": [
-      "작업의 효율성을 높이기 위해 계획 모드를 사용",
-      "오류가 발생할 경우 즉시 계획을 재검토"
+      "모델의 의사결정 과정을 이해하여 프롬프트 엔지니어링 최적화에 적용",
+      "Claude의 계획 수립 패턴을 파악하여 복잡한 작업 분해 및 에이전트 설계에 활용",
+      "내부 표현 투명화를 통해 AI 시스템의 신뢰도 검증 및 편향성 감지에 응용"
     ],
     "explore_points": [
-      "계획 모드의 구체적인 적용 방법",
-      "계획 모드의 효과적인 사용을 위한 전략"
+      "논문의 구체적인 내부 표현 구조와 활성화 패턴",
+      "다른 LLM(GPT, Llama 등)과의 사고 방식 비교 분석",
+      "내부 메커니즘 이해가 alignment와 safety 개선에 미치는 영향",
+      "해석 가능성(Interpretability) 기술의 실무 적용 사례"
     ]
   },
   {
     "id": "bm-012",
-    "author": "unknown",
-    "date": "2026-03-05",
-    "url": "https://x.com/sawyerhood/status/2029348435137315041",
-    "smart_brevity": {
-      "why": "구글 워크스페이스에서 제공하는 공식 CLI 도구가 출시됨으로써 작업 자동화와 효율성이 향상된다.",
-      "what": "구글 워크스페이스에서 제공하는 공식 CLI 도구는 사용자들이 명령줄 인터페이스를 통해 구글 워크스페이스 서비스를 제어할 수 있도록 해준다. 이 도구를 사용하면 자동화 스크립트를 작성하거나 워크플로우를 최적화할 수 있다. 또한, 개발자들은 이 도구를 사용하여 구글 워크스페이스와 통합된 애플리케이션을 개발할 수 있다."
-    },
-    "tech_stack": [
-      "Google Workspace CLI"
-    ],
-    "apply_points": [
-      "작업 자동화",
-      "워크플로우 최적화",
-      "애플리케이션 개발"
-    ],
-    "explore_points": [
-      "구글 워크스페이스 API 연동",
-      "CLI 도구를 활용한 자동화 스크립트 작성"
-    ]
-  },
-  {
-    "id": "bm-013",
-    "author": "unknown",
-    "date": "2026-03-04",
-    "url": "https://x.com/trq212/status/2029285398858612916",
-    "smart_brevity": {
-      "why": "클로드의 사고 과정을 이해하는 데 도움이 된다",
-      "what": "클로드의 생각을 이해하기 위한 창으로서의 논문, 클로드의 사고 과정을 분석, 클로드의 생각을 이해하는 데 도움이 되는 논문"
-    },
-    "tech_stack": [],
-    "apply_points": [],
-    "explore_points": [
-      "클로드의 사고 과정을 더深く 분석"
-    ]
-  },
-  {
-    "id": "bm-014",
-    "author": "unknown",
+    "author": "MillieMarconnni",
     "date": "2026-03-02",
     "url": "https://x.com/MillieMarconnni/status/2028436636841996451",
     "smart_brevity": {
-      "why": "깃허브 저장소를 인터랙티브 지식 그래프로 변환",
-      "what": "GitNexus라는 툴이 개발되어 공개되었습니다. 이 툴은 코드베이스를 시각화하여 AI 에이전트와 대화할 수 있습니다. 서버나 설정이 필요 없습니다."
+      "why": "GitHub 저장소를 대화형 지식 그래프로 변환하여 코드베이스 이해도를 획기적으로 높일 수 있게 되었다.",
+      "what": "GitNexus는 GitHub 리포지토리를 시각적 그래프 구조로 변환하고 AI 에이전트와 대화형으로 상호작용할 수 있게 해준다. 서버나 복잡한 설정 없이 즉시 사용 가능하며, 코드베이스의 구조와 관계를 X-ray처럼 투명하게 파악할 수 있다."
     },
     "tech_stack": [
-      "GitHub",
-      "AI"
+      "GitHub API",
+      "AI Agent",
+      "Knowledge Graph",
+      "Interactive Visualization"
     ],
     "apply_points": [
-      "코드베이스 시각화",
-      "인터랙티브 지식 그래프 생성"
+      "신규 팀원 온보딩 시 코드베이스 학습곡선 단축에 활용",
+      "대규모 레거시 프로젝트의 의존성 맵핑 및 리팩토링 계획 수립",
+      "AI 기반 코드 리뷰 및 아키텍처 분석 자동화"
     ],
     "explore_points": [
-      "GitNexus의 확장 가능성",
-      "AI 에이전트의 활용 가능성"
+      "다양한 프로그래밍 언어별 지식 그래프 정확도 검증",
+      "팀 협업 시 공유 및 주석 기능의 확장 가능성",
+      "엔터프라이즈급 보안 및 프라이빗 저장소 지원"
     ]
   }
 ]
