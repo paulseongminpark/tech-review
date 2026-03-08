@@ -9,24 +9,22 @@ permalink: /en/youtube/
 /* ── body override ── */
 body {
   max-width: none !important;
+  margin: 0 !important;
   padding: 0 !important;
 }
 nav.site-nav {
   margin-left: 220px !important;
-  padding: 0.75rem 2rem !important;
+  padding: 0.75rem 1.5rem !important;
   position: relative;
   z-index: 200;
   background: #fff;
-  transition: margin-left 0.25s;
-}
-body.toc-collapsed nav.site-nav {
-  margin-left: 2.5rem !important;
 }
 
 /* ── TOC 사이드바 ── */
 .yt-toc {
   position: fixed;
-  left: 0; top: 0;
+  left: 0;
+  top: 0;
   width: 220px;
   height: 100vh;
   overflow-y: auto;
@@ -35,10 +33,6 @@ body.toc-collapsed nav.site-nav {
   z-index: 50;
   padding: 54px 12px 24px;
   box-sizing: border-box;
-  transition: transform 0.25s ease;
-}
-.yt-toc.collapsed {
-  transform: translateX(-220px);
 }
 .yt-toc-item {
   display: block;
@@ -60,41 +54,10 @@ body.toc-collapsed nav.site-nav {
   background: rgba(212,99,45,0.08);
 }
 
-/* ── 토글 버튼 ── */
-.yt-toggle-btn {
-  position: fixed;
-  left: 220px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 18px;
-  height: 44px;
-  background: #fafafa;
-  border: 1px solid #e8e8e8;
-  border-left: none;
-  border-radius: 0 5px 5px 0;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 11px;
-  color: #aaa;
-  z-index: 101;
-  transition: left 0.25s ease, background 0.15s;
-  padding: 0;
-  line-height: 1;
-}
-.yt-toggle-btn:hover { background: #efefef; color: #555; }
-body.toc-collapsed .yt-toggle-btn { left: 0; }
-
 /* ── 메인 콘텐츠 ── */
 .yt-main {
   margin-left: 220px;
-  max-width: 760px;
-  padding: 0 2rem 4rem;
-  transition: margin-left 0.25s;
-}
-body.toc-collapsed .yt-main {
-  margin-left: 0;
+  padding: 2rem 1.5rem 4rem;
 }
 
 /* ── 영상 카드 ── */
@@ -176,17 +139,19 @@ body.toc-collapsed .yt-main {
   line-height: 1.8;
 }
 .yt-section-body mark {
-  background: rgba(212, 99, 45, 0.12);
+  background: rgba(37, 99, 235, 0.14);
   color: inherit;
   border-radius: 2px;
-  padding: 1px 2px;
+  padding: 0 3px;
+  font-weight: 600;
 }
 .yt-quote {
-  border-left: 3px solid #e0e0e0;
+  border-left: 3px solid #2563eb;
+  background: rgba(37, 99, 235, 0.05);
   padding: 0.5rem 1rem;
   margin: 0.75rem 0;
   font-size: 0.88rem;
-  color: #555;
+  color: #1d4ed8;
   font-style: italic;
   line-height: 1.7;
 }
@@ -237,14 +202,12 @@ body.toc-collapsed .yt-main {
 }
 
 @media (max-width: 768px) {
-  .yt-toc { transform: translateX(-220px) !important; }
-  .yt-toggle-btn { left: 0 !important; }
+  .yt-toc { display: none; }
   .yt-main { margin-left: 0 !important; }
-  nav.site-nav { margin-left: 2.5rem !important; }
+  nav.site-nav { margin-left: 0 !important; }
 }
 </style>
 
-<button class="yt-toggle-btn" id="yt-toggle" onclick="toggleToc()">‹</button>
 <div id="yt-toc" class="yt-toc"></div>
 <div class="yt-main" id="yt-main"></div>
 
@@ -300,14 +263,6 @@ function renderToc(tocData, activeId) {
 }
 function scrollToId(id) {
   document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
-
-let tocOpen = true;
-function toggleToc() {
-  tocOpen = !tocOpen;
-  document.body.classList.toggle('toc-collapsed', !tocOpen);
-  document.getElementById('yt-toc').classList.toggle('collapsed', !tocOpen);
-  document.getElementById('yt-toggle').textContent = tocOpen ? '‹' : '›';
 }
 
 function renderMain(videos) {

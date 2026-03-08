@@ -71,40 +71,54 @@ recall 쿼리: "Paul orchestration mcp-memory tech-review 프로젝트 현재 �
 recall 결과를 바탕으로 아래 작업을 수행하라.
 
 다음은 YouTube 영상의 자막 전체 텍스트다.
-이 내용을 읽고, 팟캐스트/영상을 전혀 보지 않아도 될 만큼 깊이 있는 분석 리포트를 아래 JSON 형식으로 만들어라.
+영상을 보지 않아도 내용을 완전히 파악할 수 있을 만큼 빠짐없이 포괄적인 분석 리포트를 아래 JSON 형식으로 만들어라.
+자막에 등장하는 모든 주요 주제, 주장, 수치, 사례, 논거를 빠뜨리지 말 것.
 반드시 JSON만 출력. 마크다운 코드블록 없이 순수 JSON만.
 
 {{
   "smart_brevity": {{
     "why": "한 문장 핵심 (왜 중요한가, 임팩트·의미 중심, 구체적 수치나 결과 포함)",
-    "what": "2-3줄 설명 (무슨 내용인가 — 핵심 메커니즘, 작동 방식, 차별점을 명확하게)"
+    "what": "3-5줄 설명 (무슨 내용인가 — 영상 전체를 관통하는 핵심 논지, 구조, 차별점을 명확하게)"
   }},
   "sections": [
     {{
-      "heading": "섹션 제목 (명확하고 구체적으로)",
-      "body": "2-4문단 분량의 깊이 있는 설명. 수치, 사례, 맥락 전부 포함.",
-      "highlights": ["핵심 문장 1 (그대로 인용 또는 핵심 요약)", "핵심 문장 2"],
-      "quote": "인상적인 발언 (있을 경우만, 없으면 생략)"
+      "heading": "섹션 제목 (명확하고 구체적으로 — 영상에서 다루는 실제 주제명)",
+      "body": "최소 5문장 이상, 해당 주제에서 등장한 모든 논거·수치·사례·발언을 빠짐없이 서술. 표면 요약 금지 — 왜 이 주장을 하는지, 어떤 근거를 드는지, 어떤 반론을 다루는지 전부 포함.",
+      "highlights": ["핵심 문장 (body에서 그대로 복사, 변형 금지)", "핵심 문장 2"],
+      "quote": "아래 자막 텍스트에서 가장 임팩트 있는 발언 1문장을 단어 하나도 바꾸지 말고 그대로 복사. 재구성·요약·창작 절대 금지. 자막 텍스트에 해당 문장이 그대로 없으면 이 필드 생략."
     }}
   ],
-  "key_takeaways": ["핵심 요점 1", "핵심 요점 2", "핵심 요점 3"],
-  "tech_stack": ["언급된 실제 기술/도구명"],
+  "key_takeaways": ["핵심 요점 1", "핵심 요점 2", "핵심 요점 3", "핵심 요점 4", "핵심 요점 5"],
+  "tech_stack": ["언급된 실제 기술/도구/서비스명"],
   "apply_points": ["recall로 파악한 Paul의 실제 프로젝트(orchestration, mcp-memory, tech-review 등)에 구체적으로 적용 가능한 것. 일반론 금지 — Paul의 현재 작업과 직접 연결되는 것만."]
 }}
 
 규칙:
-- sections는 영상 흐름에 따라 3-6개
-- body는 최소 3문장 이상, 표면적 요약 금지 — 왜 중요한지, 어떻게 작동하는지 깊이 분석
+- sections는 영상에서 다루는 모든 주요 주제를 커버해야 함. 최소 6개, 내용에 따라 10개 이상도 가능.
+- body는 최소 5문장 이상. 해당 섹션에서 발언자가 한 모든 주요 주장과 근거를 포함. 한 단락만으로 부족하면 여러 단락 사용.
+- body에 등장한 수치·인명·사례는 생략 없이 전부 기록.
 - highlights는 반드시 body에서 그대로 복사한 문장만. 요약·변형 금지. body에 없는 문장은 highlights 불가.
 - apply_points: recall 기반, Paul 프로젝트와 연결. backtick·파일경로·코드 금지. 한 문장으로 읽기 좋게.
-- 전부 한국어 (기술명/고유명사는 영어 유지)
-- 팟캐스트 안 봐도 될 수준으로 완성도 높게
+- 전부 한국어 (기술명·인명·고유명사는 영어 유지)
+- 영상을 안 봐도 될 수준 = 이 JSON만으로 영상의 모든 주요 내용이 복원 가능해야 함
 
 영상 제목: {title}
 
 자막 내용:
 {transcript}
 """
+
+def _norm(text: str) -> str:
+    """구두점 제거 + 공백 정규화 (quote 검증용)"""
+    return re.sub(r'\s+', ' ', re.sub(r'[^\w\s]', '', text)).strip()
+
+def validate_quotes(summary: dict, transcript: str) -> None:
+    """각 섹션 quote가 transcript에 실제로 존재하는지 확인. 없으면 제거."""
+    norm_tr = _norm(transcript)
+    for sec in summary.get("sections", []):
+        q = sec.get("quote", "")
+        if q and _norm(q) not in norm_tr:
+            sec.pop("quote", None)
 
 def find_pending():
     """summary 없는 영상 목록 반환 (transcript 없으면 Whisper 대상 포함)"""
@@ -123,7 +137,7 @@ def analyze_with_codex(title: str, transcript: str) -> dict | None:
     """Codex CLI (GPT-5.4 xhigh) 로 분석"""
     prompt = PROMPT_TEMPLATE.format(
         title=title,
-        transcript=transcript[:60000]  # 토큰 제한 여유
+        transcript=transcript[:100000]  # 토큰 제한 여유
     )
 
     # 임시 파일로 전달 (프롬프트 길이 제한 우회)
@@ -137,7 +151,8 @@ def analyze_with_codex(title: str, transcript: str) -> dict | None:
         out_path = BLOG_DIR / "_codex_out.json"
         result = subprocess.run(
             f'codex exec "파일 {tf_path} 을 읽고 지시대로 JSON을 만들어서 {out_path} 에 저장해라. 순수 JSON만." --full-auto',
-            capture_output=True, text=True, timeout=300,
+            capture_output=True, text=True, timeout=600,
+            encoding="utf-8", errors="replace",
             cwd=str(BLOG_DIR), shell=True,
         )
 
@@ -156,7 +171,7 @@ def analyze_with_codex(title: str, transcript: str) -> dict | None:
         return json.loads(raw)
 
     except subprocess.TimeoutExpired:
-        print("  Codex 타임아웃 (5분 초과)")
+        print("  Codex 타임아웃 (10분 초과)")
         return None
     except json.JSONDecodeError as e:
         print(f"  JSON 파싱 실패: {e}")
@@ -201,6 +216,7 @@ def main():
             print("  실패 — 건너뜀")
             continue
 
+        validate_quotes(summary, video["transcript"])
         video["summary"] = summary
         updated_files.add(filepath)
         print(f"  완료: {summary.get('why_watch', '')[:60]}")
