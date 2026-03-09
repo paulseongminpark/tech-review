@@ -316,5 +316,172 @@
       "팀 협업 시 공유 및 주석 기능의 확장 가능성",
       "엔터프라이즈급 보안 및 프라이빗 저장소 지원"
     ]
+  },
+  {
+    "id": "bm-013",
+    "author": "heyrimsha",
+    "date": "2026-03-08",
+    "url": "https://x.com/heyrimsha/status/2030614728591167973",
+    "smart_brevity": {
+      "why": "YC 창업자가 Claude 세팅 하나로 낯선 시장의 go-to-market 전략 초안을 3시간 안에 뽑아냈다는 사례라, 조사 속도보다 조사 구조가 경쟁력이라는 점을 보여준다.",
+      "what": "작성자는 한 YC 회사 창업자의 Claude 작업 환경을 보고, 원래 몇 주 걸릴 시장조사를 3시간 수준으로 압축하는 방식을 목격했다고 말한다.\n핵심 사례는 해당 창업자가 경험 없는 시장에서도 Claude를 써서 전체 go-to-market 전략을 빠르게 조립한 장면이다.\n다만 발췌본에는 프롬프트 체인, 자료 수집 방식, 검증 루프 같은 구현 디테일은 포함되지 않았다."
+    },
+    "tech_stack": [
+      "Claude"
+    ],
+    "apply_points": [
+      "tech-review의 일일 발행 흐름인 `.github/workflows/create-post.yml`과 `scripts/fetch-perplexity.js` 앞단에 Claude 리서치 템플릿을 넣으면, recall에 잡힌 KO 예약 지침과 결합해 기사 요약이 아니라 '왜 지금 중요한가'까지 먼저 구조화한 초안을 만들 수 있다.",
+      "mcp-memory의 `recall()`과 Signal→Pattern→Principle 성장 사이클을 이용해, tech-review에서 반복되는 조사 질문을 패턴으로 승격해두면 다음 주제에서도 Claude 리서치 세팅을 재사용 가능한 프롬프트 자산으로 축적할 수 있다.",
+      "orchestration의 200K 세션 운영 패턴을 Claude 시장조사 전용 세션으로 분리하면, 긴 조사 대화에서 컨텍스트 예산을 관리하면서 생성된 전략 가설을 `analyze-session.sh` 류의 후처리 흐름으로 mcp-memory에 다시 적재하는 설계를 붙일 수 있다."
+    ],
+    "explore_points": [
+      "Claude 세션을 '시장 정의→세그먼트→경쟁사→메시지→채널' 단계로 분리하는 프롬프트 상태 관리 방식",
+      "낯선 시장 리서치에서 초안 속도와 사실 검증을 함께 잡기 위한 근거 링크·신뢰도 스코어링 루프",
+      "한 번의 조사 세션 결과를 다음 세션에 재사용할 수 있게 만드는 템플릿화와 memory 적재 기준"
+    ]
+  },
+  {
+    "id": "bm-014",
+    "author": "RoundtableSpace",
+    "date": "2026-03-08",
+    "url": "https://x.com/RoundtableSpace/status/2030595632998580328",
+    "smart_brevity": {
+      "why": "Anthropic이 33페이지 공식 가이드를 공개해 Claude Skills를 15-30분 단위 작업으로 쪼개고, 잘 설계된 스킬 하나가 관련 질의의 최대 90%를 처리하도록 만드는 실전 기준을 명문화했다.",
+      "what": "문서는 Claude Skills를 특정 작업 성능을 높이는 재사용 가능한 지침+리소스 묶음으로 정의하고, 복잡한 워크플로를 15-30분 안에 끝나는 작업 단위로 나누라고 권한다.\n핵심은 이름/설명/트리거 문구를 명확히 적고, 잘 맞는 스킬 하나가 관련 요청의 최대 90%를 커버하도록 범위를 좁히는 설계다.\n또한 내부 지식과 절차는 Skill에, 외부 시스템 연결은 MCP에 두는 분리 원칙까지 제시해 Claude 운영 패턴을 표준화했다."
+    },
+    "tech_stack": [
+      "Claude",
+      "MCP"
+    ],
+    "apply_points": [
+      "tech-review 기억(#4155, #4142)에 나온 multi-source pipeline 기준으로 보면 `scripts/fetch-twitter.js` 뒤에 붙는 요약 규칙을 코드 안 문자열로 두기보다 별도 Claude Skill 파일로 분리하는 편이 맞다. 그러면 `docs/plans/2026-03-04-multi-source-pipeline-impl.md`처럼 소스가 늘어날 때 Twitter 전용 선별 기준과 포맷 규칙만 독립적으로 교체할 수 있다.",
+      "mcp-memory 기억(#4124)의 Observation→Signal→Pattern→Principle 승격 흐름은 Anthropic 가이드의 '작업을 작은 skill로 쪼개라'는 원칙과 바로 맞물린다. `recall`로 컨텍스트 수집, `promote_node`로 승격 검토, `save_session`으로 세션 정리까지를 각각 별도 Skill로 나누면 Paul의 bottom-up 축적 방식을 반복 가능한 작업 단위로 고정할 수 있다.",
+      "orchestration 기억(#224)의 200K 세션 운영 패턴을 보면 긴 세션에서 컨텍스트 예산이 핵심 병목이다. `03_tech-review/blog`의 일일 포스트 생성 흐름에서도 스킬마다 트리거 문구와 입력 형식을 고정해 두면 `_posts/ko/2026-03-08-daily-tech-review.md` 같은 결과물을 만들 때 본문 프롬프트를 매번 길게 재주입하지 않아도 된다."
+    ],
+    "explore_points": [
+      "Skill 트리거 문구를 어떤 표현으로 써야 Claude가 다른 스킬과 헷갈리지 않는지",
+      "잘 설계된 스킬 하나가 관련 요청의 90%를 커버하는 범위 설정 기준",
+      "Skill에 넣을 지식과 MCP로 분리할 외부 연동의 경계",
+      "실패 케이스를 먼저 모아 skill 품질을 회귀 테스트하는 방법"
+    ]
+  },
+  {
+    "id": "bm-015",
+    "author": "omarsar0",
+    "date": "2026-03-08",
+    "url": "https://x.com/omarsar0/status/2030771811705872435",
+    "smart_brevity": {
+      "why": "CLI 코딩 에이전트를 만드는 팀이라면 scaffolding, harness design, context engineering를 81페이지로 압축한 OpenDev 한 편만으로 시행착오 비용을 크게 줄일 수 있다.",
+      "what": "OpenDev는 terminal-based coding agents 구축 경험을 바탕으로 scaffolding, harness design, context engineering, 운영 중 얻은 lesson learned를 정리한 81-page paper다.\n트윗 발췌본 기준 핵심 메시지는 단일 프롬프트가 아니라 compound AI system architecture 관점에서 CLI agent를 설계하라는 점이며, 세부 컴포넌트 목록은 본문이 잘려 있어 확인되지 않는다."
+    },
+    "tech_stack": [],
+    "apply_points": [
+      "tech-review의 `create-post.yml` -> `fetch-perplexity.js` -> `translate-perplexity.js` 체인을 OpenDev식 harness로 재정의해 단계별 입력/출력 계약과 실패 조건을 문서화하면, 현재 Gmail -> GAS -> `repository_dispatch` 파이프라인에서 어느 구간이 깨졌는지 바로 추적할 수 있다.",
+      "orchestration의 `.claude/settings.json` hooks 와 `C:\\Users\\pauls\\.claude\\agents\\context-linker.md`, 각 `agent.md`를 '스캐폴딩 계층'과 '판단 규칙 계층'으로 분리하면, 현재 원칙인 `agent.md 패턴 5개 이내`와 `파일명·줄번호 포함` 규칙을 유지한 채 CLI agent 팀 구성을 더 안정적으로 확장할 수 있다.",
+      "mcp-memory의 `recall()`과 `Observation -> Signal -> Pattern -> Principle` 승격 패턴을 OpenDev의 context engineering 체크리스트로 재점검하면, 세션 문맥에 남길 정보와 장기 메모리로 승격할 정보를 더 엄격하게 구분하는 운영 규칙을 만들 수 있다."
+    ],
+    "explore_points": [
+      "compound AI system architecture의 실제 구성요소가 무엇인지",
+      "CLI agent용 harness design에서 replay, evaluation, failure injection을 어떻게 다루는지",
+      "context engineering 규칙이 tool output 길이, 작업 분해, 장기 메모리 연결과 어떻게 맞물리는지"
+    ]
+  },
+  {
+    "id": "bm-016",
+    "author": "gregisenberg",
+    "date": "2026-03-08",
+    "url": "https://x.com/gregisenberg/status/2030680849486668229",
+    "smart_brevity": {
+      "why": "역할별 에이전트를 분리해 아이디어 발굴부터 제작까지 이어주는 GitHub 저장소가 7일도 안 돼 1만+ 스타를 모았다는 점은, 단일 챗봇보다 멀티에이전트 제품화 워크플로에 시장 수요가 빠르게 붙고 있음을 보여준다.",
+      "what": "이 프로젝트는 engineering, design, growth marketing, product management를 각각 독립 에이전트로 두고, engineering 안에서도 frontend·backend 등을 포함한 7개 에이전트로 역할을 더 잘게 쪼갠다.\n핵심 메커니즘은 하나의 범용 모델이 전부 처리하는 대신 역할별 에이전트가 순차 또는 병렬로 산출물을 넘기며 아이디어를 실제 결과물로 밀어붙이는 오케스트레이션 구조다."
+    },
+    "tech_stack": [
+      "GitHub"
+    ],
+    "apply_points": [
+      "`tech-review`의 `create-post.yml -> fetch-perplexity.js` 흐름 앞단에 `research`, `editor`, `publisher` 에이전트를 분리하면, Perplexity 리서치 결과를 바로 포스트로 쓰지 않고 역할별 검수 결과를 단계적으로 넘기는 멀티에이전트 파이프라인으로 바꿀 수 있다.",
+      "`update-comments.yml`이 `comments.md`를 파싱해 `_posts/ko+en/`에 반영하는 현재 패턴에 `comment-triage` 에이전트를 추가하면, 독자 코멘트를 오탈자 수정, 후속 리서치, 신규 포스트 후보로 먼저 분류한 뒤 서로 다른 워크플로로 보낼 수 있다.",
+      "`feed.json -> portfolio_20260215` 연결 지점에 `growth marketer` 에이전트를 두면, 배포된 포스트의 제목과 요약을 채널별 소개 문구로 다시 써서 포트폴리오 노출용 메타데이터를 별도 생성하는 실험이 가능하다.",
+      "`mcp-memory recall`이 이미 `tech-review`의 운영 상태와 파일 단서를 갖고 있으므로, `product manager` 에이전트가 `create-post.yml`, `update-comments.yml`, `feed.json` 관련 컨텍스트를 먼저 조회한 뒤 어떤 역할 에이전트를 호출할지 결정하는 컨트롤 레이어로 붙일 수 있다."
+    ],
+    "explore_points": [
+      "역할별 에이전트 사이의 handoff를 JSON schema로 고정할 때 품질 회귀가 얼마나 줄어드는지",
+      "engineering 하위 7개 에이전트가 동시에 변경 제안을 만들 때 충돌을 병합하는 오케스트레이터 설계",
+      "design, growth marketing, product management 에이전트의 출력이 실제 코드 생성 에이전트의 입력 품질을 얼마나 끌어올리는지"
+    ]
+  },
+  {
+    "id": "bm-017",
+    "author": "lucas_flatwhite",
+    "date": "2026-03-08",
+    "url": "https://x.com/lucas_flatwhite/status/2030663115483079095",
+    "smart_brevity": {
+      "why": "`shadcn/cli v4`는 `shadcn/ui`의 로컬 코드 복사 모델에 `shadcn/skills`, preset, dry-run, monorepo 4개 기능을 얹어, AI 에이전트가 프로젝트 규약을 덜 헷갈리고 실제 UI 코드를 더 정확히 가져오게 만든다.",
+      "what": "`shadcn/ui`는 패키지 래퍼가 아니라 컴포넌트 소스를 프로젝트 안으로 들여와 직접 수정하는 방식이다.\n`shadcn/cli v4`는 여기에 `shadcn/skills`, preset, dry-run, monorepo 지원을 더해 에이전트가 설치 규칙과 컴포넌트 구조를 코드베이스 기준으로 이해하게 만든다.\n핵심은 추상 문서보다 실제 생성 규약과 실행 전 검토 절차를 프로젝트 안에 두어 AI의 오판 범위를 줄인 점이다."
+    },
+    "tech_stack": [
+      "shadcn/ui",
+      "shadcn/cli v4",
+      "shadcn/skills"
+    ],
+    "apply_points": [
+      "`tech-review/blog`는 `scripts/fetch-twitter.js`로 원문을 모으고 `_tmp/prompt_template.txt`로 출력 스키마를 고정해두었는데, 이를 `preset`처럼 묶어 `ko/twitter.html`과 `en/twitter.html`용 카드 규약 파일로 분리하면 Codex가 매번 마크업 구조를 추측하지 않고 동일한 UI 패턴을 재사용할 수 있다.",
+      "recall에 나온 `mcp-memory`의 `session_context.py`는 Pattern/Insight/Principle 상위 노드를 세션에 주입하므로, 여기에 `tweet-card`나 `daily-digest-list` 같은 UI 패턴 메타데이터를 함께 넣으면 에이전트가 `tech-review/blog` 화면 파일을 수정할 때 기존 설계 규약을 바로 참조할 수 있다.",
+      "recall에 나온 `orchestration`의 checkpoint Layer B는 Observation→Signal→Pattern 승격 경로를 이미 운영 중이니, `tech-review/blog`에서 검증된 카드 레이아웃이나 섹션 구성 규칙을 Pattern으로 승격해 두고 이후 `ko/index.html`이나 `_layouts/post.html` 수정 전에 불러오게 하면 UI 변경 지침을 프롬프트가 아니라 재사용 가능한 자산으로 관리할 수 있다."
+    ],
+    "explore_points": [
+      "`shadcn/ui`처럼 컴포넌트 코드를 로컬로 소유하는 방식이 AI 에이전트의 수정 정확도를 얼마나 높이는지",
+      "`dry-run`으로 생성 결과를 먼저 검토하는 흐름이 에이전트 승인 절차와 코드 리뷰 비용을 얼마나 줄이는지",
+      "모노레포에서 preset과 skills를 팀 공통 규약으로 배포할 때 어떤 디렉터리 구조가 가장 충돌이 적은지"
+    ]
+  },
+  {
+    "id": "bm-018",
+    "author": "karpathy",
+    "date": "2026-03-07",
+    "url": "https://x.com/karpathy/status/2030371219518931079",
+    "smart_brevity": {
+      "why": "630줄짜리 단일 GPU·단일 파일 `autoresearch` 리포는 거대한 LLM 학습 스택 없이도 사람이 연구 루프를 직접 돌려보며 nanochat식 학습 코어를 빠르게 검증할 수 있게 만든다.",
+      "what": "`autoresearch`는 nanochat LLM training core를 약 630줄의 one-file 버전으로 축소한 self-contained minimal repo다.\n복잡한 분산 학습·다중 서비스 의존성을 걷어내고 single-GPU에서 바로 실행되도록 패키징해, 사람이 코드와 실험 루프를 짧게 반복하며 학습 메커니즘을 직접 수정·관찰하는 데 초점을 둔다."
+    },
+    "tech_stack": [
+      "autoresearch",
+      "nanochat"
+    ],
+    "apply_points": [
+      "`orchestration`의 `200K 세션 운영 (v3.3.1)`처럼 큰 컨텍스트 운영 규칙이 이미 있는 만큼, `C:\\dev\\01_projects\\01_orchestration`에는 이 630줄 수준의 최소 실험 하네스를 별도 브랜치나 독립 스크립트로 먼저 분리해 본체 오케스트레이션과 실험 코어를 나누는 방식이 맞다.",
+      "`mcp-memory`의 `recall() -> Signal 저장 -> Pattern 승격` 성장 사이클에 맞춰, `autoresearch` 실험 로그를 `Experiment`나 `Evidence`로 적재하면 단발성 주말 실험을 재호출 가능한 패턴으로 승격시키는 테스트베드가 된다.",
+      "`tech-review`는 Jekyll 블로그이므로, Paul의 로컬 사양인 `RTX 4060 Laptop 8GB VRAM` 기준으로 이 minimal repo가 실제로 어디까지 돌아가는지 측정해 '대형 학습 프레임워크 없이 single-GPU로 연구 루프를 줄이는 법' 같은 비교형 글감으로 바로 전환할 수 있다.",
+      "`analyze-session.sh`를 개선해 온 현재 워크플로와 연결하면, 거대한 연구 저장소 대신 one-file 실험 리포에서 나온 실패·성공 포인트를 세션 요약에 자동 집계하는 방식이 `복잡도 축소 후 핵심만 남기는` Paul의 정리 패턴과 잘 맞는다."
+    ],
+    "explore_points": [
+      "single-GPU에서 LLM training core를 유지하면서 제거한 구성요소가 무엇인지",
+      "human-in-the-loop 반복이 학습 데이터, 하이퍼파라미터, 코드 수정 중 어디에 개입하는지",
+      "one-file 구조가 재현성·디버깅 속도에 주는 이점과 한계"
+    ]
+  },
+  {
+    "id": "bm-019",
+    "author": "AlexFinn",
+    "date": "2026-03-08",
+    "url": "https://x.com/AlexFinn/status/2030777339039318413",
+    "smart_brevity": {
+      "why": "핵심은 GPU 1대만 있어도 모델 생성과 개선 루프를 자동화해 개인이 '1인 AI 연구소'처럼 움직일 수 있다는 주장으로, 작성자가 DGX Spark를 2대로 늘릴 정도의 실전 투자 신호까지 붙었다는 점이다.",
+      "what": "게시글은 Karpathy가 공개한 무언가를 'great equalizer'로 부르며, 단일 GPU에서도 모델 생성→평가→재학습을 자동 반복하는 루프가 가능해졌다고 해석한다.\n핵심 차별점은 대형 연구소의 다인력 운영 대신 개인이 하드웨어 1대와 자동화만으로 자체 모델을 굴리고 계속 개선할 수 있다는 서사다.\n작성자는 이 가능성에 베팅해 DGX Spark를 2대로 늘렸다고 밝혀, 개인 AI 랩 구성이 실제 장비 구매까지 이어지는 흐름으로 묘사한다."
+    },
+    "tech_stack": [
+      "GPU",
+      "DGX Spark"
+    ],
+    "apply_points": [
+      "tech-review의 [.github/workflows/create-post.yml](C:\\dev\\01_projects\\03_tech-review\\blog\\.github\\workflows\\create-post.yml) 에서는 이미 `scripts/fetch-perplexity.js` → `scripts/parse-content.js` → `scripts/translate-perplexity.js` 순으로 매일 06:30 KST 배치가 돈다. 여기에 KO 초안 점수화 단계를 끼워 넣고 점수가 낮으면 같은 날 프롬프트를 다시 변형해 재실행하게 만들면, 트윗이 말하는 '1대 GPU/단일 머신 self-improving loop'를 현재 파이프라인 안에서 바로 실험할 수 있다.",
+      "tech-review의 [scripts/fetch-perplexity.js](C:\\dev\\01_projects\\03_tech-review\\blog\\scripts\\fetch-perplexity.js) 는 `sonar-deep-research` 실패 시 `sonar-pro` 폴백, 요일별 도메인 필터, `perplexity-prompts/keywords-log.md` 기반 중복 회피까지 이미 갖고 있다. 여기서 하루 결과의 품질 메트릭을 남기고 다음 실행 때 도메인 필터와 프롬프트 파일 선택을 자동 조정하면, 정적 프롬프트 운영이 아니라 실제 성능을 보고 스스로 검색 전략을 바꾸는 실험실 패턴으로 바뀐다.",
+      "tech-review는 recall 결과상 `feed.json` 기반 Portfolio 연동과 `_data/sections/` 축적이 이미 설계돼 있다. 게시 후 반응이 좋은 토픽 구조를 기준으로 [scripts/translate-perplexity.js](C:\\dev\\01_projects\\03_tech-review\\blog\\scripts\\translate-perplexity.js) 와 후속 섹션 추출 규칙을 조정하면, Paul의 현재 블로그 자동화는 단순 게시 봇이 아니라 '출력 성과를 다음 생성 규칙에 반영하는' 소형 AI 랩 운영체제로 진화시킬 수 있다."
+    ],
+    "explore_points": [
+      "단일 GPU에서 데이터 생성→자동 평가→재학습을 안정적으로 반복하는 closed-loop 설계",
+      "사람 개입 없이 모델 개선 여부를 판정하는 evaluator 또는 reward 신호 설계",
+      "DGX Spark 같은 개인용 AI 워크스테이션에서 체크포인트, 실험 버전, 비용을 관리하는 방식"
+    ]
   }
 ]
