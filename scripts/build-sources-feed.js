@@ -26,6 +26,7 @@ const twitter = [...bookmarks]
   })
   .slice(0, 4)
   .map((b) => ({
+  id: b.id || "",
   author: b.author || "",
   date: b.added_at || b.date || "",
   url: b.url || "",
