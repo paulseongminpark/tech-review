@@ -96,6 +96,11 @@ async function main() {
   // 브라켓 헤드라인 제거: ## 1. [제목] → ## 1. 제목
   raw = raw.replace(/^(##\s*\d+\.?\s*)\[([^\]]+)\]/gm, "$1$2");
 
+  // Perplexity 인용 URL 제거: 본문 내 (http://...) 패턴 (마크다운 링크 [text](url) 제외)
+  raw = raw.replace(/(?<!\])(\(https?:\/\/[^)\s]+\))/g, "");
+  // [미확인], [미검증] 등 불확실성 주석 제거
+  raw = raw.replace(/\[(미확인|미검증|출처 미확인)\]/g, "");
+
   // 본문에서 "## Today in One Line" 다음 비어있지 않은 줄을 제목으로 사용
   const bodyLines = raw.split("\n");
   for (let i = 0; i < bodyLines.length; i++) {

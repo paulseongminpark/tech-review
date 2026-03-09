@@ -16,7 +16,7 @@ While NVIDIA invests $4B in strengthening optical technology, Amazon pours $50B 
 
 ## 1. NVIDIA Invests $4 Billion in Optical Technology…Data Center Expansion Kicks Off in Earnest
 
-NVIDIA is accelerating the construction of multi-gigawatt-scale AI factories by investing $2 billion each in Lumentum and Coherent.(http://nvidianews.nvidia.com/news/nvidia-announces-strategic-partnership-with-lumentum-to-develop-state-of-the-art-optics-technology)
+NVIDIA is accelerating the construction of multi-gigawatt-scale AI factories by investing $2 billion each in Lumentum and Coherent.
 
 **Why it matters:** Optical interconnect technology, which resolves bandwidth bottlenecks in AI data centers, has emerged as a key competitive factor for generations following Vera Rubin. NVIDIA's direct investment in the supply chain suggests that Co-Packaged Optics (CPO) technology is not just an option but a necessity.
 
@@ -32,7 +32,7 @@ NVIDIA is accelerating the construction of multi-gigawatt-scale AI factories by 
 
 ## 2. Amazon Invests $50 Billion in OpenAI…Strengthens AWS Exclusive Position
 
-Amazon is committing up to $50 billion total, starting with an initial $15 billion investment in OpenAI, which has agreed to consume approximately 2GW of AWS's custom AI chip Trainium by 2027.(https://www.geekwire.com/2026/filings-how-amazons-50b-openai-deal-actually-works-and-what-theyre-keeping-secret/)
+Amazon is committing up to $50 billion total, starting with an initial $15 billion investment in OpenAI, which has agreed to consume approximately 2GW of AWS's custom AI chip Trainium by 2027.
 
 **Why it matters:** Amazon securing a direct cloud contract with OpenAI despite Microsoft's long-term exclusivity represents a paradigm shift in the AI infrastructure market. Under the condition of exclusively providing OpenAI's Stateful Runtime Environment on Amazon Bedrock, Amazon has positioned itself as a third-party cloud provider within the existing licensing relationship with Microsoft.
 
@@ -48,7 +48,7 @@ Amazon is committing up to $50 billion total, starting with an initial $15 billi
 
 ## 3. NVIDIA Upgrades Vera Rubin HBM4 Bandwidth to 22.2TB/s…Intensifies Competition with AMD
 
-NVIDIA has decided to set the HBM4 memory bandwidth of the Vera Rubin NVL72 server at 22.2TB/s, a 10% increase over the previous spec, overwhelming AMD's Instinct MI455X (19.6TB/s).(https://www.letsdatascience.com/blog/nvidia-just-shipped-the-most-powerful-ai-chip-ever-made)
+NVIDIA has decided to set the HBM4 memory bandwidth of the Vera Rubin NVL72 server at 22.2TB/s, a 10% increase over the previous spec, overwhelming AMD's Instinct MI455X (19.6TB/s).
 
 **Why it matters:** While AMD achieves 19.6TB/s with a 12-Hi stack, NVIDIA implementing 22.2TB/s with an 8-Hi stack signifies that the HBM4 pin speed competition has begun in earnest. This shows intensifying competition around the core challenge of resolving memory bottlenecks for AI model scaling, beyond mere performance figures.
 
