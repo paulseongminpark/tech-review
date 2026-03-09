@@ -7,26 +7,16 @@ permalink: /ko/twitter/
 
 <style>
   .bm-header {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 1.75rem;
+    display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.75rem;
   }
-  .bm-header h1 {
-    font-size: 1.3rem;
-    font-weight: 700;
-    margin: 0;
-  }
+  .bm-header h1 { font-size: 1.3rem; font-weight: 700; margin: 0; }
   .bm-badge {
-    font-size: 0.72rem;
-    color: #888;
-    background: #f5f5f5;
-    border: 1px solid #e0e0e0;
-    padding: 0.2rem 0.55rem;
-    border-radius: 20px;
-    letter-spacing: 0.02em;
+    font-size: 0.72rem; color: #888; background: #f5f5f5;
+    border: 1px solid #e0e0e0; padding: 0.2rem 0.55rem;
+    border-radius: 20px; letter-spacing: 0.02em;
   }
 
+  /* ── 그리드 ── */
   .bm-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -35,6 +25,7 @@ permalink: /ko/twitter/
   @media (max-width: 900px) { .bm-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 540px) { .bm-grid { grid-template-columns: 1fr; } }
 
+  /* ── 정사각형 카드 ── */
   .bm-card {
     border: 1px solid #e8e8e8;
     border-radius: 10px;
@@ -44,114 +35,144 @@ permalink: /ko/twitter/
     display: flex;
     flex-direction: column;
     cursor: pointer;
-    transition: box-shadow 0.15s, border-color 0.15s;
-    position: relative;
+    transition: box-shadow 0.15s, border-color 0.15s, transform 0.15s;
     background: #fff;
   }
   .bm-card:hover {
-    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
-    border-color: #ccc;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.09);
+    border-color: #bbb;
+    transform: translateY(-2px);
   }
-  .bm-card.open {
-    aspect-ratio: unset;
-    overflow: visible;
-  }
-
   .bm-meta {
-    font-size: 0.72rem;
-    color: #aaa;
-    margin-bottom: 0.6rem;
-    display: flex;
-    align-items: center;
-    gap: 0.35rem;
-    flex-wrap: wrap;
+    font-size: 0.72rem; color: #aaa; margin-bottom: 0.5rem;
+    display: flex; align-items: center; gap: 0.35rem; flex-wrap: wrap;
   }
   .bm-meta strong { color: #555; }
-  .bm-meta a { color: #0066cc; font-size: 0.72rem; }
-
+  .bm-card-label {
+    font-size: 0.62rem; font-weight: 700; color: #bbb;
+    text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.25rem;
+  }
   .bm-why {
-    font-size: 0.88rem;
-    font-weight: 600;
-    color: #1a1a1a;
-    line-height: 1.5;
-    flex: 1;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 5;
-    -webkit-box-orient: vertical;
+    font-size: 0.86rem; font-weight: 600; color: #1a1a1a;
+    line-height: 1.5; overflow: hidden;
   }
-  .bm-card.open .bm-why {
-    -webkit-line-clamp: unset;
-    overflow: visible;
-  }
-
-  .bm-tags {
-    margin-top: 0.65rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.3rem;
-  }
+  .bm-tags { margin-top: 0.5rem; display: flex; flex-wrap: wrap; gap: 0.3rem; }
   .bm-tag {
-    background: #f0f4ff;
-    color: #2244aa;
-    font-size: 0.7rem;
-    padding: 0.15rem 0.45rem;
-    border-radius: 4px;
-    white-space: nowrap;
+    background: #f0f4ff; color: #2244aa; font-size: 0.68rem;
+    padding: 0.12rem 0.4rem; border-radius: 4px; white-space: nowrap;
+  }
+  .bm-more {
+    margin-top: 0.5rem; font-size: 0.7rem; color: #aaa;
+    display: inline-block; user-select: none;
   }
 
-  .bm-detail {
+  /* ── 모달 오버레이 ── */
+  .bm-overlay {
     display: none;
-    margin-top: 0.9rem;
-    border-top: 1px solid #eee;
-    padding-top: 0.9rem;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    backdrop-filter: blur(2px);
   }
-  .bm-card.open .bm-detail { display: block; }
+  .bm-overlay.active {
+    display: flex;
+    animation: overlayIn 0.18s ease;
+  }
+  @keyframes overlayIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
 
-  .bm-label {
-    font-size: 0.7rem;
-    font-weight: 700;
-    color: #999;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    margin-bottom: 0.3rem;
-    margin-top: 0.75rem;
+  /* ── 모달 박스 ── */
+  .bm-modal {
+    background: #fff;
+    border-radius: 14px;
+    width: 100%;
+    max-width: 900px;
+    max-height: 80vh;
+    display: flex;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.20);
+    animation: modalIn 0.2s ease;
   }
-  .bm-label:first-child { margin-top: 0; }
+  @keyframes modalIn {
+    from { opacity: 0; transform: scale(0.96) translateY(8px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+  }
 
-  .bm-what {
-    font-size: 0.85rem;
-    color: #333;
-    line-height: 1.6;
-    white-space: pre-line;
+  /* 좌측: 분석 */
+  .bm-modal-left {
+    flex: 0 0 42%;
+    padding: 2rem 2rem 1.5rem;
+    border-right: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    overflow-y: auto;
   }
-  .bm-points {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  .bm-modal-meta {
+    font-size: 0.74rem; color: #aaa;
+    display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap;
+    padding-bottom: 1rem; border-bottom: 1px solid #f0f0f0;
   }
+  .bm-modal-meta strong { color: #333; font-size: 0.78rem; }
+  .bm-modal-meta a { color: #0066cc; text-decoration: none; }
+  .bm-modal-meta a:hover { text-decoration: underline; }
+
+  .bm-sec-label {
+    font-size: 0.62rem; font-weight: 700; color: #2244aa;
+    text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.4rem;
+  }
+  .bm-sec-body {
+    font-size: 0.88rem; color: #1a1a1a; line-height: 1.65;
+  }
+  .bm-sec-body.why { font-weight: 600; }
+  .bm-sec-body.dim { color: #444; font-size: 0.84rem; }
+
+  .bm-points { list-style: none; padding: 0; margin: 0; }
   .bm-points li {
-    font-size: 0.82rem;
-    color: #444;
-    padding: 0.15rem 0 0.15rem 0.9rem;
-    position: relative;
-    line-height: 1.5;
+    font-size: 0.8rem; color: #444;
+    padding: 0.22rem 0 0.22rem 1rem; position: relative; line-height: 1.5;
   }
-  .bm-points li::before {
-    content: '›';
-    position: absolute;
-    left: 0;
-    color: #0066cc;
-  }
-  .bm-points.explore li::before { color: #bbb; }
+  .bm-points li::before { content: '›'; position: absolute; left: 0; color: #0066cc; }
 
-  .bm-expand-btn {
-    margin-top: 0.6rem;
-    font-size: 0.72rem;
-    color: #0066cc;
-    cursor: pointer;
-    display: inline-block;
-    user-select: none;
+  .bm-modal-close {
+    margin-top: auto; padding-top: 1rem;
+    font-size: 0.72rem; color: #bbb; cursor: pointer;
+    user-select: none; display: inline-block; transition: color 0.15s;
+  }
+  .bm-modal-close:hover { color: #333; }
+
+  /* 우측: 원문 */
+  .bm-modal-right {
+    flex: 1;
+    padding: 2rem 2.2rem;
+    overflow-y: auto;
+    background: #fafaf9;
+    display: flex;
+    flex-direction: column;
+  }
+  .bm-tweet-label {
+    font-size: 0.62rem; font-weight: 700; color: #2244aa;
+    text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1.2rem;
+  }
+  .bm-tweet-body {
+    font-size: 0.76rem;
+    color: #1a1a1a;
+    line-height: 1.65;
+    white-space: pre-line;
+    font-family: 'Noto Sans KR', 'Inter', sans-serif;
+    flex: 1;
+  }
+  .bm-tweet-body.en {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.76rem;
+    color: #1a1a1a;
+    line-height: 1.65;
   }
 </style>
 
@@ -162,6 +183,14 @@ permalink: /ko/twitter/
 
 <div class="bm-grid" id="bm-grid"></div>
 
+<!-- 모달 -->
+<div class="bm-overlay" id="bm-overlay" onclick="handleOverlayClick(event)">
+  <div class="bm-modal" id="bm-modal">
+    <div class="bm-modal-left" id="bm-modal-left"></div>
+    <div class="bm-modal-right" id="bm-modal-right"></div>
+  </div>
+</div>
+
 <script>
 const BOOKMARKS = ({{ site.data.bookmarks | jsonify }}).sort((a, b) => {
   const da = a.added_at || a.date || "";
@@ -170,65 +199,106 @@ const BOOKMARKS = ({{ site.data.bookmarks | jsonify }}).sort((a, b) => {
   return (b.id || "").localeCompare(a.id || "");
 });
 
+function escHtml(s) {
+  return (s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
 function renderGrid() {
   const grid = document.getElementById('bm-grid');
   if (!BOOKMARKS || BOOKMARKS.length === 0) {
     grid.innerHTML = '<p style="color:#bbb;">아직 북마크가 없습니다.</p>';
     return;
   }
-
   grid.innerHTML = BOOKMARKS.map((bm, i) => {
-    const tags = (bm.tech_stack || []).slice(0, 4).map(t =>
-      `<span class="bm-tag">${t}</span>`
+    const tags = (bm.tech_stack || []).slice(0, 3).map(t =>
+      `<span class="bm-tag">${escHtml(t)}</span>`
     ).join('');
-
-    const applyList = (bm.apply_points || []).map(p =>
-      `<li>${p}</li>`
-    ).join('');
-
     const whatsHappening = bm.whats_happening || bm.smart_brevity?.why || '—';
-    const whyItMatters   = bm.why_it_matters  || bm.smart_brevity?.what || '';
-    const translation    = bm.translation || '';
-
+    const preview = whatsHappening.length > 110 ? whatsHappening.slice(0, 110) + '…' : whatsHappening;
+    const hasDetail = !!(bm.why_it_matters || bm.smart_brevity?.what ||
+                        (bm.apply_points||[]).length ||
+                        bm.translation || bm.text);
     return `
-    <div class="bm-card" id="card-${i}" onclick="toggleCard(${i})">
+    <div class="bm-card" onclick="openModal(${i})">
       <div class="bm-meta">
-        <strong>@${bm.author || '—'}</strong>
+        <strong>@${escHtml(bm.author || '—')}</strong>
         <span>·</span>
-        <span>${(bm.added_at || bm.date || '').slice(0, 10)}</span>
-        ${bm.url ? `<span>·</span><a href="${bm.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">원문 →</a>` : ''}
+        <span>${(bm.added_at || bm.date || '').slice(0,10)}</span>
       </div>
-
-      <p class="bm-label">What's happening</p>
-      <div class="bm-why">${whatsHappening}</div>
-
+      <p class="bm-card-label">What's happening</p>
+      <div class="bm-why">${escHtml(preview)}</div>
       ${tags ? `<div class="bm-tags">${tags}</div>` : ''}
-
-      <span class="bm-expand-btn" id="btn-${i}">더보기 ▾</span>
-
-      <div class="bm-detail">
-        ${whyItMatters ? `
-        <p class="bm-label">Why it matters</p>
-        <p class="bm-what">${whyItMatters}</p>` : ''}
-
-        ${translation ? `
-        <p class="bm-label">번역</p>
-        <p class="bm-what" style="white-space:pre-line;">${translation}</p>` : ''}
-
-        ${applyList ? `
-        <p class="bm-label">적용 포인트</p>
-        <ul class="bm-points">${applyList}</ul>` : ''}
-      </div>
+      ${hasDetail ? `<span class="bm-more">더보기 →</span>` : ''}
     </div>`;
   }).join('');
 }
 
-function toggleCard(i) {
-  const card = document.getElementById('card-' + i);
-  const btn = document.getElementById('btn-' + i);
-  const isOpen = card.classList.toggle('open');
-  btn.textContent = isOpen ? '접기 ▴' : '더보기 ▾';
+function openModal(i) {
+  const bm = BOOKMARKS[i];
+  const whatsHappening = bm.whats_happening || bm.smart_brevity?.why || '';
+  const whyItMatters   = bm.why_it_matters  || bm.smart_brevity?.what || '';
+  const applyList = (bm.apply_points || []).map(p => `<li>${escHtml(p)}</li>`).join('');
+  const tweetContent   = bm.translation || bm.text || '';
+  const isKo = !!bm.translation;
+
+  document.getElementById('bm-modal-left').innerHTML = `
+    <div class="bm-modal-meta">
+      <strong>@${escHtml(bm.author || '—')}</strong>
+      <span>·</span>
+      <span>${(bm.added_at || bm.date || '').slice(0,10)}</span>
+      ${bm.url ? `<span>·</span><a href="${bm.url}" target="_blank" rel="noopener">원문 트윗 →</a>` : ''}
+    </div>
+    ${whatsHappening ? `
+    <div>
+      <p class="bm-sec-label">What's happening</p>
+      <p class="bm-sec-body why">${escHtml(whatsHappening)}</p>
+    </div>` : ''}
+    ${whyItMatters ? `
+    <div>
+      <p class="bm-sec-label">Why it matters</p>
+      <p class="bm-sec-body dim">${escHtml(whyItMatters)}</p>
+    </div>` : ''}
+    ${applyList ? `
+    <div>
+      <p class="bm-sec-label">적용 포인트</p>
+      <ul class="bm-points">${applyList}</ul>
+    </div>` : ''}
+    <span class="bm-modal-close" onclick="closeModal()">닫기 ✕</span>
+  `;
+
+  const baseurl = "{{ site.baseurl }}";
+  const images = (bm.tweet_images || []).map(src =>
+    `<img src="${baseurl}${src}" alt="tweet image" style="width:100%;border-radius:8px;margin-top:1.2rem;display:block;">`
+  ).join('');
+
+  const links = (tweetContent.match(/https?:\/\/\S+/g) || []);
+  const bodyText = escHtml(tweetContent).replace(
+    /(https?:\/\/\S+)/g,
+    `<a href="$1" target="_blank" rel="noopener" style="color:#0066cc;word-break:break-all;">$1</a>`
+  );
+
+  document.getElementById('bm-modal-right').innerHTML = `
+    <p class="bm-tweet-label">원문</p>
+    <p class="bm-tweet-body${isKo ? '' : ' en'}">${bodyText}</p>
+    ${images}
+  `;
+
+  document.getElementById('bm-overlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
 }
+
+function closeModal() {
+  document.getElementById('bm-overlay').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function handleOverlayClick(e) {
+  if (e.target === document.getElementById('bm-overlay')) closeModal();
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeModal();
+});
 
 renderGrid();
 </script>

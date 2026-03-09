@@ -399,10 +399,11 @@
       "한영 포스트에 단일 GPU 실험 태그 반영"
     ],
     "added_at": "2026-03-09",
-    "text": "I packaged up the \"autoresearch\" project into a new self-contained minimal repo if people would like to play over the weekend. It's basically nanochat LLM training core stripped down to a single-GPU, one file version of ~630 lines of code, then:\n\n- the human iterates on the",
+    "text": "I packaged up the \"autoresearch\" project into a new self-contained minimal repo if people would like to play over the weekend. It's basically nanochat LLM training core stripped down to a single-GPU, one file version of ~630 lines of code, then:\n\n- the human iterates on the prompt (.md)\n- the AI agent iterates on the training code (.py)\n\nThe goal is to engineer your agents to make the fastest research progress indefinitely and without any of your own involvement. In the image, every dot is a complete LLM training run that lasts exactly 5 minutes. The agent works in an autonomous loop on a git feature branch and accumulates git commits to the training script as it finds better settings (of lower validation loss by the end) of the neural network architecture, the optimizer, all the hyperparameters, etc. You can imagine comparing the research progress of different prompts, different agents, etc.\n\nhttps://github.com/karpathy/autoresearch\nPart code, part sci-fi, and a pinch of psychosis :)\nhttps://github.com/karpathy/autoresearch",
+    "tweet_images": ["/assets/bm-images/karpathy-autoresearch.jpg"],
     "whats_happening": "작성자가 autoresearch 프로젝트를 주말에 직접 만져볼 수 있도록 자체 완결형 최소 레포로 묶어 공개했다. nanochat LLM training core를 단일 GPU용, 한 파일 약 630줄짜리 버전으로 줄였다고 설명한다.",
     "why_it_matters": "복잡한 LLM 학습 실험의 핵심을 극단적으로 압축해 개인 연구자도 빠르게 재현하고 변형해볼 수 있게 한다. 최소 레포 형태라 아이디어 검증 주기를 줄이고 실험 비용을 낮추는 데 유리하다.",
-    "translation": "주말 동안 한번 가지고 놀아보고 싶은 분들이 있다면, \"autoresearch\" 프로젝트를 새로운 자체 완결형 최소 레포로 패키징해뒀습니다. 이건 기본적으로 nanochat LLM training core를 단일 GPU, 한 파일짜리 약 630줄 코드 버전으로 쭉 덜어낸 것이고, 그다음:\n\n- 사람이 그 위에서 반복해 나가는"
+    "translation": "주말 동안 가지고 놀고 싶은 분들을 위해 \"autoresearch\" 프로젝트를 새로운 자체 완결형 최소 레포로 패키징했습니다. nanochat LLM training core를 단일 GPU, 한 파일짜리 약 630줄 버전으로 압축한 것이고:\n\n- 사람은 프롬프트(.md)를 반복해서 다듬고\n- AI 에이전트는 학습 코드(.py)를 반복해서 개선합니다\n\n목표는 당신 개입 없이 에이전트가 가장 빠른 연구 진전을 무한정 만들어내도록 설계하는 것입니다. 이미지에서 각 점은 정확히 5분짜리 완전한 LLM 학습 실행입니다. 에이전트는 git feature branch에서 자율 루프로 작동하며 신경망 아키텍처, 옵티마이저, 모든 하이퍼파라미터 등에서 더 나은 설정을 찾아가며 학습 스크립트에 git commit을 쌓아갑니다. 다양한 프롬프트, 다양한 에이전트의 연구 진전을 비교해볼 수도 있습니다.\n\nhttps://github.com/karpathy/autoresearch\n코드 반, SF 반, 그리고 약간의 광기 :)"
   },
   {
     "id": "bm-019",
