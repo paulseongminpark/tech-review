@@ -163,7 +163,12 @@ permalink: /en/twitter/
 <div class="bm-grid" id="bm-grid"></div>
 
 <script>
-const BOOKMARKS = {{ site.data.bookmarks | jsonify }};
+const BOOKMARKS = ({{ site.data.bookmarks | jsonify }}).sort((a, b) => {
+  const da = a.added_at || a.date || "";
+  const db = b.added_at || b.date || "";
+  if (db !== da) return db.localeCompare(da);
+  return (b.id || "").localeCompare(a.id || "");
+});
 
 function renderGrid() {
   const grid = document.getElementById('bm-grid');
@@ -181,36 +186,38 @@ function renderGrid() {
       `<li>${p}</li>`
     ).join('');
 
-    const exploreList = (bm.explore_points || []).map(p =>
-      `<li>${p}</li>`
-    ).join('');
+    const whatsHappening = bm.whats_happening || bm.smart_brevity?.why || '—';
+    const whyItMatters   = bm.why_it_matters  || bm.smart_brevity?.what || '';
+    const translation    = bm.translation || '';
 
     return `
     <div class="bm-card" id="card-${i}" onclick="toggleCard(${i})">
       <div class="bm-meta">
         <strong>@${bm.author || '—'}</strong>
         <span>·</span>
-        <span>${(bm.date || '').slice(0, 10)}</span>
+        <span>${(bm.added_at || bm.date || '').slice(0, 10)}</span>
         ${bm.url ? `<span>·</span><a href="${bm.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">Source →</a>` : ''}
       </div>
 
-      <div class="bm-why">${bm.smart_brevity?.why || '—'}</div>
+      <p class="bm-label">What's happening</p>
+      <div class="bm-why">${whatsHappening}</div>
 
       ${tags ? `<div class="bm-tags">${tags}</div>` : ''}
 
       <span class="bm-expand-btn" id="btn-${i}">More ▾</span>
 
       <div class="bm-detail">
-        <p class="bm-label">What's happening</p>
-        <p class="bm-what">${bm.smart_brevity?.what || ''}</p>
+        ${whyItMatters ? `
+        <p class="bm-label">Why it matters</p>
+        <p class="bm-what">${whyItMatters}</p>` : ''}
+
+        ${translation ? `
+        <p class="bm-label">Translation (KO)</p>
+        <p class="bm-what" style="white-space:pre-line;">${translation}</p>` : ''}
 
         ${applyList ? `
         <p class="bm-label">Apply Points</p>
         <ul class="bm-points">${applyList}</ul>` : ''}
-
-        ${exploreList ? `
-        <p class="bm-label">Worth Exploring</p>
-        <ul class="bm-points explore">${exploreList}</ul>` : ''}
       </div>
     </div>`;
   }).join('');

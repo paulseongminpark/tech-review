@@ -29,8 +29,8 @@ const twitter = [...bookmarks]
   author: b.author || "",
   date: b.added_at || b.date || "",
   url: b.url || "",
-  why: b.smart_brevity?.why || "",
-  apply_point: (b.apply_points || [])[0] || "",
+  whats_happening: (b.whats_happening || b.smart_brevity?.why || "").slice(0, 80),
+  apply_point: ((b.apply_points || [])[0] || "").slice(0, 80),
 }));
 
 // ── YouTube: 최신 파일에서 summary 있는 영상 1개 ──────────────────

@@ -31,26 +31,24 @@ recall 쿼리: "Paul orchestration mcp-memory tech-review 프로젝트 현재 �
 
 recall 결과를 바탕으로 아래 작업을 수행하라.
 
-다음 트위터 게시글을 아래 JSON 형식으로 요약해라.
+다음 트위터 게시글을 아래 JSON 형식으로 처리해라.
 반드시 JSON만 출력. 마크다운 코드블록 없이 순수 JSON만.
 
 {{
-  "smart_brevity": {{
-    "why": "한 문장 핵심 (왜 중요한가, 임팩트·의미 중심, 구체적 수치나 결과 포함)",
-    "what": "2-3줄 설명 (무슨 일인가 — 핵심 메커니즘, 작동 방식, 차별점을 명확하게)"
-  }},
-  "tech_stack": ["실제 기술/도구/라이브러리명만"],
-  "apply_points": ["recall로 파악한 Paul의 실제 프로젝트(orchestration, mcp-memory, tech-review 등)에 구체적으로 적용 가능한 것. 일반론 금지."],
-  "explore_points": ["더 파볼 가치 있는 개념/구현/원리"]
+  "whats_happening": "무슨 일인가 — 1-2문장, 핵심 사건·발표·발견을 구체적으로",
+  "why_it_matters": "왜 중요한가 — 1-2문장, 임팩트와 의미 중심",
+  "translation": "원문을 거의 그대로 한글로 번역. 요약 금지. 원문의 문장 구조·뉘앙스·어조를 최대한 살릴 것. 원문이 리스트면 리스트로, 문단이면 문단으로.",
+  "tech_stack": ["언급된 실제 기술/도구/라이브러리명만"],
+  "apply_points": ["recall로 파악한 Paul의 실제 프로젝트에 구체적으로 적용 가능한 것. 한 문장으로 간결하게. 파일 경로 금지. 일반론 금지."]
 }}
 
 규칙:
-- why: 한 문장, 핵심 임팩트만. 뻔한 표현 금지.
-- what: 2-3줄. 구체적 숫자·기술명·작동 원리 포함.
-- tech_stack: 실제 기술명만. 없으면 []
-- apply_points: 반드시 recall 결과 기반 — Paul의 실제 프로젝트명·파일명·패턴을 언급. "자동화", "최적화" 같은 막연한 표현 금지.
-- explore_points: 없으면 []
-- 전부 한국어. 단, 고유명사(라이브러리명, 회사명)는 영어 유지.
+- whats_happening: 1-2문장. 사건 중심.
+- why_it_matters: 1-2문장. 의미 중심.
+- translation: 번역이지 요약이 아님. 원문 길이의 90% 이상 유지. 영어 고유명사는 영어 유지.
+- tech_stack: 없으면 []
+- apply_points: 한 문장씩, 최대 3개. 파일 경로·backtick 금지. 50자 이내.
+- 전부 한국어. 단, 고유명사(라이브러리명, 회사명, 인명)는 영어 유지.
 
 트위터 내용:
 {text}
@@ -220,6 +218,7 @@ def main():
             "date": tw["date"],
             "added_at": datetime.now().strftime("%Y-%m-%d"),
             "url": tw["url"],
+            "text": tw["text"],
             **summary,
         }
         if tw["id"]:

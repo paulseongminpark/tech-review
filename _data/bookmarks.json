@@ -64,49 +64,41 @@
     "author": "aidenbai",
     "date": "2026-03-08",
     "url": "https://x.com/aidenybai/status/2029603067927351506",
-    "smart_brevity": {
-      "why": "React 컴포넌트를 클릭 한 번으로 선택해 Claude Code/Codex에 직접 전달. UI 수정 워크플로우를 극적으로 단축한다.",
-      "what": "npx react-grab@latest 설치 후 페이지 위 요소 선택 → 자연어로 변경 지시. 컴포넌트 트리와 선택된 요소의 컨텍스트를 에이전트에게 자동 주입. 완전 오픈소스."
-    },
     "tech_stack": [
+      "React Grab",
       "React",
-      "npx",
       "Claude Code",
-      "Codex CLI"
+      "Codex"
     ],
     "apply_points": [
-      "portfolio UI 수정 작업 시 즉시 활용 — 컴포넌트 특정 없이 클릭으로 대상 지정",
-      "monet-lab UI 실험에 적용 가능"
+      "portfolio UI 수정 루프를 선택형으로 줄여라.",
+      "orchestration에 DOM 선택 편집 명령을 연결하라.",
+      "mcp-memory recall을 UI 변경 지시에 붙여라."
     ],
-    "explore_points": [
-      "내부 구현: 컴포넌트 트리 추출 방식 확인 — 유사 패턴을 다른 프레임워크(Next.js)에 적용 가능성"
-    ],
-    "added_at": "2026-03-08"
+    "added_at": "2026-03-08",
+    "text": "Introducing React Grab\n\nSelect any element on your page → tell Claude Code or Codex what to change\n\nFully open source\n\nnpx react-grab@latest",
+    "whats_happening": "React Grab이라는 오픈소스 도구가 공개됐다. 페이지에서 원하는 요소를 직접 선택해 Claude Code나 Codex에 무엇을 바꿀지 지시할 수 있고, npx react-grab@latest로 바로 실행한다.",
+    "why_it_matters": "AI에게 화면 수정을 맡길 때 어떤 요소를 바꿔야 하는지 지정하는 마찰을 크게 줄인다. React 작업에서 선택 기반 편집 흐름을 더해 프로토타이핑과 반복 수정 속도를 높일 수 있다.",
+    "translation": "React Grab를 소개합니다\n\n페이지의 아무 요소나 선택한 다음 → Claude Code나 Codex에 무엇을 바꿀지 말하세요\n\n완전한 오픈소스입니다\n\nnpx react-grab@latest"
   },
   {
     "id": "bm-004",
     "author": "jackculpan",
     "date": "2026-03-08",
     "url": "https://x.com/JackCulpan/status/2029478582352003150",
-    "smart_brevity": {
-      "why": "에이전트를 제대로 쓰는 7가지 원칙. Plan → Verify → Learn 루프가 실수율을 극적으로 낮춘다.",
-      "what": "비자명한 모든 작업은 플랜 모드로 시작. 수정 받을 때마다 tasks/lessons.md 즉시 업데이트. 완료 선언 전 반드시 작동 증명. 서브에이전트로 메인 컨텍스트 보호. 단순 수정엔 과도한 우아함 추구 금지."
-    },
     "tech_stack": [
-      "tasks/todo.md",
-      "tasks/lessons.md",
-      "플랜 모드",
-      "서브에이전트"
+      "Plan Mode"
     ],
     "apply_points": [
-      "lessons.md 패턴 = 현재 common-mistakes.md와 동일 개념 — 에이전트가 직접 갱신하도록 지시 추가",
-      "'Would a staff engineer approve this?' 자기 검증 질문을 에이전트 지시에 삽입",
-      "tasks/todo.md → 체크박스 항목 완료 추적 → review 섹션 추가 패턴을 현재 워크플로우에 통합"
+      "create-post 변경은 검증까지 Plan Mode로 묶기.",
+      "Perplexity→GAS 장애 시 즉시 재계획.",
+      "comments 번역 흐름도 실패 시 중단 우선."
     ],
-    "explore_points": [
-      "계획이 틀어지면 즉시 중단 후 재계획 — '계속 밀어붙이기' 금지 원칙을 stop-hook으로 강제하는 방법"
-    ],
-    "added_at": "2026-03-08"
+    "added_at": "2026-03-08",
+    "text": "Here's the prompt:\n\n## Workflow Orchestration\n\n### 1. Plan Mode Default\n- Enter plan mode for ANY non-trivial task (3+ steps or architectural decisions)\n- If something goes sideways, STOP and re-plan immediately – don't keep pushing\n- Use plan mode for verification steps, not",
+    "whats_happening": "게시글은 에이전트용 Workflow Orchestration 프롬프트 일부를 공개하며, 비사소한 작업은 Plan Mode를 기본으로 하고 문제가 생기면 즉시 멈춰 재계획하라는 규칙을 제시한다.",
+    "why_it_matters": "자동화 워크플로와 에이전트 작업에서 무리하게 계속 진행하는 실수를 줄이고, 검증도 실행의 뒷부분이 아니라 계획의 일부로 다루게 만든다. 특히 여러 단계가 얽힌 운영 파이프라인에서 실패 비용과 복구 시간을 낮추는 방식이다.",
+    "translation": "프롬프트는 다음과 같습니다:\\n\\n## 워크플로 오케스트레이션\\n\\n### 1. Plan Mode 기본값\\n- 어떤 비사소한 작업이든 Plan Mode로 들어가라 (3단계 이상이거나 아키텍처 결정이 있는 경우)\\n- 뭔가 삐끗하면, 즉시 멈추고 다시 계획하라. 계속 밀어붙이지 마라\\n- 검증 단계에는 plan mode를 사용하라, not"
   },
   {
     "id": "bm-005",
@@ -225,282 +217,211 @@
     "author": "svpino",
     "date": "2026-03-06",
     "url": "https://x.com/svpino/status/2029952780694352026",
-    "smart_brevity": {
-      "why": "Claude Code에서 Playwright MCP를 연동하면 브라우저 직접 제어를 통해 모든 웹사이트 파싱이 가능해져 AI 웹 크롤링의 한계를 돌파한다.",
-      "what": "Claude Code와 Playwright MCP(Model Context Protocol)를 통합하면 AI 모델이 브라우저 자동화 기능을 직접 실행할 수 있게 된다. 이를 통해 동적 렌더링 콘텐츠, 자바스크립트 기반 페이지 등 전통 파싱이 불가능한 모든 웹사이트에 접근 가능해진다. 비디오 시연으로 실제 작동 능력을 증명하며 큰 관심을 받았다."
-    },
     "tech_stack": [
-      "Claude Code",
-      "Playwright MCP",
-      "Playwright",
-      "Model Context Protocol"
+      "Claude Code"
     ],
     "apply_points": [
-      "동적 콘텐츠 렌더링이 필요한 웹 크롤링 프로젝트에 Playwright MCP 연동 패턴 적용",
-      "API 미지원 사이트의 데이터 수집 자동화에 Claude Code + 브라우저 제어 조합 활용",
-      "AI 에이전트의 웹 상호작용 능력 확장에 MCP 기반 통합 구조 도입"
+      "멀티소스 파이프라인에 웹 파싱 소스를 붙인다.",
+      "5W1H 파싱 전 HTML 추출 단계를 검증한다.",
+      "Twitter 외 기사형 소스 수집을 넓힌다."
     ],
-    "explore_points": [
-      "Playwright MCP의 성능 최적화 및 대규모 크롤링 시 안정성 검증",
-      "다른 AI 모델(GPT-4, Gemini 등)과의 MCP 호환성 및 확장 가능성",
-      "웹 파싱 자동화의 윤리, 로봇 배제 표준(robots.txt) 준수 메커니즘"
-    ],
-    "added_at": "2026-03-08"
+    "added_at": "2026-03-08",
+    "text": "This is how you can give Claude Code the ability to parse any website in the world.\n\nI recorded this video last week.\n\nPeople loved it. I keep getting messages about it.",
+    "whats_happening": "작성자가 Claude Code에 세상 어떤 웹사이트든 파싱할 수 있는 능력을 붙이는 방법을 보여주는 영상을 지난주에 녹화해 공유했고, 큰 반응을 얻고 있다고 말했다.",
+    "why_it_matters": "Claude Code를 단순 코딩 보조를 넘어 웹 데이터를 직접 읽는 작업 에이전트로 확장할 수 있다는 뜻이다. 웹 파싱이 붙으면 문서화되지 않은 사이트도 자동화 파이프라인의 입력원으로 삼기 쉬워진다.",
+    "translation": "이것이 Claude Code에게 세상 어떤 웹사이트든 파싱할 수 있는 능력을 주는 방법이다.\n\n나는 이 영상을 지난주에 녹화했다.\n\n사람들이 정말 좋아했다. 이 영상에 대한 메시지를 계속 받고 있다."
   },
   {
     "id": "bm-010",
     "author": "sawyerhood",
     "date": "2026-03-05",
     "url": "https://x.com/sawyerhood/status/2029348435137315041",
-    "smart_brevity": {
-      "why": "Google Workspace 서비스를 CLI 환경에서 직접 제어할 수 있어 반복적인 관리 작업과 자동화 스크립트 작성이 가능해진다.",
-      "what": "공식 CLI 도구를 통해 Gmail, Calendar, Drive 등 Google Workspace 서비스를 명령줄에서 직접 조작할 수 있다. 배치 작업 자동화, 사용자 계정 관리, 파일 동기화 등을 스크립트로 작성하고 실행할 수 있으며, API 호출 없이 쉽게 접근 가능하다."
-    },
     "tech_stack": [
-      "Google Workspace CLI",
-      "Gmail API",
-      "Google Calendar API",
-      "Google Drive API"
+      "Google Workspace CLI"
     ],
     "apply_points": [
-      "대량 사용자 계정 생성/관리 프로세스를 CLI 스크립트로 자동화",
-      "정기적인 이메일 백업 및 아카이빙 작업을 배치 스크립트로 운영",
-      "Drive 파일 일괄 이동/삭제/공유 설정을 자동화 스크립트로 처리"
+      "Gmail 리서치 트리거 점검을 CLI로 자동화.",
+      "배포 전 Workspace 인증 상태를 검사.",
+      "GAS 의존 작업 일부를 CLI로 축소."
     ],
-    "explore_points": [
-      "CLI 도구의 인증 메커니즘(OAuth, 서비스 계정 등) 구현 방식",
-      "기존 Google Workspace API와의 호환성 및 차별점",
-      "엔터프라이즈 환경에서의 대규모 배포 및 마이그레이션 전략"
-    ],
-    "added_at": "2026-03-08"
+    "added_at": "2026-03-08",
+    "text": "official google workspace cli!!",
+    "whats_happening": "Google Workspace용 공식 CLI가 나왔다는 짧은 발표다. Google이 Workspace 작업을 커맨드라인에서 다루는 공식 도구를 내놨음을 알린다.",
+    "why_it_matters": "Workspace 연동 작업을 스크립트와 터미널 중심으로 자동화할 수 있어 운영 비용을 줄일 수 있다. 특히 Gmail 등 Workspace 기반 워크플로를 쓰는 자동화 시스템에 공식 지원 경로가 생긴다는 점이 중요하다.",
+    "translation": "공식 Google Workspace CLI!!"
   },
   {
     "id": "bm-011",
     "author": "trq212",
     "date": "2026-03-04",
     "url": "https://x.com/trq212/status/2029285398858612916",
-    "smart_brevity": {
-      "why": "Claude의 내부 사고 메커니즘을 분석함으로써 대규모 언어모델의 블랙박스를 투명화하고 AI 안전성과 신뢰도 향상에 기여한다.",
-      "what": "Anthropic이 Claude의 내부 표현, 추론 과정, 행동 결정 메커니즘을 심층 분석한 연구다. 모델이 계획 수립부터 최종 행동 선택까지 어떤 논리 구조와 정보 처리 방식을 사용하는지 구체적으로 밝혀낸다."
-    },
     "tech_stack": [
-      "Claude",
-      "Anthropic",
-      "내부 표현 분석(Interpretability)",
-      "추론 경로 추적"
+      "Claude"
     ],
     "apply_points": [
-      "모델의 의사결정 과정을 이해하여 프롬프트 엔지니어링 최적화에 적용",
-      "Claude의 계획 수립 패턴을 파악하여 복잡한 작업 분해 및 에이전트 설계에 활용",
-      "내부 표현 투명화를 통해 AI 시스템의 신뢰도 검증 및 편향성 감지에 응용"
+      "mcp-memory에 Claude 사고 사례로 적재.",
+      "tech-review의 모델 해설 포맷에 반영.",
+      "Paul 메모 흐름의 읽을거리 후보로 추가."
     ],
-    "explore_points": [
-      "논문의 구체적인 내부 표현 구조와 활성화 패턴",
-      "다른 LLM(GPT, Llama 등)과의 사고 방식 비교 분석",
-      "내부 메커니즘 이해가 alignment와 safety 개선에 미치는 영향",
-      "해석 가능성(Interpretability) 기술의 실무 적용 사례"
-    ],
-    "added_at": "2026-03-08"
+    "added_at": "2026-03-08",
+    "text": "this entire paper is great read as a window into how Claude thinks",
+    "whats_happening": "작성자가 한 논문 전체를 Claude가 어떻게 생각하는지 들여다볼 수 있는 창처럼 읽을 수 있다며 강하게 추천하고 있다.",
+    "why_it_matters": "이 평가는 Claude를 단순한 출력 결과가 아니라 사고 방식의 관점에서 해석하게 만든다. 모델 분석이나 기술 리뷰를 할 때 내부 추론 프레임을 읽는 기준점으로 쓸 수 있다.",
+    "translation": "이 논문 전체는 Claude가 어떻게 생각하는지 들여다보는 창으로서 정말 훌륭한 읽을거리다."
   },
   {
     "id": "bm-012",
     "author": "MillieMarconnni",
     "date": "2026-03-02",
     "url": "https://x.com/MillieMarconnni/status/2028436636841996451",
-    "smart_brevity": {
-      "why": "GitHub 저장소를 대화형 지식 그래프로 변환하여 코드베이스 이해도를 획기적으로 높일 수 있게 되었다.",
-      "what": "GitNexus는 GitHub 리포지토리를 시각적 그래프 구조로 변환하고 AI 에이전트와 대화형으로 상호작용할 수 있게 해준다. 서버나 복잡한 설정 없이 즉시 사용 가능하며, 코드베이스의 구조와 관계를 X-ray처럼 투명하게 파악할 수 있다."
-    },
     "tech_stack": [
-      "GitHub API",
-      "AI Agent",
-      "Knowledge Graph",
-      "Interactive Visualization"
+      "GitHub",
+      "GitNexus"
     ],
     "apply_points": [
-      "신규 팀원 온보딩 시 코드베이스 학습곡선 단축에 활용",
-      "대규모 레거시 프로젝트의 의존성 맵핑 및 리팩토링 계획 수립",
-      "AI 기반 코드 리뷰 및 아키텍처 분석 자동화"
+      "GitHub Actions 흐름 점검에 쓸 수 있다.",
+      "comments 동기화 영향 범위 확인에 유용하다.",
+      "portfolio 연동 전 의존 관계 검토에 맞다."
     ],
-    "explore_points": [
-      "다양한 프로그래밍 언어별 지식 그래프 정확도 검증",
-      "팀 협업 시 공유 및 주석 기능의 확장 가능성",
-      "엔터프라이즈급 보안 및 프라이빗 저장소 지원"
-    ],
-    "added_at": "2026-03-08"
+    "added_at": "2026-03-08",
+    "text": "BREAKING: A developer on GitHub just built a tool that turns any GitHub repo into an interactive knowledge graph and open sourced it for free.\n\nIt's called GitNexus. Think of it as a visual X-ray of your codebase but with an AI agent you can actually talk to.\n\nNo server. No",
+    "whats_happening": "GitHub의 한 개발자가 어떤 GitHub repo든 인터랙티브한 지식 그래프로 바꾸는 오픈소스 도구 GitNexus를 공개했다. 이 도구는 코드베이스를 시각적으로 탐색하게 해 주고, 대화형 AI agent로 repo를 질의할 수 있게 한다.",
+    "why_it_matters": "코드 구조 시각화와 대화형 탐색을 한 도구로 묶어 repo 이해와 탐색 시간을 줄일 수 있다. 무료 오픈소스라 Paul의 자동화 중심 tech-review 워크플로에도 바로 실험 적용하기 쉽다.",
+    "translation": "속보: GitHub의 한 개발자가 어떤 GitHub repo든 인터랙티브한 지식 그래프로 바꿔 주는 도구를 방금 만들었고, 그걸 무료로 오픈소스로 공개했다.\n\n이름은 GitNexus다. 코드베이스의 시각적 X-ray라고 생각하면 되는데, 실제로 대화할 수 있는 AI agent가 붙어 있다.\n\n서버 없음. 없"
   },
   {
     "id": "bm-013",
     "author": "heyrimsha",
     "date": "2026-03-08",
     "url": "https://x.com/heyrimsha/status/2030614728591167973",
-    "smart_brevity": {
-      "why": "YC 창업자가 Claude 세팅 하나로 낯선 시장의 go-to-market 전략 초안을 3시간 안에 뽑아냈다는 사례라, 조사 속도보다 조사 구조가 경쟁력이라는 점을 보여준다.",
-      "what": "작성자는 한 YC 회사 창업자의 Claude 작업 환경을 보고, 원래 몇 주 걸릴 시장조사를 3시간 수준으로 압축하는 방식을 목격했다고 말한다.\n핵심 사례는 해당 창업자가 경험 없는 시장에서도 Claude를 써서 전체 go-to-market 전략을 빠르게 조립한 장면이다.\n다만 발췌본에는 프롬프트 체인, 자료 수집 방식, 검증 루프 같은 구현 디테일은 포함되지 않았다."
-    },
     "tech_stack": [
       "Claude"
     ],
     "apply_points": [
-      "tech-review의 일일 발행 흐름인 `.github/workflows/create-post.yml`과 `scripts/fetch-perplexity.js` 앞단에 Claude 리서치 템플릿을 넣으면, recall에 잡힌 KO 예약 지침과 결합해 기사 요약이 아니라 '왜 지금 중요한가'까지 먼저 구조화한 초안을 만들 수 있다.",
-      "mcp-memory의 `recall()`과 Signal→Pattern→Principle 성장 사이클을 이용해, tech-review에서 반복되는 조사 질문을 패턴으로 승격해두면 다음 주제에서도 Claude 리서치 세팅을 재사용 가능한 프롬프트 자산으로 축적할 수 있다.",
-      "orchestration의 200K 세션 운영 패턴을 Claude 시장조사 전용 세션으로 분리하면, 긴 조사 대화에서 컨텍스트 예산을 관리하면서 생성된 전략 가설을 `analyze-session.sh` 류의 후처리 흐름으로 mcp-memory에 다시 적재하는 설계를 붙일 수 있다."
+      "tech-review 글감 검증을 Claude 조사 루프로 묶기.",
+      "mcp-memory에 시장조사 흐름을 Pattern으로 축적.",
+      "orchestration 200K 세션에 GTM 조사 체인 추가."
     ],
-    "explore_points": [
-      "Claude 세션을 '시장 정의→세그먼트→경쟁사→메시지→채널' 단계로 분리하는 프롬프트 상태 관리 방식",
-      "낯선 시장 리서치에서 초안 속도와 사실 검증을 함께 잡기 위한 근거 링크·신뢰도 스코어링 루프",
-      "한 번의 조사 세션 결과를 다음 세션에 재사용할 수 있게 만드는 템플릿화와 memory 적재 기준"
-    ],
-    "added_at": "2026-03-09"
+    "added_at": "2026-03-09",
+    "text": "I accidentally discovered how to compress a month of research into 3 hours.\n\nA founder at a YC company showed me his Claude setup. I thought he was just fast. Then I watched him build an entire go-to-market strategy for a market he'd never worked in before.\n\nHere's exactly what",
+    "whats_happening": "작성자는 YC 회사 founder의 Claude 세팅을 보고, 낯선 시장에서도 몇 시간 만에 go-to-market 전략을 만드는 조사 워크플로를 목격했다고 말한다. 그 경험을 통해 한 달 걸릴 리서치를 3시간으로 압축하는 방법을 발견했다고 주장한다.",
+    "why_it_matters": "도메인 지식이 거의 없는 시장에서도 LLM 조사 세팅만 잘 설계하면 초기 전략 수립 속도를 크게 끌어올릴 수 있다는 점을 보여준다. 시장 조사와 GTM 기획의 시간 비용을 줄여 소규모 팀의 실행 속도를 바꿀 수 있다.",
+    "translation": "나는 우연히 한 달치 리서치를 3시간으로 압축하는 방법을 발견했다.\n\nYC 회사의 한 founder가 자기 Claude 세팅을 보여줬다. 나는 그가 그냥 빠른 줄 알았다. 그런데 나는 그가 전에 일해본 적도 없는 시장을 대상으로 전체 go-to-market 전략을 만드는 걸 지켜봤다.\n\n정확히 뭘"
   },
   {
     "id": "bm-014",
     "author": "RoundtableSpace",
     "date": "2026-03-08",
     "url": "https://x.com/RoundtableSpace/status/2030595632998580328",
-    "smart_brevity": {
-      "why": "Anthropic이 33페이지 공식 가이드를 공개해 Claude Skills를 15-30분 단위 작업으로 쪼개고, 잘 설계된 스킬 하나가 관련 질의의 최대 90%를 처리하도록 만드는 실전 기준을 명문화했다.",
-      "what": "문서는 Claude Skills를 특정 작업 성능을 높이는 재사용 가능한 지침+리소스 묶음으로 정의하고, 복잡한 워크플로를 15-30분 안에 끝나는 작업 단위로 나누라고 권한다.\n핵심은 이름/설명/트리거 문구를 명확히 적고, 잘 맞는 스킬 하나가 관련 요청의 최대 90%를 커버하도록 범위를 좁히는 설계다.\n또한 내부 지식과 절차는 Skill에, 외부 시스템 연결은 MCP에 두는 분리 원칙까지 제시해 Claude 운영 패턴을 표준화했다."
-    },
     "tech_stack": [
-      "Claude",
-      "MCP"
+      "Claude"
     ],
     "apply_points": [
-      "tech-review 기억(#4155, #4142)에 나온 multi-source pipeline 기준으로 보면 `scripts/fetch-twitter.js` 뒤에 붙는 요약 규칙을 코드 안 문자열로 두기보다 별도 Claude Skill 파일로 분리하는 편이 맞다. 그러면 `docs/plans/2026-03-04-multi-source-pipeline-impl.md`처럼 소스가 늘어날 때 Twitter 전용 선별 기준과 포맷 규칙만 독립적으로 교체할 수 있다.",
-      "mcp-memory 기억(#4124)의 Observation→Signal→Pattern→Principle 승격 흐름은 Anthropic 가이드의 '작업을 작은 skill로 쪼개라'는 원칙과 바로 맞물린다. `recall`로 컨텍스트 수집, `promote_node`로 승격 검토, `save_session`으로 세션 정리까지를 각각 별도 Skill로 나누면 Paul의 bottom-up 축적 방식을 반복 가능한 작업 단위로 고정할 수 있다.",
-      "orchestration 기억(#224)의 200K 세션 운영 패턴을 보면 긴 세션에서 컨텍스트 예산이 핵심 병목이다. `03_tech-review/blog`의 일일 포스트 생성 흐름에서도 스킬마다 트리거 문구와 입력 형식을 고정해 두면 `_posts/ko/2026-03-08-daily-tech-review.md` 같은 결과물을 만들 때 본문 프롬프트를 매번 길게 재주입하지 않아도 된다."
+      "Tech Review 초안 규칙을 skill로 고정.",
+      "mcp-memory recall 요약을 skill화.",
+      "Jekyll 발행 전 검수를 skill로 분리."
     ],
-    "explore_points": [
-      "Skill 트리거 문구를 어떤 표현으로 써야 Claude가 다른 스킬과 헷갈리지 않는지",
-      "잘 설계된 스킬 하나가 관련 요청의 90%를 커버하는 범위 설정 기준",
-      "Skill에 넣을 지식과 MCP로 분리할 외부 연동의 경계",
-      "실패 케이스를 먼저 모아 skill 품질을 회귀 테스트하는 방법"
-    ],
-    "added_at": "2026-03-09"
+    "added_at": "2026-03-09",
+    "text": "Anthropic dropped a 33 pages cheat sheet for building Claude skills\n\n\nhttps://\nresources.anthropic.com/hubfs/The-Comp\nlete-Guide-to-Building-Skill-for-Claude.pdf\n…",
+    "whats_happening": "Anthropic이 Claude skills를 만들기 위한 33페이지짜리 치트시트를 공개했다. Claude skill 설계와 작성 방식을 정리한 PDF 가이드를 배포한 것이다.",
+    "why_it_matters": "Claude를 반복 작업에 맞게 구조화하는 방법을 짧은 문서가 아니라 실전형 가이드로 제시했다는 점이 중요하다. skill 설계 품질이 올라가면 자동화 파이프라인과 에이전트 워크플로의 재현성과 일관성도 함께 올라간다.",
+    "translation": "Anthropic이 Claude skills를 만들기 위한 33페이지짜리 치트시트를 공개했다\n\nhttps://\nresources.anthropic.com/hubfs/The-Comp\nlete-Guide-to-Building-Skill-for-Claude.pdf\n…"
   },
   {
     "id": "bm-015",
     "author": "omarsar0",
     "date": "2026-03-08",
     "url": "https://x.com/omarsar0/status/2030771811705872435",
-    "smart_brevity": {
-      "why": "CLI 코딩 에이전트를 만드는 팀이라면 scaffolding, harness design, context engineering를 81페이지로 압축한 OpenDev 한 편만으로 시행착오 비용을 크게 줄일 수 있다.",
-      "what": "OpenDev는 terminal-based coding agents 구축 경험을 바탕으로 scaffolding, harness design, context engineering, 운영 중 얻은 lesson learned를 정리한 81-page paper다.\n트윗 발췌본 기준 핵심 메시지는 단일 프롬프트가 아니라 compound AI system architecture 관점에서 CLI agent를 설계하라는 점이며, 세부 컴포넌트 목록은 본문이 잘려 있어 확인되지 않는다."
-    },
     "tech_stack": [],
     "apply_points": [
-      "tech-review의 `create-post.yml` -> `fetch-perplexity.js` -> `translate-perplexity.js` 체인을 OpenDev식 harness로 재정의해 단계별 입력/출력 계약과 실패 조건을 문서화하면, 현재 Gmail -> GAS -> `repository_dispatch` 파이프라인에서 어느 구간이 깨졌는지 바로 추적할 수 있다.",
-      "orchestration의 `.claude/settings.json` hooks 와 `C:\\Users\\pauls\\.claude\\agents\\context-linker.md`, 각 `agent.md`를 '스캐폴딩 계층'과 '판단 규칙 계층'으로 분리하면, 현재 원칙인 `agent.md 패턴 5개 이내`와 `파일명·줄번호 포함` 규칙을 유지한 채 CLI agent 팀 구성을 더 안정적으로 확장할 수 있다.",
-      "mcp-memory의 `recall()`과 `Observation -> Signal -> Pattern -> Principle` 승격 패턴을 OpenDev의 context engineering 체크리스트로 재점검하면, 세션 문맥에 남길 정보와 장기 메모리로 승격할 정보를 더 엄격하게 구분하는 운영 규칙을 만들 수 있다."
+      "예약 리서치 입력을 주제별로 압축하라.",
+      "포스트 생성과 댓글 반영 흐름을 따로 검증하라.",
+      "배포 실패 원인을 사례집으로 누적하라."
     ],
-    "explore_points": [
-      "compound AI system architecture의 실제 구성요소가 무엇인지",
-      "CLI agent용 harness design에서 replay, evaluation, failure injection을 어떻게 다루는지",
-      "context engineering 규칙이 tool output 길이, 작업 분해, 장기 메모리 연결과 어떻게 맞물리는지"
-    ],
-    "added_at": "2026-03-09"
+    "added_at": "2026-03-09",
+    "text": "Pay attention to this one if you are building terminal-based coding agents.\n\nOpenDev is an 81-page paper covering scaffolding, harness design, context engineering, and hard-won lessons from building CLI coding agents.\n\nIt introduces a compound AI system architecture with",
+    "whats_happening": "터미널 기반 코딩 에이전트를 만들 때 참고할 81페이지짜리 OpenDev 논문이 소개됐다. 이 논문은 scaffolding, harness design, context engineering, 그리고 CLI coding agents 구축 경험에서 얻은 교훈과 compound AI system 아키텍처를 다룬다.",
+    "why_it_matters": "CLI coding agent를 만드는 팀이 시행착오를 줄이고 시스템 설계를 더 구조적으로 잡는 데 직접 도움이 된다. 특히 단일 프롬프트가 아니라 scaffolding과 harness까지 포함한 전체 에이전트 시스템 설계를 문서화했다는 점이 중요하다.",
+    "translation": "terminal-based coding agents를 만들고 있다면 이건 주목해라.\n\nOpenDev는 scaffolding, harness design, context engineering, 그리고 CLI coding agents를 만들면서 얻은 값비싼 교훈을 다루는 81페이지짜리 논문이다.\n\n이 논문은 다음을 갖춘 compound AI system 아키텍처를 소개한다."
   },
   {
     "id": "bm-016",
     "author": "gregisenberg",
     "date": "2026-03-08",
     "url": "https://x.com/gregisenberg/status/2030680849486668229",
-    "smart_brevity": {
-      "why": "역할별 에이전트를 분리해 아이디어 발굴부터 제작까지 이어주는 GitHub 저장소가 7일도 안 돼 1만+ 스타를 모았다는 점은, 단일 챗봇보다 멀티에이전트 제품화 워크플로에 시장 수요가 빠르게 붙고 있음을 보여준다.",
-      "what": "이 프로젝트는 engineering, design, growth marketing, product management를 각각 독립 에이전트로 두고, engineering 안에서도 frontend·backend 등을 포함한 7개 에이전트로 역할을 더 잘게 쪼갠다.\n핵심 메커니즘은 하나의 범용 모델이 전부 처리하는 대신 역할별 에이전트가 순차 또는 병렬로 산출물을 넘기며 아이디어를 실제 결과물로 밀어붙이는 오케스트레이션 구조다."
-    },
     "tech_stack": [
       "GitHub"
     ],
     "apply_points": [
-      "`tech-review`의 `create-post.yml -> fetch-perplexity.js` 흐름 앞단에 `research`, `editor`, `publisher` 에이전트를 분리하면, Perplexity 리서치 결과를 바로 포스트로 쓰지 않고 역할별 검수 결과를 단계적으로 넘기는 멀티에이전트 파이프라인으로 바꿀 수 있다.",
-      "`update-comments.yml`이 `comments.md`를 파싱해 `_posts/ko+en/`에 반영하는 현재 패턴에 `comment-triage` 에이전트를 추가하면, 독자 코멘트를 오탈자 수정, 후속 리서치, 신규 포스트 후보로 먼저 분류한 뒤 서로 다른 워크플로로 보낼 수 있다.",
-      "`feed.json -> portfolio_20260215` 연결 지점에 `growth marketer` 에이전트를 두면, 배포된 포스트의 제목과 요약을 채널별 소개 문구로 다시 써서 포트폴리오 노출용 메타데이터를 별도 생성하는 실험이 가능하다.",
-      "`mcp-memory recall`이 이미 `tech-review`의 운영 상태와 파일 단서를 갖고 있으므로, `product manager` 에이전트가 `create-post.yml`, `update-comments.yml`, `feed.json` 관련 컨텍스트를 먼저 조회한 뒤 어떤 역할 에이전트를 호출할지 결정하는 컨트롤 레이어로 붙일 수 있다."
+      "orchestration에 역할별 에이전트 분업을 시험하라.",
+      "mcp-memory에 역할별 결과 승격 로그를 남겨라.",
+      "제품 관리자·마케터 관점 요약을 추가하라."
     ],
-    "explore_points": [
-      "역할별 에이전트 사이의 handoff를 JSON schema로 고정할 때 품질 회귀가 얼마나 줄어드는지",
-      "engineering 하위 7개 에이전트가 동시에 변경 제안을 만들 때 충돌을 병합하는 오케스트레이터 설계",
-      "design, growth marketing, product management 에이전트의 출력이 실제 코드 생성 에이전트의 입력 품질을 얼마나 끌어올리는지"
-    ],
-    "added_at": "2026-03-09"
+    "added_at": "2026-03-09",
+    "text": "i found a github repo that lets you spin up an ai agency with ai employees\n\nengineers, designers, growth marketers, product managers\n\neach role runs as its own agent and they coordinate to ship ideas\n\n10k+ stars in under 7 days\n\n1. engineering (7 agents)\nfrontend, backend,",
+    "whats_happening": "AI 직원들로 구성된 AI agency를 빠르게 띄울 수 있게 해주는 GitHub 저장소가 소개됐고, 엔지니어·디자이너·그로스 마케터·제품 관리자 역할이 각각 독립 agent로 동작하며 함께 아이디어를 출시한다고 설명한다. 이 저장소는 공개 7일도 안 돼 stars 1만 개 이상을 모았다.",
+    "why_it_matters": "단일 코딩 agent를 넘어 제품 조직의 역할 분업 자체를 멀티 agent 구조로 구현하려는 흐름이 빠르게 주목받고 있다는 신호다. 아이디어 검증부터 구현까지 병렬화할 수 있다는 기대를 키우기 때문에, AI 기반 제품 개발 운영 방식의 기준을 끌어올린다.",
+    "translation": "AI 직원들이 있는 AI agency를 빠르게 띄울 수 있게 해주는 GitHub repo를 찾았다\n\n엔지니어, 디자이너, growth marketers, product managers\n\n각 역할은 자기만의 agent로 실행되고, 서로 조율하면서 아이디어를 출시한다\n\n7일도 안 되어 stars 1만+ 개\n\n1. engineering (7 agents)\nfrontend, backend,"
   },
   {
     "id": "bm-017",
     "author": "lucas_flatwhite",
     "date": "2026-03-08",
     "url": "https://x.com/lucas_flatwhite/status/2030663115483079095",
-    "smart_brevity": {
-      "why": "`shadcn/cli v4`는 `shadcn/ui`의 로컬 코드 복사 모델에 `shadcn/skills`, preset, dry-run, monorepo 4개 기능을 얹어, AI 에이전트가 프로젝트 규약을 덜 헷갈리고 실제 UI 코드를 더 정확히 가져오게 만든다.",
-      "what": "`shadcn/ui`는 패키지 래퍼가 아니라 컴포넌트 소스를 프로젝트 안으로 들여와 직접 수정하는 방식이다.\n`shadcn/cli v4`는 여기에 `shadcn/skills`, preset, dry-run, monorepo 지원을 더해 에이전트가 설치 규칙과 컴포넌트 구조를 코드베이스 기준으로 이해하게 만든다.\n핵심은 추상 문서보다 실제 생성 규약과 실행 전 검토 절차를 프로젝트 안에 두어 AI의 오판 범위를 줄인 점이다."
-    },
     "tech_stack": [
       "shadcn/ui",
-      "shadcn/cli v4",
+      "shadcn/cli",
       "shadcn/skills"
     ],
     "apply_points": [
-      "`tech-review/blog`는 `scripts/fetch-twitter.js`로 원문을 모으고 `_tmp/prompt_template.txt`로 출력 스키마를 고정해두었는데, 이를 `preset`처럼 묶어 `ko/twitter.html`과 `en/twitter.html`용 카드 규약 파일로 분리하면 Codex가 매번 마크업 구조를 추측하지 않고 동일한 UI 패턴을 재사용할 수 있다.",
-      "recall에 나온 `mcp-memory`의 `session_context.py`는 Pattern/Insight/Principle 상위 노드를 세션에 주입하므로, 여기에 `tweet-card`나 `daily-digest-list` 같은 UI 패턴 메타데이터를 함께 넣으면 에이전트가 `tech-review/blog` 화면 파일을 수정할 때 기존 설계 규약을 바로 참조할 수 있다.",
-      "recall에 나온 `orchestration`의 checkpoint Layer B는 Observation→Signal→Pattern 승격 경로를 이미 운영 중이니, `tech-review/blog`에서 검증된 카드 레이아웃이나 섹션 구성 규칙을 Pattern으로 승격해 두고 이후 `ko/index.html`이나 `_layouts/post.html` 수정 전에 불러오게 하면 UI 변경 지침을 프롬프트가 아니라 재사용 가능한 자산으로 관리할 수 있다."
+      "portfolio 공용 UI 프리셋을 고정하라.",
+      "orchestration UI 초안은 dry-run으로 검토.",
+      "tech-review 보조도구는 monorepo로 분리."
     ],
-    "explore_points": [
-      "`shadcn/ui`처럼 컴포넌트 코드를 로컬로 소유하는 방식이 AI 에이전트의 수정 정확도를 얼마나 높이는지",
-      "`dry-run`으로 생성 결과를 먼저 검토하는 흐름이 에이전트 승인 절차와 코드 리뷰 비용을 얼마나 줄이는지",
-      "모노레포에서 preset과 skills를 팀 공통 규약으로 배포할 때 어떤 디렉터리 구조가 가장 충돌이 적은지"
-    ],
-    "added_at": "2026-03-09"
+    "added_at": "2026-03-09",
+    "text": "UI 컴포넌트를 AI 에이전트와 더 잘 쓰는 법\n> shadcn/cli v4\n\n먼저 shadcn/ui는 내 프로젝트 코드로 가져와 직접 수정하며 쓰는 방식의 UI 컴포넌트 모음이에요.\n\n\"shadcn/cli v4가 출시되었습니다. shadcn/skills, 프리셋, dry-run, 모노레포 등 다양한 기능을 담고 있어요.\"\n\n\"코딩 에이전트와 함께",
+    "whats_happening": "shadcn/cli v4가 출시되며 shadcn/skills, 프리셋, dry-run, monorepo 같은 기능이 추가됐다. 이 글은 이를 바탕으로 shadcn/ui 컴포넌트를 AI 에이전트와 더 잘 쓰는 방식을 소개한다.",
+    "why_it_matters": "shadcn/ui를 AI 에이전트가 다루기 쉬운 흐름으로 표준화하면 컴포넌트 추가, 수정, 검토를 더 빠르고 안전하게 자동화할 수 있다. 특히 프리셋과 dry-run, monorepo 지원은 프로젝트별 UI 운영 비용을 줄인다.",
+    "translation": "UI 컴포넌트를 AI 에이전트와 더 잘 쓰는 법\n> shadcn/cli v4\n\n먼저 shadcn/ui는 내 프로젝트 코드로 가져와 직접 수정하며 쓰는 방식의 UI 컴포넌트 모음이에요.\n\n\"shadcn/cli v4가 출시되었습니다. shadcn/skills, 프리셋, dry-run, 모노레포 등 다양한 기능을 담고 있어요.\"\n\n\"코딩 에이전트와 함께"
   },
   {
     "id": "bm-018",
     "author": "karpathy",
     "date": "2026-03-07",
     "url": "https://x.com/karpathy/status/2030371219518931079",
-    "smart_brevity": {
-      "why": "630줄짜리 단일 GPU·단일 파일 `autoresearch` 리포는 거대한 LLM 학습 스택 없이도 사람이 연구 루프를 직접 돌려보며 nanochat식 학습 코어를 빠르게 검증할 수 있게 만든다.",
-      "what": "`autoresearch`는 nanochat LLM training core를 약 630줄의 one-file 버전으로 축소한 self-contained minimal repo다.\n복잡한 분산 학습·다중 서비스 의존성을 걷어내고 single-GPU에서 바로 실행되도록 패키징해, 사람이 코드와 실험 루프를 짧게 반복하며 학습 메커니즘을 직접 수정·관찰하는 데 초점을 둔다."
-    },
     "tech_stack": [
       "autoresearch",
       "nanochat"
     ],
     "apply_points": [
-      "`orchestration`의 `200K 세션 운영 (v3.3.1)`처럼 큰 컨텍스트 운영 규칙이 이미 있는 만큼, `C:\\dev\\01_projects\\01_orchestration`에는 이 630줄 수준의 최소 실험 하네스를 별도 브랜치나 독립 스크립트로 먼저 분리해 본체 오케스트레이션과 실험 코어를 나누는 방식이 맞다.",
-      "`mcp-memory`의 `recall() -> Signal 저장 -> Pattern 승격` 성장 사이클에 맞춰, `autoresearch` 실험 로그를 `Experiment`나 `Evidence`로 적재하면 단발성 주말 실험을 재호출 가능한 패턴으로 승격시키는 테스트베드가 된다.",
-      "`tech-review`는 Jekyll 블로그이므로, Paul의 로컬 사양인 `RTX 4060 Laptop 8GB VRAM` 기준으로 이 minimal repo가 실제로 어디까지 돌아가는지 측정해 '대형 학습 프레임워크 없이 single-GPU로 연구 루프를 줄이는 법' 같은 비교형 글감으로 바로 전환할 수 있다.",
-      "`analyze-session.sh`를 개선해 온 현재 워크플로와 연결하면, 거대한 연구 저장소 대신 one-file 실험 리포에서 나온 실패·성공 포인트를 세션 요약에 자동 집계하는 방식이 `복잡도 축소 후 핵심만 남기는` Paul의 정리 패턴과 잘 맞는다."
+      "fetch-twitter 수집본에 최소 레포 공개글 분류",
+      "create-post에서 실험형 레포 소식 우선 노출",
+      "한영 포스트에 단일 GPU 실험 태그 반영"
     ],
-    "explore_points": [
-      "single-GPU에서 LLM training core를 유지하면서 제거한 구성요소가 무엇인지",
-      "human-in-the-loop 반복이 학습 데이터, 하이퍼파라미터, 코드 수정 중 어디에 개입하는지",
-      "one-file 구조가 재현성·디버깅 속도에 주는 이점과 한계"
-    ],
-    "added_at": "2026-03-09"
+    "added_at": "2026-03-09",
+    "text": "I packaged up the \"autoresearch\" project into a new self-contained minimal repo if people would like to play over the weekend. It's basically nanochat LLM training core stripped down to a single-GPU, one file version of ~630 lines of code, then:\n\n- the human iterates on the",
+    "whats_happening": "작성자가 autoresearch 프로젝트를 주말에 직접 만져볼 수 있도록 자체 완결형 최소 레포로 묶어 공개했다. nanochat LLM training core를 단일 GPU용, 한 파일 약 630줄짜리 버전으로 줄였다고 설명한다.",
+    "why_it_matters": "복잡한 LLM 학습 실험의 핵심을 극단적으로 압축해 개인 연구자도 빠르게 재현하고 변형해볼 수 있게 한다. 최소 레포 형태라 아이디어 검증 주기를 줄이고 실험 비용을 낮추는 데 유리하다.",
+    "translation": "주말 동안 한번 가지고 놀아보고 싶은 분들이 있다면, \"autoresearch\" 프로젝트를 새로운 자체 완결형 최소 레포로 패키징해뒀습니다. 이건 기본적으로 nanochat LLM training core를 단일 GPU, 한 파일짜리 약 630줄 코드 버전으로 쭉 덜어낸 것이고, 그다음:\n\n- 사람이 그 위에서 반복해 나가는"
   },
   {
     "id": "bm-019",
     "author": "AlexFinn",
     "date": "2026-03-08",
     "url": "https://x.com/AlexFinn/status/2030777339039318413",
-    "smart_brevity": {
-      "why": "핵심은 GPU 1대만 있어도 모델 생성과 개선 루프를 자동화해 개인이 '1인 AI 연구소'처럼 움직일 수 있다는 주장으로, 작성자가 DGX Spark를 2대로 늘릴 정도의 실전 투자 신호까지 붙었다는 점이다.",
-      "what": "게시글은 Karpathy가 공개한 무언가를 'great equalizer'로 부르며, 단일 GPU에서도 모델 생성→평가→재학습을 자동 반복하는 루프가 가능해졌다고 해석한다.\n핵심 차별점은 대형 연구소의 다인력 운영 대신 개인이 하드웨어 1대와 자동화만으로 자체 모델을 굴리고 계속 개선할 수 있다는 서사다.\n작성자는 이 가능성에 베팅해 DGX Spark를 2대로 늘렸다고 밝혀, 개인 AI 랩 구성이 실제 장비 구매까지 이어지는 흐름으로 묘사한다."
-    },
     "tech_stack": [
       "GPU",
       "DGX Spark"
     ],
     "apply_points": [
-      "tech-review의 [.github/workflows/create-post.yml](C:\\dev\\01_projects\\03_tech-review\\blog\\.github\\workflows\\create-post.yml) 에서는 이미 `scripts/fetch-perplexity.js` → `scripts/parse-content.js` → `scripts/translate-perplexity.js` 순으로 매일 06:30 KST 배치가 돈다. 여기에 KO 초안 점수화 단계를 끼워 넣고 점수가 낮으면 같은 날 프롬프트를 다시 변형해 재실행하게 만들면, 트윗이 말하는 '1대 GPU/단일 머신 self-improving loop'를 현재 파이프라인 안에서 바로 실험할 수 있다.",
-      "tech-review의 [scripts/fetch-perplexity.js](C:\\dev\\01_projects\\03_tech-review\\blog\\scripts\\fetch-perplexity.js) 는 `sonar-deep-research` 실패 시 `sonar-pro` 폴백, 요일별 도메인 필터, `perplexity-prompts/keywords-log.md` 기반 중복 회피까지 이미 갖고 있다. 여기서 하루 결과의 품질 메트릭을 남기고 다음 실행 때 도메인 필터와 프롬프트 파일 선택을 자동 조정하면, 정적 프롬프트 운영이 아니라 실제 성능을 보고 스스로 검색 전략을 바꾸는 실험실 패턴으로 바뀐다.",
-      "tech-review는 recall 결과상 `feed.json` 기반 Portfolio 연동과 `_data/sections/` 축적이 이미 설계돼 있다. 게시 후 반응이 좋은 토픽 구조를 기준으로 [scripts/translate-perplexity.js](C:\\dev\\01_projects\\03_tech-review\\blog\\scripts\\translate-perplexity.js) 와 후속 섹션 추출 규칙을 조정하면, Paul의 현재 블로그 자동화는 단순 게시 봇이 아니라 '출력 성과를 다음 생성 규칙에 반영하는' 소형 AI 랩 운영체제로 진화시킬 수 있다."
+      "orchestration에 단일 GPU 실험 루프 추가",
+      "mcp-memory에 실험 승격 이력 적재",
+      "블로그에 DGX Spark 사례 분석 발행"
     ],
-    "explore_points": [
-      "단일 GPU에서 데이터 생성→자동 평가→재학습을 안정적으로 반복하는 closed-loop 설계",
-      "사람 개입 없이 모델 개선 여부를 판정하는 evaluator 또는 reward 신호 설계",
-      "DGX Spark 같은 개인용 AI 워크스테이션에서 체크포인트, 실험 버전, 비용을 관리하는 방식"
-    ],
-    "added_at": "2026-03-09"
+    "added_at": "2026-03-09",
+    "text": "Do you realize what this means?\n\nKarpathy just released the great equalizer\n\nNow ANYONE can become their own AI lab\n\nIf all you own is one GPU, you can automate it so it builds its own model and continuously improves it\n\nYou become a 1 man OpenAI\n\nJust bought a 2nd DGX Spark so I",
+    "whats_happening": "글쓴이는 Karpathy가 개인도 사실상 자기만의 AI lab처럼 움직일 수 있게 하는 무언가를 공개했다고 본다. GPU 한 장만 있어도 모델을 만들고 계속 개선하는 자동화가 가능해졌다고 주장한다.",
+    "why_it_matters": "모델 개발과 개선이 대형 조직 전유물에서 개인 단위로 내려오면 AI 개발의 진입장벽이 크게 낮아진다. 소규모 개발자도 반복 개선 루프를 직접 돌리며 빠르게 실험할 수 있다는 점이 핵심이다.",
+    "translation": "이게 무슨 뜻인지 알겠어?\n\nKarpathy가 방금 위대한 평준화 장치를 공개했어\n\n이제 누구나 자기만의 AI lab이 될 수 있어\n\n네가 가진 게 GPU 한 장뿐이어도, 그걸 자동화해서 자기 모델을 만들고 계속 개선하게 할 수 있어\n\n너는 1인 OpenAI가 되는 거야\n\n방금 두 번째 DGX Spark도 샀어 그래서 나는"
   }
 ]
