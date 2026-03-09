@@ -1,32 +1,72 @@
 {
   "twitter": [
     {
+      "author": "elvissun",
+      "date": "2026-03-09",
+      "url": "https://x.com/elvissun/status/2025920521871716562",
+      "whats_happening": "OpenClaw와 Codex/ClaudeCode Agent Swarm을 조합해 1인 개발팀처럼 운영하는 전체 설정을 소개하는 게시글이다.",
+      "why_it_matters": "에이전트 조합을 추상 개념이 아니라 실제 운영 가능한 셋업으로 제시해, 단일 개발자의 개발 흐름을 더 크게 병렬화하고 확장할 수 있음을 보여준다.",
+      "apply_points": [
+        "orchestration에 역할별 스웜 분리를 붙인다.",
+        "mcp-memory를 스웜 공용 기억층으로 둔다.",
+        "tech-review 글 생성을 병렬 체인으로 묶는다."
+      ],
+      "text": "OpenClaw + Codex/ClaudeCode Agent Swarm: 1인 개발팀 [전체 설정]",
+      "tech_stack": [
+        "OpenClaw",
+        "Codex",
+        "ClaudeCode Agent Swarm"
+      ]
+    },
+    {
+      "author": "jameesy",
+      "date": "2026-03-09",
+      "url": "https://x.com/jameesy/status/2026628809424781787",
+      "whats_happening": "작성자가 Obsidian과 Claude를 함께 쓰는 구조를 전체 워크스루 형태로 공유하겠다고 알리고 있다. 개인 지식관리와 AI 협업 방식을 실제 구성 관점에서 보여주려는 게시글이다.",
+      "why_it_matters": "Obsidian과 Claude를 어떻게 연결해 쓰는지에 대한 실전 구조를 드러내기 때문에, 메모 축적과 AI 활용 흐름을 설계하려는 사람에게 바로 참고가 된다. 특히 Paul처럼 Obsidian 기반 기록과 프로젝트 문서화를 함께 운영하는 작업 방식에 직접적인 힌트를 준다.",
+      "apply_points": [
+        "Obsidian 메모를 mcp-memory 입력원으로 고정",
+        "Claude 추출을 tech-review 글감 큐와 연결",
+        "orchestration 문서 구조와 Obsidian 정렬"
+      ],
+      "text": "내가 Obsidian과 Claude를 어떻게 구조화하는지 (전체 워크스루)",
+      "tech_stack": [
+        "Obsidian",
+        "Claude"
+      ]
+    },
+    {
+      "author": "trq212",
+      "date": "2026-03-09",
+      "url": "https://x.com/trq212/status/2024574133011673516",
+      "whats_happening": "Claude Code를 만들며 얻은 가장 큰 교훈이 Prompt Caching이라는 점을 짚는 게시글이다. 핵심 메시지는 LLM 기반 코딩 도구에서 캐시 설계가 사실상 성능과 효율을 좌우한다는 것이다.",
+      "why_it_matters": "LLM 워크플로에서는 같은 문맥을 반복해서 보내는 비용과 지연이 크기 때문에 Prompt Caching이 체감 성능과 운영비를 크게 바꾼다. 자동화 파이프라인이 많을수록 이 차이는 더 직접적으로 누적된다.",
+      "apply_points": [
+        "add-bookmark의 고정 문맥을 캐시 분리.",
+        "mcp-memory recall 요약을 재사용 문맥화.",
+        "포스트 생성 지시문을 공통 템플릿화."
+      ],
+      "text": "Claude Code를 만들며 얻은 교훈: Prompt Caching이 전부다",
+      "tech_stack": [
+        "Claude Code"
+      ]
+    },
+    {
       "author": "AlexFinn",
       "date": "2026-03-09",
-      "url": "https://x.com/AlexFinn/status/2030777339039318413",
-      "whats_happening": "글쓴이는 Karpathy가 개인도 사실상 자기만의 AI lab처럼 움직일 수 있게 하는 무언가를 공개했다고 본다. GPU 한 장만 있어도 모델을",
-      "apply_point": "orchestration에 단일 GPU 실험 루프 추가"
-    },
-    {
-      "author": "karpathy",
-      "date": "2026-03-09",
-      "url": "https://x.com/karpathy/status/2030371219518931079",
-      "whats_happening": "작성자가 autoresearch 프로젝트를 주말에 직접 만져볼 수 있도록 자체 완결형 최소 레포로 묶어 공개했다. nanochat LLM tra",
-      "apply_point": "fetch-twitter 수집본에 최소 레포 공개글 분류"
-    },
-    {
-      "author": "lucas_flatwhite",
-      "date": "2026-03-09",
-      "url": "https://x.com/lucas_flatwhite/status/2030663115483079095",
-      "whats_happening": "shadcn/cli v4가 출시되며 shadcn/skills, 프리셋, dry-run, monorepo 같은 기능이 추가됐다. 이 글은 이를 바",
-      "apply_point": "portfolio 공용 UI 프리셋을 고정하라."
-    },
-    {
-      "author": "gregisenberg",
-      "date": "2026-03-09",
-      "url": "https://x.com/gregisenberg/status/2030680849486668229",
-      "whats_happening": "AI 직원들로 구성된 AI agency를 빠르게 띄울 수 있게 해주는 GitHub 저장소가 소개됐고, 엔지니어·디자이너·그로스 마케터·제품 관리",
-      "apply_point": "orchestration에 역할별 에이전트 분업을 시험하라."
+      "url": "https://x.com/AlexFinn/status/2027096146661998662",
+      "whats_happening": "OpenClaw를 로컬 모델에 연결하는 방법을 소개하는 게시글이며, Mac Mini 환경까지 포함해 무제한 무료로 쓰는 구성을 내세운다.",
+      "why_it_matters": "클라우드 비용 없이 OpenClaw를 로컬 추론 환경에 붙일 수 있다는 점이 핵심이다. Mac Mini 같은 비교적 대중적인 로컬 하드웨어에서도 가능하다는 메시지는 진입장벽을 낮춘다.",
+      "apply_points": [
+        "Mac Mini 로컬 추론을 tech-review로 검증.",
+        "OpenClaw 연동법을 mcp-memory Signal로 기록.",
+        "로컬 모델 연결을 orchestration 실험에 편입."
+      ],
+      "text": "무제한 무료 OpenClaw: OpenClaw를 로컬 모델에 연결하는 방법 (Mac Mini에서도)",
+      "tech_stack": [
+        "OpenClaw",
+        "Mac Mini"
+      ]
     }
   ],
   "youtube": [

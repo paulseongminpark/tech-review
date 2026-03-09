@@ -29,8 +29,11 @@ const twitter = [...bookmarks]
   author: b.author || "",
   date: b.added_at || b.date || "",
   url: b.url || "",
-  whats_happening: (b.whats_happening || b.smart_brevity?.why || "").slice(0, 80),
-  apply_point: ((b.apply_points || [])[0] || "").slice(0, 80),
+  whats_happening: b.whats_happening || b.smart_brevity?.why || "",
+  why_it_matters: b.why_it_matters || "",
+  apply_points: b.apply_points || [],
+  text: b.translation || b.text || "",
+  tech_stack: b.tech_stack || [],
 }));
 
 // ── YouTube: 최신 파일에서 summary 있는 영상 1개 ──────────────────
