@@ -6,6 +6,16 @@ baseurl: "/tech-review"
 markdown: kramdown
 permalink: /:year/:month/:day/:title/
 
+exclude:
+  - docs/
+  - scripts/
+  - _tmp/
+  - "*.py"
+  - "*.sh"
+  - "*.ps1"
+  - Gemfile
+  - Gemfile.lock
+
 defaults:
   - scope:
       path: ""

@@ -9,20 +9,15 @@
       "what": "DBT 모델을 직접 읽는 컨텍스트 서브에이전트를 SQL 생성 전에 먼저 실행한다. 사용자 수정사항은 'quirk'으로 학습·저장되어 다음 질문부터 자동 적용된다. Opus 4.6이 데이터 분석에서 Codex 5.3을 압도한다는 실전 검증 포함."
     },
     "tech_stack": [
-      "Claude Agent SDK",
       "DBT",
-      "pgvector",
-      "OpenAI text-embedding-3-small",
-      "pg_textsearch (BM25)",
-      "PostgreSQL",
-      "Slack",
-      "Notion",
-      "Haiku (SQL 스코어링)"
+      "SQL",
+      "Opus 4.6",
+      "Codex 5.3"
     ],
     "apply_points": [
-      "mcp-memory recall 전략에 quirk store 패턴 적용 — 사용자 수정을 영구 지식으로 변환",
-      "컨텍스트 서브에이전트 패턴을 오케스트레이션에 도입 — 실행 전 컨텍스트 수집 분리",
-      "하이브리드 검색(vector + BM25) 구조는 현재 mcp-memory recall 개선 직접 참고 가능"
+      "add-bookmark에 quirks 학습을 붙여 재수정 줄이기.",
+      "create-post 전 문맥 주입 단계로 초안 품질 높이기.",
+      "blog/inbox 분류 규칙을 기억해 자동 보정하기."
     ],
     "explore_points": [
       "SQL 자가 채점 루프 (구조적 정확성 + 실행 신뢰성 + 컨텍스트 정합성) — 에이전트 자기 검증에 확장 가능",
@@ -30,7 +25,9 @@
     ],
     "added_at": "2026-03-08",
     "text": "The semantic layer is dead. Context management takes its place — and multiplies data team productivity by 5x.\n\nRun a context subagent that reads DBT models directly before SQL generation. User corrections are learned as 'quirks' and auto-applied from the next query onward. Real-world validation: Opus 4.6 outperforms Codex 5.3 on data analysis tasks.",
-    "translation": "시맨틱 레이어가 죽었다. 컨텍스트 관리가 그 자리를 대체하며 데이터 팀 생산성을 5배 높인다.\n\nSQL 생성 전에 DBT 모델을 직접 읽는 컨텍스트 서브에이전트를 먼저 실행하라. 사용자 수정사항은 'quirk'으로 학습·저장되어 다음 질문부터 자동 적용된다. 실전 검증 포함: Opus 4.6이 데이터 분석에서 Codex 5.3을 압도한다."
+    "translation": "semantic layer는 죽었다. 그 자리를 context management가 대신하며, 데이터 팀의 생산성을 5배로 끌어올린다.\n\nSQL 생성 전에 DBT 모델을 직접 읽는 context subagent를 실행하라. 사용자 수정 사항은 'quirks'로 학습되고, 다음 쿼리부터는 자동으로 적용된다. 실제 검증 결과: 데이터 분석 작업에서는 Opus 4.6이 Codex 5.3을 능가한다.",
+    "whats_happening": "기존 semantic layer 접근이 끝나고, DBT 모델을 직접 읽는 context management 기반 subagent가 SQL 생성 전 문맥을 주도하는 방식이 대안으로 제시됐다. 사용자 수정은 'quirks'로 학습돼 다음 질의부터 자동 적용되며, 실제 검증에서는 Opus 4.6이 데이터 분석 작업에서 Codex 5.3보다 더 나은 성능을 보였다고 주장한다.",
+    "why_it_matters": "데이터팀이 별도 semantic layer를 유지하지 않고도 질의 문맥과 사용자 선호를 누적 학습해 분석 정확도와 반복 생산성을 크게 높일 수 있다는 주장이다. 특히 SQL 생성 전에 모델 문맥을 직접 주입하는 방식은 LLM 기반 분석 자동화 파이프라인의 설계를 바꿀 수 있다."
   },
   {
     "id": "bm-002",
@@ -42,18 +39,13 @@
       "what": "컨텍스트 그래프(SQL/파일/이메일/캘린더) 위를 내비게이션하는 개인 에이전트. Classify → Recall → Retrieve → Act → Learn 5단계 루프로 동작. 발견한 경로를 Knowledge Map에 저장해 다음 질문부터 직행. 스케줄드 태스크로 당신이 도착하기 전에 브리핑을 완성한다."
     },
     "tech_stack": [
-      "PostgreSQL (pal_* 테이블)",
-      "Markdown context/ 디렉토리",
-      "Gmail + Google Calendar",
-      "Exa web search",
-      "Docker",
-      "Agno framework",
-      "Python cron"
+      "Pal",
+      "SQL"
     ],
     "apply_points": [
-      "daily-memo + Obsidian + Orchestration 간 컨텍스트 그래프 구축의 레퍼런스 아키텍처",
-      "5단계 루프(Classify→Recall→Retrieve→Act→Learn)를 현재 오케스트레이션 에이전트 설계에 적용",
-      "Governance boundary 패턴 — 외부 영향(이메일 발송, 외부 참석자 초대)만 확인 요청, 나머지 자동 실행"
+      "orchestration 체인에 Recall→Act 루프 연결",
+      "mcp-memory에 경로 학습형 Map 축적",
+      "tech-review 브리핑 예약 자동화 검토"
     ],
     "explore_points": [
       "context/ 디렉토리 구조 — voice/email.md로 작성 스타일 제어, 파일 편집만으로 에이전트 행동 변경",
@@ -61,7 +53,9 @@
     ],
     "added_at": "2026-03-08",
     "text": "AI has memory — but you're still the integration layer between systems. Pal takes over that role.\n\nPal is a personal agent that navigates a context graph across SQL, files, email, and calendar. It runs a 5-step loop: Classify → Recall → Retrieve → Act → Learn. Discovered paths are saved to a Knowledge Map so the next query takes a shortcut. Scheduled tasks complete your briefing before you even arrive.\n\nOpen source: github.com/agno-agi/pal",
-    "translation": "AI에게 메모리는 있지만, 당신이 여전히 시스템 간 통합 레이어다. Pal이 그 역할을 대신한다.\n\nPal은 SQL/파일/이메일/캘린더에 걸친 컨텍스트 그래프를 내비게이션하는 개인 에이전트다. Classify → Recall → Retrieve → Act → Learn 5단계 루프로 동작하고, 발견한 경로를 Knowledge Map에 저장해 다음 질문부터 직행한다. 스케줄드 태스크로 당신이 도착하기 전에 브리핑을 완성한다.\n\n오픈소스: github.com/agno-agi/pal"
+    "translation": "AI는 memory를 갖고 있다. 하지만 당신은 여전히 시스템들 사이의 integration layer다. Pal이 그 역할을 넘겨받는다.\n\nPal은 SQL, 파일, email, calendar 전반에 걸친 context graph를 탐색하는 personal agent다. 그것은 5단계 루프를 실행한다: Classify → Recall → Retrieve → Act → Learn. 발견된 경로들은 Knowledge Map에 저장되므로 다음 질의는 지름길을 탄다. 예약된 작업들은 당신이 도착하기도 전에 브리핑을 완료한다.\n\n오픈 소스: github.com/agno-agi/pal",
+    "whats_happening": "Pal이 사람 대신 시스템 간 통합 계층 역할을 맡는 personal agent로 소개됐다. SQL, 파일, email, calendar를 가로지르는 context graph를 탐색하고 Classify → Recall → Retrieve → Act → Learn의 5단계 루프로 동작하며, 학습한 경로를 Knowledge Map에 저장해 다음 질의를 더 빠르게 처리한다.",
+    "why_it_matters": "AI가 기억을 가져도 실제 업무에서는 여전히 여러 시스템을 연결하고 문맥을 이어주는 통합 계층이 병목인데, Pal은 그 지점을 에이전트 자체로 자동화하려 한다. 한 번 찾은 경로를 재사용하고 예약 작업으로 사전 브리핑까지 준비한다는 점에서 개인 생산성과 에이전트 실용성을 함께 끌어올린다."
   },
   {
     "id": "bm-003",
@@ -114,17 +108,15 @@
       "what": "encode/consolidate/recall/extract/forget 5개 인지 연산. 충돌하는 기억을 자동 감지·해결(PostgreSQL 이전 → MySQL 이전 시 구버전 자동 폐기). 복합 스코어링 = 유사도×w + 최신성×w + 중요도×w. 원자 메모리 추출로 500자 요약을 개별 사실로 분해."
     },
     "tech_stack": [
-      "CrewAI v1.10.1",
-      "LanceDB",
-      "pgvector",
-      "CrewAI Flows",
-      "Python",
-      "pip install crewai"
+      "CrewAI",
+      "PostgreSQL",
+      "MySQL",
+      "pip"
     ],
     "apply_points": [
-      "mcp-memory v2.1 recall에 복합 스코어링 공식 직접 적용 — 현재 similarity-only 개선",
-      "extract_memories() 패턴 = 현재 enrichment 파이프라인과 동일 구조 — 원자 분해 로직 참고",
-      "promote_node 설계에 importance 가중치 반영 — 6개월 전 아키텍처 결정이 어제 메모보다 높은 점수를 받아야 함"
+      "mcp-memory에 충돌 기억 정리 규칙을 넣을 수 있다.",
+      "orchestration 요약을 원자 사실로 쪼개 recall을 높일 수 있다.",
+      "tech-review 글감 우선순위에 최신도·중요도를 반영할 수 있다."
     ],
     "explore_points": [
       "메모리 시스템 자체가 에이전트 시스템 — mcp-memory를 Flow 기반으로 재설계할 경우의 장단점",
@@ -132,7 +124,9 @@
     ],
     "added_at": "2026-03-08",
     "text": "Naive memory corrupts context. Memory as a cognitive process compounds agent system growth.\n\nCrewAI's new memory system runs 5 cognitive operations: encode, consolidate, recall, extract, forget. Conflicting memories are auto-detected and resolved — e.g., when migrating PostgreSQL → MySQL, the old version is automatically deprecated. Composite scoring = similarity×w + recency×w + importance×w. Atomic memory extraction decomposes 500-char summaries into individual facts.\n\npip install crewai",
-    "translation": "나이브 메모리는 컨텍스트를 오염시킨다. 인지 과정으로서의 메모리가 에이전트 시스템을 복리로 성장시킨다.\n\nCrewAI의 새 메모리 시스템은 5개의 인지 연산을 실행한다: encode, consolidate, recall, extract, forget. 충돌하는 기억을 자동으로 감지하고 해결한다 — 예: PostgreSQL → MySQL 이전 시 구버전 자동 폐기. 복합 스코어링 = 유사도×w + 최신성×w + 중요도×w. 원자 메모리 추출로 500자 요약을 개별 사실로 분해한다.\n\npip install crewai"
+    "translation": "Naive memory는 context를 오염시킨다. 인지 과정으로서의 memory는 agent system의 성장을 복리처럼 증폭시킨다.\n\nCrewAI의 새로운 memory system은 5개의 cognitive operation, 즉 encode, consolidate, recall, extract, forget를 수행한다. 서로 충돌하는 memory는 자동으로 감지되고 해결된다. 예를 들어 PostgreSQL에서 MySQL로 마이그레이션할 때, 이전 버전은 자동으로 deprecated 처리된다. Composite scoring = similarity×w + recency×w + importance×w. Atomic memory extraction은 500자 요약을 개별 사실들로 분해한다.\n\npip install crewai",
+    "whats_happening": "CrewAI가 memory를 단순 저장소가 아니라 인지 과정으로 다루는 새 memory system을 공개했고, encode·consolidate·recall·extract·forget의 5개 cognitive operation과 충돌 기억 자동 해소, atomic fact 추출 방식을 소개했다.",
+    "why_it_matters": "에이전트가 오래 실행될수록 누적되는 문맥 오염과 구식 지식 문제를 줄이면서 recall 품질을 최신성·중요도까지 반영해 높일 수 있다는 점이 중요하다. 이는 장기 실행형 에이전트 시스템의 확장성과 신뢰성을 직접 개선한다."
   },
   {
     "id": "bm-006",
@@ -143,15 +137,11 @@
       "why": "도구를 팔면 모델에 지고, 일을 팔면 모델이 강해질수록 내가 강해진다. 다음 $1조 기업은 서비스 회사로 위장한 소프트웨어 회사다.",
       "what": "코파일럿(도구 판매)은 생산성 향상이 상한선. 오토파일럿(결과 판매)은 노동 예산 전체가 TAM. 아웃소싱이 이미 존재하는 곳이 진입 웨지 — 예산선이 있고, 성과 기반 계약이 이미 있고, 치환이 조직 개편 없이 가능. 인텔리전스 비율 높은 분야: 보험($140-200B), 회계($50-80B), 법률($20-25B), IT MSP($100B+)."
     },
-    "tech_stack": [
-      "AI 비즈니스 모델",
-      "Copilot vs Autopilot",
-      "서비스형 소프트웨어"
-    ],
+    "tech_stack": [],
     "apply_points": [
-      "tech-review 블로그 'AI 비즈니스 모델' 카테고리 소재로 활용",
-      "포트폴리오 'HOW I AI' 섹션에서 오토파일럿 관점으로 내 시스템 포지셔닝 재검토",
-      "현재 오케스트레이션 시스템이 코파일럿(도구)인지 오토파일럿(결과) 방향인지 평가"
+      "북마크 요약에 outcome 관점을 추가한다.",
+      "AI 서비스형 사례를 별도 큐레이션한다.",
+      "노동예산 대체 시장 태그를 신설한다."
     ],
     "explore_points": [
       "오늘의 판단력은 내일의 인텔리전스 — 도메인별 독점 데이터 축적이 해자(moat) 형성의 핵심",
@@ -159,7 +149,9 @@
     ],
     "added_at": "2026-03-08",
     "text": "Sell tools, and you lose to the model. Sell outcomes, and you get stronger as the model gets stronger. The next $1T company is a software company disguised as a service company.\n\nCopilot (tool sales) is capped at productivity gains. Autopilot (outcome sales) — the entire labor budget is your TAM. The entry wedge is where outsourcing already exists: budget lines exist, performance-based contracts already exist, replacement requires no org restructuring.\n\nHigh-intelligence-ratio markets: Insurance ($140-200B), Accounting ($50-80B), Legal ($20-25B), IT MSP ($100B+).\n\nRef: Crosby, WithCoverage, Anterior, Rillet, Harvey, Mercor",
-    "translation": "도구를 팔면 모델에 지고, 일을 팔면 모델이 강해질수록 내가 강해진다. 다음 $1조 기업은 서비스 회사로 위장한 소프트웨어 회사다.\n\n코파일럿(도구 판매)은 생산성 향상이 상한선이다. 오토파일럿(결과 판매)은 노동 예산 전체가 TAM이다. 진입 웨지는 아웃소싱이 이미 존재하는 곳이다 — 예산선이 있고, 성과 기반 계약이 이미 있고, 치환이 조직 개편 없이 가능한 곳.\n\n인텔리전스 비율 높은 분야: 보험($140-200B), 회계($50-80B), 법률($20-25B), IT MSP($100B+).\n\n참고: Crosby, WithCoverage, Anterior, Rillet, Harvey, Mercor"
+    "translation": "도구를 팔면, 모델에게 진다. 결과를 팔면, 모델이 강해질수록 당신도 더 강해진다. 다음 $1T 회사는 서비스 회사로 위장한 소프트웨어 회사다.\n\nCopilot(도구 판매)은 생산성 향상분에 의해 상한이 정해진다. Autopilot(결과 판매)은 전체 노동 예산이 당신의 TAM이다. 진입 웨지는 이미 아웃소싱이 존재하는 곳이다. 예산 항목이 이미 존재하고, 성과 기반 계약도 이미 존재하며, 대체에도 조직 재구성이 필요 없다.\n\n높은 intelligence ratio 시장: Insurance($140-200B), Accounting($50-80B), Legal($20-25B), IT MSP($100B+).\n\n참고: Crosby, WithCoverage, Anterior, Rillet, Harvey, Mercor",
+    "whats_happening": "이 글은 AI 시장에서 도구를 파는 모델보다 결과를 파는 모델이 더 큰 회사를 만든다고 주장한다. Copilot형 판매는 생산성 향상 범위에 갇히지만, Autopilot형 판매는 보험·회계·법률·IT MSP 같은 기존 아웃소싱 시장의 전체 노동 예산을 공략할 수 있다고 설명한다.",
+    "why_it_matters": "중요한 점은 AI의 상업화 단위를 소프트웨어 좌석 수가 아니라 대체 가능한 업무 결과와 노동 예산으로 다시 정의한다는 데 있다. 이미 외주 예산과 성과 계약이 존재하는 시장에서는 조직 개편 없이 진입할 수 있어, AI 서비스 회사가 모델 성능 향상과 함께 더 강해질 수 있다."
   },
   {
     "id": "bm-007",
@@ -170,20 +162,11 @@
       "why": "복잡한 하네스와 플러그인이 오히려 에이전트 성능을 망친다. 단순함이 최강이다.",
       "what": "CLAUDE.md는 IF-ELSE 디렉토리여야 한다 — 컨텍스트를 직접 담지 말고 어디서 찾을지만 지시. Rules(선호)와 Skills(레시피)만 추가, 나머지는 제거. TASK_CONTRACT.md = 테스트+스크린샷+검증 조건 명시, 이것이 충족되기 전까지 세션 종료 금지. 버그 탐색은 찾기(+10점)→반박(-2배 패널티)→심판 3에이전트 구조로."
     },
-    "tech_stack": [
-      "Claude Code",
-      "Codex CLI",
-      "CLAUDE.md",
-      "rules/*.md",
-      "skills/*.md",
-      "stop-hook",
-      "TASK_CONTRACT.md"
-    ],
+    "tech_stack": [],
     "apply_points": [
-      "현재 CLAUDE.md 구조 재검토 — 14개 파일을 직접 읽히는 구조 → IF-ELSE 디렉토리로 단순화",
-      "TASK_CONTRACT.md 패턴 도입 — 구현 완료 기준을 명시적 계약으로 에이전트에 주입",
-      "버그 찾기 3에이전트 패턴(찾기+반박+심판) — mcp-memory CRITICAL 이슈 검증에 즉시 적용 가능",
-      "'에이전트 스파 데이' 주기적 실행 — rules/skills 모순 정리를 에이전트에 위임"
+      "북마크 지침을 규칙·스킬만 남겨 더 단순화한다.",
+      "완료 조건에 JSON 검증과 저장 확인을 고정한다.",
+      "초안·반박·판정 3단계로 품질 점검을 분리한다."
     ],
     "explore_points": [
       "프론티어 기업이 모두 도입하면 제품에 통합된다 — 외부 하네스 도입 전 '이게 6개월 후에도 필요한가?' 질문",
@@ -191,7 +174,9 @@
     ],
     "added_at": "2026-03-08",
     "text": "Complex harnesses and plugins actually hurt agent performance. Simplicity wins.\n\nCLAUDE.md should be an IF-ELSE directory — don't embed context directly, just point to where it lives. Add only Rules (preferences) and Skills (recipes), remove everything else. TASK_CONTRACT.md = specify tests + screenshots + verification conditions; session cannot end until these are met. Bug hunting runs a 3-agent structure: find (+10pts) → challenge (-2x penalty) → judge.",
-    "translation": "복잡한 하네스와 플러그인이 오히려 에이전트 성능을 망친다. 단순함이 최강이다.\n\nCLAUDE.md는 IF-ELSE 디렉토리여야 한다 — 컨텍스트를 직접 담지 말고 어디서 찾을지만 지시하라. Rules(선호)와 Skills(레시피)만 추가하고 나머지는 제거하라. TASK_CONTRACT.md = 테스트+스크린샷+검증 조건을 명시하고, 이것이 충족되기 전까지 세션 종료 금지. 버그 탐색은 찾기(+10점)→반박(-2배 패널티)→심판 3에이전트 구조로 실행하라."
+    "translation": "복잡한 하네스와 플러그인은 실제로 에이전트 성능을 해친다. 단순함이 이긴다.\n\nCLAUDE.md는 IF-ELSE 디렉터리여야 한다. 컨텍스트를 직접 넣지 말고, 그 컨텍스트가 어디에 있는지만 가리켜라. Rules(선호)와 Skills(레시피)만 추가하고, 그 밖의 모든 것은 제거하라. TASK_CONTRACT.md = 테스트 + 스크린샷 + 검증 조건을 명시하는 것; 이것들이 충족되기 전에는 세션을 끝낼 수 없다. 버그 헌팅은 3에이전트 구조로 돌린다: find(+10pts) → challenge(-2x 패널티) → judge.",
+    "whats_happening": "에이전트 성능을 높이려면 복잡한 하네스와 플러그인 대신 단순한 운영 구조가 더 낫다는 실무 원칙을 제안한다. 구체적으로 CLAUDE.md는 조건 분기용 안내서로 축소하고, TASK_CONTRACT.md로 검증 종료 조건을 강제하며, 버그 헌팅은 3에이전트 구조로 나누자고 말한다.",
+    "why_it_matters": "에이전트 워크플로를 설명과 맥락으로 비대하게 만드는 대신 규칙, 스킬, 검증 조건만 남기면 성능 저하와 운영 복잡도를 함께 줄일 수 있다. 특히 자동화 파이프라인에서는 세션 종료 기준과 반박 역할을 분리해 품질 관리의 일관성을 높일 수 있다."
   },
   {
     "id": "bm-008",
@@ -203,19 +188,16 @@
       "what": "Build(에이전트 정의) → Serve(API화) → Connect(Slack/Discord/MCP 연결) 3단계. 6개 기둥: 내구성(중간 실패 시 재개)/격리(사용자별 완전 분리)/거버넌스(자동실행·사용자승인·관리자승인 3계층)/영속성/확장성/조합성. UserFeedbackTools로 에이전트가 구조화된 질문을 사용자에게 던진다."
     },
     "tech_stack": [
-      "Agno framework",
-      "Docker",
-      "PostgreSQL",
-      "AgentOS",
-      "REST API",
+      "Slack",
+      "Discord",
       "MCP",
-      "Python",
-      "OpenAI"
+      "UserFeedbackTools",
+      "Docker"
     ],
     "apply_points": [
-      "6개 기둥을 mcp-memory + 오케스트레이션 설계 체크리스트로 활용",
-      "check_access 거버넌스 레이어 설계에 3계층(자동/사용자승인/관리자승인) 직접 참고",
-      "AgentOS 템플릿(agno-agi/agentos-docker-template) — 오케스트레이션 서비스화 시 기반 구조 참고"
+      "orchestration에 중단 후 재개 흐름 추가",
+      "tech-review 자동화에 승인 3단계 적용",
+      "MCP 작업을 사용자별 격리 실행으로 분리"
     ],
     "explore_points": [
       "에이전트가 act/ask/wait 3가지 모드를 자연스럽게 전환하는 런타임 — 현재 세션 기반 구조와 비교",
@@ -223,7 +205,9 @@
     ],
     "added_at": "2026-03-08",
     "text": "Building agents is easy. Designing a runtime that survives production is the real challenge.\n\nThe pattern: Build (define agent) → Serve (expose as API) → Connect (Slack/Discord/MCP). 6 pillars: Durability (resume on mid-task failure) / Isolation (complete separation per user) / Governance (3 tiers: auto-run · user-approval · admin-approval) / Persistence / Scalability / Composability. UserFeedbackTools let agents ask structured questions back to the user.\n\ngithub.com/agno-agi/agentos-docker-template",
-    "translation": "에이전트 빌딩은 쉽다. 프로덕션에서 살아남는 런타임 설계가 진짜 난이도다.\n\n패턴: Build(에이전트 정의) → Serve(API화) → Connect(Slack/Discord/MCP 연결). 6개 기둥: 내구성(중간 실패 시 재개) / 격리(사용자별 완전 분리) / 거버넌스(자동실행·사용자승인·관리자승인 3계층) / 영속성 / 확장성 / 조합성. UserFeedbackTools로 에이전트가 구조화된 질문을 사용자에게 던질 수 있다.\n\ngithub.com/agno-agi/agentos-docker-template"
+    "translation": "에이전트를 만드는 건 쉽다. 프로덕션을 버텨내는 런타임을 설계하는 것이 진짜 과제다.\n\n패턴은 이렇다: Build(에이전트 정의) → Serve(API로 노출) → Connect(Slack/Discord/MCP). 6개의 기둥: Durability(작업 도중 실패해도 재개) / Isolation(사용자별 완전 분리) / Governance(3단계: auto-run · user-approval · admin-approval) / Persistence / Scalability / Composability. UserFeedbackTools는 에이전트가 사용자에게 구조화된 질문을 다시 할 수 있게 해준다.\n\ngithub.com/agno-agi/agentos-docker-template",
+    "whats_happening": "Agno가 에이전트를 정의하고 API로 서빙한 뒤 Slack, Discord, MCP에 연결하는 프로덕션 런타임 패턴을 제시했다. 함께 Durability, Isolation, Governance를 포함한 6개 운영 기둥과 UserFeedbackTools를 담은 agentos-docker-template를 공유했다.",
+    "why_it_matters": "에이전트 구축 자체보다 장애 복구, 사용자 격리, 승인 체계 같은 런타임 설계가 실제 프로덕션 운영의 핵심 병목이라는 점을 분명히 보여준다. 사람 승인과 구조화된 사용자 피드백을 런타임에 넣으면 자동화 시스템을 더 안전하고 확장 가능하게 운영할 수 있다."
   },
   {
     "id": "bm-009",
