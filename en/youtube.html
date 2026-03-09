@@ -254,7 +254,12 @@ ALL_VIDEOS.push({
   {% endif %}
 {% endfor %}
 
-ALL_VIDEOS.sort((a, b) => (b.published_at || '').localeCompare(a.published_at || ''));
+ALL_VIDEOS.sort((a, b) => {
+  const fa = a.fetched_at || a.published_at || '';
+  const fb = b.fetched_at || b.published_at || '';
+  if (fb !== fa) return fb.localeCompare(fa);
+  return (b.published_at || '').localeCompare(a.published_at || '');
+});
 
 function escHtml(str) {
   return (str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');

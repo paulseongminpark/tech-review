@@ -36,6 +36,7 @@ function getPlaylistItems(playlistId) {
     published_at: item.upload_date
       ? `${item.upload_date.slice(0,4)}-${item.upload_date.slice(4,6)}-${item.upload_date.slice(6,8)}`
       : "",
+    fetched_at: POST_DATE,
     url: `https://www.youtube.com/watch?v=${item.id}`,
   }));
 }
