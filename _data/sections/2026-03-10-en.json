@@ -1,0 +1,54 @@
+{
+  "date": "2026-03-10",
+  "lang": "en",
+  "post_url": "/en/2026/03/10/daily-tech-review/",
+  "post_title": "Meta has proven the profitability of AI infrastructure investments, emerging as the top performer among the Magnificent 7, while the Middle East conflict struck Amazon data centers, exposing the physical vulnerabilities of cloud infrastructure.",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "Meta Begins Turning AI Capital Expenditures into Profits, Ascending to Top Spot in Magnificent 7",
+      "lead": "Meta presented evidence that its aggressive $115-135 billion AI infrastructure investment planned for 2026 is translating into actual advertising revenue growth, reversing investor concerns. In 2024 ad revenue, an estimated over 1 trillion KRW in add",
+      "tags": [
+        "google",
+        "microsoft",
+        "meta",
+        "apple",
+        "nvidia",
+        "ma"
+      ],
+      "anchor": "meta-begins-turning-ai-capital-expenditures-into-profits-asc"
+    },
+    {
+      "index": 2,
+      "title": "Iran-Israel War Hits Amazon Data Centers, Exposing Physical Vulnerabilities of Cloud Infrastructure",
+      "lead": "Iran's drone retaliatory attacks directly struck Amazon AWS data centers in the UAE and Bahrain, demonstrating that commercial cloud infrastructure has become a new military target in conflict zones. Amazon's announcement on March 2 of the strike inc",
+      "tags": [
+        "google",
+        "microsoft",
+        "meta",
+        "apple",
+        "nvidia",
+        "cloud",
+        "ma",
+        "amazon"
+      ],
+      "anchor": "iran-israel-war-hits-amazon-data-centers-exposing-physical-v"
+    },
+    {
+      "index": 3,
+      "title": "Apple Releases 7 New Products Weekly to Seize AI PC Market and Restructure Price Tiers",
+      "lead": "Apple unveiled en masse on March 2-4: MacBook Neo (A18 Pro, $599), iPhone 17e (A19, MagSafe, $599), M5 MacBook Air/Pro, M4 iPad Air, and two Studio Display models, injecting price leadership into the AI device competition in the PC market. The MacBoo",
+      "tags": [
+        "google",
+        "microsoft",
+        "meta",
+        "apple",
+        "nvidia",
+        "ma",
+        "weekly"
+      ],
+      "anchor": "apple-releases-7-new-products-weekly-to-seize-ai-pc-market-a"
+    }
+  ]
+}
