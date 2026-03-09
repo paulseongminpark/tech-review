@@ -24,7 +24,7 @@ const twitter = [...bookmarks]
     // added_at 같으면 id 역순 (bm-019 > bm-001)
     return (b.id || "").localeCompare(a.id || "");
   })
-  .slice(0, 3)
+  .slice(0, 4)
   .map((b) => ({
   author: b.author || "",
   date: b.added_at || b.date || "",

@@ -20,6 +20,13 @@
       "url": "https://x.com/lucas_flatwhite/status/2030663115483079095",
       "whats_happening": "shadcn/cli v4가 출시되며 shadcn/skills, 프리셋, dry-run, monorepo 같은 기능이 추가됐다. 이 글은 이를 바",
       "apply_point": "portfolio 공용 UI 프리셋을 고정하라."
+    },
+    {
+      "author": "gregisenberg",
+      "date": "2026-03-09",
+      "url": "https://x.com/gregisenberg/status/2030680849486668229",
+      "whats_happening": "AI 직원들로 구성된 AI agency를 빠르게 띄울 수 있게 해주는 GitHub 저장소가 소개됐고, 엔지니어·디자이너·그로스 마케터·제품 관리",
+      "apply_point": "orchestration에 역할별 에이전트 분업을 시험하라."
     }
   ],
   "youtube": [
