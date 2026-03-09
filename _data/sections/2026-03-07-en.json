@@ -1,0 +1,41 @@
+{
+  "date": "2026-03-07",
+  "lang": "en",
+  "post_url": "/en/2026/03/07/daily-tech-review/",
+  "post_title": "As technology companies rapidly adopt autonomous AI, governance deficiencies and security threats are intensifying, with productivity improvements of up to 30% in specific work areas.",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "97% of Tech Companies Designate Autonomous AI as Strategic Priority, but Governance Shortfalls Are Severe",
+      "lead": "An EY survey of 500 technology industry leaders conducted in February revealed that autonomous AI adoption is accelerating, but companies' control capabilities are lagging behind. According to the survey, 97% of technology leaders view autonomous AI ",
+      "tags": [
+        "enterprise",
+        "regulation"
+      ],
+      "anchor": "97-of-tech-companies-designate-autonomous-ai-as-strategic-pr"
+    },
+    {
+      "index": 2,
+      "title": "Goldman Sachs Analysis: 30% AI Productivity Gains Concentrated in 2 Areas, Minimal Impact on Overall Economy",
+      "lead": "Goldman Sachs' analysis of S&P 500 companies' Q4 earnings reports quantified AI-related financial performance, finding a median productivity increase of 30% for companies providing specific figures, but no meaningful productivity improvement across t",
+      "tags": [
+        "enterprise",
+        "regulation",
+        "ma"
+      ],
+      "anchor": "goldman-sachs-analysis-30-ai-productivity-gains-concentrated"
+    },
+    {
+      "index": 3,
+      "title": "OpenAI Forms Frontier Alliance with McKinsey, BCG, Accenture, Capgemini to Accelerate Enterprise Agent Production Deployments",
+      "lead": "OpenAI's Frontier Alliance, announced on February 23, features a multi-layered partnership where McKinsey and BCG handle strategy and operating model design, while Accenture and Capgemini manage technical integration and enterprise-wide deployment, a",
+      "tags": [
+        "enterprise",
+        "regulation",
+        "openai"
+      ],
+      "anchor": "openai-forms-frontier-alliance-with-mckinsey-bcg-accenture-c"
+    }
+  ]
+}

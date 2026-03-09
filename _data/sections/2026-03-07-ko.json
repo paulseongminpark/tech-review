@@ -1,0 +1,39 @@
+{
+  "date": "2026-03-07",
+  "lang": "ko",
+  "post_url": "/ko/2026/03/07/daily-tech-review/",
+  "post_title": "기술 기업들의 자율 AI 채택이 급증하면서 거버넌스 부족과 보안 위협이 심화되고 있으며, 특정 업무 분야에서는 생산성이 30%까지 향상되고 있다.",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "기 기업 97%, 자율 AI를 전략 우선순위로 지정하나 거버넌스 부실 심각",
+      "lead": "EY가 2월 실시한 기술 업계 리더 500명 조사에서 자율 AI 채택이 가속화되고 있으나 기업들의 통제 능력이 뒤처지는 현상이 드러났다. 조사에 따르면 기술 리더의 97%가 자율 AI를 장기 경쟁 전략상 \"높음\" 또는 \"필수\" 우선순위로 보고 있지만, 실무진 AI 이니셔티브의 52%는 공식 승인이나 감시 없이 운영되고 있다.",
+      "tags": [
+        "enterprise",
+        "regulation"
+      ],
+      "anchor": "기-기업-97-자율-ai를-전략-우선순위로-지정하나-거버넌스-부실-심각"
+    },
+    {
+      "index": 2,
+      "title": "골드만삭스 분석: AI 생산성 30% 증가는 2개 분야에 집중, 경제 전체 영향 미미",
+      "lead": "골드만삭스가 S&P 500 기업 4분기 실적 발표를 분석한 결과, AI 관련 재정 성과를 구체적으로 수치화한 기업의 생산성 증가율이 중앙값 30%에 달했으나 경제 전체로는 의미 있는 생산성 향상이 아직 나타나지 않았다. 고객 지원과 소프트웨어 개발 업무에서만 AI의 변혁적 약속이 구체화되고 있다.",
+      "tags": [
+        "enterprise",
+        "regulation"
+      ],
+      "anchor": "골드만삭스-분석-ai-생산성-30-증가는-2개-분야에-집중-경제-전체-영향-미미"
+    },
+    {
+      "index": 3,
+      "title": "오픈AI, McKinsey·BCG·Accenture·Capgemini와 Frontier 연합 결성, 엔터프라이즈 에이전트 프로덕션 배포 본격화",
+      "lead": "오픈AI가 2월 23일 발표한 Frontier Alliance는 McKinsey와 BCG가 전략·운영 모델 설계를, Accenture와 Capgemini가 기술 통합과 전사적 배포를 담당하는 다층 파트너십 구조로, 골드만삭스·세일즈포스·HP·Intuit·Oracle·State Farm·Uber 등 주요 기업들의 프로덕션 배포를 가속화하고 있다.",
+      "tags": [
+        "enterprise",
+        "regulation"
+      ],
+      "anchor": "오픈ai-mckinsey·bcg·accenture·capgemini와-frontier-연합-결성-엔터프라이즈"
+    }
+  ]
+}
