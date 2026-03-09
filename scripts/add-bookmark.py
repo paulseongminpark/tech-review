@@ -228,7 +228,7 @@ def main():
         seen.add(key)
         next_num += 1
         added += 1
-        print(f" ✓  {summary.get('smart_brevity', {}).get('why', '')[:60]}")
+        print(f" ✓  {summary.get('whats_happening', '')[:60]}")
 
     if added == 0:
         print("새 북마크 없음.")

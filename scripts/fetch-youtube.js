@@ -1,77 +1,46 @@
 #!/usr/bin/env node
 /**
  * fetch-youtube.js
- * youtube-sources.json 플레이리스트 → 신규 영상 추출
+ * youtube-sources.json 플레이리스트 → yt-dlp로 신규 영상 추출
  * → _data/sources/youtube-YYYY-MM-DD.json 저장
  *
+ * YouTube Data API 불필요 — yt-dlp로 플레이리스트 직접 조회
  * 환경변수:
- *   YOUTUBE_API_KEY  - YouTube Data API v3 키
- *   POST_DATE        - YYYY-MM-DD (기본: 오늘)
- *   DRY_RUN          - "true"이면 파일 저장 생략
+ *   POST_DATE - YYYY-MM-DD (기본: 오늘)
+ *   DRY_RUN   - "true"이면 파일 저장 생략
  */
 
-const https = require("https");
+const { execSync } = require("child_process");
 const fs = require("fs");
 const path = require("path");
 
-const API_KEY = process.env.YOUTUBE_API_KEY;
 const POST_DATE = process.env.POST_DATE || new Date().toISOString().slice(0, 10);
 const DRY_RUN = process.env.DRY_RUN === "true";
-
-if (!API_KEY) {
-  console.error("YOUTUBE_API_KEY 환경변수가 필요합니다.");
-  process.exit(1);
-}
 
 const SOURCES_FILE = path.join(__dirname, "..", "config", "youtube-sources.json");
 const PROCESSED_FILE = path.join(__dirname, "..", "config", "youtube-processed.json");
 const DATA_DIR = path.join(__dirname, "..", "_data", "sources");
 
-function httpsGet(url) {
-  return new Promise((resolve, reject) => {
-    https.get(url, (res) => {
-      let data = "";
-      res.on("data", (chunk) => (data += chunk));
-      res.on("end", () => {
-        try {
-          resolve(JSON.parse(data));
-        } catch (e) {
-          reject(new Error(`JSON 파싱 실패: ${data.slice(0, 200)}`));
-        }
-      });
-    }).on("error", reject);
-  });
-}
-
-async function getPlaylistItems(playlistId) {
-  const url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=${playlistId}&key=${API_KEY}`;
-  const data = await httpsGet(url);
-  if (data.error) {
-    throw new Error(`YouTube API 오류: ${data.error.message}`);
-  }
-  return (data.items || []).map((item) => ({
-    video_id: item.snippet.resourceId.videoId,
-    title: item.snippet.title,
-    channel: item.snippet.channelTitle,
-    published_at: item.snippet.publishedAt,
-    thumbnail: item.snippet.thumbnails?.medium?.url || "",
-    url: `https://www.youtube.com/watch?v=${item.snippet.resourceId.videoId}`,
+function getPlaylistItems(playlistId) {
+  const url = `https://www.youtube.com/playlist?list=${playlistId}`;
+  console.log(`  yt-dlp 플레이리스트 조회: ${url}`);
+  const output = execSync(
+    `yt-dlp --flat-playlist -J "${url}"`,
+    { encoding: "utf-8", maxBuffer: 10 * 1024 * 1024 }
+  );
+  const data = JSON.parse(output);
+  return (data.entries || []).map((item) => ({
+    video_id: item.id,
+    title: item.title || "",
+    channel: item.channel || item.uploader || "",
+    published_at: item.upload_date
+      ? `${item.upload_date.slice(0,4)}-${item.upload_date.slice(4,6)}-${item.upload_date.slice(6,8)}`
+      : "",
+    url: `https://www.youtube.com/watch?v=${item.id}`,
   }));
 }
 
-async function getVideoDescriptions(videoIds) {
-  const ids = videoIds.join(",");
-  const url = `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${ids}&key=${API_KEY}`;
-  const data = await httpsGet(url);
-  if (data.error) throw new Error(`YouTube API 오류: ${data.error.message}`);
-  const map = {};
-  for (const item of (data.items || [])) {
-    map[item.id] = (item.snippet.description || "").slice(0, 800);
-  }
-  return map;
-}
-
-async function main() {
+function main() {
   const sources = JSON.parse(fs.readFileSync(SOURCES_FILE, "utf8"));
   const processedData = JSON.parse(fs.readFileSync(PROCESSED_FILE, "utf8"));
   const processed = new Set(processedData.processed);
@@ -80,7 +49,7 @@ async function main() {
 
   for (const playlist of sources.playlists) {
     console.log(`플레이리스트 처리 중: ${playlist.name} (${playlist.id})`);
-    const items = await getPlaylistItems(playlist.id);
+    const items = getPlaylistItems(playlist.id);
 
     for (const item of items) {
       if (processed.has(item.video_id)) {
@@ -97,13 +66,6 @@ async function main() {
   if (newVideos.length === 0) {
     console.log("처리할 신규 영상 없음.");
     return;
-  }
-
-  // 영상 설명 가져오기 (Gemini 텍스트 요약에 사용)
-  const ids = newVideos.map((v) => v.video_id);
-  const descriptions = await getVideoDescriptions(ids);
-  for (const v of newVideos) {
-    v.description = descriptions[v.video_id] || "";
   }
 
   if (DRY_RUN) {
@@ -124,4 +86,4 @@ async function main() {
   console.log("youtube-processed.json 업데이트 완료");
 }
 
-main().catch((e) => { console.error(e); process.exit(1); });
+main();

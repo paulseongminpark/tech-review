@@ -31,13 +31,13 @@
   ],
   "youtube": [
     {
-      "title": "일론 머스크 문샷 인터뷰: 교육, 의료, 풍요",
-      "channel": "Paula",
-      "video_id": "_dPiFfDVCAg",
-      "url": "https://www.youtube.com/watch?v=_dPiFfDVCAg",
-      "why": "Elon Musk는 AI와 로봇이 2026년 AGI, 2030년 인간 전체 지능 초과, 3년 내 최고 외과의 능가, 100GW급 우주 태양광 AI 인프라로 이어질 만큼 빠르게 전개되지만, 가장 위험한 구간은 다음 3~7년의 사회적 전환기라고 본다.",
-      "section_count": 12,
-      "published_at": "2026-03-08"
+      "title": "스탠포드에서 빅테크로 조용히 퍼지는 개발자 생존법, 대부분 모릅니다 | 미하일 에릭",
+      "channel": "EO Korea",
+      "video_id": "qEF-eUaTq0Y",
+      "url": "https://www.youtube.com/watch?v=qEF-eUaTq0Y",
+      "why": "이 영상은 Stanford 수업이 몇 시간 만에 100명 이상을 끌어모을 정도로 빠르게 확산된 AI 네이티브 개발자 패러다임이 왜 주니어 채용 위기와 동시에 새로운 기회가 되는지, 그리고 멀티 에이전트 운영을 제대로 해내면 오늘 기준 상위 0.1% 사용자에 들어갈 수 있다는 점을 구체적으로 보여준다.",
+      "section_count": 10,
+      "published_at": ""
     }
   ]
 }
