@@ -16,9 +16,18 @@ const bookmarks = fs.existsSync(bmPath)
   ? JSON.parse(fs.readFileSync(bmPath, "utf-8"))
   : [];
 
-const twitter = bookmarks.slice(0, 3).map((b) => ({
+const twitter = [...bookmarks]
+  .sort((a, b) => {
+    const da = a.added_at || a.date || "";
+    const db = b.added_at || b.date || "";
+    if (db !== da) return db.localeCompare(da);
+    // added_at 같으면 id 역순 (bm-019 > bm-001)
+    return (b.id || "").localeCompare(a.id || "");
+  })
+  .slice(0, 3)
+  .map((b) => ({
   author: b.author || "",
-  date: b.date || "",
+  date: b.added_at || b.date || "",
   url: b.url || "",
   why: b.smart_brevity?.why || "",
   apply_point: (b.apply_points || [])[0] || "",

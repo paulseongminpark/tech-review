@@ -79,7 +79,9 @@ def extract_tweets(raw):
             continue
 
         user = item.get("user") or item.get("author") or {}
-        if isinstance(user, dict):
+        if isinstance(user, str):
+            author = user or "unknown"
+        elif isinstance(user, dict):
             author = (
                 user.get("screen_name")
                 or user.get("username")
@@ -137,7 +139,7 @@ def summarize_with_codex(text: str) -> dict | None:
         out_path = BLOG_DIR / "_codex_bm_out.json"
         result = subprocess.run(
             [
-                "codex", "exec",
+                "codex.cmd", "exec",
                 f"파일 {tf_path} 을 읽고 지시대로 JSON을 만들어서 {out_path} 에 저장해라. 순수 JSON만.",
                 "--full-auto",
             ],
@@ -216,6 +218,7 @@ def main():
             "id": f"bm-{next_num:03d}",
             "author": tw["author"],
             "date": tw["date"],
+            "added_at": datetime.now().strftime("%Y-%m-%d"),
             "url": tw["url"],
             **summary,
         }

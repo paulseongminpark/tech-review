@@ -1,25 +1,25 @@
 {
   "twitter": [
     {
-      "author": "jamesquint",
-      "date": "2026-03-08",
-      "url": "",
-      "why": "시맨틱 레이어가 죽었다. 컨텍스트 관리가 그 자리를 대체하며 데이터 팀 생산성을 5배 높인다.",
-      "apply_point": "mcp-memory recall 전략에 quirk store 패턴 적용 — 사용자 수정을 영구 지식으로 변환"
+      "author": "AlexFinn",
+      "date": "2026-03-09",
+      "url": "https://x.com/AlexFinn/status/2030777339039318413",
+      "why": "핵심은 GPU 1대만 있어도 모델 생성과 개선 루프를 자동화해 개인이 '1인 AI 연구소'처럼 움직일 수 있다는 주장으로, 작성자가 DGX Spark를 2대로 늘릴 정도의 실전 투자 신호까지 붙었다는 점이다.",
+      "apply_point": "tech-review의 [.github/workflows/create-post.yml](C:\\dev\\01_projects\\03_tech-review\\blog\\.github\\workflows\\create-post.yml) 에서는 이미 `scripts/fetch-perplexity.js` → `scripts/parse-content.js` → `scripts/translate-perplexity.js` 순으로 매일 06:30 KST 배치가 돈다. 여기에 KO 초안 점수화 단계를 끼워 넣고 점수가 낮으면 같은 날 프롬프트를 다시 변형해 재실행하게 만들면, 트윗이 말하는 '1대 GPU/단일 머신 self-improving loop'를 현재 파이프라인 안에서 바로 실험할 수 있다."
     },
     {
-      "author": "ashpreetbedi",
-      "date": "2026-03-08",
-      "url": "https://github.com/agno-agi/pal",
-      "why": "AI에게 메모리는 있지만, 당신이 여전히 시스템 간 통합 레이어다. Pal이 그 역할을 대신한다.",
-      "apply_point": "daily-memo + Obsidian + Orchestration 간 컨텍스트 그래프 구축의 레퍼런스 아키텍처"
+      "author": "karpathy",
+      "date": "2026-03-09",
+      "url": "https://x.com/karpathy/status/2030371219518931079",
+      "why": "630줄짜리 단일 GPU·단일 파일 `autoresearch` 리포는 거대한 LLM 학습 스택 없이도 사람이 연구 루프를 직접 돌려보며 nanochat식 학습 코어를 빠르게 검증할 수 있게 만든다.",
+      "apply_point": "`orchestration`의 `200K 세션 운영 (v3.3.1)`처럼 큰 컨텍스트 운영 규칙이 이미 있는 만큼, `C:\\dev\\01_projects\\01_orchestration`에는 이 630줄 수준의 최소 실험 하네스를 별도 브랜치나 독립 스크립트로 먼저 분리해 본체 오케스트레이션과 실험 코어를 나누는 방식이 맞다."
     },
     {
-      "author": "aidenbai",
-      "date": "2026-03-08",
-      "url": "https://x.com/aidenybai/status/2029603067927351506",
-      "why": "React 컴포넌트를 클릭 한 번으로 선택해 Claude Code/Codex에 직접 전달. UI 수정 워크플로우를 극적으로 단축한다.",
-      "apply_point": "portfolio UI 수정 작업 시 즉시 활용 — 컴포넌트 특정 없이 클릭으로 대상 지정"
+      "author": "lucas_flatwhite",
+      "date": "2026-03-09",
+      "url": "https://x.com/lucas_flatwhite/status/2030663115483079095",
+      "why": "`shadcn/cli v4`는 `shadcn/ui`의 로컬 코드 복사 모델에 `shadcn/skills`, preset, dry-run, monorepo 4개 기능을 얹어, AI 에이전트가 프로젝트 규약을 덜 헷갈리고 실제 UI 코드를 더 정확히 가져오게 만든다.",
+      "apply_point": "`tech-review/blog`는 `scripts/fetch-twitter.js`로 원문을 모으고 `_tmp/prompt_template.txt`로 출력 스키마를 고정해두었는데, 이를 `preset`처럼 묶어 `ko/twitter.html`과 `en/twitter.html`용 카드 규약 파일로 분리하면 Codex가 매번 마크업 구조를 추측하지 않고 동일한 UI 패턴을 재사용할 수 있다."
     }
   ],
   "youtube": [
