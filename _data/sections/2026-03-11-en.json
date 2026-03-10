@@ -1,0 +1,38 @@
+{
+  "date": "2026-03-11",
+  "lang": "en",
+  "post_url": "/en/2026/03/11/daily-tech-review/",
+  "post_title": "From clinical trial AI to customer interaction automation, healthcare, finance, and retail are simultaneously entering large-scale AI adoption, accelerating business model transformation.",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "Evinova Signs AI Clinical Trial Platform Agreements with Three Global Pharma Companies",
+      "lead": "On March 3rd, clinical trial AI platform Evinova signed separate agreements with Astellas, Bristol Myers Squibb (BMS), and AstraZeneca to apply AI to optimize clinical trial design and document management in drug development. This represents a clear ",
+      "tags": [
+        "enterprise",
+        "ma"
+      ],
+      "anchor": "evinova-signs-ai-clinical-trial-platform-agreements-with-thr"
+    },
+    {
+      "index": 2,
+      "title": "Block CEO Jack Dorsey Implements Layoffs of 4,000+ Employees Citing AI Adoption",
+      "lead": "In early March, Block CEO Jack Dorsey announced a restructuring that eliminated over 4,000 employees, approximately 7% of the company's workforce. Dorsey publicly justified this by stating that \"small teams armed with AI tools can operate far more ef",
+      "tags": [
+        "enterprise"
+      ],
+      "anchor": "block-ceo-jack-dorsey-implements-layoffs-of-4000-employees-c"
+    },
+    {
+      "index": 3,
+      "title": "By End of 2026, 37% of UK Shoppers Will Use AI Agents as First Choice for Search and Purchase",
+      "lead": "According to Braze's 2026 Customer Experience Report (CER 2026 Report), 14% of UK consumers currently interact with brands through AI agents, with this figure projected to increase nearly threefold to 37% by year-end. Consumers prefer AI as a mediato",
+      "tags": [
+        "enterprise",
+        "agents"
+      ],
+      "anchor": "by-end-of-2026-37-of-uk-shoppers-will-use-ai-agents-as-first"
+    }
+  ]
+}

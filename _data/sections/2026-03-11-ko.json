@@ -1,0 +1,36 @@
+{
+  "date": "2026-03-11",
+  "lang": "ko",
+  "post_url": "/ko/2026/03/11/daily-tech-review/",
+  "post_title": "임상시험 AI부터 고객 상호작용 자동화까지, 헬스케어·금융·소매가 동시에 AI 대규모 채택에 진입하며 비즈니스 모델 전환이 가속화된다.",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "Evinova, 글로벌 제약사 3곳과 AI 임상시험 플랫폼 계약 체결",
+      "lead": "3월 3일, 임상시험 AI 플랫폼 Evinova는 Astellas, Bristol Myers Squibb(BMS), AstraZeneca와 각각 별도의 계약을 통해 신약 개발의 임상 시험 설계 최적화 및 문서 관리에 AI를 적용하기로 합의했다. 이는 글로벌 빅파마가 AI 기반 임상 개발을 선제적으로 수용하는 명확한 신호다.",
+      "tags": [
+        "enterprise"
+      ],
+      "anchor": "evinova-글로벌-제약사-3곳과-ai-임상시험-플랫폼-계약-체결"
+    },
+    {
+      "index": 2,
+      "title": "Block CEO Jack Dorsey, AI 도입 이유로 4,000명 이상 감원 단행",
+      "lead": "Block의 CEO Jack Dorsey는 3월 초, 전사 인원의 약 7%에 해당하는 4,000명 이상을 해고하는 구조조정을 발표했다. Dorsey는 이를 공개적으로 \"AI 도구로 무장한 소규모 팀이 대규모 조직보다 훨씬 더 효율적으로 운영할 수 있다\"는 근거로 정당화했다.",
+      "tags": [
+        "enterprise"
+      ],
+      "anchor": "block-ceo-jack-dorsey-ai-도입-이유로-4000명-이상-감원-단행"
+    },
+    {
+      "index": 3,
+      "title": "2026년 말까지 영국 쇼핑객 37%, AI 에이전트를 검색·구매의 첫 선택으로 사용",
+      "lead": "고객 참여 플랫폼 Braze의 2026 보고서(CER 2026 Report)에 따르면, 영국 소비자 중 현재 14%가 이미 AI 에이전트를 통해 브랜드와 상호작용하고 있으며, 이 비율이 연내 37%로 3배 가까이 증가할 것으로 예측된다. 소비자들은 Google 검색이나 브랜드 웹사이트보다 AI를 \"빠르고, 스마트하고, 개인화된\" 쇼핑 경험의 매개자로 선호하고 있다.",
+      "tags": [
+        "enterprise"
+      ],
+      "anchor": "2026년-말까지-영국-쇼핑객-37-ai-에이전트를-검색·구매의-첫-선택으로-사용"
+    }
+  ]
+}
