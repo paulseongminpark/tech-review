@@ -1,0 +1,41 @@
+{
+  "date": "2026-03-12",
+  "lang": "en",
+  "post_url": "/en/2026/03/12/daily-tech-review/",
+  "post_title": "GPT-5.4 has been officially released to GitHub Copilot, Claude Opus 4.6 discovered 22 vulnerabilities in Firefox, and Dependabot has begun supporting pre-commit automation.",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "GPT-5.4 Generally Available to All GitHub Copilot Users",
+      "lead": "OpenAI's latest agent coding model GPT-5.4 has been generally released (GA) to all GitHub Copilot Pro, Pro+, Business, and Enterprise users. It is accessible in all modes (chat, ask, edit, agent) across major IDEs such as VS Code, Visual Studio, JetB",
+      "tags": [
+        "opensource",
+        "developer-tools"
+      ],
+      "anchor": "gpt-54-generally-available-to-all-github-copilot-users"
+    },
+    {
+      "index": 2,
+      "title": "Claude Opus 4.6 Discovers 22 Vulnerabilities in Firefox, Ushering in the AI Era of Cybersecurity",
+      "lead": "Anthropic's Claude Opus 4.6 discovered 22 previously unknown vulnerabilities in Firefox during a 2-week collaboration with Mozilla, with 14 classified as high-severity and included in Firefox 148.0 (released late February 2026). After identifying a U",
+      "tags": [
+        "opensource",
+        "developer-tools",
+        "security"
+      ],
+      "anchor": "claude-opus-46-discovers-22-vulnerabilities-in-firefox-usher"
+    },
+    {
+      "index": 3,
+      "title": "GitHub Dependabot Expands Developer Dependency Management with Pre-Commit Hooks Auto-Update Support",
+      "lead": "GitHub has begun supporting Dependabot's ability to parse `.pre-commit-config.yaml` files and automatically update pre-commit hooks versions. By adding `pre-commit` as a package ecosystem in `dependabot.yml`, it detects new tags/releases for each hoo",
+      "tags": [
+        "opensource",
+        "developer-tools",
+        "ma"
+      ],
+      "anchor": "github-dependabot-expands-developer-dependency-management-wi"
+    }
+  ]
+}

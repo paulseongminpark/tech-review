@@ -1,0 +1,39 @@
+{
+  "date": "2026-03-12",
+  "lang": "ko",
+  "post_url": "/ko/2026/03/12/daily-tech-review/",
+  "post_title": "GPT-5.4가 GitHub Copilot에 정식 공개되고, Claude Opus 4.6이 Firefox에서 22개 취약점을 발견하며, Dependabot이 pre-commit 자동화를 지원하기 시작했다.",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "GPT-5.4, GitHub Copilot 모든 사용자에게 일반 공개",
+      "lead": "OpenAI의 최신 에이전트 코딩 모델 GPT-5.4가 GitHub Copilot Pro, Pro+, Business, Enterprise 사용자 모두에게 일반 공개(GA)되었다. VS Code, Visual Studio, JetBrains, Xcode, Eclipse 등 주요 IDE와 GitHub CLI, GitHub Mobile, github.com에서 모든 모드(chat, ask, edit, agent)로 접근 가능하다.",
+      "tags": [
+        "opensource",
+        "developer-tools"
+      ],
+      "anchor": "gpt-54-github-copilot-모든-사용자에게-일반-공개"
+    },
+    {
+      "index": 2,
+      "title": "Claude Opus 4.6, Firefox에서 22개 취약점 발견해 사이버보안의 AI 시대 개막",
+      "lead": "Anthropic의 Claude Opus 4.6이 Mozilla와의 2주 협력 기간 동안 Firefox에서 22개의 미발견 취약점을 발견했으며, 이 중 14개가 고심각도로 분류되어 Firefox 148.0(2026년 2월 말 배포)에 포함되었다. 단 20분의 분석만으로 JavaScript 엔진의 Use-After-Free 취약점을 발견한 후, 6,000여 개의 C++ 파일을 스캔하며 총 112개의 보고서를 생성했다.",
+      "tags": [
+        "opensource",
+        "developer-tools"
+      ],
+      "anchor": "claude-opus-46-firefox에서-22개-취약점-발견해-사이버보안의-ai-시대-개막"
+    },
+    {
+      "index": 3,
+      "title": "GitHub Dependabot, pre-commit hooks 자동 업데이트 지원으로 개발자 의존성 관리 확장",
+      "lead": "GitHub는 Dependabot이 이제 `.pre-commit-config.yaml` 파일을 파싱하여 pre-commit hooks의 버전을 자동으로 업데이트할 수 있도록 지원하기 시작했다. `dependabot.yml`에서 `pre-commit`을 package ecosystem으로 추가하면, 각 hook의 새로운 태그/릴리스를 감지해 `rev` 필드를 자동으로 업데이트하는 PR을 생성한다.",
+      "tags": [
+        "opensource",
+        "developer-tools"
+      ],
+      "anchor": "github-dependabot-pre-commit-hooks-자동-업데이트-지원으로-개발자-의존성-관리-확"
+    }
+  ]
+}
