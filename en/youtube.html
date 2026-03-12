@@ -79,7 +79,7 @@ nav.site-nav {
 
 /* ── 영상 카드 ── */
 .yt-article {
-  padding: 3rem 0 2.5rem;
+  padding: 1.2rem 0 2.5rem;
   border-bottom: 1px solid #eee;
   scroll-margin-top: 1rem;
 }
@@ -342,7 +342,7 @@ function renderMain(videos) {
       </div>` : '';
     return `
     <article class="yt-article" id="${vid}">
-      <p class="yt-eyebrow">${escHtml(v.playlist||'')} · ${date}</p>
+      ${date ? `<p class="yt-eyebrow">${date}</p>` : ''}
       <h2 class="yt-title">
         <a href="${v.url}" target="_blank" rel="noopener">${escHtml(v.title)} ↗</a>
       </h2>
