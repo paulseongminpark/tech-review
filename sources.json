@@ -75,11 +75,11 @@
   ],
   "youtube": [
     {
-      "title": "No Vibes Allowed: Solving Hard Problems in Complex Codebases – Dex Horthy, HumanLayer",
-      "channel": "AI Engineer",
-      "video_id": "rmvDxxNubIg",
-      "url": "https://www.youtube.com/watch?v=rmvDxxNubIg",
-      "why": "Dex Horthy는 브라운필드 코드베이스에서 AI 코딩의 진짜 병목이 모델 자체보다 컨텍스트 관리라고 주장하며, 이를 제대로 설계했을 때 3인 팀이 8주 만에 협업 방식을 갈아엎고 2배에서 3배 throughput을 얻었고, 300,000-line Rust 코드베이스 수정과 7시간 35,000-line 작업처럼 복잡한 문제도 슬롭 없이 처리할 수 있었다고 보여준다.",
+      "title": "From Writing Code to Managing Agents. Most Engineers Aren't Ready | Stanford University, Mihail Eric",
+      "channel": "EO",
+      "video_id": "wEsjK3Smovw",
+      "url": "https://www.youtube.com/watch?v=wEsjK3Smovw",
+      "why": "이 영상은 소프트웨어 엔지니어링의 중심이 코드 작성 자체에서 AI와 에이전트를 관리하는 능력으로 이동하고 있으며, 특히 주니어 개발자는 기본기와 AI 네이티브 역량을 동시에 갖춰야 살아남는다는 점을 Berkeley 졸업생의 1,000곳 지원·2곳 회신 사례와 함께 구체적으로 보여준다.",
       "section_count": 11,
       "published_at": ""
     }
