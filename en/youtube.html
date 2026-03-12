@@ -33,7 +33,9 @@ nav.site-nav {
   z-index: 50;
   padding: 54px 12px 24px;
   box-sizing: border-box;
+  scrollbar-width: none;
 }
+.yt-toc::-webkit-scrollbar { display: none; }
 .yt-toc-item {
   display: block;
   font-family: 'Inter', sans-serif;
@@ -46,6 +48,9 @@ nav.site-nav {
   margin-bottom: 2px;
   line-height: 1.4;
   transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .yt-toc-item:hover { background: #f0f0f0; }
 .yt-toc-num {
@@ -287,6 +292,10 @@ function applyHighlights(body, highlights) {
   return result;
 }
 
+function shortTitle(t) {
+  return (t || '').split(/[|–—]/)[0].trim();
+}
+
 function buildTocData(videos) {
   return videos.map((v, vi) => {
     const vid = v.video_id || `v${vi}`;
@@ -294,7 +303,8 @@ function buildTocData(videos) {
     return {
       id: vid,
       num,
-      label: v.title.length > 34 ? v.title.slice(0, 32) + '…' : v.title,
+      label: shortTitle(v.title),
+      fullTitle: v.title,
       sections: ((v.summary || {}).sections || []).map((sec, si) => ({
         id: `${vid}-s${si}`,
         label: `${String(si+1).padStart(2,'0')}. ${sec.heading.length > 26 ? sec.heading.slice(0,24)+'…' : sec.heading}`
@@ -313,7 +323,7 @@ function renderToc(tocData, activeId) {
           href="#${sec.id}" onclick="scrollToId('${sec.id}');return false;">${escHtml(sec.label)}</a>`
     ).join('') : '';
     return `<a class="yt-toc-item${isParentActive ? ' active' : ''}"
-       href="#${item.id}" onclick="toggleArticle('${item.id}');return false;"><span class="yt-toc-num">${item.num}</span>${escHtml(item.label)}</a>${childrenHtml}`;
+       href="#${item.id}" title="${escHtml(item.fullTitle)}" onclick="toggleArticle('${item.id}');return false;"><span class="yt-toc-num">${item.num}</span>${escHtml(item.label)}</a>${childrenHtml}`;
   }).join('');
 }
 
