@@ -78,8 +78,25 @@ function main() {
   fs.mkdirSync(DATA_DIR, { recursive: true });
 
   const outFile = path.join(DATA_DIR, `youtube-${POST_DATE}.json`);
-  fs.writeFileSync(outFile, JSON.stringify(newVideos, null, 2));
-  console.log(`저장: ${outFile}`);
+
+  // 기존 파일이 있으면 읽고 append (덮어쓰기 방지)
+  let existing = [];
+  if (fs.existsSync(outFile)) {
+    try {
+      existing = JSON.parse(fs.readFileSync(outFile, "utf8"));
+      console.log(`기존 파일 로드: ${existing.length}개`);
+    } catch (e) {
+      console.warn(`기존 파일 파싱 실패, 새로 생성: ${e.message}`);
+    }
+  }
+  const existingIds = new Set(existing.map((v) => v.video_id));
+  const merged = [...existing];
+  for (const v of newVideos) {
+    if (!existingIds.has(v.video_id)) merged.push(v);
+  }
+
+  fs.writeFileSync(outFile, JSON.stringify(merged, null, 2));
+  console.log(`저장: ${outFile} (${merged.length}개, 신규 ${newVideos.length}개)`);
 
   for (const v of newVideos) processed.add(v.video_id);
   processedData.processed = [...processed];
