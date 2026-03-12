@@ -293,7 +293,7 @@ function applyHighlights(body, highlights) {
 function buildTocData(videos) {
   return videos.map((v, vi) => {
     const vid = v.video_id || `v${vi}`;
-    const num = String(vi + 1).padStart(2, '0');
+    const num = String(videos.length - vi).padStart(2, '0');
     return {
       id: vid,
       num,
