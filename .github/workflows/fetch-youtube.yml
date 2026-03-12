@@ -31,11 +31,6 @@ jobs:
           POST_DATE: ${{ env.POST_DATE }}
         run: node scripts/fetch-youtube.js
 
-      - name: Extract transcripts
-        env:
-          POST_DATE: ${{ env.POST_DATE }}
-        run: node scripts/summarize-youtube.js
-
       - name: Commit and push
         run: |
           git config user.name "github-actions[bot]"
