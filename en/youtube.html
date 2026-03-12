@@ -289,19 +289,39 @@ function buildTocData(videos) {
     };
   });
 }
+const expandedSet = new Set();
+
 function renderToc(tocData, activeId) {
   document.getElementById('yt-toc').innerHTML = tocData.map(item => {
     const isParentActive = activeId === item.id || item.sections.some(s => s.id === activeId);
-    const childrenHtml = isParentActive ? item.sections.map(sec =>
+    const isExpanded = expandedSet.has(item.id);
+    const childrenHtml = isExpanded ? item.sections.map(sec =>
       `<a class="yt-toc-child${activeId === sec.id ? ' active' : ''}"
-          href="#${sec.id}" onclick="scrollToId('${sec.id}')">${escHtml(sec.label)}</a>`
+          href="#${sec.id}" onclick="scrollToId('${sec.id}');return false;">${escHtml(sec.label)}</a>`
     ).join('') : '';
     return `<a class="yt-toc-item${isParentActive ? ' active' : ''}"
-       href="#${item.id}" onclick="scrollToId('${item.id}')">${escHtml(item.label)}</a>${childrenHtml}`;
+       href="#${item.id}" onclick="toggleArticle('${item.id}');return false;">${escHtml(item.label)}</a>${childrenHtml}`;
   }).join('');
 }
+
 function scrollToId(id) {
   document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function toggleArticle(vid) {
+  const article = document.getElementById(vid);
+  if (!article) return;
+  const body = article.querySelector('.yt-article-body');
+  if (!body) return;
+  if (expandedSet.has(vid)) {
+    expandedSet.delete(vid);
+    body.style.display = 'none';
+  } else {
+    expandedSet.add(vid);
+    body.style.display = '';
+    article.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  renderToc(tocData, vid);
 }
 
 function renderMain(videos) {
@@ -352,7 +372,9 @@ function renderMain(videos) {
         ${sb.why ? `<p class="yt-sb-label">Why it matters</p><p class="yt-sb-why">${escHtml(sb.why)}</p>` : ''}
         ${sb.what ? `<p class="yt-sb-label" style="margin-top:0.5rem;">What's happening</p><p class="yt-sb-what">${escHtml(sb.what)}</p>` : ''}
       </div>` : ''}
-      ${sectionsHtml}${takeawaysHtml}${techHtml}${applyHtml}
+      <div class="yt-article-body" style="display:none;">
+        ${sectionsHtml}${takeawaysHtml}${techHtml}${applyHtml}
+      </div>
     </article>`;
   }).join('');
 }
