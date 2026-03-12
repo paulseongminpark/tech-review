@@ -155,7 +155,8 @@
           "key": false
         }
       ]
-    }
+    },
+    "playlist_index": 2
   },
   {
     "video_id": "CNsvts6pVzo",
@@ -315,7 +316,8 @@
           "key": false
         }
       ]
-    }
+    },
+    "playlist_index": 3
   },
   {
     "video_id": "mq0XvGPSm9w",
@@ -444,7 +446,8 @@
           "key": false
         }
       ]
-    }
+    },
+    "playlist_index": 4
   },
   {
     "video_id": "CEvIs9y1uog",
@@ -604,7 +607,8 @@
           "key": false
         }
       ]
-    }
+    },
+    "playlist_index": 5
   },
   {
     "video_id": "We7BZVKbCVw",
@@ -782,7 +786,8 @@
           "key": false
         }
       ]
-    }
+    },
+    "playlist_index": 6
   },
   {
     "video_id": "eh8bcBIAAFo",
@@ -977,7 +982,8 @@
           "key": false
         }
       ]
-    }
+    },
+    "playlist_index": 7
   },
   {
     "video_id": "2z9JsnMDWHE",
@@ -1131,7 +1137,8 @@
           "key": false
         }
       ]
-    }
+    },
+    "playlist_index": 8
   },
   {
     "video_id": "pua70vvOnIE",
@@ -1268,7 +1275,8 @@
           "key": false
         }
       ]
-    }
+    },
+    "playlist_index": 9
   },
   {
     "video_id": "tT1z66zSw-k",
@@ -1462,7 +1470,8 @@
           "key": false
         }
       ]
-    }
+    },
+    "playlist_index": 1
   },
   {
     "video_id": "BlNJFa3Btm8",
@@ -1609,7 +1618,8 @@
           "key": false
         }
       ]
-    }
+    },
+    "playlist_index": 12
   },
   {
     "video_id": "rmvDxxNubIg",
@@ -1768,6 +1778,7 @@
           "key": false
         }
       ]
-    }
+    },
+    "playlist_index": 0
   }
 ]

@@ -29,7 +29,7 @@ function getPlaylistItems(playlistId) {
     { encoding: "utf-8", maxBuffer: 10 * 1024 * 1024 }
   );
   const data = JSON.parse(output);
-  return (data.entries || []).map((item) => ({
+  return (data.entries || []).map((item, index) => ({
     video_id: item.id,
     title: item.title || "",
     channel: item.channel || item.uploader || "",
@@ -37,6 +37,7 @@ function getPlaylistItems(playlistId) {
       ? `${item.upload_date.slice(0,4)}-${item.upload_date.slice(4,6)}-${item.upload_date.slice(6,8)}`
       : "",
     fetched_at: POST_DATE,
+    playlist_index: index,
     url: `https://www.youtube.com/watch?v=${item.id}`,
   }));
 }

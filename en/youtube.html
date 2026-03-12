@@ -265,6 +265,7 @@ ALL_VIDEOS.push({
   published_at: {{ v.published_at | jsonify }},
   fetched_at:   {{ v.fetched_at | jsonify }},
   playlist:     {{ v.playlist | jsonify }},
+  playlist_index: {{ v.playlist_index | default: 9999 }},
   summary:      {{ v.summary | jsonify }}
 });
     {% endfor %}
@@ -272,10 +273,9 @@ ALL_VIDEOS.push({
 {% endfor %}
 
 ALL_VIDEOS.sort((a, b) => {
-  const fa = a.fetched_at || a.published_at || '';
-  const fb = b.fetched_at || b.published_at || '';
-  if (fb !== fa) return fb.localeCompare(fa);
-  return (b.published_at || '').localeCompare(a.published_at || '');
+  const ia = a.playlist_index ?? 9999;
+  const ib = b.playlist_index ?? 9999;
+  return ia - ib;
 });
 
 function escHtml(str) {
