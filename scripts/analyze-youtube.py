@@ -197,11 +197,16 @@ def main():
         print("처리할 영상 없음.")
         return
 
+    total = len(pending)
+    done = 0
     updated_files = set()
+
+    # filepath → videos 맵 (in-memory 수정용)
+    file_videos = {filepath: videos for (filepath, videos, _) in pending}
 
     for (filepath, videos, video) in pending:
         title = video.get("title", "")
-        print(f"\n분석 중: {title}")
+        print(f"\n[{done}/{total}] 분석 중: {title}")
 
         # transcript 없으면 Whisper로 추출
         if not video.get("transcript"):
@@ -209,7 +214,6 @@ def main():
             transcript = extract_transcript_whisper(video.get("url", ""), video_id)
             if transcript:
                 video["transcript"] = transcript
-                updated_files.add(filepath)
             else:
                 print("  Whisper 실패 — 건너뜀")
                 continue
@@ -221,24 +225,22 @@ def main():
 
         validate_quotes(summary, video["transcript"])
         video["summary"] = summary
+        done += 1
+        print(f"  [{done}/{total}] 완료: {title[:50]}")
+
+        # 영상 1개 완료될 때마다 즉시 저장
+        filepath.write_text(json.dumps(file_videos[filepath], ensure_ascii=False, indent=2), encoding="utf-8")
         updated_files.add(filepath)
-        print(f"  완료: {summary.get('why_watch', '')[:60]}")
+        print(f"  저장: {filepath.name}")
 
     if not updated_files:
         print("\n저장된 파일 없음.")
         return
 
-    # pending의 videos는 이미 in-memory 수정됨 — 파일 재읽기 없이 직접 저장
-    file_videos = {filepath: videos for (filepath, videos, _) in pending}
-    for filepath in updated_files:
-        videos = file_videos[filepath]
-        filepath.write_text(json.dumps(videos, ensure_ascii=False, indent=2), encoding="utf-8")
-        print(f"저장: {filepath.name}")
-
     # git push
     os.chdir(BLOG_DIR)
     os.system("git add _data/sources/")
-    os.system(f'git commit -m "[auto] youtube summary {len(updated_files)}개 분석"')
+    os.system(f'git commit -m "[auto] youtube summary {done}개 분석"')
     os.system("git push")
     print("git push 완료")
 
