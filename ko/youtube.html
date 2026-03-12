@@ -84,6 +84,12 @@ nav.site-nav {
   scroll-margin-top: 1rem;
 }
 .yt-article:last-child { border-bottom: none; }
+.yt-expand-hint {
+  margin: 0.6rem 0 0;
+  color: #D4632D;
+  font-size: 1rem;
+  font-weight: 700;
+}
 .yt-eyebrow {
   font-size: 0.72rem;
   font-weight: 600;
@@ -310,17 +316,38 @@ function scrollToId(id) {
   document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
+function expandArticle(vid) {
+  if (expandedSet.has(vid)) return;
+  const article = document.getElementById(vid);
+  if (!article) return;
+  const body = article.querySelector('.yt-article-body');
+  if (!body) return;
+  expandedSet.add(vid);
+  body.style.display = '';
+  article.style.cursor = 'default';
+  const hint = article.querySelector('.yt-expand-hint');
+  if (hint) hint.style.display = 'none';
+  renderToc(tocData, vid);
+}
+
 function toggleArticle(vid) {
   const article = document.getElementById(vid);
   if (!article) return;
   const body = article.querySelector('.yt-article-body');
   if (!body) return;
   if (expandedSet.has(vid)) {
+    // TOC 클릭: 접기
     expandedSet.delete(vid);
     body.style.display = 'none';
+    article.style.cursor = 'pointer';
+    const hint = article.querySelector('.yt-expand-hint');
+    if (hint) hint.style.display = '';
+    article.scrollIntoView({ behavior: 'smooth', block: 'start' });
   } else {
+    // TOC 클릭: 펼치기
     expandedSet.add(vid);
     body.style.display = '';
+    article.style.cursor = 'default';
     article.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
   renderToc(tocData, vid);
@@ -369,16 +396,17 @@ function renderMain(videos) {
       </div>` : '';
 
     return `
-    <article class="yt-article" id="${vid}">
+    <article class="yt-article" id="${vid}" onclick="expandArticle('${vid}')" style="cursor:pointer;">
       ${date ? `<p class="yt-eyebrow">${date}</p>` : ''}
       <h2 class="yt-title">
-        <a href="${v.url}" target="_blank" rel="noopener">${escHtml(v.title)} ↗</a>
+        <a href="${v.url}" target="_blank" rel="noopener" onclick="event.stopPropagation();">${escHtml(v.title)} ↗</a>
       </h2>
       <p class="yt-meta">${escHtml(v.channel||'')}</p>
       ${sb.why||sb.what ? `
       <div class="yt-sb">
         ${sb.why ? `<p class="yt-sb-label">Why it matters</p><p class="yt-sb-why">${escHtml(sb.why)}</p>` : ''}
         ${sb.what ? `<p class="yt-sb-label" style="margin-top:0.5rem;">What's happening</p><p class="yt-sb-what">${escHtml(sb.what)}</p>` : ''}
+        <p class="yt-expand-hint">↓</p>
       </div>` : ''}
       <div class="yt-article-body" style="display:none;">
         ${sectionsHtml}
