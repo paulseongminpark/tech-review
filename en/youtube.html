@@ -415,19 +415,20 @@ function renderMain(videos) {
 let activeVid = '';
 
 function initObserver(tocData) {
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        activeVid = entry.target.id;
-        renderToc(tocData, activeVid);
-      }
-    });
-  }, { rootMargin: '-10% 0px -70% 0px' });
-
-  tocData.forEach(item => {
-    const el = document.getElementById(item.id);
-    if (el) obs.observe(el);
-  });
+  const articles = tocData.map(item => document.getElementById(item.id)).filter(Boolean);
+  function update() {
+    let current = '';
+    for (const el of articles) {
+      const top = el.getBoundingClientRect().top;
+      if (top <= window.innerHeight * 0.4) current = el.id;
+    }
+    if (current && current !== activeVid) {
+      activeVid = current;
+      renderToc(tocData, activeVid);
+    }
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  update();
 }
 
 function refreshToc(vid) {
