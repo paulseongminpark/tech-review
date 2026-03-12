@@ -333,7 +333,7 @@ function expandArticle(vid) {
   article.style.cursor = 'default';
   const hint = article.querySelector('.yt-expand-hint');
   if (hint) hint.style.display = 'none';
-  renderToc(tocData, vid);
+  refreshToc(vid);
 }
 
 function toggleArticle(vid) {
@@ -354,7 +354,7 @@ function toggleArticle(vid) {
     article.style.cursor = 'default';
     article.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
-  renderToc(tocData, vid);
+  refreshToc(vid);
 }
 
 function renderMain(videos) {
@@ -413,20 +413,26 @@ function renderMain(videos) {
   }).join('');
 }
 
+let activeVid = '';
+
 function initObserver(tocData) {
   const obs = new IntersectionObserver(entries => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) renderToc(tocData, entry.target.id);
+      if (entry.isIntersecting) {
+        activeVid = entry.target.id;
+        renderToc(tocData, activeVid);
+      }
     });
-  }, { rootMargin: '-10% 0px -80% 0px' });
+  }, { rootMargin: '-10% 0px -70% 0px' });
+
   tocData.forEach(item => {
     const el = document.getElementById(item.id);
     if (el) obs.observe(el);
-    item.sections.forEach(sec => {
-      const sel = document.getElementById(sec.id);
-      if (sel) obs.observe(sel);
-    });
   });
+}
+
+function refreshToc(vid) {
+  renderToc(tocData, vid || activeVid);
 }
 
 const tocData = buildTocData(ALL_VIDEOS);

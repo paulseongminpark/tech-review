@@ -336,7 +336,7 @@ function expandArticle(vid) {
   article.style.cursor = 'default';
   const hint = article.querySelector('.yt-expand-hint');
   if (hint) hint.style.display = 'none';
-  renderToc(tocData, vid);
+  refreshToc(vid);
 }
 
 function toggleArticle(vid) {
@@ -359,7 +359,7 @@ function toggleArticle(vid) {
     article.style.cursor = 'default';
     article.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
-  renderToc(tocData, vid);
+  refreshToc(vid);
 }
 
 /* ── 메인 렌더링 ── */
@@ -428,21 +428,28 @@ function renderMain(videos) {
 }
 
 /* ── IntersectionObserver ── */
+let activeVid = '';
+
 function initObserver(tocData) {
   const obs = new IntersectionObserver(entries => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) renderToc(tocData, entry.target.id);
+      if (entry.isIntersecting) {
+        activeVid = entry.target.id;
+        renderToc(tocData, activeVid);
+      }
     });
-  }, { rootMargin: '-10% 0px -80% 0px' });
+  }, { rootMargin: '-10% 0px -70% 0px' });
 
+  // 아티클 단위만 감시 (접힌 상태에서도 동작)
   tocData.forEach(item => {
     const el = document.getElementById(item.id);
     if (el) obs.observe(el);
-    item.sections.forEach(sec => {
-      const sel = document.getElementById(sec.id);
-      if (sel) obs.observe(sel);
-    });
   });
+}
+
+// expandArticle / toggleArticle 이후에도 TOC 재렌더
+function refreshToc(vid) {
+  renderToc(tocData, vid || activeVid);
 }
 
 /* ── 초기화 ── */
