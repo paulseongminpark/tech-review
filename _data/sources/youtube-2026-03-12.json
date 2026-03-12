@@ -1,5 +1,25 @@
 [
   {
+    "video_id": "tT1z66zSw-k",
+    "title": "AI 전쟁 Phase 2",
+    "channel": "백색나무",
+    "published_at": "",
+    "fetched_at": "2026-03-12",
+    "url": "https://www.youtube.com/watch?v=tT1z66zSw-k",
+    "playlist": "blog",
+    "source_type": "youtube"
+  },
+  {
+    "video_id": "BlNJFa3Btm8",
+    "title": "Claude Code 2.0 Is Finally Here",
+    "channel": "Nate Herk | AI Automation",
+    "published_at": "",
+    "fetched_at": "2026-03-12",
+    "url": "https://www.youtube.com/watch?v=BlNJFa3Btm8",
+    "playlist": "blog",
+    "source_type": "youtube"
+  },
+  {
     "video_id": "wEsjK3Smovw",
     "title": "From Writing Code to Managing Agents. Most Engineers Aren't Ready | Stanford University, Mihail Eric",
     "channel": "EO",
@@ -1269,25 +1289,5 @@
         }
       ]
     }
-  },
-  {
-    "video_id": "tT1z66zSw-k",
-    "title": "AI 전쟁 Phase 2",
-    "channel": "백색나무",
-    "published_at": "",
-    "fetched_at": "2026-03-12",
-    "url": "https://www.youtube.com/watch?v=tT1z66zSw-k",
-    "playlist": "blog",
-    "source_type": "youtube"
-  },
-  {
-    "video_id": "BlNJFa3Btm8",
-    "title": "Claude Code 2.0 Is Finally Here",
-    "channel": "Nate Herk | AI Automation",
-    "published_at": "",
-    "fetched_at": "2026-03-12",
-    "url": "https://www.youtube.com/watch?v=BlNJFa3Btm8",
-    "playlist": "blog",
-    "source_type": "youtube"
   }
 ]
