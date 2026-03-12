@@ -1,0 +1,47 @@
+{
+  "date": "2026-03-13",
+  "lang": "en",
+  "post_url": "/en/2026/03/13/daily-tech-review/",
+  "post_title": "Intel launches Core Series 2 processors and Edge AI portfolio at Embedded World 2026 to strengthen its real-time edge AI market push, and boosts gaming and multi-threaded performance by over 15% with Arrow Lake Refresh CPU.",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "Intel Core Series 2 Processor Launch, 4.4x Real-Time Performance Advantage Over AMD",
+      "lead": "Intel unveiled the Core Series 2 processor at Embedded World 2026 on March 9, 2026, targeting industrial real-time edge AI workloads. This processor delivers deterministic performance in latency-sensitive environments like factory automation and robo",
+      "tags": [
+        "chips",
+        "datacenter",
+        "cloud",
+        "amd",
+        "intel",
+        "ma"
+      ],
+      "anchor": "intel-core-series-2-processor-launch-44x-real-time-performan"
+    },
+    {
+      "index": 2,
+      "title": "Intel Arrow Lake Refresh CPU, 15% Gaming Improvement and Price Cut Announced",
+      "lead": "Intel will launch the Core Ultra 200S Plus series (7 270K, 5 250K) on March 26, boosting 1080p gaming performance by 15% over the original Arrow Lake and lowering prices. The iBOT binary optimization tool improves IPC and optimizes other x86 architec",
+      "tags": [
+        "chips",
+        "datacenter",
+        "cloud",
+        "intel"
+      ],
+      "anchor": "intel-arrow-lake-refresh-cpu-15-gaming-improvement-and-price"
+    },
+    {
+      "index": 3,
+      "title": "Intel Core Series 2 Accelerates Single-Node Integration for Industrial Edge AI",
+      "lead": "Intel Core Series 2 resolves trade-offs in traditional x86 platforms for real-time and AI workloads, enabling single-node operations in factories and robotics. At Embedded World 2026, the Edge AI Suite for healthcare AI monitoring was also previewed.",
+      "tags": [
+        "chips",
+        "datacenter",
+        "cloud",
+        "intel"
+      ],
+      "anchor": "intel-core-series-2-accelerates-single-node-integration-for-"
+    }
+  ]
+}

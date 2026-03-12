@@ -1,0 +1,43 @@
+{
+  "date": "2026-03-13",
+  "lang": "ko",
+  "post_url": "/ko/2026/03/13/daily-tech-review/",
+  "post_title": "인텔이 Embedded World 2026에서 Core Series 2 프로세서와 Edge AI 포트폴리오를 출시하며 실시간 엣지 AI 시장 공략을 강화하고, Arrow Lake Refresh CPU로 게이밍·멀티스레드 성능을 15% 이상 끌어올린다.",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "인텔 Core Series 2 프로세서 출시, AMD 대비 실시간 성능 4.4배 우위",
+      "lead": "인텔이 2026년 3월 9일 Embedded World 2026에서 Core Series 2 프로세서를 공개하며 산업용 실시간 엣지 AI 워크로드를 타깃으로 한다. 이 프로세서는 공장 자동화·로보틱스 등 지연 민감 환경에서 결정적 성능을 제공한다.",
+      "tags": [
+        "chips",
+        "datacenter",
+        "cloud",
+        "amd"
+      ],
+      "anchor": "인텔-core-series-2-프로세서-출시-amd-대비-실시간-성능-44배-우위"
+    },
+    {
+      "index": 2,
+      "title": "인텔 Arrow Lake Refresh CPU, 게이밍 15% 향상 및 가격 인하 발표",
+      "lead": "인텔이 Core Ultra 200S Plus 시리즈(7 270K, 5 250K)를 3월 26일 출시하며 기존 Arrow Lake 대비 1080p 게이밍 성능 15% 높이고 가격을 낮춘다. iBOT 바이너리 최적화 도구로 IPC를 높여 다른 x86 아키처 게임도 최적화한다.",
+      "tags": [
+        "chips",
+        "datacenter",
+        "cloud"
+      ],
+      "anchor": "인텔-arrow-lake-refresh-cpu-게이밍-15-향상-및-가격-인하-발표"
+    },
+    {
+      "index": 3,
+      "title": "인텔 Core Series 2, 산업 엣지 AI 단일 노드 통합 가속",
+      "lead": "인텔 Core Series 2가 전통 x86 플랫폼의 실시간·AI 워크로드 트레이드오프를 해소하며 공장·로보틱스 단일 노드 운영을 가능케 한다. Embedded World 2026에서 헬스케어 AI 모니터링을 위한 Edge AI Suite도 프리뷰됐다.",
+      "tags": [
+        "chips",
+        "datacenter",
+        "cloud"
+      ],
+      "anchor": "인텔-core-series-2-산업-엣지-ai-단일-노드-통합-가속"
+    }
+  ]
+}
