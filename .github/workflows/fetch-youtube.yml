@@ -19,6 +19,9 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Install yt-dlp
+        run: pip install yt-dlp
+
       - name: Set POST_DATE (KST)
         run: echo "POST_DATE=$(TZ=Asia/Seoul date +%Y-%m-%d)" >> $GITHUB_ENV
 
@@ -27,9 +30,6 @@ jobs:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
           POST_DATE: ${{ env.POST_DATE }}
         run: node scripts/fetch-youtube.js
-
-      - name: Install yt-dlp
-        run: pip install yt-dlp
 
       - name: Extract transcripts
         env:
