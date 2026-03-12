@@ -2,7 +2,7 @@ name: Fetch YouTube
 
 on:
   schedule:
-    - cron: '0 6 * * *'   # 테스트: 15:00 KST (원래: 0 22 * * * = 07:00 KST)
+    - cron: '0 0 * * *'   # 09:00 KST
   workflow_dispatch:
 
 permissions:

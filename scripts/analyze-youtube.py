@@ -204,6 +204,9 @@ def write_status(step: str, video_title: str, done: int, total: int, detail: str
     )
 
 def main():
+    # Actions가 push한 최신 데이터 받기
+    os.system("git pull --rebase origin master")
+
     pending = find_pending()
     print(f"분석 대상: {len(pending)}개 영상")
 
