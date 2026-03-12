@@ -48,6 +48,13 @@ nav.site-nav {
   transition: background 0.15s, color 0.15s;
 }
 .yt-toc-item:hover { background: #f0f0f0; }
+.yt-toc-num {
+  font-size: 0.65em;
+  color: #bbb;
+  font-weight: 400;
+  margin-right: 5px;
+  letter-spacing: 0;
+}
 .yt-toc-item.active {
   color: #D4632D;
   font-weight: 600;
@@ -286,8 +293,10 @@ function applyHighlights(body, highlights) {
 function buildTocData(videos) {
   return videos.map((v, vi) => {
     const vid = v.video_id || `v${vi}`;
+    const num = String(vi + 1).padStart(2, '0');
     return {
       id: vid,
+      num,
       label: v.title.length > 34 ? v.title.slice(0, 32) + '…' : v.title,
       sections: ((v.summary || {}).sections || []).map((sec, si) => ({
         id: `${vid}-s${si}`,
@@ -308,7 +317,7 @@ function renderToc(tocData, activeId) {
           href="#${sec.id}" onclick="scrollToId('${sec.id}');return false;">${escHtml(sec.label)}</a>`
     ).join('') : '';
     return `<a class="yt-toc-item${isParentActive ? ' active' : ''}"
-       href="#${item.id}" onclick="toggleArticle('${item.id}');return false;">${escHtml(item.label)}</a>${childrenHtml}`;
+       href="#${item.id}" onclick="toggleArticle('${item.id}');return false;"><span class="yt-toc-num">${item.num}</span>${escHtml(item.label)}</a>${childrenHtml}`;
   }).join('');
 }
 
