@@ -189,12 +189,27 @@ def analyze_with_codex(title: str, transcript: str) -> dict | None:
         except Exception:
             pass
 
+STATUS_FILE = BLOG_DIR / "_data" / "analyze-status.json"
+
+def write_status(step: str, video_title: str, done: int, total: int, detail: str = ""):
+    STATUS_FILE.write_text(
+        json.dumps({
+            "step": step,
+            "video": video_title,
+            "done": done,
+            "total": total,
+            "detail": detail
+        }, ensure_ascii=False),
+        encoding="utf-8"
+    )
+
 def main():
     pending = find_pending()
     print(f"분석 대상: {len(pending)}개 영상")
 
     if not pending:
         print("처리할 영상 없음.")
+        write_status("idle", "", 0, 0, "처리할 영상 없음")
         return
 
     total = len(pending)
@@ -211,22 +226,28 @@ def main():
         # transcript 없으면 Whisper로 추출
         if not video.get("transcript"):
             video_id = video.get("video_id") or ""
+            write_status("whisper", title, done, total, "오디오 다운로드 중...")
             transcript = extract_transcript_whisper(video.get("url", ""), video_id)
             if transcript:
                 video["transcript"] = transcript
+                write_status("whisper_done", title, done, total, f"{len(transcript)}자 추출 완료")
             else:
                 print("  Whisper 실패 — 건너뜀")
+                write_status("whisper_fail", title, done, total, "실패 — 건너뜀")
                 continue
 
+        write_status("codex", title, done, total, "Codex 분석 중...")
         summary = analyze_with_codex(title, video["transcript"])
         if not summary:
             print("  실패 — 건너뜀")
+            write_status("codex_fail", title, done, total, "실패 — 건너뜀")
             continue
 
         validate_quotes(summary, video["transcript"])
         video["summary"] = summary
         done += 1
         print(f"  [{done}/{total}] 완료: {title[:50]}")
+        write_status("saved", title, done, total, "저장 완료")
 
         # 영상 1개 완료될 때마다 즉시 저장
         filepath.write_text(json.dumps(file_videos[filepath], ensure_ascii=False, indent=2), encoding="utf-8")
@@ -238,10 +259,12 @@ def main():
         return
 
     # git push
+    write_status("pushing", "", done, total, "git push 중...")
     os.chdir(BLOG_DIR)
     os.system("git add _data/sources/")
     os.system(f'git commit -m "[auto] youtube summary {done}개 분석"')
     os.system("git push")
+    write_status("complete", "", done, total, "완료")
     print("git push 완료")
 
 if __name__ == "__main__":
