@@ -48,12 +48,14 @@ function main() {
   const processed = new Set(processedData.processed);
 
   const newVideos = [];
+  const indexMap = new Map(); // video_id → playlist_index (전체)
 
   for (const playlist of sources.playlists) {
     console.log(`플레이리스트 처리 중: ${playlist.name} (${playlist.id})`);
     const items = getPlaylistItems(playlist.id);
 
     for (const item of items) {
+      indexMap.set(item.video_id, item.playlist_index);
       if (processed.has(item.video_id)) {
         console.log(`  건너뜀 (처리 완료): ${item.video_id}`);
         continue;
@@ -61,6 +63,29 @@ function main() {
       newVideos.push({ ...item, playlist: playlist.name, source_type: "youtube" });
       console.log(`  신규: ${item.title}`);
     }
+  }
+
+  // 기존 JSON 파일의 playlist_index 갱신
+  if (indexMap.size > 0) {
+    const files = fs.readdirSync(DATA_DIR).filter((f) => f.startsWith("youtube-") && f.endsWith(".json"));
+    let syncCount = 0;
+    for (const fname of files) {
+      const fpath = path.join(DATA_DIR, fname);
+      const data = JSON.parse(fs.readFileSync(fpath, "utf8"));
+      let changed = false;
+      for (const v of data) {
+        const newIdx = indexMap.get(v.video_id);
+        if (newIdx !== undefined && v.playlist_index !== newIdx) {
+          v.playlist_index = newIdx;
+          changed = true;
+          syncCount++;
+        }
+      }
+      if (changed) {
+        fs.writeFileSync(fpath, JSON.stringify(data, null, 2));
+      }
+    }
+    if (syncCount > 0) console.log(`playlist_index 동기화: ${syncCount}개`);
   }
 
   console.log(`\n신규 영상: ${newVideos.length}개`);
