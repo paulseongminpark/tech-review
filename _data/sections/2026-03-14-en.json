@@ -1,0 +1,44 @@
+{
+  "date": "2026-03-14",
+  "lang": "en",
+  "post_url": "/en/2026/03/14/daily-tech-review/",
+  "post_title": "Enterprise AI adoption is rapidly shifting from pilot to production scale, with major tech companies significantly expanding investments in enterprise AI platforms.",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "Anthropic Announces $100 Million Investment in Claude Partner Network",
+      "lead": "Anthropic announced on March 12 a $100 million investment by 2026 in the partner ecosystem for Claude adoption, accelerating enterprise AI deployment. Global consulting giants Accenture, Deloitte, Infosys, and Cognizant committed to providing Claude ",
+      "tags": [
+        "enterprise",
+        "regulation",
+        "investment",
+        "anthropic"
+      ],
+      "anchor": "anthropic-announces-100-million-investment-in-claude-partner"
+    },
+    {
+      "index": 2,
+      "title": "Amazon Invests $50 Billion in OpenAI, Secures Exclusive Deployment Rights for AI Frontier Platform",
+      "lead": "Amazon is investing a total of $50 billion in OpenAI ($15 billion initial + $35 billion follow-on) and designating AWS as the exclusive cloud deployment provider for OpenAI Frontier. The two companies plan to jointly develop a Stateful Runtime Enviro",
+      "tags": [
+        "enterprise",
+        "regulation",
+        "ma",
+        "openai",
+        "amazon"
+      ],
+      "anchor": "amazon-invests-50-billion-in-openai-secures-exclusive-deploy"
+    },
+    {
+      "index": 3,
+      "title": "Block Lays Off 4,000 Employees, Signals 60% Workforce Reduction Through AI Efficiency",
+      "lead": "CEO Jack Dorsey announced on February 27 the layoff of 40% (4,000) of Block's workforce, declaring that AI tools and small, flat team operations have \"fundamentally changed the company's way of operating.\" Block made this decision despite recording $",
+      "tags": [
+        "enterprise",
+        "regulation"
+      ],
+      "anchor": "block-lays-off-4000-employees-signals-60-workforce-reduction"
+    }
+  ]
+}

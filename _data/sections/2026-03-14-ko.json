@@ -1,0 +1,43 @@
+{
+  "date": "2026-03-14",
+  "lang": "ko",
+  "post_url": "/ko/2026/03/14/daily-tech-review/",
+  "post_title": "기업용 AI 도입이 파일럿에서 프로덕션 규모로 급속 전환하며, 주요 기술사들이 엔터프라이즈 AI 플랫폼 투자를 대폭 확대하고 있다.",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "Anthropic, Claude 파트너 네트워크에 1억 달러 투자 선언",
+      "lead": "Anthropic이 3월 12일 Claude 채택을 위한 파트너 생태계에 2026년 1억 달러를 투자하며 엔터프라이즈 AI 배포 가속화에 나섰다. Accenture, Deloitte, Infosys, Cognizant 등 글로벌 컨설팅 대형사 4곳이 30만 명 이상의 직원에게 Claude 교육을 제공하기로 약정했다.",
+      "tags": [
+        "enterprise",
+        "regulation",
+        "anthropic"
+      ],
+      "anchor": "anthropic-claude-파트너-네트워크에-1억-달러-투자-선언"
+    },
+    {
+      "index": 2,
+      "title": "Amazon, OpenAI에 500억 달러 투자하며 AI 이전트 플랫폼 독점 배포권 확보",
+      "lead": "Amazon이 OpenAI에 총 500억 달러(초기 150억 달러 + 추후 350억 달러)를 투자하고 AWS를 OpenAI Frontier의 독점 클라우드 배포 제공사로 지정했다. 두 회사는 상태 저장 런타임 환경(Stateful Runtime Environment)을 공동 개발해 기업용 AI 에이전트 팀 관리를 표준화할 계획이다.",
+      "tags": [
+        "enterprise",
+        "regulation",
+        "ma",
+        "openai",
+        "amazon"
+      ],
+      "anchor": "amazon-openai에-500억-달러-투자하며-ai-이전트-플랫폼-독점-배포권-확보"
+    },
+    {
+      "index": 3,
+      "title": "Block 4,000명 감원 단행, AI 효율화로 직원 60% 규모 축소 신호",
+      "lead": "Jack Dorsey CEO가 2월 27일 Block의 직원 40%(4,000명)를 일괄 감원한다고 발표했으며, AI 도구와 소규모·수평적 팀 운영이 \"회사 운영 방식을 근본적으로 바꿨다\"고 선언했다. Block은 2026년 4분기 매출 28억7천만 달러(전년 대비 24% 증가)를 기록했음에도 이 결정을 내렸다.",
+      "tags": [
+        "enterprise",
+        "regulation"
+      ],
+      "anchor": "block-4000명-감원-단행-ai-효율화로-직원-60-규모-축소-신호"
+    }
+  ]
+}
