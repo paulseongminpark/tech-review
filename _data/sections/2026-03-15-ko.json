@@ -1,0 +1,42 @@
+{
+  "date": "2026-03-15",
+  "lang": "ko",
+  "post_url": "/ko/2026/03/15/daily-tech-review/",
+  "post_title": "정부 신뢰가 시장을 갈라놓고, 에이전트 생태계가 인수합병 단계로 진입하며, 클라우드 칩 경쟁이 삼각전으로 확대되는 주였다.",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "Pentagon 거부한 Anthropic vs 계약한 OpenAI, 신뢰가 매출이 되다",
+      "lead": "Anthropic이 미국 국방부의 대규모 감시와 자율 무기 사용을 거부하자, 펜타곤은 이 회사를 공급망 위협으로 지정했다. 반대로 OpenAI는 2월 28일 국방부 계약을 체결했고, 이 엇갈린 선택이 소비자 신뢰에 즉각 반영됐다.",
+      "tags": [
+        "weekly",
+        "openai",
+        "anthropic"
+      ],
+      "anchor": "pentagon-거부한-anthropic-vs-계약한-openai-신뢰가-매출이-되다"
+    },
+    {
+      "index": 2,
+      "title": "Meta-Moltbook 인수로 에이전트 생태계가 'M&A 신호' 전환",
+      "lead": "Meta가 3월 10-12일 사이 AI 에이전트 소셜 네트워크 Moltbook을 인수했고, 창립자 Matt Schlicht과 Ben Parr를 Meta Superintelligence Labs로 영입했다. 1월 말 OpenClaw가 불과 9일 만에 9,000에서 60,000 stars로 폭발적 성장한 이후, 산업이 에이전트 기술을 더 이상 실험 단계로 취급하지 않는다는 신호다.",
+      "tags": [
+        "weekly",
+        "meta"
+      ],
+      "anchor": "meta-moltbook-인수로-에이전트-생태계가-ma-신호-전환"
+    },
+    {
+      "index": 3,
+      "title": "AWS-OpenAI-Cerebras 삼각전, Nvidia의 Inference 독점이 깨진다",
+      "lead": "3월 13일 OpenAI가 Amazon과 $50B 투자 계약을 체결하고 동시에 AWS가 Cerebras WSE-3 칩 협력을 발표했다. 이는 단순 파트너십이 아니라 클라우드 인프라의 'Training vs Inference vs Edge' 시장이 본격 삼각전으로 진입했음을 의미한다.",
+      "tags": [
+        "weekly",
+        "nvidia",
+        "aws",
+        "openai"
+      ],
+      "anchor": "aws-openai-cerebras-삼각전-nvidia의-inference-독점이-깨진다"
+    }
+  ]
+}

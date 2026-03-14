@@ -1,0 +1,42 @@
+{
+  "date": "2026-03-15",
+  "lang": "en",
+  "post_url": "/en/2026/03/15/daily-tech-review/",
+  "post_title": "Government trust divides the market, the agent ecosystem enters the M&A phase, and cloud chip competition expands into a three-way battle.",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "Pentagon Rejected Anthropic vs. OpenAI's Contract: Trust Becomes Revenue",
+      "lead": "When Anthropic refused the U.S. Department of Defense's demands for mass surveillance and autonomous weapons use, the Pentagon designated the company as a supply-chain risk. Conversely, OpenAI signed a Department of Defense contract on February 28th,",
+      "tags": [
+        "weekly",
+        "openai",
+        "anthropic"
+      ],
+      "anchor": "pentagon-rejected-anthropic-vs-openais-contract-trust-become"
+    },
+    {
+      "index": 2,
+      "title": "Meta's Moltbook Acquisition Signals Agent Ecosystem Enters M&A Phase",
+      "lead": "Meta acquired AI agent social network Moltbook between March 10-12, bringing founders Matt Schlicht and Ben Parr into Meta Superintelligence Labs. Following OpenClaw's explosive growth from 9,000 to 60,000 stars in just 9 days at the end of January, ",
+      "tags": [
+        "weekly",
+        "meta"
+      ],
+      "anchor": "metas-moltbook-acquisition-signals-agent-ecosystem-enters-ma"
+    },
+    {
+      "index": 3,
+      "title": "AWS-OpenAI-Cerebras Triangle: Nvidia's Inference Monopoly Breaks",
+      "lead": "On March 13th, OpenAI signed a $50B investment agreement with Amazon while simultaneously AWS announced Cerebras WSE-3 chip collaboration. This is not merely a partnership but signals the cloud infrastructure market for 'Training vs Inference vs Edge",
+      "tags": [
+        "weekly",
+        "nvidia",
+        "aws",
+        "openai"
+      ],
+      "anchor": "aws-openai-cerebras-triangle-nvidias-inference-monopoly-brea"
+    }
+  ]
+}
