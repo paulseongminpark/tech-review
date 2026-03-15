@@ -1,0 +1,44 @@
+{
+  "date": "2026-03-16",
+  "lang": "en",
+  "post_url": "/en/2026/03/16/daily-tech-review/",
+  "post_title": "Anthropic announced 1M token context at standard pricing and a $100 million partner network investment, while Mistral unveiled a 675B parameter MoE model, accelerating competition in AI inference costs and enterprise deployment.",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "Claude 1M Token Context at Standard Pricing — Complete Elimination of Long-Context Premium",
+      "lead": "Anthropic began offering 1M (million) token context for Claude Opus 4.6 and Sonnet 4.6 at standard pricing on March 13. Previously, requests exceeding 200K tokens incurred a 2x surcharge, but now uniform pricing applies across the entire 1M window.[2",
+      "tags": [
+        "ai-models",
+        "research",
+        "benchmarks"
+      ],
+      "anchor": "claude-1m-token-context-at-standard-pricing-complete-elimina"
+    },
+    {
+      "index": 2,
+      "title": "Anthropic Invests $100 Million in Claude Partner Network  Expanding Enterprise Deployment Ecosystem",
+      "lead": "Anthropic committed $100 million in early 2026 funding to support partner companies adopting Claude. These funds are allocated to education, technical support, and joint marketing, with plans to expand the partner-facing team by 5x.",
+      "tags": [
+        "ai-models",
+        "research",
+        "benchmarks",
+        "enterprise",
+        "anthropic"
+      ],
+      "anchor": "anthropic-invests-100-million-in-claude-partner-network-expa"
+    },
+    {
+      "index": 3,
+      "title": "Mistral 3 Released — Open MoE Model Up to 675B Parameters Under Apache 2.0 License",
+      "lead": "Mistral AI released the Mistral 3 model family, with the flagship Mistral Large 3 employing a mixture-of-experts (MoE) architecture with 41B active parameters out of 675B total parameters. All models are distributed under Apache 2.0 license with NVID",
+      "tags": [
+        "ai-models",
+        "research",
+        "benchmarks"
+      ],
+      "anchor": "mistral-3-released-open-moe-model-up-to-675b-parameters-unde"
+    }
+  ]
+}
