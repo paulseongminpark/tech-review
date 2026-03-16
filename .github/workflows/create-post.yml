@@ -56,22 +56,7 @@ jobs:
           LANG: ko
         run: node scripts/parse-content.js
 
-      # ── EN 번역 (KO → EN via Perplexity) ────────────────────────────────
-      - name: Translate KO to EN via Perplexity
-        if: steps.fetch_ko.outcome == 'success'
-        timeout-minutes: 5
-        env:
-          PERPLEXITY_API_KEY: ${{ secrets.PERPLEXITY_API_KEY }}
-          INPUT_FILE: /tmp/perplexity-ko.md
-          OUTPUT_FILE: /tmp/perplexity-en.md
-        run: node scripts/translate-perplexity.js
-
-      - name: Parse EN content
-        if: steps.fetch_ko.outcome == 'success'
-        env:
-          CONTENT_FILE: /tmp/perplexity-en.md
-          LANG: en
-        run: node scripts/parse-content.js
+      # ── EN 번역 제거 (2026-03-16) — KO만 생성, API 비용 절감 ──────────
 
       # ── 섹션 추출 ────────────────────────────────────────────────────────
       - name: Extract sections
@@ -83,7 +68,7 @@ jobs:
         run: |
           git config user.name "tech-review-bot"
           git config user.email "bot@tech-review.local"
-          git add _posts/ko/ _posts/en/ _data/sections/
+          git add _posts/ko/ _data/sections/
           if git diff --cached --quiet; then
             echo "변경사항 없음"
             echo "CHANGED=false" >> $GITHUB_ENV
