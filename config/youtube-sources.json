@@ -3,6 +3,13 @@
     {
       "id": "PLUeFkXBkSX_bgvVnbAFBvZZE03jCzzm5Q",
       "name": "blog",
+      "category": "general",
+      "lang": "en"
+    },
+    {
+      "id": "PLUeFkXBkSX_ZFCfP8j0peOCeOlKVhwfFx",
+      "name": "ontology",
+      "category": "ontology",
       "lang": "en"
     }
   ]

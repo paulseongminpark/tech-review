@@ -20,6 +20,34 @@ nav.site-nav {
   background: #fff;
 }
 
+/* ── 서브탭 ── */
+.yt-subtabs {
+  margin-left: 220px;
+  padding: 0 1.5rem;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  gap: 0;
+  position: relative;
+  z-index: 199;
+}
+.yt-subtab {
+  padding: 0.45rem 1rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #999;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+  text-transform: capitalize;
+  letter-spacing: 0.02em;
+}
+.yt-subtab:hover { color: #666; }
+.yt-subtab.active { color: #D4632D; font-weight: 700; border-bottom-color: #D4632D; }
+@media (max-width: 768px) {
+  .yt-subtabs { margin-left: 0; }
+}
+
 /* ── TOC 사이드바 ── */
 .yt-toc {
   position: fixed;
@@ -247,6 +275,14 @@ nav.site-nav {
 }
 </style>
 
+<div class="yt-subtabs" id="yt-subtabs">
+  <div class="yt-subtab active" data-cat="general">General</div>
+  <div class="yt-subtab" data-cat="tech">Tech</div>
+  <div class="yt-subtab" data-cat="claude">Claude</div>
+  <div class="yt-subtab" data-cat="ais">AIs</div>
+  <div class="yt-subtab" data-cat="ontology">Ontology</div>
+</div>
+
 <div id="yt-toc" class="yt-toc"></div>
 <div class="yt-main" id="yt-main"></div>
 
@@ -277,6 +313,15 @@ ALL_VIDEOS.sort((a, b) => {
   const ib = b.playlist_index ?? 9999;
   return ia - ib;
 });
+
+/* ── 카테고리 매핑 ── */
+const CAT_MAP = { blog: 'general', general: 'general', ontology: 'ontology', tech: 'tech', claude: 'claude', ais: 'ais' };
+function videoCat(v) { return CAT_MAP[v.playlist] || 'general'; }
+let currentCat = 'general';
+
+function filterByCategory(cat) {
+  return ALL_VIDEOS.filter(v => videoCat(v) === cat);
+}
 
 function escHtml(str) {
   return (str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
@@ -442,11 +487,31 @@ function initObserver(tocData) {
 }
 
 function refreshToc(vid) {
-  renderToc(tocData, vid || activeVid);
+  renderToc(window._tocData || tocData, vid || activeVid);
 }
 
-const tocData = buildTocData(ALL_VIDEOS);
+/* ── 서브탭 클릭 ── */
+document.querySelectorAll('.yt-subtab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.yt-subtab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    currentCat = tab.dataset.cat;
+    expandedSet.clear();
+    activeVid = '';
+    const filtered = filterByCategory(currentCat);
+    const newToc = buildTocData(filtered);
+    renderToc(newToc, '');
+    renderMain(filtered);
+    initObserver(newToc);
+    window._tocData = newToc;
+  });
+});
+
+/* ── 초기화 ── */
+const filtered = filterByCategory(currentCat);
+const tocData = buildTocData(filtered);
+window._tocData = tocData;
 renderToc(tocData, '');
-renderMain(ALL_VIDEOS);
+renderMain(filtered);
 initObserver(tocData);
 </script>

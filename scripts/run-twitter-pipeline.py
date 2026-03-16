@@ -64,16 +64,38 @@ def main():
     os.chdir(BLOG_DIR)
     log(f"=== Twitter Pipeline 시작 ({TODAY}) ===")
 
-    # Step 1: CDP 연결 확인
+    # Step 1: CDP 연결 확인 (미실행 시 자동 시작)
     log("[1/4] CDP Chrome 연결 확인")
-    import urllib.request
-    try:
-        urllib.request.urlopen("http://127.0.0.1:9222/json/version", timeout=3)
+    import urllib.request, time as _time
+    CDP_URL = "http://127.0.0.1:9222/json/version"
+    CHROME_EXE = r"C:\Program Files\Google\Chrome\Application\chrome.exe"
+    CHROME_PROFILE = r"C:\Users\pauls\.chrome-twitter-auto"
+
+    def _cdp_alive():
+        try:
+            urllib.request.urlopen(CDP_URL, timeout=3)
+            return True
+        except Exception:
+            return False
+
+    if _cdp_alive():
         log("  CDP 연결 OK")
-    except Exception:
-        log("  CDP Chrome 미실행 — 파이프라인 중단")
-        log("  바탕화면 'Chrome - Twitter Auto' 실행 후 재시도하세요")
-        sys.exit(1)
+    else:
+        log("  CDP Chrome 미실행 — 자동 시작 중...")
+        subprocess.Popen(
+            [CHROME_EXE, f"--remote-debugging-port=9222",
+             f"--user-data-dir={CHROME_PROFILE}", "--force-dark-mode"],
+            stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+        )
+        for _ in range(10):
+            _time.sleep(2)
+            if _cdp_alive():
+                break
+        if _cdp_alive():
+            log("  CDP Chrome 자동 시작 완료")
+        else:
+            log("  CDP Chrome 시작 실패 — 파이프라인 중단")
+            sys.exit(1)
 
     # Step 2: 북마크 수집
     log("[2/4] 북마크 수집 (fetch-twitter-pw.py)")
@@ -96,7 +118,7 @@ def main():
     before = count_bookmarks()
     r = run(
         [sys.executable, str(SCRIPT_DIR / "add-bookmark.py"), str(inbox_file)],
-        timeout=600,
+        timeout=1800,
     )
     after = count_bookmarks()
     added = after - before
