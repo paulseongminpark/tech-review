@@ -142,6 +142,7 @@ def summarize_with_codex(text: str) -> dict | None:
                 "--full-auto",
             ],
             capture_output=True, text=True, timeout=180,
+            encoding="utf-8", errors="replace",
             cwd=str(BLOG_DIR)
         )
 
@@ -228,7 +229,7 @@ def main():
         seen.add(key)
         next_num += 1
         added += 1
-        print(f" ✓  {summary.get('whats_happening', '')[:60]}")
+        print(f" OK  {summary.get('whats_happening', '')[:60]}")
 
     if added == 0:
         print("새 북마크 없음.")
