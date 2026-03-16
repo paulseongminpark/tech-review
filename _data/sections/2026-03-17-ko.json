@@ -1,0 +1,48 @@
+{
+  "date": "2026-03-17",
+  "lang": "ko",
+  "post_url": "/ko/2026/03/17/daily-tech-review/",
+  "post_title": "지난 48시간 내 Google의 AI 칩 개발 가속화, Apple의 Vision Pro 가격 인하, NVIDIA의 Blackwell 생산 확대가 빅테크 공급망과 AI 경쟁 구도를 재편한다.",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "Google, 자체 AI 칩 'Titan' 대량 생산 착수로 Nvidia 의존 탈피",
+      "lead": "Google이 2026년 3월 15일 자체 개발 AI 칩 Titan의 대량 생산을 시작한다. 이 칩은 Google Cloud의 AI 워크로드를 40% 비용 절감하며 처리한다.",
+      "tags": [
+        "google",
+        "microsoft",
+        "meta",
+        "apple",
+        "nvidia"
+      ],
+      "anchor": "google-자체-ai-칩-titan-대량-생산-착수로-nvidia-의존-탈피"
+    },
+    {
+      "index": 2,
+      "title": "Apple, Vision Pro 가격 499달러로 절반 인하하며 대중화 추진",
+      "lead": "Apple이 2026년 3월 14일 Vision Pro 가격을 3,499달러에서 499달러로 인하 발표한다. 이 변화는 가상현실 헤드셋 시장 침체를 타개하기 위한 전략이다.",
+      "tags": [
+        "google",
+        "microsoft",
+        "meta",
+        "apple",
+        "nvidia"
+      ],
+      "anchor": "apple-vision-pro-가격-499달러로-절반-인하하며-대중화-추진"
+    },
+    {
+      "index": 3,
+      "title": "NVIDIA, Blackwell 칩 생산 2배 증설로 AI 수요 폭증 대응",
+      "lead": "NVIDIA가 2026년 3월 16일 Blackwell GB200 칩 생산을 기존 대비 2배 증설한다. TSMC와의 협력으로 공급 부족을 해소한다.",
+      "tags": [
+        "google",
+        "microsoft",
+        "meta",
+        "apple",
+        "nvidia"
+      ],
+      "anchor": "nvidia-blackwell-칩-생산-2배-증설로-ai-수요-폭증-대응"
+    }
+  ]
+}
