@@ -1,86 +1,83 @@
 {
   "twitter": [
     {
-      "id": "bm-027",
-      "author": "elvissun",
-      "date": "2026-03-09",
-      "url": "https://x.com/elvissun/status/2025920521871716562",
-      "whats_happening": "OpenClaw와 Codex/ClaudeCode Agent Swarm을 조합해 1인 개발팀처럼 운영하는 전체 설정을 소개하는 게시글이다.",
-      "why_it_matters": "에이전트 조합을 추상 개념이 아니라 실제 운영 가능한 셋업으로 제시해, 단일 개발자의 개발 흐름을 더 크게 병렬화하고 확장할 수 있음을 보여준다.",
+      "id": "bm-037",
+      "author": "karpathy",
+      "date": "2026-03-16",
+      "url": "https://x.com/karpathy/status/2031135152349524125",
+      "whats_happening": "작성자는 autoresearch로 nanochat의 depth=12 모델을 약 2일간 튜닝해 validation loss를 낮추는 약 20개의 변경을 찾았다. 이 변경들을 실제로 검증하자 모두 누적 효과가 있었고 더 큰 depth=24 모델에도 그대로 전이됐다.",
+      "why_it_matters": "자동 탐색이 우연한 한두 개의 요령이 아니라 여러 개선안을 안정적으로 발굴할 수 있음을 보여준다. 작은 모델에서 찾은 최적화가 더 큰 모델에도 통한다는 점은 실험 비용을 낮추고 모델 개선 루프를 더 빠르게 만든다.",
       "apply_points": [
-        "orchestration에 역할별 스웜 분리를 붙인다.",
-        "mcp-memory를 스웜 공용 기억층으로 둔다.",
-        "tech-review 글 생성을 병렬 체인으로 묶는다."
+        "트위터 프롬프트 개선안을 배치로 누적 검증.",
+        "YouTube·Twitter 공통 템플릿 전이성 측정.",
+        "recall 적용 후 apply_points 회귀 테스트 추가."
       ],
-      "text": "OpenClaw + Codex/ClaudeCode Agent Swarm: 1인 개발팀 [전체 설정]",
+      "text": "3일 전 나는 depth=12 모델에서 autoresearch가 nanochat을 약 2일 동안 튜닝하도록 내버려뒀다. 그것은 validation loss를 개선한 약 20개의 변경을 찾아냈다. 나는 어제 이 변경들을 테스트했고, 그 전부가 additive였고 더 큰 (depth=24) 모델에도 전이됐다. 이 변경들을 전부 쌓아 올리면,",
       "tech_stack": [
-        "OpenClaw",
-        "Codex",
-        "ClaudeCode Agent Swarm"
+        "autoresearch",
+        "nanochat"
       ]
     },
     {
-      "id": "bm-026",
-      "author": "jameesy",
-      "date": "2026-03-09",
-      "url": "https://x.com/jameesy/status/2026628809424781787",
-      "whats_happening": "작성자가 Obsidian과 Claude를 함께 쓰는 구조를 전체 워크스루 형태로 공유하겠다고 알리고 있다. 개인 지식관리와 AI 협업 방식을 실제 구성 관점에서 보여주려는 게시글이다.",
-      "why_it_matters": "Obsidian과 Claude를 어떻게 연결해 쓰는지에 대한 실전 구조를 드러내기 때문에, 메모 축적과 AI 활용 흐름을 설계하려는 사람에게 바로 참고가 된다. 특히 Paul처럼 Obsidian 기반 기록과 프로젝트 문서화를 함께 운영하는 작업 방식에 직접적인 힌트를 준다.",
+      "id": "bm-036",
+      "author": "ylecun",
+      "date": "2026-03-16",
+      "url": "https://x.com/ylecun/status/2031268686984527936",
+      "whats_happening": "새 스타트업 Advanced Machine Intelligence (AMI Labs)가 출범을 공개했고, 10억3천만 달러(8억9천만 유로) 규모의 seed 투자 유치를 마쳤다고 발표했다. 이는 역대 최대급 seed 라운드 중 하나이며 유럽 기업 기준으로는 최대일 가능성이 크고, 동시에 채용도 시작했다.",
+      "why_it_matters": "AI 스타트업 경쟁이 연구·인재·컴퓨트 확보를 위해 초대형 초기 자본을 필요로 하는 단계로 들어갔다는 신호다. 특히 유럽에서도 미국급 규모의 AI 자금 조달이 가능하다는 점에서 투자 지형과 인재 이동에 영향을 줄 수 있다.",
       "apply_points": [
-        "Obsidian 메모를 mcp-memory 입력원으로 고정",
-        "Claude 추출을 tech-review 글감 큐와 연결",
-        "orchestration 문서 구조와 Obsidian 정렬"
+        "유럽 AI 투자 신호를 tech-review에 누적하자.",
+        "AMI Labs 채용을 orchestration 경쟁동향으로 추적하자.",
+        "대형 seed 사례를 mcp-memory 신호로 저장하자."
       ],
-      "text": "내가 Obsidian과 Claude를 어떻게 구조화하는지 (전체 워크스루)",
+      "text": "저희의 새로운 스타트업 Advanced Machine Intelligence (AMI Labs)를 공개합니다.\n저희는 방금 seed 라운드를 마쳤습니다: $1.03B / 890M€, 역대 가장 큰 seed 라운드들 중 하나이며, 아마 유럽 기업으로서는 가장 큰 규모일 것입니다.\n저희는 채용 중입니다!\n\n[배경 이미지는 Veil Nebula입니다 - 제가 제",
+      "tech_stack": []
+    },
+    {
+      "id": "bm-035",
+      "author": "karpathy",
+      "date": "2026-03-16",
+      "url": "https://x.com/karpathy/status/2031137476438548874",
+      "whats_happening": "Karpathy가 GitHub의 autoresearch를 다시 링크하며, 이것이 직접 쓰는 완성품이 아니라 에이전트에 넘겨 적용하는 연구 레시피라는 점을 설명했다. 또 주말 동안 작게 바이럴된 관련 트윗이 더 많은 맥락을 담고 있다고 덧붙였다.",
+      "why_it_matters": "에이전트 활용의 핵심이 특정 앱을 쓰는 것이 아니라 재사용 가능한 조사 패턴을 전달하는 데 있다는 점을 보여준다. Paul의 orchestration, mcp-memory, tech-review 작업처럼 반복 연구 흐름을 설계하는 프로젝트에 바로 연결되는 관점이다.",
+      "apply_points": [
+        "tech-review 소스 수집을 레시피화",
+        "mcp-memory recall을 조사 입력에 연결",
+        "orchestration 아이데이션 루프에 적용"
+      ],
+      "text": "아 맞다 아마 autoresearch를 링크했어야 했네\\n\\nhttps://github.com/karpathy/autoresearch\\n…\\n(이건 직접 \\\"쓰는\\\" 게 아니라, 그냥 레시피/아이디어야 - 네 에이전트에게 주고 네가 중요하게 생각하는 것에 적용하면 돼.)\\n\\n그리고 주말 동안 작게 바이럴됐던, 더 많은 맥락이 담긴 그 트윗도",
       "tech_stack": [
-        "Obsidian",
-        "Claude"
+        "autoresearch",
+        "GitHub"
       ]
     },
     {
-      "id": "bm-025",
-      "author": "trq212",
-      "date": "2026-03-09",
-      "url": "https://x.com/trq212/status/2024574133011673516",
-      "whats_happening": "Claude Code를 만들며 얻은 가장 큰 교훈이 Prompt Caching이라는 점을 짚는 게시글이다. 핵심 메시지는 LLM 기반 코딩 도구에서 캐시 설계가 사실상 성능과 효율을 좌우한다는 것이다.",
-      "why_it_matters": "LLM 워크플로에서는 같은 문맥을 반복해서 보내는 비용과 지연이 크기 때문에 Prompt Caching이 체감 성능과 운영비를 크게 바꾼다. 자동화 파이프라인이 많을수록 이 차이는 더 직접적으로 누적된다.",
+      "id": "bm-034",
+      "author": "realmcore_",
+      "date": "2026-03-16",
+      "url": "https://x.com/realmcore_/status/2032145344612778412",
+      "whats_happening": "Slate V1이 공개됐고, 이를 최초의 swarm native agent로 소개한다. 지원 모델을 써서 오케스트레이션과 실행을 대규모 병렬·고토큰효율로 수행한다고 주장한다.",
+      "why_it_matters": "에이전트 실행을 단일 모델 호출이 아니라 조직형 병렬 시스템으로 확장하려는 방향을 보여준다. 특히 토큰 효율을 전면에 내세워 실제 운영비와 처리량 경쟁에 직접 연결되는 메시지다.",
       "apply_points": [
-        "add-bookmark의 고정 문맥을 캐시 분리.",
-        "mcp-memory recall 요약을 재사용 문맥화.",
-        "포스트 생성 지시문을 공통 템플릿화."
+        "checkpoint Layer B를 swarm으로 분리 실험.",
+        "mcp-memory 승격 탐색을 병렬 워커화.",
+        "orchestration 평가에 토큰 효율 지표 추가."
       ],
-      "text": "Claude Code를 만들며 얻은 교훈: Prompt Caching이 전부다",
+      "text": "오늘.\n\n기쁘게 발표합니다.\n\nSlate V1.\n\nSlate V1은 최초의 swarm native agent입니다.\n\n지원되는 어떤 모델이든 사용해 오케스트레이션하고 실행하세요.\n\n대규모 병렬 처리. 그리고 믿기 어려울 만큼 토큰 효율적입니다.\n\n우리는 조직처럼 확장되는 에이전트를 만들고 있습니다.\n\nnpm i -g",
       "tech_stack": [
-        "Claude Code"
-      ]
-    },
-    {
-      "id": "bm-024",
-      "author": "AlexFinn",
-      "date": "2026-03-09",
-      "url": "https://x.com/AlexFinn/status/2027096146661998662",
-      "whats_happening": "OpenClaw를 로컬 모델에 연결하는 방법을 소개하는 게시글이며, Mac Mini 환경까지 포함해 무제한 무료로 쓰는 구성을 내세운다.",
-      "why_it_matters": "클라우드 비용 없이 OpenClaw를 로컬 추론 환경에 붙일 수 있다는 점이 핵심이다. Mac Mini 같은 비교적 대중적인 로컬 하드웨어에서도 가능하다는 메시지는 진입장벽을 낮춘다.",
-      "apply_points": [
-        "Mac Mini 로컬 추론을 tech-review로 검증.",
-        "OpenClaw 연동법을 mcp-memory Signal로 기록.",
-        "로컬 모델 연결을 orchestration 실험에 편입."
-      ],
-      "text": "무제한 무료 OpenClaw: OpenClaw를 로컬 모델에 연결하는 방법 (Mac Mini에서도)",
-      "tech_stack": [
-        "OpenClaw",
-        "Mac Mini"
+        "Slate V1",
+        "npm"
       ]
     }
   ],
   "youtube": [
     {
-      "title": "From Writing Code to Managing Agents. Most Engineers Aren't Ready | Stanford University, Mihail Eric",
-      "channel": "EO",
-      "video_id": "wEsjK3Smovw",
-      "url": "https://www.youtube.com/watch?v=wEsjK3Smovw",
-      "why": "이 영상은 소프트웨어 엔지니어링의 중심이 코드 작성 자체에서 AI와 에이전트를 관리하는 능력으로 이동하고 있으며, 특히 주니어 개발자는 기본기와 AI 네이티브 역량을 동시에 갖춰야 살아남는다는 점을 Berkeley 졸업생의 1,000곳 지원·2곳 회신 사례와 함께 구체적으로 보여준다.",
-      "section_count": 11,
+      "title": "Claude Code 2.0 Has Arrived (It’s Insane)",
+      "channel": "Simon Scrapes",
+      "video_id": "F4zSxfBe5R0",
+      "url": "https://www.youtube.com/watch?v=F4zSxfBe5R0",
+      "why": "이 영상은 Claude Code의 네 가지 신기능이 단기 감시 자동화, 장기 스케줄 실행, Google Workspace 문서 작업, skill 자체의 계량적 개선까지 한 번에 연결되면서 단순 보조 도구를 상시 작동하는 운영 시스템으로 바꾼다는 점을 보여준다.",
+      "section_count": 9,
       "published_at": ""
     }
   ]
