@@ -593,5 +593,198 @@
       "mcp-memory를 스웜 공용 기억층으로 둔다.",
       "tech-review 글 생성을 병렬 체인으로 묶는다."
     ]
+  },
+  {
+    "id": "bm-028",
+    "author": "p_naix",
+    "date": "2026-03-15",
+    "added_at": "2026-03-16",
+    "url": "https://x.com/p_naix/status/2033224044288627189",
+    "text": "Are you in Claude Peak Hours? Find out here\n\n\nhttp://\nclaudethrottle.com",
+    "whats_happening": "Claude Peak Hours 시간대인지 확인할 수 있는 외부 사이트 claudethrottle.com을 소개하는 짧은 안내 게시물이다. 사용자는 링크를 눌러 현재 혼잡 여부를 바로 확인할 수 있다.",
+    "why_it_matters": "Claude 사용 가능성과 응답 체감이 시간대 영향을 받을 때, 작업 타이밍을 조정할 근거를 준다. Paul의 북마크 자동화처럼 배치성 작업에도 실행 시점 판단에 도움이 된다.",
+    "translation": "지금 Claude Peak Hours 시간대에 있나요? 여기서 확인해 보세요.\n\nhttp://\nclaudethrottle.com",
+    "tech_stack": [
+      "Claude"
+    ],
+    "apply_points": [
+      "북마크 배치 전 Claude 혼잡도 확인을 넣어라.",
+      "3시간 예약 작업을 비혼잡 시간대로 옮겨라.",
+      "Claude 단계는 Codex 우회도 함께 검토하라."
+    ]
+  },
+  {
+    "id": "bm-029",
+    "author": "lucas_flatwhite",
+    "date": "2026-02-07",
+    "added_at": "2026-03-16",
+    "url": "https://x.com/lucas_flatwhite/status/2019961532906615146",
+    "text": "Claude Code 완전 가이드: 해커톤 우승자의 70가지 파워 팁\n\nhttps://\ndrive.google.com/file/d/1x2x1T4\nlzTISnHGN8nd4KtMhL8iwi6QgU/view\n…\n\n54 페이지 분량의 자료네요! Part 1~13 까지 정말 좋은 내용으로 채워져있네요.\n\n> 이 책은 단순한 기능 나열식 가이드를 넘어, Anthropic 해커톤 우승자 ykdojo의 생생한 경험과 검증된 워크플로우, 그리고",
+    "whats_happening": "해커톤 우승자 ykdojo의 경험을 바탕으로 한 'Claude Code 완전 가이드' 54페이지 자료가 공유됐다. 게시물은 이 자료가 70가지 파워 팁과 Part 1~13 구성으로 채워져 있다고 소개한다.",
+    "why_it_matters": "이 자료는 단순한 기능 소개가 아니라 실제 우승자의 검증된 워크플로우를 담았다는 점이 핵심이다. Claude Code를 실전에서 더 잘 쓰고 싶은 사람에게 바로 적용 가능한 운영 감각을 준다.",
+    "translation": "Claude Code 완전 가이드: 해커톤 우승자의 70가지 파워 팁\n\nhttps://\ndrive.google.com/file/d/1x2x1T4\nlzTISnHGN8nd4KtMhL8iwi6QgU/view\n…\n\n54 페이지 분량의 자료네요! Part 1~13 까지 정말 좋은 내용으로 채워져있네요.\n\n> 이 책은 단순한 기능 나열식 가이드를 넘어, Anthropic 해커톤 우승자 ykdojo의 생생한 경험과 검증된 워크플로우, 그리고",
+    "tech_stack": [
+      "Claude Code",
+      "Google Drive"
+    ],
+    "apply_points": [
+      "mcp-memory recall 시작 규칙 다듬기",
+      "orchestration 스킬에 실전 팁 반영",
+      "Paul 브리핑 생성에 워크플로우 추가"
+    ]
+  },
+  {
+    "id": "bm-030",
+    "author": "lucas_flatwhite",
+    "date": "2026-03-15",
+    "added_at": "2026-03-16",
+    "url": "https://x.com/lucas_flatwhite/status/2033180991943315776",
+    "text": "Claude 프롬프트 작성 Best Practices 한글버전 PDF (25 페이지)\n\nhttps://\ndrive.google.com/file/d/1AK72qZ\nwAg7B8ifXEnwpQaVgpL-of_Seh/view\n…\n\nClaude 공식 문서에 Opus 4.6, Sonnet 4.6, Haiku 4.5를 위한 프롬프트 엔지니어링 가이드가 정말 잘 정리되어 있어요.\n\n다국어 버전이 일부 차이가 나는 부분이 있어서 다시 한국어로 만들었습니다. 이런",
+    "whats_happening": "Claude 공식 문서의 프롬프트 엔지니어링 가이드를 바탕으로, Opus 4.6·Sonnet 4.6·Haiku 4.5용 Best Practices 한글 PDF 25페이지가 공유됐다. 작성자는 다국어 버전 간 차이를 보완하려고 한국어판을 다시 만들었다.",
+    "why_it_matters": "최신 Claude 모델별 프롬프트 작성 원칙을 한국어로 바로 참고할 수 있어, 실무 적용과 팀 내 공유 비용을 줄인다. 특히 번역본 간 차이를 직접 보정했다는 점이 모델별 지침 해석 오류를 줄이는 데 의미가 있다.",
+    "translation": "Claude 프롬프트 작성 Best Practices 한글버전 PDF (25 페이지)\n\nhttps://drive.google.com/file/d/1AK72qZwAg7B8ifXEnwpQaVgpL-of_Seh/view\n…\n\nClaude 공식 문서에 Opus 4.6, Sonnet 4.6, Haiku 4.5를 위한 프롬프트 엔지니어링 가이드가 정말 잘 정리되어 있어요.\n\n다국어 버전이 일부 차이가 나는 부분이 있어서 다시 한국어로 만들었습니다. 이런",
+    "tech_stack": [
+      "Claude",
+      "Opus 4.6",
+      "Sonnet 4.6",
+      "Haiku 4.5"
+    ],
+    "apply_points": [
+      "mcp-memory 요약 프롬프트를 모델별 분리.",
+      "orchestration 에이전트 한국어 지침을 재점검.",
+      "project-context 브리핑 문체를 통일."
+    ]
+  },
+  {
+    "id": "bm-031",
+    "author": "lucas_flatwhite",
+    "date": "2026-03-12",
+    "added_at": "2026-03-16",
+    "url": "https://x.com/lucas_flatwhite/status/2032098693055463844",
+    "text": "Codex Best practices 한글버전 PDF\n\nhttps://\ndrive.google.com/file/d/1uKV0ni\nz2xg3y8AOeOT0igkocW6ydjTg4/view\n…\n\n어제 OpenAI Developers에 게시된 Codex 모범사례 내용은 정말 잘 정리가 되어 있어요.\n\n그래서 한국어 버전을 만들었습니다. 이런 내용으로 구성되어 있어요.\n\n1. 강력한 첫 사용: 컨텍스트와 프롬프트\n2. 어려운 작업은 먼저 계획",
+    "whats_happening": "OpenAI Developers에 올라온 Codex 모범사례를 바탕으로, 그 내용을 정리한 한국어 PDF 버전이 공유됐다. 게시글은 특히 첫 사용 시 컨텍스트와 프롬프트를 강하게 잡는 방법, 그리고 어려운 작업은 먼저 계획하는 원칙을 소개한다.",
+    "why_it_matters": "Codex 활용법을 한국어로 바로 참고할 수 있게 정리해 접근성이 높아졌다. 특히 실무 자동화에서 프롬프트 품질과 계획 단계의 중요성을 짧고 명확하게 전달한다.",
+    "translation": "Codex Best practices 한글버전 PDF\n\nhttps://\ndrive.google.com/file/d/1uKV0ni\nz2xg3y8AOeOT0igkocW6ydjTg4/view\n…\n\n어제 OpenAI Developers에 게시된 Codex 모범사례 내용은 정말 잘 정리가 되어 있어요.\n\n그래서 한국어 버전을 만들었습니다. 이런 내용으로 구성되어 있어요.\n\n1. 강력한 첫 사용: 컨텍스트와 프롬프트\n2. 어려운 작업은 먼저 계획",
+    "tech_stack": [
+      "Codex"
+    ],
+    "apply_points": [
+      "add-bookmark 첫 프롬프트 틀을 정리한다.",
+      "긴 트윗 분석엔 계획 단계를 먼저 넣는다.",
+      "Codex 한글 가이드로 자동화 기준을 맞춘다."
+    ]
+  },
+  {
+    "id": "bm-032",
+    "author": "GeekNewsHada",
+    "date": "2026-03-13",
+    "added_at": "2026-03-16",
+    "url": "https://x.com/GeekNewsHada/status/2032324997516333188",
+    "text": "OpenAI의 에이전트 구축을 위한 실용 가이드\n\n- LLM의 추론, 멀티모달, 도구 사용 능력이 향상되면서 사용자를 대신해 독립적으로 워크플로를 수행하는 새로운 시스템 범주인 에이전트가 등장  \n- 에이전트는 모델(LLM), 도구(API/외부 함수), 지침(가이드라인)의 세 가지…",
+    "whats_happening": "OpenAI의 에이전트 구축 실용 가이드를 소개하며, LLM 역량 향상으로 사용자를 대신해 워크플로를 수행하는 에이전트가 부상했다고 설명한다. 또한 에이전트의 핵심 구성요소로 모델, 도구, 지침을 제시한다.",
+    "why_it_matters": "에이전트를 단순 챗봇이 아니라 독립적으로 일을 수행하는 시스템으로 설계해야 한다는 기준을 준다. 워크플로 자동화와 도구 연결을 만드는 팀이 바로 적용할 수 있는 구조를 압축해 보여준다.",
+    "translation": "OpenAI의 에이전트 구축을 위한 실용 가이드\n\n- LLM의 추론, 멀티모달, 도구 사용 능력이 향상되면서 사용자를 대신해 독립적으로 워크플로를 수행하는 새로운 시스템 범주인 에이전트가 등장  \n- 에이전트는 모델(LLM), 도구(API/외부 함수), 지침(가이드라인)의 세 가지…",
+    "tech_stack": [],
+    "apply_points": [
+      "요약 전 recall로 자동화 맥락을 넣어라.",
+      "북마크 분류에 agent workflow 축을 추가하라.",
+      "프롬프트에 모델·도구·지침 체크를 넣어라."
+    ]
+  },
+  {
+    "id": "bm-033",
+    "author": "park_jinwoo",
+    "date": "2026-03-11",
+    "added_at": "2026-03-16",
+    "url": "https://x.com/park_jinwoo/status/2031603114097389686",
+    "text": "작년 소넷 3.7 이후로 회사에서 수동으로 작성한 코드가 거의 없고 올해 초부터는 빈 프로젝트로 시작해 에이전트가 수행하도록만 하고 있는데 이 글을 보니 생각하는 방향이 대략적으로 비슷하다 (근데 제품 규모를 가늠해보면 내 쪽 퍼포먼스가 수십배는 뒤쳐지는 것 같다)",
+    "whats_happening": "작성자는 작년 Sonnet 3.7 이후 회사에서 수동으로 짠 코드가 거의 없었고, 올해 초부터는 빈 프로젝트에서 시작해 에이전트가 대부분의 구현을 수행하게 하고 있다고 말한다. 지금 본 글이 자신의 개발 방향과 대체로 비슷하지만, 제품 규모를 보면 자신의 퍼포먼스는 수십 배 뒤처진다고 평가한다.",
+    "why_it_matters": "이건 수동 코딩 중심 개발에서 에이전트 주도 구현으로 작업 방식이 실제로 이동하고 있음을 보여준다. 동시에 성패를 가르는 핵심이 단순 사용 여부가 아니라 제품 규모를 버티는 실행력과 오케스트레이션 성능이라는 점을 드러낸다.",
+    "translation": "작년 Sonnet 3.7 이후로 회사에서 수동으로 작성한 코드가 거의 없고 올해 초부터는 빈 프로젝트로 시작해 에이전트가 수행하도록만 하고 있는데 이 글을 보니 생각하는 방향이 대략적으로 비슷하다 (근데 제품 규모를 가늠해보면 내 쪽 퍼포먼스가 수십배는 뒤쳐지는 것 같다)",
+    "tech_stack": [
+      "Sonnet 3.7"
+    ],
+    "apply_points": [
+      "orchestration에 빈 프로젝트 부팅 프롬프트를 추가한다.",
+      "mcp-memory 승격 점수로 산출물 품질을 추적한다.",
+      "ideation 실험에 작업당 처리량 비교를 넣는다."
+    ]
+  },
+  {
+    "id": "bm-034",
+    "author": "realmcore_",
+    "date": "2026-03-12",
+    "added_at": "2026-03-16",
+    "url": "https://x.com/realmcore_/status/2032145344612778412",
+    "text": "Today.\n\nIm happy to announce.\n\nSlate V1.\n\nSlate V1 is the first swarm native agent.\n\nUse any of the supported models to orchestrate and execute.\n\nMassively parallel. And incredibly token efficient.\n\nWe are building agents that scale like an organization.\n\nnpm i -g",
+    "whats_happening": "Slate V1이 공개됐고, 이를 최초의 swarm native agent로 소개한다. 지원 모델을 써서 오케스트레이션과 실행을 대규모 병렬·고토큰효율로 수행한다고 주장한다.",
+    "why_it_matters": "에이전트 실행을 단일 모델 호출이 아니라 조직형 병렬 시스템으로 확장하려는 방향을 보여준다. 특히 토큰 효율을 전면에 내세워 실제 운영비와 처리량 경쟁에 직접 연결되는 메시지다.",
+    "translation": "오늘.\n\n기쁘게 발표합니다.\n\nSlate V1.\n\nSlate V1은 최초의 swarm native agent입니다.\n\n지원되는 어떤 모델이든 사용해 오케스트레이션하고 실행하세요.\n\n대규모 병렬 처리. 그리고 믿기 어려울 만큼 토큰 효율적입니다.\n\n우리는 조직처럼 확장되는 에이전트를 만들고 있습니다.\n\nnpm i -g",
+    "tech_stack": [
+      "Slate V1",
+      "npm"
+    ],
+    "apply_points": [
+      "checkpoint Layer B를 swarm으로 분리 실험.",
+      "mcp-memory 승격 탐색을 병렬 워커화.",
+      "orchestration 평가에 토큰 효율 지표 추가."
+    ]
+  },
+  {
+    "id": "bm-035",
+    "author": "karpathy",
+    "date": "2026-03-09",
+    "added_at": "2026-03-16",
+    "url": "https://x.com/karpathy/status/2031137476438548874",
+    "text": "oh yeah i should have linked autoresearch probably\n\nhttps://\ngithub.com/karpathy/autor\nesearch\n…\n(you don't \"use it\" directly, it's just a recipe/idea - give it to your agent and apply to what you care about.)\n\nand the tweet about it that went mini-viral over the weekend with more context",
+    "whats_happening": "Karpathy가 GitHub의 autoresearch를 다시 링크하며, 이것이 직접 쓰는 완성품이 아니라 에이전트에 넘겨 적용하는 연구 레시피라는 점을 설명했다. 또 주말 동안 작게 바이럴된 관련 트윗이 더 많은 맥락을 담고 있다고 덧붙였다.",
+    "why_it_matters": "에이전트 활용의 핵심이 특정 앱을 쓰는 것이 아니라 재사용 가능한 조사 패턴을 전달하는 데 있다는 점을 보여준다. Paul의 orchestration, mcp-memory, tech-review 작업처럼 반복 연구 흐름을 설계하는 프로젝트에 바로 연결되는 관점이다.",
+    "translation": "아 맞다 아마 autoresearch를 링크했어야 했네\\n\\nhttps://github.com/karpathy/autoresearch\\n…\\n(이건 직접 \\\"쓰는\\\" 게 아니라, 그냥 레시피/아이디어야 - 네 에이전트에게 주고 네가 중요하게 생각하는 것에 적용하면 돼.)\\n\\n그리고 주말 동안 작게 바이럴됐던, 더 많은 맥락이 담긴 그 트윗도",
+    "tech_stack": [
+      "autoresearch",
+      "GitHub"
+    ],
+    "apply_points": [
+      "tech-review 소스 수집을 레시피화",
+      "mcp-memory recall을 조사 입력에 연결",
+      "orchestration 아이데이션 루프에 적용"
+    ]
+  },
+  {
+    "id": "bm-036",
+    "author": "ylecun",
+    "date": "2026-03-10",
+    "added_at": "2026-03-16",
+    "url": "https://x.com/ylecun/status/2031268686984527936",
+    "text": "Unveiling our new startup Advanced Machine Intelligence (AMI Labs).\nWe just completed our seed round: $1.03B / 890M€, one the largest seeds ever, probably the largest for a European company.\nWe're hiring! \n\n[the background image is the Veil Nebula -  a picture I took from my",
+    "whats_happening": "새 스타트업 Advanced Machine Intelligence (AMI Labs)가 출범을 공개했고, 10억3천만 달러(8억9천만 유로) 규모의 seed 투자 유치를 마쳤다고 발표했다. 이는 역대 최대급 seed 라운드 중 하나이며 유럽 기업 기준으로는 최대일 가능성이 크고, 동시에 채용도 시작했다.",
+    "why_it_matters": "AI 스타트업 경쟁이 연구·인재·컴퓨트 확보를 위해 초대형 초기 자본을 필요로 하는 단계로 들어갔다는 신호다. 특히 유럽에서도 미국급 규모의 AI 자금 조달이 가능하다는 점에서 투자 지형과 인재 이동에 영향을 줄 수 있다.",
+    "translation": "저희의 새로운 스타트업 Advanced Machine Intelligence (AMI Labs)를 공개합니다.\n저희는 방금 seed 라운드를 마쳤습니다: $1.03B / 890M€, 역대 가장 큰 seed 라운드들 중 하나이며, 아마 유럽 기업으로서는 가장 큰 규모일 것입니다.\n저희는 채용 중입니다!\n\n[배경 이미지는 Veil Nebula입니다 - 제가 제",
+    "tech_stack": [],
+    "apply_points": [
+      "유럽 AI 투자 신호를 tech-review에 누적하자.",
+      "AMI Labs 채용을 orchestration 경쟁동향으로 추적하자.",
+      "대형 seed 사례를 mcp-memory 신호로 저장하자."
+    ]
+  },
+  {
+    "id": "bm-037",
+    "author": "karpathy",
+    "date": "2026-03-09",
+    "added_at": "2026-03-16",
+    "url": "https://x.com/karpathy/status/2031135152349524125",
+    "text": "Three days ago I left autoresearch tuning nanochat for ~2 days on depth=12 model. It found ~20 changes that improved the validation loss. I tested these changes yesterday and all of them were additive and transferred to larger (depth=24) models. Stacking up all of these changes,",
+    "whats_happening": "작성자는 autoresearch로 nanochat의 depth=12 모델을 약 2일간 튜닝해 validation loss를 낮추는 약 20개의 변경을 찾았다. 이 변경들을 실제로 검증하자 모두 누적 효과가 있었고 더 큰 depth=24 모델에도 그대로 전이됐다.",
+    "why_it_matters": "자동 탐색이 우연한 한두 개의 요령이 아니라 여러 개선안을 안정적으로 발굴할 수 있음을 보여준다. 작은 모델에서 찾은 최적화가 더 큰 모델에도 통한다는 점은 실험 비용을 낮추고 모델 개선 루프를 더 빠르게 만든다.",
+    "translation": "3일 전 나는 depth=12 모델에서 autoresearch가 nanochat을 약 2일 동안 튜닝하도록 내버려뒀다. 그것은 validation loss를 개선한 약 20개의 변경을 찾아냈다. 나는 어제 이 변경들을 테스트했고, 그 전부가 additive였고 더 큰 (depth=24) 모델에도 전이됐다. 이 변경들을 전부 쌓아 올리면,",
+    "tech_stack": [
+      "autoresearch",
+      "nanochat"
+    ],
+    "apply_points": [
+      "트위터 프롬프트 개선안을 배치로 누적 검증.",
+      "YouTube·Twitter 공통 템플릿 전이성 측정.",
+      "recall 적용 후 apply_points 회귀 테스트 추가."
+    ]
   }
 ]
