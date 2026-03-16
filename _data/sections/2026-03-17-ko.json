@@ -2,47 +2,42 @@
   "date": "2026-03-17",
   "lang": "ko",
   "post_url": "/ko/2026/03/17/daily-tech-review/",
-  "post_title": "지난 48시간 내 Google의 AI 칩 개발 가속화, Apple의 Vision Pro 가격 인하, NVIDIA의 Blackwell 생산 확대가 빅테크 공급망과 AI 경쟁 구도를 재편한다.",
+  "post_title": "엔비디아의 Vera Rubin AI 팩토리, Z.ai의 에이전트 특화 GLM-5-Turbo, Google Maps의 Gemini 기반 Ask Maps/Immersive Navigation 론칭으로 에이전트+물리 세계+실사용 워크플로 스택이 동시에 구체화되고 있다.",
   "source_type": "perplexity",
   "sections": [
     {
       "index": 1,
-      "title": "Google, 자체 AI 칩 'Titan' 대량 생산 착수로 Nvidia 의존 탈피",
-      "lead": "Google이 2026년 3월 15일 자체 개발 AI 칩 Titan의 대량 생산을 시작한다. 이 칩은 Google Cloud의 AI 워크로드를 40% 비용 절감하며 처리한다.",
+      "title": "NVIDIA Vera Rubin AI 팩토리와 GTC 2026, 에이전트 시대용 인프라의 기준을 다시 쓴다",
+      "lead": "엔비디아가 GTC 2026에서 Vera CPU·Rubin GPU·NVLink 6·ConnectX-9·BlueField-4·Spectrum-6를 묶은 **Vera Rubin NVL72 AI 팩토리 플랫폼**을 공식 론칭하고, 에이전트 시대를 겨냥한 풀스택 하드웨어 전략을 공개했다.",
       "tags": [
-        "google",
-        "microsoft",
-        "meta",
-        "apple",
+        "ai-models",
+        "agents",
         "nvidia"
       ],
-      "anchor": "google-자체-ai-칩-titan-대량-생산-착수로-nvidia-의존-탈피"
+      "anchor": "nvidia-vera-rubin-ai-팩토리와-gtc-2026-에이전트-시대용-인프라의-기준을-다시-쓴다"
     },
     {
       "index": 2,
-      "title": "Apple, Vision Pro 가격 499달러로 절반 인하하며 대중화 추진",
-      "lead": "Apple이 2026년 3월 14일 Vision Pro 가격을 3,499달러에서 499달러로 인하 발표한다. 이 변화는 가상현실 헤드셋 시장 침체를 타개하기 위한 전략이다.",
+      "title": "Z.ai GLM-5-Turbo, OpenClaw 에이전트 워크플로에 최적화된 첫 '에이전트-퍼스트' LLM을 공개하다",
+      "lead": "중국의 Z.ai(구 Zhipu AI)가 OpenClaw 시나리오에 특화된 대규모 언어 모델 GLM-5-Turbo를 2026년 3월 15~16일 공개하며, 기존 범용 LLM 위에 덧씌우는 방식이 아닌 '에이전트-퍼스트' 학습을 거친 상업용 모델을 선보였다.",
       "tags": [
-        "google",
-        "microsoft",
-        "meta",
-        "apple",
-        "nvidia"
+        "ai-models",
+        "agents",
+        "llm"
       ],
-      "anchor": "apple-vision-pro-가격-499달러로-절반-인하하며-대중화-추진"
+      "anchor": "zai-glm-5-turbo-openclaw-에이전트-워크플로에-최적화된-첫-에이전트-퍼스트-llm을-공개하"
     },
     {
       "index": 3,
-      "title": "NVIDIA, Blackwell 칩 생산 2배 증설로 AI 수요 폭증 대응",
-      "lead": "NVIDIA가 2026년 3월 16일 Blackwell GB200 칩 생산을 기존 대비 2배 증설한다. TSMC와의 협력으로 공급 부족을 해소한다.",
+      "title": "Google Maps, Gemini 기반 Ask Maps와 Immersive Navigation으로 '대화형 내비게이션' 시대로 들어가다",
+      "lead": "Google이 Gemini 모델을 Google Maps에 본격 통합해 대화형 검색 기능 'Ask Maps'와 3D 'Immersive Navigation'을 론칭하며, 지도·길찾기 경험을 지난 10여 년 중 가장 큰 폭으로 개편했다.",
       "tags": [
-        "google",
-        "microsoft",
-        "meta",
-        "apple",
-        "nvidia"
+        "ai-models",
+        "agents",
+        "ma",
+        "google"
       ],
-      "anchor": "nvidia-blackwell-칩-생산-2배-증설로-ai-수요-폭증-대응"
+      "anchor": "google-maps-gemini-기반-ask-maps와-immersive-navigation으로-대화형-내"
     }
   ]
 }
