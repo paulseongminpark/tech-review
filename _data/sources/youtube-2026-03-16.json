@@ -1,0 +1,35 @@
+[
+  {
+    "video_id": "F4zSxfBe5R0",
+    "title": "Claude Code 2.0 Has Arrived (It’s Insane)",
+    "channel": "Simon Scrapes",
+    "published_at": "",
+    "fetched_at": "2026-03-16",
+    "playlist_index": 0,
+    "url": "https://www.youtube.com/watch?v=F4zSxfBe5R0",
+    "playlist": "blog",
+    "source_type": "youtube"
+  },
+  {
+    "video_id": "qKU-e0x2EmE",
+    "title": "Stop Fixing Your Claude Skills. Autoresearch Does It For You",
+    "channel": "Nick Saraev",
+    "published_at": "",
+    "fetched_at": "2026-03-16",
+    "playlist_index": 1,
+    "url": "https://www.youtube.com/watch?v=qKU-e0x2EmE",
+    "playlist": "blog",
+    "source_type": "youtube"
+  },
+  {
+    "video_id": "HY_JyxAZsiE",
+    "title": "Spec-Driven Development: Agentic Coding at FAANG Scale and Quality — Al Harris, Amazon Kiro",
+    "channel": "AI Engineer",
+    "published_at": "",
+    "fetched_at": "2026-03-16",
+    "playlist_index": 2,
+    "url": "https://www.youtube.com/watch?v=HY_JyxAZsiE",
+    "playlist": "blog",
+    "source_type": "youtube"
+  }
+]
