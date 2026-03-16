@@ -186,7 +186,6 @@ function openModal(i) {
   const whyItMatters   = bm.why_it_matters  || bm.smart_brevity?.what || '';
   const applyList = (bm.apply_points || []).map(p => `<li>${escHtml(p)}</li>`).join('');
   const tweetContent   = bm.translation || bm.text || '';
-  const isKo = !!bm.translation;
 
   document.getElementById('bm-modal-left').innerHTML = `
     <div class="bm-modal-meta">
@@ -214,8 +213,8 @@ function openModal(i) {
   `;
 
   const baseurl = "{{ site.baseurl }}";
-  const images = (bm.tweet_images || []).map(src =>
-    `<img src="${baseurl}${src}" alt="tweet image" style="width:100%;border-radius:8px;margin-top:1.2rem;display:block;">`
+  const legacyImages = (bm.tweet_images || []).map(src =>
+    `<img src="${baseurl}${src}" alt="tweet image" style="width:100%;border-radius:8px;margin-top:1rem;display:block;">`
   ).join('');
 
   const bodyText = escHtml(tweetContent).replace(
@@ -223,10 +222,43 @@ function openModal(i) {
     `<a href="$1" target="_blank" rel="noopener" style="color:#0066cc;word-break:break-all;">$1</a>`
   );
 
+  let cardHtml = '';
+  if (bm.card) {
+    const c = bm.card;
+    const thumbStyle = c.thumbnail ? `background-image:url('${c.thumbnail}')` : '';
+    cardHtml = `
+    <a class="bm-link-card" href="${c.url || bm.url}" target="_blank" rel="noopener" style="display:flex;border:1px solid #e0e0e0;border-radius:12px;overflow:hidden;margin-top:1rem;text-decoration:none;color:inherit;">
+      ${c.thumbnail ? `<div style="flex:0 0 120px;background-size:cover;background-position:center;min-height:90px;${thumbStyle}"></div>` : ''}
+      <div style="padding:0.7rem 0.9rem;flex:1;min-width:0;">
+        <div style="font-size:0.65rem;color:#888;">${escHtml(c.domain || '')}</div>
+        <div style="font-size:0.78rem;font-weight:600;color:#1a1a1a;">${escHtml(c.title || '')}</div>
+        ${c.description ? `<div style="font-size:0.68rem;color:#666;margin-top:0.2rem;">${escHtml(c.description)}</div>` : ''}
+      </div>
+    </a>`;
+  }
+
+  let mediaHtml = '';
+  const media = bm.media || [];
+  if (media.length > 0) {
+    const items = media.slice(0, 4).map(m => {
+      const isVideo = m.type === 'video' || m.type === 'animated_gif';
+      const clickUrl = isVideo && m.video_url ? m.video_url : m.url;
+      return `<div style="position:relative;overflow:hidden;background:#f0f0f0;">
+        <a href="${clickUrl}" target="_blank" rel="noopener">
+          <img src="${m.url}" alt="media" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
+          ${isVideo ? '<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.25);"><div style="width:0;height:0;border-left:18px solid #fff;border-top:11px solid transparent;border-bottom:11px solid transparent;"></div></div>' : ''}
+        </a>
+      </div>`;
+    }).join('');
+    mediaHtml = `<div style="display:grid;gap:4px;margin-top:1rem;border-radius:12px;overflow:hidden;grid-template-columns:${media.length > 1 ? '1fr 1fr' : '1fr'};">${items}</div>`;
+  }
+
   document.getElementById('bm-modal-right').innerHTML = `
     <p class="bm-tweet-label">Original</p>
-    <p class="bm-tweet-body${isKo ? '' : ' en'}">${bodyText}</p>
-    ${images}
+    <p class="bm-tweet-body">${bodyText}</p>
+    ${mediaHtml}
+    ${cardHtml}
+    ${legacyImages}
   `;
 
   document.getElementById('bm-overlay').classList.add('active');

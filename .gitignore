@@ -15,3 +15,10 @@ node_modules/
 package-lock.json
 .playwright-profile/
 _data/bookmarks-raw.json
+
+# CDP Chrome auth
+config/twitter-auth.json
+
+# Temp
+_tmp/
+_data/analyze-status.json
