@@ -77,7 +77,14 @@
     "text": "Introducing React Grab\n\nSelect any element on your page → tell Claude Code or Codex what to change\n\nFully open source\n\nnpx react-grab@latest",
     "whats_happening": "React Grab이라는 오픈소스 도구가 공개됐다. 페이지에서 원하는 요소를 직접 선택해 Claude Code나 Codex에 무엇을 바꿀지 지시할 수 있고, npx react-grab@latest로 바로 실행한다.",
     "why_it_matters": "AI에게 화면 수정을 맡길 때 어떤 요소를 바꿔야 하는지 지정하는 마찰을 크게 줄인다. React 작업에서 선택 기반 편집 흐름을 더해 프로토타이핑과 반복 수정 속도를 높일 수 있다.",
-    "translation": "React Grab를 소개합니다\n\n페이지의 아무 요소나 선택한 다음 → Claude Code나 Codex에 무엇을 바꿀지 말하세요\n\n완전한 오픈소스입니다\n\nnpx react-grab@latest"
+    "translation": "React Grab를 소개합니다\n\n페이지의 아무 요소나 선택한 다음 → Claude Code나 Codex에 무엇을 바꿀지 말하세요\n\n완전한 오픈소스입니다\n\nnpx react-grab@latest",
+    "media": [
+      {
+        "type": "video",
+        "url": "https://pbs.twimg.com/amplify_video_thumb/2029509470423048192/img/CINRhdouxy-GUpPo.jpg",
+        "video_url": "https://video.twimg.com/amplify_video/2029509470423048192/vid/avc1/1880x1080/0u6oJKu_9UJg0ImO.mp4?tag=21"
+      }
+    ]
   },
   {
     "id": "bm-004",
@@ -226,7 +233,14 @@
     "text": "This is how you can give Claude Code the ability to parse any website in the world.\n\nI recorded this video last week.\n\nPeople loved it. I keep getting messages about it.",
     "whats_happening": "작성자가 Claude Code에 세상 어떤 웹사이트든 파싱할 수 있는 능력을 붙이는 방법을 보여주는 영상을 지난주에 녹화해 공유했고, 큰 반응을 얻고 있다고 말했다.",
     "why_it_matters": "Claude Code를 단순 코딩 보조를 넘어 웹 데이터를 직접 읽는 작업 에이전트로 확장할 수 있다는 뜻이다. 웹 파싱이 붙으면 문서화되지 않은 사이트도 자동화 파이프라인의 입력원으로 삼기 쉬워진다.",
-    "translation": "이것이 Claude Code에게 세상 어떤 웹사이트든 파싱할 수 있는 능력을 주는 방법이다.\n\n나는 이 영상을 지난주에 녹화했다.\n\n사람들이 정말 좋아했다. 이 영상에 대한 메시지를 계속 받고 있다."
+    "translation": "이것이 Claude Code에게 세상 어떤 웹사이트든 파싱할 수 있는 능력을 주는 방법이다.\n\n나는 이 영상을 지난주에 녹화했다.\n\n사람들이 정말 좋아했다. 이 영상에 대한 메시지를 계속 받고 있다.",
+    "media": [
+      {
+        "type": "video",
+        "url": "https://pbs.twimg.com/amplify_video_thumb/2029952666768637952/img/WZlbEDHH2qVIHTEJ.jpg",
+        "video_url": "https://video.twimg.com/amplify_video/2029952666768637952/vid/avc1/1280x720/x4pDoI7MYxwk1ZK1.mp4?tag=14"
+      }
+    ]
   },
   {
     "id": "bm-010",
@@ -242,10 +256,18 @@
       "GAS 의존 작업 일부를 CLI로 축소."
     ],
     "added_at": "2026-03-08",
-    "text": "official google workspace cli!! github.com/googleworkspac…",
+    "text": "official google workspace cli!!\n\nhttps://github.com/googleworkspace/cli",
     "whats_happening": "Google Workspace용 공식 CLI가 나왔다는 짧은 발표다. Google이 Workspace 작업을 커맨드라인에서 다루는 공식 도구를 내놨음을 알린다.",
     "why_it_matters": "Workspace 연동 작업을 스크립트와 터미널 중심으로 자동화할 수 있어 운영 비용을 줄일 수 있다. 특히 Gmail 등 Workspace 기반 워크플로를 쓰는 자동화 시스템에 공식 지원 경로가 생긴다는 점이 중요하다.",
-    "translation": "공식 Google Workspace CLI!!"
+    "translation": "공식 Google Workspace CLI!!",
+    "card": {
+      "type": "summary_large_image",
+      "title": "GitHub - googleworkspace/cli: Google Workspace CLI — one command-line tool for Drive, Gmail,...",
+      "description": "Google Workspace CLI — one command-line tool for Drive, Gmail, Calendar, Sheets, Docs, Chat, Admin, and more. Dynamically built from Google Discovery Service. Includes AI agent skills. - googlework...",
+      "domain": "github.com",
+      "url": "https://t.co/uWFUZanlNj",
+      "thumbnail": "https://pbs.twimg.com/card_img/2032810213624193024/WS1AWKDk?format=jpg&name=orig"
+    }
   },
   {
     "id": "bm-011",
@@ -261,10 +283,18 @@
       "Paul 메모 흐름의 읽을거리 후보로 추가."
     ],
     "added_at": "2026-03-08",
-    "text": "this entire paper is great read as a window into how Claude thinks anthropic.com/research/traci…",
+    "text": "this entire paper is great read as a window into how Claude thinks\n\nhttps://www.anthropic.com/research/tracing-thoughts-language-model",
     "whats_happening": "작성자가 한 논문 전체를 Claude가 어떻게 생각하는지 들여다볼 수 있는 창처럼 읽을 수 있다며 강하게 추천하고 있다.",
     "why_it_matters": "이 평가는 Claude를 단순한 출력 결과가 아니라 사고 방식의 관점에서 해석하게 만든다. 모델 분석이나 기술 리뷰를 할 때 내부 추론 프레임을 읽는 기준점으로 쓸 수 있다.",
-    "translation": "이 논문 전체는 Claude가 어떻게 생각하는지 들여다보는 창으로서 정말 훌륭한 읽을거리다."
+    "translation": "이 논문 전체는 Claude가 어떻게 생각하는지 들여다보는 창으로서 정말 훌륭한 읽을거리다.",
+    "card": {
+      "type": "summary_large_image",
+      "title": "Tracing the thoughts of a large language model",
+      "description": "Anthropic's latest interpretability research: a new microscope to understand Claude's internal mechanisms",
+      "domain": "anthropic.com",
+      "url": "https://t.co/zzVvwfNu3C",
+      "thumbnail": "https://pbs.twimg.com/card_img/2033120979757481984/slofUFqN?format=jpg&name=orig"
+    }
   },
   {
     "id": "bm-012",
@@ -284,7 +314,14 @@
     "text": "🚨 BREAKING: A developer on GitHub just built a tool that turns any GitHub repo into an interactive knowledge graph and open sourced it for free.\n\nIt's called GitNexus. Think of it as a visual X-ray of your codebase but with an AI agent you can actually talk to.\n\nNo server. No subscription. No enterprise sales call.\n\nHere's what it does inside your browser:\n→ Parses your entire GitHub repo or ZIP file in seconds\n→ Builds a live interactive knowledge graph with D3.js\n→ Maps every function, class, import, and call relationship\n→ Runs a 4-pass AST pipeline: structure → parsing → imports → call graph\n→ Stores everything in an embedded KuzuDB graph database\n→ Lets you query your codebase in plain English with an AI agent\n\nHere's the wildest part: It uses Web Workers to parallelize parsing across threads so a massive monorepo doesn't freeze your tab.\n\nThe Graph RAG agent traverses real graph relationships using Cypher queries not embeddings, not vector search. Actual graph logic. Ask it things like \"What functions call this module?\" or \"Find all classes that inherit from X\" and it traces the answer through the graph.\n\nThis is the kind of code intelligence tool enterprise teams pay thousands per month for.\n\nIt runs entirely in your browser. Works with TypeScript, JavaScript, and Python. 100% Open Source. MIT License.\n\nRepo: github.com/abhigyanpatwar…",
     "whats_happening": "GitHub의 한 개발자가 어떤 GitHub repo든 인터랙티브한 지식 그래프로 바꾸는 오픈소스 도구 GitNexus를 공개했다. 이 도구는 코드베이스를 시각적으로 탐색하게 해 주고, 대화형 AI agent로 repo를 질의할 수 있게 한다.",
     "why_it_matters": "코드 구조 시각화와 대화형 탐색을 한 도구로 묶어 repo 이해와 탐색 시간을 줄일 수 있다. 무료 오픈소스라 Paul의 자동화 중심 tech-review 워크플로에도 바로 실험 적용하기 쉽다.",
-    "translation": "🚨 속보: GitHub의 한 개발자가 어떤 GitHub repo든 인터랙티브 지식 그래프로 바꿔주는 도구를 만들어 무료로 오픈소스로 공개했다.\n\n이름은 GitNexus다. 코드베이스의 시각적 X-ray라고 생각하면 되는데, 실제로 대화할 수 있는 AI agent가 붙어 있다.\n\n서버 없음. 구독 없음. 기업 영업 전화 없음.\n\n브라우저 안에서 이런 것들이 가능하다:\n→ GitHub repo나 ZIP 파일 전체를 수초 만에 파싱\n→ D3.js로 실시간 인터랙티브 지식 그래프 생성\n→ 모든 함수, 클래스, 임포트, 호출 관계 매핑\n→ 4단계 AST 파이프라인: 구조 → 파싱 → 임포트 → 콜 그래프\n→ 내장 KuzuDB 그래프 데이터베이스에 저장\n→ AI agent와 함께 일반 영어로 코드베이스 질의 가능\n\n가장 놀라운 부분: Web Workers로 스레드 간 파싱을 병렬화해서 대규모 모노레포도 탭이 멈추지 않는다.\n\nGraph RAG agent는 임베딩도, 벡터 검색도 아닌 Cypher 쿼리로 실제 그래프 관계를 순회한다. \"이 모듈을 호출하는 함수는?\" 또는 \"X를 상속하는 모든 클래스 찾아줘\" 같은 질문에 그래프를 따라 답을 추적한다.\n\n이건 기업 팀이 월 수천 달러씩 지불하는 코드 인텔리전스 도구 수준이다.\n\n완전히 브라우저 안에서 실행. TypeScript, JavaScript, Python 지원. 100% 오픈소스. MIT 라이선스.\n\nRepo: github.com/abhigyanpatwar…"
+    "translation": "🚨 속보: GitHub의 한 개발자가 어떤 GitHub repo든 인터랙티브 지식 그래프로 바꿔주는 도구를 만들어 무료로 오픈소스로 공개했다.\n\n이름은 GitNexus다. 코드베이스의 시각적 X-ray라고 생각하면 되는데, 실제로 대화할 수 있는 AI agent가 붙어 있다.\n\n서버 없음. 구독 없음. 기업 영업 전화 없음.\n\n브라우저 안에서 이런 것들이 가능하다:\n→ GitHub repo나 ZIP 파일 전체를 수초 만에 파싱\n→ D3.js로 실시간 인터랙티브 지식 그래프 생성\n→ 모든 함수, 클래스, 임포트, 호출 관계 매핑\n→ 4단계 AST 파이프라인: 구조 → 파싱 → 임포트 → 콜 그래프\n→ 내장 KuzuDB 그래프 데이터베이스에 저장\n→ AI agent와 함께 일반 영어로 코드베이스 질의 가능\n\n가장 놀라운 부분: Web Workers로 스레드 간 파싱을 병렬화해서 대규모 모노레포도 탭이 멈추지 않는다.\n\nGraph RAG agent는 임베딩도, 벡터 검색도 아닌 Cypher 쿼리로 실제 그래프 관계를 순회한다. \"이 모듈을 호출하는 함수는?\" 또는 \"X를 상속하는 모든 클래스 찾아줘\" 같은 질문에 그래프를 따라 답을 추적한다.\n\n이건 기업 팀이 월 수천 달러씩 지불하는 코드 인텔리전스 도구 수준이다.\n\n완전히 브라우저 안에서 실행. TypeScript, JavaScript, Python 지원. 100% 오픈소스. MIT 라이선스.\n\nRepo: github.com/abhigyanpatwar…",
+    "media": [
+      {
+        "type": "video",
+        "url": "https://pbs.twimg.com/amplify_video_thumb/2028436582907437056/img/NJg6xUISfe64ZIw1.jpg",
+        "video_url": "https://video.twimg.com/amplify_video/2028436582907437056/vid/avc1/1280x720/2ABmjJAB5fBF3QWi.mp4?tag=14"
+      }
+    ]
   },
   {
     "id": "bm-013",
@@ -306,6 +343,12 @@
     "translation": "나는 우연히 한 달치 리서치를 3시간으로 압축하는 방법을 발견했다.\n\nYC 회사의 한 founder가 자기 Claude 세팅을 보여줬다. 나는 그가 그냥 빠른 줄 알았다. 그런데 나는 그가 전에 일해본 적도 없는 시장을 대상으로 전체 go-to-market 전략을 만드는 걸 지켜봤다. 그가 한 일은 정확히 이랬다:\n\n먼저: 그는 Claude에게 \"시장 조사해줘\"라고 하지 않았다. 경쟁사 랜딩 페이지 8개, 실적 발표 스크립트 3개, 고객 후기 12개, 그리고 불만 Reddit 스레드 하나를 넣었다. 그리고 딱 한 가지 질문을 했다: \"이 시장에서 성공한 모든 플레이어들이 고객이 절대 입 밖으로 꺼내지 않는 것에 대해 이해하고 있는 게 무엇인가?\"\n\n\"이걸 요약해줘\"가 아니었다. \"경쟁사 분석해줘\"도 아니었다. 말하지 않는 인사이트. 창업자들이 고객 미팅을 2년은 해야 파악할 수 있는 것.\n\n하지만 그 다음 부분이 내 머리를 박살냈다. 그는 이어서 이렇게 물었다: \"지금 이 시장 전체가 세워진 가정 3가지를 보여주고, 각각이 틀리려면 무엇이 참이어야 하는지 말해줘.\"\n\n15분 만에 그는 업계 전체의 공격 표면을 갖게 됐다. 사각지대. 취약한 합의. 아무도 얘기하지 않던 틈새. 대부분의 창업자는 그 하나를 찾는 데만 6개월의 고객 발굴을 쏟는다.\n\n그다음 그는 내가 본 적 없는 일을 했다. 이렇게 물었다: \"세계 최고의 투자자라면 이 사업 아이디어를 무너뜨리기 위해 할 질문 5개를 써주고, 이 문서들에 있는 근거만 사용해서 각각에 답해줘.\"\n\n그는 그 다음 2시간을 모든 가정을 압박 테스트하는 데 썼다. 약한 답이 나오면 바로 후속 질문이 이어졌다: \"이 주장의 가장 강한 버전은 뭐고, 그게 어디서 여전히 무너지나?\"\n\n3시간째가 됐을 때, 그는 그 분야에서 10년을 보낸 사람이 만든 것 같은 전략 덱을 갖고 있었다.\n\n도구가 바뀐 게 아니었다. 질문이 바뀐 것이었다.\n\n대부분의 사람들은 Claude를 더 빠른 구글처럼 쓴다. 이 창업자들은 모든 것을 읽었고 틀리는 것에 자존심이 없는 생각 파트너처럼 쓰고 있었다.\n\n3시간과 3개월의 차이는 정보의 양이 아니다. 실제로 중요한 질문이 무엇인지 아는 것이다.",
     "tweet_images": [
       "/assets/bm-images/2030614728591167973_1.jpg"
+    ],
+    "media": [
+      {
+        "type": "photo",
+        "url": "https://pbs.twimg.com/media/HC4xVZMboAE4EUa.jpg"
+      }
     ]
   },
   {
@@ -328,6 +371,12 @@
     "translation": "Anthropic이 Claude skills를 만들기 위한 33페이지짜리 치트시트를 공개했다\n\nhttps://\nresources.anthropic.com/hubfs/The-Comp\nlete-Guide-to-Building-Skill-for-Claude.pdf\n…",
     "tweet_images": [
       "/assets/bm-images/2030595632998580328_1.jpg"
+    ],
+    "media": [
+      {
+        "type": "photo",
+        "url": "https://pbs.twimg.com/media/HC3pp8JXUAA4kuN.jpg"
+      }
     ]
   },
   {
@@ -348,6 +397,12 @@
     "translation": "terminal-based coding agents를 만들고 있다면 이건 주목해라.\n\nOpenDev는 scaffolding, harness design, context engineering, 그리고 CLI coding agents를 만들면서 얻은 값비싼 교훈을 다루는 81페이지짜리 논문이다.\n\n이 논문은 workload-specialized model routing, 계획과 실행을 분리하는 이중 에이전트 아키텍처, lazy tool discovery, adaptive context compaction을 갖춘 compound AI system 아키텍처를 소개한다.\n\n업계는 IDE 플러그인에서 터미널 네이티브 에이전트로 이동 중이다. Claude Code, Codex CLI 등이 이 모델이 작동함을 증명했다.\n\n이 논문은 instruction fade-out을 막기 위한 event-driven system reminders, 세션 간 자동화된 메모리, 자율 운영을 위한 엄격한 안전 제어 같은 주제를 다루며, 이러한 시스템을 신뢰할 수 있게 만드는 설계 패턴을 공식화한다.\n\n논문: arxiv.org/abs/2603.05344\n\neffective AI agents 구축 방법을 배우려면: academy.dair.ai",
     "tweet_images": [
       "/assets/bm-images/2030771811705872435_1.jpg"
+    ],
+    "media": [
+      {
+        "type": "photo",
+        "url": "https://pbs.twimg.com/media/HC7AMycaUAAUwJ-.jpg"
+      }
     ]
   },
   {
@@ -370,6 +425,12 @@
     "translation": "AI 직원들로 구성된 AI agency를 빠르게 띄울 수 있게 해주는 GitHub repo를 찾았다\n\n엔지니어, 디자이너, growth marketers, product managers\n\n각 역할은 자기만의 agent로 실행되고, 서로 조율하면서 아이디어를 출시한다\n\n7일도 안 되어 stars 1만+ 개\n\n1. engineering (7 agents): frontend, backend, mobile, ai, devops, prototyping, senior development\n2. design (7): ui/ux, research, architecture, branding, visual storytelling, image generation\n3. marketing (8): growth hacking, content, twitter, tiktok, instagram, reddit, app store\n4. product (3): sprint prioritization, trend research, feedback synthesis\n5. project management (5): production, coordination, operations, experimentation\n6. testing (7): qa, performance analysis, api testing, quality verification\n7. support (6): customer service, analytics, finance, legal, executive reporting\n8. spatial computing (6): xr, visionos, webxr, metal, vision pro\n9. specialized (6): multi agent orchestration, data analytics, sales, distribution\n\n내가 이 접근 방식에서 마음에 드는 건 프레이밍이다\n하나의 큰 AI agent가 모든 걸 다 하려는 대신, 회사처럼 구조화하는 것이다. 전문화된 agents, 명확한 책임, 그 사이의 워크플로\n\n실제로 어떤 느낌인지, 잘 되는지는 직접 써봐야 알 것 같다 (직접 알아보세요)\n\ngithub.com/msitarzewski/a…\n\n항상 그렇듯 배운 것은 공개적으로, 그리고 @startupideaspod 에서 공유할 것이다\n\n한 가지는 확실하다 — 이 소식이 나에게 상기시켜 주는 것은, 미래는 이런 소프트웨어를 직접 만져보는 사람들의 것이라는 점이다",
     "tweet_images": [
       "/assets/bm-images/2030680849486668229_1.jpg"
+    ],
+    "media": [
+      {
+        "type": "photo",
+        "url": "https://pbs.twimg.com/media/HC5sStcW8AAzuLb.jpg"
+      }
     ]
   },
   {
@@ -391,7 +452,14 @@
     "text": "UI 컴포넌트를 AI 에이전트와 더 잘 쓰는 법\n> shadcn/cli v4\n\n먼저 shadcn/ui는 내 프로젝트 코드로 가져와 직접 수정하며 쓰는 방식의 UI 컴포넌트 모음이에요.\n\n\"shadcn/cli v4가 출시되었습니다. shadcn/skills, 프리셋, dry-run, 모노레포 등 다양한 기능을 담고 있어요.\"\n\n\"코딩 에이전트와 함께 shadcn/ui를 사용하거나, 기본 설정을 더 세밀하게 제어하고 싶다면 이번 업데이트를 눈여겨볼만 합니다.\"\n\nshadcn/skills\n이건 코딩 에이전트에게 컴포넌트와 레지스트리에 대한 충분한 문맥을 제공해요. 그래서 이제 에이전트가 여러분의 코딩 스타일과 시스템에 맞춰 훨씬 더 정확하게 코드를 작성할 수 있게 되는거죠.\n\n다음으로 `--preset`은 디자인 설정을 짧은 코드 하나로 압축해 줍니다. 커스텀 설정으로 프로젝트를 생성하거나, 팀과 공유하거나, 레지스트리에 배포하는 데 활용할 수 있어요. Claude, Codex, v0 어디서든 동일한 프리셋을 사용할 수 있어요.\n\n전반적으로 개발자가 일일이 설정해야 했던 번거로움을 덜어주고 있다고 보여요. AI를 활용한 UI 컴포넌트 작업의 기본기를 탄탄하게 다져주는 의미있는 업데이트라고 생각합니다!",
     "whats_happening": "shadcn/cli v4가 출시되며 shadcn/skills, 프리셋, dry-run, monorepo 같은 기능이 추가됐다. 이 글은 이를 바탕으로 shadcn/ui 컴포넌트를 AI 에이전트와 더 잘 쓰는 방식을 소개한다.",
     "why_it_matters": "shadcn/ui를 AI 에이전트가 다루기 쉬운 흐름으로 표준화하면 컴포넌트 추가, 수정, 검토를 더 빠르고 안전하게 자동화할 수 있다. 특히 프리셋과 dry-run, monorepo 지원은 프로젝트별 UI 운영 비용을 줄인다.",
-    "translation": "UI 컴포넌트를 AI 에이전트와 더 잘 쓰는 법\n> shadcn/cli v4\n\n먼저 shadcn/ui는 내 프로젝트 코드로 가져와 직접 수정하며 쓰는 방식의 UI 컴포넌트 모음이에요.\n\n\"shadcn/cli v4가 출시되었습니다. shadcn/skills, 프리셋, dry-run, 모노레포 등 다양한 기능을 담고 있어요.\"\n\n\"코딩 에이전트와 함께 shadcn/ui를 사용하거나, 기본 설정을 더 세밀하게 제어하고 싶다면 이번 업데이트를 눈여겨볼만 합니다.\"\n\nshadcn/skills\n이건 코딩 에이전트에게 컴포넌트와 레지스트리에 대한 충분한 문맥을 제공해요. 그래서 이제 에이전트가 여러분의 코딩 스타일과 시스템에 맞춰 훨씬 더 정확하게 코드를 작성할 수 있게 되는거죠.\n\n다음으로 `--preset`은 디자인 설정을 짧은 코드 하나로 압축해 줍니다. 커스텀 설정으로 프로젝트를 생성하거나, 팀과 공유하거나, 레지스트리에 배포하는 데 활용할 수 있어요. Claude, Codex, v0 어디서든 동일한 프리셋을 사용할 수 있어요.\n\n전반적으로 개발자가 일일이 설정해야 했던 번거로움을 덜어주고 있다고 보여요. AI를 활용한 UI 컴포넌트 작업의 기본기를 탄탄하게 다져주는 의미있는 업데이트라고 생각합니다!"
+    "translation": "UI 컴포넌트를 AI 에이전트와 더 잘 쓰는 법\n> shadcn/cli v4\n\n먼저 shadcn/ui는 내 프로젝트 코드로 가져와 직접 수정하며 쓰는 방식의 UI 컴포넌트 모음이에요.\n\n\"shadcn/cli v4가 출시되었습니다. shadcn/skills, 프리셋, dry-run, 모노레포 등 다양한 기능을 담고 있어요.\"\n\n\"코딩 에이전트와 함께 shadcn/ui를 사용하거나, 기본 설정을 더 세밀하게 제어하고 싶다면 이번 업데이트를 눈여겨볼만 합니다.\"\n\nshadcn/skills\n이건 코딩 에이전트에게 컴포넌트와 레지스트리에 대한 충분한 문맥을 제공해요. 그래서 이제 에이전트가 여러분의 코딩 스타일과 시스템에 맞춰 훨씬 더 정확하게 코드를 작성할 수 있게 되는거죠.\n\n다음으로 `--preset`은 디자인 설정을 짧은 코드 하나로 압축해 줍니다. 커스텀 설정으로 프로젝트를 생성하거나, 팀과 공유하거나, 레지스트리에 배포하는 데 활용할 수 있어요. Claude, Codex, v0 어디서든 동일한 프리셋을 사용할 수 있어요.\n\n전반적으로 개발자가 일일이 설정해야 했던 번거로움을 덜어주고 있다고 보여요. AI를 활용한 UI 컴포넌트 작업의 기본기를 탄탄하게 다져주는 의미있는 업데이트라고 생각합니다!",
+    "media": [
+      {
+        "type": "video",
+        "url": "https://pbs.twimg.com/amplify_video_thumb/2030663001477697536/img/gMa4jYgrD7AYMIzT.jpg",
+        "video_url": "https://video.twimg.com/amplify_video/2030663001477697536/vid/avc1/1920x1080/iloS-q9Nd4eVBGFI.mp4?tag=21"
+      }
+    ]
   },
   {
     "id": "bm-018",
@@ -414,7 +482,13 @@
     ],
     "whats_happening": "작성자가 autoresearch 프로젝트를 주말에 직접 만져볼 수 있도록 자체 완결형 최소 레포로 묶어 공개했다. nanochat LLM training core를 단일 GPU용, 한 파일 약 630줄짜리 버전으로 줄였다고 설명한다.",
     "why_it_matters": "복잡한 LLM 학습 실험의 핵심을 극단적으로 압축해 개인 연구자도 빠르게 재현하고 변형해볼 수 있게 한다. 최소 레포 형태라 아이디어 검증 주기를 줄이고 실험 비용을 낮추는 데 유리하다.",
-    "translation": "주말 동안 가지고 놀고 싶은 분들을 위해 \"autoresearch\" 프로젝트를 새로운 자체 완결형 최소 레포로 패키징했습니다. nanochat LLM training core를 단일 GPU, 한 파일짜리 약 630줄 버전으로 압축한 것이고:\n\n- 사람은 프롬프트(.md)를 반복해서 다듬고\n- AI 에이전트는 학습 코드(.py)를 반복해서 개선합니다\n\n목표는 당신 개입 없이 에이전트가 가장 빠른 연구 진전을 무한정 만들어내도록 설계하는 것입니다. 이미지에서 각 점은 정확히 5분짜리 완전한 LLM 학습 실행입니다. 에이전트는 git feature branch에서 자율 루프로 작동하며 신경망 아키텍처, 옵티마이저, 모든 하이퍼파라미터 등에서 더 나은 설정을 찾아가며 학습 스크립트에 git commit을 쌓아갑니다. 다양한 프롬프트, 다양한 에이전트의 연구 진전을 비교해볼 수도 있습니다.\n\nhttps://github.com/karpathy/autoresearch\n코드 반, SF 반, 그리고 약간의 광기 :)"
+    "translation": "주말 동안 가지고 놀고 싶은 분들을 위해 \"autoresearch\" 프로젝트를 새로운 자체 완결형 최소 레포로 패키징했습니다. nanochat LLM training core를 단일 GPU, 한 파일짜리 약 630줄 버전으로 압축한 것이고:\n\n- 사람은 프롬프트(.md)를 반복해서 다듬고\n- AI 에이전트는 학습 코드(.py)를 반복해서 개선합니다\n\n목표는 당신 개입 없이 에이전트가 가장 빠른 연구 진전을 무한정 만들어내도록 설계하는 것입니다. 이미지에서 각 점은 정확히 5분짜리 완전한 LLM 학습 실행입니다. 에이전트는 git feature branch에서 자율 루프로 작동하며 신경망 아키텍처, 옵티마이저, 모든 하이퍼파라미터 등에서 더 나은 설정을 찾아가며 학습 스크립트에 git commit을 쌓아갑니다. 다양한 프롬프트, 다양한 에이전트의 연구 진전을 비교해볼 수도 있습니다.\n\nhttps://github.com/karpathy/autoresearch\n코드 반, SF 반, 그리고 약간의 광기 :)",
+    "media": [
+      {
+        "type": "photo",
+        "url": "https://pbs.twimg.com/media/HC1KyorbEAAoGWr.jpg"
+      }
+    ]
   },
   {
     "id": "bm-019",
@@ -611,6 +685,13 @@
       "북마크 배치 전 Claude 혼잡도 확인을 넣어라.",
       "3시간 예약 작업을 비혼잡 시간대로 옮겨라.",
       "Claude 단계는 Codex 우회도 함께 검토하라."
+    ],
+    "media": [
+      {
+        "type": "video",
+        "url": "https://pbs.twimg.com/amplify_video_thumb/2033223392007208960/img/_MIpVjvSZODQFYQK.jpg",
+        "video_url": "https://video.twimg.com/amplify_video/2033223392007208960/vid/avc1/2422x1512/41pNe6n7zu9htUi3.mp4?tag=21"
+      }
     ]
   },
   {
@@ -631,6 +712,12 @@
       "mcp-memory recall 시작 규칙 다듬기",
       "orchestration 스킬에 실전 팁 반영",
       "Paul 브리핑 생성에 워크플로우 추가"
+    ],
+    "media": [
+      {
+        "type": "photo",
+        "url": "https://pbs.twimg.com/media/HAhYORcacAUQbE9.png"
+      }
     ]
   },
   {
@@ -653,6 +740,24 @@
       "mcp-memory 요약 프롬프트를 모델별 분리.",
       "orchestration 에이전트 한국어 지침을 재점검.",
       "project-context 브리핑 문체를 통일."
+    ],
+    "media": [
+      {
+        "type": "photo",
+        "url": "https://pbs.twimg.com/media/HDdPT1ea4AA7iIv.jpg"
+      },
+      {
+        "type": "photo",
+        "url": "https://pbs.twimg.com/media/HDdPT8maYAAKujR.jpg"
+      },
+      {
+        "type": "photo",
+        "url": "https://pbs.twimg.com/media/HDdPT1bbwAAuypd.jpg"
+      },
+      {
+        "type": "photo",
+        "url": "https://pbs.twimg.com/media/HDdPT8iacAACyuJ.jpg"
+      }
     ]
   },
   {
@@ -672,6 +777,12 @@
       "add-bookmark 첫 프롬프트 틀을 정리한다.",
       "긴 트윗 분석엔 계획 단계를 먼저 넣는다.",
       "Codex 한글 가이드로 자동화 기준을 맞춘다."
+    ],
+    "media": [
+      {
+        "type": "photo",
+        "url": "https://pbs.twimg.com/media/HDN29ZsbQAE1wGj.jpg"
+      }
     ]
   },
   {
@@ -680,7 +791,7 @@
     "date": "2026-03-13",
     "added_at": "2026-03-16",
     "url": "https://x.com/GeekNewsHada/status/2032324997516333188",
-    "text": "OpenAI의 에이전트 구축을 위한 실용 가이드\n\n- LLM의 추론, 멀티모달, 도구 사용 능력이 향상되면서 사용자를 대신해 독립적으로 워크플로를 수행하는 새로운 시스템 범주인 에이전트가 등장  \n- 에이전트는 모델(LLM), 도구(API/외부 함수), 지침(가이드라인)의 세 가지…",
+    "text": "OpenAI의 에이전트 구축을 위한 실용 가이드\n\n- LLM의 추론, 멀티모달, 도구 사용 능력이 향상되면서 사용자를 대신해 독립적으로 워크플로를 수행하는 새로운 시스템 범주인 에이전트가 등장  \n- 에이전트는 모델(LLM), 도구(API/외부 함수), 지침(가이드라인)의 세 가지…\nhttps://news.hada.io/topic?id=27459",
     "whats_happening": "OpenAI의 에이전트 구축 실용 가이드를 소개하며, LLM 역량 향상으로 사용자를 대신해 워크플로를 수행하는 에이전트가 부상했다고 설명한다. 또한 에이전트의 핵심 구성요소로 모델, 도구, 지침을 제시한다.",
     "why_it_matters": "에이전트를 단순 챗봇이 아니라 독립적으로 일을 수행하는 시스템으로 설계해야 한다는 기준을 준다. 워크플로 자동화와 도구 연결을 만드는 팀이 바로 적용할 수 있는 구조를 압축해 보여준다.",
     "translation": "OpenAI의 에이전트 구축을 위한 실용 가이드\n\n- LLM의 추론, 멀티모달, 도구 사용 능력이 향상되면서 사용자를 대신해 독립적으로 워크플로를 수행하는 새로운 시스템 범주인 에이전트가 등장  \n- 에이전트는 모델(LLM), 도구(API/외부 함수), 지침(가이드라인)의 세 가지…",
@@ -689,7 +800,15 @@
       "요약 전 recall로 자동화 맥락을 넣어라.",
       "북마크 분류에 agent workflow 축을 추가하라.",
       "프롬프트에 모델·도구·지침 체크를 넣어라."
-    ]
+    ],
+    "card": {
+      "type": "summary_large_image",
+      "title": "OpenAI의 에이전트 구축을 위한 실용 가이드 | GeekNews",
+      "description": "LLM의 추론, 멀티모달, 도구 사용 능력이 향상되면서 사용자를 대신해 독립적으로 워크플로를 수행하는 새로운 시스템 범주인 에이전트가 등장에이전트는 모델(LLM), 도구(API/외부 함수), 지침(가이드라인)의 세 가지 핵심 구성요소로 이루어지며, 단일 에이전트 또는 다중 에이전트 시스템으로 오케스트레이션 가능복잡한 의사결정, 유지보수 어려운 규칙 시스템,",
+      "domain": "news.hada.io",
+      "url": "https://t.co/0XMP64I3Ki",
+      "thumbnail": "https://pbs.twimg.com/card_img/2032325000993320960/rPF101Au?format=png&name=orig"
+    }
   },
   {
     "id": "bm-033",
@@ -697,7 +816,7 @@
     "date": "2026-03-11",
     "added_at": "2026-03-16",
     "url": "https://x.com/park_jinwoo/status/2031603114097389686",
-    "text": "작년 소넷 3.7 이후로 회사에서 수동으로 작성한 코드가 거의 없고 올해 초부터는 빈 프로젝트로 시작해 에이전트가 수행하도록만 하고 있는데 이 글을 보니 생각하는 방향이 대략적으로 비슷하다 (근데 제품 규모를 가늠해보면 내 쪽 퍼포먼스가 수십배는 뒤쳐지는 것 같다)",
+    "text": "작년 소넷 3.7 이후로 회사에서 수동으로 작성한 코드가 거의 없고 올해 초부터는 빈 프로젝트로 시작해 에이전트가 수행하도록만 하고 있는데 이 글을 보니 생각하는 방향이 대략적으로 비슷하다 (근데 제품 규모를 가늠해보면 내 쪽 퍼포먼스가 수십배는 뒤쳐지는 것 같다) https://openai.com/ko-KR/index/harness-engineering/",
     "whats_happening": "작성자는 작년 Sonnet 3.7 이후 회사에서 수동으로 짠 코드가 거의 없었고, 올해 초부터는 빈 프로젝트에서 시작해 에이전트가 대부분의 구현을 수행하게 하고 있다고 말한다. 지금 본 글이 자신의 개발 방향과 대체로 비슷하지만, 제품 규모를 보면 자신의 퍼포먼스는 수십 배 뒤처진다고 평가한다.",
     "why_it_matters": "이건 수동 코딩 중심 개발에서 에이전트 주도 구현으로 작업 방식이 실제로 이동하고 있음을 보여준다. 동시에 성패를 가르는 핵심이 단순 사용 여부가 아니라 제품 규모를 버티는 실행력과 오케스트레이션 성능이라는 점을 드러낸다.",
     "translation": "작년 Sonnet 3.7 이후로 회사에서 수동으로 작성한 코드가 거의 없고 올해 초부터는 빈 프로젝트로 시작해 에이전트가 수행하도록만 하고 있는데 이 글을 보니 생각하는 방향이 대략적으로 비슷하다 (근데 제품 규모를 가늠해보면 내 쪽 퍼포먼스가 수십배는 뒤쳐지는 것 같다)",
@@ -708,7 +827,15 @@
       "orchestration에 빈 프로젝트 부팅 프롬프트를 추가한다.",
       "mcp-memory 승격 점수로 산출물 품질을 추적한다.",
       "ideation 실험에 작업당 처리량 비교를 넣는다."
-    ]
+    ],
+    "card": {
+      "type": "summary_large_image",
+      "title": "하네스 엔지니어링: 에이전트 우선 세계에서 Codex 활용하기",
+      "description": "작성자: Ryan Lopopolo, 기술 스태프 멤버",
+      "domain": "openai.com",
+      "url": "https://t.co/EqeXfB1FbE",
+      "thumbnail": "https://pbs.twimg.com/card_img/2031602219741753345/YsBPiV1R?format=jpg&name=orig"
+    }
   },
   {
     "id": "bm-034",
@@ -728,6 +855,13 @@
       "checkpoint Layer B를 swarm으로 분리 실험.",
       "mcp-memory 승격 탐색을 병렬 워커화.",
       "orchestration 평가에 토큰 효율 지표 추가."
+    ],
+    "media": [
+      {
+        "type": "video",
+        "url": "https://pbs.twimg.com/amplify_video_thumb/2031926071621533696/img/zfHqoHxNjQ09t6gd.jpg",
+        "video_url": "https://video.twimg.com/amplify_video/2031926071621533696/vid/avc1/1920x1080/ggRs-ciL__osB75U.mp4?tag=21"
+      }
     ]
   },
   {
@@ -748,7 +882,15 @@
       "tech-review 소스 수집을 레시피화",
       "mcp-memory recall을 조사 입력에 연결",
       "orchestration 아이데이션 루프에 적용"
-    ]
+    ],
+    "card": {
+      "type": "summary_large_image",
+      "title": "GitHub - karpathy/autoresearch: AI agents running research on single-GPU nanochat training automa...",
+      "description": "AI agents running research on single-GPU nanochat training automatically - karpathy/autoresearch",
+      "domain": "github.com",
+      "url": "https://t.co/MhdH7YF1PP",
+      "thumbnail": "https://pbs.twimg.com/card_img/2031704736978907136/_7Qn7T_r?format=jpg&name=orig"
+    }
   },
   {
     "id": "bm-036",
@@ -765,7 +907,15 @@
       "유럽 AI 투자 신호를 tech-review에 누적하자.",
       "AMI Labs 채용을 orchestration 경쟁동향으로 추적하자.",
       "대형 seed 사례를 mcp-memory 신호로 저장하자."
-    ]
+    ],
+    "card": {
+      "type": "summary_large_image",
+      "title": "Yann LeCun's AMI Labs raises $1.03B to build world models | TechCrunch",
+      "description": "“My prediction is that ‘world models’ will be the next buzzword,” AMI Labs CEO Alexandre LeBrun told TechCrunch. “In six months, every company will call itself a world model to raise funding.”",
+      "domain": "techcrunch.com",
+      "url": "https://t.co/eWHyGLXwCA",
+      "thumbnail": "https://pbs.twimg.com/card_img/2031233889235337216/-PwLS_Jw?format=jpg&name=orig"
+    }
   },
   {
     "id": "bm-037",
@@ -785,6 +935,12 @@
       "트위터 프롬프트 개선안을 배치로 누적 검증.",
       "YouTube·Twitter 공통 템플릿 전이성 측정.",
       "recall 적용 후 apply_points 회귀 테스트 추가."
+    ],
+    "media": [
+      {
+        "type": "photo",
+        "url": "https://pbs.twimg.com/media/HC_-jW0bUAA_Hga.jpg"
+      }
     ]
   }
 ]

@@ -63,42 +63,123 @@ def extract_tweets_from_graphql(data):
     return tweets
 
 
+def parse_card(result):
+    """트윗의 card 데이터 (링크 프리뷰, 영상 임베드) 추출"""
+    card = result.get("card", {})
+    if not card:
+        return None
+
+    legacy_card = card.get("legacy", {})
+    card_name = legacy_card.get("name", "")
+    bindings = legacy_card.get("binding_values", [])
+
+    vals = {}
+    for b in bindings:
+        if not isinstance(b, dict):
+            continue
+        key = b.get("key", "")
+        value = b.get("value", {})
+        sv = value.get("string_value")
+        iv = value.get("image_value", {})
+        if sv:
+            vals[key] = sv
+        elif iv.get("url"):
+            vals[key] = iv["url"]
+
+    if not vals:
+        return None
+
+    parsed = {"type": card_name}
+    if vals.get("title"):
+        parsed["title"] = vals["title"]
+    if vals.get("description"):
+        parsed["description"] = vals["description"]
+    if vals.get("vanity_url"):
+        parsed["domain"] = vals["vanity_url"]
+    if vals.get("card_url"):
+        parsed["url"] = vals["card_url"]
+    if vals.get("thumbnail_image_original"):
+        parsed["thumbnail"] = vals["thumbnail_image_original"]
+    elif vals.get("photo_image_full_size_original"):
+        parsed["thumbnail"] = vals["photo_image_full_size_original"]
+    if vals.get("player_url"):
+        parsed["player_url"] = vals["player_url"]
+
+    return parsed
+
+
+def parse_media(legacy):
+    """트윗의 미디어 (이미지, 영상) 추출"""
+    media_list = legacy.get("extended_entities", {}).get("media", [])
+    if not media_list:
+        media_list = legacy.get("entities", {}).get("media", [])
+    if not media_list:
+        return []
+
+    items = []
+    for m in media_list:
+        mtype = m.get("type", "photo")  # photo, video, animated_gif
+        item = {"type": mtype, "url": m.get("media_url_https", "")}
+        if mtype in ("video", "animated_gif"):
+            variants = m.get("video_info", {}).get("variants", [])
+            mp4s = [v for v in variants if v.get("content_type") == "video/mp4"]
+            if mp4s:
+                best = max(mp4s, key=lambda v: v.get("bitrate", 0))
+                item["video_url"] = best["url"]
+        items.append(item)
+    return items
+
+
 def parse_tweet_result(result, tweets):
     if not isinstance(result, dict):
         return
     if "tweet" in result:
         result = result["tweet"]
 
-    core = result.get("core", {}).get("user_results", {}).get("result", {})
+    user_result = result.get("core", {}).get("user_results", {}).get("result", {})
     legacy = result.get("legacy", {})
-    user_legacy = core.get("legacy", {})
+    # screen_name/name: user_result.core に（legacy ではなく）
+    user_core = user_result.get("core", {})
+    user_legacy = user_result.get("legacy", {})
 
     text = legacy.get("full_text", "")
     if not text:
         return
 
     tweet_id = legacy.get("id_str") or result.get("rest_id", "")
-    screen_name = user_legacy.get("screen_name", "")
-    name = user_legacy.get("name", "")
+    screen_name = user_core.get("screen_name") or user_legacy.get("screen_name", "")
+    name = user_core.get("name") or user_legacy.get("name", "")
     created = legacy.get("created_at", "")
 
     # t.co → 실제 URL
     for u in legacy.get("entities", {}).get("urls", []):
         text = text.replace(u.get("url", ""), u.get("expanded_url", ""))
 
-    # 미디어 URL 제거
+    # 미디어 URL 제거 (텍스트에서만, 미디어는 별도 저장)
     for m in legacy.get("entities", {}).get("media", []):
         text = text.replace(m.get("url", ""), "").strip()
 
     tweet_url = f"https://x.com/{screen_name}/status/{tweet_id}" if screen_name and tweet_id else ""
 
-    tweets.append({
+    tweet_data = {
         "id": tweet_id,
         "text": text.strip(),
         "user": {"screen_name": screen_name, "name": name},
         "url": tweet_url,
         "created_at": created,
-    })
+    }
+
+    # card 데이터 (링크 프리뷰, 영상 임베드)
+    card = parse_card(result)
+    if card:
+        tweet_data["card"] = card
+
+    # 미디어 (이미지, 영상)
+    media = parse_media(legacy)
+    if media:
+        tweet_data["media"] = media
+
+    tweets.append(tweet_data)
 
 
 def fetch_bookmarks():

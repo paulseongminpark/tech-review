@@ -175,6 +175,54 @@ permalink: /ko/twitter/
     color: #1a1a1a;
     line-height: 1.65;
   }
+
+  /* ── 카드 프리뷰 (링크/영상) ── */
+  .bm-link-card {
+    display: flex; border: 1px solid #e0e0e0; border-radius: 12px;
+    overflow: hidden; margin-top: 1rem; text-decoration: none; color: inherit;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .bm-link-card:hover { border-color: #aaa; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .bm-link-card-thumb {
+    flex: 0 0 120px; background-size: cover; background-position: center;
+    min-height: 90px;
+  }
+  .bm-link-card-body { padding: 0.7rem 0.9rem; flex: 1; min-width: 0; }
+  .bm-link-card-domain { font-size: 0.65rem; color: #888; margin-bottom: 0.2rem; }
+  .bm-link-card-title {
+    font-size: 0.78rem; font-weight: 600; color: #1a1a1a;
+    line-height: 1.35; display: -webkit-box; -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical; overflow: hidden;
+  }
+  .bm-link-card-desc {
+    font-size: 0.68rem; color: #666; margin-top: 0.2rem;
+    display: -webkit-box; -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical; overflow: hidden; line-height: 1.4;
+  }
+
+  /* ── 미디어 그리드 ── */
+  .bm-media-grid {
+    display: grid; gap: 4px; margin-top: 1rem; border-radius: 12px; overflow: hidden;
+  }
+  .bm-media-grid.n1 { grid-template-columns: 1fr; }
+  .bm-media-grid.n2 { grid-template-columns: 1fr 1fr; }
+  .bm-media-grid.n3 { grid-template-columns: 1fr 1fr; }
+  .bm-media-grid.n4 { grid-template-columns: 1fr 1fr; }
+  .bm-media-item {
+    position: relative; overflow: hidden; background: #f0f0f0;
+  }
+  .bm-media-item img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+  }
+  .bm-media-play {
+    position: absolute; inset: 0; display: flex; align-items: center;
+    justify-content: center; background: rgba(0,0,0,0.25);
+  }
+  .bm-media-play::after {
+    content: ''; width: 0; height: 0;
+    border-left: 18px solid #fff; border-top: 11px solid transparent;
+    border-bottom: 11px solid transparent; filter: drop-shadow(0 1px 3px rgba(0,0,0,0.3));
+  }
 </style>
 
 <div class="bm-header">
@@ -268,20 +316,58 @@ function openModal(i) {
   `;
 
   const baseurl = "{{ site.baseurl }}";
-  const images = (bm.tweet_images || []).map(src =>
-    `<img src="${baseurl}${src}" alt="tweet image" style="width:100%;border-radius:8px;margin-top:1.2rem;display:block;">`
-  ).join('');
 
-  const links = (tweetContent.match(/https?:\/\/\S+/g) || []);
+  // 원문 텍스트 (URL을 링크로 변환)
   const bodyText = escHtml(tweetContent).replace(
     /(https?:\/\/\S+)/g,
     `<a href="$1" target="_blank" rel="noopener" style="color:#0066cc;word-break:break-all;">$1</a>`
   );
 
+  // 기존 tweet_images (레거시)
+  const legacyImages = (bm.tweet_images || []).map(src =>
+    `<img src="${baseurl}${src}" alt="tweet image" style="width:100%;border-radius:8px;margin-top:1rem;display:block;">`
+  ).join('');
+
+  // 카드 프리뷰 (링크, GitHub, 기사 등)
+  let cardHtml = '';
+  if (bm.card) {
+    const c = bm.card;
+    const thumbStyle = c.thumbnail ? `background-image:url('${c.thumbnail}')` : '';
+    cardHtml = `
+    <a class="bm-link-card" href="${c.url || bm.url}" target="_blank" rel="noopener">
+      ${c.thumbnail ? `<div class="bm-link-card-thumb" style="${thumbStyle}"></div>` : ''}
+      <div class="bm-link-card-body">
+        <div class="bm-link-card-domain">${escHtml(c.domain || '')}</div>
+        <div class="bm-link-card-title">${escHtml(c.title || '')}</div>
+        ${c.description ? `<div class="bm-link-card-desc">${escHtml(c.description)}</div>` : ''}
+      </div>
+    </a>`;
+  }
+
+  // 미디어 (이미지, 영상)
+  let mediaHtml = '';
+  const media = bm.media || [];
+  if (media.length > 0) {
+    const n = Math.min(media.length, 4);
+    const items = media.slice(0, 4).map(m => {
+      const isVideo = m.type === 'video' || m.type === 'animated_gif';
+      const clickUrl = isVideo && m.video_url ? m.video_url : m.url;
+      return `<div class="bm-media-item">
+        <a href="${clickUrl}" target="_blank" rel="noopener">
+          <img src="${m.url}" alt="media" loading="lazy">
+          ${isVideo ? '<div class="bm-media-play"></div>' : ''}
+        </a>
+      </div>`;
+    }).join('');
+    mediaHtml = `<div class="bm-media-grid n${n}">${items}</div>`;
+  }
+
   document.getElementById('bm-modal-right').innerHTML = `
     <p class="bm-tweet-label">원문</p>
     <p class="bm-tweet-body${isKo ? '' : ' en'}">${bodyText}</p>
-    ${images}
+    ${mediaHtml}
+    ${cardHtml}
+    ${legacyImages}
   `;
 
   document.getElementById('bm-overlay').classList.add('active');
