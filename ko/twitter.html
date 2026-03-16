@@ -287,8 +287,8 @@ function openModal(i) {
   const whatsHappening = bm.whats_happening || bm.smart_brevity?.why || '';
   const whyItMatters   = bm.why_it_matters  || bm.smart_brevity?.what || '';
   const applyList = (bm.apply_points || []).map(p => `<li>${escHtml(p)}</li>`).join('');
-  const tweetContent   = bm.text || bm.translation || '';
-  const hasTranslation = bm.translation && bm.text && bm.translation !== bm.text;
+  // 한글 우선: 번역이 있으면 번역, 없으면 원문 (한국어 트윗은 text=translation)
+  const tweetContent   = bm.translation || bm.text || '';
 
   document.getElementById('bm-modal-left').innerHTML = `
     <div class="bm-modal-meta">
@@ -362,26 +362,12 @@ function openModal(i) {
     mediaHtml = `<div class="bm-media-grid n${n}">${items}</div>`;
   }
 
-  // 번역 (원문과 다를 때만)
-  let transHtml = '';
-  if (hasTranslation) {
-    const transText = escHtml(bm.translation).replace(
-      /(https?:\/\/\S+)/g,
-      `<a href="$1" target="_blank" rel="noopener" style="color:#0066cc;word-break:break-all;">$1</a>`
-    );
-    transHtml = `
-      <p class="bm-tweet-label" style="margin-top:1.5rem;">번역</p>
-      <p class="bm-tweet-body">${transText}</p>
-    `;
-  }
-
   document.getElementById('bm-modal-right').innerHTML = `
     <p class="bm-tweet-label">원문</p>
-    <p class="bm-tweet-body en">${bodyText}</p>
+    <p class="bm-tweet-body">${bodyText}</p>
     ${mediaHtml}
     ${cardHtml}
     ${legacyImages}
-    ${transHtml}
   `;
 
   document.getElementById('bm-overlay').classList.add('active');

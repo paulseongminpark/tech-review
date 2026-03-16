@@ -142,7 +142,9 @@ def parse_tweet_result(result, tweets):
     user_core = user_result.get("core", {})
     user_legacy = user_result.get("legacy", {})
 
-    text = legacy.get("full_text", "")
+    # note_tweet (280자 넘는 긴 트윗 전문)
+    note = result.get("note_tweet", {}).get("note_tweet_results", {}).get("result", {})
+    text = note.get("text") or legacy.get("full_text", "")
     if not text:
         return
 
@@ -151,8 +153,10 @@ def parse_tweet_result(result, tweets):
     name = user_core.get("name") or user_legacy.get("name", "")
     created = legacy.get("created_at", "")
 
-    # t.co → 실제 URL
-    for u in legacy.get("entities", {}).get("urls", []):
+    # t.co → 실제 URL (note_tweet entities 우선, legacy fallback)
+    note_entities = note.get("entity_set", {}).get("urls", [])
+    legacy_entities = legacy.get("entities", {}).get("urls", [])
+    for u in (note_entities or legacy_entities):
         text = text.replace(u.get("url", ""), u.get("expanded_url", ""))
 
     # 미디어 URL 제거 (텍스트에서만, 미디어는 별도 저장)
