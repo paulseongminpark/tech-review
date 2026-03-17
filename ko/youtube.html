@@ -318,7 +318,7 @@ ALL_VIDEOS.sort((a, b) => {
 let currentCat = 'general';
 
 function filterByCategory(cat) {
-  if (cat === 'general') return ALL_VIDEOS; // general = 전체 보기
+  if (cat === 'general') return ALL_VIDEOS.filter(v => v.playlist !== 'ontology');
   return ALL_VIDEOS.filter(v => v.playlist === cat);
 }
 
