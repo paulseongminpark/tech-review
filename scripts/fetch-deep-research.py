@@ -146,35 +146,37 @@ def run_deep_research(prompt: str, post_date: str) -> str | None:
                 elapsed = int(time.time() - start)
                 # 스트리밍 중지 버튼이 사라지면 완료
                 stop_btn = page.locator('button[aria-label="스트리밍 중지"]')
-                if stop_btn.count() == 0:
-                    # iframe 안 리포트 확인
-                    report = page.evaluate("""() => {
-                        const iframes = document.querySelectorAll('iframe');
-                        for (const iframe of iframes) {
-                            try {
-                                const doc = iframe.contentDocument || iframe.contentWindow.document;
-                                if (doc && doc.body && doc.body.innerText.length > 500) {
-                                    return doc.body.innerText;
-                                }
-                            } catch(e) {}
-                        }
-                        // fallback: article 안에서 찾기
-                        const articles = document.querySelectorAll('article');
-                        for (let i = articles.length - 1; i >= 0; i--) {
-                            const h = articles[i].querySelector('h5, h6');
-                            if (h && h.textContent.includes('ChatGPT')) {
-                                return articles[i].innerText;
-                            }
-                        }
-                        return '';
-                    }""")
-                    if report and len(report) > 500:
-                        print(f"[DR] 완료! ({elapsed}초, {len(report)}자)")
-                        return report
-                    # 짧으면 좀 더 대기
-                    time.sleep(5)
+                if stop_btn.count() > 0:
+                    print(f"  [{elapsed}s] 아직 진행 중...")
                     continue
-                print(f"  [{elapsed}s] 아직 진행 중...")
+
+                # 완료 감지 — playwright frames로 iframe 콘텐츠 직접 접근
+                time.sleep(3)
+                for frame in page.frames:
+                    try:
+                        text = frame.evaluate("() => document.body ? document.body.innerText : ''")
+                        if len(text) > 500 and ("Today in One Line" in text or "##" in text):
+                            print(f"[DR] 완료! ({elapsed}초, {len(text)}자)")
+                            return text
+                    except Exception:
+                        continue
+
+                # iframe에 없으면 메인 페이지에서 찾기
+                main_text = page.evaluate("""() => {
+                    const articles = document.querySelectorAll('article');
+                    for (let i = articles.length - 1; i >= 0; i--) {
+                        const h = articles[i].querySelector('h5, h6');
+                        if (h && h.textContent.includes('ChatGPT')) {
+                            return articles[i].innerText;
+                        }
+                    }
+                    return '';
+                }""")
+                if main_text and len(main_text) > 500:
+                    print(f"[DR] 완료 (메인 페이지)! ({elapsed}초, {len(main_text)}자)")
+                    return main_text
+
+                print(f"  [{elapsed}s] 완료 감지 대기...")
 
             print(f"[DR] 타임아웃 ({MAX_WAIT_MINUTES}분)")
             return None
