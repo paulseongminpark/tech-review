@@ -17,7 +17,7 @@ tags: ["ai-usecase", "enterprise", "adoption", "regulation"]
 
 Anthropic이 3월 12일 Claude 채택을 위한 파트너 생태계에 2026년 1억 달러를 투자하며 엔터프라이즈 AI 배포 가속화에 나섰다. Accenture, Deloitte, Infosys, Cognizant 등 글로벌 컨설팅 대형사 4곳이 30만 명 이상의 직원에게 Claude 교육을 제공하기로 약정했다.
 
-**Why it matters:** AI 도입의 가장 큰 병목인 '파일럿-프로덕션 갭'을 메우기 위해 기술사가 직접 파트너 채널에 자본을 투입하는 첫 사례다. 파트너 기업들이 기업 고객을 프로덕션까지 이동시키는 것을 재정적으로 지원한다는 의미다.
+**Why it matters:** Claude Code ARR 25억 달러 돌파와 기업 시장점유율 24%->40% 상승은, orchestration이 의존하는 Claude 생태계가 빠르게 성장하고 있다는 신호다. 파트너 네트워크 확대는 MCP 서버 생태계도 함께 확장시킨다.
 
 - Anthropic은 전담 엔지니어와 기술 아키텍트 팀을 5배로 확대하며 라이브 고객 거래마다 직접 지원 인력 배치
 - Accenture 30,000명, Cognizant 최대 350,000명, Infosys 직원들이 Claude Code로 소프트웨어 개발 가속화 중
@@ -33,7 +33,7 @@ Anthropic이 3월 12일 Claude 채택을 위한 파트너 생태계에 2026년 1
 
 Amazon이 OpenAI에 총 500억 달러(초기 150억 달러 + 추후 350억 달러)를 투자하고 AWS를 OpenAI Frontier의 독점 클라우드 배포 제공사로 지정했다. 두 회사는 상태 저장 런타임 환경(Stateful Runtime Environment)을 공동 개발해 기업용 AI 에이전트 팀 관리를 표준화할 계획이다.
 
-**Why it matters:** 이 계약은 AI 기업 도입에서 '인프라 제공사'의 역할이 얼마나 중요한지 보여준다. Amazon이 OpenAI의 가장 강력한 엔터프라이즈 플랫폼(Frontier)을 AWS 위에서만 배포하도록 강제함으로써 기업 고객을 자동으로 확보하는 구조를 만들었다.
+**Why it matters:** Stateful Runtime Environment가 에이전트의 컨텍스트·메모리·신원을 유지하는 기능은, mcp-memory의 save_session()+get_context()와 orchestration의 세션 체인이 이미 구현한 패턴이다. 이것이 클라우드 표준이 되면 우리 설계의 이식성이 높아진다.
 
 - OpenAI는 AWS Trainium 용량 2기가와트를 8년간 소비하며 (기존 380억 달러 계약에서 1000억 달러로 확대) 컴퓨팅 비용을 대폭 절감
 - Stateful Runtime Environment는 기업 AI 에이전트가 컨텍스트·메모리·신원을 유지하며 여러 소프트웨어 도구와 데이터원을 넘나들 수 있도록 설계됨
@@ -49,7 +49,7 @@ Amazon이 OpenAI에 총 500억 달러(초기 150억 달러 + 추후 350억 달�
 
 Jack Dorsey CEO가 2월 27일 Block의 직원 40%(4,000명)를 일괄 감원한다고 발표했으며, AI 도구와 소규모·수평적 팀 운영이 "회사 운영 방식을 근본적으로 바꿨다"고 선언했다. Block은 2026년 4분기 매출 28억7천만 달러(전년 대비 24% 증가)를 기록했음에도 이 결정을 내렸다.
 
-**Why it matters:** 지난 2년간 AI는 '업무 자동화 도구'였지만, Block의 결정은 이제 CEO들이 AI를 '조직 구조 재설계의 정당성'으로 삼고 있음을 보여준다. Dorsey는 "다른 대부분의 기업도 향후 1년 내 같은 결론에 도달할 것"이라 예측했으며 주가는 24% 급등했다.
+**Why it matters:** "AI 도구로 무장한 소규모 팀"이 대규모 조직을 대체한다는 선언은, orchestration v5.0이 에이전트 24->Workers 3으로 줄이면서 효율을 높인 경험의 기업 버전이다. 구조 단순화가 곧 경쟁력이다.
 
 - Block은 고객 지원·소프트웨어 개발 등 화이트칼라 역무 중심 4,000명을 감원하되, 한 번의 대규모 감원으로 진행해 "도덕심 훼손"을 피하겠다는 명분 제시
 - 2026년 1월 현재 기술 업종 근로자 약 49,000명이 AI 관련 해고 통보를 받았으며, 2025년 전체 245,000명 기술 직원 감원 중 약 70,000명이 AI 도입 명목

@@ -17,7 +17,7 @@ tags: ["apple", "google", "meta", "microsoft", "nvidia"]
 
 Anthropic이 2월 23일 Claude 코드 도구로 COBOL 레거시 코드를 현대화할 수 있다고 발표하자 IBM 주가가 13.2% 급락해 $40억 시장가를 순간에 증발시켰다. 이는 2000년 10월 닷컴 붕괴 이후 최악의 단일 거래일 손실이며, IBM의 메인프레임 사업을 중심으로 구축된 장기 수익 모델에 대한 투자자들의 근본적 우려를 드러냈다.
 
-**Why it matters:** IBM의 메인프레임 사업은 여전히 매년 최고 수익을 올리고 있지만, AI가 수십 년 된 COBOL 코드 마이그레이션의 비용을 급격히 낮출 수 있다는 가능성이 제시되자 투자자들이 장기 가치 잠식을 우려했다. 2021년 추정 기준 전 세계 기업들이 약 2,500억 줄의 COBOL 코드를 운영 중이며, 이들 코드는 미국 ATM 거래의 95%와 신용카드 결제의 80%를 처리하고 있다.
+**Why it matters:** Claude Code가 레거시 코드 마이그레이션을 자동화할 수 있다는 발표는, orchestration이 이미 구현한 에이전틱 코딩(implement -> code-reviewer -> commit-writer 체인)의 산업적 파급력을 보여준다. 에이전트가 코드를 이해하고 변환하는 능력은 기존 소프트웨어 비즈니스 모델 전체를 위협한다.
 
 - Anthropic의 COBOL 발표에 따라 IBM이 전일 대비 13.2% 하락한 $223.35에 마감, 시가총액 약 $40억 감소
 - 향후 12개월 누적 낙폭은 24% 이상으로 2월 단 한 달에만 사상 최악의 월간 낙폭 기록 (1968년 이후 기준)
@@ -33,7 +33,7 @@ Anthropic이 2월 23일 Claude 코드 도구로 COBOL 레거시 코드를 현대
 
 Anthropic이 2월 중순 $300억 규모의 거대 펀드라운드를 마감하면서 Founders Fund, Iconiq, Insight Partners, Sequoia Capital을 포함한 최소 12개의 OpenAI 직접 투자자들이 동시에 Anthropic에도 출자했으며, BlackRock의 계열사까지 포함되어 실리콘밸리의 구조적 투자 원칙에 균열이 생겼다. 특히 BlackRock의 Adebayo Ogunlesi는 OpenAI 이사로 재직하면서 BlackRock 계열 펀드가 Anthropic에 투자하는 모순적 상황이 발생했다.
 
-**Why it matters:** 전통적으로 벤처캐피털은 포트폴리오 기업 간 직접 경쟁 관계에서 투자 제약을 유지했으나, AI 산업의 기록적 성장과 천문학적 펀드레이징 규모 앞에서 이 관례가 조용히 사라지고 있다. OpenAI는 2024년 투자자들에게 Anthropic과 xAI, Safe Superintelligence 같은 라이벌 기업들에 투자하지 말 것을 요청했지만, 투자자들은 이를 무시했다.
+**Why it matters:** VC가 OpenAI와 Anthropic 양쪽에 동시 투자한다는 것은, 어느 한 모델에 종속되지 않으려는 시장의 판단이다. orchestration이 Claude(설계)+Codex(추출)+Gemini(2nd opinion) 멀티AI 구조를 택한 것과 같은 논리가 투자 시장에서도 작동한다.
 
 - Sequoia Capital, Founders Fund, Iconiq 등 실리콘밸리 최고 권위의 VC들이 OpenAI와 Anthropic 모두에 직접 투자
 - OpenAI는 $1,000억 규모의 새 펀드라운드 최종 단계를 진행 중인 가운데, Anthropic의 $300억이 진행되자 투자자 분산 심화
@@ -49,7 +49,7 @@ Anthropic이 2월 중순 $300억 규모의 거대 펀드라운드를 마감하�
 
 Anthropic이 2월 23일 DeepSeek, Moonshot AI, MiniMax 등 중국 AI 랩 3곳이 약 24,000개의 가짜 계정으로 Claude에 접근해 1,600만 건의 쿼리를 생성하며 불법적으로 모델 증류(distillation)를 시행했음을 적발하고 공개했다. 이들은 Claude의 추론 능력, 도구 사용, 코딩 등 가장 차별화된 기능을 표적으로 삼았으며, DeepSeek의 경우 정치적으로 민감한 쿼리에 대한 검열 회피 방안까지 추출했다.
 
-**Why it matters:** 모델 증류는 합법적인 AI 개발 기법이지만, 경쟁사의 모델을 무단으로 훈련 데이터로 사용하는 것은 지식재산권 침해이자 국가 안보 위협으로 평가된다. 중국 기업들이 미국 선도 모델의 기능을 수개월 만에 복제할 수 있다는 것은 AI 칩 수출 규제의 실효성을 근본적으로 훼손한다는 주장을 뒷받침한다. 이 공개는 미국 행정부의 AI 칩 대중국 수출 정책 결정에 직접적 영향을 미칠 전망이다.
+**Why it matters:** Claude의 추론 능력과 도구 사용 패턴이 1,600만 쿼리로 추출당했다는 것은, orchestration이 의존하는 모델의 핵심 역량이 복제 위험에 노출됐다는 뜻이다. API 사용 패턴 자체가 방어 대상이 되는 시대다.
 
 - DeepSeek: 15만 건 이상의 쿼리로 추론 능력과 검열 우회 방법 추출, 동기화된 트래픽으로 탐지 회피
 - Moonshot AI: 340만 건 이상으로 에이전트 추론, 도구 사용, 컴퓨터 활용 에이전트 개발 표

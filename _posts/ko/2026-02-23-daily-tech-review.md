@@ -17,7 +17,7 @@ Linux Foundation의 LF AI & Data Open Model Initiative Phase II 시작, LF Edge 
 
 Linux Foundation의 LF AI & Data가 Open Model Initiative를 Phase II로 전환하며 평가, 벤치마킹, 모델 개발을 위한 커뮤니티 주도 이니셔티브를 강화한다.
 
-**Why it matters:** 오픈소스 AI 인프라가 실험에서 프로덕션으로 전환되는 가운데, 재현 가능한 멀티모달 AI 표준화가 산업 생태계를 재편할 전망이다.
+**Why it matters:** 오픈소스 AI 모델의 표준화가 진행되면, orchestration의 멀티AI 협업에서 모델 교체 비용이 낮아진다. 표준화된 인터페이스 위에서 Claude/Codex/Gemini 외 오픈소스 워커를 자유롭게 교체할 수 있다.
 
 - 2026년 2월 Linux Foundation 뉴스레터 발표
 - Phase II에서 거버넌스와 기술 리더십 강화
@@ -31,7 +31,7 @@ Linux Foundation의 LF AI & Data가 Open Model Initiative를 Phase II로 전환�
 
 LF Edge의 EdgeLake 프로젝트가 Stage 2로 승격되며 Model Context Protocol(MCP)을 도입해 엣지에서 실시간 AI 추론을 지원한다.
 
-**Why it matters:** 엣지 AI 채택이 증가하는 상황에서 성숙한 거버넌스와 실사용 사례가 엣지 컴퓨팅 표준을 확립한다.
+**Why it matters:** EdgeLake가 MCP를 도입해 엣지에서 실시간 AI 추론을 지원한다는 것은, MCP가 클라우드를 넘어 엣지까지 확장되는 표준이 되고 있다는 신호다. orchestration의 MCP 기반 설계가 더 넓은 생태계와 호환된다.
 
 - 커뮤니티 성장과 성숙한 거버넌스 인정
 - MCP로 실시간 AI 추론 활성화
@@ -45,7 +45,7 @@ LF Edge의 EdgeLake 프로젝트가 Stage 2로 승격되며 Model Context Protoc
 
 Microsoft가 AI-RAN Alliance 창립 멤버로 참여하며 AI와 RAN 융합을 통해 5G/6G 네트워크를 지능화한다.
 
-**Why it matters:** 클라우드와 AI로 텔레콤 인프라를 스마트화하면 초저지연 서비스(AR/VR 등)가 현실화되며 네트워크 신뢰성 향상된다.
+**Why it matters:** 네트워크 레벨에서 AI가 네이티브화되면, orchestration의 API 호출 지연이 줄어들고 멀티AI 협업의 실시간 응답 품질이 개선된다.
 
 - AI-RAN 테스트베드: Redmond와 Cambridge에 30개 이상 셀 사이트
 - 실시간 간섭 탐지와 이상 감지 시연

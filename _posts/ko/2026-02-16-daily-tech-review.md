@@ -18,7 +18,7 @@ Claude Opus 4.6의 에이전트 팀즈, OpenAI Frontier의 풀스택 엔터프�
 
 Anthropic이 코드 플래닝·리팩터링·디버깅 능력을 대폭 향상시킨 Claude Opus 4.6을 발표했다.
 
-**Why it matters:** 단일 모델 호출이 아닌 역할 분담형 복수 에이전트 병렬 처리를 네이티브로 지원하는 첫 주요 상용 모델로, 2026년 AI 아키텍처의 기본 방향을 제시한다.
+**Why it matters:** orchestration 시스템이 Workers 3개(code-reviewer, compressor, commit-writer)로 역할을 분담하는 구조가 모델 네이티브 기능으로 올라왔다는 뜻이다. 1M 컨텍스트는 Context Engineering의 Gate A 직접 읽기 범위를 극적으로 넓힌다.
 
 - 100만 토큰 컨텍스트 윈도우 베타 지원 — 대규모 코드베이스 전체를 단일 세션에서 처리 가능
 - "agent teams" 기능 네이티브 지원 — 역할 분담 병렬 에이전트 오케스트레이션
@@ -34,7 +34,7 @@ Anthropic이 코드 플래닝·리팩터링·디버깅 능력을 대폭 향상�
 
 OpenAI가 GPT-5 계열 위에 에이전트를 실제 업무 시스템에 연결·운영하는 풀스택 엔터프라이즈 플랫폼 Frontier를 출시했다.
 
-**Why it matters:** AI 에이전트가 CRM·ERP·데이터웨어하우스를 직접 조작하는 "디지털 동료" 단계에 진입했으며, Intuit·State Farm 등 대형 엔터프라이즈 실무 검증이 동시에 시작됐다.
+**Why it matters:** 에이전트가 외부 시스템을 직접 조작하는 구조는, MCP 서버를 통해 Obsidian·Git·브라우저를 연결하는 orchestration의 확장판이다. 권한 관리와 감사 로그 설계가 핵심인 점도 동일하다.
 
 - Business Context: 데이터웨어하우스·CRM·ERP 연결 레이어
 - Agent Execution: 병렬 에이전트 실행 및 감사 로그
@@ -51,7 +51,7 @@ OpenAI가 GPT-5 계열 위에 에이전트를 실제 업무 시스템에 연결�
 
 MiniMax가 수정 MIT 라이선스로 M2.5와 M2.5 Lightning을 공개하며 저비용 모델 경쟁을 한 단계 끌어올렸다.
 
-**Why it matters:** GPT-5.2·Claude Sonnet 대비 1/10~1/20 비용으로 유사한 성능을 구현해, 기업의 AI 운영 비용 계산을 근본적으로 재설정한다.
+**Why it matters:** mcp-memory의 TOKEN_BUDGETS(large 225K/small 2.25M)처럼 비용을 세밀하게 관리하는 시스템에서, 1/10~1/20 가격의 모델은 추출·분석 워커를 대량 투입하는 전략을 현실화한다.
 
 - M2.5 Standard: 입력 $0.15/100만 토큰, 출력 $1.20
 - M2.5 Lightning: 더 빠른 속도, 입력 $0.30, 출력 $2.40
@@ -68,7 +68,7 @@ MiniMax가 수정 MIT 라이선스로 M2.5와 M2.5 Lightning을 공개하며 저
 
 Mistral이 Apache 2.0 라이선스로 Voxtral Transcribe 2를 출시해 실시간 음성 전사 시장에 진입했다.
 
-**Why it matters:** 200ms 이하 지연 시간과 분당 $0.003의 초저가로 상용 서비스 대비 경쟁력을 확보해, 콜센터·미디어·접근성 도구 분야의 비용 구조를 바꿀 수 있다.
+**Why it matters:** Apache 2.0 오픈소스 실시간 전사가 분당 $0.003이면, tech-review의 음성/영상 소스 자동 수집 파이프라인에 전사 단계를 추가하는 비용이 사실상 무시할 수준이 된다.
 
 - 지연 시간 200ms 이하 — 실시간 전사 가능
 - 비용 약 $0.003/분 — 상용 서비스 대비 대폭 저렴
@@ -85,7 +85,7 @@ Mistral이 Apache 2.0 라이선스로 Voxtral Transcribe 2를 출시해 실시�
 
 Nature가 AI가 생성한 저품질 논문을 "AI slop"으로 규정하며 학술 출판의 품질 위기를 공식화했다.
 
-**Why it matters:** 동료 심사 시스템이 한계에 도달하면서, AI 보조 연구와 AI 생성 저품질 논문을 구분하는 새로운 검증 인프라가 없으면 학술 생태계 전체가 위협받는다.
+**Why it matters:** tech-review가 매일 자동 수집하는 뉴스에서도 AI 생성 저품질 콘텐츠 필터링이 점점 중요해지고 있다. mcp-memory의 시그널 품질 게이트(threshold 0.25, visit_count>=10)와 같은 검증 레이어가 필수다.
 
 - ICML 2026 논문 제출 24,000건 이상 — 전년 대비 2배 이상
 - Nature가 AI 생성 저품질 논문을 공식적으로 "AI slop"으로 명명
@@ -101,7 +101,7 @@ Nature가 AI가 생성한 저품질 논문을 "AI slop"으로 규정하며 학�
 
 에이전트 전용 소셜 네트워크 OpenClaw·Moltbook에서 프롬프트 인젝션, 악성 스킬 배포, 수백만 에이전트 ID 노출 등의 보안 취약점이 경고됐다.
 
-**Why it matters:** 에이전트가 외부 시스템과 연결되어 자율 실행하는 구조에서는 기존 웹 보안 모델로는 대응할 수 없는 새로운 공격 면이 생성되며, 거버넌스 없는 에이전트 배포는 운영 리스크로 직결된다.
+**Why it matters:** orchestration이 MCP 서버 13개를 연결해 에이전트를 자율 실행하는 구조에서, 프롬프트 인젝션과 악성 스킬은 직접적 위협이다. 에이전트 IAM과 실행 격리는 우리 시스템에도 적용해야 할 과제다.
 
 - OpenClaw·Moltbook 플랫폼에서 프롬프트 인젝션 공격 확인
 - 악성 스킬 배포 경로 발견

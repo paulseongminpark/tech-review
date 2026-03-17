@@ -315,12 +315,11 @@ ALL_VIDEOS.sort((a, b) => {
 });
 
 /* ── 카테고리 매핑 ── */
-const CAT_MAP = { blog: 'general', general: 'general', ontology: 'ontology', tech: 'tech', claude: 'claude', ais: 'ais' };
-function videoCat(v) { return CAT_MAP[v.playlist] || 'general'; }
 let currentCat = 'general';
 
 function filterByCategory(cat) {
-  return ALL_VIDEOS.filter(v => videoCat(v) === cat);
+  if (cat === 'general') return ALL_VIDEOS; // general = 전체 보기
+  return ALL_VIDEOS.filter(v => v.playlist === cat);
 }
 
 function escHtml(str) {

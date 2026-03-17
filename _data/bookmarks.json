@@ -27,7 +27,7 @@
     "text": "The semantic layer is dead. Context management takes its place — and multiplies data team productivity by 5x.\n\nRun a context subagent that reads DBT models directly before SQL generation. User corrections are learned as 'quirks' and auto-applied from the next query onward. Real-world validation: Opus 4.6 outperforms Codex 5.3 on data analysis tasks.",
     "translation": "시맨틱 레이어는 죽었다. 그 자리를 컨텍스트 관리가 대신하며, 데이터 팀의 생산성을 5배로 끌어올린다.\n\nSQL 생성 전에 DBT 모델을 직접 읽는 context subagent를 실행하라. 사용자 수정 사항은 'quirks'로 학습되어 다음 쿼리부터는 자동으로 적용된다. 실제 검증 결과: 데이터 분석 작업에서는 Opus 4.6이 Codex 5.3보다 더 뛰어난 성능을 보인다.",
     "whats_happening": "기존 semantic layer 접근이 끝나고, DBT 모델을 직접 읽는 context management 기반 subagent가 SQL 생성 전 문맥을 주도하는 방식이 대안으로 제시됐다. 사용자 수정은 'quirks'로 학습돼 다음 질의부터 자동 적용되며, 실제 검증에서는 Opus 4.6이 데이터 분석 작업에서 Codex 5.3보다 더 나은 성능을 보였다고 주장한다.",
-    "why_it_matters": "데이터팀이 별도 semantic layer를 유지하지 않고도 질의 문맥과 사용자 선호를 누적 학습해 분석 정확도와 반복 생산성을 크게 높일 수 있다는 주장이다. 특히 SQL 생성 전에 모델 문맥을 직접 주입하는 방식은 LLM 기반 분석 자동화 파이프라인의 설계를 바꿀 수 있다."
+    "why_it_matters": "mcp-memory의 recall 전에 DBT식 context subagent를 끼우는 구조와 동일하다. quirks 학습은 mcp-memory의 관찰->시그널 성숙 파이프라인이 이미 하고 있는 것이고, SQL 생성 전 문맥 주입은 Progressive Reading의 index->시그니처->본문 단계와 정확히 같은 패턴이다."
   },
   {
     "id": "bm-002",
@@ -55,7 +55,7 @@
     "text": "AI has memory — but you're still the integration layer between systems. Pal takes over that role.\n\nPal is a personal agent that navigates a context graph across SQL, files, email, and calendar. It runs a 5-step loop: Classify → Recall → Retrieve → Act → Learn. Discovered paths are saved to a Knowledge Map so the next query takes a shortcut. Scheduled tasks complete your briefing before you even arrive.\n\nOpen source: github.com/agno-agi/pal",
     "translation": "AI에는 memory가 있다. 하지만 당신은 여전히 시스템들 사이의 integration layer다. Pal이 그 역할을 맡는다.\n\nPal은 SQL, files, email, calendar 전반에 걸친 context graph를 탐색하는 personal agent다. 이 에이전트는 5단계 loop를 실행한다: Classify → Recall → Retrieve → Act → Learn. 발견된 path는 Knowledge Map에 저장되므로 다음 query는 지름길을 탄다. 예약된 task는 당신이 도착하기도 전에 briefing을 끝내 둔다.\n\nOpen source: github.com/agno-agi/pal",
     "whats_happening": "Pal이 사람 대신 시스템 간 통합 계층 역할을 맡는 personal agent로 소개됐다. SQL, 파일, email, calendar를 가로지르는 context graph를 탐색하고 Classify → Recall → Retrieve → Act → Learn의 5단계 루프로 동작하며, 학습한 경로를 Knowledge Map에 저장해 다음 질의를 더 빠르게 처리한다.",
-    "why_it_matters": "AI가 기억을 가져도 실제 업무에서는 여전히 여러 시스템을 연결하고 문맥을 이어주는 통합 계층이 병목인데, Pal은 그 지점을 에이전트 자체로 자동화하려 한다. 한 번 찾은 경로를 재사용하고 예약 작업으로 사전 브리핑까지 준비한다는 점에서 개인 생산성과 에이전트 실용성을 함께 끌어올린다."
+    "why_it_matters": "Pal의 Classify->Recall->Retrieve->Act->Learn 루프는 mcp-memory의 관찰->시그널->패턴->원칙 성숙 파이프라인과 구조가 겹친다. Knowledge Map에 경로를 저장하는 방식은 지식 그래프 진화와 같은 방향이고, 예약 브리핑은 tech-review의 매일 자동 수집 자동화에 바로 대입할 수 있다."
   },
   {
     "id": "bm-003",
@@ -76,7 +76,7 @@
     "added_at": "2026-03-08",
     "text": "Introducing React Grab\n\nSelect any element on your page → tell Claude Code or Codex what to change\n\nFully open source\n\nnpx react-grab@latest",
     "whats_happening": "React Grab이라는 오픈소스 도구가 공개됐다. 페이지에서 원하는 요소를 직접 선택해 Claude Code나 Codex에 무엇을 바꿀지 지시할 수 있고, npx react-grab@latest로 바로 실행한다.",
-    "why_it_matters": "AI에게 화면 수정을 맡길 때 어떤 요소를 바꿔야 하는지 지정하는 마찰을 크게 줄인다. React 작업에서 선택 기반 편집 흐름을 더해 프로토타이핑과 반복 수정 속도를 높일 수 있다.",
+    "why_it_matters": "portfolio Next.js 작업에서 Claude Code로 UI 수정할 때 \"어떤 요소를 바꿔라\"는 지시의 마찰이 크다. React Grab의 선택 기반 편집은 이 병목을 줄여 portfolio 반복 수정 속도를 직접 높인다.",
     "translation": "React Grab을 소개합니다\n\n페이지에서 아무 요소나 선택하세요 → Claude Code나 Codex에 무엇을 바꿀지 말하세요\n\n완전한 오픈 소스\n\nnpx react-grab@latest",
     "media": [
       {
@@ -102,7 +102,7 @@
     "added_at": "2026-03-08",
     "text": "Here's the prompt:\n\n## Workflow Orchestration\n\n### 1. Plan Mode Default\n- Enter plan mode for ANY non-trivial task (3+ steps or architectural decisions)\n- If something goes sideways, STOP and re-plan immediately – don't keep pushing\n- Use plan mode for verification steps, not just building\n- Write detailed specs upfront to reduce ambiguity\n\n### 2. Subagent Strategy\n- Use subagents liberally to keep main context window clean\n- Offload research, exploration, and parallel analysis to subagents\n- For complex problems, throw more compute at it via subagents\n- One task per subagent for focused execution\n\n### 3. Self-Improvement Loop\n- After ANY correction from the user: update `tasks/lessons.md` with the pattern\n- Write rules for yourself that prevent the same mistake\n- Ruthlessly iterate on these lessons until mistake rate drops\n- Review lessons at session start for relevant project\n\n### 4. Verification Before Done\n- Never mark a task complete without proving it works\n- Diff your behavior between main and your changes when relevant\n- Ask yourself: \"Would a staff engineer approve this?\"\n- Run tests, check logs, demonstrate correctness\n\n### 5. Demand Elegance (Balanced)\n- For non-trivial changes: pause and ask \"is there a more elegant way?\"\n- If a fix feels hacky: \"Knowing everything I know now, implement the elegant solution\"\n- Skip this for simple, obvious fixes – don't over-engineer\n- Challenge your own work before presenting it\n\n### 6. Autonomous Bug Fixing\n- When given a bug report: just fix it. Don't ask for hand-holding\n- Point at logs, errors, failing tests – then resolve them\n- Zero context switching required from the user\n- Go fix failing CI tests without being told how\n\n### 7. Task Management\n1. **Plan First**: Write plan to `tasks/todo.md` with checkable items\n2. **Verify Plan**: Check in before starting implementation\n3. **Track Progress**: Mark items complete as you go\n4. **Explain Changes**: High-level summary at each step\n5. **Document Results**: Add review section to `tasks/todo.md`\n6. **Capture Lessons**: Update `tasks/lessons.md` after corrections\n\n### Core Principles\n- **Simplicity First**: Make every change as simple as possible. Impact minimal code.\n- **No Laziness**: Find root causes. No temporary fixes. Senior developer standards.\n- **Minimal Impact**: Changes should only touch what's necessary. Avoid introducing bugs.",
     "whats_happening": "게시글은 에이전트용 Workflow Orchestration 프롬프트 일부를 공개하며, 비사소한 작업은 Plan Mode를 기본으로 하고 문제가 생기면 즉시 멈춰 재계획하라는 규칙을 제시한다.",
-    "why_it_matters": "자동화 워크플로와 에이전트 작업에서 무리하게 계속 진행하는 실수를 줄이고, 검증도 실행의 뒷부분이 아니라 계획의 일부로 다루게 만든다. 특히 여러 단계가 얽힌 운영 파이프라인에서 실패 비용과 복구 시간을 낮추는 방식이다.",
+    "why_it_matters": "orchestration의 Workers 3개 + Skills 13개 체계가 이미 이 프롬프트의 핵심 원칙들을 구현하고 있다. 특히 Plan Mode 기본값, Self-Improvement Loop(common-mistakes.md), Verification Before Done(code-reviewer 체인)이 거의 동일한 구조다. TASK_CONTRACT 패턴은 파이프라인 DONE Gate에 바로 적용할 수 있다.",
     "translation": "프롬프트는 다음과 같습니다:\n\n워크플로 오케스트레이션\n\n1. Plan Mode 기본값\n- 사소하지 않은 작업(3단계 이상이거나 아키텍처 결정이 필요한 작업)이면 무엇이든 Plan Mode로 들어가라\n- 뭔가 꼬이기 시작하면 즉시 멈추고 다시 계획하라. 계속 밀어붙이지 마라\n- Plan Mode는 구현할 때만이 아니라 검증 단계에도 사용하라\n- 모호함을 줄이기 위해 처음부터 상세한 명세를 작성하라\n\n2. Subagent 전략\n- 메인 context window를 깔끔하게 유지하기 위해 subagent를 아낌없이 활용하라\n- 리서치, 탐색, 병렬 분석은 subagent에 넘겨라\n- 복잡한 문제에는 subagent를 통해 더 많은 compute를 투입하라\n- 집중된 실행을 위해 subagent당 하나의 작업만 맡겨라\n\n3. 자기 개선 루프\n- 사용자로부터 어떤 수정이든 받으면 그 패턴을 tasks/lessons.md에 업데이트하라\n- 같은 실수를 막을 수 있도록 자신만의 규칙을 작성하라\n- 실수율이 떨어질 때까지 이 교훈들을 가차 없이 반복 개선하라\n- 관련 프로젝트의 세션을 시작할 때 교훈들을 검토하라\n\n4. 완료 전 검증\n- 작동함을 입증하기 전에는 절대 작업을 완료로 표시하지 마라\n- 관련이 있을 때는 main과 네 변경 사항 사이의 동작 차이를 비교하라\n- 스스로에게 물어라: \"스태프 엔지니어가 이걸 승인할까?\"\n- 테스트를 돌리고, 로그를 확인하고, 정확성을 입증하라\n\n5. 우아함 요구하기(균형 있게)\n- 사소하지 않은 변경이라면 잠시 멈추고 \"더 우아한 방법이 있나?\"라고 자문하라\n- 해결책이 hacky하게 느껴진다면 \"지금 내가 아는 모든 것을 바탕으로, 우아한 해법을 구현하라\"라고 생각하라\n- 단순하고 뻔한 수정에는 이 단계를 건너뛰어라. 과도하게 설계하지 마라\n- 내놓기 전에 자기 작업을 스스로 비판하라\n\n6. 자율적 버그 수정\n- 버그 리포트를 받으면 그냥 고쳐라. 일일이 손을 잡아주길 요구하지 마라\n- 로그, 에러, 실패하는 테스트를 짚어낸 다음 그것들을 해결하라\n- 사용자에게는 맥락 전환이 전혀 필요 없어야 한다\n- 어떻게 하라고 지시받지 않아도 실패하는 CI 테스트를 가서 고쳐라\n\n7. 작업 관리\n1. 먼저 계획: 체크 가능한 항목들로 계획을 tasks/todo.md에 작성하라\n2. 계획 검증: 구현을 시작하기 전에 확인하고 들어가라\n3. 진행 추적: 진행하면서 항목들을 완료로 표시하라\n4. 변경 설명: 각 단계마다 상위 수준 요약을 남겨라\n5. 결과 문서화: tasks/todo.md에 review 섹션을 추가하라\n6. 교훈 기록: 수정이 발생한 뒤 tasks/lessons.md를 업데이트하라\n\n핵심 원칙\n- 단순함 우선: 모든 변경은 가능한 한 단순하게 만들어라. 영향은 최소한의 코드에만 미치게 하라.\n- 게으름 금지: 근본 원인을 찾아라. 임시방편은 없다. 시니어 개발자 기준을 지켜라.\n- 영향 최소화: 변경은 필요한 것만 건드려야 한다. 버그를 새로 끌어들이지 마라."
   },
   {
@@ -133,7 +133,7 @@
     "text": "Naive memory corrupts context. Memory as a cognitive process compounds agent system growth.\n\nCrewAI's new memory system runs 5 cognitive operations: encode, consolidate, recall, extract, forget. Conflicting memories are auto-detected and resolved — e.g., when migrating PostgreSQL → MySQL, the old version is automatically deprecated. Composite scoring = similarity×w + recency×w + importance×w. Atomic memory extraction decomposes 500-char summaries into individual facts.\n\npip install crewai",
     "translation": "순진한 메모리는 컨텍스트를 오염시킨다. 인지 과정으로서의 메모리는 에이전트 시스템의 성장을 증폭시킨다.\n\nCrewAI의 새로운 메모리 시스템은 5가지 인지 연산을 수행한다: encode, consolidate, recall, extract, forget. 충돌하는 메모리는 자동으로 감지되고 해결된다. 예를 들어 PostgreSQL → MySQL로 마이그레이션할 때 이전 버전은 자동으로 deprecated 처리된다. 복합 점수 산식 = similarity×w + recency×w + importance×w. 원자적 메모리 추출은 500자 요약을 개별 사실들로 분해한다.\n\npip install crewai",
     "whats_happening": "CrewAI가 memory를 단순 저장소가 아니라 인지 과정으로 다루는 새 memory system을 공개했고, encode·consolidate·recall·extract·forget의 5개 cognitive operation과 충돌 기억 자동 해소, atomic fact 추출 방식을 소개했다.",
-    "why_it_matters": "에이전트가 오래 실행될수록 누적되는 문맥 오염과 구식 지식 문제를 줄이면서 recall 품질을 최신성·중요도까지 반영해 높일 수 있다는 점이 중요하다. 이는 장기 실행형 에이전트 시스템의 확장성과 신뢰성을 직접 개선한다."
+    "why_it_matters": "mcp-memory가 지금 풀고 있는 문제 그 자체다. 충돌 기억 자동 해소는 Phase 6 pruning에서 soft-delete로 전환한 경험과 직결되고, composite scoring(유사도x최신성x중요도)은 현재 Gate 2 visit_count>=10 승격 로직을 보완할 수 있다. atomic memory 추출은 save_session()의 Narrative 노드를 개별 사실로 분해하는 데 바로 쓸 수 있다."
   },
   {
     "id": "bm-006",
@@ -158,7 +158,7 @@
     "text": "Sell tools, and you lose to the model. Sell outcomes, and you get stronger as the model gets stronger. The next $1T company is a software company disguised as a service company.\n\nCopilot (tool sales) is capped at productivity gains. Autopilot (outcome sales) — the entire labor budget is your TAM. The entry wedge is where outsourcing already exists: budget lines exist, performance-based contracts already exist, replacement requires no org restructuring.\n\nHigh-intelligence-ratio markets: Insurance ($140-200B), Accounting ($50-80B), Legal ($20-25B), IT MSP ($100B+).\n\nRef: Crosby, WithCoverage, Anterior, Rillet, Harvey, Mercor",
     "translation": "도구를 팔면, 모델에게 진다. 결과를 팔면, 모델이 강해질수록 당신도 더 강해진다. 다음 1조 달러 회사는 서비스 회사로 위장한 소프트웨어 회사다.\n\nCopilot(도구 판매)은 생산성 향상분에 의해 상한이 정해진다. Autopilot(결과 판매)에서는 전체 인건비 예산이 당신의 TAM이다. 진입 쐐기는 이미 아웃소싱이 존재하는 곳이다: 예산 항목이 이미 존재하고, 성과 기반 계약도 이미 존재하며, 대체를 위해 조직 재구성이 필요하지 않다.\n\n고지능 비율 시장: Insurance($140-200B), Accounting($50-80B), Legal($20-25B), IT MSP($100B+).\n\n참고: Crosby, WithCoverage, Anterior, Rillet, Harvey, Mercor",
     "whats_happening": "이 글은 AI 시장에서 도구를 파는 모델보다 결과를 파는 모델이 더 큰 회사를 만든다고 주장한다. Copilot형 판매는 생산성 향상 범위에 갇히지만, Autopilot형 판매는 보험·회계·법률·IT MSP 같은 기존 아웃소싱 시장의 전체 노동 예산을 공략할 수 있다고 설명한다.",
-    "why_it_matters": "중요한 점은 AI의 상업화 단위를 소프트웨어 좌석 수가 아니라 대체 가능한 업무 결과와 노동 예산으로 다시 정의한다는 데 있다. 이미 외주 예산과 성과 계약이 존재하는 시장에서는 조직 개편 없이 진입할 수 있어, AI 서비스 회사가 모델 성능 향상과 함께 더 강해질 수 있다."
+    "why_it_matters": "orchestration이 Claude(설계/결정) + Codex(추출) + Gemini(2nd opinion) 멀티AI 체계를 운영하는 것 자체가 copilot이 아닌 autopilot 모델이다. 도구가 아니라 결과를 만들어내는 구조이기 때문에 모델 성능이 올라갈수록 시스템이 더 강해진다."
   },
   {
     "id": "bm-007",
@@ -183,7 +183,7 @@
     "text": "Complex harnesses and plugins actually hurt agent performance. Simplicity wins.\n\nCLAUDE.md should be an IF-ELSE directory — don't embed context directly, just point to where it lives. Add only Rules (preferences) and Skills (recipes), remove everything else. TASK_CONTRACT.md = specify tests + screenshots + verification conditions; session cannot end until these are met. Bug hunting runs a 3-agent structure: find (+10pts) → challenge (-2x penalty) → judge.",
     "translation": "복잡한 harness와 plugin은 실제로 agent 성능을 해친다. 단순함이 이긴다.\n\nCLAUDE.md는 IF-ELSE 디렉터리여야 한다. 컨텍스트를 직접 박아 넣지 말고, 그것이 있는 위치만 가리켜라. Rules (preferences)와 Skills (recipes)만 추가하고, 나머지는 전부 제거하라. TASK_CONTRACT.md = 테스트 + 스크린샷 + 검증 조건을 명시하라. 이것들이 충족되기 전까지는 세션을 끝낼 수 없다. 버그 헌팅은 3-agent 구조로 돌아간다: find (+10pts) → challenge (-2x penalty) → judge.",
     "whats_happening": "에이전트 성능을 높이려면 복잡한 하네스와 플러그인 대신 단순한 운영 구조가 더 낫다는 실무 원칙을 제안한다. 구체적으로 CLAUDE.md는 조건 분기용 안내서로 축소하고, TASK_CONTRACT.md로 검증 종료 조건을 강제하며, 버그 헌팅은 3에이전트 구조로 나누자고 말한다.",
-    "why_it_matters": "에이전트 워크플로를 설명과 맥락으로 비대하게 만드는 대신 규칙, 스킬, 검증 조건만 남기면 성능 저하와 운영 복잡도를 함께 줄일 수 있다. 특히 자동화 파이프라인에서는 세션 종료 기준과 반박 역할을 분리해 품질 관리의 일관성을 높일 수 있다."
+    "why_it_matters": "orchestration의 CLAUDE.md가 이미 IF-ELSE 디렉토리 방식이다. Rules(선호)와 Skills(레시피)만 두고 나머지는 index->시그니처->본문 Progressive Reading으로 필요할 때만 읽는다. TASK_CONTRACT.md는 파이프라인 DONE Gate(G1-G6)와 같은 역할이고, 3에이전트 버그 헌팅은 code-reviewer + /delegate verify 구조와 정확히 맞닿는다."
   },
   {
     "id": "bm-008",
@@ -214,7 +214,7 @@
     "text": "Building agents is easy. Designing a runtime that survives production is the real challenge.\n\nThe pattern: Build (define agent) → Serve (expose as API) → Connect (Slack/Discord/MCP). 6 pillars: Durability (resume on mid-task failure) / Isolation (complete separation per user) / Governance (3 tiers: auto-run · user-approval · admin-approval) / Persistence / Scalability / Composability. UserFeedbackTools let agents ask structured questions back to the user.\n\ngithub.com/agno-agi/agentos-docker-template",
     "translation": "에이전트를 만드는 것은 쉽다. 프로덕션 환경을 버텨내는 런타임을 설계하는 것이 진짜 도전이다.\n\n패턴은 이렇다: Build (에이전트 정의) → Serve (API로 노출) → Connect (Slack/Discord/MCP). 6가지 핵심 축은 다음과 같다: Durability (작업 도중 실패해도 재개) / Isolation (사용자별 완전한 분리) / Governance (3단계: auto-run · user-approval · admin-approval) / Persistence / Scalability / Composability. UserFeedbackTools는 에이전트가 사용자에게 다시 구조화된 질문을 할 수 있게 해준다.\n\ngithub.com/agno-agi/agentos-docker-template",
     "whats_happening": "Agno가 에이전트를 정의하고 API로 서빙한 뒤 Slack, Discord, MCP에 연결하는 프로덕션 런타임 패턴을 제시했다. 함께 Durability, Isolation, Governance를 포함한 6개 운영 기둥과 UserFeedbackTools를 담은 agentos-docker-template를 공유했다.",
-    "why_it_matters": "에이전트 구축 자체보다 장애 복구, 사용자 격리, 승인 체계 같은 런타임 설계가 실제 프로덕션 운영의 핵심 병목이라는 점을 분명히 보여준다. 사람 승인과 구조화된 사용자 피드백을 런타임에 넣으면 자동화 시스템을 더 안전하고 확장 가능하게 운영할 수 있다."
+    "why_it_matters": "orchestration이 Workers 3개로 에이전트를 줄이면서 동시에 풀지 못한 문제가 Durability(중단 후 재개)와 Isolation(세션 격리)이다. 특히 Governance 3계층(auto-run/user-approval/admin-approval)은 현재 파이프라인의 Phase 전환 승인 체계를 강화하는 데 직접 참고할 수 있다."
   },
   {
     "id": "bm-009",
@@ -232,7 +232,7 @@
     "added_at": "2026-03-08",
     "text": "This is how you can give Claude Code the ability to parse any website in the world.\n\nI recorded this video last week.\n\nPeople loved it. I keep getting messages about it.",
     "whats_happening": "작성자가 Claude Code에 세상 어떤 웹사이트든 파싱할 수 있는 능력을 붙이는 방법을 보여주는 영상을 지난주에 녹화해 공유했고, 큰 반응을 얻고 있다고 말했다.",
-    "why_it_matters": "Claude Code를 단순 코딩 보조를 넘어 웹 데이터를 직접 읽는 작업 에이전트로 확장할 수 있다는 뜻이다. 웹 파싱이 붙으면 문서화되지 않은 사이트도 자동화 파이프라인의 입력원으로 삼기 쉬워진다.",
+    "why_it_matters": "tech-review가 지금 Twitter CDP 자동화로 북마크를 수집하고 있는데, 웹 파싱이 붙으면 Twitter 외 기사형 소스까지 Playwright 파이프라인에 바로 추가할 수 있다. 수집 소스 다변화는 블로그 콘텐츠 품질에 직결된다.",
     "translation": "이것이 Claude Code에 세상 어떤 웹사이트든 파싱할 수 있는 능력을 주는 방법입니다.\n\n저는 지난주에 이 영상을 녹화했습니다.\n\n사람들이 정말 좋아했습니다. 저는 이것에 관한 메시지를 계속 받고 있습니다.",
     "media": [
       {
@@ -258,7 +258,7 @@
     "added_at": "2026-03-08",
     "text": "official google workspace cli!!\n\nhttps://github.com/googleworkspace/cli",
     "whats_happening": "Google Workspace용 공식 CLI가 나왔다는 짧은 발표다. Google이 Workspace 작업을 커맨드라인에서 다루는 공식 도구를 내놨음을 알린다.",
-    "why_it_matters": "Workspace 연동 작업을 스크립트와 터미널 중심으로 자동화할 수 있어 운영 비용을 줄일 수 있다. 특히 Gmail 등 Workspace 기반 워크플로를 쓰는 자동화 시스템에 공식 지원 경로가 생긴다는 점이 중요하다.",
+    "why_it_matters": "tech-review 자동화에서 GAS(Google Apps Script)에 의존하는 부분을 이 공식 CLI로 대체할 수 있다. Gmail 트리거 점검, Calendar 연동을 터미널에서 직접 다루면 Playwright 자동화 파이프라인과 같은 환경에서 관리할 수 있다.",
     "translation": "공식 Google Workspace CLI!!\n\nhttps://github.com/googleworkspace/cli",
     "card": {
       "type": "summary_large_image",
@@ -285,7 +285,7 @@
     "added_at": "2026-03-08",
     "text": "this entire paper is great read as a window into how Claude thinks\n\nhttps://www.anthropic.com/research/tracing-thoughts-language-model",
     "whats_happening": "작성자가 한 논문 전체를 Claude가 어떻게 생각하는지 들여다볼 수 있는 창처럼 읽을 수 있다며 강하게 추천하고 있다.",
-    "why_it_matters": "이 평가는 Claude를 단순한 출력 결과가 아니라 사고 방식의 관점에서 해석하게 만든다. 모델 분석이나 기술 리뷰를 할 때 내부 추론 프레임을 읽는 기준점으로 쓸 수 있다.",
+    "why_it_matters": "Claude의 내부 추론 메커니즘을 이해하면 orchestration의 CLAUDE.md 지시문 설계와 Skills 프롬프트 최적화에 직접 반영할 수 있다. mcp-memory에 이 논문의 핵심 인사이트를 Pattern 노드로 저장해두면 프롬프트 튜닝 시 recall로 꺼내 쓸 수 있다.",
     "translation": "이 논문 전체는 Claude가 어떻게 생각하는지를 들여다볼 수 있는 창으로서 정말 훌륭한 읽을거리다\n\nhttps://www.anthropic.com/research/tracing-thoughts-language-model",
     "card": {
       "type": "summary_large_image",
@@ -313,7 +313,7 @@
     "added_at": "2026-03-08",
     "text": "🚨 BREAKING: A developer on GitHub just built a tool that turns any GitHub repo into an interactive knowledge graph and open sourced it for free.\n\nIt's called GitNexus. Think of it as a visual X-ray of your codebase but with an AI agent you can actually talk to.\n\nNo server. No subscription. No enterprise sales call.\n\nHere's what it does inside your browser:\n\n→ Parses your entire GitHub repo or ZIP file in seconds\n→ Builds a live interactive knowledge graph with D3.js\n→ Maps every function, class, import, and call relationship\n→ Runs a 4-pass AST pipeline: structure → parsing → imports → call graph\n→ Stores everything in an embedded KuzuDB graph database\n→ Lets you query your codebase in plain English with an AI agent\n\nHere's the wildest part:\n\nIt uses Web Workers to parallelize parsing across threads so a massive monorepo doesn't freeze your tab.\n\nThe Graph RAG agent traverses real graph relationships using Cypher queries not embeddings, not vector search. Actual graph logic.\n\nAsk it things like \"What functions call this module?\" or \"Find all classes that inherit from X\" and it traces the answer through the graph.\n\nThis is the kind of code intelligence tool enterprise teams pay thousands per month for.\n\nIt runs entirely in your browser.\n\nWorks with TypeScript, JavaScript, and Python.\n\n100% Open Source. MIT License.\n\nRepo: http://github.com/abhigyanpatwari/GitNexus",
     "whats_happening": "GitHub의 한 개발자가 어떤 GitHub repo든 인터랙티브한 지식 그래프로 바꾸는 오픈소스 도구 GitNexus를 공개했다. 이 도구는 코드베이스를 시각적으로 탐색하게 해 주고, 대화형 AI agent로 repo를 질의할 수 있게 한다.",
-    "why_it_matters": "코드 구조 시각화와 대화형 탐색을 한 도구로 묶어 repo 이해와 탐색 시간을 줄일 수 있다. 무료 오픈소스라 Paul의 자동화 중심 tech-review 워크플로에도 바로 실험 적용하기 쉽다.",
+    "why_it_matters": "index-system이 프로젝트 간 관계를 그래프로 추적하는 것과 같은 방향이다. GitNexus의 4-pass AST 파이프라인(구조->파싱->imports->호출 그래프)은 index-system의 scan CLI가 코드 레벨에서 하려는 것의 시각화 버전이고, KuzuDB 그래프 위 Cypher 쿼리는 mcp-memory의 지식 그래프 질의와 동일한 패턴이다.",
     "translation": "🚨 속보: GitHub의 한 개발자가 방금 어떤 GitHub repo든 인터랙티브한 지식 그래프로 바꿔주는 도구를 만들었고, 그것을 무료로 오픈소스로 공개했다.\n\n이름은 GitNexus다. 실제로 대화할 수 있는 AI 에이전트가 붙어 있는, 코드베이스의 시각적 X-ray라고 생각하면 된다.\n\n서버 없음. 구독 없음. 엔터프라이즈 영업 통화도 없음.\n\n브라우저 안에서 하는 일은 이렇다:\n\n→ GitHub repo 전체나 ZIP 파일 전체를 몇 초 만에 파싱한다\n→ D3.js로 실시간 인터랙티브 지식 그래프를 구축한다\n→ 모든 함수, 클래스, import, 호출 관계를 매핑한다\n→ 4-pass AST 파이프라인을 실행한다: 구조 → 파싱 → imports → 호출 그래프\n→ 모든 것을 임베디드 KuzuDB 그래프 데이터베이스에 저장한다\n→ AI 에이전트와 함께 평이한 영어로 코드베이스를 질의할 수 있게 해준다\n\n가장 놀라운 부분은 이거다:\n\nWeb Workers를 사용해 스레드 전반에 걸쳐 파싱을 병렬화하므로, 거대한 monorepo라도 탭이 멈추지 않는다.\n\nGraph RAG 에이전트는 embeddings도 아니고, vector search도 아니고, Cypher 쿼리를 사용해 실제 그래프 관계를 탐색한다. 진짜 그래프 로직이다.\n\n\"What functions call this module?\" 또는 \"Find all classes that inherit from X\" 같은 질문을 하면, 그래프를 따라가며 답을 추적해 준다.\n\n이런 종류의 코드 인텔리전스 도구에 엔터프라이즈 팀들은 매달 수천 달러를 지불한다.\n\n전부 브라우저 안에서 실행된다.\n\nTypeScript, JavaScript, Python과 함께 동작한다.\n\n100% 오픈소스. MIT License.\n\nRepo: http://github.com/abhigyanpatwari/GitNexus",
     "media": [
       {
@@ -339,7 +339,7 @@
     "added_at": "2026-03-09",
     "text": "I accidentally discovered how to compress a month of research into 3 hours.\n\nA founder at a YC company showed me his Claude setup. I thought he was just fast. Then I watched him build an entire go-to-market strategy for a market he'd never worked in before.\n\nHere's exactly what he did:\n\nFirst: he didn't ask Claude to \"research the market.\"\n\nHe fed it 8 competitor landing pages, 3 earnings call transcripts, 12 customer reviews, and a Reddit thread of complaints.\n\nThen he asked one question:\n\n\"What does every successful player in this market understand that their customers never say out loud?\"\n\nNot \"summarize these.\" Not \"analyze the competition.\"\nThe unspoken insight. The thing that takes founders 2 years of customer calls to figure out.\n\nBut the next part is what broke my brain.\n\nHe followed up with:\n\n\"Now show me the 3 assumptions this entire market is built on, and what would have to be true for each one to be wrong.\"\n\nIn 15 minutes he had the attack surface of an entire industry.\nThe blind spots. The fragile consensus. The opening nobody was talking about.\n\nMost founders spend 6 months doing customer discovery just to find one of those.\n\nThen he did something I've never seen before.\n\nHe asked:\n\n\"Write 5 questions a world-class investor would ask to destroy this business idea, then answer each one using only the evidence in these documents.\"\n\nHe spent the next 2 hours stress-testing every assumption. Every weak answer triggered a follow-up:\n\n\"What's the strongest version of this argument and where does it still break?\"\n\nBy hour 3, he had a strategy deck that felt like it came from someone who'd spent a decade in the space.\n\nThe tool didn't change. The questions did.\n\nMost people treat Claude like a faster Google.\n\nThese founders are using it like a thinking partner who has read everything and has no ego about being wrong.\n\nThe difference between 3 hours and 3 months isn't the amount of information.\n\nIt's knowing which questions actually matter.",
     "whats_happening": "작성자는 YC 회사 founder의 Claude 세팅을 보고, 낯선 시장에서도 몇 시간 만에 go-to-market 전략을 만드는 조사 워크플로를 목격했다고 말한다. 그 경험을 통해 한 달 걸릴 리서치를 3시간으로 압축하는 방법을 발견했다고 주장한다.",
-    "why_it_matters": "도메인 지식이 거의 없는 시장에서도 LLM 조사 세팅만 잘 설계하면 초기 전략 수립 속도를 크게 끌어올릴 수 있다는 점을 보여준다. 시장 조사와 GTM 기획의 시간 비용을 줄여 소규모 팀의 실행 속도를 바꿀 수 있다.",
+    "why_it_matters": "Claude를 더 빠른 Google이 아니라 사고 파트너로 쓰는 방식이 orchestration의 핵심 설계 원칙과 같다. \"모든 가정의 반박\"은 /delegate verify 3단계(구조->스팟체크->반박)와 동일 구조이고, \"암묵적 통찰 추출\"은 mcp-memory의 시그널->패턴 성숙 루프가 자동화하려는 것이다.",
     "translation": "나는 우연히 한 달치 리서치를 3시간으로 압축하는 방법을 알아냈다.\n\nYC 회사의 한 창업자가 자기 Claude 설정을 보여줬다. 나는 그가 그냥 빠른 사람인 줄 알았다. 그런데 나는 그가 이전에는 한 번도 일해본 적 없는 시장을 위해 완전한 go-to-market 전략 전체를 세우는 걸 지켜보게 됐다.\n\n그가 정확히 뭘 했는지 여기 있다:\n\n첫째: 그는 Claude에게 \"시장을 조사해줘\"라고 묻지 않았다.\n\n그는 여기에 경쟁사 랜딩 페이지 8개, 실적 발표 콜 녹취록 3개, 고객 리뷰 12개, 그리고 불만이 담긴 Reddit 스레드 하나를 넣었다.\n\n그리고 질문 하나를 던졌다:\n\n\"이 시장에서 성공한 모든 플레이어가 이해하고 있지만, 고객들은 결코 입 밖으로 내어 말하지 않는 것은 무엇인가?\"\n\n\"이걸 요약해줘\"가 아니었다. \"경쟁을 분석해줘\"도 아니었다.\n말로 드러나지 않은 통찰.\n창업자들이 그걸 알아내기 위해 고객 통화를 2년 동안 해야 하는 바로 그 것.\n\n하지만 다음 부분은 내 뇌를 부숴버렸다.\n\n그는 이어서 이렇게 말했다:\n\n\"이제 이 시장 전체가 어떤 3가지 가정 위에 세워져 있는지 보여주고, 각각이 틀렸다고 하려면 무엇이 사실이어야 하는지도 보여줘.\"\n\n15분 만에 그는 산업 전체의 attack surface를 손에 넣었다.\n보이지 않던 사각지대.\n깨지기 쉬운 컨센서스.\n아무도 이야기하지 않던 틈.\n\n대부분의 창업자들은 그중 하나를 찾는 데만도 customer discovery에 6개월을 쓴다.\n\n그다음 그는 내가 전에는 한 번도 본 적 없는 일을 했다.\n\n그는 물었다:\n\n\"세계적 수준의 투자자라면 이 사업 아이디어를 무너뜨리기 위해 던질 5개의 질문을 써주고, 그런 다음 이 문서들에 있는 증거만 사용해서 각각에 답해줘.\"\n\n그는 다음 2시간 동안 모든 가정을 stress-test했다. 약한 답변이 나올 때마다 후속 질문이 따라붙었다:\n\n\"이 주장의 가장 강력한 버전은 무엇이고, 그래도 어디에서 무너지지?\"\n\n3시간째가 되었을 때, 그는 마치 이 업계에서 10년을 보낸 사람이 만든 것처럼 느껴지는 strategy deck을 갖고 있었다.\n\n도구는 바뀌지 않았다. 질문이 바뀌었다.\n\n대부분의 사람들은 Claude를 더 빠른 Google처럼 다룬다.\n\n이 창업자들은 Claude를, 모든 것을 읽었고 자신이 틀렸을 때도 자존심을 세우지 않는 사고 파트너처럼 사용하고 있다.\n\n3시간과 3개월의 차이는 정보의 양이 아니다.\n\n정말 중요한 질문이 무엇인지 아는 것이다.",
     "tweet_images": [
       "/assets/bm-images/2030614728591167973_1.jpg"
@@ -367,7 +367,7 @@
     "added_at": "2026-03-09",
     "text": "Anthropic dropped a 33 pages cheat sheet for building Claude skills\n\n\nhttps://\nresources.anthropic.com/hubfs/The-Comp\nlete-Guide-to-Building-Skill-for-Claude.pdf\n…",
     "whats_happening": "Anthropic이 Claude skills를 만들기 위한 33페이지짜리 치트시트를 공개했다. Claude skill 설계와 작성 방식을 정리한 PDF 가이드를 배포한 것이다.",
-    "why_it_matters": "Claude를 반복 작업에 맞게 구조화하는 방법을 짧은 문서가 아니라 실전형 가이드로 제시했다는 점이 중요하다. skill 설계 품질이 올라가면 자동화 파이프라인과 에이전트 워크플로의 재현성과 일관성도 함께 올라간다.",
+    "why_it_matters": "orchestration의 Skills 13개가 이미 이 가이드가 말하는 \"반복 작업을 skill로 코드화\"하는 구조다. Anthropic 공식 치트시트로 기존 Skills의 설계 품질을 점검하고, 특히 tech-review의 add-bookmark, create-post skill 구조를 재검토할 수 있다.",
     "translation": "Anthropic이 Claude skills를 구축하기 위한 33페이지짜리 치트시트를 공개했다\n\n\nhttps://\nresources.anthropic.com/hubfs/The-Comp\nlete-Guide-to-Building-Skill-for-Claude.pdf\n…",
     "tweet_images": [
       "/assets/bm-images/2030595632998580328_1.jpg"
@@ -393,7 +393,7 @@
     "added_at": "2026-03-09",
     "text": "Pay attention to this one if you are building terminal-based coding agents.\n\nOpenDev is an 81-page paper covering scaffolding, harness design, context engineering, and hard-won lessons from building CLI coding agents.\n\nIt introduces a compound AI system architecture with workload-specialized model routing, a dual-agent architecture separating planning from execution, lazy tool discovery, and adaptive context compaction.\n\nThe industry is shifting from IDE plugins to terminal-native agents.\n\nClaude Code, Codex CLI, and others have proven the model works.\n\nThis paper formalizes the design patterns that make these systems reliable, covering topics like event-driven system reminders to counteract instruction fade-out, automated memory across sessions, and strict safety controls for autonomous operation.\n\nPaper: https://arxiv.org/abs/2603.05344\n\nLearn to build effective AI agents in our academy: https://academy.dair.ai/",
     "whats_happening": "터미널 기반 코딩 에이전트를 만들 때 참고할 81페이지짜리 OpenDev 논문이 소개됐다. 이 논문은 scaffolding, harness design, context engineering, 그리고 CLI coding agents 구축 경험에서 얻은 교훈과 compound AI system 아키텍처를 다룬다.",
-    "why_it_matters": "CLI coding agent를 만드는 팀이 시행착오를 줄이고 시스템 설계를 더 구조적으로 잡는 데 직접 도움이 된다. 특히 단일 프롬프트가 아니라 scaffolding과 harness까지 포함한 전체 에이전트 시스템 설계를 문서화했다는 점이 중요하다.",
+    "why_it_matters": "OpenDev 논문의 dual-agent architecture(계획/실행 분리), adaptive context compaction, instruction fade-out 대응은 orchestration의 Context Engineering(Gate A/B/C, Progressive Reading, Compact 점진화)과 직접 비교할 수 있다. 자동화된 세션 간 메모리는 mcp-memory의 save_session() + recall() 패턴과 같은 문제를 풀고 있다.",
     "translation": "터미널 기반 코딩 에이전트를 만들고 있다면 이 글을 주목하라.\n\nOpenDev는 scaffolding, harness 설계, context engineering, 그리고 CLI 코딩 에이전트를 구축하며 힘겹게 얻어낸 교훈을 다루는 81페이지짜리 논문이다.\n\n이 논문은 워크로드별로 특화된 모델 라우팅, 계획과 실행을 분리하는 이중 에이전트 아키텍처, 지연형 도구 탐색, 그리고 적응형 컨텍스트 압축을 갖춘 복합 AI 시스템 아키텍처를 소개한다.\n\n업계는 IDE 플러그인에서 터미널 네이티브 에이전트로 이동하고 있다.\n\nClaude Code, Codex CLI, 그리고 다른 도구들은 이 모델이 작동한다는 것을 입증했다.\n\n이 논문은 이러한 시스템을 신뢰할 수 있게 만드는 설계 패턴을 공식화하며, instruction fade-out에 대응하기 위한 이벤트 기반 시스템 리마인더, 세션 간 자동화된 메모리, 자율 운용을 위한 엄격한 안전 제어 같은 주제를 다룬다.\n\n논문: https://arxiv.org/abs/2603.05344\n\n우리 아카데미에서 효과적인 AI 에이전트 구축법을 배우세요: https://academy.dair.ai/",
     "tweet_images": [
       "/assets/bm-images/2030771811705872435_1.jpg"
@@ -421,7 +421,7 @@
     "added_at": "2026-03-09",
     "text": "i found a github repo that lets you spin up an ai agency with ai employees\n\nengineers, designers, growth marketers, product managers\n\neach role runs as its own agent and they coordinate to ship ideas\n\n10k+ stars in under 7 days\n\n1. engineering (7 agents)\nfrontend, backend, mobile, ai, devops, prototyping, senior development\n\n2. design (7)\nui/ux, research, architecture, branding, visual storytelling, image generation\n\n3. marketing (8)\ngrowth hacking, content, twitter, tiktok, instagram, reddit, app store\n\n4. product (3)\nsprint prioritization, trend research, feedback synthesis\n\n5. project management (5)\nproduction, coordination, operations, experimentation\n\n6. testing (7)\nqa, performance analysis, api testing, quality verification\n\n7. support (6)\ncustomer service, analytics, finance, legal, executive reporting\n\n8. spatial computing (6)\nxr, visionos, webxr, metal, vision pro\n\n9. specialized (6)\nmulti agent orchestration, data analytics, sales, distribution\n\nwhat i like about this approach is the framing\n\ninstead of one big ai agent trying to do everything, you structure it more like a company. specialized agents, clear responsibilities, workflows between them\n\nim curious to see what this actually feels like in practice and if its any good (do your own research)\n\nhttps://github.com/msitarzewski/agency-agents/\n\nbut as always will share what i learn in public and on @startupideaspod \n\none thing is for certain and it reminds me\n\nthe future belongs to those who tinker with software like this",
     "whats_happening": "AI 직원들로 구성된 AI agency를 빠르게 띄울 수 있게 해주는 GitHub 저장소가 소개됐고, 엔지니어·디자이너·그로스 마케터·제품 관리자 역할이 각각 독립 agent로 동작하며 함께 아이디어를 출시한다고 설명한다. 이 저장소는 공개 7일도 안 돼 stars 1만 개 이상을 모았다.",
-    "why_it_matters": "단일 코딩 agent를 넘어 제품 조직의 역할 분업 자체를 멀티 agent 구조로 구현하려는 흐름이 빠르게 주목받고 있다는 신호다. 아이디어 검증부터 구현까지 병렬화할 수 있다는 기대를 키우기 때문에, AI 기반 제품 개발 운영 방식의 기준을 끌어올린다.",
+    "why_it_matters": "orchestration이 Workers 3개 + Skills 13개로 역할을 나눈 것과 같은 방향이지만, 60+ 에이전트는 과잉이다. v5.0에서 에이전트 15->3으로 줄인 경험상 역할 분리 자체보다 오케스트레이션 품질이 핵심이고, 이 repo는 그 반면교사로 참고할 수 있다.",
     "translation": "ai 직원들로 ai 에이전시를 꾸릴 수 있게 해주는 GitHub repo를 찾았다\n\n엔지니어, 디자이너, 그로스 마케터, 프로덕트 매니저\n\n각 역할은 각자의 에이전트로 돌아가고, 아이디어를 실제로 내놓기 위해 서로 협업한다\n\n7일도 안 되어 stars 1만+\n\n1. 엔지니어링 (에이전트 7개)\nfrontend, backend, mobile, ai, devops, 프로토타이핑, 시니어 개발\n\n2. 디자인 (7)\nui/ux, 리서치, 아키텍처, 브랜딩, 비주얼 스토리텔링, 이미지 생성\n\n3. 마케팅 (8)\n그로스 해킹, 콘텐츠, twitter, tiktok, instagram, reddit, app store\n\n4. 프로덕트 (3)\n스프린트 우선순위화, 트렌드 리서치, 피드백 종합\n\n5. 프로젝트 관리 (5)\n프로덕션, 코디네이션, 운영, 실험\n\n6. 테스트 (7)\nqa, 성능 분석, api 테스트, 품질 검증\n\n7. 지원 (6)\n고객 서비스, 애널리틱스, 재무, 법무, 경영진 보고\n\n8. 공간 컴퓨팅 (6)\nxr, visionos, webxr, metal, vision pro\n\n9. 전문 분야 (6)\n멀티 에이전트 오케스트레이션, 데이터 애널리틱스, 세일즈, 유통\n\n이 접근 방식에서 내가 마음에 드는 건 그 프레이밍이다\n\n모든 걸 하려는 거대한 ai 에이전트 하나 대신, 회사를 더 닮은 구조로 만든다. 전문화된 에이전트들, 명확한 책임, 그들 사이의 워크플로\n\n이게 실제로 써보면 어떤 느낌인지, 그리고 정말 괜찮은지 궁금하다 (직접 알아보길)\n\nhttps://github.com/msitarzewski/agency-agents/\n\n하지만 늘 그렇듯 내가 배우는 건 공개적으로, 그리고 @startupideaspod 에서 공유하겠다\n\n한 가지는 확실하고, 이건 내게 다시 상기시킨다\n\n미래는 이런 소프트웨어를 만지작거리는 사람들의 것이다",
     "tweet_images": [
       "/assets/bm-images/2030680849486668229_1.jpg"
@@ -451,7 +451,7 @@
     "added_at": "2026-03-09",
     "text": "UI 컴포넌트를 AI 에이전트와 더 잘 쓰는 법\n> shadcn/cli v4\n\n먼저 shadcn/ui는 내 프로젝트 코드로 가져와 직접 수정하며 쓰는 방식의 UI 컴포넌트 모음이에요.\n\n\"shadcn/cli v4가 출시되었습니다. shadcn/skills, 프리셋, dry-run, 모노레포 등 다양한 기능을 담고 있어요.\"\n\n\"코딩 에이전트와 함께 shadcn/ui를 사용하거나, 기본 설정을 더 세밀하게 제어하고 싶다면 이번 업데이트를 눈여겨볼만 합니다.\"\n\nshadcn/skills 이건 코딩 에이전트에게 컴포넌트와 레지스트리에 대한 충분한 문맥을 제공해요.\n\n그래서 이제 에이전트가 여러분의 코딩 스타일과 시스템에 맞춰 훨씬 더 정확하게 코드를 작성할 수 있게 되는거죠.\n\n다음으로 `--preset`은 디자인 설정을 짧은 코드 하나로 압축해 줍니다.\n\n커스텀 설정으로 프로젝트를 생성하거나, 팀과 공유하거나, 레지스트리에 배포하는 데 활용할 수 있어요.\n\nClaude, Codex, v0 어디서든 동일한 프리셋을 사용할 수 있어요.\n\n전반적으로 개발자가 일일이 설정해야 했던 번거로움을 덜어주고 있다고 보여요.\n\nAI를 활용한 UI 컴포넌트 작업의 기본기를 탄탄하게 다져주는 의미있는 업데이트라고 생각합니다!",
     "whats_happening": "shadcn/cli v4가 출시되며 shadcn/skills, 프리셋, dry-run, monorepo 같은 기능이 추가됐다. 이 글은 이를 바탕으로 shadcn/ui 컴포넌트를 AI 에이전트와 더 잘 쓰는 방식을 소개한다.",
-    "why_it_matters": "shadcn/ui를 AI 에이전트가 다루기 쉬운 흐름으로 표준화하면 컴포넌트 추가, 수정, 검토를 더 빠르고 안전하게 자동화할 수 있다. 특히 프리셋과 dry-run, monorepo 지원은 프로젝트별 UI 운영 비용을 줄인다.",
+    "why_it_matters": "portfolio가 Next.js 프로젝트이므로 shadcn/skills로 Claude Code에 UI 컴포넌트 문맥을 넘기면 portfolio 수정 품질이 올라간다. preset과 dry-run은 monet-lab UI 실험에도 바로 쓸 수 있고, monorepo 지원은 프로젝트 간 공통 컴포넌트 관리에 유리하다.",
     "translation": "UI 컴포넌트를 AI 에이전트와 더 잘 쓰는 법\n> shadcn/cli v4\n\n먼저 shadcn/ui는 내 프로젝트 코드로 가져와 직접 수정하며 쓰는 방식의 UI 컴포넌트 모음이에요.\n\n\"shadcn/cli v4가 출시되었습니다. shadcn/skills, 프리셋, dry-run, 모노레포 등 다양한 기능을 담고 있어요.\"\n\n\"코딩 에이전트와 함께 shadcn/ui를 사용하거나, 기본 설정을 더 세밀하게 제어하고 싶다면 이번 업데이트를 눈여겨볼만 합니다.\"\n\nshadcn/skills 이건 코딩 에이전트에게 컴포넌트와 레지스트리에 대한 충분한 문맥을 제공해요.\n\n그래서 이제 에이전트가 여러분의 코딩 스타일과 시스템에 맞춰 훨씬 더 정확하게 코드를 작성할 수 있게 되는거죠.\n\n다음으로 `--preset`은 디자인 설정을 짧은 코드 하나로 압축해 줍니다.\n\n커스텀 설정으로 프로젝트를 생성하거나, 팀과 공유하거나, 레지스트리에 배포하는 데 활용할 수 있어요.\n\nClaude, Codex, v0 어디서든 동일한 프리셋을 사용할 수 있어요.\n\n전반적으로 개발자가 일일이 설정해야 했던 번거로움을 덜어주고 있다고 보여요.\n\nAI를 활용한 UI 컴포넌트 작업의 기본기를 탄탄하게 다져주는 의미있는 업데이트라고 생각합니다!",
     "media": [
       {
@@ -481,7 +481,7 @@
       "/assets/bm-images/karpathy-autoresearch.jpg"
     ],
     "whats_happening": "작성자가 autoresearch 프로젝트를 주말에 직접 만져볼 수 있도록 자체 완결형 최소 레포로 묶어 공개했다. nanochat LLM training core를 단일 GPU용, 한 파일 약 630줄짜리 버전으로 줄였다고 설명한다.",
-    "why_it_matters": "복잡한 LLM 학습 실험의 핵심을 극단적으로 압축해 개인 연구자도 빠르게 재현하고 변형해볼 수 있게 한다. 최소 레포 형태라 아이디어 검증 주기를 줄이고 실험 비용을 낮추는 데 유리하다.",
+    "why_it_matters": "autoresearch의 \"사람은 프롬프트(.md) 반복, 에이전트는 코드(.py) 반복\" 패턴은 orchestration의 핵심 구조(Claude=설계/결정, Codex=추출/실행)와 정확히 같다. 에이전트가 git feature branch에서 자율 루프를 돌며 커밋을 쌓는 방식은 auto-iterate의 measure.py 자동 개선 루프에 바로 적용할 수 있다.",
     "translation": "주말 동안 사람들이 가지고 놀아보고 싶다면 써볼 수 있도록 \"autoresearch\" 프로젝트를 새롭고 자체 완결적인 최소 repo로 패키징해 두었습니다. 기본적으로는 nanochat LLM training core를 단일 GPU, 단일 파일, 약 630줄짜리 코드 버전으로 쭉 덜어낸 것이고, 그다음에는:\n\n- 인간은 프롬프트(.md)를 반복 개선하고\n- AI 에이전트는 학습 코드(.py)를 반복 개선합니다\n\n목표는 여러분 자신의 개입이 전혀 없이도, 그리고 무기한으로, 가장 빠른 연구 진전을 이루도록 에이전트를 엔지니어링하는 것입니다. 이미지에서 모든 점은 정확히 5분 동안 지속되는 완전한 LLM training run 하나입니다. 에이전트는 git feature branch에서 자율 루프로 작업하며, 신경망 아키텍처, optimizer, 모든 hyperparameter 등에서 더 나은 설정(마지막에 validation loss가 더 낮아지는 설정)을 찾아낼수록 training script에 대한 git commit을 계속 쌓아 갑니다. 서로 다른 프롬프트, 서로 다른 에이전트 등의 연구 진전을 비교하는 모습도 상상해 볼 수 있습니다.\n\nhttps://github.com/karpathy/autoresearch\n코드 반, SF 반, 그리고 정신병 한 꼬집 :)\nhttps://github.com/karpathy/autoresearch",
     "media": [
       {
@@ -507,7 +507,7 @@
     "added_at": "2026-03-09",
     "text": "Do you realize what this means?\n\nKarpathy just released the great equalizer\n\nNow ANYONE can become their own AI lab\n\nIf all you own is one GPU, you can automate it so it builds its own model and continuously improves it\n\nYou become a 1 man OpenAI\n\nJust bought a 2nd DGX Spark so I can run double the experiments at once\n\nFor those unaware of how this works:\n\nWith Karpathy’s autoresearch project your GPU stays up all night running experiments on itself\n\nPlaying around with an open weights model\n\nImplements experiments that improves the model\n\nThrows away experiments that hurt the model\n\nContinuously self improving AI. In your home. On your desk. \n\nMaybe the biggest release in the last several years\n\nIt is so painfully obvious where this world is going\n\nThose with their own hardware will have all the power. Self improving super intelligence\n\nThose with no hardware will rent whatever the corporate labs decide to lease to them at the moment\n\nOwn. Your. Intelligence.",
     "whats_happening": "글쓴이는 Karpathy가 개인도 사실상 자기만의 AI lab처럼 움직일 수 있게 하는 무언가를 공개했다고 본다. GPU 한 장만 있어도 모델을 만들고 계속 개선하는 자동화가 가능해졌다고 주장한다.",
-    "why_it_matters": "모델 개발과 개선이 대형 조직 전유물에서 개인 단위로 내려오면 AI 개발의 진입장벽이 크게 낮아진다. 소규모 개발자도 반복 개선 루프를 직접 돌리며 빠르게 실험할 수 있다는 점이 핵심이다.",
+    "why_it_matters": "RTX 4060 단일 GPU 환경에서 autoresearch를 돌릴 수 있다는 뜻이다. Paul의 HP OMEN(i5-13500HX, RTX 4060)에서 nanochat 실험을 직접 돌려 모델 최적화 자율 루프를 체험할 수 있고, 이 경험은 auto-iterate 방법론에 실전 데이터를 추가한다.",
     "translation": "이게 무슨 뜻인지 알겠는가?\n\nKarpathy가 방금 모두를 같은 선상에 세울 그 결정적 도구를 공개했다\n\n이제는 정말 누구나 자기만의 AI 연구소가 될 수 있다\n\n당신이 가진 게 GPU 하나뿐이라 해도, 그것이 자기 자신의 모델을 만들고 계속 개선해 나가도록 자동화할 수 있다\n\n당신은 1인 OpenAI가 된다\n\n방금 2번째 DGX Spark를 샀다. 이제 한 번에 실험을 두 배로 돌릴 수 있다\n\n이게 어떻게 작동하는지 잘 모르는 사람들을 위해 설명하자면:\n\nKarpathy의 autoresearch 프로젝트를 쓰면 당신의 GPU가 밤새 깨어서 자기 자신을 상대로 실험을 돌린다\n\n오픈 웨이트 모델을 이리저리 실험해 보고\n\n모델을 개선하는 실험은 구현하고\n\n모델에 해를 끼치는 실험은 버린다\n\n지속적으로 스스로를 개선하는 AI. 당신의 집에서. 당신의 책상 위에서.\n\n어쩌면 지난 몇 년 사이 가장 큰 공개일지도 모른다\n\n세상이 어디로 가고 있는지는 너무도 뻔할 정도로 명확하다\n\n자기 하드웨어를 가진 자들이 모든 힘을 갖게 될 것이다. 스스로를 개선하는 초지능이다\n\n하드웨어가 없는 자들은 그 순간 기업 연구소들이 임대해 주기로 결정한 것이 무엇이든 빌려 쓰게 될 것이다\n\n당신의. 지능을. 소유하라."
   },
   {
@@ -518,7 +518,7 @@
     "url": "https://x.com/hooeem/status/2030720614752039185",
     "text": "I packaged up the \"autoresearch\" project into a new self-contained minimal repo if people would like to play over the weekend. It's basically nanochat LLM training core stripped down to a single-GPU, one file version of ~630 lines of code, then:\n\n- the human iterates on the",
     "whats_happening": "작성자가 \"autoresearch\" 프로젝트를 별도 의존성이 적은 최소 저장소로 다시 패키징해 주말 동안 직접 실험해볼 수 있게 공개했다. 핵심은 nanochat LLM training core를 단일 GPU, 한 파일, 약 630줄 수준으로 축소한 버전이다.",
-    "why_it_matters": "LLM 학습 실험의 진입 장벽을 낮춰 복잡한 훈련 스택 없이도 핵심 루프를 빠르게 이해하고 만져볼 수 있게 한다. 특히 최소 재현본 형태라 아이디어를 짧은 주기로 검증하는 데 유리하다.",
+    "why_it_matters": "bm-018(Karpathy autoresearch)과 동일 내용의 재공유다. 핵심은 같다: 에이전트 자율 실험 루프를 최소 코드로 재현할 수 있다는 점이 auto-iterate와 orchestration 자동화 루프 설계에 직접 참고가 된다.",
     "translation": "사람들이 주말 동안 가지고 놀아보고 싶다면 쓸 수 있도록, 나는 \"autoresearch\" 프로젝트를 새롭고 자체 완결적인 최소 repo로 패키징해 두었다. 기본적으로는 nanochat LLM training core를 단일 GPU, 한 파일짜리 약 630줄 코드 버전으로까지 덜어낸 것이고, 그다음에는:\n\n- 사람이 그",
     "tech_stack": [
       "autoresearch",
@@ -538,7 +538,7 @@
     "url": "https://x.com/ArtemXTech/status/2030794479351833037",
     "text": "/loop: 3 Agents Running Inside My Obsidian on a Timer",
     "whats_happening": "작성자가 타이머에 맞춰 Obsidian 내부에서 3개의 에이전트를 돌리는 자동화 루프를 소개하고 있다. 핵심은 노트 환경 안에서 에이전트 작업이 주기적으로 실행되도록 묶은 운영 방식이다.",
-    "why_it_matters": "Obsidian을 단순 메모 앱이 아니라 반복 작업을 수행하는 개인 자동화 허브로 확장한다는 점이 중요하다. 여러 에이전트를 시간 기반으로 나누면 리서치, 초안, 점검 같은 흐름을 더 안정적으로 운영할 수 있다.",
+    "why_it_matters": "Obsidian에서 타이머 기반 에이전트 3개를 돌리는 구조는 Paul의 Obsidian 볼트(HOME.md 허브) + mcp-memory(MCP 서버) + tech-review(자동 수집) 조합이 이미 하고 있는 것의 통합 버전이다. 차이점은 Paul 쪽이 MCP 프로토콜로 시스템 간 연결이 더 느슨하고 확장 가능하다는 것이다.",
     "translation": "/loop: 타이머에 맞춰 내 Obsidian 안에서 실행되는 3개의 에이전트",
     "tech_stack": [
       "Obsidian"
@@ -557,7 +557,7 @@
     "url": "https://x.com/PawelHuryn/status/2028902129536999818",
     "text": "PM Skills Marketplace: The AI OS for Better Product Decisions",
     "whats_happening": "PM Skills Marketplace가 자신을 더 나은 제품 결정을 위한 AI OS로 소개했다. 제품 의사결정을 지원하는 AI 기반 플랫폼이라는 포지셔닝을 전면에 내세운 짧은 발표다.",
-    "why_it_matters": "AI를 개별 기능이 아니라 PM 의사결정용 운영체제로 묶어 설명한다는 점이 중요하다. 제품 전략, 조사, 우선순위화 도구가 하나의 통합 워크플로로 재편되는 흐름을 보여준다.",
+    "why_it_matters": "PM 의사결정용 AI OS라는 포지셔닝은 orchestration이 \"시스템을 만드는 게 아니라 연결하고 조율하는 것\"이라는 자기 정의와 같은 방향이다. 다만 orchestration은 PM 도구가 아니라 개발 에이전트 조율이므로, 이 제품의 워크플로 설계 패턴만 참고할 가치가 있다.",
     "translation": "PM Skills Marketplace: 더 나은 제품 의사결정을 위한 AI OS",
     "tech_stack": [
       "PM Skills Marketplace"
@@ -576,7 +576,7 @@
     "url": "https://x.com/ArtemXTech/status/2028330693659332615",
     "text": "Grep Is Dead: How I Made Claude Code Actually Remember Things",
     "whats_happening": "‘Grep Is Dead’라는 주장과 함께, Claude Code가 단순 문자열 검색이 아니라 이전 맥락을 기억하도록 만든 방법을 다루는 게시글이다.",
-    "why_it_matters": "에이전트형 코딩 도구가 매번 grep에 의존하지 않고 누적 맥락을 재사용하면 반복 설명과 컨텍스트 손실을 줄일 수 있다. 이는 자동화 파이프라인에서 더 일관된 판단과 출력으로 이어질 수 있다.",
+    "why_it_matters": "mcp-memory가 이미 하고 있는 것이다. Claude Code가 매번 grep 대신 recall()로 누적 맥락을 꺼내 쓰는 구조가 orchestration의 Pre-flight Recall 규칙이고, 이 게시글은 그 필요성을 외부에서 검증해준다.",
     "translation": "Grep은 죽었다: 내가 Claude Code가 실제로 무언가를 기억하게 만든 방법",
     "tech_stack": [
       "Grep",
@@ -596,7 +596,7 @@
     "url": "https://x.com/AlexFinn/status/2027096146661998662",
     "text": "Unlimited Free OpenClaw: How to connect your OpenClaw to a local model (even on a Mac Mini)",
     "whats_happening": "OpenClaw를 로컬 모델에 연결하는 방법을 소개하는 게시글이며, Mac Mini 환경까지 포함해 무제한 무료로 쓰는 구성을 내세운다.",
-    "why_it_matters": "클라우드 비용 없이 OpenClaw를 로컬 추론 환경에 붙일 수 있다는 점이 핵심이다. Mac Mini 같은 비교적 대중적인 로컬 하드웨어에서도 가능하다는 메시지는 진입장벽을 낮춘다.",
+    "why_it_matters": "Paul의 RTX 4060 환경에서 로컬 모델 추론을 붙이면 OpenAI 무료 토큰(대형 250K/일, 소형 2.5M/일) 한도를 초과할 때 fallback으로 쓸 수 있다. mcp-memory의 TOKEN_BUDGETS 내에서 비용 최적화를 위한 로컬 추론 경로가 된다.",
     "translation": "무제한 무료 OpenClaw: OpenClaw를 로컬 모델에 연결하는 방법(Mac Mini에서도 가능)",
     "tech_stack": [
       "OpenClaw",
@@ -616,7 +616,7 @@
     "url": "https://x.com/trq212/status/2024574133011673516",
     "text": "Lessons from Building Claude Code: Prompt Caching Is Everything",
     "whats_happening": "Claude Code를 만들며 얻은 가장 큰 교훈이 Prompt Caching이라는 점을 짚는 게시글이다. 핵심 메시지는 LLM 기반 코딩 도구에서 캐시 설계가 사실상 성능과 효율을 좌우한다는 것이다.",
-    "why_it_matters": "LLM 워크플로에서는 같은 문맥을 반복해서 보내는 비용과 지연이 크기 때문에 Prompt Caching이 체감 성능과 운영비를 크게 바꾼다. 자동화 파이프라인이 많을수록 이 차이는 더 직접적으로 누적된다.",
+    "why_it_matters": "orchestration의 Context Engineering(Gate A/B/C, Progressive Reading, Compact 점진화)이 Prompt Caching 위에서 동작한다. 캐시 설계가 곧 토큰 비용이고, 1M 컨텍스트를 화폐처럼 관리하는 시스템에서 캐시 효율은 운영비를 직접 결정한다.",
     "translation": "Claude Code를 만들며 얻은 교훈: Prompt Caching이 전부다",
     "tech_stack": [
       "Claude Code"
@@ -635,7 +635,7 @@
     "url": "https://x.com/jameesy/status/2026628809424781787",
     "text": "How I Structure Obsidian & Claude (Full Walkthrough)",
     "whats_happening": "작성자가 Obsidian과 Claude를 함께 쓰는 구조를 전체 워크스루 형태로 공유하겠다고 알리고 있다. 개인 지식관리와 AI 협업 방식을 실제 구성 관점에서 보여주려는 게시글이다.",
-    "why_it_matters": "Obsidian과 Claude를 어떻게 연결해 쓰는지에 대한 실전 구조를 드러내기 때문에, 메모 축적과 AI 활용 흐름을 설계하려는 사람에게 바로 참고가 된다. 특히 Paul처럼 Obsidian 기반 기록과 프로젝트 문서화를 함께 운영하는 작업 방식에 직접적인 힌트를 준다.",
+    "why_it_matters": "Paul의 Obsidian 볼트(HOME.md 허브, 프로젝트 테이블)와 Claude(orchestration 중심)를 이미 연결해 쓰고 있다. 이 워크스루에서 다른 사람의 구조를 보면 현재 볼트 설계의 빈틈이나 개선점을 발견할 수 있다.",
     "translation": "내가 Obsidian & Claude를 구조화하는 방법 (전체 워크스루)",
     "tech_stack": [
       "Obsidian",
@@ -655,7 +655,7 @@
     "url": "https://x.com/elvissun/status/2025920521871716562",
     "text": "OpenClaw + Codex/ClaudeCode Agent Swarm: The One-Person Dev Team [Full Setup]",
     "whats_happening": "OpenClaw와 Codex/ClaudeCode Agent Swarm을 조합해 1인 개발팀처럼 운영하는 전체 설정을 소개하는 게시글이다.",
-    "why_it_matters": "에이전트 조합을 추상 개념이 아니라 실제 운영 가능한 셋업으로 제시해, 단일 개발자의 개발 흐름을 더 크게 병렬화하고 확장할 수 있음을 보여준다.",
+    "why_it_matters": "orchestration의 Claude(설계/결정) + Codex(추출/분석) 멀티AI 체계가 이 Agent Swarm과 같은 방향이다. 차이점은 Paul 쪽이 Workers 3개로 역할을 최소화하고 Skills로 행동을 코드화한 반면, 이 셋업은 더 많은 에이전트를 병렬로 돌린다. 양쪽 장단점을 비교하면 orchestration 최적화에 도움이 된다.",
     "translation": "OpenClaw + Codex/ClaudeCode Agent Swarm: 1인 개발팀 [전체 설정]",
     "tech_stack": [
       "OpenClaw",
@@ -676,7 +676,7 @@
     "url": "https://x.com/p_naix/status/2033224044288627189",
     "text": "Are you in Claude Peak Hours? Find out here\n\n\nhttp://\nclaudethrottle.com",
     "whats_happening": "Claude Peak Hours 시간대인지 확인할 수 있는 외부 사이트 claudethrottle.com을 소개하는 짧은 안내 게시물이다. 사용자는 링크를 눌러 현재 혼잡 여부를 바로 확인할 수 있다.",
-    "why_it_matters": "Claude 사용 가능성과 응답 체감이 시간대 영향을 받을 때, 작업 타이밍을 조정할 근거를 준다. Paul의 북마크 자동화처럼 배치성 작업에도 실행 시점 판단에 도움이 된다.",
+    "why_it_matters": "tech-review의 Playwright 자동화가 Claude API를 호출하므로 Peak Hours 혼잡이 배치 처리 실패로 이어진다. claudethrottle.com으로 실행 시점을 비혼잡 시간대로 조정하면 자동화 안정성이 올라가고, Codex 우회 경로와 조합하면 비용 최적화까지 된다.",
     "translation": "지금 Claude Peak Hours인가요? 여기에서 확인해 보세요\n\n\nhttp://\nclaudethrottle.com",
     "tech_stack": [
       "Claude"
@@ -702,7 +702,7 @@
     "url": "https://x.com/lucas_flatwhite/status/2019961532906615146",
     "text": "🔖 Claude Code 완전 가이드: 해커톤 우승자의 70가지 파워 팁\nhttps://drive.google.com/file/d/1x2x1T4lzTISnHGN8nd4KtMhL8iwi6QgU/view\n\n54 페이지 분량의 자료네요! Part 1~13 까지 정말 좋은 내용으로 채워져있네요.\n\n> 이 책은 단순한 기능 나열식 가이드를 넘어, Anthropic 해커톤 우승자 ykdojo의 생생한 경험과 검증된 워크플로우, 그리고 Anthropic DevRel Ado Kukic의 \"Advent of Claude\" 챌린지에서 공개된 70가지가 넘는 실전 팁과 전략을 완전히 집대성한 결정판 가이드입니다.\n\n팁들을 포함해서 개발 워크플로우를 어떻게 변화해야 할지에 대한 얘기도 있어서 도움이 되실거예요.\n정리해주신 저자분께 감사드립니다..!",
     "whats_happening": "해커톤 우승자 ykdojo의 경험을 바탕으로 한 'Claude Code 완전 가이드' 54페이지 자료가 공유됐다. 게시물은 이 자료가 70가지 파워 팁과 Part 1~13 구성으로 채워져 있다고 소개한다.",
-    "why_it_matters": "이 자료는 단순한 기능 소개가 아니라 실제 우승자의 검증된 워크플로우를 담았다는 점이 핵심이다. Claude Code를 실전에서 더 잘 쓰고 싶은 사람에게 바로 적용 가능한 운영 감각을 준다.",
+    "why_it_matters": "orchestration의 Skills 13개를 설계할 때 이 70가지 팁에서 패턴을 뽑을 수 있다. 특히 해커톤 우승자의 워크플로 변화 경험은 현재 Workers 체인(implement->code-reviewer->commit-writer)을 점검하는 외부 벤치마크가 된다.",
     "translation": "🔖 Claude Code 완전 가이드: 해커톤 우승자의 70가지 파워 팁\nhttps://drive.google.com/file/d/1x2x1T4lzTISnHGN8nd4KtMhL8iwi6QgU/view\n\n54 페이지 분량의 자료네요! Part 1~13 까지 정말 좋은 내용으로 채워져있네요.\n\n> 이 책은 단순한 기능 나열식 가이드를 넘어, Anthropic 해커톤 우승자 ykdojo의 생생한 경험과 검증된 워크플로우, 그리고 Anthropic DevRel Ado Kukic의 \"Advent of Claude\" 챌린지에서 공개된 70가지가 넘는 실전 팁과 전략을 완전히 집대성한 결정판 가이드입니다.\n\n팁들을 포함해서 개발 워크플로우를 어떻게 변화해야 할지에 대한 얘기도 있어서 도움이 되실거예요.\n정리해주신 저자분께 감사드립니다..!",
     "tech_stack": [
       "Claude Code",
@@ -728,7 +728,7 @@
     "url": "https://x.com/lucas_flatwhite/status/2033180991943315776",
     "text": "📙 Claude 프롬프트 작성 Best Practices 한글버전 PDF (25 페이지)\nhttps://drive.google.com/file/d/1AK72qZwAg7B8ifXEnwpQaVgpL-of_Seh/view\n\nClaude 공식 문서에 Opus 4.6, Sonnet 4.6, Haiku 4.5를 위한 프롬프트 엔지니어링 가이드가 정말 잘 정리되어 있어요.\n\n다국어 버전이 일부 차이가 나는 부분이 있어서 다시 한국어로 만들었습니다. 이런 내용들로 구성되어 있어요.\n\n1. 기본 원칙:\n명확하고 직접적인 지시, 왜(맥락)를 함께 전달하기, 예시의 힘(few-shot), XML 태그로 구조화, 역할 부여, 긴 컨텍스트 다루는 법\n\n2. 출력 형식 제어:\n최신 모델의 달라진 커뮤니케이션 스타일, 마크다운·산문 조절하기, LaTeX 끄고 켜기, prefill 없이도 잘 되는 이유\n\n3. 도구 사용:\n\"제안\"이 아닌 \"실행\"을 이끌어내는 명시적 지시, 병렬 도구 호출로 속도 극대화\n\n4. 추론 활용법:\n과도한 탐색 줄이기, adaptive thinking vs extended thinking 언제 뭘 쓸지, 셀프 체크 요청하기\n\n5. 에이전트 시스템 심화:\n여러 컨텍스트 창에 걸친 장기 작업 관리, 상태 파일 구조화(JSON vs 자유형 노트 vs git), 자율성과 안전의 균형, 서브에이전트 오케스트레이션, 과잉 엔지니어링/환각 방지\n\n6. 기능별 팁:\n이미지 분석 성능을 높이는 crop 도구, \"AI slop\" 느낌 없는 프론트엔드 만들기\n\n7. Claude 4.6 마이그레이션:\neffort 파라미터로 추론 깊이 조절, prefill 대체 패턴, 지나치게 공격적이었던 프롬프트 다이얼 낮추기\n\nClaude를 활용하시는 분들께는 꼭 한 번 정독하시길 추천드려요!\n\n실제로 써먹을 수 있는 샘플 프롬프트들이 섹션마다 가득해요~",
     "whats_happening": "Claude 공식 문서의 프롬프트 엔지니어링 가이드를 바탕으로, Opus 4.6·Sonnet 4.6·Haiku 4.5용 Best Practices 한글 PDF 25페이지가 공유됐다. 작성자는 다국어 버전 간 차이를 보완하려고 한국어판을 다시 만들었다.",
-    "why_it_matters": "최신 Claude 모델별 프롬프트 작성 원칙을 한국어로 바로 참고할 수 있어, 실무 적용과 팀 내 공유 비용을 줄인다. 특히 번역본 간 차이를 직접 보정했다는 점이 모델별 지침 해석 오류를 줄이는 데 의미가 있다.",
+    "why_it_matters": "orchestration에서 Opus 4.6(설계), Sonnet 4.6(compressor), Haiku 4.5(commit-writer)를 모델별로 나눠 쓰고 있으므로, 모델별 프롬프트 Best Practice가 각 Worker의 프롬프트 품질을 직접 높인다. 한국어 버전이라 CLAUDE.md의 한국어 지시문 개선에 바로 적용할 수 있다.",
     "translation": "📙 Claude 프롬프트 작성 Best Practices 한글버전 PDF (25 페이지)\nhttps://drive.google.com/file/d/1AK72qZwAg7B8ifXEnwpQaVgpL-of_Seh/view\n\nClaude 공식 문서에 Opus 4.6, Sonnet 4.6, Haiku 4.5를 위한 프롬프트 엔지니어링 가이드가 정말 잘 정리되어 있어요.\n\n다국어 버전이 일부 차이가 나는 부분이 있어서 다시 한국어로 만들었습니다. 이런 내용들로 구성되어 있어요.\n\n1. 기본 원칙:\n명확하고 직접적인 지시, 왜(맥락)를 함께 전달하기, 예시의 힘(few-shot), XML 태그로 구조화, 역할 부여, 긴 컨텍스트 다루는 법\n\n2. 출력 형식 제어:\n최신 모델의 달라진 커뮤니케이션 스타일, 마크다운·산문 조절하기, LaTeX 끄고 켜기, prefill 없이도 잘 되는 이유\n\n3. 도구 사용:\n\"제안\"이 아닌 \"실행\"을 이끌어내는 명시적 지시, 병렬 도구 호출로 속도 극대화\n\n4. 추론 활용법:\n과도한 탐색 줄이기, adaptive thinking vs extended thinking 언제 뭘 쓸지, 셀프 체크 요청하기\n\n5. 에이전트 시스템 심화:\n여러 컨텍스트 창에 걸친 장기 작업 관리, 상태 파일 구조화(JSON vs 자유형 노트 vs git), 자율성과 안전의 균형, 서브에이전트 오케스트레이션, 과잉 엔지니어링/환각 방지\n\n6. 기능별 팁:\n이미지 분석 성능을 높이는 crop 도구, \"AI slop\" 느낌 없는 프론트엔드 만들기\n\n7. Claude 4.6 마이그레이션:\neffort 파라미터로 추론 깊이 조절, prefill 대체 패턴, 지나치게 공격적이었던 프롬프트 다이얼 낮추기\n\nClaude를 활용하시는 분들께는 꼭 한 번 정독하시길 추천드려요!\n\n실제로 써먹을 수 있는 샘플 프롬프트들이 섹션마다 가득해요~",
     "tech_stack": [
       "Claude",
@@ -768,7 +768,7 @@
     "url": "https://x.com/lucas_flatwhite/status/2032098693055463844",
     "text": "📘 Codex Best practices 한글버전 PDF\nhttps://drive.google.com/file/d/1uKV0niz2xg3y8AOeOT0igkocW6ydjTg4/view\n\n어제 OpenAI Developers에 게시된 Codex 모범사례 내용은 정말 잘 정리가 되어 있어요.\n\n그래서 한국어 버전을 만들었습니다. 이런 내용으로 구성되어 있어요.\n\n1. 강력한 첫 사용: 컨텍스트와 프롬프트\n2. 어려운 작업은 먼저 계획 수립\n3. AGENTS.md로 지침을 재사용 가능하게\n4. 일관성을 위한 Codex 설정\n5. 테스트와 리뷰로 신뢰성 향상\n6. 외부 컨텍스트를 위한 MCP 활용\n7. 반복 작업을 스킬로 전환\n8. 자동화로 반복 작업 처리\n9. 세션 컨트롤로 장기 작업 관리\n10. 흔한 실수들\n\nChatGPT 쓰시는 분들은 Codex도 같이 활용해보시기를 완전 추천드려요!\n\n문서에도 깨알같은 팁들이 많아요~",
     "whats_happening": "OpenAI Developers에 올라온 Codex 모범사례를 바탕으로, 그 내용을 정리한 한국어 PDF 버전이 공유됐다. 게시글은 특히 첫 사용 시 컨텍스트와 프롬프트를 강하게 잡는 방법, 그리고 어려운 작업은 먼저 계획하는 원칙을 소개한다.",
-    "why_it_matters": "Codex 활용법을 한국어로 바로 참고할 수 있게 정리해 접근성이 높아졌다. 특히 실무 자동화에서 프롬프트 품질과 계획 단계의 중요성을 짧고 명확하게 전달한다.",
+    "why_it_matters": "Codex를 /delegate codex로 위임할 때 AGENTS.md 지침 재사용, MCP 활용, 반복 작업의 스킬 전환이 핵심이다. 이 가이드의 모범사례가 orchestration의 Codex 위임 규칙(full-auto, 프롬프트로 스코프 제한)을 보완하는 데 직접 쓸 수 있다.",
     "translation": "📘 Codex 모범 사례 한글버전 PDF\nhttps://drive.google.com/file/d/1uKV0niz2xg3y8AOeOT0igkocW6ydjTg4/view\n\n어제 OpenAI Developers에 게시된 Codex 모범 사례 내용은 정말 잘 정리가 되어 있어요.\n\n그래서 한국어 버전을 만들었습니다. 이런 내용으로 구성되어 있어요.\n\n1. 강력한 첫 사용: 컨텍스트와 프롬프트\n2. 어려운 작업은 먼저 계획 수립\n3. AGENTS.md로 지침을 재사용 가능하게\n4. 일관성을 위한 Codex 설정\n5. 테스트와 리뷰로 신뢰성 향상\n6. 외부 컨텍스트를 위한 MCP 활용\n7. 반복 작업을 스킬로 전환\n8. 자동화로 반복 작업 처리\n9. 세션 컨트롤로 장기 작업 관리\n10. 흔한 실수들\n\nChatGPT 쓰시는 분들은 Codex도 같이 활용해보시기를 완전 추천드려요!\n\n문서에도 깨알같은 팁들이 많아요~",
     "tech_stack": [
       "Codex"
@@ -793,7 +793,7 @@
     "url": "https://x.com/GeekNewsHada/status/2032324997516333188",
     "text": "OpenAI의 에이전트 구축을 위한 실용 가이드\n\n- LLM의 추론, 멀티모달, 도구 사용 능력이 향상되면서 사용자를 대신해 독립적으로 워크플로를 수행하는 새로운 시스템 범주인 에이전트가 등장  \n- 에이전트는 모델(LLM), 도구(API/외부 함수), 지침(가이드라인)의 세 가지…\nhttps://news.hada.io/topic?id=27459",
     "whats_happening": "OpenAI의 에이전트 구축 실용 가이드를 소개하며, LLM 역량 향상으로 사용자를 대신해 워크플로를 수행하는 에이전트가 부상했다고 설명한다. 또한 에이전트의 핵심 구성요소로 모델, 도구, 지침을 제시한다.",
-    "why_it_matters": "에이전트를 단순 챗봇이 아니라 독립적으로 일을 수행하는 시스템으로 설계해야 한다는 기준을 준다. 워크플로 자동화와 도구 연결을 만드는 팀이 바로 적용할 수 있는 구조를 압축해 보여준다.",
+    "why_it_matters": "orchestration이 모델(Claude) + 도구(MCP 서버들) + 지침(CLAUDE.md/Skills)의 3요소로 구성된 에이전트 시스템 그 자체다. 이 가이드의 다중 에이전트 오케스트레이션 패턴을 Workers 3개 구조와 비교하면 현재 설계의 강점과 빈틈을 객관적으로 점검할 수 있다.",
     "translation": "OpenAI의 에이전트 구축을 위한 실용 가이드\n\n- LLM의 추론, 멀티모달, 도구 사용 능력이 향상되면서 사용자를 대신해 독립적으로 워크플로를 수행하는 새로운 시스템 범주인 에이전트가 등장  \n- 에이전트는 모델(LLM), 도구(API/외부 함수), 지침(가이드라인)의 세 가지…\nhttps://news.hada.io/topic?id=27459",
     "tech_stack": [],
     "apply_points": [
@@ -818,7 +818,7 @@
     "url": "https://x.com/park_jinwoo/status/2031603114097389686",
     "text": "작년 소넷 3.7 이후로 회사에서 수동으로 작성한 코드가 거의 없고 올해 초부터는 빈 프로젝트로 시작해 에이전트가 수행하도록만 하고 있는데 이 글을 보니 생각하는 방향이 대략적으로 비슷하다 (근데 제품 규모를 가늠해보면 내 쪽 퍼포먼스가 수십배는 뒤쳐지는 것 같다) https://openai.com/ko-KR/index/harness-engineering/",
     "whats_happening": "작성자는 작년 Sonnet 3.7 이후 회사에서 수동으로 짠 코드가 거의 없었고, 올해 초부터는 빈 프로젝트에서 시작해 에이전트가 대부분의 구현을 수행하게 하고 있다고 말한다. 지금 본 글이 자신의 개발 방향과 대체로 비슷하지만, 제품 규모를 보면 자신의 퍼포먼스는 수십 배 뒤처진다고 평가한다.",
-    "why_it_matters": "이건 수동 코딩 중심 개발에서 에이전트 주도 구현으로 작업 방식이 실제로 이동하고 있음을 보여준다. 동시에 성패를 가르는 핵심이 단순 사용 여부가 아니라 제품 규모를 버티는 실행력과 오케스트레이션 성능이라는 점을 드러낸다.",
+    "why_it_matters": "빈 프로젝트에서 에이전트가 구현을 전담하는 방식은 orchestration의 implement->code-reviewer->commit-writer 체인이 지향하는 것이다. \"퍼포먼스가 수십 배 뒤처진다\"는 자기 평가는 오케스트레이션 품질(하네스 설계, 컨텍스트 관리)이 규모 확장의 병목이라는 점을 확인해준다.",
     "translation": "작년 Sonnet 3.7 이후로 회사에서 수동으로 작성한 코드가 거의 없고 올해 초부터는 빈 프로젝트로 시작해 에이전트가 수행하도록만 하고 있는데 이 글을 보니 생각하는 방향이 대략적으로 비슷하다 (근데 제품 규모를 가늠해보면 내 쪽 퍼포먼스가 수십배는 뒤쳐지는 것 같다) https://openai.com/ko-KR/index/harness-engineering/",
     "tech_stack": [
       "Sonnet 3.7"
@@ -845,7 +845,7 @@
     "url": "https://x.com/realmcore_/status/2032145344612778412",
     "text": "Today.\n\nIm happy to announce.\n\nSlate V1.\n\nSlate V1 is the first swarm native agent.\n\nUse any of the supported models to orchestrate and execute.\n\nMassively parallel. And incredibly token efficient.\n\nWe are building agents that scale like an organization.\n\nnpm i -g @randomlabs/slate",
     "whats_happening": "Slate V1이 공개됐고, 이를 최초의 swarm native agent로 소개한다. 지원 모델을 써서 오케스트레이션과 실행을 대규모 병렬·고토큰효율로 수행한다고 주장한다.",
-    "why_it_matters": "에이전트 실행을 단일 모델 호출이 아니라 조직형 병렬 시스템으로 확장하려는 방향을 보여준다. 특히 토큰 효율을 전면에 내세워 실제 운영비와 처리량 경쟁에 직접 연결되는 메시지다.",
+    "why_it_matters": "Slate의 \"조직처럼 확장되는 에이전트\"는 orchestration이 에이전트 15->Workers 3으로 줄인 방향과 반대다. 토큰 효율을 전면에 내세운 점은 Context Engineering의 1M 토큰 예산 관리와 직접 비교할 수 있고, swarm 병렬 처리는 /delegate codex 위임의 대안 구조로 검토할 가치가 있다.",
     "translation": "오늘.\n\n기쁘게 발표합니다.\n\nSlate V1.\n\nSlate V1은 최초의 swarm native agent입니다.\n\n지원되는 모델 중 어떤 것이든 사용해 오케스트레이션하고 실행하세요.\n\n대규모 병렬 처리. 그리고 놀라울 정도로 token 효율적입니다.\n\n우리는 조직처럼 확장되는 agent를 만들고 있습니다.\n\nnpm i -g @randomlabs/slate",
     "tech_stack": [
       "Slate V1",
@@ -872,7 +872,7 @@
     "url": "https://x.com/karpathy/status/2031137476438548874",
     "text": "oh yeah i should have linked autoresearch probably\nhttps://github.com/karpathy/autoresearch\n(you don't \"use it\" directly, it's just a recipe/idea - give it to your agent and apply to what you care about.)\n\nand the tweet about it that went mini-viral over the weekend with more context\nhttps://x.com/karpathy/status/2030371219518931079",
     "whats_happening": "Karpathy가 GitHub의 autoresearch를 다시 링크하며, 이것이 직접 쓰는 완성품이 아니라 에이전트에 넘겨 적용하는 연구 레시피라는 점을 설명했다. 또 주말 동안 작게 바이럴된 관련 트윗이 더 많은 맥락을 담고 있다고 덧붙였다.",
-    "why_it_matters": "에이전트 활용의 핵심이 특정 앱을 쓰는 것이 아니라 재사용 가능한 조사 패턴을 전달하는 데 있다는 점을 보여준다. Paul의 orchestration, mcp-memory, tech-review 작업처럼 반복 연구 흐름을 설계하는 프로젝트에 바로 연결되는 관점이다.",
+    "why_it_matters": "autoresearch가 \"직접 쓰는 완성품이 아니라 에이전트에 넘겨 적용하는 레시피\"라는 정의는 orchestration Skills의 설계 철학과 같다. 반복 연구 패턴을 레시피로 코드화하는 것이 핵심이고, tech-review의 소스 수집 루프도 같은 방식으로 레시피화할 수 있다.",
     "translation": "아 맞다 아마 autoresearch도 링크했어야 했는데\nhttps://github.com/karpathy/autoresearch\n(이건 직접 \"사용\"하는 게 아니라, 그냥 레시피/아이디어일 뿐이다 - 당신의 agent에게 주고 당신이 중요하게 생각하는 것에 적용하면 된다.)\n\n그리고 주말 동안 약간 바이럴됐던, 더 많은 맥락이 담긴 그에 대한 트윗도 있다\nhttps://x.com/karpathy/status/2030371219518931079",
     "tech_stack": [
       "autoresearch",
@@ -900,7 +900,7 @@
     "url": "https://x.com/ylecun/status/2031268686984527936",
     "text": "Unveiling our new startup Advanced Machine Intelligence (AMI Labs).\nWe just completed our seed round: $1.03B / 890M€, one the largest seeds ever, probably the largest for a European company.\nWe're hiring! \n\n[the background image is the Veil Nebula -  a picture I took from my backyard, most appropriate for an unveiling]\n\nMore details here:\nhttps://techcrunch.com/2026/03/09/yann-lecuns-ami-labs-raises-1-03-billion-to-build-world-models/",
     "whats_happening": "새 스타트업 Advanced Machine Intelligence (AMI Labs)가 출범을 공개했고, 10억3천만 달러(8억9천만 유로) 규모의 seed 투자 유치를 마쳤다고 발표했다. 이는 역대 최대급 seed 라운드 중 하나이며 유럽 기업 기준으로는 최대일 가능성이 크고, 동시에 채용도 시작했다.",
-    "why_it_matters": "AI 스타트업 경쟁이 연구·인재·컴퓨트 확보를 위해 초대형 초기 자본을 필요로 하는 단계로 들어갔다는 신호다. 특히 유럽에서도 미국급 규모의 AI 자금 조달이 가능하다는 점에서 투자 지형과 인재 이동에 영향을 줄 수 있다.",
+    "why_it_matters": "world model 연구에 $1.03B seed가 들어갔다는 것은 AI 투자 규모가 인프라 레벨로 올라갔다는 신호다. Paul의 시스템과 직접 연결되지는 않지만, tech-review 블로그에서 AI 업계 동향을 다룰 때 투자 규모 변화를 추적하는 기준점이 된다.",
     "translation": "저희의 새로운 스타트업 Advanced Machine Intelligence (AMI Labs)를 공개합니다.\n방금 시드 라운드를 마쳤습니다: $1.03B / 890M€, 역대 최대 규모의 시드 라운드 중 하나이며, 아마 유럽 기업으로서는 최대일 것입니다.\n채용 중입니다!\n\n[배경 이미지는 Veil Nebula입니다 - 제가 뒷마당에서 찍은 사진인데, 공개를 알리기에 이보다 더 적절할 수 없죠]\n\n자세한 내용은 여기에서:\nhttps://techcrunch.com/2026/03/09/yann-lecuns-ami-labs-raises-1-03-billion-to-build-world-models/",
     "tech_stack": [],
     "apply_points": [
@@ -925,7 +925,7 @@
     "url": "https://x.com/karpathy/status/2031135152349524125",
     "text": "Three days ago I left autoresearch tuning nanochat for ~2 days on depth=12 model. It found ~20 changes that improved the validation loss. I tested these changes yesterday and all of them were additive and transferred to larger (depth=24) models. Stacking up all of these changes, today I measured that the leaderboard's \"Time to GPT-2\" drops from 2.02 hours to 1.80 hours (~11% improvement), this will be the new leaderboard entry. So yes, these are real improvements and they make an actual difference. I am mildly surprised that my very first naive attempt already worked this well on top of what I thought was already a fairly manually well-tuned project.\n\nThis is a first for me because I am very used to doing the iterative optimization of neural network training manually. You come up with ideas, you implement them, you check if they work (better validation loss), you come up with new ideas based on that, you read some papers for inspiration, etc etc. This is the bread and butter of what I do daily for 2 decades. Seeing the agent do this entire workflow end-to-end and all by itself as it worked through approx. 700 changes autonomously is wild. It really looked at the sequence of results of experiments and used that to plan the next ones. It's not novel, ground-breaking \"research\" (yet), but all the adjustments are \"real\", I didn't find them manually previously, and they stack up and actually improved nanochat. Among the bigger things e.g.:\n\n- It noticed an oversight that my parameterless QKnorm didn't have a scaler multiplier attached, so my attention was too diffuse. The agent found multipliers to sharpen it, pointing to future work.\n- It found that the Value Embeddings really like regularization and I wasn't applying any (oops).\n- It found that my banded attention was too conservative (i forgot to tune it).\n- It found that AdamW betas were all messed up.\n- It tuned the weight decay schedule.\n- It tuned the network initialization.\n\nThis is on top of all the tuning I've already done over a good amount of time. The exact commit is here, from this \"round 1\" of autoresearch. I am going to kick off \"round 2\", and in parallel I am looking at how multiple agents can collaborate to unlock parallelism.\nhttps://github.com/karpathy/nanochat/commit/6ed7d1d82cee16c2e26f45d559ad3338447a6c1b\n\nAll LLM frontier labs will do this. It's the final boss battle. It's a lot more complex at scale of course - you don't just have a single train. py file to tune. But doing it is \"just engineering\" and it's going to work. You spin up a swarm of agents, you have them collaborate to tune smaller models, you promote the most promising ideas to increasingly larger scales, and humans (optionally) contribute on the edges.\n\nAnd more generally, *any* metric you care about that is reasonably efficient to evaluate (or that has more efficient proxy metrics such as training a smaller network) can be autoresearched by an agent swarm. It's worth thinking about whether your problem falls into this bucket too.",
     "whats_happening": "작성자는 autoresearch로 nanochat의 depth=12 모델을 약 2일간 튜닝해 validation loss를 낮추는 약 20개의 변경을 찾았다. 이 변경들을 실제로 검증하자 모두 누적 효과가 있었고 더 큰 depth=24 모델에도 그대로 전이됐다.",
-    "why_it_matters": "자동 탐색이 우연한 한두 개의 요령이 아니라 여러 개선안을 안정적으로 발굴할 수 있음을 보여준다. 작은 모델에서 찾은 최적화가 더 큰 모델에도 통한다는 점은 실험 비용을 낮추고 모델 개선 루프를 더 빠르게 만든다.",
+    "why_it_matters": "autoresearch가 수동 튜닝 위에서 추가 11% 개선을 찾아냈다는 실측 결과가 핵심이다. \"모든 LLM frontier labs가 이걸 하게 될 것\"이라는 예측은 auto-iterate의 measure.py 자동 개선 루프가 가는 방향과 같고, agent swarm 협업으로 parallelism을 여는 구조는 /delegate codex 위임의 확장판이다.",
     "translation": "사흘 전에 나는 depth=12 모델에서 nanochat을 약 2일 동안 autoresearch tuning에 맡겨뒀다. 그 결과 validation loss를 개선하는 변경사항을 약 20개 찾아냈다. 나는 어제 이 변경사항들을 테스트했는데, 전부 additive했고 더 큰(depth=24) 모델에도 전이되었다. 이 변경사항들을 전부 쌓아 올려서, 오늘 나는 leaderboard의 \"Time to GPT-2\"가 2.02시간에서 1.80시간으로 떨어진다는 것(~11% 개선)을 측정했고, 이것이 새로운 leaderboard 항목이 될 것이다. 그러니 그렇다, 이것들은 실제 개선이고 실제로 차이를 만들어낸다. 내가 이미 수작업으로도 꽤 잘 튜닝되어 있다고 생각했던 프로젝트 위에서, 내 아주 첫 번째 순진한 시도만으로 벌써 이렇게까지 잘 작동했다는 점은 조금 놀랍다.\n\n이건 나에게는 처음 있는 일인데, 나는 neural network training의 iterative optimization을 수작업으로 하는 데 아주 익숙하기 때문이다. 아이디어를 떠올리고, 구현하고, 그것들이 작동하는지 확인하고(validation loss가 더 나아지는지), 그걸 바탕으로 새로운 아이디어를 떠올리고, 영감을 얻으려고 논문도 좀 읽고, 등등. 이게 지난 20년 동안 내가 매일 해온 일의 핵심이다. agent가 이 전체 workflow를 end-to-end로, 그것도 대략 700개의 변경을 자율적으로 처리해 가며 완전히 혼자 수행하는 모습을 보는 건 엄청나다. 실험 결과들의 연속을 정말로 살펴보고, 그걸 이용해 다음 실험들을 계획하는 것처럼 보였다. 아직은 새롭고 획기적인 \"research\"는 아니지만, 모든 조정은 \"진짜\"이고, 내가 이전에는 수작업으로 찾아내지 못했던 것들이며, 서로 쌓여서 nanochat을 실제로 개선했다. 비교적 큰 것들만 예를 들면:\n\n- 내 parameterless QKnorm에 scaler multiplier가 붙어 있지 않다는 oversight를 포착해서, attention이 너무 diffuse했다. agent는 그것을 더 날카롭게 만들 multiplier들을 찾아냈고, 이는 앞으로의 작업 방향을 가리킨다.\n- Value Embeddings가 regularization을 정말 좋아하는데, 내가 아무것도 적용하지 않고 있었다는 걸 찾아냈다 (oops).\n- 내 banded attention이 너무 보수적이었다는 걸 찾아냈다 (내가 튜닝하는 걸 잊었다).\n- AdamW betas가 전부 엉망이었다는 걸 찾아냈다.\n- weight decay schedule을 튜닝했다.\n- network initialization을 튜닝했다.\n\n이건 내가 이미 꽤 오랜 시간에 걸쳐 해온 모든 튜닝 위에 더해진 것이다. 정확한 commit은 여기 있고, 이번 autoresearch \"round 1\"의 결과다. 나는 이제 \"round 2\"를 시작할 생각이고, 동시에 여러 agent가 협업해서 parallelism을 끌어낼 수 있는 방법도 보고 있다.\nhttps://github.com/karpathy/nanochat/commit/6ed7d1d82cee16c2e26f45d559ad3338447a6c1b\n\n모든 LLM frontier labs는 이걸 하게 될 것이다. 이게 최종 보스전이다. 물론 규모가 커지면 훨씬 더 복잡하다. 튜닝할 train.py 파일 하나만 있는 게 아니기 때문이다. 하지만 이걸 해내는 것은 \"그저 엔지니어링\"일 뿐이고, 결국 작동할 것이다. agent swarm을 띄우고, 더 작은 모델들을 튜닝하도록 서로 협업하게 하고, 가장 유망한 아이디어들을 점점 더 큰 규모로 올리고, 인간은 (선택적으로) 주변부에서 기여한다.\n\n그리고 더 일반적으로 말하면, 당신이 중요하게 생각하는 어떤 지표든, 평가가 상당히 효율적이기만 하다면(혹은 더 작은 network를 학습시키는 것 같은 더 효율적인 proxy metric이 있다면) agent swarm에 의해 autoresearch될 수 있다. 당신의 문제도 이 범주에 들어가는지 생각해볼 가치가 있다.",
     "tech_stack": [
       "autoresearch",
@@ -951,7 +951,7 @@
     "url": "https://x.com/marcelkargul/status/2033184119958409616",
     "text": "this wasn’t a prompt.\n\nthis was:\n\n- 8 hours of work\n- 5 iterations\n- 3 senior designers",
     "whats_happening": "작성자는 어떤 결과물을 두고 이것은 프롬프트 하나로 만든 게 아니라고 선을 그으며, 실제로는 8시간의 작업과 5번의 반복, 3명의 시니어 디자이너가 들어갔다고 말했다.",
-    "why_it_matters": "완성도 높은 결과를 프롬프트 한 줄의 마법처럼 소비하는 시각을 깨고, 실제 품질은 반복과 판단, 숙련된 사람의 개입에서 나온다는 점을 드러낸다. AI 결과물의 가치는 생성 자체보다 다듬는 과정까지 봐야 한다는 메시지다.",
+    "why_it_matters": "\"8시간, 5번 반복, 시니어 3명\"이라는 메시지는 orchestration의 5단계 파이프라인(Ideation->Impl Design->Impl Review->구현->Code Review)이 존재하는 이유와 같다. AI 결과물의 품질은 프롬프트 한 줄이 아니라 반복 검증 과정에서 나온다.",
     "translation": "이건 프롬프트가 아니었다.\n\n이건 이거였다:\n\n- 8시간의 작업\n- 5번의 반복\n- 3명의 시니어 디자이너",
     "tech_stack": [],
     "apply_points": [
@@ -969,7 +969,7 @@
     "url": "https://x.com/garrytan/status/2032014576557179044",
     "text": "gstack is available now at https://github.com/garrytan/gstack \n\nOpen source, MIT license, let me know if it works for you. It's just one paste to install it on your local Claude Code, and it's a 2nd one to install it in your repo for your teammates.",
     "whats_happening": "gstack이 GitHub에 지금 공개됐고, 오픈 소스 MIT license로 배포된다. 작성자는 로컬 Claude Code에는 붙여넣기 한 번, 팀원용 repo에는 두 번째 붙여넣기 한 번으로 설치할 수 있다고 소개한다.",
-    "why_it_matters": "Claude Code 관련 팀 공용 설정이나 도구를 개인 환경과 repo 양쪽에 빠르게 깔 수 있어 도입 마찰이 낮다. 오픈 소스와 MIT license 조합이라 검토, 수정, 재배포 부담도 작다.",
+    "why_it_matters": "gstack의 \"붙여넣기 한 번으로 Claude Code 설정 배포\"는 orchestration의 rulesync가 하는 것과 같은 문제를 푼다. MIT license 오픈소스라 rulesync와 비교해서 더 나은 패턴이 있는지 검토할 수 있고, 팀 공용 설정 배포의 마찰을 줄이는 참고 자료가 된다.",
     "translation": "gstack를 이제 여기에서 사용할 수 있습니다: https://github.com/garrytan/gstack\n\n오픈 소스이고, MIT license입니다. 당신에게 잘 작동하는지 알려주세요. 로컬 Claude Code에 설치하는 데는 붙여넣기 한 번이면 되고, 팀원들을 위해 당신의 repo에 설치하는 데는 두 번째 붙여넣기 한 번이면 됩니다.",
     "tech_stack": [
       "gstack",
@@ -990,7 +990,7 @@
     "url": "https://x.com/realmcore_/status/2032146316730778004",
     "text": "http://x.com/i/article/2031806324041007105",
     "whats_happening": "Zack Shapiro가 X에 올린 장문 글에서, 2인 로펌을 Claude 중심으로 운영하며 인수계약 협상, 계약 redline, 규제 리서치, 문서 포매팅까지 실제 법률 업무를 처리하는 방식을 공개했다. 그는 Harvey 같은 전용 legal AI보다 개인 판단을 skills로 코드화한 범용 Claude가 소규모 실무에는 더 강력하다고 주장한다.",
-    "why_it_matters": "전문직 서비스에서도 가치의 핵심이 템플릿이 아니라 개인의 판단과 워크플로라는 점을 드러내고, 이를 AI에 이식하면 소규모 팀이 대형 조직의 생산성을 상당 부분 압축할 수 있음을 보여준다. 동시에 AI의 승부처가 모델 자체보다 품질 통제, 검증 루프, 문서 시스템 통합에 있다는 점을 구체적 사례로 제시한다.",
+    "why_it_matters": "이 2인 로펌 사례는 orchestration의 핵심 원칙을 법률 도메인에서 검증한 것이다. Skills에 개인 judgment를 코드화하는 방식, self-review 검증 레이어, XML 레벨 문서 조작은 모두 orchestration의 Workers + Skills 체계와 동일한 패턴이다. \"도구가 아니라 judgment가 가치\"라는 메시지는 Claude=유일한 설계/결정권자 원칙과 정확히 맞닿는다.",
     "translation": "Claude-Native 로펌: 2026년에 내가 실제로 AI로 법률 업무를 하는 방식\n\n몇 달 전, 한 고객의 인수가 마감되기 전날 밤, 매수인 측 변호사가 몇 가지 핵심 딜 조건을 다시 짜야 한다는 편지를 보내왔다. 새로운 escrow 조건, 더 넓어진 indemnification carve-out, 수정된 closing deliverables. 암묵적인 메시지는 분명했다. 이 변경을 받아들이지 않으면 우리는 거래에서 빠지겠다는 뜻이었다. 그때가 오후 7시였다.\n\n나는 purchase agreement, disclosure schedules, demand letter를 Claude에 올렸다. 몇 분 안에 Claude는 제안된 변경을 기존 거래 조건과 하나씩 대조했고, 매수인 측 변호사들이 미처 보지 못한 점을 찾아냈다. 그들이 제안한 carve-out 두 개는 disclosure schedules에서 이미 확인한 진술과 정면으로 충돌했고, 세 번째는 fundamental reps 조항과 내부 충돌을 만들어 오히려 매수인 자신의 post-closing 보호를 약하게 만들 상황이었다. 공격적인 막판 승부수에는 허점이 있었다.\n\n그날 밤 이메일이 오가며 협상이 이어지는 동안, 나는 새 커뮤니케이션이 올 때마다 Claude에 넣었다. Claude는 각 양보안이 계약 전반의 다른 조항과 어떻게 상호작용하는지 추적했고, 한 조항을 받아들였을 때 다른 섹션에서 어떤 노출이 생기는지 표시했으며, 양보할 부분은 양보하고 지켜야 할 부분은 지키는 답변을 만드는 데 도움을 줬다. 밤 11시가 되자 우리는 매수인 측 문구 자체를 정확히 교차참조한 깔끔한 counter-position 세트를 갖췄다. 거래는 다음 날 아침 고객이 만족하는 조건으로 마감됐다.\n\n중견 로펌의 3명짜리 associate 팀이라면 아침까지 걸렸을 분석을, 나는 2시간도 안 되어 핵심을 손에 넣었다.\n\n나는 2인 boutique law firm을 운영한다. 우리는 startup formation, venture capital transactions, regulatory work를 맡는다. 우리는 수백 명, 때로는 수천 명의 변호사를 둔 로펌과 경쟁한다. 원래라면 이런 식으로 일할 수 없어야 한다. 하지만 지난 1년은 한 가지를 분명하게 보여줬다. AI를 중심으로 설계된 작은 로펌은 큰 경쟁자를 따라잡는 정도가 아니다. 더 빠르게 움직이고, 더 철저한 work product를 만들며, 18개월 전에는 불가능했던 비용 구조로 운영된다.\n\n내가 업무를 구축한 중심 도구는 Anthropic의 Claude다. 이 글은 내가 그것을 실제 법률 업무에, 매일, 어떻게 쓰는지에 대한 설명이다. 이론이 아니라 워크플로다.\n\n왜 Claude이고, 왜 Legal AI가 아닌가\n\n시장은 Harvey, Spellbook, CoCounsel, Luminance 같은 전문 legal AI 제품으로 가득하다. 그들의 공통된 가설은 변호사에게는 법률 업무에 특화된 AI가 필요하다는 것이다. 나는 그 대부분을 평가해 봤다. 소규모 로펌 실무자에게는 잘 설정된 범용 AI가 더 낫다. 격차는 크다.\n\n전문화된 제품들은 범용 도구를 구동하는 것과 같은 foundation model 위에 씌운 wrapper다. 마케팅 문구는 설득력 있게 들린다. 로펌의 playbook에 맞춰 AI를 커스터마이즈하고, 템플릿으로 학습시키고, brief bank나 clause library를 중심으로 워크플로를 만들어 주겠다는 말이다. 일부는 꽤 잘한다. 하지만 가치가 실제로 어디에 있는지에 대한 근본적인 오해가 있다.\n\n템플릿 라이브러리는 경쟁우위가 아니다. 당신의 업무 분야에서 유능한 로펌이라면 대체로 비슷한 템플릿을 갖고 있다. NDA, stock purchase agreement, employment offer letter는 모두 commodity input이다. 뛰어난 변호사를 평범한 변호사와 구분해 준 것은 템플릿이 아니었다. 그 템플릿으로 무엇을 하느냐였다. 상대가 Section 14(c)에 숨겨 둔 쟁점을 어떻게 찾아내는지, 어떤 indemnification 싸움은 할 가치가 있고 어떤 것은 양보해야 하는지 어떻게 판단하는지, 고객이 위험을 실제로 이해하도록 advice email을 어떻게 구성하는지. 그게 judgment다. 그리고 judgment는 로펌 차원에 있지 않다. 개별 전문가 차원에 있다.\n\nlegal AI 회사들이 로펌 playbook에 맞춰 AI를 맞춤화한다고 말할 때, 그들은 거의 중요하지 않은 문제를 풀고 진짜 중요한 문제를 놓치고 있다. 진짜 레버리지는 AI가 어느 템플릿에서 시작하느냐가 아니라, 그 일에 대해 어떻게 생각할지, 무엇을 볼지, 무엇을 표시할지, 상충하는 고려 요소를 어떻게 저울질할지, 어떤 형식으로 결과를 낼지, 고객에게 어떤 톤을 쓸지를 알려 주는 지시문에서 나온다. 그 지시문은 로펌의 템플릿 라이브러리가 아니라 한 변호사의 judgment를 인코딩한다. 그리고 Claude의 skills 시스템은 정확히 그걸 하도록 설계돼 있다.\n\n나는 skills라고 부르는 맞춤형 instruction file을 만들어 두었다. 여기에는 내 분석 프레임워크, 선호하는 형식, 내 목소리, 특정 유형의 법률 업무를 어떻게 처리해야 하는지에 대한 판단이 들어 있다. 내가 계약서를 검토용으로 올리면 Claude는 generic framework를 적용하지 않는다. 심지어 우리 로펌의 framework도 적용하지 않는다. 지난 10년 넘게 실무에서 쌓아 온 내 framework를 자동으로 적용한다. 로펌의 playbook과 개인 변호사의 인코딩된 judgment 사이의 차이는 레시피를 건네는 것과 요리하는 법을 가르치는 것의 차이와 같다.\n\n더 근본적인 문제가 하나 있다. Microsoft Word 안에서 커리어를 보낸 사람에게 가장 크게 와닿을 문제다. Claude는 코드 작성을 위해 강하게 최적화된 frontier AI model이다. 언뜻 보면 법률 실무와 무관해 보이지만, 의미는 분명하다. Claude는 변호사들이 이미 쓰는 애플리케이션을 직접 조작하는 코드를 그 자리에서 쓸 수 있다.\n\n이게 실제로 무엇을 뜻하는지 생각해 보라. 이 글을 읽는 모든 변호사는 Word formatting 때문에 몇 시간을 날려 본 적이 있다. 다른 문서에서 붙여넣으면 깨지는 문단 번호, 협조하지 않는 스타일, 버전이 바뀌며 망가지는 track changes, 낡아 버린 cross-reference, 마침표와 쉼표 하나하나 수작업이 필요한 Bluebook citation formatting. 이건 법률 문제가 아니다. 소프트웨어 문제다. Claude는 소프트웨어를 써서 소프트웨어 문제를 푼다.\n\n내가 Claude에게 계약서에 tracked changes를 적용하라고 하면, 플러그인이나 매크로를 쓰지 않는다. .docx 파일을 XML 레벨로 열고 Microsoft Word가 기대하는 정확한 markup을 내 이름으로 기록하면서 모든 formatting detail을 보존한다. 내가 brief의 citation format을 표준화하라고 하면, 몇 초 만에 모든 citation을 파싱하고 다시 포맷하는 코드를 쓴다. 결과물은 전문가가 손으로 한 작업과 구분되지 않고, 시간은 훨씬 적게 든다. 이게 어떤 specialized legal AI product도 따라오기 어려운 capability gap이다.\n\nCowork는 자율 모드이고, 모든 것을 바꾸는 것도 이 모드다. 나는 내 컴퓨터의 폴더를 Claude에게 가리키고 작업을 지시한다. 그러면 Claude가 가서 처리한다. 파일을 읽고, 새 파일을 만들고, 기존 문서를 수정하고, A에서 B까지 가기 위해 무엇을 해야 하는지 스스로 판단한다. 40페이지짜리 계약서를 전체 redline해야 하거나, term sheet에서 closing document 묶음을 만들어야 할 때 나는 Cowork에 넘기고 일하게 둔다. 대부분의 변호사는 아직 이 모드를 써 보지 않았다. 하지만 실무를 가장 크게 바꿀 모드는 이것이다.\n\nCode는 개발 모드다. 터미널 전체 접근권을 준다. 대부분의 변호사에게 매일 필요한 건 아니지만, 나는 긴 문서를 읽기 어렵게 만드는 상태가 있어서 Code를 이용해 법률 문서를 음성 오디오로 바꾸는 커맨드라인 도구를 만들었다. 이 도구는 Word 문서와 PDF를 파싱하고, Section 4.2(b)(iii) 같은 법률 형식을 자연스러운 발화로 바꾸고, 약어를 풀고, 텍스트를 나누고, AI voice API에 보내고, 최종 오디오 파일을 조립하는 전체 파이프라인을 처리한다.\n\n그리고 그다음은 내가 judgment를 적용한다. Claude가 markup에서 어떤 패턴을 표시하면, 나는 경험상 그 패턴이 보통 무엇을 뜻하는지 안다. Claude가 분쟁 조항에 대한 대안 문구 세 개를 만들면, 나는 관계 역학과 딜 맥락까지 고려한 하나를 고른다. 결정을 마치면 Claude에게 edits를 적용하라고 말한다. 이건 처음 보면 모두가 놀라는 부분이다. Claude는 Word 문서를 XML 레벨로 열고, 내 이름이 달린 tracked changes를 적용하고, formatting detail을 모두 보존한 채, 상대방 변호사가 Microsoft Word에서 평소처럼 열어 검토할 수 있는 깔끔한 .docx를 만든다. 나는 Word를 열지 않는다. Litera도 열지 않는다. Claude가 redline을 만든다. 나는 모든 변경을 검토하고 보낸다. 그다음 client communications skill이 맞는 톤으로 cover email 초안을 만든다. 상대방 markup을 받은 뒤 응답 패키지를 보낼 준비가 되기까지 총 시간은 1시간 이하다. 그중 약 30분만이 내 순수한 사고 시간이다.\n\n환각 없는 리서치\n\n고객이 새 제품에 대한 regulatory landscape를 이해해야 한다고 하자. 질문은 여러 기관과 서로 겹치는 statutory framework에 걸쳐 있다. 내 research skill은 Claude에게 순차적으로 하나씩 처리하지 말고, 관련된 모든 각도에서 병렬로 리서치를 돌리라고 지시한다. securities analysis, state licensing requirements, banking regulations, consumer protection implications를 동시에 다룬다. 하위 주제마다 여러 검색을 수행하고, 출처를 교차검증하며, secondary commentary보다 primary authority, 즉 statutes, regulations, agency guidance, case law를 우선한다.\n\n무엇이든 나에게 전달하기 전에, 이 skill은 Claude에게 self-review를 반드시 수행하게 한다. 이 부분이 중요하고, 많은 사람이 건너뛰는 부분이다. Claude는 인용한 authority가 memo의 주장과 실제로 일치하는지 검증해야 한다. 자신감이 높음 미만인 부분은 표시해야 한다. 섹션 사이의 내부 모순도 점검해야 한다. 그리고 여러 변호사를 제재로 이끌어 전국 뉴스가 됐던 hallucinated citation 문제를 특별히 막아야 한다. 가짜 AI 생성 인용을 제출해 문제가 된 변호사들은 이런 verification layer 없는 도구를 쓰고 있었다. 문제는 AI 자체가 아니었다. 품질 통제 없는 AI였다.\n\n출력은 구조화된 research memo다. 결론을 먼저 제시하는 summary, 구체적인 statutory citation, 실무적 권고를 포함한다. junior associate라면 며칠이 걸릴 작업이다. Claude는 1시간도 안 되어 첫 초안을 준다. 그다음 나는 모든 citation을 검토하고, 분석을 stress-test하고, 내 judgment와 다른 곳을 수정한다. 그래도 처음부터 시작하는 것보다 전체 시간은 훨씬 적다.\n\n나는 한 걸음 더 나아가 Claude와 함께 engagement letter용 AI usage provision도 작성했다. 이 조항은 AI를 효율과 품질을 높이는 도구로 규정하고, 변호사의 감독을 강조하고, 데이터 처리를 기존 confidentiality obligation과 연결하고, 고객 동의를 확보한다. 고객은 거의 망설임 없이 서명한다. 대부분 이미 내가 AI를 쓰고 있다고 생각한다. 맞는 생각이다.\n\n이제 많은 관할권에서 ethics rule은 technology competence를 요구한다. 이 도구를 쓰지 않는 쪽이 오히려 더 방어하기 어려운 professional responsibility 입장이 되어 가고 있다.\n\n프롬프트가 곧 skill이다\n\nAI를 써 본 대부분의 변호사는 이 계약 검토해 줘 같은 말을 입력하고 평범한 결과를 받는다. 그리고 AI가 법률 업무에는 쓸모없다고 결론 내린다. 문제는 AI가 아니다. 입력이 문제다.\n\n이 계약 검토해 줘와, vendor 관점에서 이 services agreement를 검토해라. 이 유형의 거래에서 시장 관행을 넘어 고객이 위험을 전가한 조항을 표시하라. limitation of liability, IP ownership, data handling, termination for convenience를 포함해 들어가 있어야 하는데 빠진 조항도 확인하라 같은 지시를 비교해 보라. 차이는 엄청나다.\n\n분명히 말하지만, 우리 로펌을 떠나는 모든 문서는 면허를 가진 변호사가 검토하고, 수정하고, 승인한다. AI가 첫 패스를 만든다. 최종 work product는 내가 만든다. associate가 쓸모없어졌다는 뜻은 아니다. 하지만 associate를 고용하는 것이 경제적으로 타당한 기준은 이동했다. 그리고 그들에게 맡겨야 할 일도 바뀌었다. judgment, client relationship, AI output supervision이지, 문서 생산 2000시간이 아니다.\n\n청구와 비즈니스 모델도 달라진다. 어떤 작업은 시간 절감이 명확해서 그 이익을 고객에게 돌려준다. 다른 작업은 같은 시간 안에 훨씬 더 깊은 분석, 더 포괄적인 issue spotting, 더 높은 품질의 drafting을 가능하게 한다. 핵심은 모든 작업이 더 짧아진다는 게 아니다. 변호사 시간 한 시간이 더 큰 가치를 만들어 낸다는 점이다.\n\n우리 로펌은 사안에 따라 전통적인 시간당 청구와 함께 월 구독형 요금도 제공한다. 구독 고객은 고정 월 요금으로 ongoing advisory, contract review, compliance monitoring, routine governance를 받는다. 미터기는 돌아가지 않는다. AI 덕분에 이 모델이 가능하다. 예측 가능한 수수료 구조 안에서 더 포괄적인 서비스를 제공할 수 있기 때문이다. 고객은 이 모델을 좋아한다. 전화를 하거나 이메일을 보내는 것을 두려워하지 않는다. 그리고 내 수익은 들쭉날쭉하지 않고 예측 가능해진다.\n\nJudgment\n\n내가 설명한 모든 것은 AI에게 너무 많은 일을 맡기고 싶은 유혹을 만든다. 검토를 멈추고 싶게 만든다. 이 점에 관한 연구는 일관된다. AI의 역량 밖에서 AI를 쓰거나, 결과물을 따져 보지 않고 신뢰하는 사람은 AI를 전혀 쓰지 않는 사람보다도 성과가 나빠진다. 이 기술로 이길 변호사는 한 가지를 근본적으로 이해한다. 법률을 수행하는 것은 AI가 아니다. 당신이다. AI는 당신을 더 빠르고, 더 철저하고, 더 일관되게 만든다. 하지만 무엇을 위해 싸우고 무엇을 양보할지 결정하고, 행간을 읽고, 어느 쪽으로든 갈 수 있는 문제에서 자신의 평판을 걸고 판단을 내리는 그 부분은 당신의 것이다. 10년, 20년 동안 자신의 분야에서 judgment를 쌓아 온 변호사라면, AI가 덜 가치 있게 만드는 게 아니라 더 가치 있게 만드는 정확히 그 자산 위에 앉아 있는 셈이다.\n\n가서 만들어라\n\n나는 Anthropic 직원이 아니다. 나는 이용 가능한 AI 도구를 다 써 보고, 내가 실제로 일하는 방식에 가장 잘 맞는 도구를 중심으로 실무를 구축한 현업 변호사다.\n\n대부분의 변호사가 AI를 쓰는 방식, 즉 챗봇에 질문을 하나 던지고 잘되길 바라는 방식과, 내가 여기서 설명한 방식 사이에는 거대한 간격이 있다. 그 간격을 줄이는 데 기술적 배경이 꼭 필요한 것은 아니다. 도구가 실제로 어떻게 작동하는지 몇 시간 투자해 배우면 된다. Chat과 Cowork의 차이, 짧은 프롬프트보다 길고 자세한 프롬프트가 왜 훨씬 나은 결과를 주는지, 자신의 judgment를 인코딩하는 skill을 어떻게 만드는지, 어떤 동료라도 쓸 수 있게 skills를 plugin으로 어떻게 묶는지.\n\n데스크톱 앱을 내려받아라. 가장 자주 하는 작업 하나를 골라라. 그 작업을 정확히 어떻게 처리하길 원하는지 자세히 설명하는 프롬프트를 써라. 무엇이 돌아오는지 봐라. 그다음 첫 skill을 만들어라. 수익은 빠르게 복리처럼 쌓인다.",
     "tech_stack": [
       "Claude",

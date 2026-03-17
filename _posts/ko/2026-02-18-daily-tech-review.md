@@ -18,7 +18,7 @@ tags: ["agents", "capex", "ma", "openai", "robotics"]
 
 OpenAI Frontier는 기업이 AI 에이전트를 신규 직원처럼 온보딩하고 역할·권한을 부여해 관리할 수 있는 풀스택 엔터프라이즈 플랫폼이다.
 
-**Why it matters:** CRM·데이터웨어하우스·HR 시맨틱 레이어와 통합돼 에이전트가 실제 비즈니스 시스템을 직접 조작하는 "디지털 동료" 단계에 진입했으며, 권한 관리와 감사 로그가 핵심 설계 요소로 엔터프라이즈 보안팀의 역할이 크게 확장된다.
+**Why it matters:** orchestration이 MCP로 Obsidian·Git·Playwright를 연결해 에이전트를 운영하듯, Frontier는 CRM·ERP를 연결한다. 권한 관리와 감사 로그 설계가 핵심인 점은 동일하며, 이 패턴이 엔터프라이즈 표준이 되고 있다.
 
 - 1M 토큰 컨텍스트, 128k 출력 지원
 - CRM·데이터웨어하우스·HR 시맨틱 레이어 통합
@@ -35,7 +35,7 @@ OpenAI Frontier는 기업이 AI 에이전트를 신규 직원처럼 온보딩하
 
 Claude Opus 4.6이 에이전트 팀즈 기능으로 병렬 하위 과제 분담을 지원하고 1M 컨텍스트·128k 출력을 제공한다.
 
-**Why it matters:** Terminal-Bench 2.0에서 65.4%, GDPval-AA 엘로 1,606점으로 에이전틱 코딩 벤치마크 선두를 기록해, 대규모 자동화 파이프라인 구축의 기준 모델로 평가된다.
+**Why it matters:** orchestration이 Claude를 유일한 설계/결정권자로 쓰는 이유가 이 벤치마크에 있다. 에이전틱 코딩 최고 점수와 1M 컨텍스트가 합쳐져, Context Engineering의 Gate A 직접 읽기가 실용적이 됐다.
 
 - Terminal-Bench 2.0 에이전틱 코딩 65.4% 기록
 - GDPval-AA 엘로 1,606점 — 에이전틱 코딩 벤치마크 선두
@@ -52,7 +52,7 @@ Claude Opus 4.6이 에이전트 팀즈 기능으로 병렬 하위 과제 분담�
 
 Google Gemini Deep Think는 수학·물리·컴퓨터과학 전문 연구 문제 해결에 특화된 전문 추론 모드고, GLM-5는 754B 파라미터 MIT 라이선스 오픈소스 모델이다.
 
-**Why it matters:** 두 모델 모두 "오픈소스는 한 세대 뒤처진다"는 통념을 약화시키며, 전문 추론 영역에서 오픈소스와 클로즈드 모델의 격차가 빠르게 좁혀지고 있음을 보여준다.
+**Why it matters:** 오픈소스가 프런티어에 근접하면, 멀티AI 협업에서 Codex(추출/분석) 자리에 GLM-5 같은 로컬 모델을 넣는 선택지가 생긴다. 비용 최적화와 데이터 프라이버시를 동시에 확보할 수 있다.
 
 - Gemini Deep Think: 수학·물리·컴퓨터과학 난제 해결 특화 전문 추론 모드
 - GLM-5: 754B 파라미터, MIT 라이선스, Hugging Face·ModelScope 배포
@@ -68,7 +68,7 @@ Google Gemini Deep Think는 수학·물리·컴퓨터과학 전문 연구 문제
 
 베이항대와 베이징 항공우주 연구소가 인간 뇌의 LGN(외측슬상체) 구조를 모사한 뉴로모픽 비전 칩을 발표했다.
 
-**Why it matters:** 로봇의 움직임 인지 속도 4배 향상, 지연 75% 감소, 인식 정확도 100% 개선이 동시에 달성돼, Physical AI의 실용화 속도를 크게 앞당길 기술이다.
+**Why it matters:** 에이전트 자율성의 물리적 확장이다. 소프트웨어 에이전트가 코드를 조작하듯, 뉴로모픽 비전 칩으로 무장한 로봇은 물리 세계를 실시간으로 인지하고 행동한다.
 
 - 인간 뇌 LGN(외측슬상체) 구조 모사
 - 로봇 움직임 인지 속도 인간 대비 4배 향상
@@ -85,7 +85,7 @@ Google Gemini Deep Think는 수학·물리·컴퓨터과학 전문 연구 문제
 
 Amazon 2,000억, Alphabet 1,750~1,850억, Meta 1,150~1,350억, Microsoft 1,050억 달러로 2026년 빅테크 AI 인프라 투자 합계가 6,500억 달러에 달한다.
 
-**Why it matters:** 전년 대비 67~74% 증가한 이 투자의 75%가 AI 칩·서버·데이터센터에 집중되면서, AI 인프라가 국가급 에너지·전력 프로젝트 수준의 사안으로 격상됐다.
+**Why it matters:** 6,500억 달러의 인프라 투자는 토큰 단가 하락으로 이어질 것이고, 이는 mcp-memory의 TOKEN_BUDGETS 한도 내에서 더 많은 recall/remember 호출을 가능하게 한다.
 
 - Amazon ~$2,000억, Alphabet $1,750~1,850억, Meta $1,150~1,350억, Microsoft ~$1,050억
 - 전년 대비 67~74% 증가, 투자의 75%가 AI 칩·서버·데이터센터 집중
@@ -101,7 +101,7 @@ Amazon 2,000억, Alphabet 1,750~1,850억, Meta 1,150~1,350억, Microsoft 1,050�
 
 AI와 보안 분야 대형 M&A가 급증하며 M&A 시장이 재가동됐다.
 
-**Why it matters:** 고금리 시기 눌렸던 기업 결합 수요가 AI 주도 성장 기회와 맞물려 빠르게 분출하면서, 산업 구조 재편이 본격화됐다.
+**Why it matters:** AI 주도 M&A가 폭발하면 도구와 플랫폼 생태계가 급변한다. orchestration처럼 "도구는 바뀌지만 조율 시스템은 유지"되는 추상화 설계가 더욱 중요해진다.
 
 - Devon-Coterra 214억 달러 합병
 - Alphabet-Wiz 300억 달러 인수 마무리
@@ -118,7 +118,7 @@ AI와 보안 분야 대형 M&A가 급증하며 M&A 시장이 재가동됐다.
 
 OpenAI·Anthropic·Block·Microsoft·AWS·Cloudflare가 참여하는 Agentic AI Foundation이 Linux Foundation 산하에 출범했다.
 
-**Why it matters:** AGENTS.md와 MCP를 중심으로 에이전트 상호운용성·자기검증·메모리 표준화가 추진되면서, 개별 기업의 에이전트 구현이 공통 레이어 위에서 이식 가능한 구조로 수렴할 전망이다.
+**Why it matters:** AAIF가 MCP와 AGENTS.md를 표준화하면, orchestration이 이미 사용 중인 MCP 서버들과 AGENTS.md가 업계 공통 인프라가 된다. 우리 시스템의 설계 방향이 산업 표준과 일치하고 있다는 확인이다.
 
 - OpenAI, Anthropic, Block, Microsoft, AWS, Cloudflare 공동 참여
 - Linux Foundation 산하 공식 출범
@@ -134,7 +134,7 @@ OpenAI·Anthropic·Block·Microsoft·AWS·Cloudflare가 참여하는 Agentic AI 
 
 TEKsystems 조사에 따르면 기업들은 AI로 생산성 향상을 체감하는 동시에 시스템 복잡성 증가로 디지털 전환 일정을 재조정하고 있다.
 
-**Why it matters:** SF 연준 총재의 "AI 모멘트" 연설이 시사하듯, AI가 가져오는 생산성 이익이 노동시장 전반에 분배되기까지는 적응 기간과 정책적 대응이 병행돼야 한다는 공감대가 형성되고 있다.
+**Why it matters:** 에이전트가 코딩·문서·리뷰를 자동화하는 orchestration을 직접 운영하면서 체감하는 생산성 향상이, 시스템 복잡성 증가라는 비용과 함께 온다는 현실을 매일 경험하고 있다.
 
 - TEKsystems: AI 생산성 향상 체감과 시스템 복잡성 증가로 인한 디지털 전환 일정 재조정 병행
 - SF 연준 총재 "AI 모멘트" 연설: AI 생산성 이익의 노동시장 분배에 적응 기간 필요

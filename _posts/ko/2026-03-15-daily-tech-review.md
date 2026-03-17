@@ -17,7 +17,7 @@ tags: ["weekly-review", "ai-trends", "tech-summary"]
 
 Anthropic이 미국 국방부의 대규모 감시와 자율 무기 사용을 거부하자, 펜타곤은 이 회사를 공급망 위협으로 지정했다. 반대로 OpenAI는 2월 28일 국방부 계약을 체결했고, 이 엇갈린 선택이 소비자 신뢰에 즉각 반영됐다.
 
-**Why it matters:** 기업의 안전 정책이 정부 정책보다 강할 수 있음을 시장이 처음으로 명확히 선택했으며, AI 윤리가 더 이상 마케팅 슬로건이 아닌 실제 비즈니스 신호임을 증명했다. 이는 AI 기업들의 정부 관계 전략이 근본적으로 재편될 수 있음을 의미한다.
+**Why it matters:** Anthropic의 Pentagon 거부가 Claude App Store 1위로 이어진 것은, orchestration이 Claude를 유일한 설계/결정권자로 쓰는 선택이 시장에서 검증된 결과다. 안전 원칙이 곧 비즈니스 경쟁력이다.
 
 - Anthropic Claude는 2월 말 App Store 6위에서 토요일(3월 1일) 1위로 도약했고, 당주 일일 신규 가입자가 기록을 경신했으며 유료 구독자가 올해 2배 이상 증가했다.
 - OpenAI 하드웨어 담당 Caitlin Kalinowski는 Pentagon 계약 직후 "충분한 보호장치 없이 급하게 진행됐다"며 사직했고, 이는 내부 이견의 신호였다.
@@ -33,7 +33,7 @@ Anthropic이 미국 국방부의 대규모 감시와 자율 무기 사용을 거
 
 Meta가 3월 10-12일 사이 AI 에이전트 소셜 네트워크 Moltbook을 인수했고, 창립자 Matt Schlicht과 Ben Parr를 Meta Superintelligence Labs로 영입했다. 1월 말 OpenClaw가 불과 9일 만에 9,000에서 60,000 stars로 폭발적 성장한 이후, 산업이 에이전트 기술을 더 이상 실험 단계로 취급하지 않는다는 신호다.
 
-**Why it matters:** 에이전트 간 상호작용 인프라가 전략 자산화되고 있으며, Meta가 20년 Facebook 이후 처음으로 새로운 사용자 상호작용 방식(AI-to-AI)을 통제하려 한다는 뜻이다. 이는 소비자 AI 어플리케이션에서 기업들의 경쟁이 '개별 챗봇'에서 '에이전트 네트워크'로 진화 중임을 의미한다.
+**Why it matters:** 에이전트 소셜 네트워크가 M&A 대상이 된 것은, 에이전트 간 상호작용 인프라가 전략 자산이 됐다는 뜻이다. orchestration의 멀티세션 에이전트 간 통신(cross-session 실시간 공유)이 산업 수준에서 표준화되고 있다.
 
 - OpenClaw 창립자 Peter Steinberger는 2월 14일 OpenAI 합류를 발표했고, 프로젝트는 오픈소스 재단으로 이관되며 현재 GitHub 별이 210,000개를 넘었다.
 - Moltbook은 인수 후에도 운영을 계속하되 "AI 에이전트 신원 검증 레지스트리"로 기능할 예정이며, Business Communication 도구로 확대될 가능성이 있다.
@@ -49,7 +49,7 @@ Meta가 3월 10-12일 사이 AI 에이전트 소셜 네트워크 Moltbook을 인
 
 3월 13일 OpenAI가 Amazon과 $50B 투자 계약을 체결하고 동시에 AWS가 Cerebras WSE-3 칩 협력을 발표했다. 이는 단순 파트너십이 아니라 클라우드 인프라의 'Training vs Inference vs Edge' 시장이 본격 삼각전으로 진입했음을 의미한다.
 
-**Why it matters:** Nvidia는 Training에서 95% 이상 시장점유율을 유지했지만 Inference 시장에서는 Google(TPU), Amazon(Trainium), Cerebras, Groq가 동시 경쟁하기 시작했다. 기업들이 더 이상 "단일 칩 독점"에 의존하지 않겠다는 신호이며, Nvidia의 한계 수익 구조가 실질적으로 흔들릴 수 있다는 뜻이다.
+**Why it matters:** 추론 칩 경쟁이 삼각전으로 확대되면 추론 비용이 하락한다. orchestration의 멀티AI 호출 비용, mcp-memory의 embedding 연산 비용이 모두 개선되는 환경이다. 단일 벤더 독점이 깨지면 비용 최적화 선택지가 풍부해진다.
 
 - OpenAI는 AWS에서 2 gigawatt의 Trainium 용량을 소비하기로 약정했고, 이는 2024년 $38B 기존 계약에 $100B를 추가로 투자하는 규모다.
 - AWS와 Cerebras는 Inference를 'prefill(Trainium) + decode(Cerebras WSE-3)' 두 단계로 분리하는 "disaggregated architecture"를 도입했으며, 이는 기존 GPU 통합 설계의 대안 구조다.

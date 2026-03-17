@@ -18,7 +18,7 @@ Anthropic의 Pentagon 거부로 미국 AI 업계 분열 심화, Paramount의 110
 
 Pentagon과의 계약 협상에서 대량 감시 및 자율 무기 금지 조항을 요구한 Anthropic에 대해 Pentagon 국방장관 Pete Hegseth가 2월 27일 "공급망 위험(supply chain risk)"으로 지정했으며, Trump 대통령이 모든 연방 기관에 Anthropic 기술 사용 중단을 지시했다.
 
-**Why it matters:** AI 기업의 윤리적 입장이 정부 정책에 의해 직접 보복받는 첫 사례로, 미국 기술 기업들이 정부 압력에 얼마나 취약한지 노출했다. 업계 전반에 "정부 요구 거부 시 보복 당한다"는 선례가 생기면서 기술 기업의 독립성이 위협받고 있다.
+**Why it matters:** Anthropic이 정부 압력에 원칙을 지킨 것이 오히려 Claude App Store 1위라는 역설적 결과를 낳았다. orchestration이 Claude를 설계/결정권자로 선택한 근거가 시장에서 검증된 셈이다.
 
 - Anthropic CEO Dario Amodei는 2월 28일 성명에서 "이 지정은 보복적이고 징벌적"이라며 법적 이의 제기 방침 발표
 - 같은 날 OpenAI CEO Sam Altman이 Pentagon과 거래 체결 발표했으며, Anthropic의 Claude는 App Store 1위로 올라가 역설적 역효과 발생
@@ -34,7 +34,7 @@ Pentagon과의 계약 협상에서 대량 감시 및 자율 무기 금지 조항
 
 Paramount Skydance CEO David Ellison이 3월 2일 Warner Bros. Discovery 인수 합의 발표했으며, 주당 31달러 현금으로 총 110억 러(기업가치) 규모의 거래다.
 
-**Why it matters:** 합병으로 HBO Max와 Paramount+가 통합되어 Netflix(3억 2,500만), Disney+와 경쟁하는 2억 명 이상 가입자 기반의 메가 스트리밍 플랫폼 탄생한다. 할리우드 미디어 통합의 가속화 신호로 산업 재편이 급진행 중이다.
+**Why it matters:** 스트리밍 통합은 AI 콘텐츠 생성 수요를 폭발시킨다. tech-review가 자동 수집하는 미디어 AI 뉴스의 양과 중요도가 높아질 것이다.
 
 - 합병으로 해리 포터, 탑건, 게임 오브 스론, DC 유니버스 등 15,000개 이상의 영화와 수천 시간 TV 프로그램 보유
 - Ellison은 양 스튜디오가 연 15편씩 극장 개봉 영화 유지 약속 (총 연 30편)
@@ -50,7 +50,7 @@ Paramount Skydance CEO David Ellison이 3월 2일 Warner Bros. Discovery 인수 
 
 Apple이 3월 2일 신형 iPhone 17e($599)와 M4 칩 탑재 iPad Air(11인치 599달러, 13인치 799달러)를 발표했으며, 두 기기 모두 강화된 AI 성능과 대폭 개선된 저장 용량을 특징으로 한다.
 
-**Why it matters:** iPhone 17e는 기본 저장공간을 256GB로 두 배 확대하면서도 가격 유지해 실질적 가격 인상 회피했고, A19 칩 탑재로 iPhone 11 대비 2배 빠른 성능 제공한다. iPad Air M4는 12GB 메모리(기존 8GB)로 50% 증량하며 M1 대비 2.3배 빠른 성능으로 AI 작업량 증가에 대응한다.
+**Why it matters:** M4 iPad Air의 Neural Engine 강화와 12GB 메모리는 온디바이스 AI 추론을 실용화한다. 로컬에서 소형 모델을 돌릴 수 있는 기기가 보급되면, mcp-memory 같은 MCP 서버를 모바일에서 운영하는 시나리오가 현실화된다.
 
 - iPhone 17e는 새로운 Ceramic Shield 2 디스플레이(기존 대비 스크래치 저항력 3배), 48MP Fusion 카메라, MagSafe 지원 추가
 - iPad Air M4는 메모리 대역폭 100GB/s에서 120GB/s로 향상, 16코어 Neural Engine으로 생성 AI 작업 가속화

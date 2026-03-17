@@ -18,7 +18,7 @@ tags: ["agents", "chips", "geopolitics", "media-ai"]
 
 Sandia National Labs가 뇌 영감 하드웨어로 편미분방정식(PDE) 기반 물리 시뮬레이션에 성공하고 Nature Machine Intelligence에 게재했다.
 
-**Why it matters:** GPU 클러스터 대비 획기적으로 향상된 에너지 효율로 동일 계산을 수행한다는 첫 실증으로, 뉴로모픽 칩이 HPC 영역에서 실용적 대안으로 자리잡을 가능성을 처음으로 보여준다.
+**Why it matters:** 멀티AI 오케스트레이션에서 추론 비용이 지배적인 현 구조에서, 에너지 효율이 극적으로 개선된 칩이 실용화되면 상시 가동 에이전트의 운영 경제성이 달라진다.
 
 - 2026년 2월 Nature Machine Intelligence 게재
 - 기존 GPU 클러스터 대비 에너지 효율 획기적 향상
@@ -34,7 +34,7 @@ Sandia National Labs가 뇌 영감 하드웨어로 편미분방정식(PDE) 기�
 
 로렌스 버클리 국립연구소 주도, 아르곤·브룩헤이븐·SLAC·오크리지 참여 컨소시엄이 ML 파이프라인 Genesis/SYNAPS-I를 공개했다.
 
-**Why it matters:** 기존에 수개월 소요되던 X선·중성자 산란 데이터 분석이 실시간에 가깝게 단축돼, 신소재·의약품·에너지 소재 연구 속도를 근본적으로 바꿀 것으로 기대된다.
+**Why it matters:** 수개월을 실시간으로 단축하는 ML 파이프라인 설계는, Context Engineering에서 Progressive Reading(index -> 시그니처 -> 본문)으로 탐색 시간을 줄이는 전략과 같은 원리다.
 
 - 아르곤·브룩헤이븐·SLAC·오크리지 4개 국립연구소 컨소시엄 참여
 - X선·중성자 산란 페타바이트 데이터 즉석 해석
@@ -50,7 +50,7 @@ Sandia National Labs가 뇌 영감 하드웨어로 편미분방정식(PDE) 기�
 
 ByteDance Seedance 2.0은 쿼드모달 구조에 멀티-샷 스토리보딩과 상용 광고 수준의 물리 일관성을 결합했고, Kuaishou Kling 3.0은 4K·15초·다국어 입모양 싱크로 영상 품질을 한 단계 끌어올렸다.
 
-**Why it matters:** 두 모델 모두 중국 모델-플랫폼 수직 통합 전략의 대표 사례로, 콘텐츠 생산 한계비용이 사실상 0에 수렴하는 시대를 예고한다.
+**Why it matters:** 콘텐츠 한계비용이 0에 수렴하면, tech-review의 Playwright 자동 수집 후 멀티모달 분석(영상+텍스트) 파이프라인에 중국 저가 모델을 워커로 투입하는 비용이 무의미해진다.
 
 - Seedance 2.0: 텍스트·이미지·오디오·비디오 동시 처리, 멀티-샷 스토리보딩, 상용 광고 수준 물리 일관성
 - Kling 3.0: 4K·15초 출력, 다국어 입모양 싱크, 3D 시공간 어텐션, 자체 3D VAE
@@ -66,7 +66,7 @@ ByteDance Seedance 2.0은 쿼드모달 구조에 멀티-샷 스토리보딩과 �
 
 Alibaba Qwen 3.5는 수학·코딩 추론 강화 오픈웨이트로 Meta Llama와 개발자 마인드쉐어를 정면 경쟁하고, 칠레 CENIA 주도 Latam-GPT는 중남미 8개국이 협력해 스페인어·포르투갈어 중심 오픈소스 LLM을 개발한다.
 
-**Why it matters:** 오픈소스 모델 경쟁이 중국을 넘어 중남미 신흥 지역으로 확산되면서, AI 주권이 글로벌 분산 트렌드로 굳어지고 있다.
+**Why it matters:** 멀티AI 협업에서 Claude(설계)+Codex(추출)+Gemini(2nd opinion) 외에 Qwen 같은 오픈웨이트 모델이 로컬 워커로 추가되면, 비용 최적화와 벤더 종속 탈피를 동시에 달성할 수 있다.
 
 - Qwen 3.5: 수학·코딩 추론 강화 오픈웨이트, Meta Llama와 개발자 마인드쉐어 경쟁
 - Latam-GPT: 칠레 CENIA 주도, 중남미 8개국 기관 협력
@@ -82,7 +82,7 @@ Alibaba Qwen 3.5는 수학·코딩 추론 강화 오픈웨이트로 Meta Llama�
 
 OpenAI는 광고 도입·Frontier 출시·Snowflake 파트너십으로 엔터프라이즈 AI 운영체제 전략을 구체화하고, Anthropic은 무광고 공언·무료 티어 확장·규제 PAC 투자로 차별화를 강화했다.
 
-**Why it matters:** 광고 기반 소비자 수익과 구독 기반 엔터프라이즈 수익을 병행하는 OpenAI의 이중 구조와, 사용자 신뢰를 핵심 자산으로 삼는 Anthropic의 장기 브랜드 전략이 선명하게 대비된다.
+**Why it matters:** Claude를 유일한 설계/결정권자로 쓰는 시스템에서, Anthropic의 무광고 원칙은 모델 출력이 상업적 편향에 오염되지 않는다는 보장이다. OpenAI 모델을 워커로 쓸 때는 이 차이를 고려해야 한다.
 
 - OpenAI: ChatGPT 무료/Go 플랜 광고 시범 도입, Frontier 출시, Snowflake 2억 달러 파트너십
 - OpenAI Responses API에 서버-사이드 컴팩션 기능 추가, deep research 문서 뷰어·내보내기 추가
@@ -99,7 +99,7 @@ OpenAI는 광고 도입·Frontier 출시·Snowflake 파트너십으로 엔터프
 
 Talk→Action 전환이 본격화되면서 Reasoning·Perception·World Model을 결합한 Large Action Model(LAM) 개념이 등장했다.
 
-**Why it matters:** 에이전트가 실제 시스템을 조작하는 만큼, 전체 에이전트-도구-환경 경로에 대한 모니터링·승인·롤백 체계 구축이 기업 AI 도입의 필수 전제 조건이 됐다.
+**Why it matters:** orchestration의 Hook Framework가 에이전트 행동을 config.py+framework.py로 통제하듯, LAM 시대에는 에이전트-도구-환경 전체 경로의 승인·롤백 체계가 필수다. 이미 겪은 멀티세션 아이디에이션 사고가 이를 실증한다.
 
 - Reasoning·Perception·World Model을 결합한 LAM 개념 등장
 - 에이전트가 실제 비즈니스 시스템을 직접 조작하는 단계 진입
@@ -115,7 +115,7 @@ Talk→Action 전환이 본격화되면서 Reasoning·Perception·World Model을
 
 캐나다와 독일이 AI 공동선언에 서명하고 Sovereign Technology Alliance를 출범시키며, 민주주의 국가 간 AI 거버넌스 협력의 첫 공식 모델을 제시했다.
 
-**Why it matters:** 데이터 계보 추적과 모델 출처 투명성이 엔터프라이즈 AI 도입의 핵심 구매 기준으로 자리잡을 것으로 전망되며, "누가 어느 데이터로 어떤 모델을 운용하는가"를 추적·제어하는 인프라가 경쟁 우위의 핵심이 된다.
+**Why it matters:** mcp-memory가 모든 노드의 출처·관계·성숙도를 추적하듯, 국가 단위 AI 거버넌스에서도 데이터 계보와 모델 출처 투명성이 핵심 인프라로 자리잡고 있다.
 
 - 캐나다-독일 AI 공동선언 서명 및 Sovereign Technology Alliance 출범
 - 안전하고 회복력 있는 주권형 AI 역량 구축과 보안 컴퓨트 인프라 공동 개발 목표

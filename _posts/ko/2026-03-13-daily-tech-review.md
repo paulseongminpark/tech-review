@@ -17,7 +17,7 @@ tags: ["hardware", "chips", "datacenter", "cloud", "infrastructure"]
 
 인텔이 2026년 3월 9일 Embedded World 2026에서 Core Series 2 프로세서를 공개하며 산업용 실시간 엣지 AI 워크로드를 타깃으로 한다. 이 프로세서는 공장 자동화·로보틱스 등 지연 민감 환경에서 결정적 성능을 제공한다.
 
-**Why it matters:** 인텔의 두 칩 전략(Core Series 2 + Core Ultra Series 3)이 단일 플랫폼 통합을 원는 산업·헬스케어 고객을 공략하며 AMD·ARM 경쟁자에 도전한다. 엣지 AI 시장에서 소프트웨어 호환성과 낮은 전력을 강조해 복잡한 하이브리드 아키텍처 비용을 줄인다.
+**Why it matters:** 엣지에서 실시간 AI 추론이 가능해지면, mcp-memory 같은 MCP 서버를 클라우드 없이 로컬 엣지 디바이스에서 운영하는 시나리오가 열린다. PCIe 지연 4.4배 감소는 로컬 추론 워크로드에 직접 영향을 준다.
 
 - Core Series 2는 AMD Ryzen 7 9700X 대비 PCIe 지연 최대 4.4배 낮고, 결정적 응답 시간 2.5배 빠르며, 결정적 성능 3.8배 향상.
 - Edge AI Suite for Health & Life Sciences 프리뷰가 GitHub에서 제공되며, Q2 2026 일반 출시 예정.
@@ -31,7 +31,7 @@ tags: ["hardware", "chips", "datacenter", "cloud", "infrastructure"]
 
 인텔이 Core Ultra 200S Plus 시리즈(7 270K, 5 250K)를 3월 26일 출시하며 기존 Arrow Lake 대비 1080p 게이밍 성능 15% 높이고 가격을 낮춘다. iBOT 바이너리 최적화 도구로 IPC를 높여 다른 x86 아키처 게임도 최적화한다.
 
-**Why it matters:** 더 많은 코어(24코어)와 메모리 속도 900MHz 향상으로 AMD Zen 5 대비 멀티스레드 83-103% 우위를 주장하며 시장 점유율 회복을 노린다. 칩렛 디자인(TSMC N3B 컴퓨트 타일 + N6 SoC 타일)으로 지연 문제를 해결해 게이밍·생산성 워크로드 경쟁력을 강화한다.
+**Why it matters:** 24코어 $300 CPU의 멀티스레드 성능 향상은 로컬 개발 환경(i5-13500HX)에서 병렬 에이전트 실행이나 로컬 모델 추론 속도를 개선할 수 있는 업그레이드 경로다.
 
 - Core Ultra 7 270K(24코어)는 $300 가격으로 Blender·Handbrake 등 멀티스레드 작업에서 AMD 9600X·9700X 대비 2배 성능.
 - 메모리 컨트롤러 7,200MT/s(Boost 8,000MT/s) 지원, 4R CUDIMM 초기 지원으로 시스템 지연 감소.
@@ -45,7 +45,7 @@ tags: ["hardware", "chips", "datacenter", "cloud", "infrastructure"]
 
 인텔 Core Series 2가 전통 x86 플랫폼의 실시간·AI 워크로드 트레이드오프를 해소하며 공장·로보틱스 단일 노드 운영을 가능케 한다. Embedded World 2026에서 헬스케어 AI 모니터링을 위한 Edge AI Suite도 프리뷰됐다.
 
-**Why it matters:** 멀티프로세서·하이브리드 아키텍처 비용을 줄이는 인텔의 접근이 Nvidia Jetson 같은 GPU 중심 솔루션과 차별화되며, 넓은 소프트웨어 호환으로 개발 스택 분산을 막는다. 산업 운영자가 합리적 가격으로 AI 통합을 확대할 수 있게 한다.
+**Why it matters:** 단일 노드에서 실시간+AI를 동시에 처리하는 통합은, orchestration이 단일 터미널(WezTerm+tmux)에서 멀티AI 세션을 운영하는 것과 같은 원리다. 아키텍처 단순화가 운영 비용을 줄인다.
 
 - AMD Ryzen 7 9700X 대비 멀티스레드 1.5배 높고, ARM·마이크로컨트롤러 솔루션 격차 좁힘.
 - Core Ultra Series 3과 결합한 두 칩 전략으로 헬스케어·산업 고객 단일 플랫폼 선호 충족.

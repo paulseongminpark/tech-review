@@ -18,7 +18,7 @@ NVIDIA가 광학 기술 강화에 $4B 투자하는 동안 Amazon이 OpenAI에 $5
 
 NVIDIA가 Lumentum과 Coherent에 각각 $20억씩 투자하며 다중 기가와트급 AI 팩토리 구축을 가속화한다.
 
-**Why it matters:** AI 데이터센터의 대역폭 병목을 해결하는 광학 상호연결(optical interconnect) 기술이 Vera Rubin 이후 세대의 핵심 경쟁 요소로 부상했다. NVIDIA가 직접 공급망에 투자하는 것은 Co-Packaged Optics(CPO) 기술이 단순 선택이 아닌 필수 사항임을 시사한다.
+**Why it matters:** 데이터센터 대역폭 병목 해소는 결국 API 응답 속도 개선으로 이어진다. orchestration의 멀티AI 호출에서 각 단계의 지연이 줄어들면, 에이전트 워크플로우의 실시간 응답 품질이 높아진다.
 
 - Lumentum은 미국 내 신규 반도체 팹 건설을 위해 NVIDIA 자금을 활용하며, Coherent도 20년간의 NVIDIA 파트너십을 확장하는 형태로 진행
 - 양사 모두 다중 기가와트 규모의 구매 약정과 향후 용량 확보 권리를 NVIDIA로부터 획득
@@ -34,7 +34,7 @@ NVIDIA가 Lumentum과 Coherent에 각각 $20억씩 투자하며 다중 기가와
 
 Amazon이 OpenAI에 초기 $150억 투자를 시작으로 총 $500억까지 투입하며, OpenAI는 AWS의 커스텀 AI 칩 Trainium 약 2GW를 2027년까지 소비하기로 약정했다.
 
-**Why it matters:** Microsoft의 장기 독점권 하에서도 Amazon이 OpenAI와 직접 클라우드 계약을 체결한 것은 AI 인프라 시장의 패러다임 변화를 의미한다. OpenAI의 Stateful Runtime Environment를 Amazon Bedrock에서 독점 제공하는 조건으로, Amazon은 Microsoft와의 기존 라이선 관계 내에서 제3자 클라우드 제공자로 포지셔닝했다.
+**Why it matters:** Stateful Runtime Environment는 에이전트가 컨텍스트·메모리를 유지하며 다중 스텝을 실행하는 기능이다. mcp-memory의 save_session()이 세션 간 컨텍스트를 보존하듯, 이 기능이 클라우드 표준이 되면 에이전트 상태 관리의 산업 패턴이 확립된다.
 
 - 계약금 $150억 + 추가 $350억은 특정 마일스톤(AI 칩셋 출하량 등) 달성 시 분할 지급 구조
 - OpenAI가 Trainium3 및 차세대 Trainium4 칩에 총 2GW 전력 소비 약정은 AWS의 커스텀 실리콘 전략 성공의 직접적 증거
@@ -50,7 +50,7 @@ Amazon이 OpenAI에 초기 $150억 투자를 시작으로 총 $500억까지 투�
 
 NVIDIA가 Vera Rubin NVL72 서버의 HBM4 메모리 대역폭을 기존 대비 10% 상향조정한 22.2TB/s로 설정하여 AMD의 Instinct MI455X(19.6TB/s)를 압도하기로 결정했다.
 
-**Why it matters:** AMD가 12-Hi 스택으로 19.6TB/s를 달성하는 와중에 NVIDIA가 8-Hi 스택으로 22.2TB/s를 구현한 것은 HBM4 핀 속도 경쟁이 본격화되었음을 의미한다. 이는 단순 성능 수치를 넘어 메모리 병목 해소라는 AI 모델 스케일링의 핵심 과제를 둘러 경쟁이 심화되고 있음을 보여준다.
+**Why it matters:** 메모리 대역폭 확대는 1M 토큰 컨텍스트 처리 속도를 직접 개선한다. Context Engineering에서 Gate A(직접 읽기)로 대규모 코드베이스를 한번에 넣는 작업의 응답 시간이 단축된다.
 
 - NVIDIA의 8-Hi HBM4 스택은 핀당 최대 11Gbps 속도로 작동하며, Samsung이 이를 양산 가능한 수준으로 검증 중
 - AMD의 MI450X는 더 높은 메모리 용량(12-Hi)을 선택하는 대신 대역폭에서 NVIDIA에 양보하는 아키텍처 트레이드오프 선택
