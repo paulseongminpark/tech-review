@@ -308,6 +308,17 @@ ALL_VIDEOS.push({
   {% endif %}
 {% endfor %}
 
+// 중복 제거 (video_id 기준, 먼저 나온 것 유지)
+const seen = new Set();
+const UNIQUE_VIDEOS = [];
+for (const v of ALL_VIDEOS) {
+  if (v.video_id && seen.has(v.video_id)) continue;
+  if (v.video_id) seen.add(v.video_id);
+  UNIQUE_VIDEOS.push(v);
+}
+ALL_VIDEOS.length = 0;
+ALL_VIDEOS.push(...UNIQUE_VIDEOS);
+
 ALL_VIDEOS.sort((a, b) => {
   const ia = a.playlist_index ?? 9999;
   const ib = b.playlist_index ?? 9999;
