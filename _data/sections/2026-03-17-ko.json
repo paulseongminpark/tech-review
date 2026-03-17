@@ -2,7 +2,7 @@
   "date": "2026-03-17",
   "lang": "ko",
   "post_url": "/ko/2026/03/17/daily-tech-review/",
-  "post_title": "오픈 웨이트 진영에서 256k 통합형 모델(Mistral Small 4), 정형증명 기반 검증형 코딩 에이전트(Leanstral), 의료 로봇 Physical AI 데이터셋(Open-H-Embodiment)이 같은 날 공개되며 에이전트 스택의 세 축이 동시에 구체화되고 있다.",
+  "post_title": "오픈 웨이트 진영에서 256k 컨텍스트의 통합형 모델(Mistral Small 4), 정형증명 기반 '검증형' 코딩 에이전트(Leanstral), 의료 로봇 '행동' 데이터를 대규모로 개방한 Open-H-Embodiment(778시간) 및 수술 로봇용 VLA/WFM이 ",
   "source_type": "perplexity",
   "sections": [
     {
@@ -11,7 +11,8 @@
       "lead": "미스트랄은 2026년 3월 16일 Mistral Small 4를 공개하며, 추론(Reasoning)·멀티모달·에이전틱 코딩 역량을 단일 모델로 통합했다. 핵심 스펙으로 MoE 128 experts(토큰당 4개 활성화), 119B total parameters, 256k 컨텍스트, 그리고 요청별로 조절 가능한 `reasoning_effort`를 제시했다.",
       "tags": [
         "ai-models",
-        "agents",
+        "research",
+        "benchmarks",
         "ma"
       ],
       "anchor": "mistral-small-4-공개-instruct·reasoning·coding·vision을-한-모델로-통"
@@ -22,7 +23,8 @@
       "lead": "미스트랄은 같은 날 Lean 4 형식 검증(정형증명)용 오픈소스 코드 에이전트 Leanstral을 발표했다. \"코드를 생성하는 에이전트\"를 넘어, 검증(증명)이라는 '완전한 판정자(perfect verifier)'가 있는 영역에서 반복 실행(pass)로 성능을 끌어올리는 전략을 전면에 둔 것이 특징이다.",
       "tags": [
         "ai-models",
-        "agents"
+        "research",
+        "benchmarks"
       ],
       "anchor": "leanstral-공개-lean-4-정형증명-검증에-최적화된-오픈소스-코드-에이전트"
     },
@@ -32,7 +34,8 @@
       "lead": "NVIDIA는 Hugging Face 블로그를 통해 2026년 3월 16일 의료 로봇 영역의 공개 데이터셋 Open-H-Embodiment와 수술 로봇용 기초 모델·시뮬레이터를 발표했다. 778시간 규모(CC-BY-4.0)의 로봇 학습 데이터를 포함하며, GR00T-H(수술 로봇 정책/VLA)와 Cosmos-H-Surgical-Simulator(행동 조건부 수술 영상 생성 WFM)를 함께 제시했다.",
       "tags": [
         "ai-models",
-        "agents",
+        "research",
+        "benchmarks",
         "nvidia"
       ],
       "anchor": "nvidia·hugging-face-의료-로봇-physical-ai-공개-데이터셋·기초-모델-동시-발표"
