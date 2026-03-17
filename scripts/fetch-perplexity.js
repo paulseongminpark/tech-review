@@ -525,7 +525,15 @@ async function validateUrls(content) {
     }
   }
 
-  console.log(`URL 검증 완료: ${links.length - invalidCount}/${links.length} 유효 (미검증 ${invalidCount}개 링크 유지)`);
+  const validCount = links.length - invalidCount;
+  console.log(`URL 검증 완료: ${validCount}/${links.length} 유효 (미검증 ${invalidCount}개)`);
+
+  // URL 전부 미검증이면 할루시네이션으로 판단 — hard fail
+  if (links.length > 0 && validCount === 0) {
+    console.error("URL 검증 실패: 유효한 URL 0개 — 할루시네이션 의심. 저장 중단.");
+    return null;
+  }
+
   return content;
 }
 
@@ -553,12 +561,10 @@ function validateContent(content) {
   }
 
   if (errors.length > 0) {
-    console.warn("분량 검증 경고:");
+    console.warn("분량 검증 실패:");
     errors.forEach((e) => console.warn(`  - ${e}`));
-    // Today in One Line 없으면 실패 처리 (sonar-pro 폴백 유도)
-    if (!/Today in One Line/i.test(content)) {
-      return false;
-    }
+    // 어떤 검증이든 실패하면 hard fail (할루시네이션 방지)
+    return false;
   }
 
   console.log("분량 검증 통과");
@@ -629,10 +635,16 @@ async function main() {
   content = removeBracketHeadlines(content);
   content = await validateUrls(content);
 
-  // 분량 검증 — Today in One Line 없으면 hard fail (형식 이탈 방지)
+  // URL 검증 실패 시 (할루시네이션)
+  if (!content) {
+    console.error("URL 검증 실패: 할루시네이션 의심. 저장 중단.");
+    process.exit(1);
+  }
+
+  // 분량 검증 — 모든 항목 hard fail
   const isValid = validateContent(content);
   if (!isValid) {
-    console.error("형식 검증 실패: Today in One Line 없음 — Smart Brevity 형식 이탈. 저장 중단.");
+    console.error("형식 검증 실패. 저장 중단.");
     process.exit(1);
   }
 
