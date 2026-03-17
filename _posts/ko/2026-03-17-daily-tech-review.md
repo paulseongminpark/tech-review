@@ -1,63 +1,63 @@
 ---
 layout: post
-title: "엔비디아의 Vera Rubin AI 팩토리, Z.ai의 에이전트 특화 GLM-5-Turbo, Google Maps의 Gemini 기반 Ask Maps/Immersive Navigation 론칭으로 에이전트+물리 세계+실사용 워크플로 스택이 동시에 구체화되고 있다."
+title: "오픈 웨이트 진영에서 256k 통합형 모델(Mistral Small 4), 정형증명 기반 검증형 코딩 에이전트(Leanstral), 의료 로봇 Physical AI 데이터셋(Open-H-Embodiment)이 같은 날 공개되며 에이전트 스택의 세 축이 동시에 구체화되고 있다."
 date: 2026-03-17
 lang: ko
 permalink: /ko/2026/03/17/daily-tech-review/
 pair: 2026-03-17-daily-tech-review
-tags: ["ai-ml", "hardware", "models", "agents"]
+tags: ["ai-ml", "models", "agents", "open-source"]
 ---
 
 ## Today in One Line
-지난 48시간 동안 AI/ML 핵심 뉴스는 엔비디아의 Vera Rubin AI 팩토리 플랫폼, Z.ai의 에이전트 특화 모델 GLM-5-Turbo, Google Maps의 Gemini 기반 Ask Maps/Immersive Navigation 론칭으로 '에이전트+물리 세계+실사용 워크플로' 스택이 동시에 구체화되고 있다.
+오픈 웨이트 진영에서 256k 컨텍스트의 통합형 모델(Mistral Small 4), 정형증명 기반 '검증형' 코딩 에이전트(Leanstral), 의료 로봇 '행동' 데이터를 대규모로 개방한 Open-H-Embodiment(778시간) 및 수술 로봇용 VLA/WFM이 같은 날 연달아 공개됐다.
 
 ---
 
-## 1. NVIDIA Vera Rubin AI 팩토리와 GTC 2026, 에이전트 시대용 인프라의 기준을 다시 쓴다
+## 1. Mistral Small 4 공개 — Instruct·Reasoning·Coding·Vision을 한 모델로 통합
 
-엔비디아가 GTC 2026에서 Vera CPU·Rubin GPU·NVLink 6·ConnectX-9·BlueField-4·Spectrum-6를 묶은 **Vera Rubin NVL72 AI 팩토리 플랫폼**을 공식 론칭하고, 에이전트 시대를 겨냥한 풀스택 하드웨어 전략을 공개했다.
+미스트랄은 2026년 3월 16일 Mistral Small 4를 공개하며, 추론(Reasoning)·멀티모달·에이전틱 코딩 역량을 단일 모델로 통합했다. 핵심 스펙으로 MoE 128 experts(토큰당 4개 활성화), 119B total parameters, 256k 컨텍스트, 그리고 요청별로 조절 가능한 `reasoning_effort`를 제시했다.
 
-**Why it matters:** 이 플랫폼은 한 랙당 3.6 엑사FLOPS NVFP4 추론 성능과 토큰당 비용 10배 절감을 목표로 하며, 대규모 Mixture-of-Experts 모델과 멀티-에이전트 워크로드를 전제로 설계된 최초의 상용 랙 스케일 AI 팩토리 중 하나다. 이는 단순 GPU 카드 추가가 아니라, 'AI 팩토리'라는 데이터센터 단위로 에이전트 인프라를 사고해야 하는 시대로의 전환 신호로 해석되며, 2027년까지 1조 달러 규모의 AI 수요를 겨냥한 엔비디아의 지배력 확대 전략의 핵심 축이다.
+**Why it matters:** 우리 시스템에서 Claude Code가 설계/결정, Codex가 추출/분석, Gemini가 2nd opinion을 맡는 멀티AI 구조를 운영 중인데, Mistral Small 4의 '하나로 통합' 접근은 이 구조의 대안을 시사한다. 특히 256k 컨텍스트 + Apache 2.0 오픈 웨이트 조합은 로컬 호스팅 가능한 에이전트 백본으로서, mcp-memory recall이나 SoT 참조 같은 컨텍스트 집약 워크로드에서 비용 효율적 대안이 될 수 있다. 현재 Codex가 YouTube/Twitter 분석에 GPT-5.4를 쓰는데, 동일 품질이 확인되면 API 비용 없이 로컬에서 돌릴 수 있는 가능성이 열린다.
 
-- Vera Rubin NVL72는 Rubin GPU 72개와 Vera CPU 36개를 NVLink 6 스위치로 풀-메시(all-to-all)로 묶어 랙 하나에서 3.6 엑사FLOPS FP4 추론·2.5 엑사FLOPS 학습 성능과 20.7TB HBM4(총 1.6PB/s 대역폭)를 제공하며, Blackwell NVL72 대비 추론 성능 5배·토큰당 비용 10분의 1을 표방한다.
-- Rubin 플랫폼은 Vera CPU(에이전트 오케스트레이션·메모리), Rubin GPU(연산), NVLink 6 스위치(3.6TB/s 링크), ConnectX-9 SuperNIC, BlueField-4 DPU, Spectrum-6 이더넷 스위치, Groq 3 LPU까지 포함한 7개 칩 기반 풀스택으로, 엔비디아가 GPU 기업을 넘어 '에이전트용 추론 실리콘+네트워크+스토리지'까지 통합하는 전략을 분명히 했다.
-- Wiwynn, ASUS, AHEAD 등 파트너들은 완전 액침/직결 수냉 기반 Vera Rubin NVL72 랙, 10MW급 액체 냉각 인티그레이션 팩토리, Rubin NVL72 기반 AI POD를 GTC 2026에서 동시에 발표하며, 랙당 100~250kW 이상 전력 밀도를 상정한 'AI 팩토리' 레퍼런스 아키텍처를 내놓았다.
+- 모델 식별자 `mistral-small-2603`, 119B total / 6B active parameters, 256k 컨텍스트, Apache 2.0 라이선스
+- Small 3 대비 end-to-end completion time 40% 감소, 초당 처리량 3배 향상 (throughput-optimized)
+- vLLM, llama.cpp, SGLang, Transformers 지원과 함께 공개. Mistral API·Hugging Face·NVIDIA NIM 경로 배포 가능
 
-**What's next:** GTC 2026에서 예고된 차차세대 Feynman 아키텍처(실리콘 포토닉스+에이전트 오케스트레이션 전용 ACU)까지 감안하면, 향후 2~3년간 AI 인프라 경쟁의 초점은 GPU 개수가 아니라 에이전트 추론 지연·토큰당 비용·랙 스케일 통합 설계로 이동할 가능성이 크다.
+**What's next:** 오픈 웨이트 배포 후 256k 장문 컨텍스트 + reasoning 모드가 실제 워크로드(코딩·RAG·문서 분석)에서 비용/지연/정확도를 어떻게 재구성하는지 벤치마크가 빠르게 쌓일 전망이다.
 
-**Source:** [Nvidia GTC 2026: Nvidia's hardware strategy goes beyond GPU in AI inference pivot](https://www.constellationr.com/insights/news/nvidia-gtc-2026-nvidias-hardware-strategy-goes-beyond-gpu-ai-inference-pivot)
-
----
-
-## 2. Z.ai GLM-5-Turbo, OpenClaw 에이전트 워크플로에 최적화된 첫 '에이전트-퍼스트' LLM을 공개하다
-
-중국의 Z.ai(구 Zhipu AI)가 OpenClaw 시나리오에 특화된 대규모 언어 모델 GLM-5-Turbo를 2026년 3월 15~16일 공개하며, 기존 범용 LLM 위에 덧씌우는 방식이 아닌 '에이전트-퍼스트' 학습을 거친 상업용 모델을 선보였다.
-
-**Why it matters:** GLM-5-Turbo는 7440억 매개변수(활성 400억) Mixture-of-Experts 구조와 약 20만 토큰 컨텍스트 윈도우, 에이전트용 reasoning 모드, 장기·예약 실행 기능을 결합해 OpenClaw 같은 멀티-툴·멀티-스텝 에이전트 워크플로를 전제로 설계된 점이 특징이다. 동시에 기본 모델 GLM-5는 MIT 라이선스 오픈소스, Turbo는 클로즈드 상용이라는 구조를 취해 '오픈 가중치 기반에서 수익성 높은 에이전트 특화 상단 계층을 쌓는 새로운 비즈니스 패턴'을 보여주었다.
-
-- GLM-5-Turbo는 GLM-5(744B 총 파라미터, 40B 활성 MoE)를 기반으로, 20만+ 토큰 컨텍스트, DeepSeek 스타일 희소 어텐션, MCP v2, 함수 호출, 구조화 출력, reasoning 모드를 탑재해 긴 도구 호출 체인과 복잡한 지시 분해에 안정적으로 대응하도록 튜닝되었다.
-- 공식·커뮤니티 문서에 따르면 이 모델은 OpenClaw 벤치마크와 실제 에이전트 로그를 이용해 'claw-bench-enhanced model'로 학습·최적화되었고, 길게 이어지는 툴 체인에서 실패율과 무한 루프를 줄이는 데 초점을 맞췄다는 평가가 많다.
-- Z.ai는 Turbo를 실험적 클로즈드 모델로 운영하면서 여기서 얻은 성능·안정성 개선을 차기 오픈소스 GLM 계열에 반영하겠다고 명시했으며, 이미 Puter.js, Chutes 등에서 GLM-5-Turbo 지원이 추가되고 Hacker News와 r/LocalLLaMA 등 커뮤니티에서 가격·성능·에이전트 적합성 논의가 활발히 이뤄지고 있다.
-
-**What's next:** Turbo가 상용·폐쇄임에도 핵심 개선점이 차기 오픈소스 GLM 릴리스에 합류한다고 명시된 만큼, '에이전트-퍼스트 학습+오픈 가중치' 조합이 2026년 이후 에이전트 생태계의 기본 패턴으로 확산될 가능성이 크다.
-
-**Source:** [GLM-5 Turbo: Zhipu AI's agent model built for OpenClaw](https://www.buildfastwithai.com/blogs/glm-5-turbo-openclaw-agent-model)
+**Source:** [Introducing Mistral Small 4](https://mistral.ai/news/mistral-small-4)
 
 ---
 
-## 3. Google Maps, Gemini 기반 Ask Maps와 Immersive Navigation으로 '대화형 내비게이션' 시대로 들어가다
+## 2. Leanstral 공개 — Lean 4 정형증명 '검증'에 최적화된 오픈소스 코드 에이전트
 
-Google이 Gemini 모델을 Google Maps에 본격 통합해 대화형 검색 기능 'Ask Maps'와 3D 'Immersive Navigation'을 론칭하며, 지도·길찾기 경험을 지난 10여 년 중 가장 큰 폭으로 개편했다.
+미스트랄은 같은 날 Lean 4 형식 검증(정형증명)용 오픈소스 코드 에이전트 Leanstral을 발표했다. "코드를 생성하는 에이전트"를 넘어, 검증(증명)이라는 '완전한 판정자(perfect verifier)'가 있는 영역에서 반복 실행(pass)로 성능을 끌어올리는 전략을 전면에 둔 것이 특징이다.
 
-**Why it matters:** Ask Maps는 단순 '장소 검색'이 아니라 "핸드폰 배터리가 거의 없는데 줄 오래 안 서고 충전할 수 있는 곳" 같은 복합 조건을 자연어로 물으면, Gemini가 3억 개 이상 POI와 5억 명 이상 사용자의 리뷰 데이터를 기반으로 맞춤 추천과 경로를 구성하는 인터페이스를 제공한다. 동시에 Immersive Navigation은 건물·지형·교차로·차선·횡단보도·신호등까지 3D로 시각화하고, 건물 뒤로 가려지는 구간을 반투명 처리하는 등 운전 화면 자체를 재설계해, 내비게이션 UX를 '지도 보기'에서 '현실에 가까운 3D 공간 인지'로 옮기고 있다.
+**Why it matters:** 우리 시스템에서 code-reviewer(Opus)가 구현 후 코드 리뷰를 담당하고 있는데, 이 리뷰의 본질적 한계는 '사람/AI의 판단'에 의존한다는 점이다. Leanstral이 제시하는 '기계가 증명 가능한 코드 생성' 패러다임은 이 병목을 구조적으로 우회한다. FLTEval에서 Leanstral pass@2가 $36/26.3점으로 Sonnet $549/23.7점을 넘긴 비용-성능 비율은, 앞으로 에이전트 코딩의 경제학이 '생성 비용'이 아니라 '검증 비용'으로 재정의될 수 있음을 보여준다.
 
-- Google 공식 블로그에 따르면 Ask Maps는 Gemini가 Street View·항공 사진·리뷰·POI 메타데이터를 결합해 복잡한 질문에 대화형으로 응답하고, 결과를 커스텀 지도와 함께 보여주는 경험을 제공하며, 현재 미국·인도에서 Android·iOS 앱에 우선 롤아웃 중이다.
-- Forbes·MacRumors·The Verge 등은 이번 업데이트를 "지난 10년간 Google Maps 내비게이션의 가장 큰 변화"로 평가하며, Ask Maps가 과거 검색·리뷰 탭을 오가며 정보를 찾던 과정을 줄이고, 과거 검색 이력·즐겨찾기·리뷰 패턴을 활용한 개인화 추천을 기본값으로 만들어 간다고 분석했다.
-- Immersive Navigation은 Gemini가 Street View·항공 이미지에서 공간 구조를 추출해 경로를 따라 3D로 재구성하고, 복잡한 교차로·고가도로·터널 진입 시 카메라 각도와 투명 처리 등을 자동 조정해 운전자가 실제 전방 시야와 가장 비슷한 형태로 길을 인지하도록 돕는 것을 목표로 하며, 미국부터 iOS·Android·CarPlay·Android Auto에 순차 배포되고 있다.
+- Lean 4 전용 첫 오픈소스 코드 에이전트, Apache 2.0 라이선스, 무료/준무료 API endpoint (`labs-leanstral-2603`)
+- MoE 128 experts/4 active, 119B total / 6.5B activated per token, 256k context
+- FLTEval pass@16에서 31.9점 (Sonnet 대비 8점 높음), pass 횟수 증가에 따라 점수가 선형 상승하는 패턴
 
-**What's next:** Google은 Ask Maps와 Immersive Navigation을 먼저 미국·인도에 배포한 뒤 다른 국가·데스크톱·차량 내 시스템으로 확대할 계획이지만, Ask Maps 결과에 광고·스폰서 장소를 어떻게 통합할지는 아직 밝히지 않아 로컬 검색·광고 시장 전반에 적지 않은 변동성이 예상되는 상황이다.
+**What's next:** 훈련 접근(tech report) 및 FLTEval 확장이 실제로 공개되면, "vibe coding → verified coding" 전환이 Lean 생태계 밖의 Rust·안전중요 소프트웨어로 번질지 주목할 만하다.
 
-**Source:** [How we're reimagining Maps with Gemini](https://blog.google/products-and-platforms/products/maps/ask-maps-immersive-navigation/)
+**Source:** [Leanstral: Open-Source foundation for trustworthy vibe-coding](https://mistral.ai/news/leanstral)
+
+---
+
+## 3. NVIDIA·Hugging Face, 의료 로봇 Physical AI 공개 데이터셋·기초 모델 동시 발표
+
+NVIDIA는 Hugging Face 블로그를 통해 2026년 3월 16일 의료 로봇 영역의 공개 데이터셋 Open-H-Embodiment와 수술 로봇용 기초 모델·시뮬레이터를 발표했다. 778시간 규모(CC-BY-4.0)의 로봇 학습 데이터를 포함하며, GR00T-H(수술 로봇 정책/VLA)와 Cosmos-H-Surgical-Simulator(행동 조건부 수술 영상 생성 WFM)를 함께 제시했다.
+
+**Why it matters:** 우리가 mcp-memory에서 추구하는 '관찰 → 시그널 → 패턴 → 원칙' 성숙 파이프라인과 구조적으로 유사한 흐름이 물리 세계 AI에도 적용되고 있다. Open-H-Embodiment가 데이터(행동)–정책(VLA)–월드 모델(시뮬레이터)을 한 번에 묶는 방식은, 우리가 텍스트 도메인에서 하는 '컨텍스트 큐레이션 → 에이전트 실행 → 결과 검증' 3단계와 같은 패턴이다. 35개 기관이 참여한 오픈 데이터셋은 의료 AI가 '인지 기반'에서 '행동 기반'으로 넘어가는 분기점을 보여준다.
+
+- Open-H-Embodiment: 35개 조직 참여, 778시간 CC-BY-4.0 훈련 데이터 (수술 로봇 중심 + 초음파/대장내시경 자율 데이터)
+- GR00T-H: 약 600시간 데이터로 학습된 첫 수술 로봇 정책 모델. VLM 백본으로 Cosmos Reason 2 2B 사용
+- Cosmos-H-Surgical-Simulator: 64×A100 / 약 10,000 GPU-hours, 600 rollouts 기준 시뮬레이션 40분 vs 실물 벤치탑 2일
+
+**What's next:** 버전 2의 목표를 '수술 로봇의 ChatGPT 순간'(설명·계획·적응 가능한 추론형 자율성)으로 설정하고, 의도·결과·실패 모드를 포함한 reasoning-ready 데이터 확장을 커뮤니티에 요청했다.
+
+**Source:** [The First Healthcare Robotics Dataset and Foundational Physical AI Models for Healthcare Robotics](https://huggingface.co/blog/nvidia/physical-ai-for-healthcare-robotics)
 
 ## Comments
 

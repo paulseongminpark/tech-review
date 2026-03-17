@@ -2,42 +2,40 @@
   "date": "2026-03-17",
   "lang": "ko",
   "post_url": "/ko/2026/03/17/daily-tech-review/",
-  "post_title": "엔비디아의 Vera Rubin AI 팩토리, Z.ai의 에이전트 특화 GLM-5-Turbo, Google Maps의 Gemini 기반 Ask Maps/Immersive Navigation 론칭으로 에이전트+물리 세계+실사용 워크플로 스택이 동시에 구체화되고 있다.",
+  "post_title": "오픈 웨이트 진영에서 256k 통합형 모델(Mistral Small 4), 정형증명 기반 검증형 코딩 에이전트(Leanstral), 의료 로봇 Physical AI 데이터셋(Open-H-Embodiment)이 같은 날 공개되며 에이전트 스택의 세 축이 동시에 구체화되고 있다.",
   "source_type": "perplexity",
   "sections": [
     {
       "index": 1,
-      "title": "NVIDIA Vera Rubin AI 팩토리와 GTC 2026, 에이전트 시대용 인프라의 기준을 다시 쓴다",
-      "lead": "엔비디아가 GTC 2026에서 Vera CPU·Rubin GPU·NVLink 6·ConnectX-9·BlueField-4·Spectrum-6를 묶은 **Vera Rubin NVL72 AI 팩토리 플랫폼**을 공식 론칭하고, 에이전트 시대를 겨냥한 풀스택 하드웨어 전략을 공개했다.",
+      "title": "Mistral Small 4 공개 — Instruct·Reasoning·Coding·Vision을 한 모델로 통합",
+      "lead": "미스트랄은 2026년 3월 16일 Mistral Small 4를 공개하며, 추론(Reasoning)·멀티모달·에이전틱 코딩 역량을 단일 모델로 통합했다. 핵심 스펙으로 MoE 128 experts(토큰당 4개 활성화), 119B total parameters, 256k 컨텍스트, 그리고 요청별로 조절 가능한 `reasoning_effort`를 제시했다.",
+      "tags": [
+        "ai-models",
+        "agents",
+        "ma"
+      ],
+      "anchor": "mistral-small-4-공개-instruct·reasoning·coding·vision을-한-모델로-통"
+    },
+    {
+      "index": 2,
+      "title": "Leanstral 공개 — Lean 4 정형증명 '검증'에 최적화된 오픈소스 코드 에이전트",
+      "lead": "미스트랄은 같은 날 Lean 4 형식 검증(정형증명)용 오픈소스 코드 에이전트 Leanstral을 발표했다. \"코드를 생성하는 에이전트\"를 넘어, 검증(증명)이라는 '완전한 판정자(perfect verifier)'가 있는 영역에서 반복 실행(pass)로 성능을 끌어올리는 전략을 전면에 둔 것이 특징이다.",
+      "tags": [
+        "ai-models",
+        "agents"
+      ],
+      "anchor": "leanstral-공개-lean-4-정형증명-검증에-최적화된-오픈소스-코드-에이전트"
+    },
+    {
+      "index": 3,
+      "title": "NVIDIA·Hugging Face, 의료 로봇 Physical AI 공개 데이터셋·기초 모델 동시 발표",
+      "lead": "NVIDIA는 Hugging Face 블로그를 통해 2026년 3월 16일 의료 로봇 영역의 공개 데이터셋 Open-H-Embodiment와 수술 로봇용 기초 모델·시뮬레이터를 발표했다. 778시간 규모(CC-BY-4.0)의 로봇 학습 데이터를 포함하며, GR00T-H(수술 로봇 정책/VLA)와 Cosmos-H-Surgical-Simulator(행동 조건부 수술 영상 생성 WFM)를 함께 제시했다.",
       "tags": [
         "ai-models",
         "agents",
         "nvidia"
       ],
-      "anchor": "nvidia-vera-rubin-ai-팩토리와-gtc-2026-에이전트-시대용-인프라의-기준을-다시-쓴다"
-    },
-    {
-      "index": 2,
-      "title": "Z.ai GLM-5-Turbo, OpenClaw 에이전트 워크플로에 최적화된 첫 '에이전트-퍼스트' LLM을 공개하다",
-      "lead": "중국의 Z.ai(구 Zhipu AI)가 OpenClaw 시나리오에 특화된 대규모 언어 모델 GLM-5-Turbo를 2026년 3월 15~16일 공개하며, 기존 범용 LLM 위에 덧씌우는 방식이 아닌 '에이전트-퍼스트' 학습을 거친 상업용 모델을 선보였다.",
-      "tags": [
-        "ai-models",
-        "agents",
-        "llm"
-      ],
-      "anchor": "zai-glm-5-turbo-openclaw-에이전트-워크플로에-최적화된-첫-에이전트-퍼스트-llm을-공개하"
-    },
-    {
-      "index": 3,
-      "title": "Google Maps, Gemini 기반 Ask Maps와 Immersive Navigation으로 '대화형 내비게이션' 시대로 들어가다",
-      "lead": "Google이 Gemini 모델을 Google Maps에 본격 통합해 대화형 검색 기능 'Ask Maps'와 3D 'Immersive Navigation'을 론칭하며, 지도·길찾기 경험을 지난 10여 년 중 가장 큰 폭으로 개편했다.",
-      "tags": [
-        "ai-models",
-        "agents",
-        "ma",
-        "google"
-      ],
-      "anchor": "google-maps-gemini-기반-ask-maps와-immersive-navigation으로-대화형-내"
+      "anchor": "nvidia·hugging-face-의료-로봇-physical-ai-공개-데이터셋·기초-모델-동시-발표"
     }
   ]
 }
