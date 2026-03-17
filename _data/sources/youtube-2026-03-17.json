@@ -2489,7 +2489,137 @@
     "playlist_index": 17,
     "url": "https://www.youtube.com/watch?v=pLtqjKlYlKw",
     "playlist": "ontology",
-    "source_type": "youtube"
+    "source_type": "youtube",
+    "summary": {
+      "smart_brevity": {
+        "why": "이 영상은 order-to-cash에서 전체 케이스의 2%를 차지하는 credit block 이슈와 평균 9일의 해소 지연을 Palantir의 end-to-end stack으로 초 단위 AI 의사결정 문제로 바꾸는 구체적 빌드 패턴을 보여 준다.",
+        "what": "이 영상은 Titan Industries의 order-to-cash 프로세스에서 credit block 병목을 찾아내고 해제 결정을 자동화하는 애플리케이션을 처음부터 끝까지 만드는 데모다.\\nRuben은 HyperAuto로 SAP 데이터를 동기화하고, Pipeline Builder로 process mining용 스키마를 만들고, ontology와 Machinery로 프로세스 모델을 구축한다.\\n그 위에 Workshop으로 운영 앱을 얹고, AIP Logic으로 LLM 기반 판단과 근거 생성을 붙인 뒤, Automate로 완전 자동 실행까지 연결한다.\\n핵심 차별점은 process mining, ontology, generative AI, automation을 하나의 의사결정 체계로 묶어 병목 탐지에서 실행까지 한 플랫폼 안에서 닫는다는 점이다."
+      },
+      "sections": [
+        {
+          "heading": "문제 정의: credit block이 order-to-cash를 지연시키는 방식",
+          "body": "Ruben은 자신이 Palantir에서 지난 몇 달 동안 Foundry와 AIP를 이용해 process mining과 automation 솔루션을 고객사에 배포해 왔다고 소개하며, 이번 영상이 그 경험을 실제 빌드 패턴으로 풀어내는 데모라고 규정한다. 그는 Building with AIP 시리즈의 목적을 두 가지로 설명하는데, 첫째는 플랫폼으로 무엇을 만들 수 있는지 가능한 해법의 범위를 보여 주는 것이고, 둘째는 시청자가 같은 솔루션을 직접 플랫폼 안에서 재현하도록 만드는 것이다. 사례 기업은 Titan Industries이며, 대상 업무는 sales order item 생성부터 goods delivered, invoices eventually being paid까지 이어지는 order-to-cash 프로세스다. 문제 제기는 senior finance manager에게서 왔고, 핵심 이슈는 credit block이 너무 느리게 해소된다는 점이다. credit block은 고객이 대금을 지급하지 않을 위험이 높을 때 주문 이행을 막는 ERP 리스크 관리 장치로 설명되며, 이 메커니즘 자체는 필요하지만 잘못 걸린 block이 고객 경험을 망가뜨릴 수 있다고 강조된다. 프로세스 그래프를 확장해 보면 전체 케이스의 2%에서 sales order 생성 직후 곧바로 block이 걸리며, 과거에 제때 잘 갚던 고객까지 주문 지연을 겪을 수 있다는 점이 문제의 심각성으로 제시된다. 소스 시스템 로그를 이미 채굴했기 때문에 block 활성화와 해제 시점을 계량화할 수 있고, 평균 해소 시간이 9일이라는 수치가 상단 KPI로 제시되며 이것이 반드시 줄여야 할 운영 지연으로 정의된다.",
+          "highlights": [
+            "문제 제기는 senior finance manager에게서 왔고, 핵심 이슈는 credit block이 너무 느리게 해소된다는 점이다.",
+            "프로세스 그래프를 확장해 보면 전체 케이스의 2%에서 sales order 생성 직후 곧바로 block이 걸리며, 과거에 제때 잘 갚던 고객까지 주문 지연을 겪을 수 있다는 점이 문제의 심각성으로 제시된다."
+          ],
+          "quote": "When we pull over the slider here to unveil more variants of this process, we can actually see that in 2% of cases, sales orders are directly blocked after they're created."
+        },
+        {
+          "heading": "데모 앱: AI가 credit block 해제 결정을 제안하는 운영 화면",
+          "body": "데모 앱의 Take Action 탭에는 현재 credit block이 걸린 sales orders가 모두 모여 있고, 사용자가 Show AI Generated Resolution Proposal을 누르면 특정 주문을 해제할지 유지할지 결정하는 운영 화면으로 들어간다. 화면 상단에는 판단에 필요한 모든 정보가 모여 있고, 하단에는 AIP Copilot 뷰가 있어 AI가 어떤 결론을 제안하는지, 왜 그렇게 판단했는지, 그리고 그 다음 단계를 실행하면 해당 sales order item의 프로세스 흐름이 어떻게 바뀌는지를 애니메이션까지 포함해 보여 준다. Ruben은 이 구조의 목적이 단순 요약이 아니라 의사결정 시간을 압축하는 데 있다고 분명히 말한다. 사람은 AI가 제안한 조치를 바로 승인할 수 있고, 더 나아가면 AI가 제안 자체를 자동 실행할 수도 있기 때문에 평균 9일이 걸리던 판단을 초 단위로 줄일 수 있다는 논리다. 그는 이 패턴이 credit block 하나에만 국한되지 않고, 프로세스 안에서 누군가가 어떤 결정을 내려야 하는 거의 모든 지점에 적용될 수 있는 일반적 decision orchestration 패러다임이라고 설명한다. 그래서 시청자는 이후 빌드 과정을 보는 동안 자기 조직의 어떤 process challenge에 같은 패턴을 이식할 수 있을지를 계속 떠올려 보라고 요청받는다.",
+          "highlights": [
+            "화면 상단에는 판단에 필요한 모든 정보가 모여 있고, 하단에는 AIP Copilot 뷰가 있어 AI가 어떤 결론을 제안하는지, 왜 그렇게 판단했는지, 그리고 그 다음 단계를 실행하면 해당 sales order item의 프로세스 흐름이 어떻게 바뀌는지를 애니메이션까지 포함해 보여 준다.",
+            "사람은 AI가 제안한 조치를 바로 승인할 수 있고, 더 나아가면 AI가 제안 자체를 자동 실행할 수도 있기 때문에 평균 9일이 걸리던 판단을 초 단위로 줄일 수 있다는 논리다."
+          ],
+          "quote": "Either a human can directly accept what the AI comes up with or the AI automatically executes what is proposed here."
+        },
+        {
+          "heading": "구축 로드맵: HyperAuto부터 Automate까지의 전체 제품 조합",
+          "body": "Ruben은 전체 솔루션을 처음부터 끝까지 어떤 제품 조합으로 만드는지 선명한 순서로 제시한다. 시작은 HyperAuto로 Titan Industries의 데이터를 플랫폼에 동기화하는 것이고, 다음은 Pipeline Builder로 process mining에 필요한 스키마로 데이터를 변환하는 것이다. 그 다음 단계는 order-to-cash process mining ontology를 만들고 이를 Titan Industries의 더 큰 enterprise ontology와 연결하는 일인데, 이 ontology는 데이터, 로직, 액션을 결합하는 decision-centric enterprise model로 정의된다. ontology가 준비되면 Machinery로 실제 프로세스를 마이닝하고 모델링한 뒤, 이 결과를 Workshop 애플리케이션에 임베드해 end user-facing 화면으로 만든다. 이후 워크플로와 ontology를 AI 중심으로 재구성하기 위해 AIP Logic을 사용해 LLM-backed functions를 만들고, 마지막으로 Automate를 이용해 이 AI 의사결정 도구를 대규모로 실행한다. 즉 이 영상은 개별 기능 튜토리얼이 아니라 integration, modeling, UI, AI, automation이 하나의 운영 루프로 연결되는 end-to-end blueprint를 보여 준다.",
+          "highlights": [
+            "그 다음 단계는 order-to-cash process mining ontology를 만들고 이를 Titan Industries의 더 큰 enterprise ontology와 연결하는 일인데, 이 ontology는 데이터, 로직, 액션을 결합하는 decision-centric enterprise model로 정의된다.",
+            "이후 워크플로와 ontology를 AI 중심으로 재구성하기 위해 AIP Logic을 사용해 LLM-backed functions를 만들고, 마지막으로 Automate를 이용해 이 AI 의사결정 도구를 대규모로 실행한다."
+          ],
+          "quote": "We will therefore use AIP logic to do that, which is our no code, low code development environment for building LLM backed functions."
+        },
+        {
+          "heading": "데이터 수집: SAP S4HANA를 HyperAuto로 동기화",
+          "body": "첫 구현 단계는 Titan Industries가 order-to-cash를 운영하는 SAP 소스 시스템에서 필요한 데이터를 가져오는 것이다. 데모에서는 SAP 연결이 이미 잡혀 있기 때문에 사용자는 SAP S4HANA HyperAuto order to cache 파이프라인을 새로 만들고, 이름과 위치를 확인한 뒤 source configuration에서 direct batch connection을 선택한다. 다음 단계에서 필요한 테이블은 사람이 직접 human readable name으로 검색할 수도 있고 AI assistant에게 추천받을 수도 있지만, 이 사례에서는 order-to-cash용 workflow bundle이 이미 있어 select all 한 번으로 관련 테이블을 모두 선택한다. pipeline configuration 단계에서는 automatic joins, primary key와 foreign key 생성, 컬럼명과 테이블명의 human readable translation 같은 기능을 켜 둔 채 생성하는데, Ruben은 이런 기능이 데이터 엔지니어의 시간을 크게 절약한다고 강조한다. create hyper auto pipeline을 누르면 배포가 시작되고, 완료 후에는 output datasets 아래에 정제되고 사람이 해석 가능한 데이터셋들이 생성되어 다음 단계 작업에 바로 투입될 수 있다. 요점은 ingest 자체를 수작업 ETL 프로젝트로 취급하지 않고, out-of-the-box 커넥터와 사전 번들, 자동 메타데이터 기능으로 빠르게 operationalize한다는 데 있다.",
+          "highlights": [
+            "다음 단계에서 필요한 테이블은 사람이 직접 human readable name으로 검색할 수도 있고 AI assistant에게 추천받을 수도 있지만, 이 사례에서는 order-to-cash용 workflow bundle이 이미 있어 select all 한 번으로 관련 테이블을 모두 선택한다.",
+            "pipeline configuration 단계에서는 automatic joins, primary key와 foreign key 생성, 컬럼명과 테이블명의 human readable translation 같은 기능을 켜 둔 채 생성하는데, Ruben은 이런 기능이 데이터 엔지니어의 시간을 크게 절약한다고 강조한다."
+          ],
+          "quote": "Doing this is as simple as clicking create pipeline."
+        },
+        {
+          "heading": "데이터 모델링: process object와 log object를 Pipeline Builder로 생성",
+          "body": "process mining을 위해서는 데이터를 두 가지 핵심 스키마로 바꿔야 하며, Ruben은 이를 process object dataset과 log object dataset으로 나눈다. process object dataset은 프로세스를 통과하는 객체 자체를 설명하는 테이블로, 자동차 제조에서는 vehicle, recruiting에서는 candidate가 예시이고 이번 order-to-cash 사례에서는 sales order item이 그 객체다. 이 테이블에는 SAP 시스템의 고유 키인 primary key가 필수이며, creation date, material number, customer, net value, credit status 같은 속성이 함께 들어간다. log object dataset은 특정 process object가 밟는 단계들을 기록하는 one-to-many 로그 테이블로, 거의 모든 경우 process object primary key, 현재 state, 그 state에 들어간 timestamp의 세 컬럼이 핵심이라고 설명된다. Ruben은 Sales Document Item Data인 VVIP 테이블을 예로 들어 sales order item created 이벤트를 만들며, 먼저 order primary key와 creation date인 ERDAT만 고르고, creation date를 cast function으로 timestamp로 바꾼 뒤, constant column으로 state를 sales order item created로 추가하고, 기존 날짜 컬럼을 제거해 최종 세 컬럼 구조를 만든다. 이후 goods delivered, invoices being paid, credit blocks being removed 등 다른 단계도 같은 방식으로 정의하고, 이 개별 로그 스텝들을 union해 하나의 giant log dataset으로 합친 다음 이름을 Union process log steps로 붙인다. 마지막으로 이를 storage layer의 output dataset으로 저장하면서 property type과 data expectations를 설정해 소스 데이터가 예상과 다르게 변할 때 알람을 주도록 하며, Pipeline Builder가 수백 개 함수, join, union, AI-generated transform, pipeline profile 조절, 수십억 행까지 확장 가능한 compute scaling을 제공하는 production-grade 도구임을 강조한다.",
+          "highlights": [
+            "log object dataset은 특정 process object가 밟는 단계들을 기록하는 one-to-many 로그 테이블로, 거의 모든 경우 process object primary key, 현재 state, 그 state에 들어간 timestamp의 세 컬럼이 핵심이라고 설명된다.",
+            "이후 goods delivered, invoices being paid, credit blocks being removed 등 다른 단계도 같은 방식으로 정의하고, 이 개별 로그 스텝들을 union해 하나의 giant log dataset으로 합친 다음 이름을 Union process log steps로 붙인다."
+          ],
+          "quote": "We can union results."
+        },
+        {
+          "heading": "의사결정 모델: order-to-cash ontology를 Titan Industries enterprise ontology에 연결",
+          "body": "데이터셋이 준비되면 다음 단계는 이를 Titan Industries의 ontology에 연결해 decision-centric model로 올리는 것이다. 새 object type은 dataset preview나 all actions 메뉴에서 만들 수 있고, Ontology Manager 안에서 이름, 아이콘, 색상을 정의해 비기술 사용자도 객체의 의미를 직관적으로 이해하게 만든다. 이후 editing 메뉴에서 access management를 security tab으로 조정하고, property metadata를 property tab에서 다듬어 객체가 플랫폼 전체와 어떻게 상호작용할지 세밀하게 설정한다. Ruben은 sales order item이 항상 customer와 연결된다는 사실을 예로 보여 주며, create new link type으로 Titan Industries customer와 연결하고 cardinality와 join key를 설정한다. 또한 sales order item 하나가 여러 process states를 거칠 수 있으므로 process log object와는 one-to-many 관계를 추가해 두 데이터셋의 본질적 연결을 ontology 수준에서 보장한다. 그는 실제 기업 모델은 훨씬 더 많은 엔터티 연결로 확장될 수 있지만 여기서는 단순화하고, 대신 나중에 generative AI가 이 ontology를 바탕으로 작동하므로 ontology 품질이 좋을수록 AI 도구의 효과도 높아진다는 점을 핵심 메시지로 남긴다.",
+          "highlights": [
+            "Ruben은 sales order item이 항상 customer와 연결된다는 사실을 예로 보여 주며, create new link type으로 Titan Industries customer와 연결하고 cardinality와 join key를 설정한다.",
+            "그는 실제 기업 모델은 훨씬 더 많은 엔터티 연결로 확장될 수 있지만 여기서는 단순화하고, 대신 나중에 generative AI가 이 ontology를 바탕으로 작동하므로 ontology 품질이 좋을수록 AI 도구의 효과도 높아진다는 점을 핵심 메시지로 남긴다."
+          ],
+          "quote": "Naturally, all parts of the ontology are deeply interconnected."
+        },
+        {
+          "heading": "프로세스 마이닝: Machinery로 credit block variant를 시각화",
+          "body": "ontology 표현이 준비되면 Foundry의 process mining 앱인 Machinery를 배포해 실제 프로세스 경로를 도출한다. configuration wizard에서는 어떤 ontology process object를 mining할지와, 그 객체의 어떤 속성들이 state transition을 정의하는지 선택한 뒤 프로세스 이름과 저장 위치를 정한다. 저장하면 Machinery가 process object와 log object를 함께 분석해 underlying systems에서 어떤 process paths가 언제 발생했는지 계산하고, credit blocked 케이스와 그렇지 않은 케이스를 log content를 해석해 구분한다. 분석이 끝나면 시각적 process flow graph가 생성되고, Ruben은 graphical interface에서 노드를 드래그해 나중 end user-facing application에 보일 위치를 수동으로 배치할 수 있다고 보여 준다. 그는 자동 배치도 가능하지만 credit block use case에서는 block variant를 눈에 띄게 드러내기 위해 수동 배치가 유용하다고 말한다. 그 결과 sales order item created 직후 credit block activated가 이어지는 변형이 명확히 시각화되고, 이제부터는 새로운 sales order item이 들어올 때 이 변형의 발생 빈도를 지속적으로 관찰할 수 있다. 마지막으로 involved process object 같은 추가 ontology links를 process model에 연결해 이후 앱과 자동화 단계에서 이 모델이 바로 쓰일 수 있도록 마무리한다.",
+          "highlights": [
+            "저장하면 Machinery가 process object와 log object를 함께 분석해 underlying systems에서 어떤 process paths가 언제 발생했는지 계산하고, credit blocked 케이스와 그렇지 않은 케이스를 log content를 해석해 구분한다.",
+            "그 결과 sales order item created 직후 credit block activated가 이어지는 변형이 명확히 시각화되고, 이제부터는 새로운 sales order item이 들어올 때 이 변형의 발생 빈도를 지속적으로 관찰할 수 있다."
+          ],
+          "quote": "Machinery can differentiate between such cases as it can interpret the content contents of the log object."
+        },
+        {
+          "heading": "사용자 경험과 AI 로직: Workshop 앱과 AIP Logic Copilot",
+          "body": "Machinery 모델이 준비되면 이를 business users와 analysts가 쓸 수 있도록 Workshop 앱에 임베드한다. Workshop은 ontology 위에 front end를 만드는 low code, no code 환경이며, 실제 완성 앱을 edit module로 열어 보면 전체 화면이 widgets의 모음으로 구성되어 있고 object tables, charts, process models 같은 요소를 drag and drop으로 추가할 수 있다. 이 앱은 process model widget, process object와 log object 필터, KPI 계산, 그리고 의사결정에 필요한 operational view를 조합해 credit block 관리 화면을 만든다. Ruben은 여기까지만 해도 customer credit information, sales order metadata, process flow가 모두 보여서 사람이 더 잘 판단할 수 있다고 말하지만, 마지막 빈칸은 AI copilot이라고 선을 긋는다. 이를 위해 AIP Logic에서 sales order item을 입력 object로 정의하고, credit status, customer credit limit, historic order volume 같은 속성을 parameter로 노출한 뒤, plain text로 주어진 주문을 unblock할지 credit block을 유지할지 결정하라고 LLM에게 가르친다. 그는 이 과정을 intern을 교육하는 것에 비유하며, 단순 지시뿐 아니라 각 속성이 무엇을 뜻하는지 설명하고, 어떤 규칙을 점검해야 하는지 명시하고, 수치 비교가 포함되므로 calculator tool을 붙여 LLM의 기본 수학 약점을 보완해야 한다고 강조한다. 이후 모델은 결론만이 아니라 reasoning도 생성하고, 그 reasoning을 변수에 저장한 뒤 ontology action tool을 호출해 unblock 여부와 근거를 ontology에 기록한다. debugger를 실행하면 특정 object에 대해 LLM이 각 조건을 어떻게 해석하며 결론에 도달하는지 단계별로 볼 수 있고, 예시 주문에서는 고객의 전체 open order value가 360만 유로로 300만 유로 한도를 조금 넘지만 제때 결제 비율이 97%라서 unblock이 타당하다는 결론이 나와 ontology에 저장된다. 이 결과는 다시 Workshop 하단의 텍스트 박스와 process flow visual로 표시되어, AI의 결정과 reasoning, 그리고 credit block activated에서 credit block removed로 이어지는 추천 경로가 사용자 화면에 직접 나타난다.",
+          "highlights": [
+            "이 앱은 process model widget, process object와 log object 필터, KPI 계산, 그리고 의사결정에 필요한 operational view를 조합해 credit block 관리 화면을 만든다.",
+            "그는 이 과정을 intern을 교육하는 것에 비유하며, 단순 지시뿐 아니라 각 속성이 무엇을 뜻하는지 설명하고, 어떤 규칙을 점검해야 하는지 명시하고, 수치 비교가 포함되므로 calculator tool을 붙여 LLM의 기본 수학 약점을 보완해야 한다고 강조한다."
+          ]
+        },
+        {
+          "heading": "자동화와 확장 비전: Automate로 초 단위 실행과 enterprise-wide decision orchestration",
+          "body": "Ruben은 지금까지 만든 앱이 이미 human-in-the-loop 형태로 매우 강력하지만, 실제 목표는 여기서 멈추지 않고 완전 자동화까지 가는 것이라고 말한다. 사용자는 여전히 deactivate credit block 또는 reject activation proposal 버튼을 눌러 최종 책임을 지는 구조이지만, 초기에는 이것이 LLM의 판단 정확도를 검증하고 신뢰를 쌓는 데 유용하다고 본다. 동시에 같은 ontology, data logic, decision logic을 그대로 이용해 Automate에서 automation을 몇 분 안에 설정할 수 있으며, 데모에서는 이미 이를 구성해 둔 상태로 보여 준다. 핵심 트리거는 몇 분마다 object가 수정되었는지와 마지막 단계가 credit block activated인지 지속적으로 검사하는 것이고, 조건이 맞으면 앞서 만든 AIP Logic을 실행해 block 유지 또는 해제 결정을 내리게 한다. 저장 직후 이 자동화는 활성화되며, Workshop의 Machinery widget에서는 해당 프로세스 노드가 purple로 강조되어 automation이 살아 있음을 나타낸다. 이렇게 하면 사람이 직접 검토하느라 보냈던 평균 9일 대신 새 주문이 block 상태로 들어오자마자 초 단위로 판단과 실행이 가능해진다. Ruben은 이것이 credit blocks만의 이야기가 아니며, order-to-cash 안에도 최적화 가능한 비효율적 subprocess가 수십 개 있고, 더 넓게는 생산 일정 충돌 우선순위 결정, sales funnel lead 우선 연락, 특정 서비스 발주 시 어떤 purchasing contract를 쓸지 같은 enterprise decision 전반에 이 패턴이 적용된다고 확장한다. 최종적으로 그는 수백 혹은 수천 개의 AI copilots가 운영을 늦추는 판단 문제를 맡아 처리하는 완전한 AI-centric process architecture를 상상하라고 제안하며, process mining, AI-centric logic, automation의 결합이 강력한 이유가 여기에 있다고 결론짓는다.",
+          "highlights": [
+            "핵심 트리거는 몇 분마다 object가 수정되었는지와 마지막 단계가 credit block activated인지 지속적으로 검사하는 것이고, 조건이 맞으면 앞서 만든 AIP Logic을 실행해 block 유지 또는 해제 결정을 내리게 한다.",
+            "최종적으로 그는 수백 혹은 수천 개의 AI copilots가 운영을 늦추는 판단 문제를 맡아 처리하는 완전한 AI-centric process architecture를 상상하라고 제안하며, process mining, AI-centric logic, automation의 결합이 강력한 이유가 여기에 있다고 결론짓는다."
+          ],
+          "quote": "Imagine a world in which you build a completely AI-centric process architecture, in which hundreds if not thousands of similarly tasked AI co-pilots take care of all these problems that are slowing your operations down."
+        }
+      ],
+      "key_takeaways": [
+        "이 데모의 출발점은 막연한 불만이 아니라 전체 케이스의 2%가 생성 직후 credit block에 걸리고 평균 해소 시간이 9일이라는 계량 가능한 병목이다.",
+        "Palantir의 핵심 메시지는 data ingest, process mining, ontology, UI, LLM logic, automation을 분절된 도구가 아니라 하나의 의사결정 시스템으로 연결해야 한다는 점이다.",
+        "좋은 process mining 결과는 process object와 log object를 명확히 정의하고, 각 상태 전이를 timestamp 기반 로그로 구조화하는 데이터 모델링에서 시작된다.",
+        "LLM을 운영 의사결정에 넣으려면 plain-text 지시만으로 끝나지 않고 속성 설명, 규칙 명시, calculator 같은 보조 도구, debugger 기반 검증, ontology 기록까지 함께 설계해야 한다.",
+        "실전 배포 전략은 human-in-the-loop로 신뢰를 확보한 뒤, 검증된 decision logic을 Automate로 반복 실행해 초 단위 자동 운영으로 확장하는 것이다."
+      ],
+      "tech_stack": [
+        "Palantir Foundry",
+        "AIP",
+        "HyperAuto",
+        "Pipeline Builder",
+        "Ontology Manager",
+        "Machinery",
+        "Workshop",
+        "AIP Logic",
+        "Automate",
+        "SAP",
+        "SAP S/4HANA",
+        "ERP",
+        "LLM",
+        "AIP Copilot",
+        "calculator tool"
+      ],
+      "apply_points": [
+        {
+          "text": "YouTube와 Twitter 입력이 inbox로 들어오는 순간마다 mcp-memory recall을 먼저 실행해 Tech Review의 현재 목표와 Codex 기반 add-bookmark 규칙을 주입하면, 이미 채택한 Codex와 mcp-memory 패턴을 모든 콘텐츠 ingestion에 일관되게 확장할 수 있다.",
+          "key": true
+        },
+        {
+          "text": "Tech Review 자동화에서 수집, 선별, 초안 작성, 번역, 코멘트 생성, 게시를 각각 로그 이벤트로 남기면 어떤 단계가 병목인지 숫자로 드러나고, 이 영상의 process mining 사고방식을 콘텐츠 파이프라인 최적화에 바로 옮길 수 있다.",
+          "key": true
+        },
+        {
+          "text": "블로그, comments, portfolio를 따로 다루지 말고 하나의 decision-centric memory model로 묶으면 어떤 콘텐츠를 어디까지 확장할지에 대한 판단을 recall과 automation이 같은 맥락에서 수행할 수 있다.",
+          "key": false
+        },
+        {
+          "text": "처음에는 저위험 결정만 human-in-the-loop로 운영하고, 신뢰가 쌓인 뒤 Daily Digest 후보 선정이나 후속 코멘트 생성 같은 반복 판단을 점진적으로 자동화하는 것이 현재 운영 중인 Tech Review 시스템과 가장 잘 맞는다.",
+          "key": false
+        }
+      ]
+    }
   },
   {
     "video_id": "TOsgyjJuQVc",
@@ -2500,6 +2630,197 @@
     "playlist_index": 18,
     "url": "https://www.youtube.com/watch?v=TOsgyjJuQVc",
     "playlist": "ontology",
-    "source_type": "youtube"
+    "source_type": "youtube",
+    "summary": {
+      "smart_brevity": {
+        "why": "이 영상은 Palantir AIP에서 Ontology를 데이터 조회 계층에만 쓰는 것이 아니라, 모델 배포·평가·어댑터·로직 툴·LLM 추론까지 하나로 연결해 실시간 14일 주문 예측을 공급망 의사결정에 바로 투입하는 방법을 보여주며, 모델이 실제 운영 엔드포인트에 올라가야만 가치가 있다는 점을 27개 모델 자산과 staging/production 배포 흐름, live inference 예시까지 포함해 구체적으로 증명한다.",
+        "what": "발표자는 OAG 딥다이브 2편으로 Ontology의 세 축인 data, logic, actions 중 logic tools를 집중 설명한다.\n핵심 구조는 modeling objective 안에 여러 modeling asset과 artifact를 두고, model adapter로 입출력을 표준화한 뒤, 이를 logic function과 AIP logic의 LLM-backed function에서 호출하도록 연결하는 것이다.\n데모는 공급망 화재 사고 시 고객 주문 이력을 Ontology에서 가져와 Meta Prophet 기반 시계열 예측을 수행하고, 그 결과를 Titan control tower의 copilot에서 병원용 마스크 공급 재배치 판단에 활용하는 흐름으로 전개된다.\n중간에는 Auto ML workshop app을 통해 linear regression, random forest regressor, gradient boosting regressor 코드를 자동 생성하는 tool factory 개념도 소개하며, AIP 자체로 다른 개발용 도구를 만드는 방식을 보여준다.\n마지막 메시지는 LLM은 추론에는 강하지만 forecasting이나 특정 수학 문제에는 약하므로, 기업이 이미 보유한 결정론적 로직과 모델을 Ontology와 함께 연결해야 신뢰 가능한 human-in-the-loop AI가 된다는 것이다."
+      },
+      "sections": [
+        {
+          "heading": "OAG 딥다이브 2편의 주제와 logic tools의 역할",
+          "body": "발표자는 자신을 Chad라고 소개하며 이번 세션이 Ontology Augmented Generation, 즉 OAG 딥다이브 시리즈의 두 번째 편이라고 설명한다. 그는 Ontology가 data, logic, actions로 구성되어 있으며, 이전 영상에서는 data tools를 통해 AI를 기업의 operational truth에 고정하는 기반을 다졌고 이번 영상에서는 logic tools의 세계로 들어간다고 말한다. 여기서 logic tools는 ML model, optimizer, 그리고 여러 환경에 흩어져 있지만 기업 프로세스를 실제로 구동하는 다른 computation까지 포함하는 넓은 개념으로 제시된다. 오늘의 목표는 이런 논리 자산들을 AIP 내부의 LLM reasoning과 결합해 실제 업무에 쓰이는 AI 기능으로 만드는 과정을 보여주는 것이다. 전체적으로 이 도입부는 단순한 RAG 확장이 아니라, 기업의 데이터뿐 아니라 기업이 이미 가진 계산 로직까지 Ontology 안에서 AI와 연결하려는 Palantir AIP의 방향성을 명확히 한다.",
+          "highlights": [
+            "발표자는 Ontology가 data, logic, actions로 구성되어 있으며, 이전 영상에서는 data tools를 통해 AI를 기업의 operational truth에 고정하는 기반을 다졌고 이번 영상에서는 logic tools의 세계로 들어간다고 말한다.",
+            "여기서 logic tools는 ML model, optimizer, 그리고 여러 환경에 흩어져 있지만 기업 프로세스를 실제로 구동하는 다른 computation까지 포함하는 넓은 개념으로 제시된다."
+          ],
+          "quote": "The ontology is made up of data, logic, and actions."
+        },
+        {
+          "heading": "오늘 다루는 세 가지 축: modeling objectives, tool factory, logic function",
+          "body": "발표자는 오늘의 주제를 세 갈래로 정리한다. 첫째는 modeling objectives, evaluation, deployment로, AIP 내부에서 end-to-end MLOps suite를 어떻게 다루는지 설명하겠다고 한다. 둘째는 AIP를 tool factory로 보는 관점인데, AIP 같은 도구를 이용해 다른 도구를 만들어 개발자나 데이터 과학자가 더 효율적으로 일하게 돕는다는 발상이며, 자동차를 더 효율적으로 만들기 위해 로봇을 만드는 비유까지 사용한다. 셋째는 logic function으로, 비즈니스 안의 forecasting model 같은 로직 자산을 실제 logic tool로 감싸고, 이를 AIP logic의 LM-backed functions가 호출하도록 연결해 고객 주문 예측 결과를 Titan control tower의 copilot에 다시 표출하는 흐름을 예고한다. 이 세 축은 각각 모델 운영, 개발 생산성, 실제 업무용 추론 통합이라는 서로 다른 레이어를 담당하지만, 발표자는 이를 하나의 일관된 플랫폼 경험으로 묶는다. 도입부에서 이미 공급망 주문 예측이라는 구체적 사용 사례를 제시해, 이후 설명이 추상적 기능 소개가 아니라 실제 워크플로우 시연이라는 점도 분명히 한다.",
+          "highlights": [
+            "첫째는 modeling objectives, evaluation, deployment로, AIP 내부에서 end-to-end MLOps suite를 어떻게 다루는지 설명하겠다고 한다.",
+            "둘째는 AIP를 tool factory로 보는 관점인데, AIP 같은 도구를 이용해 다른 도구를 만들어 개발자나 데이터 과학자가 더 효율적으로 일하게 돕는다는 발상이며, 자동차를 더 효율적으로 만들기 위해 로봇을 만드는 비유까지 사용한다."
+          ],
+          "quote": "So we're going to cover end-to-end ML ops suite inside of AIP."
+        },
+        {
+          "heading": "Modeling objective의 개념: objective, asset, artifact, adapter",
+          "body": "발표자는 먼저 modeling objective가 무엇인지 상위 구조를 설명한다. objective는 최종 목표 자체이며, 오늘 예시에서는 customer orders forecast가 그 목표이고, classification 같은 다른 목적도 동일한 틀로 수용할 수 있다고 말한다. 하나의 objective 아래에는 여러 modeling asset이 있을 수 있고, 각 asset은 model file, container, third-party endpoint pointer 같은 artifact들로 구성될 수 있다. 그리고 model adapter가 이 artifact들의 API 접근 방식을 감싸서, 각기 다른 모델 자산의 출력을 일관된 방식으로 표준화해 나머지 AIP 도구가 동일한 인터페이스로 사용할 수 있게 한다. 이 설명의 핵심은 AIP가 특정 프레임워크 하나에 종속된 모델 저장소가 아니라, 서로 다른 학습 경로와 배포 형태를 동일 objective 안에서 실험하고 비교할 수 있는 추상화 계층을 제공한다는 점이다.",
+          "highlights": [
+            "objective는 최종 목표 자체이며, 오늘 예시에서는 customer orders forecast가 그 목표이고, classification 같은 다른 목적도 동일한 틀로 수용할 수 있다고 말한다.",
+            "그리고 model adapter가 이 artifact들의 API 접근 방식을 감싸서, 각기 다른 모델 자산의 출력을 일관된 방식으로 표준화해 나머지 AIP 도구가 동일한 인터페이스로 사용할 수 있게 한다."
+          ],
+          "quote": "A modeling asset is made up of artifacts."
+        },
+        {
+          "heading": "모델 반입과 배포 방식: platform training, container import, external endpoint",
+          "body": "모델을 AIP 안으로 들여오는 방식은 세 갈래로 설명된다. 첫째는 code repo나 workspace의 Jupyter notebooks 또는 R studio에서 플랫폼 안의 데이터를 사용해 직접 훈련하는 방식이며, 이미 플랫폼에 있는 데이터로 내부 학습을 수행할 수 있다는 점을 강조한다. 둘째는 외부에서 이미 훈련한 모델을 import하는 방식으로, 표준적인 containerized model을 가져와 AIP 안의 endpoint나 deployment에서 호스팅할 수 있다고 설명한다. 셋째는 이미 다른 cloud provider나 third party 환경 어딘가에서 돌아가고 있는 externally hosted model endpoint를 model artifact로 등록하는 방식이다. 발표자는 하나의 modeling objective 안에 이런 여러 deployment modality가 동시에 공존할 수 있고, 그 자산들을 함께 evaluate하고 test할 수 있다는 점을 강점으로 내세운다. 요컨대 AIP는 모델을 새로 만드는 장소이면서도, 이미 기업 곳곳에 존재하는 모델을 통합 운영하는 관제 계층이라는 메시지를 전달한다.",
+          "highlights": [
+            "첫째는 code repo나 workspace의 Jupyter notebooks 또는 R studio에서 플랫폼 안의 데이터를 사용해 직접 훈련하는 방식이며, 이미 플랫폼에 있는 데이터로 내부 학습을 수행할 수 있다는 점을 강조한다.",
+            "셋째는 이미 다른 cloud provider나 third party 환경 어딘가에서 돌아가고 있는 externally hosted model endpoint를 model artifact로 등록하는 방식이다."
+          ],
+          "quote": "So one modeling objective can have many assets and those assets can be spread across those different modalities of deployment all inside of one objective and evaluate and test them all together."
+        },
+        {
+          "heading": "운영 우선 MLOps: production endpoint, staging, live vs batch, logs와 metrics",
+          "body": "발표자는 실제 모델의 목표는 결국 운영에 투입되는 것이며, 너무 많은 데이터 과학 팀이 모델을 만들기만 하고 productive state에 도달하지 못한다고 지적한다. 그래서 이번 설명은 model creation이 아니라 production endpoint에서 출발해 거꾸로 구조를 살펴보는 방식으로 진행된다. 예시 objective는 machine breakdown probability를 예측하는 모델이며, deployment 화면에는 production과 staging endpoint가 모두 보인다. endpoint는 live와 batch 두 형태를 지원하는데, live는 사용자가 실시간 inference를 호출하는 경우이고, batch는 pipeline에서 대량 예측이나 분류를 수행하는 경우다. 또한 runtime configuration과 inference profile을 통해 실제 시스템 자원 구성을 조절할 수 있고, query 기능은 모델용 Postman처럼 입력을 시험하는 공간이며, logs와 metrics를 통해 inference server의 상태와 부하를 점검해 적절한 resource profile을 선택할 수 있다고 설명한다. staging 환경을 별도로 두고 subset of users로 테스트한 뒤 production으로 올리는 모델용 CI/CD를 지원하며, release 시 compatibility check와 권한 제어도 포함되어 있어 샌드박스에서 staging, production으로 이동하는 통제된 경로가 마련되어 있다는 점이 강조된다.",
+          "highlights": [
+            "발표자는 실제 모델의 목표는 결국 운영에 투입되는 것이며, 너무 많은 데이터 과학 팀이 모델을 만들기만 하고 productive state에 도달하지 못한다고 지적한다.",
+            "staging 환경을 별도로 두고 subset of users로 테스트한 뒤 production으로 올리는 모델용 CI/CD를 지원하며, release 시 compatibility check와 권한 제어도 포함되어 있어 샌드박스에서 staging, production으로 이동하는 통제된 경로가 마련되어 있다는 점이 강조된다."
+          ],
+          "quote": "The real goal of any model is to put it in danger of actually being used."
+        },
+        {
+          "heading": "평가 체계와 review gates: datasets, libraries, subsets, 27개 모델 자산",
+          "body": "어떤 모델을 staging이나 production에 올릴지 결정하려면 evaluation이 필요하다고 발표자는 말한다. evaluation 화면에서는 하나 이상의 evaluation dataset을 선택할 수 있고, evaluation library를 통해 metric 세트를 지정할 수 있으며, 기본 metric뿐 아니라 자신만의 custom library나 open source library도 가져올 수 있어 매우 유연하다고 설명한다. evaluation subsets 기능은 지역이나 도메인별 성능을 따로 검증하기 위한 것으로, 예시로 US, UK, Australia처럼 서로 다른 시장에서 모델 성능을 나눠서 확인할 수 있다고 말한다. 그는 model V5와 model 17 같은 서로 다른 모델을 교차 비교하며 metric을 본 뒤, 선택된 모델을 staging으로 올리고 end user acceptance testing을 거쳐 production으로 보내는 흐름을 보여준다. 또한 한 modeling objective 아래 27개의 model submission이 존재하는 화면을 제시하면서, data scientist가 다양한 실험 모델을 제출하고, release 상태와 review status를 추적하며, 동료나 데이터 과학 매니저, 그리고 business user의 sign-off를 거치는 review gate를 둘 수 있다고 설명한다. 이는 단순한 leaderboard가 아니라, 실험 모델이 운영 모델로 승격되는 조직적 승인 체계까지 플랫폼 안에 포함된다는 점을 보여준다.",
+          "highlights": [
+            "evaluation subsets 기능은 지역이나 도메인별 성능을 따로 검증하기 위한 것으로, 예시로 US, UK, Australia처럼 서로 다른 시장에서 모델 성능을 나눠서 확인할 수 있다고 말한다.",
+            "또한 한 modeling objective 아래 27개의 model submission이 존재하는 화면을 제시하면서, data scientist가 다양한 실험 모델을 제출하고, release 상태와 review status를 추적하며, 동료나 데이터 과학 매니저, 그리고 business user의 sign-off를 거치는 review gate를 둘 수 있다고 설명한다."
+          ],
+          "quote": "So these different modeling assets, let's go take a look here."
+        },
+        {
+          "heading": "오픈소스와 Auto ML: Hugging Face 연동과 tool factory 개념",
+          "body": "발표자는 모델 추가 방식 중 하나로 Hugging Face와 직접 연결되는 open source model import를 짚으며, embedding model 같은 off-the-shelf 자산을 아주 간단히 model asset으로 가져올 수 있다고 강조한다. 이어서 Auto ML 예시는 workshop app으로 구현된 내부 도구로, 고객 주문 수량 forecast를 만들고 customer order object를 Ontology에서 사용하겠다고 입력하면 AIP logic backend가 model training code를 자동 생성한다. 데모에서는 linear regression, random forest regressor, gradient boosting regressor에 대한 training code가 생성되고, 사용자는 바로 start training을 눌러 모델을 빌드할 수 있다. 발표자가 여기서 말하고 싶은 핵심은 플랫폼의 모든 것이 API이기 때문에 개발자가 이런 도구를 다시 만들어 팀 생산성을 끌어올릴 수 있다는 점이며, 이것이 바로 tool factory라는 발상이다. 즉 AIP는 최종 사용자용 copilot만 만드는 플랫폼이 아니라, 개발자와 데이터 과학자 자신을 더 빠르게 만드는 내부 생산성 도구까지 AIP logic으로 구축할 수 있는 메타 도구라는 주장이다.",
+          "highlights": [
+            "데모에서는 linear regression, random forest regressor, gradient boosting regressor에 대한 training code가 생성되고, 사용자는 바로 start training을 눌러 모델을 빌드할 수 있다.",
+            "발표자가 여기서 말하고 싶은 핵심은 플랫폼의 모든 것이 API이기 때문에 개발자가 이런 도구를 다시 만들어 팀 생산성을 끌어올릴 수 있다는 점이며, 이것이 바로 tool factory라는 발상이다."
+          ]
+        },
+        {
+          "heading": "공급망 화재 시나리오와 Titan control tower 사용 사례",
+          "body": "logic tools를 실제로 왜 쓰는지 설명하기 위해 발표자는 supply chain analyst의 업무 시나리오를 다시 상기시킨다. 무대는 Titan control tower이며, Haynes medical supplies distribution center에 화재가 발생해 그곳에서 병원으로 face mask를 공급하던 흐름이 끊기는 상황이다. 이 사고 때문에 병원 고객 주문을 shortage 낼 가능성이 생기며, 이는 병원이 수술과 운영에 필요한 마스크를 받지 못할 수 있다는 심각한 문제로 연결된다. 이전 영상에서는 copilot이 Ontology를 탐색해 영향을 받은 고객과 대체 재고가 있는 곳을 찾아 주문 재배치를 도왔지만, 발표자는 화재 복구에 시간이 걸리므로 단기 재배치만으로는 충분하지 않다고 말한다. 이제는 고객 주문을 더 긴 기간으로 forecast해서 inventory를 올바른 장소와 시점에 배치해야 하며, 바로 이 지점에서 logic function으로서 forecasting이 필요해진다는 것이 데모의 실제 비즈니스 맥락이다.",
+          "highlights": [
+            "무대는 Titan control tower이며, Haynes medical supplies distribution center에 화재가 발생해 그곳에서 병원으로 face mask를 공급하던 흐름이 끊기는 상황이다.",
+            "이제는 고객 주문을 더 긴 기간으로 forecast해서 inventory를 올바른 장소와 시점에 배치해야 하며, 바로 이 지점에서 logic function으로서 forecasting이 필요해진다는 것이 데모의 실제 비즈니스 맥락이다."
+          ],
+          "quote": "We heard there was a fire in the Haynes medical supplies distribution center that we distribute face masks to hospital from."
+        },
+        {
+          "heading": "Solution designer 아키텍처: Ontology, copilot, modeling objective의 연결",
+          "body": "발표자는 solution designer 다이어그램을 통해 전체 구성을 정리한다. 사용자 역할은 supply chain analyst이고, 이 사용자는 workshop app인 Titan control tower를 통해 시스템과 상호작용한다. 기존 supply chain copilot은 AIP logic으로 구동되며 Ontology를 탐색해 LLM을 비즈니스 진실에 grounding하는 역할을 한다. 여기에 새로 추가되는 것이 forecast customer orders라는 logic tool이며, 이 도구는 Ontology에서 historical customer orders를 가져와 forecasting에 필요한 시계열 입력을 만들고, 새 modeling objective가 제공하는 time series forecasting model과 연결된다. 발표자는 이 모델로 Meta의 Prophet framework를 사용해 additive regressive model을 만들고, 그 모델이 입력된 time series data를 바탕으로 on-the-fly forecast를 반환한다고 설명한다. 이 구도는 Ontology가 단순한 문맥 검색 데이터베이스가 아니라, 모델 입력 생성과 업무 추론을 동시에 지원하는 실행 가능한 비즈니스 그래프라는 점을 잘 보여준다.",
+          "highlights": [
+            "기존 supply chain copilot은 AIP logic으로 구동되며 Ontology를 탐색해 LLM을 비즈니스 진실에 grounding하는 역할을 한다.",
+            "발표자는 이 모델로 Meta의 Prophet framework를 사용해 additive regressive model을 만들고, 그 모델이 입력된 time series data를 바탕으로 on-the-fly forecast를 반환한다고 설명한다."
+          ],
+          "quote": "It's going to have access to the ontology to get historical customer orders to use for a forecast."
+        },
+        {
+          "heading": "Time series forecasting objective와 model adapter의 구체 구조",
+          "body": "time series forecasting objective 화면에는 앞서 Auto ML에서 만든 모델들도 보이지만, 발표자는 이번 시연에서는 live endpoint로 배포된 Prophet model을 사용하기로 했다고 설명한다. 이미 deployment가 live endpoint로 나가 있으며, 그는 LLM이 on-the-fly로 실제 학습 또는 적합을 호출하는 데모가 흥미롭다고 말한다. adapter는 매우 단순한 구조로 소개되는데, 입력은 DS가 date, Y가 quantity인 시계열 데이터이며, 출력은 DS for dates, forecasted quantity, 그리고 confidence lower bounds를 포함한 data frame이다. 중요한 점은 모델 아키텍처나 프레임워크마다 inference 호출 방식이 다르기 때문에, adapter가 time series input을 받아 prophet.fit을 호출하고 결과 data frame을 공통 형식으로 map해 다시 내보낸다는 것이다. 즉 adapter는 모델이 무엇인지 숨기는 블랙박스가 아니라, 기업 내 여러 모델을 LLM과 logic function이 예측 가능한 방식으로 부를 수 있게 만드는 표준화 레이어다.",
+          "highlights": [
+            "adapter는 매우 단순한 구조로 소개되는데, 입력은 DS가 date, Y가 quantity인 시계열 데이터이며, 출력은 DS for dates, forecasted quantity, 그리고 confidence lower bounds를 포함한 data frame이다.",
+            "중요한 점은 모델 아키텍처나 프레임워크마다 inference 호출 방식이 다르기 때문에, adapter가 time series input을 받아 prophet.fit을 호출하고 결과 data frame을 공통 형식으로 map해 다시 내보낸다는 것이다."
+          ],
+          "quote": "So I'm actually going to take the input, a time series dataset. I'm going to run the profit.fit on that time series and get my data frame out, map it and write that back out."
+        },
+        {
+          "heading": "Forecast customer orders logic function 구현: object set, group by, 14일 예측",
+          "body": "adapter를 만든 뒤 발표자는 이를 실제 logic tool로 감싸는 과정을 보여준다. forecast customer orders 함수는 입력으로 orders 또는 order primary keys를 받고, 출력으로 forecasted quantity를 반환한다. 내부적으로는 Ontology object set을 만들고 native ontology function인 group by를 이용해 여러 주문이 같은 날에 존재할 수 있다는 점을 정리한 뒤, 날짜와 수량으로 구성된 시계열을 생성한다. 그 시계열은 Prophet adapter가 요구하는 포맷으로 변환되고, live fit a profit adapter.transform 호출에 넣어지며, 예시에서는 14 day forecast window를 하드코딩한다. 출력으로 받은 array 혹은 data frame 중 LLM use case에 필요한 것은 총 forecasted quantity 하나이기 때문에, 발표자는 이 값을 aggregate해 single double로 반환한다고 설명한다. 데모에서 실제 Titan customer orders의 primary key 집합을 넣고 실행하자 몇 초 안에 다음 14일 forecast quantity가 반환되며, 수행 시간의 일부는 object aggregation, 일부는 model inference에서 왔다는 점도 보여줘 함수 성능 감각까지 전달한다.",
+          "highlights": [
+            "forecast customer orders 함수는 입력으로 orders 또는 order primary keys를 받고, 출력으로 forecasted quantity를 반환한다.",
+            "그 시계열은 Prophet adapter가 요구하는 포맷으로 변환되고, live fit a profit adapter.transform 호출에 넣어지며, 예시에서는 14 day forecast window를 하드코딩한다."
+          ],
+          "quote": "So now that's the forecast quantity for the orders that I just put in for the next 14 days."
+        },
+        {
+          "heading": "AIP logic과 LLM 통합: entity extraction, tool selection, prompt examples",
+          "body": "logic tool을 만든 다음 단계는 이를 AIP logic이라는 LLM-backed function에 연결하는 일이다. 발표자는 같은 공급망 플로우 안에서 prompt를 바탕으로 finished good과 distribution center를 찾는 extraction block을 먼저 보여주며, 여기서 Ontology 검색을 통해 실제 business entity인 surgical mask와 해당 시설을 찾아냄으로써 AI를 enterprise truth에 고정한다고 설명한다. 마지막 logic block에서는 기존 data tools에 더해 calculator tool과 새로 만든 forecasting customer orders logic function을 toolset에 추가한다. 그는 여기에 example도 함께 넣어 LM이 언제 이 함수를 호출해야 하는지, 그리고 어떤 반환값이 오면 그것을 어떻게 해석해야 하는지 reasoning하도록 돕는다고 말한다. 이후 LM은 화재가 난 plant와 finished good에 의해 영향을 받는 order quantity per plant, per customer를 파악해 전체 impacted order를 계산하고, 그 주문들을 forecasting tool에 넘겨 14일 forecast를 생성한 뒤, 그 결과까지 고려해 어떤 공급망 대응을 해야 할지 답을 구성한다. 이 과정은 프롬프트 엔지니어링을 단순한 문장 작성이 아니라, 신입 분석가를 훈련하듯 문제 해결 절차를 단계별로 가르치는 작업으로 보는 발표자의 관점도 드러낸다.",
+          "highlights": [
+            "발표자는 같은 공급망 플로우 안에서 prompt를 바탕으로 finished good과 distribution center를 찾는 extraction block을 먼저 보여주며, 여기서 Ontology 검색을 통해 실제 business entity인 surgical mask와 해당 시설을 찾아냄으로써 AI를 enterprise truth에 고정한다고 설명한다.",
+            "그는 여기에 example도 함께 넣어 LM이 언제 이 함수를 호출해야 하는지, 그리고 어떤 반환값이 오면 그것을 어떻게 해석해야 하는지 reasoning하도록 돕는다고 말한다."
+          ],
+          "quote": "So this is giving the LM an example about when and how, and when it gets back, what it calls this function."
+        },
+        {
+          "heading": "디버거와 실행 가시성: chain of thought, grounding, forecast 호출 확인",
+          "body": "발표자는 debugger 화면을 통해 logic block의 실제 chain of thought reasoning을 볼 수 있다고 설명하며, 이것이 각 단계의 동작을 debug하는 데 중요하다고 말한다. 실행 과정에서 finished good이 올바르게 추출되고, distribution center가 찾아지며, Ontology를 통해 Haynes medical supplies와 영향받는 customer orders가 식별되는 흐름이 차례로 나타난다. 이어서 forecasting function이 호출되는 지점이 명확하게 보이며, 영향을 받는 모든 orders가 함수에 전달되고, 실시간 forecast 결과가 되돌아오는 장면이 시연된다. 발표자는 이 예가 Ontology를 통한 grounding뿐 아니라, LLM처럼 stochastic한 시스템을 자신이 더 신뢰하는 forecast model의 truth에도 grounding할 수 있음을 보여준다고 해석한다. 즉 이 디버거는 단지 개발자용 추적 도구가 아니라, AI가 어떤 데이터와 어떤 로직을 써서 결론에 도달했는지 투명하게 보여주는 신뢰 장치로 제시된다.",
+          "highlights": [
+            "실행 과정에서 finished good이 올바르게 추출되고, distribution center가 찾아지며, Ontology를 통해 Haynes medical supplies와 영향받는 customer orders가 식별되는 흐름이 차례로 나타난다.",
+            "발표자는 이 예가 Ontology를 통한 grounding뿐 아니라, LLM처럼 stochastic한 시스템을 자신이 더 신뢰하는 forecast model의 truth에도 grounding할 수 있음을 보여준다고 해석한다."
+          ],
+          "quote": "So there's our, there's our actual, our logic function to build a forecast in real time, generating forecast triggered by an LM using the ontology."
+        },
+        {
+          "heading": "Workshop 배포와 human-in-the-loop 메시지: main 브랜치, version 14, tool visibility",
+          "body": "AIP logic function이 완성되면 발표자는 이를 publish하고, low-code/no-code 환경인 workshop 기반 Titan control tower로 돌아가 새 버전인 version 14를 사용하도록 업데이트한다. 그는 chain of thought reasoning 쪽도 동일하게 새 버전을 연결하면서, 현재는 main에서 바로 시연하지만 실제로는 branch를 따서 일부 사용자에게 먼저 테스트하게 한 뒤 전체 사용자에게 merge할 수 있다고 설명한다. copilot을 다시 실행하면 intent를 해석해 어떤 tool을 써야 할지 결정하고, 방금 업데이트된 supply chain tool과 그 안의 forecasting tool을 자동으로 사용한다. 사용자는 chain of thought, entity extraction, 사용된 Ontology object, 호출된 tool을 모두 볼 수 있기 때문에, AI가 자신을 배제하는 black box가 아니라 analyst와 함께 일하는 human-in-the-loop AI라고 발표자는 강조한다. 그는 특히 LLM은 reasoning에는 강하지만 forecasting이나 여러 종류의 수학에는 약하므로, 비즈니스에 이미 존재하는 optimization, forecast, math tool을 연결해 right tool for the right problem을 구현해야 한다고 정리한다.",
+          "highlights": [
+            "그는 chain of thought reasoning 쪽도 동일하게 새 버전을 연결하면서, 현재는 main에서 바로 시연하지만 실제로는 branch를 따서 일부 사용자에게 먼저 테스트하게 한 뒤 전체 사용자에게 merge할 수 있다고 설명한다.",
+            "그는 특히 LLM은 reasoning에는 강하지만 forecasting이나 여러 종류의 수학에는 약하므로, 비즈니스에 이미 존재하는 optimization, forecast, math tool을 연결해 right tool for the right problem을 구현해야 한다고 정리한다."
+          ],
+          "quote": "So LMS are great at a lot of things like reasoning. They're not great at forecasting. They're not great at different types of math."
+        },
+        {
+          "heading": "마무리와 다음 편 예고: data, logic, actions의 완결",
+          "body": "영상의 마지막에서 발표자는 시리즈 전체 구조를 다시 data, logic, actions라는 세 단어로 요약한다. 첫 번째 영상은 data tools였고, 이번 영상은 logic tools였으며, 다음 편은 actions를 다룬다고 예고한다. 여기서 actions는 LM이 사용자의 oversight 아래 실제로 주문을 변경해 loop를 닫는 단계로 설명되며, 이것이 발표자가 말하는 human AI teaming의 핵심이라고 한다. 이 결론은 앞서 보여준 모든 기능이 단순한 분석 보조에서 끝나는 것이 아니라, 최종적으로는 기업 업무 프로세스를 안전하게 변경하는 실행 단계로 이어져야 한다는 관점을 드러낸다. 따라서 이번 영상은 forecasting tool 하나의 구현보다도, Ontology를 기반으로 데이터 조회, 로직 실행, 그리고 향후 action automation까지 연결되는 전체 AIP 아키텍처 서사의 중간 장면으로 이해하는 것이 맞다.",
+          "highlights": [
+            "첫 번째 영상은 data tools였고, 이번 영상은 logic tools였으며, 다음 편은 actions를 다룬다고 예고한다.",
+            "여기서 actions는 LM이 사용자의 oversight 아래 실제로 주문을 변경해 loop를 닫는 단계로 설명되며, 이것이 발표자가 말하는 human AI teaming의 핵심이라고 한다."
+          ],
+          "quote": "The next will be on actions."
+        }
+      ],
+      "key_takeaways": [
+        "Palantir AIP의 OAG 구조에서 Ontology는 데이터 검색뿐 아니라 모델 입력 생성, 로직 툴 실행, LLM 추론 grounding까지 담당하는 운영 중심 인터페이스로 쓰인다.",
+        "modeling objective는 objective, asset, artifact, adapter를 분리해 내부 학습 모델, containerized model, external endpoint, open source model을 한곳에서 평가하고 배포할 수 있게 한다.",
+        "모델의 가치는 실운영 투입에 있으며, AIP는 live와 batch endpoint, staging과 production, compatibility check, review gate, logs, metrics를 포함한 모델용 CI/CD를 제공한다.",
+        "AIP는 최종 사용자용 copilot만 만드는 플랫폼이 아니라, Auto ML workshop app처럼 개발자와 데이터 과학자 생산성을 높이는 내부 도구를 다시 만드는 tool factory로도 사용된다.",
+        "LLM은 reasoning에는 강하지만 forecasting과 수학에는 약하므로, Prophet 같은 결정론적 로직을 logic tool로 연결하고 사용 과정을 투명하게 보여주는 것이 신뢰 가능한 human-in-the-loop AI의 핵심이다."
+      ],
+      "tech_stack": [
+        "Palantir AIP",
+        "Ontology Augmented Generation",
+        "AIP logic",
+        "Titan control tower",
+        "Workshop",
+        "Solution designer",
+        "Jupyter notebooks",
+        "R studio",
+        "containerized model",
+        "externally hosted model endpoint",
+        "Hugging Face",
+        "linear regression",
+        "random forest regressor",
+        "gradient boosting regressor",
+        "Meta Prophet",
+        "live endpoint",
+        "batch endpoint",
+        "Postman"
+      ],
+      "apply_points": [
+        {
+          "text": "tech-review 파이프라인에서 북마크 요약 모델 호출을 바로 LLM에 맡기지 말고, 요약 objective, adapter, logic tool을 분리해 자막 요약, 링크 분류, 중요도 스코어링을 각각 교체 가능하게 설계하면 add-bookmark 자동화가 훨씬 안정적으로 진화한다.",
+          "key": true
+        },
+        {
+          "text": "mcp-memory에는 현재 진행 중인 ontology upgrade 흐름에 맞춰 recall 결과를 그대로 쓰는 대신, 평가 데이터셋과 subset 개념을 도입해 프로젝트별, 세션별, 태그별 검색 품질을 따로 검증하는 review gate를 붙이는 것이 바로 실행 가능한 다음 단계다.",
+          "key": true
+        },
+        {
+          "text": "orchestration 작업에서는 tool factory 개념을 적용해 Codex가 반복적으로 만드는 스캐폴드, 평가 스크립트, 요약 포맷터를 별도 내부 도구로 승격하면 에이전트 간 워크플로우 속도와 일관성을 동시에 올릴 수 있다.",
+          "key": false
+        },
+        {
+          "text": "tech-review와 orchestration 모두에서 main에 바로 반영하기보다 branch, staging, limited user test 흐름을 두면 프롬프트 버전이나 도구 연결 변경이 실제 운영 결과에 미치는 영향을 통제할 수 있다.",
+          "key": false
+        },
+        {
+          "text": "mcp-memory recall과 후속 로직 호출 과정을 사용자가 볼 수 있는 실행 로그로 노출하면, 지금처럼 Paul 프로젝트 컨텍스트를 근거로 apply_points를 만드는 자동화도 더 신뢰받는 human-in-the-loop 방식으로 바뀐다.",
+          "key": false
+        }
+      ]
+    }
   }
 ]
