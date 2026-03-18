@@ -1,63 +1,63 @@
 ---
 layout: post
-title: "신세계 250MW AI 팩토리, World AgentKit 사람 인증, 빅테크 11사 사기 방지 공동전선"
+title: "NVIDIA 1조달러 AaaS 전환, 엔터프라이즈 AI 권한 관리 경고, 신세계 250MW AI 팩토리"
 date: 2026-03-18
 lang: ko
 permalink: /ko/2026/03/18/daily-tech-review/
 pair: 2026-03-18-daily-tech-review
-tags: ["ai-industry", "business-model", "enterprise-ai", "retail"]
+tags: ["ai-industry", "business-model", "enterprise-ai"]
+source_type: perplexity
 ---
 
 ## Today in One Line
-리테일 기업이 250MW급 AI 인프라로 업을 확장하고, AI 쇼핑 에이전트 시대의 '사람 인증'과 '사기 방어'가 새 결제·신뢰 레이어로 빠르게 고정되는 흐름이 나타났다.
+NVIDIA가 AI 칩 매출 1조달러와 SaaS→AaaS 전환을 예고하고, 에이전트 시대의 권한·보안 문제가 엔터프라이즈 AI의 아킬레스건으로 부상하며, 신세계가 250MW AI 데이터센터로 유통→인프라 사업자 전환에 나섰다.
 
 ---
 
-## 1. 신세계그룹이 250MW 'AI 팩토리'로 유통을 넘어 AI 클라우드 수익원에 진입한다
+## 1. NVIDIA — 2027년까지 AI 칩 매출 1조달러, SaaS를 'AaaS(에이전트 서비스)'로 전환 예고
 
-2026년 3월 16일 신세계그룹이 Reflection AI와 한국 내 전력용량 250MW 규모 AI 데이터센터 구축을 추진하는 전략적 파트너십 MOU를 체결했다. 더벨은 이 결정을 전통 유통 중심 구조에서 AI 인프라·클라우드로 포트폴리오를 확장하는 전략으로 해석했다.
+2026년 3월 16일 GTC 기조연설에서 젠슨 황 CEO는 AI 칩 판매로 2027년까지 최소 1조 달러 매출을 전망했다. AI 시장이 학습→추론·실행으로 넘어가면서, 모든 소프트웨어 기업이 '업무를 대신 수행하는 에이전트'를 파는 AaaS 모델로 재편될 것이라 강조했다.
 
-**Why it matters:** 유통사가 AI 인프라 사업자로 전환하는 건, 우리 시스템에서 tech-review가 수집하는 '산업별 AI 도입' 패턴의 극단적 사례다. mcp-memory의 관찰→패턴 승격 경로에서 '전통 기업의 AI 피봇' 시그널이 반복 축적되고 있다.
+**Why it matters:** 우리 시스템이 Claude/Codex/Gemini를 에이전트로 운영하는 구조 자체가 AaaS의 프로토타입이다. NVIDIA의 NemoClaw(에이전트 보안·오케스트레이션)는 MCP 기반 에이전트 통제의 레퍼런스가 된다.
 
-- 미국 정부 'AI 수출 프로그램' 1호 파트너십으로 250MW AI 데이터센터 추진
-- GPU는 Nvidia 공급을 전제로 확보. Reflection AI는 2025년 10월 기업가치 80억 달러로 20억 달러 투자 유치
-- 클라우드 서비스와 맞춤형 AI 솔루션까지 제공하는 '풀 스택 AI 팩토리' 구축 명시
+- 에이전트 보안·오케스트레이션용 'NemoClaw' 플랫폼 소개
+- 추론·에이전트 워크로드 쪽 GPU 수요가 학습용보다 빠르게 성장 전망
+- 기업들에 모델·플랫폼 고정 대신 케이스별 ROI를 분기·월 단위로 점검할 것을 제안
 
-**What's next:** 2026년 내 조인트벤처 설립 계획. JV 설립 후 관련 기관·지자체와 협의하며 단계적으로 전력용량을 확대한다.
+**What's next:** AaaS 전환 메시지가 글로벌 SaaS·클라우드 기업들의 가격 모델과 로드맵을 '에이전트 단위'로 재편하는 촉매가 될 전망이다.
 
-**Source:** [신세계, 유통 넘어 인프라 기업으로...AI 데이터센터 '승부수'](https://www.thebell.co.kr/front/newsview.asp?code=0705&key=202603170712550220101470)
-
----
-
-## 2. World가 AI 쇼핑 에이전트에 '사람 인증' 레이어를 얹어 에이전트 커머스를 제도권 결제로 끌어당긴다
-
-2026년 3월 17일 TechCrunch 보도에 따르면, Tools for Humanity는 에이전트 커머스용 검증 도구 'AgentKit' 베타를 공개했다. Sam Altman이 공동창업한 'World' 프로젝트의 "proof of human" 인증 기술로, AI 에이전트 뒤의 실제 인간 승인 여부를 확인하는 구조다.
-
-**Why it matters:** 우리 orchestration이 Claude/Codex/Gemini 에이전트를 자율적으로 운영하는 것처럼, 에이전트가 외부 서비스를 호출할 때 '누가 승인했는가'가 핵심 문제가 된다. AgentKit의 proof-of-human 접근은 MCP 기반 에이전트 생태계에서 '신뢰 레이어' 설계의 레퍼런스다.
-
-- AgentKit은 Coinbase·Cloudflare의 'x402 protocol'과 연동돼 결제와 함께 유니크 휴먼 검증을 제공
-- World ID 기반이며, 강한 보안 버전은 Orb 기기로 홍채를 스캔해 암호화 코드 생성
-- Cloudflare 기준 매일 10억 건 이상의 HTTP 402 응답이 봇·크롤러에 발행, 표준화된 머신-투-머신 결제 프로토콜 필요성 부각
-
-**What's next:** AgentKit을 개발자 베타로 제공하며 피드백을 통해 정교화. Orb 스캔 기반 World ID가 있어야 검증 시나리오에 참여 가능하다.
-
-**Source:** [World launches tool to verify humans behind AI shopping agents](https://techcrunch.com/2026/03/17/world-launches-tool-to-verify-humans-behind-ai-shopping-agents/)
+**Source:** [Nvidia CEO Jensen Huang: $1 trillion in chip sales coming](https://www.axios.com/2026/03/16/nvidia-jensen-huang-1-trillion-chip-sales)
 
 ---
 
-## 3. Google·Target 등 11개사가 '사기 방지'에 AI를 공식 공동전선으로 올려 리테일 신뢰비용을 재정의한다
+## 2. 엔터프라이즈 AI의 아킬레스건 — '에이전트는 누구의 권한으로 행동하는가'
 
-2026년 3월 16일 Axios는 Google, Microsoft, LinkedIn, Meta, Amazon, OpenAI, Adobe, Pinterest, Target, Levi's, Match Group 등 11개사가 온라인 사기·스캠 대응을 위한 자발적 합의 "Industry Accord Against Online Scams & Fraud"에 서명했다고 단독 보도했다.
+VentureBeat가 3월 16일 AI 에이전트가 CRM·DB·이메일을 대행하는 상황에서, 에이전트의 정체성·권한 체계가 엔터프라이즈 AI의 핵심 취약점이 되고 있다고 보도했다. 1Password, Corridor, Okta 등은 개발자들이 API 키를 프롬프트에 직접 붙여넣는 위험 패턴이 광범위하다고 경고했다.
 
-**Why it matters:** 에이전트 자동화가 확산되면 사기 탐지의 난이도도 올라간다. 우리 시스템에서 Playwright가 CDP Chrome으로 4개 AI 서비스를 자동 운영하듯, 악의적 에이전트도 같은 방식으로 작동할 수 있다. '신뢰 인프라'가 기술 스택의 필수 레이어가 되는 신호다.
+**Why it matters:** 우리 orchestration이 Claude/Codex/Gemini 에이전트를 자율 운영하는 것과 같은 패턴이다. MCP 기반 에이전트가 외부 서비스를 호출할 때 '누가 승인했는가'가 곧 신뢰 레이어 설계 문제가 된다.
 
-- 11개사가 위협 인텔리전스 공유 + AI 포함 신규 방어 도구 배치 + 금융거래 검증 강화를 합의
-- FBI 집계(미국 기준) 2024년 스캠·사이버범죄 피해액 166억 달러(전년 대비 +33%)
-- 자발적 합의라 불이행 페널티는 없으나, 사용자 안전 기능 확대와 규제 강화 로비가 관전 포인트
+- Gartner: 2026년까지 대기업 75%가 AI 관련 데이터 노출·권한 오남용 경험 전망
+- Corridor: 프롬프트에 인증 정보 붙여넣기 탐지·차단 솔루션 → '에이전트용 비밀 관리' 새 카테고리
+- Okta, 1Password: 에이전트를 '1급 엔티티'로 취급, 생성→승인→폐기 전 과정 추적 프레임워크 제안
 
-**What's next:** 스캠 차단을 위한 사용자 보호 기능이 더 늘고, 글로벌 스캠 조직을 겨냥한 규제·수사 강화 요구가 커질 전망이다.
+**What's next:** 12~24개월 내 엔터프라이즈 AI 핵심 의사결정이 '어떤 모델'에서 '에이전트 권한 설계·감사'로 이동할 전망이다.
 
-**Source:** [Exclusive: Tech, retail companies band together to fight global scams](https://www.axios.com/2026/03/16/tech-companies-scam-accord-google-meta-amazon)
+**Source:** [The authorization problem that could break enterprise AI](https://venturebeat.com/ai/the-authorization-problem-that-could-break-enterprise-ai/)
+
+---
+
+## 3. 신세계 — 250MW AI 데이터센터 추진, 유통→AI 인프라 사업자 전환
+
+2026년 3월 16일 신세계그룹이 미국 AI 스타트업 Reflection AI와 250MW 규모 AI 데이터센터 구축 MOU를 체결했다. 단일 기업 국내 최대 규모이며, IT 업계는 인프라 투자만 10조원 이상으로 추산한다. 트럼프 행정부 '풀스택 AI 수출 프로그램' 1호 사업으로 소개됐다.
+
+**Why it matters:** tech-review가 수집하는 '산업별 AI 도입' 패턴의 극단적 사례다. 전통 기업의 AI 피봇 시그널이 mcp-memory 관찰→패턴 승격 경로에서 반복 축적되고 있다.
+
+- Reflection AI: 2024년 구글 DeepMind 출신 창업, 기업가치 80억 달러, 엔비디아 GPU 공급 전제
+- 신세계: 부지·전력·운영 담당, Reflection AI: AI 칩·모델·SW 포함 풀스택 기술 제공
+- 미 상무부 4/1 '풀스택 AI 수출 패키지' 제안서 접수 시작 → 한·미 AI 인프라 동맹 상징
+
+**What's next:** 2026년 내 JV 설립 후 관련 기관·지자체 협의를 거쳐 단계적 전력용량 확대 계획이다.
+
+**Source:** [신세계, 단일 기업 국내 최대 AI 데이터센터 짓는다](https://www.chosun.com/economy/tech_it/2026/03/16/)
 
 ## Comments
-
