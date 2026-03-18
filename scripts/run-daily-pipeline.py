@@ -192,6 +192,34 @@ def step5_git_push(post_date: str):
     log("  [OK] push 완료")
 
 
+def step6_post_doctor(post_date: str):
+    """post-doctor 검증 + 자동 수리 + 실패 시 GitHub Issue"""
+    log("[Step 6] post-doctor 검증...")
+    result = subprocess.run(
+        [sys.executable, str(SCRIPT_DIR / "post-doctor.py"),
+         "--date", post_date, "--fix"],
+        capture_output=True, text=True, encoding="utf-8", errors="replace",
+        timeout=60,
+    )
+    if result.stdout:
+        for line in result.stdout.strip().split("\n"):
+            log(f"  {line}")
+    if result.returncode != 0:
+        log(f"  [WARN] post-doctor exit code {result.returncode}")
+
+    # 수리로 파일 변경됐으면 재push
+    os.chdir(BLOG_DIR)
+    changed = subprocess.run(
+        ["git", "diff", "--name-only", "_posts/ko/"],
+        capture_output=True, text=True,
+    ).stdout.strip()
+    if changed:
+        log("  [FIX] 수리된 파일 재push...")
+        os.system("git add _posts/ko/")
+        os.system(f'git commit -m "[tech-review] {post_date} post-doctor 자동 수리"')
+        os.system("git push")
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--date", default=datetime.now().strftime("%Y-%m-%d"))
@@ -223,6 +251,9 @@ def main():
 
     # Step 5: git push
     step5_git_push(post_date)
+
+    # Step 6: post-doctor 검증
+    step6_post_doctor(post_date)
 
     log(f"=== 완료 ({post_date}) ===")
 
