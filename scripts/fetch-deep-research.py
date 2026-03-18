@@ -143,72 +143,115 @@ def run_perplexity_dr(prompt: str, post_date: str) -> str | None:
             page.goto(PERPLEXITY_URL, wait_until="domcontentloaded", timeout=30000)
             time.sleep(3)
 
-            # 입력창 찾기
-            textarea = page.locator("textarea").first
-            if textarea.count() == 0:
+            # 입력창: #ask-input (contenteditable textbox, not textarea)
+            textbox = page.locator("#ask-input")
+            if textbox.count() == 0:
                 print("[Perplexity] 입력창 없음")
                 return None
 
-            textarea.click()
+            textbox.click()
             time.sleep(0.5)
 
-            # "/" 입력 → 포커스 모드 메뉴 트리거
-            textarea.press("/")
+            # "/" 입력 → 검색 모드 메뉴 트리거
+            textbox.fill("/")
             time.sleep(2)
 
-            # "심층 리서치" 선택
+            # "심층 리서치" menuitem 클릭
             dr_clicked = False
-            for label in ["심층 리서치", "Deep Research", "deep research"]:
-                try:
-                    option = page.get_by_text(label, exact=False)
-                    if option.count() > 0:
-                        option.first.click()
-                        dr_clicked = True
-                        print(f"[Perplexity] '{label}' 모드 선택")
-                        time.sleep(1)
-                        break
-                except Exception:
-                    continue
+            dr_menu = page.locator('menuitem:has-text("심층 리서치")')
+            if dr_menu.count() > 0:
+                dr_menu.first.click()
+                dr_clicked = True
+                print("[Perplexity] '심층 리서치' 모드 선택")
+                time.sleep(1)
 
             if not dr_clicked:
-                print("[Perplexity] 심층 리서치 메뉴 없음 — Escape 후 일반 모드 시도")
+                # fallback: text 기반 탐색
+                for label in ["심층 리서치", "Deep Research"]:
+                    try:
+                        option = page.get_by_text(label, exact=False)
+                        if option.count() > 0:
+                            option.first.click()
+                            dr_clicked = True
+                            print(f"[Perplexity] '{label}' 모드 선택 (fallback)")
+                            time.sleep(1)
+                            break
+                    except Exception:
+                        continue
+
+            if not dr_clicked:
+                print("[Perplexity] 심층 리서치 메뉴 없음 — 일반 모드로 시도")
                 page.keyboard.press("Escape")
                 time.sleep(0.5)
-                # textarea 재취득 ("/" 입력이 남아있을 수 있음)
-                textarea = page.locator("textarea").first
-                textarea.fill("")
-                time.sleep(0.3)
 
-            # 프롬프트 입력
-            textarea = page.locator("textarea").first
-            textarea.fill(prompt)
+            # 프롬프트 입력 (모드 선택 후 입력창 재취득)
+            textbox = page.locator("#ask-input")
+            textbox.fill(prompt)
             time.sleep(0.5)
 
-            # 전송: 버튼 우선, 없으면 Enter
-            submit = page.locator('button[aria-label="제출"], button[aria-label="Submit"]')
+            # 전송: "제출" 버튼
+            submit = page.locator('button:has-text("제출")')
             if submit.count() > 0:
                 submit.first.click()
             else:
-                textarea.press("Enter")
+                # fallback
+                submit = page.locator('button[aria-label="Submit"]')
+                if submit.count() > 0:
+                    submit.first.click()
+                else:
+                    page.keyboard.press("Enter")
 
-            print("[Perplexity] 전송 완료. 결과 대기...")
+            print("[Perplexity] 전송 완료. 질문지/리서치 대기...")
 
-            # 결과 대기 — .prose 요소 polling
+            # 페이지 네비게이션 대기 (/search/... 로 이동)
+            time.sleep(8)
+            print(f"[Perplexity] 현재 URL: {page.url}")
+
+            # DR 질문지 자동 응답: "계속" 버튼 반복 클릭
+            for attempt in range(5):
+                continue_btn = page.locator('button:has-text("계속"), button:has-text("Continue")')
+                if continue_btn.count() > 0:
+                    continue_btn.first.click()
+                    print(f"[Perplexity] '계속' 클릭 (attempt {attempt + 1})")
+                    time.sleep(3)
+                else:
+                    break
+            time.sleep(5)
+
+            # 결과 대기 — 다중 셀렉터 polling
             start = time.time()
             last_len = 0
             stable_count = 0
+
+            def extract_content():
+                """Perplexity 최종 보고서 추출 — .prose만 사용 (리서치 UI 오탐 방지)"""
+                return page.evaluate("""() => {
+                    // .prose = 완료된 보고서만. main/markdown fallback 금지 (리서치 UI 오탐)
+                    const els = document.querySelectorAll('.prose');
+                    if (els.length === 0) return '';
+                    let t = '';
+                    els.forEach(el => t += el.innerText + '\\n');
+                    // 리서치 UI 오탐 필터: 검색 쿼리가 포함되면 아직 보고서 아님
+                    if (t.includes('site:') || t.includes('검색해 추려내기') || t.includes('사용자 입력을 기다리는 중'))
+                        return '';
+                    return t;
+                }""")
 
             while time.time() - start < MAX_WAIT_MINUTES * 60:
                 time.sleep(POLL_INTERVAL)
                 elapsed = int(time.time() - start)
 
-                text = page.evaluate("""() => {
-                    const els = document.querySelectorAll('.prose');
-                    let t = '';
-                    els.forEach(el => t += el.innerText + '\\n');
-                    return t;
+                # DR 진행 상태 체크
+                status = page.evaluate("""() => {
+                    const body = document.body.innerText;
+                    if (body.includes('검색 중') || body.includes('Searching') || body.includes('리서치 중'))
+                        return 'researching';
+                    if (body.includes('보고서를 작성') || body.includes('Writing') || body.includes('Generating'))
+                        return 'writing';
+                    return 'unknown';
                 }""")
 
+                text = extract_content()
                 curr_len = len(text)
 
                 if validate_content(text):
@@ -219,25 +262,20 @@ def run_perplexity_dr(prompt: str, post_date: str) -> str | None:
                             return text
                     else:
                         stable_count = 0
-                    print(f"  [{elapsed}s] 수신 중... ({curr_len}자)")
+                    print(f"  [{elapsed}s] 수신 중... ({curr_len}자) [{status}]")
                 else:
                     stable_count = 0
-                    print(f"  [{elapsed}s] 대기... ({curr_len}자)")
+                    print(f"  [{elapsed}s] 대기... ({curr_len}자) [{status}]")
 
                 last_len = curr_len
 
-            # 타임아웃이어도 유효 콘텐츠면 반환
-            text = page.evaluate("""() => {
-                const els = document.querySelectorAll('.prose');
-                let t = '';
-                els.forEach(el => t += el.innerText + '\\n');
-                return t;
-            }""")
+            # 타임아웃 — 마지막으로 한번 더 확인
+            text = extract_content()
             if validate_content(text):
-                print(f"[Perplexity] 타임아웃이지만 유효 콘텐츠 ({len(text)}자)")
+                print(f"[Perplexity] 타임아웃이지만 보고서 있음 ({len(text)}자)")
                 return text
 
-            print(f"[Perplexity] 타임아웃 ({MAX_WAIT_MINUTES}분)")
+            print(f"[Perplexity] 타임아웃 ({MAX_WAIT_MINUTES}분) — 보고서 미생성")
             return None
 
         except Exception as e:
