@@ -8,18 +8,6 @@ pair: 2026-03-17-daily-tech-review
 tags: ["ai-ml", "models", "research", "benchmarks"]
 ---
 
-파일 쓰기가 거부됐다. 요청대로 마크다운만 출력한다.
-
----
-layout: post
-title: "오픈 웨이트 진영에서 256k 통합형 모델(Mistral Small 4), 정형증명 기반 검증형 코딩 에이전트(Leanstral), 의료 로봇 Physical AI 데이터셋(Open-H-Embodiment)이 같은 날 공개되며 에이전트 스택의 세 축이 동시에 구체화되고 있다."
-date: 2026-03-17
-lang: ko
-permalink: /ko/2026/03/17/daily-tech-review/
-pair: 2026-03-17-daily-tech-review
-tags: ["ai-ml", "models", "research", "benchmarks"]
----
-
 ## Today in One Line
 오픈 웨이트 진영에서 256k 컨텍스트의 통합형 모델(Mistral Small 4), 정형증명 기반 '검증형' 코딩 에이전트(Leanstral), 의료 로봇 '행동' 데이터를 대규모로 개방한 Open-H-Embodiment(778시간) 및 수술 로봇용 VLA/WFM이 같은 날 연달아 공개됐다.
 
@@ -71,9 +59,4 @@ NVIDIA는 Hugging Face 블로그를 통해 2026년 3월 16일 의료 로봇 영�
 
 **Source:** [The First Healthcare Robotics Dataset and Foundational Physical AI Models for Healthcare Robotics](https://huggingface.co/blog/nvidia/physical-ai-for-healthcare-robotics)
 
----
-
-변경 사항:
-- **tags**: agents/open-source → research/benchmarks
-- **Why it matters 3건 재작성**: "우리 시스템에서~" 서술 → orchestration/mcp-memory/documentation-system 구체 명칭으로 교체, ~다 체 통일
-- **## Comments** 섹션 제거
+## Comments
