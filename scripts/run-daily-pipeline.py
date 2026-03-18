@@ -2,13 +2,13 @@
 """
 run-daily-pipeline.py — Daily Post 전체 자동화 파이프라인
 
-Step 1: ChatGPT Deep Research → raw 팩트 수집
-Step 2: Claude Code CLI → Why it matters 맥락 기반 재작성
-Step 3: parse-content.js → Jekyll 포스트 생성
+Step 1: 3-Tier Deep Research (Perplexity → Gemini → ChatGPT fallback)
+Step 2: Claude Code CLI → Why it matters 맥락 재작성 (5줄 이내)
+Step 3: Jekyll 포스트 생성 (frontmatter + source_type)
 Step 4: extract-sections.js → 섹션 데이터
 Step 5: git commit + push
 
-Task Scheduler: 매일 06:30 KST
+Task Scheduler: 매일 05:00 KST (컴퓨터 wake)
 Usage: python scripts/run-daily-pipeline.py [--date YYYY-MM-DD] [--skip-dr]
 """
 
@@ -42,15 +42,15 @@ def log(msg):
 
 
 def step1_deep_research(post_date: str) -> Path | None:
-    """ChatGPT Deep Research로 팩트 수집"""
-    log("[Step 1] ChatGPT Deep Research 실행...")
+    """3-Tier Deep Research: Perplexity → Gemini → ChatGPT fallback"""
+    log("[Step 1] 3-Tier Deep Research 실행 (Perplexity → Gemini → ChatGPT)...")
     result = subprocess.run(
         [sys.executable, str(SCRIPT_DIR / "fetch-deep-research.py"), "--date", post_date],
         capture_output=True, text=True, encoding="utf-8", errors="replace",
-        timeout=1800,  # 30분
+        timeout=5400,  # 90분 (3개 provider × 25분 + 여유)
     )
     if result.stdout:
-        for line in result.stdout.strip().split("\n")[-5:]:
+        for line in result.stdout.strip().split("\n")[-8:]:
             log(f"  {line}")
     if result.returncode != 0:
         log(f"  [FAIL] exit code {result.returncode}")
@@ -73,7 +73,14 @@ def step2_rewrite_why(raw_file: Path, post_date: str) -> Path:
     raw_content = raw_file.read_text(encoding="utf-8")
 
     # 프롬프트 구성
-    prompt = f"""아래는 ChatGPT Deep Research가 수집한 오늘의 AI/테크 뉴스 raw 데이터다.
+    # raw에서 SOURCE 라인 추출
+    source_type = "unknown"
+    for line in raw_content.split("\n")[:5]:
+        if line.startswith("SOURCE:"):
+            source_type = line.replace("SOURCE:", "").strip()
+            break
+
+    prompt = f"""아래는 Deep Research가 수집한 오늘의 AI/테크 뉴스 raw 데이터다.
 
 {raw_content}
 
@@ -84,15 +91,16 @@ Paul의 맥락:
 - orchestration: Claude Code 중심 멀티AI 시스템 (Workers 3, Skills 13)
 - mcp-memory: 지식 그래프 (관찰→시그널→패턴→원칙 성숙)
 - Context Engineering: 1M 토큰 관리, Gate A/B/C
-- tech-review: Playwright 자동화 (ChatGPT DR + Codex)
+- tech-review: Playwright 3-Tier DR 자동화 (Perplexity→Gemini→ChatGPT fallback)
 - 멀티AI: Claude(설계) + Codex(추출) + Gemini(검증)
 
 규칙:
 1. ~다 체
 2. Why it matters만 재작성. 나머지 팩트는 그대로 유지.
 3. Paul의 실제 프로젝트와 연결. 일반론 금지.
-4. Jekyll frontmatter 포함 (layout, title, date, lang, permalink, pair, tags)
-5. 마크다운만 출력. 코드블록 없이.
+4. Why it matters는 항목당 1~2문장, 전체 합계 5줄 이내.
+5. Jekyll frontmatter 포함 (layout, title, date, lang, permalink, pair, tags, source_type: {source_type})
+6. 마크다운만 출력. 코드블록 없이.
 
 날짜: {post_date}
 tags: [{DAY_TAGS.get(datetime.strptime(post_date, '%Y-%m-%d').weekday(), 'ai-ml')}]
@@ -179,7 +187,7 @@ def step5_git_push(post_date: str):
     log("[Step 5] git commit + push...")
     os.chdir(BLOG_DIR)
     os.system("git add _posts/ko/ _data/sections/")
-    os.system(f'git commit -m "[tech-review] {post_date} daily post (ChatGPT DR + Claude 맥락)"')
+    os.system(f'git commit -m "[tech-review] {post_date} daily post (3-Tier DR + Claude 맥락)"')
     os.system("git push")
     log("  [OK] push 완료")
 
