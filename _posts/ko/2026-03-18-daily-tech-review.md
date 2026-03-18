@@ -44,6 +44,7 @@ portfolio
 workout-coach-bot
 내 채팅
 AI 산업 뉴스 요약
+AI 산업 뉴스 요약
 다이어그램 종류 설명
 온톨로지 다이어그램 제안
 MLO와 Wi-Fi 7
@@ -70,7 +71,6 @@ CE와 PE 최적화 전략
 getStats 호출 요청
 서울시 평생교육이용권
 Context Summary 읽기
-M5 Max 성능 비교
 Paul Park
 Plus
 공유하기
