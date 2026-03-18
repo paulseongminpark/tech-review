@@ -137,42 +137,71 @@ def run_deep_research(prompt: str, post_date: str) -> str | None:
             textarea.fill(prompt)
             time.sleep(0.5)
             textarea.press("Enter")
-            print("[DR] 전송 완료. Deep Research 대기 중...")
+            print("[DR] 전송 완료. Deep Research 시작 대기...")
+
+            # 2.5. Deep Research 시작 확인 — 최소 30초 대기 후 리서치 진행 징후 확인
+            dr_started = False
+            for _ in range(12):  # 최대 60초 대기
+                time.sleep(5)
+                body_text = page.evaluate("() => document.body.innerText")
+                # Deep Research 진행 징후: "리서치 중", "검색", "Browsing", "sources", iframe 등장
+                if any(kw in body_text for kw in ["리서치", "검색 중", "Browsing", "출처", "sources found"]):
+                    dr_started = True
+                    print("[DR] Deep Research 시작 확인!")
+                    break
+                # 스트리밍 중지 버튼 = 무언가 생성 중
+                stop_btn = page.locator('button[aria-label="스트리밍 중지"]')
+                if stop_btn.count() > 0:
+                    dr_started = True
+                    print("[DR] 생성 시작 확인!")
+                    break
+
+            if not dr_started:
+                print("[DR] Deep Research가 시작되지 않음 — 일반 응답일 수 있음")
+                # 일반 응답이라도 결과가 있으면 수집
+                time.sleep(10)
 
             # 3. 완료 대기 (최대 MAX_WAIT_MINUTES분)
             start = time.time()
+            found_content = False
             while time.time() - start < MAX_WAIT_MINUTES * 60:
                 time.sleep(15)
                 elapsed = int(time.time() - start)
-                # 스트리밍 중지 버튼이 사라지면 완료
+
+                # 스트리밍 중지 버튼이 있으면 아직 진행 중
                 stop_btn = page.locator('button[aria-label="스트리밍 중지"]')
                 if stop_btn.count() > 0:
                     print(f"  [{elapsed}s] 아직 진행 중...")
                     continue
 
                 # 완료 감지 — playwright frames로 iframe 콘텐츠 직접 접근
-                time.sleep(3)
+                time.sleep(5)
                 for frame in page.frames:
                     try:
                         text = frame.evaluate("() => document.body ? document.body.innerText : ''")
-                        if len(text) > 500 and ("Today in One Line" in text or "##" in text):
+                        # 실제 뉴스 콘텐츠 판별: ## 헤딩 + Why it matters 또는 Today in One Line
+                        if len(text) > 800 and ("Today in One Line" in text or ("## " in text and "Why" in text)):
                             print(f"[DR] 완료! ({elapsed}초, {len(text)}자)")
                             return text
                     except Exception:
                         continue
 
-                # iframe에 없으면 메인 페이지에서 찾기
+                # iframe에 없으면 메인 페이지 article에서 찾기
                 main_text = page.evaluate("""() => {
                     const articles = document.querySelectorAll('article');
                     for (let i = articles.length - 1; i >= 0; i--) {
                         const h = articles[i].querySelector('h5, h6');
                         if (h && h.textContent.includes('ChatGPT')) {
-                            return articles[i].innerText;
+                            const t = articles[i].innerText;
+                            // 사이드바/메타 텍스트 제외: 최소 800자 + 뉴스 콘텐츠 포함
+                            if (t.length > 800 && (t.includes('Today in One Line') || (t.includes('## ') && t.includes('Why')))) {
+                                return t;
+                            }
                         }
                     }
                     return '';
                 }""")
-                if main_text and len(main_text) > 500:
+                if main_text:
                     print(f"[DR] 완료 (메인 페이지)! ({elapsed}초, {len(main_text)}자)")
                     return main_text
 

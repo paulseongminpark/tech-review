@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Anthropic이 1M 토큰 컨텍스트 표준 가격화 및 100M 달러 파트너 네트워크 투자를 발표했고, Mistral이 675B 파라미터 MoE 모델을 공개하면서 AI 추론 비용 경쟁과 엔터프라이즈 배포 경쟁이 가속화하고 있다."
+title: "Anthropic 1M 토큰 표준 가격화 + $100M 파트너 투자, Mistral 675B MoE 공개"
 date: 2026-03-16
 lang: ko
 permalink: /ko/2026/03/16/daily-tech-review/
