@@ -118,7 +118,7 @@ def main():
     before = count_bookmarks()
     r = run(
         [sys.executable, str(SCRIPT_DIR / "add-bookmark.py"), str(inbox_file)],
-        timeout=1800,
+        timeout=3600,
     )
     after = count_bookmarks()
     added = after - before
