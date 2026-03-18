@@ -2,47 +2,36 @@
   "date": "2026-03-18",
   "lang": "ko",
   "post_url": "/ko/2026/03/18/daily-tech-review/",
-  "post_title": "(오늘의 AI × Industry 핵심을 1문장으로.)",
+  "post_title": "신세계 250MW AI 팩토리, World AgentKit 사람 인증, 빅테크 11사 사기 방지 공동전선",
   "source_type": "perplexity",
   "sections": [
     {
       "index": 1,
-      "title": "[헤드라인 — 결론이 제목. 질문형 금지]",
-      "lead": "리드 1문장. (무슨 일이 일어났는가)",
+      "title": "신세계그룹이 250MW 'AI 팩토리'로 유통을 넘어 AI 클라우드 수익원에 진입한다",
+      "lead": "2026년 3월 16일 신세계그룹이 Reflection AI와 한국 내 전력용량 250MW 규모 AI 데이터센터 구축을 추진하는 전략적 파트너십 MOU를 체결했다. 더벨은 이 결정을 전통 유통 중심 구조에서 AI 인프라·클라우드로 포트폴리오를 확장하는 전략으로 해석했다.",
       "tags": [
-        "google",
-        "microsoft",
-        "meta",
-        "apple",
-        "nvidia"
+        "enterprise"
       ],
-      "anchor": "헤드라인-결론이-제목-질문형-금지"
+      "anchor": "신세계그룹이-250mw-ai-팩토리로-유통을-넘어-ai-클라우드-수익원에-진입한다"
     },
     {
       "index": 2,
-      "title": "[헤드라인]",
-      "lead": "",
+      "title": "World가 AI 쇼핑 에이전트에 '사람 인증' 레이어를 얹어 에이전트 커머스를 제도권 결제로 끌어당긴다",
+      "lead": "2026년 3월 17일 TechCrunch 보도에 따르면, Tools for Humanity는 에이전트 커머스용 검증 도구 'AgentKit' 베타를 공개했다. Sam Altman이 공동창업한 'World' 프로젝트의 \"proof of human\" 인증 기술로, AI 에이전트 뒤의 실제 인간 승인 여부를 확인하는 구조다.",
       "tags": [
-        "google",
-        "microsoft",
-        "meta",
-        "apple",
-        "nvidia"
+        "enterprise"
       ],
-      "anchor": "헤드라인"
+      "anchor": "world가-ai-쇼핑-에이전트에-사람-인증-레이어를-얹어-에이전트-커머스를-제도권-결제로-끌어당긴다"
     },
     {
       "index": 3,
-      "title": "[헤드라인]",
-      "lead": "ChatGPT의 말:",
+      "title": "Google·Target 등 11개사가 '사기 방지'에 AI를 공식 공동전선으로 올려 리테일 신뢰비용을 재정의한다",
+      "lead": "2026년 3월 16일 Axios는 Google, Microsoft, LinkedIn, Meta, Amazon, OpenAI, Adobe, Pinterest, Target, Levi's, Match Group 등 11개사가 온라인 사기·스캠 대응을 위한 자발적 합의 \"Industry Accord Against Online Scams & Fraud\"에 서명했다고 단독 보도했다.",
       "tags": [
-        "google",
-        "microsoft",
-        "meta",
-        "apple",
-        "nvidia"
+        "enterprise",
+        "google"
       ],
-      "anchor": "헤드라인"
+      "anchor": "google·target-등-11개사가-사기-방지에-ai를-공식-공동전선으로-올려-리테일-신뢰비용을-재정의한"
     }
   ]
 }

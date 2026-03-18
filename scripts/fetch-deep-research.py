@@ -174,36 +174,28 @@ def run_deep_research(prompt: str, post_date: str) -> str | None:
                     print(f"  [{elapsed}s] 아직 진행 중...")
                     continue
 
-                # 완료 감지 — playwright frames로 iframe 콘텐츠 직접 접근
+                # 완료 감지 — iframe 전용 (메인 프레임은 사이드바 오염 위험)
                 time.sleep(5)
                 for frame in page.frames:
+                    # 메인 프레임 스킵 (index 0 또는 URL이 chatgpt.com인 것)
+                    try:
+                        frame_url = frame.url
+                    except Exception:
+                        continue
+                    if "chatgpt.com" in frame_url and "/c/" not in frame_url:
+                        continue  # 메인 프레임 스킵
+
                     try:
                         text = frame.evaluate("() => document.body ? document.body.innerText : ''")
-                        # 실제 뉴스 콘텐츠 판별: ## 헤딩 + Why it matters 또는 Today in One Line
-                        if len(text) > 800 and ("Today in One Line" in text or ("## " in text and "Why" in text)):
-                            print(f"[DR] 완료! ({elapsed}초, {len(text)}자)")
+                        # 사이드바 오염 방지: "채팅 기록", "사이드바", "Ctrl" 등이 포함되면 스킵
+                        if any(kw in text for kw in ["채팅 기록", "사이드바", "콘텐츠로 건너뛰기", "프로필 메뉴"]):
+                            continue
+                        # 실제 뉴스 콘텐츠 판별
+                        if len(text) > 800 and ("Today in One Line" in text or ("## " in text and "matters" in text)):
+                            print(f"[DR] 완료 (iframe)! ({elapsed}초, {len(text)}자)")
                             return text
                     except Exception:
                         continue
-
-                # iframe에 없으면 메인 페이지 article에서 찾기
-                main_text = page.evaluate("""() => {
-                    const articles = document.querySelectorAll('article');
-                    for (let i = articles.length - 1; i >= 0; i--) {
-                        const h = articles[i].querySelector('h5, h6');
-                        if (h && h.textContent.includes('ChatGPT')) {
-                            const t = articles[i].innerText;
-                            // 사이드바/메타 텍스트 제외: 최소 800자 + 뉴스 콘텐츠 포함
-                            if (t.length > 800 && (t.includes('Today in One Line') || (t.includes('## ') && t.includes('Why')))) {
-                                return t;
-                            }
-                        }
-                    }
-                    return '';
-                }""")
-                if main_text:
-                    print(f"[DR] 완료 (메인 페이지)! ({elapsed}초, {len(main_text)}자)")
-                    return main_text
 
                 print(f"  [{elapsed}s] 완료 감지 대기...")
 
