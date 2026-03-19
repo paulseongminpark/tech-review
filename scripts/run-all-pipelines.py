@@ -167,11 +167,11 @@ def _run_main():
         timeout=3600,
     )
 
-    # 3. Twitter (fetch + Codex, 최대 60분)
+    # 3. Twitter (fetch + Codex 병렬, 최대 90분)
     results["twitter"] = run_step(
         "Twitter",
         [PYTHON, str(SCRIPT_DIR / "run-twitter-pipeline.py")],
-        timeout=3600,
+        timeout=5400,
     )
 
     # 결과 요약

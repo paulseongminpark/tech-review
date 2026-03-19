@@ -124,54 +124,40 @@ def load_existing(path):
 
 
 # ── Codex CLI ────────────────────────────────────────────────────────────────
-def summarize_with_codex(text: str) -> dict | None:
+def summarize_with_claude(text: str) -> dict | None:
+    """Claude CLI (-p) 비대화 모드로 트윗 분석. stdin으로 프롬프트 전달."""
     prompt = PROMPT_TEMPLATE.format(text=text[:8000])
 
-    with tempfile.NamedTemporaryFile(
-        mode="w", suffix=".txt", delete=False, encoding="utf-8", dir=BLOG_DIR
-    ) as tf:
-        tf.write(prompt)
-        tf_path = tf.name
-
     try:
-        out_path = BLOG_DIR / "_codex_bm_out.json"
         result = subprocess.run(
-            [
-                "codex.cmd", "exec",
-                f"파일 {tf_path} 을 읽고 지시대로 JSON을 만들어서 {out_path} 에 저장해라. 순수 JSON만.",
-                "--full-auto",
-            ],
-            capture_output=True, text=True, timeout=180,
+            "claude -p --output-format text",
+            input=prompt, capture_output=True, text=True, timeout=120,
             encoding="utf-8", errors="replace",
-            cwd=str(BLOG_DIR)
+            shell=True, cwd=str(BLOG_DIR),
         )
 
-        if out_path.exists():
-            raw = out_path.read_text(encoding="utf-8").strip()
-            out_path.unlink()
-        else:
-            raw = (result.stdout or "").strip()
+        raw = (result.stdout or "").strip()
 
+        # 코드블록 제거
         raw = re.sub(r"^```json\s*", "", raw)
         raw = re.sub(r"\s*```$", "", raw.strip())
+
+        # JSON 부분만 추출
+        json_match = re.search(r"\{[\s\S]*\}", raw)
+        if json_match:
+            raw = json_match.group(0)
 
         return json.loads(raw)
 
     except subprocess.TimeoutExpired:
-        print("  Codex 타임아웃 (3분 초과)")
+        print("  Claude 타임아웃 (2분 초과)")
         return None
     except json.JSONDecodeError as e:
         print(f"  JSON 파싱 실패: {e}")
-        print(f"  출력: {raw[:300]}")
         return None
     except Exception as e:
         print(f"  오류: {e}")
         return None
-    finally:
-        try:
-            os.unlink(tf_path)
-        except Exception:
-            pass
 
 
 # ── Main ───────────────────────────────────────────────────────────────────
@@ -201,18 +187,28 @@ def main():
     next_num = len(bookmarks) + 1
     added = 0
 
+    # 신규 트윗 필터
+    new_tweets = []
     for tw in tweets:
         key = tw["url"] or tw["id"]
         if key and key in seen:
             print(f"  스킵 (중복): @{tw['author']}")
             continue
+        new_tweets.append(tw)
 
-        print(f"  요약 중 (Codex): @{tw['author']} ...", end="", flush=True)
-        summary = summarize_with_codex(tw["text"])
+    if not new_tweets:
+        print("새 북마크 없음.")
+        return
+
+    print(f"신규 {len(new_tweets)}개 → Claude CLI 순차 분석...")
+
+    for tw in new_tweets:
+        print(f"  분석 중: @{tw['author']} ...", end="", flush=True)
+        summary = summarize_with_claude(tw["text"])
         if not summary:
-            print(" 오류")
+            print(" FAIL")
             continue
-
+        print(f" OK  {summary.get('whats_happening', '')[:50]}")
         bm = {
             "id": f"bm-{next_num:03d}",
             "author": tw["author"],
@@ -226,10 +222,10 @@ def main():
             bm["tweet_id"] = tw["id"]
 
         bookmarks.append(bm)
+        key = tw["url"] or tw["id"]
         seen.add(key)
         next_num += 1
         added += 1
-        print(f" OK  {summary.get('whats_happening', '')[:60]}")
 
     if added == 0:
         print("새 북마크 없음.")
