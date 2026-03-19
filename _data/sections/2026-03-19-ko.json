@@ -2,39 +2,37 @@
   "date": "2026-03-19",
   "lang": "ko",
   "post_url": "/ko/2026/03/19/daily-tech-review/",
-  "post_title": "Unsloth Studio 오픈소스 공개, Mistral Forge 엔터프라이즈 플랫폼, GitHub Copilot LTS 모델 도입",
+  "post_title": "MiniMax M2.7 자기진화형 에이전트, Hugging Face 오픈소스 리포트, GitHub Copilot LTS 모델 도입",
   "source_type": "perplexity",
   "sections": [
     {
       "index": 1,
-      "title": "Unsloth Studio — 로컬 LLM 학습·추론을 위한 올인원 오픈소스 웹 UI 공개",
-      "lead": "Unsloth 팀이 2026년 3월 16~17일 로컬에서 LLM을 학습·실행·비교·배포까지 할 수 있는 오픈소스 웹 UI인 \"Unsloth Studio\" 베타를 공개했다. Mac·Windows·Linux에서 GGUF·safetensors 모델을 로컬로 돌리면서 500개 이상 모델을 최대 2배 빠르게, VRAM은 최대 70% 적게 쓰는 것을 목표로 설계되었다.",
+      "title": "MiniMax M2.7 — 자기진화형 에이전트 LLM으로 에이전트 개발 워크플로를 뒤흔들다",
+      "lead": "중국 상하이 기반 MiniMax가 2026년 3월 18일 자기진화(self-evolution)를 전면에 내세운 대형 언어 모델 MiniMax M2.7을 발표했다. M2.7은 강화학습 하네스 구축과 로그 분석, 코드 수정 등 연구 워크플로의 30~50%를 스스로 수행하는 것을 목표로 설계되었으며, SWE-Pro 등 실제 개발 벤치마크에서 기존 모델을 위협하는 성능을 보여준다.",
       "tags": [
         "opensource",
-        "developer-tools",
-        "llm"
+        "llm",
+        "ma"
       ],
-      "anchor": "unsloth-studio-로컬-llm-학습·추론을-위한-올인원-오픈소스-웹-ui-공개"
+      "anchor": "minimax-m27-자기진화형-에이전트-llm으로-에이전트-개발-워크플로를-뒤흔들다"
     },
     {
       "index": 2,
-      "title": "Mistral — Forge와 Leanstral로 엔터프라이즈 커스텀 모델 + 오픈소스 코드 에이전트 전략 본격화",
-      "lead": "Mistral AI가 3월 17일 NVIDIA GTC에서 엔터프라이즈용 커스텀 모델 트레이닝 플랫폼 \"Mistral Forge\"를 공개했고, 그 직전인 3월 16일에는 Lean 4용 오픈소스 코드 에이전트 \"Leanstral\"을 Apache 2.0으로 출시했다. Forge는 사내 데이터로 프리트레인·미세조정·강화학습까지 전 주기를 돌리는 플랫폼이며, Leanstral은 형식 증명과 코드 검증에 특화된 오픈 웨이트 에이전트다.",
+      "title": "Hugging Face — Spring 2026 오픈소스 리포트에서 중국 주도·소형 모델 실용주의·로보틱스 붐을 공식화하다",
+      "lead": "Hugging Face가 2026년 3월 17일 공식 블로그를 통해 'State of Open Source on Hugging Face: Spring 2026' 리포트를 공개했다. 등록 사용자 1,100만 명, 공개 모델 200만 개 이상, 공개 데이터셋 50만 개 이상이라는 규모를 제시하며 오픈소스 AI 생태계의 현 상황을 정량적으로 요약한다.",
       "tags": [
-        "opensource",
-        "developer-tools"
+        "opensource"
       ],
-      "anchor": "mistral-forge와-leanstral로-엔터프라이즈-커스텀-모델-오픈소스-코드-에이전트-전략-본격화"
+      "anchor": "hugging-face-spring-2026-오픈소스-리포트에서-중국-주도·소형-모델-실용주의·로보틱스-붐을"
     },
     {
       "index": 3,
-      "title": "GitHub Copilot — GPT-5.3-Codex를 최초 LTS 코딩 모델로 채택, GPT-5.4 mini GA",
-      "lead": "GitHub는 3월 18일 Copilot Business·Enterprise를 대상으로 \"장기 지원(LTS) 코딩 모델\" 트랙을 도입하고, OpenAI와 협력해 GPT-5.3-Codex를 첫 LTS 모델로 지정했다. 2027년 2월까지 최소 12개월간 유지되며, 60일 내에 기존 GPT-4.1을 대체해 모든 엔터프라이즈 조직의 기본 모델이 된다.",
+      "title": "GitHub Copilot — GPT-5.3-Codex를 최초 LTS 모델로 지정해 엔터프라이즈용 AI 코딩 스택을 고정하다",
+      "lead": "GitHub는 2026년 3월 18일 Copilot Business·Enterprise에 \"Long-Term Support(LTS) 모델\" 개념을 도입하고, GPT-5.3-Codex를 첫 LTS 모델로 지정했다. 2027년 2월 4일까지 최소 12개월간 사용 가능하며, 60일 내에 GPT-4.1을 대체해 모든 엔터프라이즈 조직의 기본 모델이 된다.",
       "tags": [
-        "opensource",
-        "developer-tools"
+        "opensource"
       ],
-      "anchor": "github-copilot-gpt-53-codex를-최초-lts-코딩-모델로-채택-gpt-54-mini-ga"
+      "anchor": "github-copilot-gpt-53-codex를-최초-lts-모델로-지정해-엔터프라이즈용-ai-코딩-스택"
     }
   ]
 }
