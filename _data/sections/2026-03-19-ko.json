@@ -1,0 +1,36 @@
+{
+  "date": "2026-03-19",
+  "lang": "ko",
+  "post_url": "/ko/2026/03/19/daily-tech-review/",
+  "post_title": "지난 48시간 동안 GitHub Copilot의 GPT-5.3-Codex LTS 도입, NVIDIA의 오픈소스 추론 OS Dynamo 1.0, Mistral의 Forge 출시가 AI 개발 인프라 지형을 새로 그리고 있다.",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "GitHub Copilot, GPT-5.3-Codex를 첫 LTS 모델이자 기본 모델로 채택해 엔터프라이즈 AI 코딩 기준을 고정한다",
+      "lead": "GitHub가 GPT-5.3-Codex를 GitHub Copilot의 첫 장기 지원(LTS) 모델로 지정하고, 2026년 5월 17일부터 Copilot Business·Enterprise의 기본(base) 모델로 전환하겠다고 발표했다.",
+      "tags": [
+        "misc"
+      ],
+      "anchor": "github-copilot-gpt-53-codex를-첫-lts-모델이자-기본-모델로-채택해-엔터프라이즈-ai"
+    },
+    {
+      "index": 2,
+      "title": "NVIDIA, 오픈소스 추론 OS 'Dynamo 1.0'으로 AI 팩토리 스택의 공용 인프라를 연다",
+      "lead": "NVIDIA가 GTC 2026에서 대규모 AI 추론을 위한 오픈소스 운영체제 격 소프트웨어인 'NVIDIA Dynamo 1.0'을 발표해, LangChain·llm-d·LMCache·SGLang·vLLM 같은 프레임워크와 긴밀히 통합되는 AI 팩토리용 추론 레이어를 공식화했다.",
+      "tags": [
+        "nvidia"
+      ],
+      "anchor": "nvidia-오픈소스-추론-os-dynamo-10으로-ai-팩토리-스택의-공용-인프라를-연다"
+    },
+    {
+      "index": 3,
+      "title": "Mistral AI, Forge 플랫폼으로 기업이 자체 데이터로 프런티어급 모델을 재학습하는 시대를 연다",
+      "lead": "Mistral AI가 GTC 2026에서 기업 전용 모델 학습 플랫폼 'Forge'를 공개해, 단순 파인튜닝이 아닌 사내 데이터로 프런티어급 모델을 pre-training부터 RL까지 재학습할 수 있는 서비스를 내놓았다.",
+      "tags": [
+        "misc"
+      ],
+      "anchor": "mistral-ai-forge-플랫폼으로-기업이-자체-데이터로-프런티어급-모델을-재학습하는-시대를-연다"
+    }
+  ]
+}
