@@ -100,7 +100,45 @@ def run_step(name, cmd, timeout=3600):
         return False
 
 
+LOCK_FILE = BLOG_DIR / "_tmp" / "master-pipeline.lock"
+
+
+def acquire_lock():
+    """중복 실행 방지. 이미 돌고 있으면 즉시 종료."""
+    LOCK_FILE.parent.mkdir(exist_ok=True)
+    if LOCK_FILE.exists():
+        try:
+            lock_data = json.loads(LOCK_FILE.read_text(encoding="utf-8"))
+            lock_pid = lock_data.get("pid", 0)
+            # 프로세스 살아있는지 확인
+            import ctypes
+            kernel32 = ctypes.windll.kernel32
+            handle = kernel32.OpenProcess(0x1000, False, lock_pid)  # PROCESS_QUERY_LIMITED_INFORMATION
+            if handle:
+                kernel32.CloseHandle(handle)
+                log(f"[ABORT] 이미 실행 중 (PID {lock_pid}, 시작: {lock_data.get('started','')})")
+                sys.exit(0)
+        except Exception:
+            pass  # lock 파일 손상 — 무시하고 진행
+    LOCK_FILE.write_text(json.dumps({
+        "pid": os.getpid(),
+        "started": datetime.now().isoformat(),
+    }), encoding="utf-8")
+
+
+def release_lock():
+    LOCK_FILE.unlink(missing_ok=True)
+
+
 def main():
+    acquire_lock()
+    try:
+        _run_main()
+    finally:
+        release_lock()
+
+
+def _run_main():
     log(f"{'='*60}")
     log(f"=== Tech Review 마스터 파이프라인 ({TODAY}) ===")
     log(f"{'='*60}")
