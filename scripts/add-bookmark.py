@@ -124,25 +124,38 @@ def load_existing(path):
 
 
 # ── Codex CLI ────────────────────────────────────────────────────────────────
-def summarize_with_claude(text: str) -> dict | None:
-    """Claude CLI (-p) 비대화 모드로 트윗 분석. stdin으로 프롬프트 전달."""
+def summarize_with_codex(text: str) -> dict | None:
+    """Codex CLI (GPT-5.4 xhigh) + mcp-memory recall로 분석"""
     prompt = PROMPT_TEMPLATE.format(text=text[:8000])
 
+    with tempfile.NamedTemporaryFile(
+        mode="w", suffix=".txt", delete=False, encoding="utf-8", dir=BLOG_DIR
+    ) as tf:
+        tf.write(prompt)
+        tf_path = tf.name
+
     try:
+        out_path = BLOG_DIR / "_codex_bm_out.json"
         result = subprocess.run(
-            "claude -p --output-format text",
-            input=prompt, capture_output=True, text=True, timeout=120,
+            [
+                "codex.cmd", "exec",
+                f"파일 {tf_path} 을 읽고 지시대로 JSON을 만들어서 {out_path} 에 저장해라. 순수 JSON만.",
+                "--full-auto",
+            ],
+            capture_output=True, text=True, timeout=300,
             encoding="utf-8", errors="replace",
-            shell=True, cwd=str(BLOG_DIR),
+            cwd=str(BLOG_DIR)
         )
 
-        raw = (result.stdout or "").strip()
+        if out_path.exists():
+            raw = out_path.read_text(encoding="utf-8").strip()
+            out_path.unlink()
+        else:
+            raw = (result.stdout or "").strip()
 
-        # 코드블록 제거
         raw = re.sub(r"^```json\s*", "", raw)
         raw = re.sub(r"\s*```$", "", raw.strip())
 
-        # JSON 부분만 추출
         json_match = re.search(r"\{[\s\S]*\}", raw)
         if json_match:
             raw = json_match.group(0)
@@ -150,7 +163,7 @@ def summarize_with_claude(text: str) -> dict | None:
         return json.loads(raw)
 
     except subprocess.TimeoutExpired:
-        print("  Claude 타임아웃 (2분 초과)")
+        print("  Codex 타임아웃 (5분 초과)")
         return None
     except json.JSONDecodeError as e:
         print(f"  JSON 파싱 실패: {e}")
@@ -158,6 +171,11 @@ def summarize_with_claude(text: str) -> dict | None:
     except Exception as e:
         print(f"  오류: {e}")
         return None
+    finally:
+        try:
+            os.unlink(tf_path)
+        except Exception:
+            pass
 
 
 # ── Main ───────────────────────────────────────────────────────────────────
@@ -204,7 +222,7 @@ def main():
 
     for tw in new_tweets:
         print(f"  분석 중: @{tw['author']} ...", end="", flush=True)
-        summary = summarize_with_claude(tw["text"])
+        summary = summarize_with_codex(tw["text"])
         if not summary:
             print(" FAIL")
             continue
