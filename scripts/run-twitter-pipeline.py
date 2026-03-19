@@ -39,11 +39,16 @@ def log(msg):
 def run(cmd, **kwargs):
     """subprocess 실행 + 로그"""
     log(f"  실행: {' '.join(cmd)}")
-    result = subprocess.run(
-        cmd,
-        capture_output=True, text=True, encoding="utf-8", errors="replace",
-        cwd=str(BLOG_DIR), timeout=kwargs.get("timeout", 600),
-    )
+    try:
+        result = subprocess.run(
+            cmd,
+            capture_output=True, text=True, encoding="utf-8", errors="replace",
+            cwd=str(BLOG_DIR), timeout=kwargs.get("timeout", 600),
+        )
+    except subprocess.TimeoutExpired as e:
+        log(f"    타임아웃 ({kwargs.get('timeout', 600)}초 초과)")
+        # 타임아웃 시에도 이후 단계 진행 가능하도록 CompletedProcess 반환
+        return subprocess.CompletedProcess(cmd, returncode=1, stdout="", stderr="timeout")
     if result.stdout.strip():
         for line in result.stdout.strip().split("\n")[-5:]:
             log(f"    {line}")

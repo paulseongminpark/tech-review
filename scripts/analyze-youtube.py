@@ -204,8 +204,23 @@ def write_status(step: str, video_title: str, done: int, total: int, detail: str
     )
 
 def main():
-    # Actions가 push한 최신 데이터 받기
+    # 최신 데이터 받기
     os.system("git pull --rebase origin master")
+
+    # fetch-youtube.js 실행 (신규 영상 수집)
+    fetch_script = SCRIPT_DIR / "fetch-youtube.js"
+    if fetch_script.exists():
+        print("=== YouTube fetch 실행 ===")
+        r = subprocess.run(
+            ["node", str(fetch_script)],
+            capture_output=True, text=True, encoding="utf-8", errors="replace",
+            cwd=str(BLOG_DIR), timeout=120,
+        )
+        if r.stdout.strip():
+            for line in r.stdout.strip().split("\n")[-5:]:
+                print(f"  {line}")
+        if r.returncode != 0 and r.stderr.strip():
+            print(f"  fetch 경고: {r.stderr.strip()[-200:]}")
 
     pending = find_pending()
     print(f"분석 대상: {len(pending)}개 영상")

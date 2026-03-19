@@ -115,7 +115,11 @@ def load_prompt(post_date: str) -> tuple[str, str]:
 
 def validate_content(text: str) -> bool:
     """DR 결과가 유효한 daily post 콘텐츠인지 판별"""
-    if not text or len(text) < 800:
+    if not text or len(text) < 2500:
+        return False
+    # 최소 3개 기사 ("Source:" 패턴으로 기사 수 판별)
+    source_count = text.count("Source:")
+    if source_count < 3:
         return False
     if "Today in One Line" in text:
         return True
@@ -224,14 +228,23 @@ def run_perplexity_dr(prompt: str, post_date: str) -> str | None:
             stable_count = 0
 
             def extract_content():
-                """Perplexity 최종 보고서 추출 — .prose만 사용 (리서치 UI 오탐 방지)"""
+                """Perplexity 최종 보고서 추출 — .prose만 사용, <a> 링크 보존"""
                 return page.evaluate("""() => {
-                    // .prose = 완료된 보고서만. main/markdown fallback 금지 (리서치 UI 오탐)
                     const els = document.querySelectorAll('.prose');
                     if (els.length === 0) return '';
                     let t = '';
-                    els.forEach(el => t += el.innerText + '\\n');
-                    // 리서치 UI 오탐 필터: 검색 쿼리가 포함되면 아직 보고서 아님
+                    els.forEach(el => {
+                        // <a href="url">text</a> → [text](url) 변환
+                        const clone = el.cloneNode(true);
+                        clone.querySelectorAll('a[href]').forEach(a => {
+                            const href = a.getAttribute('href');
+                            const text = a.innerText.trim();
+                            if (href && text && !href.startsWith('#') && !href.startsWith('javascript:')) {
+                                a.replaceWith('[' + text + '](' + href + ')');
+                            }
+                        });
+                        t += clone.innerText + '\\n';
+                    });
                     if (t.includes('site:') || t.includes('검색해 추려내기') || t.includes('사용자 입력을 기다리는 중'))
                         return '';
                     return t;
@@ -241,28 +254,43 @@ def run_perplexity_dr(prompt: str, post_date: str) -> str | None:
                 time.sleep(POLL_INTERVAL)
                 elapsed = int(time.time() - start)
 
-                # DR 진행 상태 체크
+                # DR 진행 상태 체크 (다국어 + 버튼/스피너 감지)
                 status = page.evaluate("""() => {
                     const body = document.body.innerText;
-                    if (body.includes('검색 중') || body.includes('Searching') || body.includes('리서치 중'))
+                    // 검색/리서치 진행 중
+                    if (body.includes('검색 중') || body.includes('Searching') || body.includes('리서치 중')
+                        || body.includes('Reading') || body.includes('sources found'))
                         return 'researching';
-                    if (body.includes('보고서를 작성') || body.includes('Writing') || body.includes('Generating'))
+                    // 보고서 작성 중
+                    if (body.includes('보고서를 작성') || body.includes('Writing') || body.includes('Generating')
+                        || body.includes('답변 생성'))
                         return 'writing';
-                    return 'unknown';
+                    // 스피너/로딩 감지
+                    const spinners = document.querySelectorAll('[class*="animate-spin"], [class*="loading"], [class*="spinner"]');
+                    if (spinners.length > 0) return 'loading';
+                    // 중지 버튼 존재 = 아직 생성 중
+                    const stopBtn = document.querySelector('button[aria-label*="Stop"], button[aria-label*="중지"]');
+                    if (stopBtn) return 'generating';
+                    return 'idle';
                 }""")
 
                 text = extract_content()
                 curr_len = len(text)
 
                 if validate_content(text):
-                    if curr_len == last_len and curr_len > 0:
+                    # 아직 생성 중이면 stable 카운트 무시
+                    if status in ('researching', 'writing', 'loading', 'generating'):
+                        stable_count = 0
+                        print(f"  [{elapsed}s] 수신 중... ({curr_len}자) [{status}] (생성 중 — 대기)")
+                    elif curr_len == last_len and curr_len > 0:
                         stable_count += 1
-                        if stable_count >= 2:
+                        if stable_count >= 3:  # 45초 안정 (15s × 3)
                             print(f"[Perplexity] 완료! ({elapsed}초, {curr_len}자)")
                             return text
+                        print(f"  [{elapsed}s] 수신 중... ({curr_len}자) [{status}] (안정 {stable_count}/3)")
                     else:
                         stable_count = 0
-                    print(f"  [{elapsed}s] 수신 중... ({curr_len}자) [{status}]")
+                        print(f"  [{elapsed}s] 수신 중... ({curr_len}자) [{status}]")
                 else:
                     stable_count = 0
                     print(f"  [{elapsed}s] 대기... ({curr_len}자) [{status}]")
@@ -415,15 +443,26 @@ def run_gemini_dr(prompt: str, post_date: str) -> str | None:
 
                 curr_len = len(text)
 
+                # 생성 중 감지 (스피너/중지 버튼)
+                is_generating = page.evaluate("""() => {
+                    const spinners = document.querySelectorAll('[class*="animate"], [class*="loading"]');
+                    const stopBtn = document.querySelector('button[aria-label*="Stop"], button[aria-label*="중지"]');
+                    return spinners.length > 0 || !!stopBtn;
+                }""")
+
                 if validate_content(text):
-                    if curr_len == last_len and curr_len > 0:
+                    if is_generating:
+                        stable_count = 0
+                        print(f"  [{elapsed}s] 수신 중... ({curr_len}자) [생성 중 — 대기]")
+                    elif curr_len == last_len and curr_len > 0:
                         stable_count += 1
-                        if stable_count >= 2:
+                        if stable_count >= 3:
                             print(f"[Gemini] 완료! ({elapsed}초, {curr_len}자)")
                             return text
+                        print(f"  [{elapsed}s] 수신 중... ({curr_len}자) [안정 {stable_count}/3]")
                     else:
                         stable_count = 0
-                    print(f"  [{elapsed}s] 수신 중... ({curr_len}자)")
+                        print(f"  [{elapsed}s] 수신 중... ({curr_len}자)")
                 else:
                     stable_count = 0
                     print(f"  [{elapsed}s] 대기... ({curr_len}자)")

@@ -1,0 +1,156 @@
+#!/usr/bin/env python3
+"""
+run-all-pipelines.py — Tech Review 마스터 파이프라인
+
+3개 파이프라인을 순차 실행:
+  1. Daily Post   (DR → Claude CLI → Jekyll → push)
+  2. YouTube      (fetch → Whisper/Codex → push)
+  3. Twitter      (CDP fetch → Codex → push)
+
+Task Scheduler: 매일 05:00 KST (1개 태스크로 통합)
+  - "Run whether user is logged on or not" 불가 (CDP Chrome 필요)
+  - "Run task as soon as possible after a scheduled start is missed" 필수
+  - "Wake the computer to run this task" 권장
+"""
+
+import json, os, subprocess, sys, time
+from datetime import datetime
+from pathlib import Path
+
+SCRIPT_DIR = Path(__file__).parent
+BLOG_DIR = SCRIPT_DIR.parent
+LOG_DIR = SCRIPT_DIR / "_logs"
+LOG_DIR.mkdir(exist_ok=True)
+
+TODAY = datetime.now().strftime("%Y-%m-%d")
+LOG_FILE = LOG_DIR / f"master-{TODAY}.log"
+
+sys.stdout.reconfigure(encoding="utf-8")
+sys.stderr.reconfigure(encoding="utf-8")
+
+PYTHON = sys.executable
+
+
+def log(msg):
+    ts = datetime.now().strftime("%H:%M:%S")
+    line = f"[{ts}] {msg}"
+    print(line)
+    with open(LOG_FILE, "a", encoding="utf-8") as f:
+        f.write(line + "\n")
+
+
+def ensure_cdp_chrome():
+    """CDP Chrome 실행 확인 — 미실행 시 자동 시작"""
+    import urllib.request
+    CDP_URL = "http://127.0.0.1:9222/json/version"
+    CHROME_EXE = r"C:\Program Files\Google\Chrome\Application\chrome.exe"
+    CHROME_PROFILE = r"C:\Users\pauls\.chrome-twitter-auto"
+
+    try:
+        urllib.request.urlopen(CDP_URL, timeout=3)
+        log("[CDP] 연결 OK")
+        return True
+    except Exception:
+        log("[CDP] Chrome 미실행 — 자동 시작 중...")
+        subprocess.Popen(
+            [CHROME_EXE, "--remote-debugging-port=9222",
+             f"--user-data-dir={CHROME_PROFILE}", "--force-dark-mode",
+             "--no-first-run", "--disable-popup-blocking"],
+            stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+        )
+        for _ in range(15):
+            time.sleep(2)
+            try:
+                urllib.request.urlopen(CDP_URL, timeout=3)
+                log("[CDP] Chrome 자동 시작 완료")
+                return True
+            except Exception:
+                pass
+        log("[CDP] Chrome 시작 실패")
+        return False
+
+
+def run_step(name, cmd, timeout=3600):
+    """단일 파이프라인 실행"""
+    log(f"\n{'='*50}")
+    log(f"[{name}] 시작")
+    log(f"{'='*50}")
+    try:
+        result = subprocess.run(
+            cmd, capture_output=True, text=True,
+            encoding="utf-8", errors="replace",
+            cwd=str(BLOG_DIR), timeout=timeout,
+        )
+        if result.stdout:
+            for line in result.stdout.strip().split("\n"):
+                log(f"  {line}")
+        if result.returncode != 0:
+            log(f"[{name}] 실패 (exit {result.returncode})")
+            if result.stderr:
+                for line in result.stderr.strip().split("\n")[-5:]:
+                    log(f"  ERR: {line}")
+            return False
+        log(f"[{name}] 완료")
+        return True
+    except subprocess.TimeoutExpired:
+        log(f"[{name}] 타임아웃 ({timeout}초)")
+        return False
+    except Exception as e:
+        log(f"[{name}] 오류: {e}")
+        return False
+
+
+def main():
+    log(f"{'='*60}")
+    log(f"=== Tech Review 마스터 파이프라인 ({TODAY}) ===")
+    log(f"{'='*60}")
+
+    # CDP Chrome 보장 (Daily DR + Twitter에 필요)
+    if not ensure_cdp_chrome():
+        log("[WARN] CDP 없이 진행 — DR/Twitter 실패 가능")
+
+    # git pull (최신 상태)
+    os.chdir(BLOG_DIR)
+    os.system("git pull --rebase origin master")
+
+    results = {}
+
+    # 1. Daily Post (최대 90분 — DR 25분×3 + Claude 5분 + 여유)
+    results["daily"] = run_step(
+        "Daily Post",
+        [PYTHON, str(SCRIPT_DIR / "run-daily-pipeline.py"), "--date", TODAY],
+        timeout=5400,
+    )
+
+    # 2. YouTube (fetch + analyze, 최대 60분)
+    results["youtube"] = run_step(
+        "YouTube",
+        [PYTHON, str(SCRIPT_DIR / "analyze-youtube.py")],
+        timeout=3600,
+    )
+
+    # 3. Twitter (fetch + Codex, 최대 60분)
+    results["twitter"] = run_step(
+        "Twitter",
+        [PYTHON, str(SCRIPT_DIR / "run-twitter-pipeline.py")],
+        timeout=3600,
+    )
+
+    # 결과 요약
+    log(f"\n{'='*60}")
+    log("=== 결과 요약 ===")
+    for name, ok in results.items():
+        status = "OK" if ok else "FAIL"
+        log(f"  {name}: {status}")
+
+    failed = [n for n, ok in results.items() if not ok]
+    if failed:
+        log(f"실패: {', '.join(failed)}")
+    else:
+        log("전체 성공")
+
+    log(f"{'='*60}")
+
+
+if __name__ == "__main__":
+    main()
