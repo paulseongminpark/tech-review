@@ -1,38 +1,37 @@
 {
   "date": "2026-03-19",
   "lang": "ko",
-  "post_url": "/ko/2026/03/19/daily-tech-review/",
-  "post_title": "MiniMax M2.7 자기진화형 에이전트, Hugging Face 오픈소스 리포트, GitHub Copilot LTS 모델 도입",
+  "post_url": "/ko/2026/03/19/daily-tech-review-2/",
+  "post_title": "엔비디아 OpenShell 에이전트 샌드박스, Unsloth Studio 로컬 파인튜닝 UI, LangSmith Polly GA",
   "source_type": "perplexity",
   "sections": [
     {
       "index": 1,
-      "title": "MiniMax M2.7 — 자기진화형 에이전트 LLM으로 에이전트 개발 워크플로를 뒤흔들다",
-      "lead": "중국 상하이 기반 MiniMax가 2026년 3월 18일 자기진화(self-evolution)를 전면에 내세운 대형 언어 모델 MiniMax M2.7을 발표했다. M2.7은 강화학습 하네스 구축과 로그 분석, 코드 수정 등 연구 워크플로의 30~50%를 스스로 수행하는 것을 목표로 설계되었으며, SWE-Pro 등 실제 개발 벤치마크에서 기존 모델을 위협하는 성능을 보여준다.",
+      "title": "엔비디아 OpenShell — 자율 AI 에이전트용 오픈소스 샌드박스로 사실상 보안 표준을 노린다",
+      "lead": "엔비디아가 GTC 2026에서 자율 AI 에이전트 전용 런타임인 OpenShell을 Apache 2.0 오픈소스로 공개했고, 3월 16일 첫 공개 이후 18일 기준 v0.0.10까지 알파 버전을 연속 릴리스하고 있다. OpenShell은 에이전트와 인프라 사이에 위치해 파일·네트워크·모델 호출을 모두 YAML 정책으로 통제하는 샌드박스 레이어로, Claude Code·Codex·OpenClaw 같은 에이전트를 코드 수정 없이 감싸는 것을 목표로",
       "tags": [
-        "opensource",
-        "llm",
-        "ma"
+        "opensource"
       ],
-      "anchor": "minimax-m27-자기진화형-에이전트-llm으로-에이전트-개발-워크플로를-뒤흔들다"
+      "anchor": "엔비디아-openshell-자율-ai-에이전트용-오픈소스-샌드박스로-사실상-보안-표준을-노린다"
     },
     {
       "index": 2,
-      "title": "Hugging Face — Spring 2026 오픈소스 리포트에서 중국 주도·소형 모델 실용주의·로보틱스 붐을 공식화하다",
-      "lead": "Hugging Face가 2026년 3월 17일 공식 블로그를 통해 'State of Open Source on Hugging Face: Spring 2026' 리포트를 공개했다. 등록 사용자 1,100만 명, 공개 모델 200만 개 이상, 공개 데이터셋 50만 개 이상이라는 규모를 제시하며 오픈소스 AI 생태계의 현 상황을 정량적으로 요약한다.",
+      "title": "Unsloth Studio — 로컬 LLM 파인튜닝을 위한 오픈소스 노코드 웹 UI로 2배 속도·VRAM 70% 절감을 내세운다",
+      "lead": "Unsloth AI가 3월 17일 'Unsloth Studio'(Beta)를 공개해 Mac·Windows·Linux에서 100% 로컬로 LLM을 실행·파인튜닝·배포할 수 있는 오픈소스 노코드 웹 UI를 출시했다. 기존에는 파이썬 스크립트와 복잡한 CUDA 세팅이 필요했던 파인튜닝 과정을, 브라우저 기반 GUI에서 데이터 준비부터 GGUF·vLLM·Ollama 내보내기까지 한 번에 처리하는 것이 목표다.",
       "tags": [
-        "opensource"
+        "opensource",
+        "llm"
       ],
-      "anchor": "hugging-face-spring-2026-오픈소스-리포트에서-중국-주도·소형-모델-실용주의·로보틱스-붐을"
+      "anchor": "unsloth-studio-로컬-llm-파인튜닝을-위한-오픈소스-노코드-웹-ui로-2배-속도·vram-70-"
     },
     {
       "index": 3,
-      "title": "GitHub Copilot — GPT-5.3-Codex를 최초 LTS 모델로 지정해 엔터프라이즈용 AI 코딩 스택을 고정하다",
-      "lead": "GitHub는 2026년 3월 18일 Copilot Business·Enterprise에 \"Long-Term Support(LTS) 모델\" 개념을 도입하고, GPT-5.3-Codex를 첫 LTS 모델로 지정했다. 2027년 2월 4일까지 최소 12개월간 사용 가능하며, 60일 내에 GPT-4.1을 대체해 모든 엔터프라이즈 조직의 기본 모델이 된다.",
+      "title": "LangSmith Polly — LangChain 전역 GA로 에이전트 디버깅·평가·프롬프트 수정을 한 화면에서 처리 가능해진다",
+      "lead": "LangChain이 LangSmith 내 에이전트 디버깅용 AI 어시스턴트 Polly를 3월 18일 기준 플랫폼 전역에서 사용할 수 있도록 확장하고 GA 수준으로 올렸다고 발표했다. Polly는 수백 단계짜리 트레이스와 장시간 대화 스레드를 분석해 실패 지점을 찾아주고, 프롬프트·데이터셋·평가 코드를 직접 수정해 주는 \"AI 에이전트 엔지니어\"로 설계되었다.",
       "tags": [
         "opensource"
       ],
-      "anchor": "github-copilot-gpt-53-codex를-최초-lts-모델로-지정해-엔터프라이즈용-ai-코딩-스택"
+      "anchor": "langsmith-polly-langchain-전역-ga로-에이전트-디버깅·평가·프롬프트-수정을-한-화면에서"
     }
   ]
 }

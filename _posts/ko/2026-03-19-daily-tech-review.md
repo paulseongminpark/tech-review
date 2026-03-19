@@ -1,67 +1,67 @@
 ---
 layout: post
-title: "MiniMax M2.7 자기진화형 에이전트, Hugging Face 오픈소스 리포트, GitHub Copilot LTS 모델 도입"
+title: "엔비디아 OpenShell 에이전트 샌드박스, Unsloth Studio 로컬 파인튜닝 UI, LangSmith Polly GA"
 date: 2026-03-19
 lang: ko
-permalink: /ko/2026/03/19/daily-tech-review/
-pair: 2026-03-19-daily-tech-review
+permalink: /ko/2026/03/19/daily-tech-review-2/
+pair: 2026-03-19-daily-tech-review-2
 tags: ["opensource", "developer", "tools"]
 source_type: perplexity
 ---
 
 ## Today in One Line
-지난 48시간 동안은 MiniMax M2.7의 자기진화형 에이전트 모델 공개, Hugging Face의 2026 스프링 오픈소스 리포트, GitHub Copilot의 GPT-5.3-Codex LTS 도입이 오픈소스 AI·개발자 생태계의 핵심 이슈로 떠올랐다.
+엔비디아 OpenShell, Unsloth Studio, LangSmith Polly GA가 동시에 나와 에이전트 보안·로컬 파인튜닝·에이전트 디버깅까지 AI 개발 스택 전체를 한 단계 끌어올리고 있다.
 
 ---
 
-## 1. MiniMax M2.7 — 자기진화형 에이전트 LLM으로 에이전트 개발 워크플로를 뒤흔들다
+## 1. 엔비디아 OpenShell — 자율 AI 에이전트용 오픈소스 샌드박스로 사실상 보안 표준을 노린다
 
-중국 상하이 기반 MiniMax가 2026년 3월 18일 자기진화(self-evolution)를 전면에 내세운 대형 언어 모델 MiniMax M2.7을 발표했다. M2.7은 강화학습 하네스 구축과 로그 분석, 코드 수정 등 연구 워크플로의 30~50%를 스스로 수행하는 것을 목표로 설계되었으며, SWE-Pro 등 실제 개발 벤치마크에서 기존 모델을 위협하는 성능을 보여준다.
+엔비디아가 GTC 2026에서 자율 AI 에이전트 전용 런타임인 OpenShell을 Apache 2.0 오픈소스로 공개했고, 3월 16일 첫 공개 이후 18일 기준 v0.0.10까지 알파 버전을 연속 릴리스하고 있다. OpenShell은 에이전트와 인프라 사이에 위치해 파일·네트워크·모델 호출을 모두 YAML 정책으로 통제하는 샌드박스 레이어로, Claude Code·Codex·OpenClaw 같은 에이전트를 코드 수정 없이 감싸는 것을 목표로 한다.
 
-**Why it matters:** orchestration이 13개 스킬과 mcp-memory 관찰→시그널→패턴→원칙 성숙 루프로 '시스템이 자기를 개선하는 구조'를 운영하듯, M2.7은 이를 모델 레벨에서 구현한 첫 상용 사례다. SWE-Pro 56%는 Codex 위임 작업의 벤치마크 비교점이 된다.
+**Why it matters:** orchestration Workers 3개(code-reviewer, compressor, commit-writer)가 서버 측 코드를 실행하는 구조에서, OpenShell의 YAML 정책 기반 격리는 /delegate 멀티AI 위임 시 에이전트별 권한 경계를 인프라 레벨에서 강제하는 레이어로 직접 검토할 만하다.
 
-- SWE-Pro 56.22%, Terminal Bench 2 57.0%, VIBE-Pro 55.6%로 GPT-5.3-Codex 및 Opus급 모델과 동등 수준
-- GDPval-AA ELO 1495로 오픈소스 계열 최고 점수, 40개 이상 복잡 스킬에서 97% 준수율
-- OpenClaw·TRAE 등 외부 에이전트 런타임 연동을 전제로 설계
-- 모델 가중치는 미공개, API·파트너 통합으로만 접근 가능
+- Apache 2.0 라이선스, 리눅스 Landlock LSM 기반 커널 레벨 격리로 파일·프로세스·소켓을 YAML 정책으로 통제한다
+- curl 한 줄 설치, v0.0.10까지 연속 릴리스, 리눅스 x86_64·ARM64·macOS ARM 바이너리를 제공한다
+- NemoClaw 스택으로 OpenClaw뿐 아니라 Claude Code·Codex·Cursor도 코드 수정 없이 감싸는 것을 목표로 한다
+- LangChain·TrendAI·EQTY Lab 등과의 통합을 동시에 발표했다
 
-**What's next:** 이전 MiniMax-M2 계열이 오픈웨이트로 공개된 전례가 있어, M2.7에도 유사한 수준의 공개가 이어질지 커뮤니티가 주목하고 있다.
+**What's next:** 현재는 알파 단계 소규모 팀 중심이지만, 금융·보안 벤더와의 통합이 이미 발표된 만큼 1년 내 엔터프라이즈 에이전트용 기본 런타임 위치를 노리는 움직임이 가속될 것으로 보인다.
 
-**Source:** MiniMax M2.7: Early Echoes of Self-Evolution (minimax.io)
-
----
-
-## 2. Hugging Face — Spring 2026 오픈소스 리포트에서 중국 주도·소형 모델 실용주의·로보틱스 붐을 공식화하다
-
-Hugging Face가 2026년 3월 17일 공식 블로그를 통해 'State of Open Source on Hugging Face: Spring 2026' 리포트를 공개했다. 등록 사용자 1,100만 명, 공개 모델 200만 개 이상, 공개 데이터셋 50만 개 이상이라는 규모를 제시하며 오픈소스 AI 생태계의 현 상황을 정량적으로 요약한다.
-
-**Why it matters:** 멀티AI 파이프라인에서 상위 0.01% 모델에 사용이 집중되는 구조가 수치로 확인되었다. Qwen 계열 11만+ 파생 모델의 성장은 Gate B/C에서 대안 모델 풀을 평가할 때 고려할 변수다.
-
-- 전체 모델의 약 50%는 다운로드 200회 미만, 상위 200개 모델(0.01%)이 전체 다운로드의 49.6% 차지
-- 지난 1년간 다운로드 기준 중국이 41% 비중으로 미국을 추월
-- 알리바바 Qwen 계열: 직접 파생 11만+ 개, Qwen 태그 모델 총 20만+ 개
-- 소형·경량 모델과 로보틱스·과학 분야 모델이 빠르게 성장
-
-**What's next:** 리포트는 한국의 국가 주권 AI 이니셔티브와 LG AI Research, Naver Cloud, Upstage 등을 사례로 들며, 각국 정부가 오픈웨이트 모델을 디지털 주권 인프라의 핵심 요소로 보는 흐름이 2026년 내내 강화될 것으로 전망한다.
-
-**Source:** State of Open Source on Hugging Face: Spring 2026 (huggingface.co)
+**Source:** NVIDIA OpenShell Developer Guide (docs.nvidia.com)
 
 ---
 
-## 3. GitHub Copilot — GPT-5.3-Codex를 최초 LTS 모델로 지정해 엔터프라이즈용 AI 코딩 스택을 고정하다
+## 2. Unsloth Studio — 로컬 LLM 파인튜닝을 위한 오픈소스 노코드 웹 UI로 2배 속도·VRAM 70% 절감을 내세운다
 
-GitHub는 2026년 3월 18일 Copilot Business·Enterprise에 "Long-Term Support(LTS) 모델" 개념을 도입하고, GPT-5.3-Codex를 첫 LTS 모델로 지정했다. 2027년 2월 4일까지 최소 12개월간 사용 가능하며, 60일 내에 GPT-4.1을 대체해 모든 엔터프라이즈 조직의 기본 모델이 된다.
+Unsloth AI가 3월 17일 'Unsloth Studio'(Beta)를 공개해 Mac·Windows·Linux에서 100% 로컬로 LLM을 실행·파인튜닝·배포할 수 있는 오픈소스 노코드 웹 UI를 출시했다. 기존에는 파이썬 스크립트와 복잡한 CUDA 세팅이 필요했던 파인튜닝 과정을, 브라우저 기반 GUI에서 데이터 준비부터 GGUF·vLLM·Ollama 내보내기까지 한 번에 처리하는 것이 목표다.
 
-**Why it matters:** Opus/Sonnet/Haiku를 역할별로 고정 운용하는 것과 같은 논리로, Copilot도 안정(LTS)/실험 채널을 분리했다. tech-review 자동화 파이프라인에서 Copilot Agent 연동 시 12개월 모델 고정은 워크플로 안정성의 핵심이다.
+**Why it matters:** Gate B/C에서 Codex·Gemini 외에 로컬 파인튜닝 모델을 대안 워커로 투입할 수 있는 진입 장벽이 대폭 낮아졌다. Data Recipes의 합성 데이터 생성은 mcp-memory 지식 그래프 데이터를 파인튜닝 학습셋으로 전환하는 경로를 열어준다.
 
-- GPT-5.3-Codex: 에이전트형 코딩에서 높은 "code survival rate" (PR에 살아남는 코드 비율) 기록
-- 2026년 5월 17일 기준 Copilot Business·Enterprise 디폴트로 전환, 프리미엄 요청 1x multiplier
-- 동시 발표: Copilot coding agent validation tools 설정 — 정적 분석·테스트 도구를 에이전트가 자동 실행하는 정책 구성 가능
-- 별도 승인 모델이 없는 조직은 GPT-4.1에서 자동 전환
+- Triton 기반 수작업 백워드 패스로 학습 속도 2배, VRAM 70% 절감(정확도 손실 없음)을 달성했다
+- 텍스트·비전·TTS·임베딩 포함 500개 이상 모델을 지원한다
+- Data Recipes: 노드 기반 그래프 UI로 PDF·CSV·DOCX에서 ChatML·Alpaca 포맷 합성 데이터셋을 자동 생성한다
+- 훈련 후 GGUF·safetensors·vLLM 포맷으로 원클릭 내보내기가 가능하다
 
-**What's next:** 엔터프라이즈 조직들은 5월 17일까지 기존 GPT-4.1 기반 워크플로를 GPT-5.3-Codex 기준으로 재검증하고, 레포지토리 단위 validation tools 정책을 재구성할 필요가 있다.
+**What's next:** 현재는 NVIDIA GPU 중심이지만, AMD·Intel GPU와 멀티 GPU, Apple MLX 훈련까지 로드맵에 올려둔 만큼 로컬 LLM 파이프라인의 기본 GUI로 자리 잡을 가능성이 크다.
 
-**Source:** GPT-5.3-Codex long-term support in GitHub Copilot (GitHub Changelog)
+**Source:** Unsloth Studio – Introducing Unsloth Studio (unsloth.ai)
+
+---
+
+## 3. LangSmith Polly — LangChain 전역 GA로 에이전트 디버깅·평가·프롬프트 수정을 한 화면에서 처리 가능해진다
+
+LangChain이 LangSmith 내 에이전트 디버깅용 AI 어시스턴트 Polly를 3월 18일 기준 플랫폼 전역에서 사용할 수 있도록 확장하고 GA 수준으로 올렸다고 발표했다. Polly는 수백 단계짜리 트레이스와 장시간 대화 스레드를 분석해 실패 지점을 찾아주고, 프롬프트·데이터셋·평가 코드를 직접 수정해 주는 "AI 에이전트 엔지니어"로 설계되었다.
+
+**Why it matters:** tech-review 3-Tier DR 파이프라인(Perplexity→Gemini→ChatGPT)처럼 멀티턴·멀티도구 에이전트 트레이스가 길어질수록 수작업 디버깅이 불가능해지는데, Polly의 자동 실패 지점 분석과 프롬프트 수정은 이 병목을 정확히 겨냥한다.
+
+- LangSmith 모든 페이지 우하단에 상주하며, 페이지 간 대화를 유지하는 persistent memory를 제공한다
+- 프롬프트 수정, 실패 런에서 데이터셋 생성, 실험 비교, 평가 코드 자동 작성까지 수행한다
+- Cmd+I / Ctrl+I로 어디서든 호출 가능하며, OpenAI·Anthropic 등 모델 API 키를 워크스페이스 시크릿으로 연결한다
+- LangChain 오픈소스 프레임워크는 10억 회 이상 다운로드를 기록하며 에이전트 생태계 표준 중 하나로 자리잡았다
+
+**What's next:** LangChain 측은 Polly가 실험·A/B 테스트·평가 결과까지 자동 분석해 어떤 프롬프트·모델·아키텍처가 지표를 올리는지 추천하는 방향으로 진화할 것이라고 예고하고 있다.
+
+**Source:** LangSmith Polly Docs (docs.langchain.com)
 
 ---
 
