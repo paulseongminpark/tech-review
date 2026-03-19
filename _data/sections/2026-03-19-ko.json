@@ -2,35 +2,39 @@
   "date": "2026-03-19",
   "lang": "ko",
   "post_url": "/ko/2026/03/19/daily-tech-review/",
-  "post_title": "지난 48시간 동안 GitHub Copilot의 GPT-5.3-Codex LTS 도입, NVIDIA의 오픈소스 추론 OS Dynamo 1.0, Mistral의 Forge 출시가 AI 개발 인프라 지형을 새로 그리고 있다.",
+  "post_title": "Unsloth Studio 오픈소스 공개, Mistral Forge 엔터프라이즈 플랫폼, GitHub Copilot LTS 모델 도입",
   "source_type": "perplexity",
   "sections": [
     {
       "index": 1,
-      "title": "GitHub Copilot, GPT-5.3-Codex를 첫 LTS 모델이자 기본 모델로 채택해 엔터프라이즈 AI 코딩 기준을 고정한다",
-      "lead": "GitHub가 GPT-5.3-Codex를 GitHub Copilot의 첫 장기 지원(LTS) 모델로 지정하고, 2026년 5월 17일부터 Copilot Business·Enterprise의 기본(base) 모델로 전환하겠다고 발표했다.",
+      "title": "Unsloth Studio — 로컬 LLM 학습·추론을 위한 올인원 오픈소스 웹 UI 공개",
+      "lead": "Unsloth 팀이 2026년 3월 16~17일 로컬에서 LLM을 학습·실행·비교·배포까지 할 수 있는 오픈소스 웹 UI인 \"Unsloth Studio\" 베타를 공개했다. Mac·Windows·Linux에서 GGUF·safetensors 모델을 로컬로 돌리면서 500개 이상 모델을 최대 2배 빠르게, VRAM은 최대 70% 적게 쓰는 것을 목표로 설계되었다.",
       "tags": [
-        "misc"
+        "opensource",
+        "developer-tools",
+        "llm"
       ],
-      "anchor": "github-copilot-gpt-53-codex를-첫-lts-모델이자-기본-모델로-채택해-엔터프라이즈-ai"
+      "anchor": "unsloth-studio-로컬-llm-학습·추론을-위한-올인원-오픈소스-웹-ui-공개"
     },
     {
       "index": 2,
-      "title": "NVIDIA, 오픈소스 추론 OS 'Dynamo 1.0'으로 AI 팩토리 스택의 공용 인프라를 연다",
-      "lead": "NVIDIA가 GTC 2026에서 대규모 AI 추론을 위한 오픈소스 운영체제 격 소프트웨어인 'NVIDIA Dynamo 1.0'을 발표해, LangChain·llm-d·LMCache·SGLang·vLLM 같은 프레임워크와 긴밀히 통합되는 AI 팩토리용 추론 레이어를 공식화했다.",
+      "title": "Mistral — Forge와 Leanstral로 엔터프라이즈 커스텀 모델 + 오픈소스 코드 에이전트 전략 본격화",
+      "lead": "Mistral AI가 3월 17일 NVIDIA GTC에서 엔터프라이즈용 커스텀 모델 트레이닝 플랫폼 \"Mistral Forge\"를 공개했고, 그 직전인 3월 16일에는 Lean 4용 오픈소스 코드 에이전트 \"Leanstral\"을 Apache 2.0으로 출시했다. Forge는 사내 데이터로 프리트레인·미세조정·강화학습까지 전 주기를 돌리는 플랫폼이며, Leanstral은 형식 증명과 코드 검증에 특화된 오픈 웨이트 에이전트다.",
       "tags": [
-        "nvidia"
+        "opensource",
+        "developer-tools"
       ],
-      "anchor": "nvidia-오픈소스-추론-os-dynamo-10으로-ai-팩토리-스택의-공용-인프라를-연다"
+      "anchor": "mistral-forge와-leanstral로-엔터프라이즈-커스텀-모델-오픈소스-코드-에이전트-전략-본격화"
     },
     {
       "index": 3,
-      "title": "Mistral AI, Forge 플랫폼으로 기업이 자체 데이터로 프런티어급 모델을 재학습하는 시대를 연다",
-      "lead": "Mistral AI가 GTC 2026에서 기업 전용 모델 학습 플랫폼 'Forge'를 공개해, 단순 파인튜닝이 아닌 사내 데이터로 프런티어급 모델을 pre-training부터 RL까지 재학습할 수 있는 서비스를 내놓았다.",
+      "title": "GitHub Copilot — GPT-5.3-Codex를 최초 LTS 코딩 모델로 채택, GPT-5.4 mini GA",
+      "lead": "GitHub는 3월 18일 Copilot Business·Enterprise를 대상으로 \"장기 지원(LTS) 코딩 모델\" 트랙을 도입하고, OpenAI와 협력해 GPT-5.3-Codex를 첫 LTS 모델로 지정했다. 2027년 2월까지 최소 12개월간 유지되며, 60일 내에 기존 GPT-4.1을 대체해 모든 엔터프라이즈 조직의 기본 모델이 된다.",
       "tags": [
-        "misc"
+        "opensource",
+        "developer-tools"
       ],
-      "anchor": "mistral-ai-forge-플랫폼으로-기업이-자체-데이터로-프런티어급-모델을-재학습하는-시대를-연다"
+      "anchor": "github-copilot-gpt-53-codex를-최초-lts-코딩-모델로-채택-gpt-54-mini-ga"
     }
   ]
 }

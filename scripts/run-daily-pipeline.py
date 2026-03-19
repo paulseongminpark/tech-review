@@ -24,15 +24,15 @@ BLOG_DIR = SCRIPT_DIR.parent
 TMP_DIR = BLOG_DIR / "_tmp"
 POSTS_DIR = BLOG_DIR / "_posts" / "ko"
 
-# 요일 → 태그
+# 요일 → 태그 (weekday(): 0=Monday ~ 6=Sunday)
 DAY_TAGS = {
-    0: "weekly-recap",
-    1: "ai-ml, models, research, benchmarks",
-    2: "bigtech, google, microsoft, meta, apple, nvidia",
-    3: "ai-industry, startups, business",
-    4: "opensource, developer, tools",
-    5: "hardware, infrastructure, chips",
-    6: "use-cases, healthcare, education, policy",
+    0: "ai-ml, models, research, benchmarks",
+    1: "bigtech, google, microsoft, meta, apple, nvidia",
+    2: "ai-industry, startups, business",
+    3: "opensource, developer, tools",
+    4: "hardware, infrastructure, chips",
+    5: "use-cases, healthcare, education, policy",
+    6: "weekly-recap",
 }
 
 
@@ -228,6 +228,29 @@ def main():
     post_date = args.date
 
     TMP_DIR.mkdir(exist_ok=True)
+
+    # Lock: 동시 실행 방지
+    lock_file = TMP_DIR / "daily-pipeline.lock"
+    if lock_file.exists():
+        try:
+            lock_data = json.loads(lock_file.read_text(encoding="utf-8"))
+            lock_pid = lock_data.get("pid", 0)
+            # 프로세스가 살아있는지 확인
+            import psutil
+            if psutil.pid_exists(lock_pid):
+                log(f"[ABORT] 이미 실행 중 (PID {lock_pid}). 중복 실행 방지.")
+                sys.exit(0)
+        except Exception:
+            pass  # lock 파일 손상 — 무시하고 진행
+    lock_file.write_text(json.dumps({"pid": os.getpid(), "date": post_date, "started": datetime.now().isoformat()}), encoding="utf-8")
+
+    try:
+        _run_pipeline(post_date, args)
+    finally:
+        lock_file.unlink(missing_ok=True)
+
+
+def _run_pipeline(post_date: str, args):
     log(f"=== Daily Pipeline 시작 ({post_date}) ===")
 
     # Step 1: Deep Research
