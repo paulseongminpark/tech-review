@@ -23,12 +23,22 @@ TOKEN_PATH = CRED_DIR / "youtube_token.json"
 KEYS_PATH = CRED_DIR / "gcp-oauth.keys.json"
 PLAN_PATH = SCRIPT_DIR / "_credentials" / "refactor-plan.json"
 
-# 소스 플레이리스트 (리팩토링 대상)
+# 소스 플레이리스트 (리팩토링 완료 — 2026-03-20)
+# 아래는 리팩토링 이전 원본. 재실행 시 현재 플레이리스트로 교체 필요.
 SOURCE_PLAYLISTS = {
-    "blog":      "PLUeFkXBkSX_bgvVnbAFBvZZE03jCzzm5Q",
-    "Claude":    "PLUeFkXBkSX_bxzWza71Mdb7JlOOg5xDDS",
-    "AI work":   "PLUeFkXBkSX_b-vFTX8rDNnHBKCE-epz08",
-    "Ai design": "PLUeFkXBkSX_ZShpRuJsbAqc8KCqVPK8Hn",
+    "blog":      "PLUeFkXBkSX_bgvVnbAFBvZZE03jCzzm5Q",  # ARCHIVED
+    "Claude":    "PLUeFkXBkSX_bxzWza71Mdb7JlOOg5xDDS",  # → BLOG - Claude
+    "AI work":   "PLUeFkXBkSX_b-vFTX8rDNnHBKCE-epz08",  # ARCHIVED
+    "Ai design": "PLUeFkXBkSX_ZShpRuJsbAqc8KCqVPK8Hn",  # ARCHIVED
+}
+
+# 현재 활성 플레이리스트 (리팩토링 후)
+ACTIVE_PLAYLISTS = {
+    "claude":   "PLUeFkXBkSX_bxzWza71Mdb7JlOOg5xDDS",
+    "build":    "PLUeFkXBkSX_Znh-9HE9iIEzq23h3Y2eBw",
+    "design":   "PLUeFkXBkSX_aH1TmJ1iOolxwkJsP6DwXf",
+    "insight":  "PLUeFkXBkSX_bhASv37IvjLnXfCVwqQT8h",
+    "ontology": "PLUeFkXBkSX_ZFCfP8j0peOCeOlKVhwfFx",
 }
 
 # 유지되는 플레이리스트
