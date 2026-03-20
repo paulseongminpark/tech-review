@@ -480,6 +480,7 @@ function renderMain(videos) {
       <div class="yt-sb">
         ${sb.why ? `<p class="yt-sb-label">Why it matters</p><p class="yt-sb-why">${escHtml(sb.why)}</p>` : ''}
         ${sb.what ? `<p class="yt-sb-label" style="margin-top:0.5rem;">What's happening</p><p class="yt-sb-what">${escHtml(sb.what)}</p>` : ''}
+        ${(sb.axioms||[]).map(ax => `<p class="yt-sb-label" style="margin-top:0.5rem;">${escHtml(ax.label)}</p><p class="yt-sb-what">${escHtml(ax.content)}</p>`).join('')}
         <p class="yt-expand-hint">↓</p>
       </div>` : ''}
       <div class="yt-article-body" style="display:none;">

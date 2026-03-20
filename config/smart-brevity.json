@@ -1,0 +1,109 @@
+{
+  "core_4": {
+    "muscular_tease": {
+      "description": "6단어 이하 헤드라인. 능동 동사, 도발적이면서 정확",
+      "max_words": 6,
+      "rules": ["능동 동사 필수", "1음절 단어 우선", "전문용어/유머 금지", "소리 내어 읽어서 매력적인지 확인"]
+    },
+    "single_lede": {
+      "description": "단 1문장으로 가장 중요한 메시지 전달",
+      "max_sentences": 1,
+      "rules": ["독자가 모르는 것, 알고 싶은 것, 알아야 할 것", "일화/부사/약한단어 제거", "'하나만 기억한다면?' 테스트"]
+    },
+    "why_it_matters": {
+      "description": "이 정보가 독자에게 왜 중요한지. 'So what?'에 대한 답",
+      "max_sentences": 2,
+      "rules": ["볼드 레이블로 시작", "직접적이고 선언적인 문장", "첫 문장과의 관계 명확히"]
+    },
+    "go_deeper": {
+      "description": "선택적 깊이 — 더 읽을지는 독자가 결정",
+      "rules": ["3개 이상 아이디어면 bullet point", "단락 최대 2-3문장", "링크로 원문 안내"]
+    }
+  },
+  "axiom_labels": {
+    "why_it_matters": {
+      "label": "Why it matters",
+      "when": "항상 — 핵심 맥락, 이것이 왜 중요한지",
+      "required": true
+    },
+    "the_big_picture": {
+      "label": "The big picture",
+      "when": "거시적 맥락이 있을 때 — 산업 트렌드, 역사적 흐름",
+      "required": false
+    },
+    "whats_next": {
+      "label": "What's next",
+      "when": "후속 전개가 명확할 때 — 로드맵, 예정된 변화",
+      "required": false
+    },
+    "be_smart": {
+      "label": "Be smart",
+      "when": "전략적 인사이트가 있을 때 — 독자가 취할 행동/판단 기준",
+      "required": false
+    },
+    "by_the_numbers": {
+      "label": "By the numbers",
+      "when": "핵심 수치/데이터가 있을 때",
+      "required": false
+    },
+    "between_the_lines": {
+      "label": "Between the lines",
+      "when": "표면 아래 숨겨진 의미가 있을 때",
+      "required": false
+    },
+    "the_bottom_line": {
+      "label": "The bottom line",
+      "when": "결론이 명확할 때 — 한 문장 결론",
+      "required": false
+    },
+    "driving_the_news": {
+      "label": "Driving the news",
+      "when": "특정 사건이 이슈를 촉발했을 때",
+      "required": false
+    },
+    "zoom_in": {
+      "label": "Zoom in",
+      "when": "구체적 사례, 전문가 발언이 있을 때",
+      "required": false
+    },
+    "yes_but": {
+      "label": "Yes, but",
+      "when": "반론, 주의사항, 단서가 있을 때",
+      "required": false
+    },
+    "what_were_watching": {
+      "label": "What we're watching",
+      "when": "주목할 후속 전개가 있을 때",
+      "required": false
+    },
+    "go_deeper": {
+      "label": "Go deeper",
+      "when": "추가 자료, 원문 링크가 있을 때",
+      "required": false
+    }
+  },
+  "formatting": {
+    "bold": "axiom 레이블 + 핵심 수치/이름/키워드",
+    "bullet_points": "3개 이상 아이디어일 때 필수",
+    "paragraph_max_sentences": 2,
+    "total_max_words": 300,
+    "word_choice": "1음절 단어 우선, 능동 동사, 안개 단어 제거"
+  },
+  "selection_guide": {
+    "youtube": {
+      "always": ["why_it_matters"],
+      "common": ["be_smart", "the_bottom_line", "zoom_in"],
+      "if_applicable": ["by_the_numbers", "yes_but", "whats_next"]
+    },
+    "twitter": {
+      "always": ["why_it_matters"],
+      "common": ["the_big_picture", "be_smart"],
+      "if_applicable": ["driving_the_news", "between_the_lines"]
+    },
+    "daily": {
+      "always": ["why_it_matters"],
+      "common": ["driving_the_news", "the_big_picture", "whats_next"],
+      "if_applicable": ["by_the_numbers", "yes_but", "what_were_watching"]
+    }
+  }
+}

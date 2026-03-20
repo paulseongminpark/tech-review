@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
 """
-analyze-youtube.py — transcript → Codex CLI (GPT-5.4 xhigh) → summary JSON
+analyze-youtube.py — 3-stage YouTube pipeline
+
+Stage 1: yt-dlp 자막 → (fallback) Gemini 트랜스크립트
+Stage 2: Codex CLI (GPT-5.4) → 구조화 JSON (sections, takeaways, tech_stack, apply_points)
+Stage 3: Claude -p → Why It Matters (Smart Brevity axiom)
 
 매일 09:00 KST Task Scheduler 자동 실행
-GitHub Actions가 07:00에 transcript 추출 → 09:00에 분석
 
 Usage: python scripts/analyze-youtube.py
 """
@@ -115,6 +118,54 @@ def extract_transcript_whisper(video_url: str, video_id: str) -> str | None:
     finally:
         audio_path.unlink(missing_ok=True)
 
+# ── Gemini fallback (Whisper 대체 — 자막 없는 영상) ────────────────────────
+def extract_transcript_gemini(video_url: str) -> str | None:
+    """Gemini CLI로 YouTube 영상에서 원문 트랜스크립트 추출."""
+    gemini_path = "C:/Users/pauls/AppData/Roaming/npm/gemini.cmd"
+    prompt = (
+        "You are a transcript extractor. Output the full spoken transcript "
+        "of this YouTube video. Output EVERY word in the ORIGINAL language. "
+        "No summary, no formatting, no commentary. Raw spoken text only. "
+        "Do NOT use any tools except for fetching the video content. "
+        f"Video: {video_url}"
+    )
+    try:
+        print("  [Gemini] 트랜스크립트 추출 중...")
+        result = subprocess.run(
+            [gemini_path, "-p", prompt, "-y"],
+            capture_output=True, timeout=300,
+            cwd="C:/windows/temp",
+            env={**os.environ}
+        )
+        text = result.stdout.decode("utf-8", errors="replace").strip()
+        # Gemini CLI 헤더 라인 제거 (YOLO mode, Loading extension 등)
+        lines = text.split("\n")
+        content_lines = []
+        started = False
+        for line in lines:
+            if not started:
+                if any(skip in line for skip in [
+                    "YOLO mode", "Loaded cached", "Loading extension",
+                    "Server '", "I will"
+                ]):
+                    continue
+                started = True
+            if started:
+                content_lines.append(line)
+        transcript = "\n".join(content_lines).strip()
+        if len(transcript) > 100:
+            print(f"  [Gemini] 완료: {len(transcript)}자")
+            return transcript[:100000]
+        print("  [Gemini] 추출 결과 부족")
+        return None
+    except subprocess.TimeoutExpired:
+        print("  [Gemini] 타임아웃 (5분 초과)")
+        return None
+    except Exception as e:
+        print(f"  [Gemini] 실패: {e}")
+        return None
+
+
 SCRIPT_DIR = Path(__file__).parent
 BLOG_DIR   = SCRIPT_DIR.parent
 DATA_DIR   = BLOG_DIR / "_data" / "sources"
@@ -130,11 +181,9 @@ recall 결과를 바탕으로 아래 작업을 수행하라.
 자막에 등장하는 모든 주요 주제, 주장, 수치, 사례, 논거를 빠뜨리지 말 것.
 반드시 JSON만 출력. 마크다운 코드블록 없이 순수 JSON만.
 
+주의: smart_brevity 필드는 생성하지 마라. Why It Matters는 별도 단계에서 처리된다.
+
 {{
-  "smart_brevity": {{
-    "why": "한 문장 핵심 (왜 중요한가, 임팩트·의미 중심, 구체적 수치나 결과 포함)",
-    "what": "3-5줄 설명 (무슨 내용인가 — 영상 전체를 관통하는 핵심 논지, 구조, 차별점을 명확하게)"
-  }},
   "sections": [
     {{
       "heading": "섹션 제목 (명확하고 구체적으로 — 영상에서 다루는 실제 주제명)",
@@ -209,7 +258,7 @@ def analyze_with_codex(title: str, transcript: str) -> dict | None:
         out_path = BLOG_DIR / "_codex_out.json"
         result = subprocess.run(
             f'codex exec "파일 {tf_path} 을 읽고 지시대로 JSON을 만들어서 {out_path} 에 저장해라. 순수 JSON만." --full-auto',
-            capture_output=True, text=True, timeout=600,
+            capture_output=True, text=True, timeout=1800,  # 30분
             encoding="utf-8", errors="replace",
             cwd=str(BLOG_DIR), shell=True,
         )
@@ -229,7 +278,7 @@ def analyze_with_codex(title: str, transcript: str) -> dict | None:
         return json.loads(raw)
 
     except subprocess.TimeoutExpired:
-        print("  Codex 타임아웃 (10분 초과)")
+        print("  Codex 타임아웃 (30분 초과)")
         return None
     except json.JSONDecodeError as e:
         print(f"  JSON 파싱 실패: {e}")
@@ -243,6 +292,76 @@ def analyze_with_codex(title: str, transcript: str) -> dict | None:
             os.unlink(tf_path)
         except Exception:
             pass
+
+WIM_PROMPT_PATH = BLOG_DIR / "config" / "wim-prompt.md"
+CLAUDE_PATH = "C:/Users/pauls/AppData/Roaming/npm/claude.cmd"
+
+
+def generate_wim(summary: dict, title: str) -> dict | None:
+    """Claude -p로 Smart Brevity WIM 생성. summary에 smart_brevity 필드 추가."""
+    if not WIM_PROMPT_PATH.exists():
+        print("  [WIM] wim-prompt.md 없음 — 건너뜀")
+        return None
+
+    wim_prompt = WIM_PROMPT_PATH.read_text(encoding="utf-8")
+    # Codex 구조화 결과에서 WIM에 필요한 부분만 추출
+    compact = json.dumps({
+        "title": title,
+        "key_takeaways": summary.get("key_takeaways", []),
+        "tech_stack": summary.get("tech_stack", []),
+        "apply_points": summary.get("apply_points", []),
+        "sections": [{"heading": s["heading"]} for s in summary.get("sections", [])],
+    }, indent=2, ensure_ascii=False)
+
+    full_prompt = wim_prompt + "\n" + compact
+
+    try:
+        print("  [WIM] Claude -p 생성 중...")
+        result = subprocess.run(
+            [CLAUDE_PATH, "-p", "--setting-sources", "user"],
+            input=full_prompt.encode("utf-8"),
+            capture_output=True, timeout=120,
+            cwd="C:/windows/temp",
+            env={**os.environ}
+        )
+        wim_text = result.stdout.decode("utf-8", errors="replace").strip()
+        if not wim_text or len(wim_text) < 20:
+            print("  [WIM] 결과 부족")
+            return None
+
+        # smart_brevity 필드 구성
+        smart_brevity = {"why": "", "what": "", "axioms": []}
+
+        # Why it matters 추출
+        why_match = re.search(
+            r"\*\*Why it matters:\*\*\s*(.+?)(?=\n\n|\n\*\*|\Z)",
+            wim_text, re.DOTALL
+        )
+        if why_match:
+            smart_brevity["why"] = why_match.group(1).strip()
+
+        # 추가 axiom 추출
+        axiom_pattern = r"\*\*([^*]+):\*\*\s*(.+?)(?=\n\n|\n\*\*|\Z)"
+        for match in re.finditer(axiom_pattern, wim_text, re.DOTALL):
+            label = match.group(1).strip()
+            content = match.group(2).strip()
+            if label == "Why it matters":
+                continue  # 이미 처리
+            smart_brevity["axioms"].append({
+                "label": label,
+                "content": content
+            })
+
+        print(f"  [WIM] 완료: why={len(smart_brevity['why'])}자, axioms={len(smart_brevity['axioms'])}개")
+        return smart_brevity
+
+    except subprocess.TimeoutExpired:
+        print("  [WIM] 타임아웃 (2분 초과)")
+        return None
+    except Exception as e:
+        print(f"  [WIM] 실패: {e}")
+        return None
+
 
 STATUS_FILE = BLOG_DIR / "_data" / "analyze-status.json"
 
@@ -305,9 +424,15 @@ def main():
             write_status("subtitle", title, done, total, "yt-dlp 자막 추출 중...")
             transcript = extract_transcript_ytdlp(video_url, video_id)
 
-            # 2차: Whisper fallback
+            # 2차: Gemini fallback (Whisper 대체)
             if not transcript:
-                print("  [yt-dlp 자막] 없음 → Whisper fallback")
+                print("  [yt-dlp 자막] 없음 → Gemini fallback")
+                write_status("gemini", title, done, total, "Gemini 트랜스크립트 추출 중...")
+                transcript = extract_transcript_gemini(video_url)
+
+            # 3차: Whisper fallback (Gemini도 실패 시)
+            if not transcript:
+                print("  [Gemini] 실패 → Whisper fallback")
                 write_status("whisper", title, done, total, "오디오 다운로드 중...")
                 transcript = extract_transcript_whisper(video_url, video_id)
 
@@ -327,6 +452,15 @@ def main():
             continue
 
         validate_quotes(summary, video["transcript"])
+
+        # Stage 3: Claude WIM
+        write_status("wim", title, done, total, "Claude WIM 생성 중...")
+        wim = generate_wim(summary, title)
+        if wim:
+            summary["smart_brevity"] = wim
+        else:
+            print("  [WIM] 생성 실패 — smart_brevity 없이 저장")
+
         video["summary"] = summary
         done += 1
         print(f"  [{done}/{total}] 완료: {title[:50]}")
