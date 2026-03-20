@@ -242,6 +242,38 @@ def find_pending(reprocess=False):
                 pending.append((f, videos, v))
     return pending
 
+def analyze_with_gemini(title: str, transcript: str) -> dict | None:
+    """Gemini 2.5 Flash API로 구조화 (Codex 대체)"""
+    from dotenv import load_dotenv
+    load_dotenv(BLOG_DIR / ".env")
+    api_key = os.environ.get("GEMINI_API_KEY")
+    if not api_key:
+        print("  [Gemini API] GEMINI_API_KEY 없음")
+        return None
+    try:
+        import google.generativeai as genai
+        genai.configure(api_key=api_key)
+        model = genai.GenerativeModel("gemini-2.5-flash")
+
+        prompt = PROMPT_TEMPLATE.format(title=title, transcript=transcript[:50000])
+        resp = model.generate_content(prompt)
+        raw = resp.text.strip()
+        raw = re.sub(r"^```json\s*", "", raw)
+        raw = re.sub(r"\s*```$", "", raw.strip())
+        return json.loads(raw)
+    except json.JSONDecodeError as e:
+        print(f"  [Gemini API] JSON 파싱 실패: {e}")
+        return None
+    except Exception as e:
+        err_str = str(e)
+        if "429" in err_str or "quota" in err_str.lower():
+            print(f"  [Gemini API] 쿼터 초과 — 60초 대기")
+            import time; time.sleep(60)
+            return None
+        print(f"  [Gemini API] 실패: {e}")
+        return None
+
+
 def analyze_with_codex(title: str, transcript: str) -> dict | None:
     """Codex CLI (GPT-5.4 xhigh) 로 분석"""
     prompt = PROMPT_TEMPLATE.format(
@@ -388,6 +420,8 @@ def main():
                         help="기존 summary 유지, WIM만 재작성")
     parser.add_argument("--no-fetch", action="store_true",
                         help="fetch-youtube.js 실행 건너뜀")
+    parser.add_argument("--use-gemini", action="store_true",
+                        help="Codex 대신 Gemini Flash API로 구조화")
     args = parser.parse_args()
 
     # 최신 데이터 받기
@@ -464,7 +498,10 @@ def main():
             q_transcript.put((filepath, videos, video, args.wim_only))
         q_transcript.put(POISON)
 
-    # Stage 2: Codex 구조화
+    # Stage 2: 구조화 (Gemini or Codex)
+    analyze_fn = analyze_with_gemini if args.use_gemini else analyze_with_codex
+    engine_name = "Gemini" if args.use_gemini else "Codex"
+
     def stage2_worker():
         while True:
             item = q_transcript.get()
@@ -477,9 +514,9 @@ def main():
                 summary = video["summary"]
                 print(f"  [S2] WIM-only: {title[:40]}")
             else:
-                print(f"  [S2] Codex: {title[:40]}")
+                print(f"  [S2] {engine_name}: {title[:40]}")
                 summary = retry_with_backoff(
-                    analyze_with_codex, title, video["transcript"]
+                    analyze_fn, title, video["transcript"]
                 )
                 if not summary:
                     print(f"  [S2] 실패: {title[:40]}")
