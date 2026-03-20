@@ -118,51 +118,41 @@ def extract_transcript_whisper(video_url: str, video_id: str) -> str | None:
     finally:
         audio_path.unlink(missing_ok=True)
 
-# ── Gemini fallback (Whisper 대체 — 자막 없는 영상) ────────────────────────
+# ── Gemini API fallback (자막 없는 영상 트랜스크립트 추출) ──────────────────
 def extract_transcript_gemini(video_url: str) -> str | None:
-    """Gemini CLI로 YouTube 영상에서 원문 트랜스크립트 추출."""
-    gemini_path = "C:/Users/pauls/AppData/Roaming/npm/gemini.cmd"
-    prompt = (
-        "You are a transcript extractor. Output the full spoken transcript "
-        "of this YouTube video. Output EVERY word in the ORIGINAL language. "
-        "No summary, no formatting, no commentary. Raw spoken text only. "
-        "Do NOT use any tools except for fetching the video content. "
-        f"Video: {video_url}"
-    )
-    try:
-        print("  [Gemini] 트랜스크립트 추출 중...")
-        result = subprocess.run(
-            [gemini_path, "-p", prompt, "-y"],
-            capture_output=True, timeout=300,
-            cwd="C:/windows/temp",
-            env={**os.environ}
-        )
-        text = result.stdout.decode("utf-8", errors="replace").strip()
-        # Gemini CLI 헤더 라인 제거 (YOLO mode, Loading extension 등)
-        lines = text.split("\n")
-        content_lines = []
-        started = False
-        for line in lines:
-            if not started:
-                if any(skip in line for skip in [
-                    "YOLO mode", "Loaded cached", "Loading extension",
-                    "Server '", "I will"
-                ]):
-                    continue
-                started = True
-            if started:
-                content_lines.append(line)
-        transcript = "\n".join(content_lines).strip()
-        if len(transcript) > 100:
-            print(f"  [Gemini] 완료: {len(transcript)}자")
-            return transcript[:100000]
-        print("  [Gemini] 추출 결과 부족")
+    """Gemini API로 YouTube 영상에서 원문 트랜스크립트 추출."""
+    from dotenv import load_dotenv
+    load_dotenv(BLOG_DIR / ".env")
+    api_key = os.environ.get("GEMINI_API_KEY")
+    if not api_key:
+        print("  [Gemini API] GEMINI_API_KEY 없음")
         return None
-    except subprocess.TimeoutExpired:
-        print("  [Gemini] 타임아웃 (5분 초과)")
+    try:
+        import google.generativeai as genai
+        genai.configure(api_key=api_key)
+        model = genai.GenerativeModel("gemini-2.5-flash")
+
+        print("  [Gemini API] 트랜스크립트 추출 중...")
+        prompt = (
+            "You are a transcript extractor. Extract the full spoken transcript "
+            "of this YouTube video. Output EVERY word in the ORIGINAL language. "
+            "No summary, no formatting, no commentary. Raw spoken text only. "
+            f"Video: {video_url}"
+        )
+        resp = model.generate_content(prompt)
+        transcript = resp.text.strip()
+        if len(transcript) > 100:
+            print(f"  [Gemini API] 완료: {len(transcript)}자")
+            return transcript[:100000]
+        print("  [Gemini API] 추출 결과 부족")
         return None
     except Exception as e:
-        print(f"  [Gemini] 실패: {e}")
+        err_str = str(e)
+        if "429" in err_str or "quota" in err_str.lower():
+            print("  [Gemini API] 쿼터 초과 — 60초 대기")
+            import time; time.sleep(60)
+            return None
+        print(f"  [Gemini API] 실패: {e}")
         return None
 
 
