@@ -1,0 +1,40 @@
+{
+  "date": "2026-03-20",
+  "lang": "ko",
+  "post_url": "/ko/2026/03/20/daily-tech-review/",
+  "post_title": "AWS가 2026년부터 2027년까지 NVIDIA Blackwell·Rubin 기반 GPU 100만개 이상을 도입하고, 삼성전자가 2026년 한 해 AI 반도체에만 110조원을 투자하며, NVIDIA가 중국向 H200 GPU 생산을 재개하며 글로벌 AI 인프라 확장이 ",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "AWS, NVIDIA GPU 100만개 이상 확약으로 AI 클라우드 캐파 전쟁 선도",
+      "lead": "NVIDIA와 AWS가 GTC 2026에서 발표한 확장 협력에 따라 AWS가 2026년부터 전 세계 리전에 걸쳐 Blackwell·Rubin 아키텍처 기반 NVIDIA GPU를 100만개 이상 도입하고, Groq LPU와 ConnectX·Spectrum X 네트워킹까지 포함한 풀스택 AI 인프라를 구축하기로 했다.",
+      "tags": [
+        "chips",
+        "nvidia",
+        "aws"
+      ],
+      "anchor": "aws-nvidia-gpu-100만개-이상-확약으로-ai-클라우드-캐파-전쟁-선도"
+    },
+    {
+      "index": 2,
+      "title": "삼성전자, 2026년 AI 반도체 설비·R&D에 110조원 투입으로 HBM·파운드리 역전 의지 천명",
+      "lead": "삼성전자가 2026년 한 해 동안 시설투자와 R&D에 총 110조원(약 732억달러) 이상을 집행해 AI 반도체 시대의 주도권을 확보하겠다는 기업가치 제고 계획을 공시했으며, 이는 2025년 90.4조원 대비 약 22% 증액된 역대 최대 수준이다.",
+      "tags": [
+        "chips",
+        "hbm"
+      ],
+      "anchor": "삼성전자-2026년-ai-반도체-설비·rd에-110조원-투입으로-hbm·파운드리-역전-의지-천명"
+    },
+    {
+      "index": 3,
+      "title": "NVIDIA, 중국向 H200 GPU 생산·출하 재개로 10개월 간 제동 걸린 AI 칩 공급 재가동",
+      "lead": "중국 정부가 NVIDIA의 H200 AI GPU 수입을 승인하면서, NVIDIA가 약 10개월간 중단됐던 H200 생산을 재개하고 중국 고객사들로부터 주문을 다시 받기 시작했다.",
+      "tags": [
+        "chips",
+        "nvidia"
+      ],
+      "anchor": "nvidia-중국-h200-gpu-생산·출하-재개로-10개월-간-제동-걸린-ai-칩-공급-재가동"
+    }
+  ]
+}
