@@ -171,11 +171,6 @@ BLOG_DIR   = SCRIPT_DIR.parent
 DATA_DIR   = BLOG_DIR / "_data" / "sources"
 
 PROMPT_TEMPLATE = """\
-먼저 mcp-memory의 recall 도구를 호출해서 Paul의 현재 프로젝트 컨텍스트를 파악하라.
-recall 쿼리: "Paul orchestration mcp-memory tech-review 프로젝트 현재 작업"
-
-recall 결과를 바탕으로 아래 작업을 수행하라.
-
 다음은 YouTube 영상의 자막 전체 텍스트다.
 영상을 보지 않아도 내용을 완전히 파악할 수 있을 만큼 빠짐없이 포괄적인 분석 리포트를 아래 JSON 형식으로 만들어라.
 자막에 등장하는 모든 주요 주제, 주장, 수치, 사례, 논거를 빠뜨리지 말 것.
@@ -205,7 +200,7 @@ recall 결과를 바탕으로 아래 작업을 수행하라.
 - body는 최소 5문장 이상. 해당 섹션에서 발언자가 한 모든 주요 주장과 근거를 포함. 한 단락만으로 부족하면 여러 단락 사용.
 - body에 등장한 수치·인명·사례는 생략 없이 전부 기록.
 - highlights는 반드시 body에서 그대로 복사한 문장만. 요약·변형 금지. body에 없는 문장은 highlights 불가.
-- apply_points: recall 기반, Paul 프로젝트와 연결. backtick·파일경로·코드 금지. 한 문장으로 읽기 좋게. key=true는 최대 2개 — orchestration·mcp-memory·tech-review 중 당장 반영 가능한 것만.
+- apply_points: Paul의 프로젝트(orchestration, mcp-memory, tech-review, portfolio)와 연결. backtick·파일경로·코드 금지. 한 문장으로 읽기 좋게. key=true는 최대 2개.
 - 전부 한국어 (기술명·인명·고유명사는 영어 유지)
 - 영상을 안 봐도 될 수준 = 이 JSON만으로 영상의 모든 주요 내용이 복원 가능해야 함
 

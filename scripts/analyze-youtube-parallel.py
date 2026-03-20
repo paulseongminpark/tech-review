@@ -121,11 +121,6 @@ def extract_transcript_gemini(video_url):
 
 # ── Stage 2: Codex 구조화 ──
 PROMPT_TEMPLATE = """\
-먼저 mcp-memory의 recall 도구를 호출해서 Paul의 현재 프로젝트 컨텍스트를 파악하라.
-recall 쿼리: "Paul orchestration mcp-memory tech-review 프로젝트 현재 작업"
-
-recall 결과를 바탕으로 아래 작업을 수행하라.
-
 다음은 YouTube 영상의 자막 전체 텍스트다.
 영상을 보지 않아도 내용을 완전히 파악할 수 있을 만큼 빠짐없이 포괄적인 분석 리포트를 아래 JSON 형식으로 만들어라.
 자막에 등장하는 모든 주요 주제, 주장, 수치, 사례, 논거를 빠뜨리지 말 것.
@@ -152,7 +147,7 @@ recall 결과를 바탕으로 아래 작업을 수행하라.
 
 규칙:
 - sections 최소 6개. body 최소 5문장. 수치·인명·사례 생략 없이 기록.
-- highlights는 body에서 그대로 복사만. apply_points는 recall 기반.
+- highlights는 body에서 그대로 복사만. apply_points는 Paul 프로젝트와 연결.
 - 전부 한국어 (기술명·고유명사 영어 유지)
 - 영상을 안 봐도 될 수준으로.
 
