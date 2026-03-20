@@ -14,6 +14,61 @@ from pathlib import Path
 sys.stdout.reconfigure(encoding="utf-8")
 sys.stderr.reconfigure(encoding="utf-8")
 
+# ── yt-dlp 자막 추출 (1차) ────────────────────────────────────────────────
+def extract_transcript_ytdlp(video_url: str, video_id: str) -> str | None:
+    """yt-dlp로 YouTube 자막(수동 + 자동생성) 추출. 없으면 None."""
+    tmp_dir = Path(tempfile.gettempdir())
+    base = tmp_dir / f"yt_sub_{video_id}"
+
+    # 이전 임시 파일 정리
+    for f in tmp_dir.glob(f"yt_sub_{video_id}*"):
+        f.unlink(missing_ok=True)
+
+    # 수동 자막 우선, 없으면 자동생성 자막
+    for sub_args in [
+        ["--write-sub", "--sub-lang", "en,ko"],
+        ["--write-auto-sub", "--sub-lang", "en,ko"],
+    ]:
+        r = subprocess.run(
+            ["yt-dlp", "--skip-download", *sub_args,
+             "--sub-format", "vtt", "-o", str(base), video_url],
+            capture_output=True, text=True, timeout=60,
+        )
+        # vtt 파일 찾기
+        for vtt in sorted(tmp_dir.glob(f"yt_sub_{video_id}*.vtt")):
+            raw = vtt.read_text(encoding="utf-8", errors="replace")
+            # VTT 헤더/타임스탬프 제거 → 순수 텍스트
+            lines = []
+            for line in raw.splitlines():
+                line = line.strip()
+                if not line or line.startswith("WEBVTT") or line.startswith("Kind:") or line.startswith("Language:"):
+                    continue
+                if re.match(r"^\d{2}:\d{2}", line) or line == "-->" or "-->" in line:
+                    continue
+                if line.startswith("<"):
+                    line = re.sub(r"<[^>]+>", "", line)
+                if line:
+                    lines.append(line)
+            # 연속 중복 제거 (자동생성 자막의 반복 라인)
+            deduped = []
+            for ln in lines:
+                if not deduped or ln != deduped[-1]:
+                    deduped.append(ln)
+            transcript = " ".join(deduped).strip()
+            # 정리
+            for f in tmp_dir.glob(f"yt_sub_{video_id}*"):
+                f.unlink(missing_ok=True)
+            if len(transcript) > 100:
+                lang = "ko" if "ko" in vtt.name else "en"
+                print(f"  [yt-dlp 자막] 완료: {len(transcript)}자 ({lang})")
+                return transcript[:100000]
+
+    # 정리
+    for f in tmp_dir.glob(f"yt_sub_{video_id}*"):
+        f.unlink(missing_ok=True)
+    return None
+
+
 # ── Whisper fallback (자막 없는 영상) ─────────────────────────────────────
 def extract_transcript_whisper(video_url: str, video_id: str) -> str | None:
     """yt-dlp 오디오 추출 → openai-whisper STT → transcript 반환"""
@@ -241,17 +296,27 @@ def main():
         title = video.get("title", "")
         print(f"\n[{done}/{total}] 분석 중: {title}")
 
-        # transcript 없으면 Whisper로 추출
+        # transcript 없으면: yt-dlp 자막(1차) → Whisper(2차)
         if not video.get("transcript"):
             video_id = video.get("video_id") or ""
-            write_status("whisper", title, done, total, "오디오 다운로드 중...")
-            transcript = extract_transcript_whisper(video.get("url", ""), video_id)
+            video_url = video.get("url", "")
+
+            # 1차: yt-dlp 자막 추출 (수동 → 자동생성)
+            write_status("subtitle", title, done, total, "yt-dlp 자막 추출 중...")
+            transcript = extract_transcript_ytdlp(video_url, video_id)
+
+            # 2차: Whisper fallback
+            if not transcript:
+                print("  [yt-dlp 자막] 없음 → Whisper fallback")
+                write_status("whisper", title, done, total, "오디오 다운로드 중...")
+                transcript = extract_transcript_whisper(video_url, video_id)
+
             if transcript:
                 video["transcript"] = transcript
-                write_status("whisper_done", title, done, total, f"{len(transcript)}자 추출 완료")
+                write_status("transcript_done", title, done, total, f"{len(transcript)}자 추출 완료")
             else:
-                print("  Whisper 실패 — 건너뜀")
-                write_status("whisper_fail", title, done, total, "실패 — 건너뜀")
+                print("  자막+Whisper 모두 실패 — 건너뜀")
+                write_status("transcript_fail", title, done, total, "실패 — 건너뜀")
                 continue
 
         write_status("codex", title, done, total, "Codex 분석 중...")
