@@ -227,16 +227,23 @@ def validate_quotes(summary: dict, transcript: str) -> None:
         if q and _norm(q) not in norm_tr:
             sec.pop("quote", None)
 
-def find_pending():
-    """summary 없는 영상 목록 반환 (transcript 없으면 Whisper 대상 포함)"""
+def find_pending(reprocess=False):
+    """분석 대상 영상 목록 반환.
+    reprocess=True: 기존 summary 있는 영상도 전부 포함 (재구조화용)
+    """
     pending = []
+    seen = set()
     for f in sorted(DATA_DIR.glob("youtube-*.json")):
         try:
             videos = json.loads(f.read_text(encoding="utf-8"))
         except Exception:
             continue
         for v in videos:
-            if not v.get("summary"):
+            vid = v.get("video_id", "")
+            if vid in seen:
+                continue
+            seen.add(vid)
+            if reprocess or not v.get("summary"):
                 pending.append((f, videos, v))
     return pending
 
@@ -378,25 +385,36 @@ def write_status(step: str, video_title: str, done: int, total: int, detail: str
     )
 
 def main():
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--reprocess", action="store_true",
+                        help="기존 영상 포함 전체 재구조화 + WIM 재작성")
+    parser.add_argument("--wim-only", action="store_true",
+                        help="기존 summary 유지, WIM만 재작성")
+    parser.add_argument("--no-fetch", action="store_true",
+                        help="fetch-youtube.js 실행 건너뜀")
+    args = parser.parse_args()
+
     # 최신 데이터 받기
     os.system("git pull --rebase origin master")
 
     # fetch-youtube.js 실행 (신규 영상 수집)
-    fetch_script = SCRIPT_DIR / "fetch-youtube.js"
-    if fetch_script.exists():
-        print("=== YouTube fetch 실행 ===")
-        r = subprocess.run(
-            ["node", str(fetch_script)],
-            capture_output=True, text=True, encoding="utf-8", errors="replace",
-            cwd=str(BLOG_DIR), timeout=120,
-        )
-        if r.stdout.strip():
-            for line in r.stdout.strip().split("\n")[-5:]:
-                print(f"  {line}")
-        if r.returncode != 0 and r.stderr.strip():
-            print(f"  fetch 경고: {r.stderr.strip()[-200:]}")
+    if not args.no_fetch:
+        fetch_script = SCRIPT_DIR / "fetch-youtube.js"
+        if fetch_script.exists():
+            print("=== YouTube fetch 실행 ===")
+            r = subprocess.run(
+                ["node", str(fetch_script)],
+                capture_output=True, text=True, encoding="utf-8", errors="replace",
+                cwd=str(BLOG_DIR), timeout=120,
+            )
+            if r.stdout.strip():
+                for line in r.stdout.strip().split("\n")[-5:]:
+                    print(f"  {line}")
+            if r.returncode != 0 and r.stderr.strip():
+                print(f"  fetch 경고: {r.stderr.strip()[-200:]}")
 
-    pending = find_pending()
+    pending = find_pending(reprocess=args.reprocess or args.wim_only)
     print(f"분석 대상: {len(pending)}개 영상")
 
     if not pending:
@@ -444,14 +462,19 @@ def main():
                 write_status("transcript_fail", title, done, total, "실패 — 건너뜀")
                 continue
 
-        write_status("codex", title, done, total, "Codex 분석 중...")
-        summary = analyze_with_codex(title, video["transcript"])
-        if not summary:
-            print("  실패 — 건너뜀")
-            write_status("codex_fail", title, done, total, "실패 — 건너뜀")
-            continue
-
-        validate_quotes(summary, video["transcript"])
+        if args.wim_only and video.get("summary"):
+            # WIM만 재작성 — 기존 summary 유지
+            summary = video["summary"]
+            print(f"  [WIM-only] 기존 summary 유지, WIM만 재작성")
+        else:
+            # Stage 2: Codex 구조화
+            write_status("codex", title, done, total, "Codex 분석 중...")
+            summary = analyze_with_codex(title, video["transcript"])
+            if not summary:
+                print("  실패 — 건너뜀")
+                write_status("codex_fail", title, done, total, "실패 — 건너뜀")
+                continue
+            validate_quotes(summary, video["transcript"])
 
         # Stage 3: Claude WIM
         write_status("wim", title, done, total, "Claude WIM 생성 중...")
