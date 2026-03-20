@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """
 add-bookmark.py — prinsss/twitter-web-exporter JSON → bookmarks.json 자동 추가
-Codex CLI (gpt-5.4 xhigh) + mcp-memory recall로 apply_points 개인화
+
+3-stage: Codex 구조화 → Claude -p WIM (Smart Brevity axiom)
 
 Usage:
   python add-bookmark.py <bookmarks-raw.json>
@@ -26,25 +27,20 @@ load_dotenv(BLOG_DIR / ".env")
 
 # ── Prompt ─────────────────────────────────────────────────────────────────
 PROMPT_TEMPLATE = """\
-먼저 mcp-memory의 recall 도구를 호출해서 Paul의 현재 프로젝트 컨텍스트를 파악하라.
-recall 쿼리: "Paul orchestration mcp-memory tech-review 프로젝트 현재 작업"
-
-recall 결과를 바탕으로 아래 작업을 수행하라.
-
 다음 트위터 게시글을 아래 JSON 형식으로 처리해라.
 반드시 JSON만 출력. 마크다운 코드블록 없이 순수 JSON만.
 
+주의: why_it_matters 필드는 생성하지 마라. Why It Matters는 별도 단계에서 처리된다.
+
 {{
   "whats_happening": "무슨 일인가 — 1-2문장, 핵심 사건·발표·발견을 구체적으로",
-  "why_it_matters": "왜 중요한가 — 1-2문장, 임팩트와 의미 중심",
   "translation": "원문을 거의 그대로 한글로 번역. 요약 금지. 원문의 문장 구조·뉘앙스·어조를 최대한 살릴 것. 원문이 리스트면 리스트로, 문단이면 문단으로.",
   "tech_stack": ["언급된 실제 기술/도구/라이브러리명만"],
-  "apply_points": ["recall로 파악한 Paul의 실제 프로젝트에 구체적으로 적용 가능한 것. 한 문장으로 간결하게. 파일 경로 금지. 일반론 금지."]
+  "apply_points": ["Paul의 프로젝트(orchestration, mcp-memory, tech-review, portfolio)에 적용 가능한 것. 한 문장으로 간결하게. 파일 경로 금지. 일반론 금지."]
 }}
 
 규칙:
 - whats_happening: 1-2문장. 사건 중심.
-- why_it_matters: 1-2문장. 의미 중심.
 - translation: 번역이지 요약이 아님. 원문 길이의 90% 이상 유지. 영어 고유명사는 영어 유지.
 - tech_stack: 없으면 []
 - apply_points: 한 문장씩, 최대 3개. 파일 경로·backtick 금지. 50자 이내.
@@ -53,6 +49,42 @@ recall 결과를 바탕으로 아래 작업을 수행하라.
 트위터 내용:
 {text}
 """
+
+CLAUDE_PATH = "C:/Users/pauls/AppData/Roaming/npm/claude.cmd"
+WIM_PROMPT_PATH = BLOG_DIR / "config" / "wim-prompt.md"
+
+
+def generate_wim_twitter(summary: dict) -> str | None:
+    """Claude -p로 Twitter 북마크 WIM 생성."""
+    if not WIM_PROMPT_PATH.exists():
+        return None
+    wim_prompt = WIM_PROMPT_PATH.read_text(encoding="utf-8")
+    compact = json.dumps({
+        "title": summary.get("whats_happening", ""),
+        "key_takeaways": [summary.get("whats_happening", "")],
+        "tech_stack": summary.get("tech_stack", []),
+        "apply_points": summary.get("apply_points", []),
+        "sections": [],
+    }, indent=2, ensure_ascii=False)
+    full_prompt = wim_prompt + "\n" + compact
+    try:
+        result = subprocess.run(
+            [CLAUDE_PATH, "-p", "--setting-sources", "user"],
+            input=full_prompt.encode("utf-8"),
+            capture_output=True, timeout=120,
+            cwd="C:/windows/temp", env={**os.environ}
+        )
+        wim_text = result.stdout.decode("utf-8", errors="replace").strip()
+        if not wim_text or len(wim_text) < 20:
+            return None
+        # Why it matters 추출
+        why_match = re.search(
+            r"\*\*Why it matters:\*\*\s*(.+?)(?=\n\n|\n\*\*|\Z)",
+            wim_text, re.DOTALL
+        )
+        return why_match.group(1).strip() if why_match else wim_text[:200]
+    except Exception:
+        return None
 
 # ── Tweet extraction ────────────────────────────────────────────────────────
 def extract_tweets(raw):
@@ -226,7 +258,13 @@ def main():
         if not summary:
             print(" FAIL")
             continue
-        print(f" OK  {summary.get('whats_happening', '')[:50]}")
+        # Stage 2: Claude WIM
+        wim = generate_wim_twitter(summary)
+        if wim:
+            summary["why_it_matters"] = wim
+            print(f" OK  WIM✓ {summary.get('whats_happening', '')[:40]}")
+        else:
+            print(f" OK  WIM✗ {summary.get('whats_happening', '')[:40]}")
         bm = {
             "id": f"bm-{next_num:03d}",
             "author": tw["author"],

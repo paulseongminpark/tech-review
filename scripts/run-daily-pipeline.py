@@ -80,27 +80,29 @@ def step2_rewrite_why(raw_file: Path, post_date: str) -> Path:
             source_type = line.replace("SOURCE:", "").strip()
             break
 
+    # Smart Brevity WIM 프롬프트 로드
+    wim_rules = ""
+    wim_path = BLOG_DIR / "config" / "wim-prompt.md"
+    if wim_path.exists():
+        wim_rules = wim_path.read_text(encoding="utf-8")
+
     prompt = f"""아래는 Deep Research가 수집한 오늘의 AI/테크 뉴스 raw 데이터다.
 
 {raw_content}
 
 이 내용을 아래 Jekyll 포스트 형식으로 변환하라.
-변환 시 **Why it matters:** 부분만 Paul의 프로젝트 맥락으로 재작성한다.
+변환 시 **Why it matters:** 부분을 아래 Smart Brevity 규칙에 따라 재작성한다.
 
-Paul의 맥락:
-- orchestration: Claude Code 중심 멀티AI 시스템 (Workers 3, Skills 13)
-- mcp-memory: 지식 그래프 (관찰→시그널→패턴→원칙 성숙)
-- Context Engineering: 1M 토큰 관리, Gate A/B/C
-- tech-review: Playwright 3-Tier DR 자동화 (Perplexity→Gemini→ChatGPT fallback)
-- 멀티AI: Claude(설계) + Codex(추출) + Gemini(검증)
+{wim_rules}
 
-규칙:
+추가 규칙:
 1. ~다 체
 2. Why it matters만 재작성. 나머지 팩트는 그대로 유지.
 3. Paul의 실제 프로젝트와 연결. 일반론 금지.
-4. Why it matters는 항목당 1~2문장, 전체 합계 5줄 이내.
-5. Jekyll frontmatter 포함 (layout, title, date, lang, permalink, pair, tags, source_type: {source_type})
-6. 마크다운만 출력. 코드블록 없이.
+4. Why it matters는 항목당 1~2문장. 선언적 판단 + 파급 분석.
+5. 해당되는 axiom 레이블이 있으면 추가 (What's next, Be smart, By the numbers 등). 없으면 생략.
+6. Jekyll frontmatter 포함 (layout, title, date, lang, permalink, pair, tags, source_type: {source_type})
+7. 마크다운만 출력. 코드블록 없이.
 
 날짜: {post_date}
 tags: [{DAY_TAGS.get(datetime.strptime(post_date, '%Y-%m-%d').weekday(), 'ai-ml')}]
