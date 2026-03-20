@@ -420,74 +420,107 @@ def main():
     total = len(pending)
     done = 0
     updated_files = set()
-
-    # filepath → videos 맵 (in-memory 수정용)
     file_videos = {filepath: videos for (filepath, videos, _) in pending}
 
-    for (filepath, videos, video) in pending:
-        title = video.get("title", "")
-        print(f"\n[{done}/{total}] 분석 중: {title}")
+    # ── 조립 라인: 3단계 큐 ──
+    from threading import Thread
+    from queue import Queue
 
-        # transcript 없으면: yt-dlp 자막(1차) → Whisper(2차)
-        if not video.get("transcript"):
-            video_id = video.get("video_id") or ""
-            video_url = video.get("url", "")
+    q_transcript = Queue()   # Stage 1 → Stage 2
+    q_codex = Queue()        # Stage 2 → Stage 3
+    q_save = Queue()         # Stage 3 → 저장
 
-            # 1차: yt-dlp 자막 추출 (수동 → 자동생성)
-            write_status("subtitle", title, done, total, "yt-dlp 자막 추출 중...")
-            transcript = extract_transcript_ytdlp(video_url, video_id)
+    POISON = None  # 종료 신호
 
-            # 2차: Gemini fallback (Whisper 대체)
-            if not transcript:
-                print("  [yt-dlp 자막] 없음 → Gemini fallback")
-                write_status("gemini", title, done, total, "Gemini 트랜스크립트 추출 중...")
-                transcript = extract_transcript_gemini(video_url)
+    # 리밋 감지 + 재시도
+    def retry_with_backoff(fn, *a, max_retries=3, **kw):
+        for attempt in range(max_retries):
+            result = fn(*a, **kw)
+            if result is not None:
+                return result
+            wait = 60 * (attempt + 1)  # 1분, 2분, 3분
+            print(f"    재시도 대기 {wait}초 (attempt {attempt+1}/{max_retries})...")
+            import time; time.sleep(wait)
+        return None
 
-            # 3차: Whisper fallback (Gemini도 실패 시)
-            if not transcript:
-                print("  [Gemini] 실패 → Whisper fallback")
-                write_status("whisper", title, done, total, "오디오 다운로드 중...")
-                transcript = extract_transcript_whisper(video_url, video_id)
+    # Stage 1: 트랜스크립트 추출 (Gemini/yt-dlp)
+    def stage1_worker():
+        for (filepath, videos, video) in pending:
+            title = video.get("title", "")
+            if not video.get("transcript"):
+                video_id = video.get("video_id", "")
+                video_url = video.get("url", "")
+                print(f"  [S1] 트랜스크립트: {title[:40]}")
+                transcript = extract_transcript_ytdlp(video_url, video_id)
+                if not transcript:
+                    transcript = retry_with_backoff(extract_transcript_gemini, video_url)
+                if not transcript:
+                    transcript = extract_transcript_whisper(video_url, video_id)
+                if transcript:
+                    video["transcript"] = transcript
+                else:
+                    print(f"  [S1] 실패: {title[:40]}")
+                    continue
+            q_transcript.put((filepath, videos, video, args.wim_only))
+        q_transcript.put(POISON)
 
-            if transcript:
-                video["transcript"] = transcript
-                write_status("transcript_done", title, done, total, f"{len(transcript)}자 추출 완료")
+    # Stage 2: Codex 구조화
+    def stage2_worker():
+        while True:
+            item = q_transcript.get()
+            if item is POISON:
+                q_codex.put(POISON)
+                break
+            filepath, videos, video, wim_only = item
+            title = video.get("title", "")
+            if wim_only and video.get("summary"):
+                summary = video["summary"]
+                print(f"  [S2] WIM-only: {title[:40]}")
             else:
-                print("  자막+Whisper 모두 실패 — 건너뜀")
-                write_status("transcript_fail", title, done, total, "실패 — 건너뜀")
-                continue
+                print(f"  [S2] Codex: {title[:40]}")
+                summary = retry_with_backoff(
+                    analyze_with_codex, title, video["transcript"]
+                )
+                if not summary:
+                    print(f"  [S2] 실패: {title[:40]}")
+                    continue
+                validate_quotes(summary, video["transcript"])
+            q_codex.put((filepath, videos, video, summary))
 
-        if args.wim_only and video.get("summary"):
-            # WIM만 재작성 — 기존 summary 유지
-            summary = video["summary"]
-            print(f"  [WIM-only] 기존 summary 유지, WIM만 재작성")
-        else:
-            # Stage 2: Codex 구조화
-            write_status("codex", title, done, total, "Codex 분석 중...")
-            summary = analyze_with_codex(title, video["transcript"])
-            if not summary:
-                print("  실패 — 건너뜀")
-                write_status("codex_fail", title, done, total, "실패 — 건너뜀")
-                continue
-            validate_quotes(summary, video["transcript"])
+    # Stage 3: Claude WIM
+    def stage3_worker():
+        nonlocal done
+        while True:
+            item = q_codex.get()
+            if item is POISON:
+                q_save.put(POISON)
+                break
+            filepath, videos, video, summary = item
+            title = video.get("title", "")
+            print(f"  [S3] WIM: {title[:40]}")
+            wim = retry_with_backoff(generate_wim, summary, title)
+            if wim:
+                summary["smart_brevity"] = wim
+            else:
+                print(f"  [S3] WIM 실패: {title[:40]}")
+            video["summary"] = summary
+            done += 1
+            write_status("pipeline", title, done, total, f"완료={done}")
+            # 즉시 저장
+            filepath.write_text(
+                json.dumps(file_videos[filepath], ensure_ascii=False, indent=2),
+                encoding="utf-8"
+            )
+            updated_files.add(filepath)
+            print(f"  [{done}/{total}] 완료: {title[:40]}")
 
-        # Stage 3: Claude WIM
-        write_status("wim", title, done, total, "Claude WIM 생성 중...")
-        wim = generate_wim(summary, title)
-        if wim:
-            summary["smart_brevity"] = wim
-        else:
-            print("  [WIM] 생성 실패 — smart_brevity 없이 저장")
-
-        video["summary"] = summary
-        done += 1
-        print(f"  [{done}/{total}] 완료: {title[:50]}")
-        write_status("saved", title, done, total, "저장 완료")
-
-        # 영상 1개 완료될 때마다 즉시 저장
-        filepath.write_text(json.dumps(file_videos[filepath], ensure_ascii=False, indent=2), encoding="utf-8")
-        updated_files.add(filepath)
-        print(f"  저장: {filepath.name}")
+    # 3 스레드 동시 시작
+    print(f"\n=== 조립 라인 시작: {total}개 ===")
+    t1 = Thread(target=stage1_worker, daemon=True)
+    t2 = Thread(target=stage2_worker, daemon=True)
+    t3 = Thread(target=stage3_worker, daemon=True)
+    t1.start(); t2.start(); t3.start()
+    t1.join(); t2.join(); t3.join()
 
     if not updated_files:
         print("\n저장된 파일 없음.")
@@ -497,7 +530,7 @@ def main():
     write_status("pushing", "", done, total, "git push 중...")
     os.chdir(BLOG_DIR)
     os.system("git add _data/sources/")
-    os.system(f'git commit -m "[auto] youtube summary {done}개 분석"')
+    os.system(f'git commit -m "[auto] youtube pipeline {done}개 분석"')
     os.system("git push")
     write_status("complete", "", done, total, "완료")
     print("git push 완료")
