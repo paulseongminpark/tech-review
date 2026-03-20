@@ -1,23 +1,14 @@
 #!/usr/bin/env python3
-"""
-reprocess-bookmarks.py — inbox/ raw 파일로 bookmarks.json 재처리
-새 프롬프트 구조(whats_happening, why_it_matters, translation, apply_points) 적용
-
-Usage: python scripts/reprocess-bookmarks.py
-"""
-
+"""bm-045~055 재분석 — Codex GPT-5.4 + mcp-memory recall"""
 import json, os, re, subprocess, sys, tempfile
-from datetime import datetime
 from pathlib import Path
 
 sys.stdout.reconfigure(encoding="utf-8")
-sys.stderr.reconfigure(encoding="utf-8")
 
-SCRIPT_DIR     = Path(__file__).parent
-BLOG_DIR       = SCRIPT_DIR.parent
+SCRIPT_DIR = Path(__file__).parent
+BLOG_DIR = SCRIPT_DIR.parent
 BOOKMARKS_JSON = BLOG_DIR / "_data" / "bookmarks.json"
 
-# add-bookmark.py와 동일한 프롬프트
 PROMPT_TEMPLATE = """\
 먼저 mcp-memory의 recall 도구를 호출해서 Paul의 현재 프로젝트 컨텍스트를 파악하라.
 recall 쿼리: "Paul orchestration mcp-memory tech-review 프로젝트 현재 작업"
@@ -47,8 +38,10 @@ recall 결과를 바탕으로 아래 작업을 수행하라.
 {text}
 """
 
-def summarize_with_codex(text: str) -> dict | None:
+
+def summarize_with_codex(text, bm_id):
     prompt = PROMPT_TEMPLATE.format(text=text[:8000])
+
     with tempfile.NamedTemporaryFile(
         mode="w", suffix=".txt", delete=False, encoding="utf-8", dir=BLOG_DIR
     ) as tf:
@@ -56,13 +49,18 @@ def summarize_with_codex(text: str) -> dict | None:
         tf_path = tf.name
 
     try:
-        out_path = BLOG_DIR / "_codex_bm_out.json"
+        out_path = BLOG_DIR / f"_codex_reprocess_{bm_id}.json"
         result = subprocess.run(
-            ["codex.cmd", "exec",
-             f"파일 {tf_path} 을 읽고 지시대로 JSON을 만들어서 {out_path} 에 저장해라. 순수 JSON만.",
-             "--full-auto"],
-            capture_output=True, text=True, timeout=180, cwd=str(BLOG_DIR)
+            [
+                "codex.cmd", "exec",
+                f"파일 {tf_path} 을 읽고 지시대로 JSON을 만들어서 {out_path} 에 저장해라. 순수 JSON만.",
+                "--full-auto",
+            ],
+            capture_output=True, text=True, timeout=300,
+            encoding="utf-8", errors="replace",
+            cwd=str(BLOG_DIR)
         )
+
         if out_path.exists():
             raw = out_path.read_text(encoding="utf-8").strip()
             out_path.unlink()
@@ -71,7 +69,13 @@ def summarize_with_codex(text: str) -> dict | None:
 
         raw = re.sub(r"^```json\s*", "", raw)
         raw = re.sub(r"\s*```$", "", raw.strip())
+
+        json_match = re.search(r"\{[\s\S]*\}", raw)
+        if json_match:
+            raw = json_match.group(0)
+
         return json.loads(raw)
+
     except subprocess.TimeoutExpired:
         print("  Codex 타임아웃")
         return None
@@ -87,67 +91,45 @@ def summarize_with_codex(text: str) -> dict | None:
         except Exception:
             pass
 
+
 def main():
-    # inbox/ raw 파일에서 url→text 맵 구성
-    inbox = BLOG_DIR / "inbox"
-    url_to_text = {}
-    for raw_file in sorted(inbox.glob("*.json")):
-        try:
-            items = json.loads(raw_file.read_text(encoding="utf-8"))
-            if isinstance(items, list):
-                for item in items:
-                    url = item.get("url", "")
-                    text = item.get("text", "") or item.get("full_text", "")
-                    if url and text:
-                        url_to_text[url] = text
-        except Exception:
-            pass
-
-    print(f"raw 파일에서 {len(url_to_text)}개 트윗 원문 로드")
-
-    with open(BOOKMARKS_JSON, encoding="utf-8") as f:
-        bookmarks = json.load(f)
+    bm = json.load(open(BOOKMARKS_JSON, encoding="utf-8"))
+    targets = [b for b in bm if b["id"] >= "bm-045"]
+    print(f"재분석 대상: {len(targets)}개")
 
     updated = 0
-    skipped = 0
-
-    for bm in bookmarks:
-        url = bm.get("url", "")
-        # 이미 text 필드 있고 새 구조면 스킵
-        existing_text = bm.get("text", "")
-        if url in url_to_text:
-            text = url_to_text[url]
-        elif existing_text:
-            text = existing_text
-        else:
-            print(f"  스킵 (원문 없음): {bm['id']} @{bm.get('author','?')}")
-            skipped += 1
+    for b in targets:
+        text = b.get("text", "")
+        if not text or len(text) < 50:
+            print(f"  {b['id']} @{b['author']}: 본문 없음 — 스킵")
             continue
 
-        print(f"  재처리 중: {bm['id']} @{bm.get('author','?')} ...", end="", flush=True)
-        summary = summarize_with_codex(text)
+        print(f"\n[{b['id']}] @{b['author']} ({len(text)}자)...", end="", flush=True)
+        summary = summarize_with_codex(text, b["id"])
         if not summary:
-            print(" 실패")
+            print(" FAIL")
             continue
 
-        # 기존 필드 제거 후 새 구조로 교체
-        for old_key in ["smart_brevity", "explore_points"]:
-            bm.pop(old_key, None)
-
-        bm["text"] = text
-        bm["whats_happening"] = summary.get("whats_happening", "")
-        bm["why_it_matters"] = summary.get("why_it_matters", "")
-        bm["translation"] = summary.get("translation", "")
-        bm["tech_stack"] = summary.get("tech_stack", [])
-        bm["apply_points"] = summary.get("apply_points", [])
+        for key in ["whats_happening", "why_it_matters", "translation", "tech_stack", "apply_points"]:
+            if key in summary:
+                b[key] = summary[key]
 
         updated += 1
-        print(f" ✓  {bm['whats_happening'][:60]}")
+        print(f" OK — {summary.get('whats_happening', '')[:50]}")
 
-    with open(BOOKMARKS_JSON, "w", encoding="utf-8") as f:
-        json.dump(bookmarks, f, ensure_ascii=False, indent=2)
+        # 건마다 저장
+        with open(BOOKMARKS_JSON, "w", encoding="utf-8") as f:
+            json.dump(bm, f, ensure_ascii=False, indent=2)
 
-    print(f"\n완료 — 재처리 {updated}개, 스킵 {skipped}개")
+    print(f"\n{updated}/{len(targets)}개 재분석 완료")
+
+    if updated > 0:
+        os.chdir(BLOG_DIR)
+        os.system("git add _data/bookmarks.json")
+        os.system(f'git commit -m "[tech-review] bm-045~055 Codex 재분석 ({updated}개)"')
+        os.system("git push")
+        print("push 완료")
+
 
 if __name__ == "__main__":
     main()
