@@ -259,7 +259,7 @@ def analyze_with_codex(title: str, transcript: str) -> dict | None:
     try:
         out_path = BLOG_DIR / "_codex_out.json"
         result = subprocess.run(
-            f'codex exec "파일 {tf_path} 을 읽고 지시대로 JSON을 만들어서 {out_path} 에 저장해라. 순수 JSON만." --full-auto',
+            f'codex exec "파일 {tf_path} 을 읽고 지시대로 JSON을 만들어서 {out_path} 에 저장해라. 순수 JSON만." --full-auto --reasoning-effort high',
             capture_output=True, text=True, timeout=1800,  # 30분
             encoding="utf-8", errors="replace",
             cwd=str(BLOG_DIR), shell=True,

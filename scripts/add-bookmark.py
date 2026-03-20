@@ -172,7 +172,7 @@ def summarize_with_codex(text: str) -> dict | None:
             [
                 "codex.cmd", "exec",
                 f"파일 {tf_path} 을 읽고 지시대로 JSON을 만들어서 {out_path} 에 저장해라. 순수 JSON만.",
-                "--full-auto",
+                "--full-auto", "--reasoning-effort", "high",
             ],
             capture_output=True, text=True, timeout=300,
             encoding="utf-8", errors="replace",
