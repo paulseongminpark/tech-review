@@ -1,0 +1,35 @@
+[
+  {
+    "video_id": "nafNPuElCtY",
+    "title": "I Built My Entire Design System in 4 Hours With AI. Full Tutorial (Claude + Cursor + Figma)",
+    "channel": "The Design Project",
+    "published_at": "",
+    "fetched_at": "2026-03-20",
+    "playlist_index": 0,
+    "url": "https://www.youtube.com/watch?v=nafNPuElCtY",
+    "playlist": "blog",
+    "source_type": "youtube"
+  },
+  {
+    "video_id": "uEit1oOJK0w",
+    "title": "GSD Is the Missing Piece For Claude Code",
+    "channel": "AI LABS",
+    "published_at": "",
+    "fetched_at": "2026-03-20",
+    "playlist_index": 1,
+    "url": "https://www.youtube.com/watch?v=uEit1oOJK0w",
+    "playlist": "blog",
+    "source_type": "youtube"
+  },
+  {
+    "video_id": "4u94juYwLLM",
+    "title": "Jenny Wen: The design process is dead. Why Designers can no longer trust it.",
+    "channel": "Hatch Conference",
+    "published_at": "",
+    "fetched_at": "2026-03-20",
+    "playlist_index": 2,
+    "url": "https://www.youtube.com/watch?v=4u94juYwLLM",
+    "playlist": "blog",
+    "source_type": "youtube"
+  }
+]
