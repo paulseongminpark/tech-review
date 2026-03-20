@@ -276,10 +276,11 @@ nav.site-nav {
 </style>
 
 <div class="yt-subtabs" id="yt-subtabs">
-  <div class="yt-subtab active" data-cat="general">General</div>
-  <div class="yt-subtab" data-cat="tech">Tech</div>
+  <div class="yt-subtab active" data-cat="all">All</div>
   <div class="yt-subtab" data-cat="claude">Claude</div>
-  <div class="yt-subtab" data-cat="ais">AIs</div>
+  <div class="yt-subtab" data-cat="build">Build</div>
+  <div class="yt-subtab" data-cat="design">Design</div>
+  <div class="yt-subtab" data-cat="insight">Insight</div>
   <div class="yt-subtab" data-cat="ontology">Ontology</div>
 </div>
 
@@ -326,10 +327,10 @@ ALL_VIDEOS.sort((a, b) => {
 });
 
 /* ── 카테고리 매핑 ── */
-let currentCat = 'general';
+let currentCat = 'all';
 
 function filterByCategory(cat) {
-  if (cat === 'general') return ALL_VIDEOS.filter(v => v.playlist !== 'ontology');
+  if (cat === 'all') return ALL_VIDEOS;
   return ALL_VIDEOS.filter(v => v.playlist === cat);
 }
 

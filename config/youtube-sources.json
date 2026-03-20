@@ -1,10 +1,28 @@
 {
   "playlists": [
     {
-      "id": "PLUeFkXBkSX_bgvVnbAFBvZZE03jCzzm5Q",
-      "name": "blog",
-      "category": "general",
-      "lang": "en"
+      "id": "PLUeFkXBkSX_bxzWza71Mdb7JlOOg5xDDS",
+      "name": "claude",
+      "category": "claude",
+      "lang": "mixed"
+    },
+    {
+      "id": "PLUeFkXBkSX_Znh-9HE9iIEzq23h3Y2eBw",
+      "name": "build",
+      "category": "build",
+      "lang": "mixed"
+    },
+    {
+      "id": "PLUeFkXBkSX_aH1TmJ1iOolxwkJsP6DwXf",
+      "name": "design",
+      "category": "design",
+      "lang": "mixed"
+    },
+    {
+      "id": "PLUeFkXBkSX_bhASv37IvjLnXfCVwqQT8h",
+      "name": "insight",
+      "category": "insight",
+      "lang": "mixed"
     },
     {
       "id": "PLUeFkXBkSX_ZFCfP8j0peOCeOlKVhwfFx",

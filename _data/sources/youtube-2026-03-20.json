@@ -7,7 +7,7 @@
     "fetched_at": "2026-03-20",
     "playlist_index": 0,
     "url": "https://www.youtube.com/watch?v=nafNPuElCtY",
-    "playlist": "blog",
+    "playlist": "design",
     "source_type": "youtube"
   },
   {
@@ -18,7 +18,7 @@
     "fetched_at": "2026-03-20",
     "playlist_index": 1,
     "url": "https://www.youtube.com/watch?v=uEit1oOJK0w",
-    "playlist": "blog",
+    "playlist": "claude",
     "source_type": "youtube"
   },
   {
@@ -29,7 +29,7 @@
     "fetched_at": "2026-03-20",
     "playlist_index": 2,
     "url": "https://www.youtube.com/watch?v=4u94juYwLLM",
-    "playlist": "blog",
+    "playlist": "design",
     "source_type": "youtube"
   }
 ]

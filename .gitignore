@@ -19,6 +19,9 @@ _data/bookmarks-raw.json
 # CDP Chrome auth
 config/twitter-auth.json
 
+# YouTube API credentials
+scripts/_credentials/
+
 # Temp
 _tmp/
 _data/analyze-status.json
