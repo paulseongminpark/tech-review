@@ -109,6 +109,17 @@ nav.site-nav {
 }
 .yt-toc-child:hover { background: #f0f0f0; color: #444; }
 .yt-toc-child.active { color: #D4632D; font-weight: 600; }
+.yt-toc-cat {
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: #D4632D;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 10px 8px 4px;
+  margin-top: 6px;
+  border-top: 1px solid #eee;
+}
+.yt-toc-cat:first-child { border-top: none; margin-top: 0; }
 
 /* ── 메인 콘텐츠 ── */
 .yt-main {
@@ -364,6 +375,7 @@ function buildTocData(videos) {
     return {
       id: vid,
       num,
+      playlist: v.playlist || '',
       label: shortTitle(v.title),
       fullTitle: v.title,
       sections: ((v.summary || {}).sections || []).map((sec, si) => ({
@@ -376,16 +388,23 @@ function buildTocData(videos) {
 const expandedSet = new Set();
 
 function renderToc(tocData, activeId) {
-  document.getElementById('yt-toc').innerHTML = tocData.map(item => {
+  let html = '';
+  let lastPlaylist = '';
+  tocData.forEach(item => {
+    if (currentCat === 'all' && item.playlist && item.playlist !== lastPlaylist) {
+      lastPlaylist = item.playlist;
+      html += `<div class="yt-toc-cat">${item.playlist.toUpperCase()}</div>`;
+    }
     const isParentActive = activeId === item.id || item.sections.some(s => s.id === activeId);
     const isExpanded = expandedSet.has(item.id);
     const childrenHtml = isExpanded ? item.sections.map(sec =>
       `<a class="yt-toc-child${activeId === sec.id ? ' active' : ''}"
           href="#${sec.id}" onclick="scrollToId('${sec.id}');return false;">${escHtml(sec.label)}</a>`
     ).join('') : '';
-    return `<a class="yt-toc-item${isParentActive ? ' active' : ''}"
+    html += `<a class="yt-toc-item${isParentActive ? ' active' : ''}"
        href="#${item.id}" title="${escHtml(item.fullTitle)}" onclick="toggleArticle('${item.id}');return false;"><span class="yt-toc-num">${item.num}</span>${escHtml(item.label)}</a>${childrenHtml}`;
-  }).join('');
+  });
+  document.getElementById('yt-toc').innerHTML = html;
 }
 
 function scrollToId(id) {
