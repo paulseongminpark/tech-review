@@ -355,7 +355,23 @@ function renderSections() {
   el.innerHTML = html;
 }
 
+let activeSecIndex = null;
+
 function selectView(view) {
+  const contentEl = document.getElementById('yt-col-content');
+  if (typeof view === 'number' || view === 'takeaways' || view === 'tech' || view === 'apply') {
+    // overview 모드에서 해당 위치로 스크롤
+    if (selectedView !== 'overview') {
+      selectedView = 'overview';
+      renderContent();
+    }
+    setTimeout(() => {
+      const targetId = typeof view === 'number' ? 'yt-sec-' + view : 'yt-sec-' + view;
+      const target = document.getElementById(targetId);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 50);
+    return;
+  }
   selectedView = view;
   renderSections();
   renderContent();
@@ -385,45 +401,82 @@ function renderContent() {
       (sb.axioms||[]).forEach(ax => { body += `<p class="yt-c-sb-label" style="margin-top:0.5rem;">${esc(ax.label)}</p><p class="yt-c-sb-what">${esc(ax.content)}</p>`; });
       body += '</div>';
     }
-    // All sections preview
+    // All sections (continuous scroll)
     (s.sections||[]).forEach((sec, i) => {
-      body += `<div style="margin-bottom:1.5rem;">
+      body += `<div id="yt-sec-${i}" style="margin-bottom:1.5rem; scroll-margin-top: 1rem;">
         <h3 class="yt-c-section-heading"><span style="color:#bbb;font-weight:500;margin-right:8px;font-size:0.85em;">${String(i+1).padStart(2,'0')}</span>${esc(sec.heading)}</h3>
         <div class="yt-c-section-body">${highlight(sec.body, sec.highlights)}</div>
         ${sec.quote ? `<blockquote class="yt-c-quote">"${esc(sec.quote)}"</blockquote>` : ''}
       </div>`;
     });
-  } else if (typeof selectedView === 'number') {
-    // Single section
-    const sec = (s.sections||[])[selectedView];
-    if (sec) {
-      body = `<div>
-        <h3 class="yt-c-section-heading"><span style="color:#bbb;font-weight:500;margin-right:8px;font-size:0.85em;">${String(selectedView+1).padStart(2,'0')}</span>${esc(sec.heading)}</h3>
-        <div class="yt-c-section-body">${highlight(sec.body, sec.highlights)}</div>
-        ${sec.quote ? `<blockquote class="yt-c-quote">"${esc(sec.quote)}"</blockquote>` : ''}
-      </div>`;
+    // Takeaways / Tech / Apply at bottom
+    if ((s.key_takeaways||[]).length) {
+      body += `<div id="yt-sec-takeaways" style="scroll-margin-top:1rem;"><div class="yt-c-takeaways"><p class="yt-c-takeaways-label">핵심 요점</p><ul>${(s.key_takeaways||[]).map(t=>`<li>${esc(t)}</li>`).join('')}</ul></div></div>`;
     }
-  } else if (selectedView === 'takeaways') {
-    body = `<div class="yt-c-takeaways">
-      <p class="yt-c-takeaways-label">핵심 요점</p>
-      <ul>${(s.key_takeaways||[]).map(t => `<li>${esc(t)}</li>`).join('')}</ul>
-    </div>`;
-  } else if (selectedView === 'tech') {
-    body = `<p class="yt-c-row-label">Tech / Stack</p>
-      <div class="yt-c-tags">${(s.tech_stack||[]).map(t => `<span class="yt-c-tag">${esc(t)}</span>`).join('')}</div>`;
-  } else if (selectedView === 'apply') {
-    body = `<div class="yt-c-apply">
-      <p class="yt-c-row-label">적용 포인트</p>
-      <ul>${(s.apply_points||[]).map(p => {
-        const text = typeof p === 'object' ? (p.text||'') : p;
-        const key = typeof p === 'object' ? p.key : false;
-        return key ? `<li><mark class="yt-c-apply-key">${esc(text)}</mark></li>` : `<li>${esc(text)}</li>`;
-      }).join('')}</ul>
-    </div>`;
+    if ((s.tech_stack||[]).length) {
+      body += `<div id="yt-sec-tech" style="scroll-margin-top:1rem;"><p class="yt-c-row-label">Tech / Stack</p><div class="yt-c-tags">${(s.tech_stack||[]).map(t=>`<span class="yt-c-tag">${esc(t)}</span>`).join('')}</div></div>`;
+    }
+    if ((s.apply_points||[]).length) {
+      body += `<div id="yt-sec-apply" style="scroll-margin-top:1rem;"><div class="yt-c-apply"><p class="yt-c-row-label">적용 포인트</p><ul>${(s.apply_points||[]).map(p=>{const text=typeof p==='object'?(p.text||''):p;const key=typeof p==='object'?p.key:false;return key?`<li><mark class="yt-c-apply-key">${esc(text)}</mark></li>`:`<li>${esc(text)}</li>`;}).join('')}</ul></div></div>`;
+    }
   }
 
   el.innerHTML = header + body;
   el.scrollTop = 0;
+
+  // overview 모드일 때 스크롤 observer 연결
+  if (selectedView === 'overview') {
+    initContentObserver();
+  }
+}
+
+/* ── Col 4 스크롤 → Col 3 하이라이트 ── */
+function initContentObserver() {
+  const contentEl = document.getElementById('yt-col-content');
+  const v = getVideo();
+  if (!v) return;
+  const sectionCount = ((v.summary||{}).sections||[]).length;
+  const ids = [];
+  for (let i = 0; i < sectionCount; i++) ids.push('yt-sec-' + i);
+  ['takeaways','tech','apply'].forEach(k => {
+    if (document.getElementById('yt-sec-' + k)) ids.push('yt-sec-' + k);
+  });
+
+  contentEl.addEventListener('scroll', function onScroll() {
+    if (selectedView !== 'overview') { contentEl.removeEventListener('scroll', onScroll); return; }
+    let current = null;
+    for (const id of ids) {
+      const el = document.getElementById(id);
+      if (!el) continue;
+      const rect = el.getBoundingClientRect();
+      const containerRect = contentEl.getBoundingClientRect();
+      if (rect.top - containerRect.top <= containerRect.height * 0.3) current = id;
+    }
+    if (current !== null) {
+      const newIndex = current.startsWith('yt-sec-') ? current.replace('yt-sec-','') : current;
+      if (newIndex !== activeSecIndex) {
+        activeSecIndex = newIndex;
+        updateSecHighlight();
+      }
+    }
+  }, { passive: true });
+}
+
+function updateSecHighlight() {
+  document.querySelectorAll('#yt-col-sections .yt-sec-item, #yt-col-sections .yt-sec-meta-item').forEach(el => {
+    el.classList.remove('active');
+  });
+  // 숫자면 섹션, 아니면 메타
+  const idx = parseInt(activeSecIndex);
+  if (!isNaN(idx)) {
+    const items = document.querySelectorAll('#yt-col-sections .yt-sec-item');
+    // +1 because first item is Overview
+    if (items[idx + 1]) items[idx + 1].classList.add('active');
+  } else {
+    document.querySelectorAll('#yt-col-sections .yt-sec-meta-item').forEach(el => {
+      if (el.textContent.toLowerCase().includes(activeSecIndex)) el.classList.add('active');
+    });
+  }
 }
 
 /* ── Init ── */
