@@ -118,8 +118,21 @@ nav.site-nav {
   padding: 10px 8px 4px;
   margin-top: 6px;
   border-top: 1px solid #eee;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 .yt-toc-cat:first-child { border-top: none; margin-top: 0; }
+.yt-toc-cat::before {
+  content: '▾';
+  font-size: 0.55rem;
+  transition: transform 0.15s;
+}
+.yt-toc-cat.collapsed::before { transform: rotate(-90deg); }
+.yt-toc-cat-items { }
+.yt-toc-cat-items.collapsed { display: none; }
 
 /* ── 메인 콘텐츠 ── */
 .yt-main {
@@ -390,14 +403,28 @@ function buildTocData(videos) {
 
 const expandedSet = new Set();
 
+const collapsedCats = new Set();
+
 function renderToc(tocData, activeId) {
   let html = '';
   let lastPlaylist = '';
+  let groupHtml = '';
+
+  function flushGroup() {
+    if (lastPlaylist && currentCat === 'all') {
+      const isCollapsed = collapsedCats.has(lastPlaylist);
+      html += `<div class="yt-toc-cat${isCollapsed ? ' collapsed' : ''}" onclick="toggleTocCat('${lastPlaylist}')">${lastPlaylist.toUpperCase()}</div>`;
+      html += `<div class="yt-toc-cat-items${isCollapsed ? ' collapsed' : ''}" data-cat="${lastPlaylist}">${groupHtml}</div>`;
+    } else {
+      html += groupHtml;
+    }
+    groupHtml = '';
+  }
+
   tocData.forEach(item => {
-    // All 탭일 때 playlist 카테고리 헤더 삽입
     if (currentCat === 'all' && item.playlist && item.playlist !== lastPlaylist) {
+      if (lastPlaylist) flushGroup();
       lastPlaylist = item.playlist;
-      html += `<div class="yt-toc-cat">${item.playlist.toUpperCase()}</div>`;
     }
     const isParentActive = activeId === item.id || item.sections.some(s => s.id === activeId);
     const isExpanded = expandedSet.has(item.id);
@@ -405,10 +432,17 @@ function renderToc(tocData, activeId) {
       `<a class="yt-toc-child${activeId === sec.id ? ' active' : ''}"
           href="#${sec.id}" onclick="scrollToId('${sec.id}');return false;">${escHtml(sec.label)}</a>`
     ).join('') : '';
-    html += `<a class="yt-toc-item${isParentActive ? ' active' : ''}"
+    groupHtml += `<a class="yt-toc-item${isParentActive ? ' active' : ''}"
        href="#${item.id}" title="${escHtml(item.fullTitle)}" onclick="toggleArticle('${item.id}');return false;"><span class="yt-toc-num">${item.num}</span>${escHtml(item.label)}</a>${childrenHtml}`;
   });
+  flushGroup();
   document.getElementById('yt-toc').innerHTML = html;
+}
+
+function toggleTocCat(cat) {
+  if (collapsedCats.has(cat)) collapsedCats.delete(cat);
+  else collapsedCats.add(cat);
+  renderToc(window._tocData || [], activeVid);
 }
 
 function scrollToId(id) {
