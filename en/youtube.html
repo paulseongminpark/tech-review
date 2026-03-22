@@ -395,7 +395,7 @@ function buildTocData(videos) {
 }
 const expandedSet = new Set();
 
-const collapsedCats = new Set();
+const collapsedCats = new Set(PLAYLIST_ORDER);
 
 function renderToc(tocData, activeId) {
   let html = '';
