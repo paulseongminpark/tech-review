@@ -6,305 +6,224 @@ permalink: /ko/youtube/
 ---
 
 <style>
-/* ── body override ── */
-body {
-  max-width: none !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-nav.site-nav {
-  margin-left: 220px !important;
-  padding: 0.75rem 1.5rem !important;
-  position: relative;
-  z-index: 200;
-  background: #fff;
-}
+/* ── reset ── */
+body { max-width: none !important; margin: 0 !important; padding: 0 !important; }
+nav.site-nav { position: relative; z-index: 200; background: #fff; padding: 0.75rem 1.5rem !important; }
 
-/* ── 서브탭 ── */
-.yt-subtabs {
-  margin-left: 220px;
-  padding: 0 1.5rem;
-  background: #fff;
-  border-bottom: 1px solid #eee;
+/* ── 4-column finder ── */
+.yt-finder {
   display: flex;
-  gap: 0;
-  position: relative;
-  z-index: 199;
+  height: calc(100vh - 48px);
+  overflow: hidden;
 }
-.yt-subtab {
-  padding: 0.45rem 1rem;
-  font-size: 0.78rem;
-  font-weight: 500;
-  color: #999;
-  cursor: pointer;
-  border-bottom: 2px solid transparent;
-  transition: color 0.15s, border-color 0.15s;
-  text-transform: capitalize;
-  letter-spacing: 0.02em;
-}
-.yt-subtab:hover { color: #666; }
-.yt-subtab.active { color: #D4632D; font-weight: 700; border-bottom-color: #D4632D; }
-@media (max-width: 768px) {
-  .yt-subtabs { margin-left: 0; }
-}
-
-/* ── TOC 사이드바 ── */
-.yt-toc {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 220px;
-  height: 100vh;
+.yt-col {
+  height: 100%;
   overflow-y: auto;
   border-right: 1px solid #e8e8e8;
-  background: #fafafa;
-  z-index: 50;
-  padding: 54px 12px 24px;
+  scrollbar-width: thin;
   box-sizing: border-box;
-  scrollbar-width: none;
 }
-.yt-toc::-webkit-scrollbar { display: none; }
-.yt-toc-item {
+.yt-col::-webkit-scrollbar { width: 4px; }
+.yt-col::-webkit-scrollbar-thumb { background: #ddd; border-radius: 2px; }
+
+/* Col 1: 카테고리 */
+.yt-col-cat {
+  width: 140px; min-width: 140px;
+  background: #f7f7f7;
+  padding: 1rem 0;
+}
+.yt-cat-item {
   display: block;
-  font-family: 'Inter', sans-serif;
-  font-size: 11px;
-  font-weight: 400;
-  color: #4f4f4f;
-  text-decoration: none;
-  padding: 5px 8px;
-  border-radius: 4px;
-  margin-bottom: 2px;
-  line-height: 1.4;
-  transition: background 0.15s, color 0.15s;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  padding: 8px 16px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #666;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-left: 3px solid transparent;
+  transition: all 0.12s;
 }
-.yt-toc-item:hover { background: #f0f0f0; }
-.yt-toc-num {
-  font-size: 0.65em;
+.yt-cat-item:hover { color: #333; background: #f0f0f0; }
+.yt-cat-item.active { color: #D4632D; border-left-color: #D4632D; background: #fff; }
+.yt-cat-count {
+  font-size: 0.6rem;
   color: #bbb;
   font-weight: 400;
-  margin-right: 5px;
-  letter-spacing: 0;
+  margin-left: 4px;
 }
-.yt-toc-item.active {
-  color: #D4632D;
-  font-weight: 600;
-  background: rgba(212,99,45,0.08);
+
+/* Col 2: 영상 목록 */
+.yt-col-videos {
+  width: 260px; min-width: 260px;
+  background: #fcfcfc;
+  padding: 0.5rem 0;
 }
-.yt-toc-child {
+.yt-vid-item {
   display: block;
-  font-family: 'Inter', sans-serif;
-  font-size: 10px;
-  font-weight: 400;
-  color: #999;
-  text-decoration: none;
-  padding: 3px 8px 3px 14px;
-  border-radius: 3px;
-  margin-bottom: 1px;
-  line-height: 1.35;
-  margin-left: 6px;
-  transition: background 0.15s, color 0.15s;
-}
-.yt-toc-child:hover { background: #f0f0f0; color: #444; }
-.yt-toc-child.active { color: #D4632D; font-weight: 600; }
-.yt-toc-cat {
-  font-size: 0.6rem;
-  font-weight: 700;
-  color: #D4632D;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  padding: 10px 8px 4px;
-  margin-top: 6px;
-  border-top: 1px solid #eee;
+  padding: 10px 14px;
   cursor: pointer;
-  user-select: none;
-  display: flex;
-  align-items: center;
-  gap: 4px;
+  border-left: 3px solid transparent;
+  transition: all 0.12s;
 }
-.yt-toc-cat:first-child { border-top: none; margin-top: 0; }
-.yt-toc-cat.collapsed { opacity: 0.5; }
-.yt-toc-cat-items { }
-.yt-toc-cat-items.collapsed { display: none; }
-
-/* ── 메인 콘텐츠 ── */
-.yt-main {
-  margin-left: 220px;
-  padding: 2rem 1.5rem 4rem;
-}
-
-/* ── 영상 카드 ── */
-.yt-article {
-  padding: 1.2rem 0 2.5rem;
-  border-bottom: 1px solid #eee;
-  scroll-margin-top: 1rem;
-}
-.yt-article:last-child { border-bottom: none; }
-.yt-expand-hint {
-  margin: 0.6rem 0 0;
-  color: #D4632D;
-  font-size: 1rem;
-  font-weight: 700;
-}
-.yt-eyebrow {
-  font-size: 0.72rem;
+.yt-vid-item:hover { background: #f5f5f5; }
+.yt-vid-item.active { border-left-color: #D4632D; background: #fff; }
+.yt-vid-title {
+  font-size: 0.8rem;
   font-weight: 600;
-  color: #999;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  margin-bottom: 0.5rem;
+  color: #333;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
-.yt-title {
+.yt-vid-item.active .yt-vid-title { color: #D4632D; }
+.yt-vid-channel {
+  font-size: 0.65rem;
+  color: #aaa;
+  margin-top: 3px;
+}
+.yt-vid-playlist-tag {
+  display: inline-block;
+  font-size: 0.55rem;
+  color: #999;
+  background: #f0f0f0;
+  padding: 1px 5px;
+  border-radius: 3px;
+  margin-top: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Col 3: 섹션 네비 */
+.yt-col-sections {
+  width: 220px; min-width: 220px;
+  background: #f9f9f9;
+  padding: 0.5rem 0;
+}
+.yt-sec-header {
+  padding: 10px 14px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.yt-sec-item {
+  display: block;
+  padding: 7px 14px;
+  font-size: 0.78rem;
+  color: #555;
+  cursor: pointer;
+  border-left: 3px solid transparent;
+  line-height: 1.4;
+  transition: all 0.12s;
+}
+.yt-sec-item:hover { background: #f0f0f0; color: #333; }
+.yt-sec-item.active { color: #D4632D; font-weight: 600; border-left-color: #D4632D; background: #fff; }
+.yt-sec-num {
+  font-size: 0.65rem;
+  color: #bbb;
+  margin-right: 6px;
+  font-weight: 400;
+}
+.yt-sec-divider {
+  height: 1px;
+  background: #eee;
+  margin: 6px 14px;
+}
+.yt-sec-meta-item {
+  display: block;
+  padding: 6px 14px;
+  font-size: 0.72rem;
+  color: #888;
+  cursor: pointer;
+  transition: all 0.12s;
+}
+.yt-sec-meta-item:hover { color: #555; background: #f0f0f0; }
+.yt-sec-meta-item.active { color: #D4632D; font-weight: 600; }
+
+/* Col 4: 본문 */
+.yt-col-content {
+  flex: 1;
+  background: #fff;
+  padding: 2rem 2.5rem;
+  min-width: 0;
+}
+.yt-content-empty {
+  color: #ccc;
+  font-size: 0.9rem;
+  margin-top: 3rem;
+  text-align: center;
+}
+
+/* ── 본문 내 스타일 ── */
+.yt-c-title {
   font-size: 1.3rem;
   font-weight: 700;
   color: #1a1a1a;
   line-height: 1.4;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.3rem;
 }
-.yt-title a { color: inherit; text-decoration: none; }
-.yt-title a:hover { color: #D4632D; }
-.yt-meta {
-  font-size: 0.75rem;
-  color: #aaa;
-  margin-bottom: 1.5rem;
-}
-
-/* ── Smart Brevity ── */
-.yt-sb {
+.yt-c-title a { color: inherit; text-decoration: none; }
+.yt-c-title a:hover { color: #D4632D; }
+.yt-c-meta { font-size: 0.75rem; color: #aaa; margin-bottom: 1.5rem; }
+.yt-c-sb {
   background: #fafafa;
   border-left: 3px solid #D4632D;
   padding: 1rem 1.2rem;
   margin-bottom: 2rem;
   border-radius: 0 6px 6px 0;
 }
-.yt-sb-label {
-  font-size: 0.68rem;
-  font-weight: 700;
-  color: #D4632D;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-bottom: 0.35rem;
+.yt-c-sb-label {
+  font-size: 0.68rem; font-weight: 700; color: #D4632D;
+  text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.35rem;
 }
-.yt-sb-why {
-  font-size: 1rem;
-  font-weight: 700;
-  color: #1a1a1a;
-  line-height: 1.5;
-  margin-bottom: 0.6rem;
+.yt-c-sb-why { font-size: 1rem; font-weight: 700; color: #1a1a1a; line-height: 1.5; margin-bottom: 0.6rem; }
+.yt-c-sb-what { font-size: 0.88rem; color: #444; line-height: 1.7; }
+
+.yt-c-section-heading {
+  font-size: 1.05rem; font-weight: 700; color: #1a1a1a;
+  margin-bottom: 0.75rem; padding-bottom: 0.4rem; border-bottom: 1px solid #f0f0f0;
 }
-.yt-sb-what {
-  font-size: 0.88rem;
-  color: #444;
-  line-height: 1.7;
+.yt-c-section-body { font-size: 0.9rem; color: #333; line-height: 1.8; }
+.yt-c-section-body mark { background: rgba(212,99,45,0.12); color: inherit; border-radius: 2px; padding: 1px 2px; }
+.yt-c-quote {
+  border-left: 3px solid #2563eb; background: rgba(37,99,235,0.05);
+  padding: 0.5rem 1rem; margin: 0.75rem 0; font-size: 0.88rem;
+  color: #1d4ed8; font-style: italic; line-height: 1.7;
 }
 
-/* ── 섹션 ── */
-.yt-section {
-  margin-bottom: 2rem;
-  scroll-margin-top: 1rem;
-}
-.yt-section-heading {
-  font-size: 1rem;
-  font-weight: 700;
-  color: #1a1a1a;
-  margin-bottom: 0.75rem;
-  padding-bottom: 0.4rem;
-  border-bottom: 1px solid #f0f0f0;
-}
-.yt-section-body {
-  font-size: 0.9rem;
-  color: #333;
-  line-height: 1.8;
-}
-.yt-section-body mark {
-  background: rgba(212, 99, 45, 0.12);
-  color: inherit;
-  border-radius: 2px;
-  padding: 1px 2px;
-}
-.yt-quote {
-  border-left: 3px solid #2563eb;
-  background: rgba(37, 99, 235, 0.05);
-  padding: 0.5rem 1rem;
-  margin: 0.75rem 0;
-  font-size: 0.88rem;
-  color: #1d4ed8;
-  font-style: italic;
-  line-height: 1.7;
-}
-.yt-apply-key {
-  background: rgba(37, 99, 235, 0.14);
-  color: inherit;
-  border-radius: 2px;
-  padding: 0 3px;
-  font-weight: 600;
-}
+.yt-c-takeaways { background: #f8f8f8; border-radius: 8px; padding: 1.1rem 1.3rem; margin: 1.5rem 0; }
+.yt-c-takeaways-label { font-size: 0.7rem; font-weight: 700; color: #999; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.6rem; }
+.yt-c-takeaways ul { list-style: none; padding: 0; margin: 0; }
+.yt-c-takeaways li { font-size: 0.88rem; color: #333; padding: 0.2rem 0 0.2rem 1rem; position: relative; line-height: 1.6; }
+.yt-c-takeaways li::before { content: '›'; position: absolute; left: 0; color: #D4632D; }
 
-/* ── Key Takeaways ── */
-.yt-takeaways {
-  background: #f8f8f8;
-  border-radius: 8px;
-  padding: 1.1rem 1.3rem;
-  margin: 1.5rem 0;
-}
-.yt-takeaways-label {
-  font-size: 0.7rem;
-  font-weight: 700;
-  color: #999;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-bottom: 0.6rem;
-}
-.yt-takeaways ul { list-style: none; padding: 0; margin: 0; }
-.yt-takeaways li {
-  font-size: 0.88rem;
-  color: #333;
-  padding: 0.2rem 0 0.2rem 1rem;
-  position: relative;
-  line-height: 1.6;
-}
-.yt-takeaways li::before { content: '›'; position: absolute; left: 0; color: #D4632D; }
+.yt-c-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.5rem; }
+.yt-c-tag { background: #f0f4ff; color: #2244aa; font-size: 0.7rem; padding: 0.15rem 0.45rem; border-radius: 4px; }
+.yt-c-apply ul { list-style: none; padding: 0; margin: 0.4rem 0 0; }
+.yt-c-apply li { font-size: 0.82rem; color: #444; padding: 0.15rem 0 0.15rem 0.9rem; position: relative; line-height: 1.5; }
+.yt-c-apply li::before { content: '›'; position: absolute; left: 0; color: #0066cc; }
+.yt-c-apply-key { background: rgba(37,99,235,0.14); border-radius: 2px; padding: 0 3px; font-weight: 600; }
+.yt-c-row-label { font-size: 0.68rem; font-weight: 700; color: #aaa; text-transform: uppercase; letter-spacing: 0.08em; margin: 1.5rem 0 0.35rem; }
 
-/* ── Tech / Apply ── */
-.yt-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.5rem; }
-.yt-tag {
-  background: #f0f4ff; color: #2244aa;
-  font-size: 0.7rem; padding: 0.15rem 0.45rem;
-  border-radius: 4px;
-}
-.yt-apply ul { list-style: none; padding: 0; margin: 0.4rem 0 0; }
-.yt-apply li {
-  font-size: 0.82rem; color: #444;
-  padding: 0.15rem 0 0.15rem 0.9rem;
-  position: relative; line-height: 1.5;
-}
-.yt-apply li::before { content: '›'; position: absolute; left: 0; color: #0066cc; }
-.yt-row-label {
-  font-size: 0.68rem; font-weight: 700; color: #aaa;
-  text-transform: uppercase; letter-spacing: 0.08em;
-  margin: 1rem 0 0.35rem;
-}
-
-@media (max-width: 768px) {
-  .yt-toc { display: none; }
-  .yt-main { margin-left: 0 !important; }
-  nav.site-nav { margin-left: 0 !important; }
+@media (max-width: 900px) {
+  .yt-finder { flex-direction: column; height: auto; }
+  .yt-col { width: 100% !important; min-width: 0 !important; height: auto; max-height: 40vh; border-right: none; border-bottom: 1px solid #eee; }
+  .yt-col-content { max-height: none; }
 }
 </style>
 
-<div class="yt-subtabs" id="yt-subtabs">
-  <div class="yt-subtab active" data-cat="all">All</div>
-  <div class="yt-subtab" data-cat="claude">Claude</div>
-  <div class="yt-subtab" data-cat="build">Build</div>
-  <div class="yt-subtab" data-cat="design">Design</div>
-  <div class="yt-subtab" data-cat="insight">Insight</div>
-  <div class="yt-subtab" data-cat="ontology">Ontology</div>
+<div class="yt-finder">
+  <div class="yt-col yt-col-cat" id="yt-col-cat"></div>
+  <div class="yt-col yt-col-videos" id="yt-col-videos"></div>
+  <div class="yt-col yt-col-sections" id="yt-col-sections"></div>
+  <div class="yt-col yt-col-content" id="yt-col-content">
+    <p class="yt-content-empty">← 카테고리와 영상을 선택하세요</p>
+  </div>
 </div>
-
-<div id="yt-toc" class="yt-toc"></div>
-<div class="yt-main" id="yt-main"></div>
 
 <script>
 const ALL_VIDEOS = [];
@@ -317,7 +236,6 @@ ALL_VIDEOS.push({
   title:        {{ v.title | jsonify }},
   channel:      {{ v.channel | jsonify }},
   url:          {{ v.url | jsonify }},
-  thumbnail:    {{ v.thumbnail | jsonify }},
   published_at: {{ v.published_at | jsonify }},
   fetched_at:   {{ v.fetched_at | jsonify }},
   playlist:     {{ v.playlist | jsonify }},
@@ -328,273 +246,188 @@ ALL_VIDEOS.push({
   {% endif %}
 {% endfor %}
 
-// 중복 제거 (video_id 기준, 먼저 나온 것 유지)
+// 중복 제거
 const seen = new Set();
-const UNIQUE_VIDEOS = [];
-for (const v of ALL_VIDEOS) {
-  if (v.video_id && seen.has(v.video_id)) continue;
+const UNIQUE = ALL_VIDEOS.filter(v => {
+  if (v.video_id && seen.has(v.video_id)) return false;
   if (v.video_id) seen.add(v.video_id);
-  UNIQUE_VIDEOS.push(v);
-}
+  return true;
+});
 ALL_VIDEOS.length = 0;
-ALL_VIDEOS.push(...UNIQUE_VIDEOS);
+ALL_VIDEOS.push(...UNIQUE);
 
-// playlist 순서: youtube-sources.json 정의 순서 유지
 const PLAYLIST_ORDER = ['claude', 'build', 'design', 'insight', 'ontology'];
 ALL_VIDEOS.sort((a, b) => {
-  const pa = PLAYLIST_ORDER.indexOf(a.playlist);
-  const pb = PLAYLIST_ORDER.indexOf(b.playlist);
-  const oa = pa >= 0 ? pa : 999;
-  const ob = pb >= 0 ? pb : 999;
+  const oa = Math.max(PLAYLIST_ORDER.indexOf(a.playlist), 0);
+  const ob = Math.max(PLAYLIST_ORDER.indexOf(b.playlist), 0);
   if (oa !== ob) return oa - ob;
   return (a.playlist_index ?? 9999) - (b.playlist_index ?? 9999);
 });
 
-/* ── 카테고리 매핑 ── */
-let currentCat = 'all';
+/* ── State ── */
+let selectedCat = null;
+let selectedVideoId = null;
+let selectedView = null; // 'overview' | 'takeaways' | 'tech' | 'apply' | section index
 
-function filterByCategory(cat) {
-  if (cat === 'all') return ALL_VIDEOS;
-  return ALL_VIDEOS.filter(v => v.playlist === cat);
+function esc(s) { return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+function highlight(body, hl) {
+  if (!hl || !hl.length) return esc(body);
+  let r = esc(body);
+  hl.forEach(h => { if (h) r = r.replace(esc(h), `<mark>${esc(h)}</mark>`); });
+  return r;
 }
 
-function escHtml(str) {
-  return (str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+/* ── Col 1: Categories ── */
+function renderCats() {
+  const counts = {};
+  ALL_VIDEOS.forEach(v => { counts[v.playlist] = (counts[v.playlist]||0) + 1; });
+  const el = document.getElementById('yt-col-cat');
+  el.innerHTML = [{id:'all', label:'ALL', count: ALL_VIDEOS.length}]
+    .concat(PLAYLIST_ORDER.map(p => ({id: p, label: p.toUpperCase(), count: counts[p]||0})))
+    .map(c => `<div class="yt-cat-item${selectedCat===c.id?' active':''}" onclick="selectCat('${c.id}')">${c.label}<span class="yt-cat-count">${c.count}</span></div>`)
+    .join('');
 }
 
-function applyHighlights(body, highlights) {
-  if (!highlights || !highlights.length) return escHtml(body);
-  let result = escHtml(body);
-  highlights.forEach(h => {
-    if (!h) return;
-    const safe = escHtml(h);
-    result = result.replace(safe, `<mark>${safe}</mark>`);
-  });
-  return result;
+function selectCat(cat) {
+  selectedCat = cat;
+  selectedVideoId = null;
+  selectedView = null;
+  renderCats();
+  renderVideos();
+  document.getElementById('yt-col-sections').innerHTML = '';
+  document.getElementById('yt-col-content').innerHTML = '<p class="yt-content-empty">← 영상을 선택하세요</p>';
 }
 
-/* ── TOC ── */
-function shortTitle(t) {
-  return (t || '').split(/[|–—]/)[0].trim();
+/* ── Col 2: Videos ── */
+function getVideos() {
+  if (!selectedCat || selectedCat === 'all') return ALL_VIDEOS;
+  return ALL_VIDEOS.filter(v => v.playlist === selectedCat);
 }
 
-function buildTocData(videos) {
-  return videos.map((v, vi) => {
-    const vid = v.video_id || `v${vi}`;
-    const num = String(videos.length - vi).padStart(2, '0');
-    return {
-      id: vid,
-      num,
-      playlist: v.playlist || '',
-      label: shortTitle(v.title),
-      fullTitle: v.title,
-      sections: ((v.summary || {}).sections || []).map((sec, si) => ({
-        id: `${vid}-s${si}`,
-        label: `${String(si+1).padStart(2,'0')}. ${sec.heading.length > 26 ? sec.heading.slice(0,24)+'…' : sec.heading}`
-      }))
-    };
-  });
-}
-
-const expandedSet = new Set();
-
-const collapsedCats = new Set(PLAYLIST_ORDER);
-
-function renderToc(tocData, activeId) {
-  let html = '';
-  let lastPlaylist = '';
-  let groupHtml = '';
-
-  function flushGroup() {
-    if (lastPlaylist && currentCat === 'all') {
-      const isCollapsed = collapsedCats.has(lastPlaylist);
-      html += `<div class="yt-toc-cat${isCollapsed ? ' collapsed' : ''}" onclick="toggleTocCat('${lastPlaylist}')">${lastPlaylist.toUpperCase()}</div>`;
-      html += `<div class="yt-toc-cat-items${isCollapsed ? ' collapsed' : ''}" data-cat="${lastPlaylist}">${groupHtml}</div>`;
-    } else {
-      html += groupHtml;
-    }
-    groupHtml = '';
-  }
-
-  tocData.forEach(item => {
-    if (currentCat === 'all' && item.playlist && item.playlist !== lastPlaylist) {
-      if (lastPlaylist) flushGroup();
-      lastPlaylist = item.playlist;
-    }
-    const isParentActive = activeId === item.id || item.sections.some(s => s.id === activeId);
-    const isExpanded = expandedSet.has(item.id);
-    const childrenHtml = isExpanded ? item.sections.map(sec =>
-      `<a class="yt-toc-child${activeId === sec.id ? ' active' : ''}"
-          href="#${sec.id}" onclick="scrollToId('${sec.id}');return false;">${escHtml(sec.label)}</a>`
-    ).join('') : '';
-    groupHtml += `<a class="yt-toc-item${isParentActive ? ' active' : ''}"
-       href="#${item.id}" title="${escHtml(item.fullTitle)}" onclick="toggleArticle('${item.id}');return false;"><span class="yt-toc-num">${item.num}</span>${escHtml(item.label)}</a>${childrenHtml}`;
-  });
-  flushGroup();
-  document.getElementById('yt-toc').innerHTML = html;
-}
-
-function toggleTocCat(cat) {
-  if (collapsedCats.has(cat)) collapsedCats.delete(cat);
-  else collapsedCats.add(cat);
-  renderToc(window._tocData || [], activeVid);
-}
-
-function scrollToId(id) {
-  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
-
-function expandArticle(vid) {
-  if (expandedSet.has(vid)) return;
-  const article = document.getElementById(vid);
-  if (!article) return;
-  const body = article.querySelector('.yt-article-body');
-  if (!body) return;
-  expandedSet.add(vid);
-  body.style.display = '';
-  article.style.cursor = 'default';
-  const hint = article.querySelector('.yt-expand-hint');
-  if (hint) hint.style.display = 'none';
-  refreshToc(vid);
-}
-
-function toggleArticle(vid) {
-  const article = document.getElementById(vid);
-  if (!article) return;
-  const body = article.querySelector('.yt-article-body');
-  if (!body) return;
-  if (expandedSet.has(vid)) {
-    // TOC 클릭: 접기
-    expandedSet.delete(vid);
-    body.style.display = 'none';
-    article.style.cursor = 'pointer';
-    const hint = article.querySelector('.yt-expand-hint');
-    if (hint) hint.style.display = '';
-    article.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  } else {
-    // TOC 클릭: 펼치기
-    expandedSet.add(vid);
-    body.style.display = '';
-    article.style.cursor = 'default';
-    article.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-  refreshToc(vid);
-}
-
-/* ── 메인 렌더링 ── */
-function renderMain(videos) {
-  const main = document.getElementById('yt-main');
-  if (!videos.length) {
-    main.innerHTML = '<p style="color:#bbb;margin-top:3rem;">아직 수집된 영상이 없습니다.</p>';
-    return;
-  }
-  main.innerHTML = videos.map((v, vi) => {
-    const vid = v.video_id || `v${vi}`;
-    const s = v.summary || {};
-    const sb = s.smart_brevity || {};
-    const date = (v.published_at || '').slice(0, 10);
-
-    const sectionsHtml = (s.sections || []).map((sec, si) => `
-      <div class="yt-section" id="${vid}-s${si}">
-        <h3 class="yt-section-heading"><span style="color:#bbb;font-weight:500;margin-right:8px;font-size:0.85em;">${String(si+1).padStart(2,'0')}</span>${escHtml(sec.heading)}</h3>
-        <div class="yt-section-body">${applyHighlights(sec.body, sec.highlights)}</div>
-        ${sec.quote ? `<blockquote class="yt-quote">"${escHtml(sec.quote)}"</blockquote>` : ''}
-      </div>`).join('');
-
-    const takeawaysHtml = (s.key_takeaways||[]).length ? `
-      <div class="yt-takeaways">
-        <p class="yt-takeaways-label">핵심 요점</p>
-        <ul>${(s.key_takeaways||[]).map(t=>`<li>${escHtml(t)}</li>`).join('')}</ul>
-      </div>` : '';
-
-    const techHtml = (s.tech_stack||[]).length ? `
-      <p class="yt-row-label">Tech / Stack</p>
-      <div class="yt-tags">${(s.tech_stack||[]).map(t=>`<span class="yt-tag">${escHtml(t)}</span>`).join('')}</div>` : '';
-
-    const applyHtml = (s.apply_points||[]).length ? `
-      <div class="yt-apply">
-        <p class="yt-row-label">적용 포인트</p>
-        <ul>${(s.apply_points||[]).map(p=>{
-          const text = typeof p === 'object' ? (p.text||'') : p;
-          const key  = typeof p === 'object' ? p.key : false;
-          return key
-            ? `<li><mark class="yt-apply-key">${escHtml(text)}</mark></li>`
-            : `<li>${escHtml(text)}</li>`;
-        }).join('')}</ul>
-      </div>` : '';
-
-    return `
-    <article class="yt-article" id="${vid}" onclick="expandArticle('${vid}')" style="cursor:pointer;">
-      ${date ? `<p class="yt-eyebrow">${date}</p>` : ''}
-      <h2 class="yt-title">
-        <a href="${v.url}" target="_blank" rel="noopener" onclick="event.stopPropagation();">${escHtml(v.title)} ↗</a>
-      </h2>
-      <p class="yt-meta">${escHtml(v.channel||'')}</p>
-      ${sb.why||sb.what ? `
-      <div class="yt-sb">
-        ${sb.why ? `<p class="yt-sb-label">Why it matters</p><p class="yt-sb-why">${escHtml(sb.why)}</p>` : ''}
-        ${sb.what ? `<p class="yt-sb-label" style="margin-top:0.5rem;">What's happening</p><p class="yt-sb-what">${escHtml(sb.what)}</p>` : ''}
-        ${(sb.axioms||[]).map(ax => `<p class="yt-sb-label" style="margin-top:0.5rem;">${escHtml(ax.label)}</p><p class="yt-sb-what">${escHtml(ax.content)}</p>`).join('')}
-        <p class="yt-expand-hint">↓</p>
-      </div>` : ''}
-      <div class="yt-article-body" style="display:none;">
-        ${sectionsHtml}
-        ${takeawaysHtml}
-        ${techHtml}
-        ${applyHtml}
-      </div>
-    </article>`;
+function renderVideos() {
+  const videos = getVideos();
+  const el = document.getElementById('yt-col-videos');
+  if (!videos.length) { el.innerHTML = '<p style="color:#ccc;padding:1rem;font-size:0.8rem;">영상 없음</p>'; return; }
+  el.innerHTML = videos.map(v => {
+    const vid = v.video_id;
+    const hasSummary = v.summary && (v.summary.sections || v.summary.key_takeaways);
+    return `<div class="yt-vid-item${selectedVideoId===vid?' active':''}" onclick="selectVideo('${vid}')">
+      <div class="yt-vid-title">${esc(v.title)}</div>
+      <div class="yt-vid-channel">${esc(v.channel||'')}</div>
+      ${selectedCat==='all'?`<span class="yt-vid-playlist-tag">${esc(v.playlist||'')}</span>`:''}
+    </div>`;
   }).join('');
 }
 
-/* ── Scroll 기반 TOC 추적 ── */
-let activeVid = '';
+function selectVideo(vid) {
+  selectedVideoId = vid;
+  selectedView = 'overview';
+  renderVideos();
+  renderSections();
+  renderContent();
+}
 
-function initObserver(tocData) {
-  const articles = tocData.map(item => document.getElementById(item.id)).filter(Boolean);
-  function update() {
-    let current = '';
-    for (const el of articles) {
-      const top = el.getBoundingClientRect().top;
-      if (top <= window.innerHeight * 0.4) current = el.id;
-    }
-    if (current && current !== activeVid) {
-      activeVid = current;
-      renderToc(tocData, activeVid);
-    }
+/* ── Col 3: Sections ── */
+function getVideo() { return ALL_VIDEOS.find(v => v.video_id === selectedVideoId); }
+
+function renderSections() {
+  const v = getVideo();
+  const el = document.getElementById('yt-col-sections');
+  if (!v) { el.innerHTML = ''; return; }
+  const s = v.summary || {};
+  const sections = s.sections || [];
+
+  let html = `<div class="yt-sec-item${selectedView==='overview'?' active':''}" onclick="selectView('overview')">Overview</div>`;
+  if (sections.length) {
+    html += '<div class="yt-sec-divider"></div>';
+    html += '<div class="yt-sec-header">Sections</div>';
+    html += sections.map((sec, i) =>
+      `<div class="yt-sec-item${selectedView===i?' active':''}" onclick="selectView(${i})"><span class="yt-sec-num">${String(i+1).padStart(2,'0')}</span>${esc(sec.heading.length > 30 ? sec.heading.slice(0,28)+'…' : sec.heading)}</div>`
+    ).join('');
   }
-  window.addEventListener('scroll', update, { passive: true });
-  update();
+  if ((s.key_takeaways||[]).length || (s.tech_stack||[]).length || (s.apply_points||[]).length) {
+    html += '<div class="yt-sec-divider"></div>';
+    if ((s.key_takeaways||[]).length) html += `<div class="yt-sec-meta-item${selectedView==='takeaways'?' active':''}" onclick="selectView('takeaways')">Takeaways</div>`;
+    if ((s.tech_stack||[]).length) html += `<div class="yt-sec-meta-item${selectedView==='tech'?' active':''}" onclick="selectView('tech')">Tech Stack</div>`;
+    if ((s.apply_points||[]).length) html += `<div class="yt-sec-meta-item${selectedView==='apply'?' active':''}" onclick="selectView('apply')">Apply Points</div>`;
+  }
+  el.innerHTML = html;
 }
 
-// expandArticle / toggleArticle 이후에도 TOC 재렌더
-function refreshToc(vid) {
-  renderToc(window._tocData || tocData, vid || activeVid);
+function selectView(view) {
+  selectedView = view;
+  renderSections();
+  renderContent();
 }
 
-/* ── 서브탭 클릭 ── */
-document.querySelectorAll('.yt-subtab').forEach(tab => {
-  tab.addEventListener('click', () => {
-    document.querySelectorAll('.yt-subtab').forEach(t => t.classList.remove('active'));
-    tab.classList.add('active');
-    currentCat = tab.dataset.cat;
-    expandedSet.clear();
-    activeVid = '';
-    const filtered = filterByCategory(currentCat);
-    const newToc = buildTocData(filtered);
-    renderToc(newToc, '');
-    renderMain(filtered);
-    initObserver(newToc);
-    // update global reference
-    window._tocData = newToc;
-  });
-});
+/* ── Col 4: Content ── */
+function renderContent() {
+  const v = getVideo();
+  const el = document.getElementById('yt-col-content');
+  if (!v) { el.innerHTML = '<p class="yt-content-empty">← 영상을 선택하세요</p>'; return; }
+  const s = v.summary || {};
+  const sb = s.smart_brevity || {};
 
-/* ── 초기화 ── */
-const filtered = filterByCategory(currentCat);
-const tocData = buildTocData(filtered);
-window._tocData = tocData;
-renderToc(tocData, '');
-renderMain(filtered);
-initObserver(tocData);
+  // Header (always shown)
+  let header = `
+    <h2 class="yt-c-title"><a href="${v.url}" target="_blank" rel="noopener">${esc(v.title)} ↗</a></h2>
+    <p class="yt-c-meta">${esc(v.channel||'')}${v.fetched_at ? ' · '+v.fetched_at : ''}</p>`;
+
+  let body = '';
+
+  if (selectedView === 'overview') {
+    // Smart Brevity
+    if (sb.why || sb.what) {
+      body += `<div class="yt-c-sb">`;
+      if (sb.why) body += `<p class="yt-c-sb-label">Why it matters</p><p class="yt-c-sb-why">${esc(sb.why)}</p>`;
+      if (sb.what) body += `<p class="yt-c-sb-label" style="margin-top:0.5rem;">What's happening</p><p class="yt-c-sb-what">${esc(sb.what)}</p>`;
+      (sb.axioms||[]).forEach(ax => { body += `<p class="yt-c-sb-label" style="margin-top:0.5rem;">${esc(ax.label)}</p><p class="yt-c-sb-what">${esc(ax.content)}</p>`; });
+      body += '</div>';
+    }
+    // All sections preview
+    (s.sections||[]).forEach((sec, i) => {
+      body += `<div style="margin-bottom:1.5rem;">
+        <h3 class="yt-c-section-heading"><span style="color:#bbb;font-weight:500;margin-right:8px;font-size:0.85em;">${String(i+1).padStart(2,'0')}</span>${esc(sec.heading)}</h3>
+        <div class="yt-c-section-body">${highlight(sec.body, sec.highlights)}</div>
+        ${sec.quote ? `<blockquote class="yt-c-quote">"${esc(sec.quote)}"</blockquote>` : ''}
+      </div>`;
+    });
+  } else if (typeof selectedView === 'number') {
+    // Single section
+    const sec = (s.sections||[])[selectedView];
+    if (sec) {
+      body = `<div>
+        <h3 class="yt-c-section-heading"><span style="color:#bbb;font-weight:500;margin-right:8px;font-size:0.85em;">${String(selectedView+1).padStart(2,'0')}</span>${esc(sec.heading)}</h3>
+        <div class="yt-c-section-body">${highlight(sec.body, sec.highlights)}</div>
+        ${sec.quote ? `<blockquote class="yt-c-quote">"${esc(sec.quote)}"</blockquote>` : ''}
+      </div>`;
+    }
+  } else if (selectedView === 'takeaways') {
+    body = `<div class="yt-c-takeaways">
+      <p class="yt-c-takeaways-label">핵심 요점</p>
+      <ul>${(s.key_takeaways||[]).map(t => `<li>${esc(t)}</li>`).join('')}</ul>
+    </div>`;
+  } else if (selectedView === 'tech') {
+    body = `<p class="yt-c-row-label">Tech / Stack</p>
+      <div class="yt-c-tags">${(s.tech_stack||[]).map(t => `<span class="yt-c-tag">${esc(t)}</span>`).join('')}</div>`;
+  } else if (selectedView === 'apply') {
+    body = `<div class="yt-c-apply">
+      <p class="yt-c-row-label">적용 포인트</p>
+      <ul>${(s.apply_points||[]).map(p => {
+        const text = typeof p === 'object' ? (p.text||'') : p;
+        const key = typeof p === 'object' ? p.key : false;
+        return key ? `<li><mark class="yt-c-apply-key">${esc(text)}</mark></li>` : `<li>${esc(text)}</li>`;
+      }).join('')}</ul>
+    </div>`;
+  }
+
+  el.innerHTML = header + body;
+  el.scrollTop = 0;
+}
+
+/* ── Init ── */
+selectedCat = 'all';
+renderCats();
+renderVideos();
 </script>
