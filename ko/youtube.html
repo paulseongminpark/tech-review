@@ -348,13 +348,17 @@ function selectVideo(vid) {
   renderVideos();
   renderSections();
   renderContent();
-  // 클릭한 영상을 Col 2 상단으로
-  setTimeout(() => {
+  // 클릭한 영상을 Col 2 상단으로 (TITLES 헤더 바로 아래)
+  requestAnimationFrame(() => {
     const col = document.getElementById('yt-col-videos');
     const active = col.querySelector('.yt-vid-item.active');
-    const header = col.querySelector('.yt-col-header');
-    if (active && header) col.scrollTop = active.offsetTop - header.offsetHeight;
-  }, 50);
+    if (active) {
+      const headerH = col.querySelector('.yt-col-header')?.getBoundingClientRect().height || 0;
+      const colTop = col.getBoundingClientRect().top;
+      const activeTop = active.getBoundingClientRect().top;
+      col.scrollTop += (activeTop - colTop - headerH);
+    }
+  });
 }
 
 /* ── Col 3: Sections ── */
