@@ -80,7 +80,9 @@ nav.site-nav { position: relative; z-index: 200; background: #fff; padding: 0.75
   transition: all 0.12s;
 }
 .yt-vid-item:hover { background: #f5f5f5; }
-.yt-vid-item.active { border-left-color: #D4632D; background: #fff; }
+.yt-vid-item.active { border-left-color: #D4632D; background: rgba(212,99,45,0.06); }
+.yt-vid-item.active .yt-vid-title { color: #D4632D; }
+.yt-vid-item.active .yt-vid-channel { color: #D4632D; opacity: 0.7; }
 .yt-vid-title {
   font-size: 0.8rem;
   font-weight: 600;
@@ -134,7 +136,8 @@ nav.site-nav { position: relative; z-index: 200; background: #fff; padding: 0.75
   transition: all 0.12s;
 }
 .yt-sec-item:hover { background: #f0f0f0; color: #333; }
-.yt-sec-item.active { color: #D4632D; font-weight: 600; border-left-color: #D4632D; background: #fff; }
+.yt-sec-item.active { color: #D4632D; font-weight: 600; border-left-color: #D4632D; background: rgba(212,99,45,0.06); }
+.yt-sec-item.active .yt-sec-num { color: #D4632D; }
 .yt-sec-num {
   font-size: 0.65rem;
   color: #bbb;
@@ -454,8 +457,10 @@ function renderContent() {
   el.innerHTML = header + body;
   el.scrollTop = 0;
 
-  // overview 모드일 때 스크롤 observer 연결
+  // overview 모드일 때 스크롤 observer 연결 + 첫 섹션 하이라이트
   if (selectedView === 'overview') {
+    activeSecIndex = '0';
+    updateSecHighlight();
     initContentObserver();
   }
 }
@@ -496,12 +501,10 @@ function updateSecHighlight() {
   document.querySelectorAll('#yt-col-sections .yt-sec-item, #yt-col-sections .yt-sec-meta-item').forEach(el => {
     el.classList.remove('active');
   });
-  // 숫자면 섹션, 아니면 메타
   const idx = parseInt(activeSecIndex);
   if (!isNaN(idx)) {
     const items = document.querySelectorAll('#yt-col-sections .yt-sec-item');
-    // +1 because first item is Overview
-    if (items[idx + 1]) items[idx + 1].classList.add('active');
+    if (items[idx]) items[idx].classList.add('active');
   } else {
     document.querySelectorAll('#yt-col-sections .yt-sec-meta-item').forEach(el => {
       if (el.textContent.toLowerCase().includes(activeSecIndex)) el.classList.add('active');
