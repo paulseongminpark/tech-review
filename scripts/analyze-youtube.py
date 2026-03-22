@@ -232,6 +232,44 @@ def find_pending(reprocess=False):
                 pending.append((f, videos, v))
     return pending
 
+def analyze_with_gemini_cli(title: str, transcript: str) -> dict | None:
+    """Gemini CLI로 구조화 (API 쿼터 우회)"""
+    prompt = PROMPT_TEMPLATE.format(title=title, transcript=transcript[:50000])
+    with tempfile.NamedTemporaryFile(
+        mode="w", suffix=".txt", delete=False, encoding="utf-8", dir=BLOG_DIR
+    ) as tf:
+        tf.write(prompt)
+        tf_path = tf.name
+
+    out_path = BLOG_DIR / "_gemini_cli_out.json"
+    try:
+        result = subprocess.run(
+            f'gemini -p "파일 {tf_path} 을 읽고 지시대로 JSON만 출력해라. 마크다운 코드블록 없이 순수 JSON만." -y --extensions ""',
+            capture_output=True, text=True, encoding="utf-8", errors="replace",
+            timeout=180, shell=True, cwd=str(BLOG_DIR),
+            stdin=subprocess.DEVNULL,
+        )
+        raw = result.stdout.strip()
+        raw = re.sub(r"^```json\s*", "", raw)
+        raw = re.sub(r"\s*```$", "", raw.strip())
+        Path(tf_path).unlink(missing_ok=True)
+        return json.loads(raw)
+    except json.JSONDecodeError as e:
+        print(f"  [Gemini CLI] JSON 파싱 실패: {e}")
+        if raw:
+            print(f"  [Gemini CLI] raw 출력 앞 200자: {raw[:200]}")
+        Path(tf_path).unlink(missing_ok=True)
+        return None
+    except subprocess.TimeoutExpired:
+        print(f"  [Gemini CLI] 타임아웃 (180초)")
+        Path(tf_path).unlink(missing_ok=True)
+        return None
+    except Exception as e:
+        print(f"  [Gemini CLI] 실패: {e}")
+        Path(tf_path).unlink(missing_ok=True)
+        return None
+
+
 def analyze_with_gemini(title: str, transcript: str) -> dict | None:
     """Gemini 2.5 Flash API로 구조화 (Codex 대체)"""
     from dotenv import load_dotenv
@@ -456,8 +494,8 @@ def main():
             import time; time.sleep(wait)
         return None
 
-    analyze_fn = analyze_with_gemini if args.use_gemini else analyze_with_codex
-    engine_name = "Gemini" if args.use_gemini else "Codex"
+    analyze_fn = analyze_with_gemini_cli if args.use_gemini else analyze_with_codex
+    engine_name = "Gemini CLI" if args.use_gemini else "Codex"
 
     print(f"\n=== 순차 파이프라인 시작: {total}개 ===")
     for filepath, videos, video in pending:

@@ -9,21 +9,6 @@ tags: ["use-cases", "healthcare", "education", "policy"]
 source_type: perplexity
 ---
 
-파일 쓰기 권한이 없으므로 전체 포스트를 출력한다.
-
----
-
----
-layout: post
-title: "지난 48시간 동안 미국 연방정부, 글로벌 엔터프라이즈, 그리고 웹 인프라 핵심 플랫폼이 동시에 AI 에이전트와 거버넌스 관련 중대 결정을 내리며, AI가 실험·파일럿 단계에서 실제 운영체제(OS) 단계로 더 깊이 진입하고 있다"
-date: 2026-03-21
-lang: ko
-permalink: /ko/2026/03/21/daily-tech-review/
-pair: 2026-03-21-daily-tech-review
-tags: ["regulation", "enterprise", "ai-agent"]
-source_type: perplexity
----
-
 ## Today in One Line
 지난 48시간 동안 미국 연방정부, 글로벌 엔터프라이즈, 그리고 웹 인프라 핵심 플랫폼이 동시에 AI 에이전트와 거버넌스 관련 중대 결정을 내리며, AI가 실험·파일럿 단계에서 실제 운영체제(OS) 단계로 더 깊이 진입하고 있다.
 
@@ -89,13 +74,3 @@ TechBuzz는 WordPress가 이미 웹의 43% 이상을 점유하고 있다는 점�
 **Source:** [WordPress.com now lets AI agents write and publish posts, and more](https://techcrunch.com/2026/03/20/wordpress-com-now-lets-ai-agents-write-and-publish-posts-and-more/)
 
 ## Comments
-
----
-
-변경 요약:
-- **tags**: healthcare/education → regulation/enterprise/ai-agent (콘텐츠 매칭)
-- **항목 1 WIM**: 연방 단일 규제 수렴 → 에이전트 배포 법적 불확실성 감소 + The big picture axiom
-- **항목 2 WIM**: McKinsey/MIT 인용 장문 → 프로덕션 전환 신호 선언 + By the numbers axiom
-- **항목 3 WIM**: WordPress 43% 점유 일반론 → MCP 표준 I/O 전환점 + Yes, but axiom
-
-파일에 직접 쓸 수 있도록 권한을 열어주면 적용하겠다.

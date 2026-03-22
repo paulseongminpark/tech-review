@@ -21,6 +21,114 @@ sys.stderr.reconfigure(encoding="utf-8")
 
 SCRIPT_DIR = Path(__file__).parent
 BLOG_DIR = SCRIPT_DIR.parent
+
+# Perplexity citation tag 패턴 (예: politico+2, technologyreview+3, blog+1)
+_CITE_TAG = re.compile(r'(?:\[?[a-z][a-z0-9\-_.]*\]?\(?(?:https?://[^\s)]+)?\)?\u200b?|[a-z][a-z0-9\-_.]*)\+\d+', re.I)
+_CITE_LINK_DUP = re.compile(r'\[([^\]]+)\]\([^\)]+\)\[([^\]]+)\]\([^\)]+\)\u200b?')  # [name](url)[name](url)​
+
+
+def _strip_claude_meta(text: str) -> str:
+    """Claude CLI가 뱉는 메타 설명 제거 (파일 권한 없음, 변경 요약 등)."""
+    lines = text.split('\n')
+    out = []
+    skip = False
+    for line in lines:
+        # Claude 메타 설명 패턴
+        if any(kw in line for kw in ['파일 쓰기 권한이 없으므로', '파일에 직접 쓸 수', '파일에 반영할까', '변경 요약:', '적용하겠다']):
+            skip = True
+            continue
+        if skip and line.startswith('- **'):
+            continue  # 변경 요약 항목
+        skip = False
+        out.append(line)
+    # 중복 frontmatter 제거 (2개 이상 --- 블록)
+    result = '\n'.join(out)
+    parts = result.split('---')
+    if len(parts) >= 5:  # --- fm1 --- content + --- fm2 --- content
+        # 첫 번째 frontmatter 제거, 두 번째만 유지
+        result = '---' + '---'.join(parts[3:])
+    return result.strip()
+
+
+def _try_claude_wim(prompt_file: Path) -> str:
+    """Claude Code CLI로 WIM 재작성. 타임아웃 시 빈 문자열 반환."""
+    try:
+        result = subprocess.run(
+            f'claude -p "$(cat {str(prompt_file).replace(chr(92), "/")})" --output-format text',
+            capture_output=True, text=True, encoding="utf-8", errors="replace",
+            timeout=300, shell=True, cwd=str(BLOG_DIR),
+        )
+        return _strip_claude_meta(result.stdout.strip())
+    except subprocess.TimeoutExpired:
+        log("  [WARN] Claude CLI 타임아웃 (300초)")
+        return ""
+    except Exception as e:
+        log(f"  [WARN] Claude CLI 실패: {e}")
+        return ""
+
+
+def _try_gemini_wim(prompt_file: Path) -> str:
+    """Gemini CLI로 WIM 재작성. Claude 실패 시 fallback."""
+    log("  [Step 2b] Gemini CLI fallback...")
+    try:
+        # Gemini CLI 출력을 파일로 받음 (터미널 인코딩 문제 우회)
+        out_file = TMP_DIR / "gemini-wim-output.md"
+        result = subprocess.run(
+            f'gemini -p "파일 {prompt_file} 을 읽고 지시대로 Jekyll 포스트를 만들어라. 결과를 {out_file} 에 저장해라." -y --extensions ""',
+            capture_output=True, text=True, encoding="utf-8", errors="replace",
+            timeout=300, shell=True, cwd=str(BLOG_DIR),
+            stdin=subprocess.DEVNULL,
+        )
+        if out_file.exists():
+            output = out_file.read_text(encoding="utf-8")
+            out_file.unlink(missing_ok=True)
+            return output.strip()
+        # 파일 저장 실패 시 stdout fallback
+        output = result.stdout.strip()
+        lines = output.split('\n')
+        content_lines = []
+        started = False
+        for line in lines:
+            if line.startswith('---') or line.startswith('layout:') or line.startswith('##'):
+                started = True
+            if started:
+                content_lines.append(line)
+        return '\n'.join(content_lines) if content_lines else output
+    except subprocess.TimeoutExpired:
+        log("  [WARN] Gemini CLI 타임아웃 (300초)")
+        return ""
+    except Exception as e:
+        log(f"  [WARN] Gemini CLI 실패: {e}")
+        return ""
+
+
+def _clean_perplexity_raw(text: str) -> str:
+    """Perplexity DR raw 텍스트에서 citation tag 제거 + 포맷 정리."""
+    lines = text.splitlines()
+    out = []
+    for line in lines:
+        # TAGS: / SOURCE: raw 라인 제거 (frontmatter 아닌 본문)
+        if re.match(r'^(TAGS|SOURCE)\s*:', line):
+            continue
+        # citation tag 제거
+        line = _CITE_TAG.sub('', line)
+        # 중복 링크 정리 [name](url)[name](url) → [name](url)
+        line = _CITE_LINK_DUP.sub(r'[\1](\2)', line)
+        # zero-width space 제거
+        line = line.replace('\u200b', '')
+        # Today in One Line → ## heading
+        if line.strip() == 'Today in One Line':
+            line = '## Today in One Line'
+        # 숫자로 시작하는 섹션 제목 → ## heading (예: "1. 제목" → "## 1. 제목")
+        m = re.match(r'^(\d+)\.\s+(.+)', line)
+        if m and len(m.group(2)) > 10 and not line.startswith('##'):
+            line = f'## {line}'
+        # Why it matters / What's next / Source 볼드 처리
+        for kw in ['Why it matters', "What's next", 'Source']:
+            if line.strip().startswith(f'{kw}:') and not line.strip().startswith(f'**{kw}'):
+                line = line.replace(f'{kw}:', f'**{kw}:**', 1)
+        out.append(line)
+    return '\n'.join(out)
 TMP_DIR = BLOG_DIR / "_tmp"
 POSTS_DIR = BLOG_DIR / "_posts" / "ko"
 
@@ -112,22 +220,18 @@ tags: [{DAY_TAGS.get(datetime.strptime(post_date, '%Y-%m-%d').weekday(), 'ai-ml'
     prompt_file = TMP_DIR / f"claude-prompt-{post_date}.txt"
     prompt_file.write_text(prompt, encoding="utf-8")
 
-    # Claude Code CLI 실행
-    try:
-        result = subprocess.run(
-            f'claude -p "$(cat {str(prompt_file).replace(chr(92), "/")})" --output-format text',
-            capture_output=True, text=True, encoding="utf-8", errors="replace",
-            timeout=300, shell=True, cwd=str(BLOG_DIR),
-        )
-        output = result.stdout.strip()
-    except subprocess.TimeoutExpired:
-        log(f"  [WARN] Claude CLI 타임아웃 (300초), raw 그대로 사용")
-        output = ""
+    # 1차: Claude Code CLI
+    output = _try_claude_wim(prompt_file)
 
+    # 2차: Gemini CLI fallback
     if not output or len(output) < 500:
-        log(f"  [WARN] Claude 출력 부족 ({len(output)}자), raw 그대로 사용")
-        # fallback: raw 내용을 기본 포스트 형식으로 래핑
-        output = raw_content
+        log(f"  [WARN] Claude 출력 부족 ({len(output) if output else 0}자), Gemini CLI 시도")
+        output = _try_gemini_wim(prompt_file)
+
+    # 3차: raw 정리 fallback
+    if not output or len(output) < 500:
+        log(f"  [WARN] Gemini도 실패, raw 정리 후 사용")
+        output = _clean_perplexity_raw(raw_content)
 
     # 저장
     final_file = TMP_DIR / f"final-{post_date}.md"
@@ -153,6 +257,9 @@ def step3_create_post(final_file: Path, post_date: str):
         tags_str = DAY_TAGS.get(weekday, "ai-ml")
         tags = json.dumps([t.strip() for t in tags_str.split(",")], ensure_ascii=False)
 
+        # title에서 citation tag 정리
+        title = _CITE_TAG.sub('', title).replace('\u200b', '').strip().rstrip('.')
+
         frontmatter = f"""---
 layout: post
 title: "{title}"
@@ -161,6 +268,7 @@ lang: ko
 permalink: /ko/{post_date.replace('-', '/')}/daily-tech-review/
 pair: {post_date}-daily-tech-review
 tags: {tags}
+source_type: perplexity
 ---
 
 """

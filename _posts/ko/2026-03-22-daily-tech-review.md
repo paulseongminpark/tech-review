@@ -118,11 +118,4 @@ r/LocalLLaMA에서는 Holotron-12B를 "로컬·온프렘 에이전틱 워크로�
 ## Comments
 ```
 
----
-
-변경 요약:
-- **섹션 1 Why it matters**: 일반론 → Paul의 orchestration/context engineering 직결. By the numbers 추가 (Holotron 수치).
-- **섹션 2 Why it matters**: 장문 설명 → 2문장 선언 + Be smart axiom (다극 체제 전제 분석 권고).
-- **섹션 3 Why it matters**: 추상적 서술 → 물리 인프라 + 한국 소버린 AI + 로컬 에이전트 스택 현실화. By the numbers 추가 (빅4 투자, Rubin 스펙).
-
-파일에 반영할까?
+## Comments
