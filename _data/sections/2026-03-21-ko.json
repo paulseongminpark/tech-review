@@ -1,0 +1,36 @@
+{
+  "date": "2026-03-21",
+  "lang": "ko",
+  "post_url": "/ko/2026/03/21/daily-tech-review/",
+  "post_title": "지난 48시간 동안 미국 연방정부, 글로벌 엔터프라이즈, 그리고 웹 인프라 핵심 플랫폼이 동시에 AI 에이전트와 거버넌스 관련 중대 결정을 내리며, AI가 실험·파일럿 단계에서 실제 운영체제(OS) 단계로 더 깊이 진입하고 있다",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "미국 백악관, 주(州) 규제를 우회하는 전국 단일 AI 정책 틀 제시",
+      "lead": "3월 20일(현지 시각) 백악관이 인공지능 개발·활용에 대한 첫 국가 AI 정책 프레임워크를 공개하고, 이를 의회에 입법 청사진으로 제안했음.",
+      "tags": [
+        "misc"
+      ],
+      "anchor": "미국-백악관-주-규제를-우회하는-전국-단일-ai-정책-틀-제시"
+    },
+    {
+      "index": 2,
+      "title": "Salesforce–NVIDIA, 규제 산업 겨냥한 엔터프라이즈 AI 에이전트 스택 가동",
+      "lead": "Salesforce와 NVIDIA가 Salesforce Agentforce와 NVIDIA Nemotron 모델·Agent Toolkit을 통합해 규제 산업과 온프레미스 환경에 맞는 엔터프라이즈 AI 에이전트 스택을 공식 발표했음.",
+      "tags": [
+        "nvidia"
+      ],
+      "anchor": "salesforcenvidia-규제-산업-겨냥한-엔터프라이즈-ai-에이전트-스택-가동"
+    },
+    {
+      "index": 3,
+      "title": "WordPress.com, AI 에이전트에게 웹사이트 생성·운영 권한 부여",
+      "lead": "웹 호스팅·블로그 플랫폼 WordPress.com이 AI 에이전트가 사용자 사이트에서 글을 작성·편집·게시하고, 댓글 관리와 메타데이터 최적화, 카테고리·태그 구조 재구성까지 수행할 수 있도록 하는 기능을 3월 19~20일자로 공개했음.",
+      "tags": [
+        "misc"
+      ],
+      "anchor": "wordpresscom-ai-에이전트에게-웹사이트-생성·운영-권한-부여"
+    }
+  ]
+}

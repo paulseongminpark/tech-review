@@ -446,108 +446,75 @@ def main():
     updated_files = set()
     file_videos = {filepath: videos for (filepath, videos, _) in pending}
 
-    # ── 조립 라인: 3단계 큐 ──
-    from threading import Thread
-    from queue import Queue
-
-    q_transcript = Queue()   # Stage 1 → Stage 2
-    q_codex = Queue()        # Stage 2 → Stage 3
-    q_save = Queue()         # Stage 3 → 저장
-
-    POISON = None  # 종료 신호
-
-    # 리밋 감지 + 재시도
     def retry_with_backoff(fn, *a, max_retries=3, **kw):
         for attempt in range(max_retries):
             result = fn(*a, **kw)
             if result is not None:
                 return result
-            wait = 60 * (attempt + 1)  # 1분, 2분, 3분
+            wait = 60 * (attempt + 1)
             print(f"    재시도 대기 {wait}초 (attempt {attempt+1}/{max_retries})...")
             import time; time.sleep(wait)
         return None
 
-    # Stage 1: 트랜스크립트 추출 (Gemini/yt-dlp)
-    def stage1_worker():
-        for (filepath, videos, video) in pending:
-            title = video.get("title", "")
+    analyze_fn = analyze_with_gemini if args.use_gemini else analyze_with_codex
+    engine_name = "Gemini" if args.use_gemini else "Codex"
+
+    print(f"\n=== 순차 파이프라인 시작: {total}개 ===")
+    for filepath, videos, video in pending:
+        title = video.get("title", "")
+        video_id = video.get("video_id", "")
+        video_url = video.get("url", "")
+        print(f"\n--- [{done+1}/{total}] {title[:50]} ---")
+
+        try:
+            # Stage 1: 트랜스크립트
             if not video.get("transcript"):
-                video_id = video.get("video_id", "")
-                video_url = video.get("url", "")
                 print(f"  [S1] 트랜스크립트: {title[:40]}")
                 transcript = extract_transcript_ytdlp(video_url, video_id)
                 if not transcript:
                     transcript = retry_with_backoff(extract_transcript_gemini, video_url)
                 if not transcript:
                     transcript = extract_transcript_whisper(video_url, video_id)
-                if transcript:
-                    video["transcript"] = transcript
-                else:
-                    print(f"  [S1] 실패: {title[:40]}")
+                if not transcript:
+                    print(f"  [S1] 실패 — 건너뜀: {title[:40]}")
                     continue
-            q_transcript.put((filepath, videos, video, args.wim_only))
-        q_transcript.put(POISON)
+                video["transcript"] = transcript
 
-    # Stage 2: 구조화 (Gemini or Codex)
-    analyze_fn = analyze_with_gemini if args.use_gemini else analyze_with_codex
-    engine_name = "Gemini" if args.use_gemini else "Codex"
-
-    def stage2_worker():
-        while True:
-            item = q_transcript.get()
-            if item is POISON:
-                q_codex.put(POISON)
-                break
-            filepath, videos, video, wim_only = item
-            title = video.get("title", "")
-            if wim_only and video.get("summary"):
+            # Stage 2: 구조화 (Codex or Gemini)
+            if args.wim_only and video.get("summary"):
                 summary = video["summary"]
                 print(f"  [S2] WIM-only: {title[:40]}")
             else:
                 print(f"  [S2] {engine_name}: {title[:40]}")
-                summary = retry_with_backoff(
-                    analyze_fn, title, video["transcript"]
-                )
+                summary = retry_with_backoff(analyze_fn, title, video["transcript"])
                 if not summary:
-                    print(f"  [S2] 실패: {title[:40]}")
+                    print(f"  [S2] 실패 — 건너뜀: {title[:40]}")
                     continue
                 validate_quotes(summary, video["transcript"])
-            q_codex.put((filepath, videos, video, summary))
 
-    # Stage 3: Claude WIM
-    def stage3_worker():
-        nonlocal done
-        while True:
-            item = q_codex.get()
-            if item is POISON:
-                q_save.put(POISON)
-                break
-            filepath, videos, video, summary = item
-            title = video.get("title", "")
+            # Stage 3: Claude WIM
             print(f"  [S3] WIM: {title[:40]}")
             wim = retry_with_backoff(generate_wim, summary, title)
             if wim:
                 summary["smart_brevity"] = wim
             else:
-                print(f"  [S3] WIM 실패: {title[:40]}")
+                print(f"  [S3] WIM 실패 (summary는 유지): {title[:40]}")
+
             video["summary"] = summary
             done += 1
             write_status("pipeline", title, done, total, f"완료={done}")
+
             # 즉시 저장
             filepath.write_text(
                 json.dumps(file_videos[filepath], ensure_ascii=False, indent=2),
                 encoding="utf-8"
             )
             updated_files.add(filepath)
-            print(f"  [{done}/{total}] 완료: {title[:40]}")
+            print(f"  완료: {title[:40]}")
 
-    # 3 스레드 동시 시작
-    print(f"\n=== 조립 라인 시작: {total}개 ===")
-    t1 = Thread(target=stage1_worker, daemon=True)
-    t2 = Thread(target=stage2_worker, daemon=True)
-    t3 = Thread(target=stage3_worker, daemon=True)
-    t1.start(); t2.start(); t3.start()
-    t1.join(); t2.join(); t3.join()
+        except Exception as e:
+            print(f"  [ERROR] {title[:40]}: {e}")
+            continue
 
     if not updated_files:
         print("\n저장된 파일 없음.")

@@ -9,78 +9,174 @@
     "playlist": "claude",
     "source_type": "youtube",
     "description": "Download the \"The Loop Marketing Landscape Report\" here 👉 https://clickhubspot.com/1a8f72\n\nClaude skills is what give agents the expertise they need. In this video, I'll show you how you can build your first AI marketing team using just Claude Skills and why Skills might be the biggest leverage most marketers are overlooking right now. No custom agents. No complicated workflows. Just skills doing the heavy lifting. Whether you're a marketer or managing a team, this probably will change how you design your marketing workflows.\n\n📌 *TIMESTAMPS*\n00:00 Claude Skills is your next leverage\n00:21 Designing your skill library \n01:11 The 5 skills we’re building\n01:44 Setting Up the Project\n02:26 Skill Creation Method 1 \n04:06 Skill Creation Method 2\n06:02 Building Skill 3 Creative Designer + Skill",
-    "transcript": null,
+    "transcript": "Every marketer I know is stretch thin. Too many channels, too many deliverables, never enough time, whether you're running a team or doing it all yourself. And that's why I'm so obsessed with Claude skills. You teach it how your marketing works once and it just deliver every time. And so even with just a few Claude skills, you can start building a marketing team with serious leverage. And so in this video, I will show you how to build your first AI marketing team using just Claude skills. So everyone is talking about Claude agents, and yes, they are super powerful, but what enable them to be truly powerful is the expertise behind this agent and that expertise is exactly what Claude skills are. So when you are designing your skill library for your marketing team, these skills contain your best marketing knowledge, SOPs, your proven frameworks, your brand standards and agents are now the team members who use that expertise. You can equip any agents with any combination of skills from your library, and that's what makes this powerful because you build this library once and Claude act as a team that runs on it, or even you can bring it to all the AI models. So today we are building five skills that cover what most marketing team will need, research and strategy, content creation, creatives, data analysis, and campaign presentation. Essentially, they will form a strong foundation as you build your marketing skill library over time. For this demo, we'll be using Claude Code Desktop, but if you prefer using Claude Cowork, it's still fine. So first thing is to make sure you already got the Skill Creator tool installed. Because this official skill is not built-in inside Claude Code, I will put the official skill Repo link and also check out this video on how to install. So here we have already set up a project folder called Simple Home, which is the D2C E-commerce brand. And inside we have different folders, and the most important is the context file. So every time when you onboard a new client or you are an in-house marketers, these are the context file about the brand, the product, the audience, etc. So you can equip Claude with all the background information and always include a Claude.md file. So these are just like a custom instructions for this project to guide how Claude should navigate your folder system. So I go much deeper on how to set up these context system inside our AI for marketing program with all the templates. So if you're interested, you can find the link below to join. But for now, let's create our first skill marketing, research, and strategy. So here inside the SOP folder, we already have these SOP document that the brand is already using for marketing research and building strategy reports. So now on Claude Code Desktop, select the same project folder for this brand, and then use this prompt to ask it to create a new skill called marketing research strategy that will use the perplexity MCP or any search engines to do the in-depth research and then follow these exact procedures from these SOP and generate a strategy brief and by the way, make sure you already have the perplexity MCP installed. I will put the line below. So now it is reading the SOP and context file, and also reading the skill creative file for the proper structure and writing the skill file. And very quickly we create our first skill for this marketing exam. And you can always preview from an IDE. So it will define the workflows in detail, in the skill, and also with useful references that this skill might use. And now whenever you need to use the skills, you can just type the slash command inside Claude Code or you can let Claude to trigger for you. So like in this case I can just ask it to analyze a competitor. And the best thing is for these type of tasks, you don't even need to repeat the brand context. It will start reading the brand context file and pull up the to-do lists. It would trigger the exact workflow, calling the perplexity search, and then generate a comprehensive report like this that is highly relevant to this brand using the format we have defined and everything is stored locally. And this is how Claude skills can help to standardize your marketing workflow. Okay. This is just one way of creating your custom marketing skill. Another way is to give Claude some of your best references and marketing knowledge, so Claude can make it portable with that skill. So this time let's create a social media content skill. So for example, we already have different past. Best social media content and also the detailed best storytelling framework that we have extract from different expert in this subject matter. And then we'll ask Claude to analyze these examples, understand the patterns, and create a reusable scale. So these skills will also use the perplexity MCP to find the trending conversations, to add the insights. And immediately, our second marketing skill is ready. So containing the detail workflow on how to draft on brand social content using this proven storytelling framework and patterns. And you can see Claude also build reference file that these skills can use. And that means don't just tell, always show your best examples to generate better skill creation results. Now AI can do a lot of heavy lifting, but without human strategy and authenticity, you are just automating average And that is exactly what this research, the Loop Marketing landscape report from HubSpot address. This is a free research report based on 1,800 plus marketers globally built around loop marketing a framework with four stages, express, tailor, amplify, and evolve. Instead of a linear funnel that just end at a sale It's a continuous cycle where humans lead strategy and AI helps personalize, distribute, and optimize What I appreciate is that everything is backed by real data, not just opinions. My favorite part is the what top performers do different section. It's a breakdown of how the most successful teams are using ai. It proves that moving beyond low level AI tasks into AI driven strategy and research is the secret for staying ahead right now. You can grab this report in the description below for free, and thank HubSpot for sponsoring this video. All right, let's create a third skill creative designer skill So this skill will use the Google nano banana model to generate different marketing creatives. So I'll put the link below to install the Nano banana MCP. Again, give your expected behavior to Claude about what the skills will do. So this social creative designer skill will generate social media visuals using the nano banana model based on any given post copy or content direction. And notice how I include default style and color palette for generating on-brand visuals and also include a good prompt example for it to follow. And now it is reading all the context file and then quickly create third marketing skills with all the reference file as well. So let's quickly test it with these simple prompt to ask it it to generate a social infographic about some educational topic. So with the specified style, layout and color. And so it is now triggering the social creative design skills successfully and then calling the nano banana MCP tool to generate the final visual. And you see it did it, and this is quite impressive with the blueprint technical style. And so now our marketing team has equipped one more skills for making creatives using any style of materials that we define. Now using similar methods, we have built two more skills, a data analysis skills that gather the data input, analyze dataset and generates a dashboard and a campaign presenter skills that transform raw marketing materials into on-brand presentations or landing pages. And you can always create more than that based on your marketing team needs. Now, I could demo each of these skills one by one, but let me show you something way more powerful is using these skills together because in a real world, no marketer works in a silo. Everything should be connected. So for example, this brand is launching a new campaign and needs some content. So we can give Claude a task to first create 10 social posts for this campaign on Instagram, and then design the corresponding campaign social creatives and save everything to a new folder called campaign launch. So first, Claude will read all the relevant context and now call the two skills, the social creative designer and the social media content skills and pulling up the to-do lists. So this is a multi-skill orchestration in action. So notice I didn't predefine how to split the work Claude. Just look at the task and figure out the most efficient way to use them together. And then within 10 minutes, Claude has generated all the post draft and created files successfully in the new folder. And then we can actually look inside, all the creatives have been generated and they look all on brand with a default brand style and color palettes defined in the skill. And you can also see clock has generated in various format ratio, different post type for this campaign concept to give more Ty, which is very nice. And they also match the cozy feel for this soft home essential brand. And so even if you, you're just brainstorming about creative concept, these can be very useful as Claude, not just randomly generate these creatives, but also consider your brand context as well. Now for the social content for this campaign, it also follows the instructions to generate 10 Instagram launch posts with the format, caption details, and visual directions which pair well with the generated social creative we just see. And what I really like is that it even includes the storytelling framework that it has used when generating this post draft. And this is why your skills is so important to give it relevant knowledge. And so everything can be aligned and not just a silo task. And this also work just like a mini brief for the team to follow up. So that was two skills working together on one task. But what happens when a task is much more complex, and this is where Claude doesn't just use your skill, but start to act like a team lead to assign tasks, to agents. And there are actually two ways to do it. First, using subagent or your own custom defined subagents. So Claude will be the main agent to spin up subagents and assign each one a task, but they only report back to Claude, the team lead. So this is great when the tasks are mostly independent, the second way, using the latest Agent Teams feature. So Claude, will create an agent team. These agents share a task list and can talk to each other before finalizing and report back to the team lead. And the biggest difference is that each of these agent is a separate session inside Claude Code. And this is helpful for really complex marketing workflows where agents needs to share feedback but note it will cause much more token usage. For today's video, I'll focus on sub-agents. That is what you will use 90% of the time. Now, for example, I have a big quarterly review task for this brand, and so I will ask Claude to split it into three parallel tasks, create a marketing strategy, do data analysis, and then combine these findings into a presentation deck and so it would plan to use different custom skills for these three tasks using parallel subagents. So now it is calling the market research skill and do the perplexity research. And once this is finished, move on to the task number two for the dashboard building and calling the data analysis skill. And when everything is complete, it synthesize both findings and start to build a presentation deck using the campaign presenter skill. So if you don't want to use the predefined, a custom agent, you can always like Claude to create different ad-hoc sub-agents like this. And after like 10 minutes, all the deliverables are saved in the specific folder. The marketing strategy brief, the dashboard and the presentation slide deck. So let's first take a look at the report. It is following the original SOP process. We instructed, and all the pillar sections are included in this brief, that is why the process is actually much more important than the actual research tool that you use. Now for the campaign performance dashboard. It is also well done with all the key metrics using the brand color and style. The data charts are also pretty informative with performance breaking down by each channel with the use of different types of charts to increase the data storytelling impact and what I particularly like is that this is fully interactive where you can click on a specific metrics sorting and highlighting. And now for the presentation deck, it is also pretty nice with decent brand theme. And you can see it is combining both task one and task two insights into this slide. With the performance recap data chart and also the research finding as well as the quick wins recommendation. And you can always make changes to fit your narrative. So with just three Claude skills, you're kind of having three marketing assistant helping you to save time, doing a lot of preparation work for complex tasks like this before you even dive deeper with your own insights. Now, if you're really interested in setting up the agent teams, you have to first enable it through the global Claude setting. So I will put the official link below. Then whenever you want to use this new feature, you can just ask Claude to create an agent team with the three specialized teammate. And notice we will ask teammate one and two to review each other's work before finalizing. And so from Claude's plan, it will first set up a team structure and then it will initiate different work phase, like the parallel work and then the cross review and execution where each of them share the feedback. And this is when the agent teams become useful. And so I always recommend asking Claude to give you these high level plan first because again, agent teams will cause much more token usage, so you can proceed only when you're happy with it. So far, we build skills, we've seen them work together. But what happens when you want to bring this entire skill library to a completely different brand project or even a completely different tool? And this is where Claude Plugin comes in. So instead of upload the custom skill one by one, you can create your own custom plugin for distribution. Just think of it as a bundle package. So first, we ask Claude to package all the custom skills in this project into a reusable plugin called AI Marketing Skills. At the same time, we can also define our custom slash command called landing page that will trigger a workflow to use both the marketing research skill and the presenter skill to build a landing page. A bonus tip is you can even package any of your custom agents in this plugin if you have any of them. So it will read through the documentation all the skills and reference file and package them into a plugin format. So now as we onboard another brand, we can just select the project folder. So in this case, it is another brand Spark agency. And then click add Plugin. So here you can import a third party plugin from a GitHub repository or upload the zip file. And now we have all the skills that are ready to use for this new project. And that is the portability. So we can invoke any skills, like what we did before, or we can just use any slash command. So let's try the landing page slash command. And ask it to design a convincing homepage for this consultancy brand. And so you can see it will execute the same workflow, loading brand context, using the research skill, create the landing page research brief, and finally building the landing page. And so immediately you can quickly build a research backed landing page for any project, and it will be on brand, and you can always fine tune it inside Claude Code. Another bonus is you can bring the same set of plugin to code work as well, the absolute non-technical version of Claude code for office work. So once the plugin has been installed, just invoke the skills like we did before, like this case, we needed to analyze the dataset and build a presentation. And so it will follow the exact same workflow from the skill and then you can see Claude just adapted skills for this brand using another color scheme that we have specified. And this is the power of skill. You can just replicate the workflow into different brands and build different deliverables that are still on brand. So try this yourself and let me know how it goes. If you enjoy this video, please also give me a thumbs up. I really appreciate that. I also invite you to join our growth community. Currently we are running a workshop series about building AI system for marketing where we will go much deeper. You can find the link below to join. I hope to see there and join other AI native marketers. And before you go, also watch these two videos about Claude Cowork and Claude skills to learn more about how the clock ecosystem can help your marketing. I'll see you next time.",
     "summary": {
-      "smart_brevity": {
-        "why": "Paul의 orchestration 시스템이 13개 스킬을 SOP·컨텍스트 기반으로 조합하는 구조와 정확히 같은 패턴을 마케팅 도메인에서 시연하며, 특히 멀티 스킬 orchestration과 sub agent 병렬 처리가 Paul의 5단계 파이프라인에서 Ideation→Impl 전환 시 컨텍스트 재사용 효율을 높이는 데 직접 참고가 된다.",
-        "what": "Claude Skills로 마케팅 팀의 반복 업무를 5개 스킬로 쪼개는 방법을 보여준다.\nSOP, 브랜드 context, 베스트 예시를 넣어 리서치, 콘텐츠, 크리에이티브, 데이터, 프레젠테이션 워크플로를 재사용 가능하게 만든다.\n여기에 멀티 스킬 orchestration, sub agents, plugin 패키징까지 더해 다른 브랜드로 옮기는 법까지 시연한다."
-      },
       "sections": [
         {
-          "id": "skills-as-shared-marketing-expertise",
-          "heading": "에이전트보다 먼저 스킬 라이브러리를 설계하라",
-          "body": "영상의 핵심 주장은 에이전트 자체보다 그 뒤에 들어가는 전문성이 더 중요하다는 점이다. 발표자는 대부분의 마케팅 팀이 반복하는 일을 리서치와 전략, 콘텐츠 제작, 크리에이티브, 데이터 분석, 캠페인 프레젠테이션의 다섯 스킬로 정리해 공통 기반부터 만든다. 이 구조를 쓰면 SOP, 검증된 프레임워크, 브랜드 기준을 스킬 라이브러리에 한 번만 넣고 여러 에이전트가 조합해 재사용할 수 있다. 즉 에이전트는 팀원이고 스킬은 그 팀원이 공유하는 플레이북이 된다.",
+          "heading": "Claude Skills를 활용한 AI 마케팅 팀 구축 소개",
+          "body": "마케터들은 채널, 결과물, 시간 부족으로 늘 업무에 쫓긴다. Too many channels, too many deliverables, never enough time. Claude Skills는 마케팅 작동 방식을 한 번 가르치면 매번 결과물을 제공하여 이러한 문제를 해결한다. 몇 가지 Claude Skills만으로 강력한 AI 마케팅 팀을 구축할 수 있으며, 이 영상에서는 Claude Skills만을 사용하여 첫 AI 마케팅 팀을 만드는 방법을 보여준다. Claude Agents가 매우 강력하지만, 진정으로 강력하게 만드는 것은 그 뒤에 있는 전문성, 즉 Claude Skills다. 마케팅 팀을 위한 스킬 라이브러리를 설계할 때, 이 스킬들은 최고의 마케팅 지식, SOP, 검증된 프레임워크, 브랜드 표준을 포함하며, 에이전트들은 이 전문성을 사용하는 팀원이 된다. 라이브러리를 한 번 구축하면 Claude가 이를 기반으로 작동하는 팀처럼 움직이거나, 다른 AI 모델에도 적용할 수 있어 강력하다.",
           "highlights": [
-            "즉 에이전트는 팀원이고 스킬은 그 팀원이 공유하는 플레이북이 된다."
+            "마케터들은 채널, 결과물, 시간 부족으로 늘 업무에 쫓긴다.",
+            "Claude Skills는 마케팅 작동 방식을 한 번 가르치면 매번 결과물을 제공하여 이러한 문제를 해결한다.",
+            "Claude Agents가 매우 강력하지만, 진정으로 강력하게 만드는 것은 그 뒤에 있는 전문성, 즉 Claude Skills다.",
+            "마케팅 팀을 위한 스킬 라이브러리를 설계할 때, 이 스킬들은 최고의 마케팅 지식, SOP, 검증된 프레임워크, 브랜드 표준을 포함하며, 에이전트들은 이 전문성을 사용하는 팀원이 된다.",
+            "라이브러리를 한 번 구축하면 Claude가 이를 기반으로 작동하는 팀처럼 움직이거나, 다른 AI 모델에도 적용할 수 있어 강력하다."
+          ],
+          "quote": "You teach it how your marketing works once and it just deliver every time."
+        },
+        {
+          "heading": "Claude Skills 라이브러리 구성 및 프로젝트 설정",
+          "body": "이 영상에서는 대부분의 마케팅 팀이 필요로 할 다섯 가지 스킬, 즉 리서치 및 전략, 콘텐츠 제작, 크리에이티브, 데이터 분석, 캠페인 프레젠테이션을 구축한다. 이 스킬들은 마케팅 스킬 라이브러리를 시간이 지남에 따라 구축하는 강력한 기반을 형성할 것이다. 데모에는 Claude Code Desktop을 사용하지만, Claude Cowork도 가능하다. Skill Creator 도구가 이미 설치되어 있어야 하며, 이 공식 스킬은 Claude Code에 내장되어 있지 않으므로 공식 스킬 Repo 링크와 설치 방법 비디오를 참조해야 한다. 'Simple Home'이라는 D2C E-commerce 브랜드의 프로젝트 폴더가 설정되어 있으며, 이 폴더 안에는 다양한 하위 폴더가 있지만 가장 중요한 것은 context 파일이다. 이 context 파일은 새로운 클라이언트를 온보딩하거나 인하우스 마케터일 때 브랜드, 제품, 잠재 고객 등에 대한 모든 배경 정보를 담아 Claude에 제공한다. Claude.md 파일은 Claude가 폴더 시스템을 탐색하는 방법을 안내하는 맞춤형 지침으로 항상 포함되어야 한다. 이러한 context 시스템 설정 방법은 AI for marketing 프로그램에서 모든 템플릿과 함께 더 깊이 다룬다.",
+          "highlights": [
+            "이 영상에서는 대부분의 마케팅 팀이 필요로 할 다섯 가지 스킬, 즉 리서치 및 전략, 콘텐츠 제작, 크리에이티브, 데이터 분석, 캠페인 프레젠테이션을 구축한다.",
+            "Skill Creator 도구가 이미 설치되어 있어야 하며, 이 공식 스킬은 Claude Code에 내장되어 있지 않으므로 공식 스킬 Repo 링크와 설치 방법 비디오를 참조해야 한다.",
+            "'Simple Home'이라는 D2C E-commerce 브랜드의 프로젝트 폴더가 설정되어 있으며, 가장 중요한 것은 context 파일이다.",
+            "이 context 파일은 새로운 클라이언트를 온보딩하거나 인하우스 마케터일 때 브랜드, 제품, 잠재 고객 등에 대한 모든 배경 정보를 담아 Claude에 제공한다.",
+            "Claude.md 파일은 Claude가 폴더 시스템을 탐색하는 방법을 안내하는 맞춤형 지침으로 항상 포함되어야 한다."
           ]
         },
         {
-          "id": "build-research-skills-from-sops",
-          "heading": "SOP와 브랜드 컨텍스트를 조사 스킬로 고정하라",
-          "body": "첫 번째 데모는 브랜드 프로젝트 폴더 안의 context 파일, CLAUDE.md, 기존 SOP 문서를 읽혀 marketing-research-strategy 스킬을 만드는 과정이다. 여기서 skill creator와 Perplexity MCP를 먼저 설치한 뒤, Claude Code Desktop이 경쟁사 조사와 전략 브리프 생성을 SOP 절차대로 수행하도록 설계한다. 이 방식의 장점은 사용자가 매번 브랜드 배경을 다시 붙여 넣지 않아도 context 파일을 읽고 동일한 포맷의 보고서를 로컬에 저장한다는 점이다. 결국 조사 도구보다 먼저 고정되는 것은 프로세스이며, 팀 전체의 리서치 산출물을 같은 기준으로 표준화할 수 있다.",
+          "heading": "마케팅 리서치 및 전략 스킬 구축",
+          "body": "첫 번째 스킬은 '마케팅 리서치 및 전략'이다. SOP 폴더 내에는 브랜드가 이미 마케팅 리서치 및 전략 보고서 구축에 사용하고 있는 SOP 문서가 준비되어 있다. Claude Code Desktop에서 해당 브랜드의 프로젝트 폴더를 선택한 다음, Perplexity MCP 또는 다른 검색 엔진을 사용하여 심층 조사를 수행하고, 이 SOP의 정확한 절차를 따라 전략 요약 보고서(strategy brief)를 생성하는 'marketing research strategy'라는 새 스킬을 만들도록 프롬프트를 사용한다. Perplexity MCP는 미리 설치되어 있어야 하며, 설치 링크는 아래에 제공된다. Claude는 SOP 및 context 파일을 읽고, 적절한 구조를 위해 스킬 생성자 파일을 읽은 다음 스킬 파일을 매우 빠르게 작성한다. 스킬이 생성되면 IDE에서 미리 볼 수 있으며, 이는 스킬 내에서 워크플로우를 자세히 정의하고 스킬이 사용할 유용한 참조를 포함한다. 스킬 사용이 필요할 때 Claude Code 내에서 슬래시 명령을 입력하거나 Claude가 자동으로 트리거하도록 할 수 있다. 예를 들어, 경쟁사를 분석하도록 요청하면, Claude는 브랜드 context 파일을 읽고 할 일 목록을 가져와 정확한 워크플로우를 트리거하고 Perplexity 검색을 호출한 다음, 정의된 형식에 따라 해당 브랜드와 관련된 포괄적인 보고서를 생성하며, 모든 내용은 로컬에 저장된다. 이처럼 Claude Skills는 마케팅 워크플로우를 표준화하는 데 도움을 줄 수 있다.",
           "highlights": [
-            "이 방식의 장점은 사용자가 매번 브랜드 배경을 다시 붙여 넣지 않아도 context 파일을 읽고 동일한 포맷의 보고서를 로컬에 저장한다는 점이다."
+            "첫 번째 스킬은 '마케팅 리서치 및 전략'이다.",
+            "Claude Code Desktop에서 해당 브랜드의 프로젝트 폴더를 선택한 다음, Perplexity MCP 또는 다른 검색 엔진을 사용하여 심층 조사를 수행하고, 이 SOP의 정확한 절차를 따라 전략 요약 보고서(strategy brief)를 생성하는 'marketing research strategy'라는 새 스킬을 만들도록 프롬프트를 사용한다.",
+            "Claude는 SOP 및 context 파일을 읽고, 적절한 구조를 위해 스킬 생성자 파일을 읽은 다음 스킬 파일을 매우 빠르게 작성한다.",
+            "스킬이 생성되면 IDE에서 미리 볼 수 있으며, 이는 스킬 내에서 워크플로우를 자세히 정의하고 스킬이 사용할 유용한 참조를 포함한다.",
+            "경쟁사를 분석하도록 요청하면, Claude는 브랜드 context 파일을 읽고 할 일 목록을 가져와 정확한 워크플로우를 트리거하고 Perplexity 검색을 호출한 다음, 정의된 형식에 따라 해당 브랜드와 관련된 포괄적인 보고서를 생성하며, 모든 내용은 로컬에 저장된다."
+          ],
+          "quote": "And this is how Claude skills can help to standardize your marketing workflow."
+        },
+        {
+          "heading": "소셜 미디어 콘텐츠 및 크리에이티브 스킬 구축",
+          "body": "두 번째 스킬은 소셜 미디어 콘텐츠 스킬이다. 과거의 성공적인 소셜 미디어 콘텐츠 사례와 다양한 전문가로부터 추출한 상세한 스토리텔링 프레임워크를 Claude에 제공하여, Claude가 이 예시들을 분석하고 패턴을 이해하여 재사용 가능한 스킬을 생성하도록 요청한다. 이 스킬은 Perplexity MCP를 사용하여 트렌드 대화를 찾아 통찰력을 추가한다. 이렇게 두 번째 마케팅 스킬이 즉시 준비되며, 이 스킬은 검증된 스토리텔링 프레임워크와 패턴을 사용하여 브랜드에 맞는 소셜 콘텐츠를 작성하는 상세한 워크플로우를 포함한다. Claude는 이 스킬이 사용할 참조 파일도 구축하며, 이는 단순히 말하는 것이 아니라 최고의 사례를 보여주는 것이 더 나은 스킬 생성 결과를 낳음을 의미한다. 세 번째 스킬은 크리에이티브 디자이너 스킬이다. 이 스킬은 Google nano banana 모델을 사용하여 다양한 마케팅 크리에이티브를 생성한다. nano banana MCP 설치 링크는 아래에 제공된다. Claude에게 스킬이 수행할 예상 동작을 알려주어야 하는데, 이 소셜 크리에이티브 디자이너 스킬은 주어진 게시물 문구 또는 콘텐츠 방향에 따라 nano banana 모델을 사용하여 소셜 미디어 비주얼을 생성할 것이며, 브랜드에 맞는 비주얼 생성을 위한 기본 스타일과 색상 팔레트, 그리고 따를 좋은 프롬프트 예시를 포함한다. Claude는 모든 context 파일을 읽고 참조 파일과 함께 세 번째 마케팅 스킬을 빠르게 생성한다. 간단한 프롬프트로 이 스킬을 테스트하여 특정 스타일, 레이아웃, 색상으로 교육 주제에 대한 소셜 인포그래픽을 생성하도록 요청하면, 소셜 크리에이티브 디자인 스킬이 성공적으로 트리거되고 nano banana MCP 도구가 최종 비주얼을 생성한다. 결과물은 청사진 기술 스타일로 매우 인상적이며, 이제 마케팅 팀은 정의된 어떤 스타일의 자료든 사용하여 크리에이티브를 만들 수 있는 스킬을 갖추게 된다.",
+          "highlights": [
+            "두 번째 스킬은 소셜 미디어 콘텐츠 스킬이다.",
+            "과거의 성공적인 소셜 미디어 콘텐츠 사례와 다양한 전문가로부터 추출한 상세한 스토리텔링 프레임워크를 Claude에 제공하여, Claude가 이 예시들을 분석하고 패턴을 이해하여 재사용 가능한 스킬을 생성하도록 요청한다.",
+            "세 번째 스킬은 크리에이티브 디자이너 스킬이다.",
+            "이 스킬은 Google nano banana 모델을 사용하여 다양한 마케팅 크리에이티브를 생성하며, 브랜드에 맞는 비주얼 생성을 위한 기본 스타일과 색상 팔레트, 그리고 따를 좋은 프롬프트 예시를 포함한다.",
+            "간단한 프롬프트로 이 스킬을 테스트하여 특정 스타일, 레이아웃, 색상으로 교육 주제에 대한 소셜 인포그래픽을 생성하도록 요청하면, 소셜 크리에이티브 디자인 스킬이 성공적으로 트리거되고 nano banana MCP 도구가 최종 비주얼을 생성한다."
+          ],
+          "quote": "don't just tell, always show your best examples to generate better skill creation results."
+        },
+        {
+          "heading": "AI 마케팅에서 인간 전략의 중요성 (HubSpot Loop Marketing Report)",
+          "body": "AI는 많은 힘든 작업을 수행할 수 있지만, 인간의 전략과 진정성이 없으면 단지 평범함을 자동화하는 것에 불과하다. And that is exactly what this research, the Loop Marketing landscape report from HubSpot address. 이 보고서는 전 세계 1,800명 이상의 마케터를 기반으로 한 무료 연구 보고서로, 판매로 끝나는 선형적인 깔때기(funnel) 대신 'express, tailor, amplify, evolve'의 네 단계를 가진 연속적인 순환 주기인 루프 마케팅(loop marketing) 프레임워크를 중심으로 구축되었다. What I appreciate is that everything is backed by real data, not just opinions. 이 프레임워크에서 인간은 전략을 주도하고 AI는 개인화, 배포 및 최적화를 돕는다. 가장 마음에 드는 부분은 'what top performers do different' 섹션으로, 가장 성공적인 팀이 AI를 어떻게 사용하는지 분석한 것이다. 이는 낮은 수준의 AI 작업에서 AI 기반 전략 및 연구로 나아가는 것이 현재 앞서 나가기 위한 비결임을 증명한다. 이 보고서는 무료로 다운로드할 수 있으며, 이 비디오를 후원해준 HubSpot에 감사하다.",
+          "highlights": [
+            "AI는 많은 힘든 작업을 수행할 수 있지만, 인간의 전략과 진정성이 없으면 단지 평범함을 자동화하는 것에 불과하다.",
+            "이는 HubSpot의 'Loop Marketing landscape report'가 다루는 내용이다.",
+            "이 보고서는 전 세계 1,800명 이상의 마케터를 기반으로 한 무료 연구 보고서로, 판매로 끝나는 선형적인 깔때기(funnel) 대신 'express, tailor, amplify, evolve'의 네 단계를 가진 연속적인 순환 주기인 루프 마케팅(loop marketing) 프레임워크를 중심으로 구축되었다.",
+            "이 프레임워크에서 인간은 전략을 주도하고 AI는 개인화, 배포 및 최적화를 돕는다.",
+            "가장 성공적인 팀이 AI를 어떻게 사용하는지 분석한 'what top performers do different' 섹션은 낮은 수준의 AI 작업에서 AI 기반 전략 및 연구로 나아가는 것이 현재 앞서 나가기 위한 비결임을 증명한다."
+          ],
+          "quote": "Now AI can do a lot of heavy lifting, but without human strategy and authenticity, you are just automating average"
+        },
+        {
+          "heading": "기타 마케팅 스킬 및 멀티 스킬 오케스트레이션",
+          "body": "앞서 설명한 방법과 유사하게, 데이터 입력을 수집하고, 데이터셋을 분석하며, 대시보드를 생성하는 '데이터 분석 스킬'과 원시 마케팅 자료를 브랜드에 맞는 프레젠테이션 또는 랜딩 페이지로 변환하는 '캠페인 프레젠터 스킬'이라는 두 가지 스킬이 추가로 구축되었다. 마케팅 팀의 필요에 따라 더 많은 스킬을 만들 수 있다. 실제 세계에서는 어떤 마케터도 고립되어 일하지 않으므로 모든 것이 연결되어야 하며, 여러 스킬을 함께 사용하는 것이 훨씬 더 강력하다. 예를 들어, 'Simple Home' 브랜드가 새로운 캠페인을 시작하며 콘텐츠가 필요한 경우, Claude에게 Instagram용 캠페인 소셜 게시물 10개를 만들고, 해당 캠페인 소셜 크리에이티브를 디자인한 다음 모든 것을 'campaign launch'라는 새 폴더에 저장하도록 작업을 줄 수 있다. 그러면 Claude는 먼저 모든 관련 context를 읽고, 'social creative designer'와 'social media content' 두 가지 스킬을 호출하여 할 일 목록을 가져온다. 이는 멀티 스킬 오케스트레이션(multi-skill orchestration)이 작동하는 모습이다. 이때 작업을 어떻게 분할할지 미리 정의할 필요 없이, Claude가 작업을 보고 스킬들을 함께 사용할 가장 효율적인 방법을 스스로 파악한다. 10분 이내에 Claude는 모든 게시물 초안과 크리에이티브 파일을 새 폴더에 성공적으로 생성하며, 모든 크리에이티브는 스킬에 정의된 기본 브랜드 스타일과 색상 팔레트에 따라 브랜드에 맞게 생성된다.",
+          "highlights": [
+            "데이터 입력을 수집하고, 데이터셋을 분석하며, 대시보드를 생성하는 '데이터 분석 스킬'과 원시 마케팅 자료를 브랜드에 맞는 프레젠테이션 또는 랜딩 페이지로 변환하는 '캠페인 프레젠터 스킬'이라는 두 가지 스킬이 추가로 구축되었다.",
+            "마케팅 팀의 필요에 따라 더 많은 스킬을 만들 수 있다.",
+            "실제 세계에서는 어떤 마케터도 고립되어 일하지 않으므로 모든 것이 연결되어야 하며, 여러 스킬을 함께 사용하는 것이 훨씬 더 강력하다.",
+            "Claude는 작업을 보고 스킬들을 함께 사용할 가장 효율적인 방법을 스스로 파악한다.",
+            "10분 이내에 Claude는 모든 게시물 초안과 크리에이티브 파일을 새 폴더에 성공적으로 생성하며, 모든 크리에이티브는 스킬에 정의된 기본 브랜드 스타일과 색상 팔레트에 따라 브랜드에 맞게 생성된다."
           ]
         },
         {
-          "id": "turn-examples-into-content-and-creative-skills",
-          "heading": "베스트 예시를 콘텐츠와 디자인 스킬로 변환하라",
-          "body": "두 번째와 세 번째 스킬은 SOP만 넣는 것이 아니라 과거 베스트 포스트, 스토리텔링 프레임워크, 시각 레퍼런스처럼 잘된 예시를 자산으로 바꾸는 방식을 보여준다. Social media content 스킬은 고성과 콘텐츠 패턴을 분석하고 Perplexity MCP로 트렌드 대화를 더해 재사용 가능한 작성 워크플로를 만든다. Creative designer 스킬은 Google Nano Banana와 Nano Banana MCP를 써서 기본 스타일, 색상 팔레트, 예시 비주얼을 기준으로 온브랜드 이미지를 생성한다. 발표자는 HubSpot의 1,800+ marketers 기반 리서치 보고서를 인용하며, 인간이 전략을 리드하고 AI는 개인화, 배포, 최적화를 맡을 때 성과가 커진다고 강조한다. 실제 테스트에서는 교육형 social infographic를 생성했는데, blueprint technical style 같은 구체적 미감까지 결과물에 반영됐다.",
+          "heading": "복잡한 작업을 위한 에이전트 팀 활용 (Sub-agents vs. Agent Teams)",
+          "body": "단일 작업에 두 가지 스킬이 함께 작동하는 것을 보았지만, 작업이 훨씬 더 복잡할 때는 어떻게 될까? 이때 Claude는 단순히 스킬을 사용하는 것을 넘어, 팀 리더처럼 행동하여 에이전트에게 작업을 할당하기 시작한다. 이를 수행하는 두 가지 방법이 있다. 첫 번째는 하위 에이전트(sub-agent) 또는 사용자 지정 정의 하위 에이전트를 사용하는 것이다. Claude가 메인 에이전트가 되어 하위 에이전트들을 생성하고 각각에게 작업을 할당하지만, 이들은 팀 리더인 Claude에게만 보고한다. 이는 작업이 대부분 독립적일 때 유용하다. 두 번째 방법은 최신 'Agent Teams' 기능을 사용하는 것이다. Claude는 에이전트 팀을 생성하고, 이 에이전트들은 작업 목록을 공유하며 최종 결정을 내리기 전에 서로 대화하고 팀 리더에게 보고한다. 가장 큰 차이점은 각 에이전트가 Claude Code 내의 별도 세션이라는 점이다. 이는 에이전트들이 피드백을 공유해야 하는 정말 복잡한 마케팅 워크플로우에 유용하지만, 훨씬 더 많은 토큰 사용량을 유발한다. 이 영상에서는 90%의 시간 동안 사용될 하위 에이전트에 중점을 둔다.",
           "highlights": [
-            "Creative designer 스킬은 Google Nano Banana와 Nano Banana MCP를 써서 기본 스타일, 색상 팔레트, 예시 비주얼을 기준으로 온브랜드 이미지를 생성한다."
-          ]
+            "작업이 훨씬 더 복잡할 때, Claude는 단순히 스킬을 사용하는 것을 넘어, 팀 리더처럼 행동하여 에이전트에게 작업을 할당하기 시작한다.",
+            "첫 번째 방법은 하위 에이전트(sub-agent) 또는 사용자 지정 정의 하위 에이전트를 사용하는 것으로, Claude가 메인 에이전트가 되어 하위 에이전트들을 생성하고 각각에게 작업을 할당하지만, 이들은 팀 리더인 Claude에게만 보고한다.",
+            "두 번째 방법은 최신 'Agent Teams' 기능을 사용하는 것이다.",
+            "Agent Teams의 가장 큰 차이점은 각 에이전트가 Claude Code 내의 별도 세션이라는 점이며, 이는 에이전트들이 피드백을 공유해야 하는 정말 복잡한 마케팅 워크플로우에 유용하지만, 훨씬 더 많은 토큰 사용량을 유발한다.",
+            "이 영상에서는 90%의 시간 동안 사용될 하위 에이전트에 중점을 둔다."
+          ],
+          "quote": "what happens when a task is much more complex, and this is where Claude doesn't just use your skill, but start to act like a team lead to assign tasks, to agents."
         },
         {
-          "id": "orchestrate-campaign-content-and-visuals",
-          "heading": "캠페인 실행은 멀티 스킬 orchestration으로 묶어라",
-          "body": "실전 예시는 단일 스킬보다 orchestration에서 더 큰 가치가 나온다는 점을 보여준다. 발표자는 새 캠페인을 위해 Instagram용 게시물 10개와 그에 맞는 social creative를 한 번에 만들라고 지시했고, Claude가 content 스킬과 creative 스킬을 스스로 조합해 campaign_launch 폴더에 결과물을 저장했다. 약 10분 안에 다양한 비율과 포맷의 비주얼, 캡션, 시각 디렉션, 그리고 사용한 스토리텔링 프레임워크까지 함께 정리되면서 결과물이 곧 미니 브리프 역할도 하게 된다. 이 장면의 핵심은 사람이 작업 분할을 미리 설계하지 않아도, 잘 만든 스킬 라이브러리가 있으면 Claude가 가장 효율적인 협업 순서를 스스로 고른다는 점이다.",
+          "heading": "복잡한 작업 결과물 검토 및 Agent Teams 활성화",
+          "body": "복잡한 작업 예시로 분기별 검토를 들 수 있다. 이 브랜드에 대한 큰 분기별 검토 작업이 있다면, Claude에게 이를 세 가지 병렬 작업으로 나누도록 요청할 수 있다. 즉, 마케팅 전략 생성, 데이터 분석, 그리고 이러한 발견 사항을 프레젠테이션 덱으로 결합하는 것이다. Claude는 이러한 세 가지 작업을 위해 여러 사용자 지정 스킬을 사용하는 병렬 하위 에이전트를 계획한다. Claude는 시장 조사 스킬을 호출하여 Perplexity 조사를 수행하고, 완료되면 데이터 분석 스킬을 호출하여 대시보드 구축을 진행한다. 모든 것이 완료되면 두 가지 발견 사항을 종합하여 캠페인 프레젠터 스킬을 사용하여 프레젠테이션 덱을 구축한다. 미리 정의된 사용자 지정 에이전트를 사용하고 싶지 않다면 Claude에게 이처럼 임시 하위 에이전트를 생성하도록 요청할 수 있다. 약 10분 후, 모든 결과물(마케팅 전략 요약 보고서, 대시보드, 프레젠테이션 슬라이드 덱)이 특정 폴더에 저장된다. 제공된 보고서는 지시된 원래 SOP 프로세스를 따르며, 모든 핵심 섹션이 포함되어 있어 실제 조사 도구보다 프로세스가 훨씬 더 중요함을 보여준다. 캠페인 성과 대시보드는 브랜드 색상과 스타일을 사용하여 모든 주요 지표와 함께 잘 만들어졌으며, 데이터 차트는 각 채널별 성능 분석과 다양한 유형의 차트 사용으로 데이터 스토리텔링 효과를 높였다. 특히 이 대시보드는 특정 지표를 클릭하여 정렬 및 강조할 수 있는 완전한 대화형이다. 프레젠테이션 덱은 괜찮은 브랜드 테마로 깔끔하며, 성과 요약 데이터 차트와 조사 결과 및 신속한 개선 권장 사항을 포함하여 작업 1과 작업 2의 통찰력을 결합한 것을 볼 수 있다. 이렇게 세 가지 Claude Skills만으로 세 명의 마케팅 어시스턴트가 복잡한 작업을 위한 많은 준비 작업을 수행하여 시간을 절약해준다. Agent Teams를 설정하려면 먼저 전역 Claude 설정에서 활성화해야 하며, 링크는 아래에 제공된다. 이 새로운 기능을 사용하려면 Claude에게 세 명의 전문 팀원과 함께 에이전트 팀을 만들도록 요청할 수 있으며, 팀원 1과 2에게 최종 결정을 내리기 전에 서로의 작업을 검토하도록 요청할 수 있다. Claude는 팀 구조를 설정한 다음, 병렬 작업, 교차 검토 및 실행과 같은 다양한 작업 단계를 시작하며, 각 팀원은 피드백을 공유한다. Agent Teams는 훨씬 더 많은 토큰 사용량을 유발하므로, Claude에게 먼저 높은 수준의 계획을 요청하여 만족할 때만 진행하는 것이 좋다.",
           "highlights": [
-            "약 10분 안에 다양한 비율과 포맷의 비주얼, 캡션, 시각 디렉션, 그리고 사용한 스토리텔링 프레임워크까지 함께 정리되면서 결과물이 곧 미니 브리프 역할도 하게 된다."
-          ]
+            "이 브랜드에 대한 큰 분기별 검토 작업이 있다면, Claude에게 이를 세 가지 병렬 작업으로 나누도록 요청할 수 있다.",
+            "Claude는 시장 조사 스킬을 호출하여 Perplexity 조사를 수행하고, 완료되면 데이터 분석 스킬을 호출하여 대시보드 구축을 진행한다.",
+            "모든 것이 완료되면 두 가지 발견 사항을 종합하여 캠페인 프레젠터 스킬을 사용하여 프레젠테이션 덱을 구축한다.",
+            "약 10분 후, 모든 결과물(마케팅 전략 요약 보고서, 대시보드, 프레젠테이션 슬라이드 덱)이 특정 폴더에 저장된다.",
+            "제공된 보고서는 지시된 원래 SOP 프로세스를 따르며, 모든 핵심 섹션이 포함되어 있어 실제 조사 도구보다 프로세스가 훨씬 더 중요함을 보여준다.",
+            "캠페인 성과 대시보드는 브랜드 색상과 스타일을 사용하여 모든 주요 지표와 함께 잘 만들어졌으며, 데이터 차트는 각 채널별 성능 분석과 다양한 유형의 차트 사용으로 데이터 스토리텔링 효과를 높였다.",
+            "프레젠테이션 덱은 성과 요약 데이터 차트와 조사 결과 및 신속한 개선 권장 사항을 포함하여 작업 1과 작업 2의 통찰력을 결합한 것을 볼 수 있다."
+          ],
+          "quote": "that is why the process is actually much more important than the actual research tool that you use."
         },
         {
-          "id": "scale-with-sub-agents-and-plugins",
-          "heading": "복잡한 업무는 sub agents와 plugin으로 확장하라",
-          "body": "더 복잡한 업무에서는 sub agents와 agent teams를 구분해 써야 한다. 영상은 분기 리뷰를 예로 들어 전략 수립, 데이터 분석, 프레젠테이션 제작의 세 작업을 병렬로 나누고, 서로 독립적인 일이 많다면 토큰 비용이 적은 sub agents가 90% 상황에서 충분하다고 설명한다. 실제 데모에서도 연구 브리프, 인터랙티브 대시보드, 슬라이드 덱이 약 10분 만에 생성됐고, agent teams는 교차 리뷰가 필요할 때만 쓰는 고비용 옵션으로 제시된다. 마지막에는 이 스킬 묶음을 AI marketing skill plugin으로 패키징하고 landing-page slash command까지 정의해, 다른 브랜드 프로젝트에서도 같은 워크플로를 즉시 재사용한다. 즉 확장의 마지막 단계는 스킬을 잘 만드는 것에서 끝나지 않고, 재배포 가능한 plugin과 명령 체계로 팀의 운영 방식을 옮기는 데 있다.",
+          "heading": "Claude Plugin을 통한 스킬 라이브러리 이식성 및 재사용",
+          "body": "구축된 스킬 라이브러리 전체를 완전히 다른 브랜드 프로젝트나 심지어 다른 도구로 가져가려면 Claude Plugin을 활용해야 한다. 이는 사용자 지정 스킬을 하나씩 업로드하는 대신, 배포를 위한 자체 사용자 지정 플러그인을 생성하는 방식이다. Just think of it as a bundle package. 먼저 Claude에게 이 프로젝트의 모든 사용자 지정 스킬을 'AI Marketing Skills'라는 재사용 가능한 플러그인으로 패키징하도록 요청한다. 동시에 'landing page'라는 사용자 지정 슬래시 명령을 정의하여 마케팅 리서치 스킬과 프레젠터 스킬을 모두 사용하여 랜딩 페이지를 구축하는 워크플로우를 트리거할 수 있다. 보너스 팁으로, 사용자 지정 에이전트가 있다면 이 플러그인에 포함할 수도 있다. Claude는 모든 스킬 및 참조 파일의 문서를 읽고 이를 플러그인 형식으로 패키징한다. 이제 'Spark agency'와 같은 다른 브랜드를 온보딩할 때 프로젝트 폴더를 선택하고 'Add Plugin'을 클릭하여 GitHub 저장소에서 타사 플러그인을 가져오거나 zip 파일을 업로드하면 모든 스킬을 새 프로젝트에서 즉시 사용할 수 있다. 이것이 바로 이식성(portability)의 힘이다.",
           "highlights": [
-            "영상은 분기 리뷰를 예로 들어 전략 수립, 데이터 분석, 프레젠테이션 제작의 세 작업을 병렬로 나누고, 서로 독립적인 일이 많다면 토큰 비용이 적은 sub agents가 90% 상황에서 충분하다고 설명한다."
-          ]
+            "구축된 스킬 라이브러리 전체를 완전히 다른 브랜드 프로젝트나 심지어 다른 도구로 가져가려면 Claude Plugin을 활용해야 한다.",
+            "이는 사용자 지정 스킬을 하나씩 업로드하는 대신, 배포를 위한 자체 사용자 지정 플러그인을 생성하는 방식이다.",
+            "먼저 Claude에게 이 프로젝트의 모든 사용자 지정 스킬을 'AI Marketing Skills'라는 재사용 가능한 플러그인으로 패키징하도록 요청한다.",
+            "동시에 'landing page'라는 사용자 지정 슬래시 명령을 정의하여 마케팅 리서치 스킬과 프레젠터 스킬을 모두 사용하여 랜딩 페이지를 구축하는 워크플로우를 트리거할 수 있다.",
+            "이제 'Spark agency'와 같은 다른 브랜드를 온보딩할 때 프로젝트 폴더를 선택하고 'Add Plugin'을 클릭하여 GitHub 저장소에서 타사 플러그인을 가져오거나 zip 파일을 업로드하면 모든 스킬을 새 프로젝트에서 즉시 사용할 수 있다."
+          ],
+          "quote": "So instead of upload the custom skill one by one, you can create your own custom plugin for distribution. Just think of it as a bundle package."
+        },
+        {
+          "heading": "플러그인을 통한 워크플로우 복제 및 적용성",
+          "body": "플러그인이 설치되면 이전처럼 어떤 스킬이든 호출하거나 슬래시 명령을 사용할 수 있다. 예를 들어, 'landing page' 슬래시 명령을 사용하여 컨설팅 브랜드의 설득력 있는 홈페이지를 디자인하도록 요청하면, Claude는 동일한 워크플로우를 실행한다. 즉, 브랜드 context를 로드하고, 리서치 스킬을 사용하여 랜딩 페이지 리서치 요약 보고서를 생성한 다음, 최종적으로 랜딩 페이지를 구축한다. 이로써 어떤 프로젝트든 리서치에 기반한 랜딩 페이지를 브랜드에 맞게 신속하게 구축할 수 있으며, Claude Code 내에서 세부 조정을 할 수 있다. 또 다른 보너스는 동일한 플러그인 세트를 사무 업무용 Claude Code의 비기술적 버전인 Claude Cowork에도 가져올 수 있다는 점이다. 플러그인이 설치되면, 데이터셋을 분석하고 프레젠테이션을 구축해야 하는 경우처럼 이전과 동일하게 스킬을 호출하면 Claude는 스킬의 정확히 동일한 워크플로우를 따른다. 이때 Claude는 지정된 다른 색상 구성표를 사용하여 해당 브랜드에 맞게 스킬을 적용한다. And this is the power of skill. 이는 워크플로우를 다른 브랜드로 복제하고 브랜드에 맞는 다양한 결과물을 구축할 수 있음을 의미한다. 이 비디오가 유익했다면 좋아요를 누르고, AI 시스템 구축 워크숍 시리즈가 진행 중인 성장 커뮤니티에 참여하여 더 깊이 있게 학습할 수 있다.",
+          "highlights": [
+            "플러그인이 설치되면 이전처럼 어떤 스킬이든 호출하거나 슬래시 명령을 사용할 수 있다.",
+            "'landing page' 슬래시 명령을 사용하여 컨설팅 브랜드의 설득력 있는 홈페이지를 디자인하도록 요청하면, Claude는 동일한 워크플로우를 실행한다.",
+            "Claude는 브랜드 context를 로드하고, 리서치 스킬을 사용하여 랜딩 페이지 리서치 요약 보고서를 생성한 다음, 최종적으로 랜딩 페이지를 구축한다.",
+            "이로써 어떤 프로젝트든 리서치에 기반한 랜딩 페이지를 브랜드에 맞게 신속하게 구축할 수 있으며, Claude Code 내에서 세부 조정을 할 수 있다.",
+            "동일한 플러그인 세트를 사무 업무용 Claude Code의 비기술적 버전인 Claude Cowork에도 가져올 수 있으며, Claude는 스킬의 정확히 동일한 워크플로우를 따르고 지정된 다른 색상 구성표를 사용하여 해당 브랜드에 맞게 스킬을 적용한다."
+          ],
+          "quote": "And this is the power of skill. You can just replicate the workflow into different brands and build different deliverables that are still on brand."
         }
       ],
       "key_takeaways": [
-        "Claude Skills의 핵심 가치는 모델 자체보다 SOP, 브랜드 컨텍스트, 레퍼런스를 재사용 가능한 운영 지식으로 고정하는 데 있다.",
-        "콘텐츠 작성과 비주얼 생성처럼 연결된 업무는 멀티 스킬 orchestration으로 묶을 때 속도와 일관성이 함께 오른다.",
-        "sub agents, plugin, slash command까지 갖추면 한 브랜드에서 만든 마케팅 워크플로를 다른 프로젝트로 거의 그대로 이식할 수 있다."
+        "Claude Skills는 마케팅 지식, SOP, 프레임워크를 코드화하여 AI 에이전트가 활용할 수 있는 전문성 라이브러리를 구축하고 마케팅 워크플로우를 표준화한다.",
+        "브랜드 context 파일과 Claude.md를 통해 AI에 특정 프로젝트의 배경 정보를 제공하고 워크플로우를 안내하여 맞춤형 결과물을 생성할 수 있다.",
+        "멀티 스킬 오케스트레이션을 통해 Claude는 여러 스킬을 자율적으로 조합하여 복잡한 마케팅 작업을 효율적으로 수행하며, 인간의 개입 없이도 작업을 분할하고 실행한다.",
+        "Sub-agents와 Agent Teams는 복잡도에 따라 AI 에이전트 간의 협업 및 작업 할당을 가능하게 하며, Agent Teams는 더 많은 토큰을 사용하지만 에이전트 간 피드백 공유를 통해 복잡한 워크플로우를 처리한다.",
+        "Claude Plugin은 커스텀 스킬 및 에이전트 라이브러리를 번들로 묶어 다른 브랜드 프로젝트나 Claude Cowork와 같은 다른 도구로 쉽게 이식하고 재사용할 수 있는 이식성(portability)을 제공한다."
       ],
       "tech_stack": [
         "Claude Skills",
+        "Claude Agents",
         "Claude Code Desktop",
-        "skill creator",
+        "Claude Cowork",
+        "Skill Creator tool",
         "Perplexity MCP",
-        "Google Nano Banana",
-        "Nano Banana MCP",
-        "sub agents",
-        "agent teams"
+        "Google nano banana model",
+        "GitHub"
       ],
       "apply_points": [
-        "브랜드마다 context 파일과 CLAUDE.md를 먼저 정리해 제품, 타깃 고객, 톤앤매너, 폴더 규칙을 고정하라.",
-        "기존 리서치 SOP를 그대로 넣어 marketing-research-strategy 스킬을 만들고, 경쟁사 분석 결과를 같은 포맷의 brief로 저장하게 하라.",
-        "성과가 좋았던 게시물 5~10개와 스토리텔링 프레임워크를 reference로 묶어 Social media content 스킬의 재료로 써라.",
-        "디자인 스킬에는 색상 팔레트, 레이아웃 규칙, 좋은 예시 이미지를 기본값으로 넣어 이미지 생성 결과를 온브랜드로 제한하라.",
-        "캠페인 실행은 게시물 작성과 creative 생성처럼 최소 두 개 스킬을 묶어 orchestration 테스트부터 해라.",
-        "분기 리뷰처럼 복합 작업은 strategy, data, presentation 3트랙으로 쪼개 sub agents에 병렬 할당하라.",
-        "검증된 스킬 묶음은 plugin과 slash command로 패키징해 새 브랜드 온보딩 때 바로 가져가라."
-      ]
+        {
+          "text": "현재 진행 중인 MCP-memory 프로젝트에서 사용자 입력에 따라 Perplexity MCP 검색 스킬과 요약/분석 스킬을 오케스트레이션하여 보고서 생성 파이프라인을 구축할 수 있도록 설계한다.",
+          "key": true
+        },
+        {
+          "text": "MCP-memory 프로젝트에서 Claude.md와 유사한 방식으로 `context` 파일을 정의하여 MCP 검색 및 LLM 기반 요약 스킬이 특정 브랜드나 프로젝트의 배경 정보를 기반으로 응답하도록 구성한다.",
+          "key": false
+        },
+        {
+          "text": "tech-review 프로젝트에서 새로운 AI 기술 검토 시 Claude Skills 개념을 활용하여 특정 기술의 강점, 약점, 사용 사례를 분석하고 표준화된 평가 보고서를 생성하는 스킬을 구축하는 방안을 검토한다.",
+          "key": false
+        },
+        {
+          "text": "portfolio 프로젝트의 데모나 설명 자료를 생성할 때, '캠페인 프레젠터 스킬'과 유사하게 프로젝트 설명, 주요 기능, 기술 스택 등을 자동으로 구성하고 시각 자료를 포함하는 스킬을 개발하여 빠르게 고품질 결과물을 만든다.",
+          "key": false
+        },
+        {
+          "text": "MCP-memory 프로젝트에서 AI가 여러 스킬을 효율적으로 조합하는 '멀티 스킬 오케스트레이션' 개념을 차용하여, MCP 검색 결과 처리와 LLM 기반 분석 스킬 간의 전환 로직을 최적화하는 아키텍처를 구현한다.",
+          "key": true
+        }
+      ],
+      "smart_brevity": {
+        "why": "",
+        "what": "",
+        "axioms": []
+      }
     },
     "fetched_at": "2026-03-07",
     "playlist_index": 3

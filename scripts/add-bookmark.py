@@ -210,10 +210,48 @@ def summarize_with_codex(text: str) -> dict | None:
             pass
 
 
+# ── Gemini API fallback ──────────────────────────────────────────────────────
+def summarize_with_gemini(text: str) -> dict | None:
+    """Gemini 2.5 Flash API로 구조화 (Codex 대체)"""
+    api_key = os.environ.get("GEMINI_API_KEY")
+    if not api_key:
+        print("  [Gemini API] GEMINI_API_KEY 없음")
+        return None
+    try:
+        import google.generativeai as genai
+        genai.configure(api_key=api_key)
+        model = genai.GenerativeModel("gemini-2.5-flash")
+
+        prompt = PROMPT_TEMPLATE.format(text=text[:8000])
+        resp = model.generate_content(prompt)
+        raw = resp.text.strip()
+        raw = re.sub(r"^```json\s*", "", raw)
+        raw = re.sub(r"\s*```$", "", raw.strip())
+        return json.loads(raw)
+    except json.JSONDecodeError as e:
+        print(f"  [Gemini API] JSON 파싱 실패: {e}")
+        return None
+    except Exception as e:
+        err_str = str(e)
+        if "429" in err_str or "quota" in err_str.lower():
+            print("  [Gemini API] 쿼터 초과")
+            return None
+        print(f"  [Gemini API] 실패: {e}")
+        return None
+
+
 # ── Main ───────────────────────────────────────────────────────────────────
 def main():
-    if len(sys.argv) >= 2:
-        raw_path = Path(sys.argv[1])
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("input_file", nargs="?", default=None,
+                        help="bookmarks-raw.json 경로 (없으면 inbox/ 자동 선택)")
+    parser.add_argument("--use-gemini", action="store_true",
+                        help="Codex 대신 Gemini Flash API로 구조화")
+    args = parser.parse_args()
+
+    if args.input_file:
+        raw_path = Path(args.input_file)
     else:
         inbox = BLOG_DIR / "inbox"
         files = sorted(inbox.glob("*.json"), key=lambda f: f.stat().st_mtime, reverse=True)
@@ -250,11 +288,13 @@ def main():
         print("새 북마크 없음.")
         return
 
-    print(f"신규 {len(new_tweets)}개 → Claude CLI 순차 분석...")
+    summarize_fn = summarize_with_gemini if args.use_gemini else summarize_with_codex
+    engine_name = "Gemini" if args.use_gemini else "Codex"
+    print(f"신규 {len(new_tweets)}개 → {engine_name} 순차 분석...")
 
     for tw in new_tweets:
         print(f"  분석 중: @{tw['author']} ...", end="", flush=True)
-        summary = summarize_with_codex(tw["text"])
+        summary = summarize_fn(tw["text"])
         if not summary:
             print(" FAIL")
             continue
@@ -293,7 +333,7 @@ def main():
 
     os.chdir(BLOG_DIR)
     os.system("git add _data/bookmarks.json")
-    os.system(f'git commit -m "[tech-review] Twitter Bookmarks {added}개 추가 (Codex)"')
+    os.system(f'git commit -m "[tech-review] Twitter Bookmarks {added}개 추가 ({engine_name})"')
     os.system("git push")
     print("git push 완료")
 

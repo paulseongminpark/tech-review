@@ -9,144 +9,118 @@
     "source_type": "youtube",
     "transcript": "There is this emergence of kind of like a new, I would say, class of like engineer, which is like the AI native engineer. And AI is that language. AI is that new language. This particular generation of junior developers, of junior engineers, the people that are now entering the workforce, will I think be the first kind of generation of that new shift. A single developer become a manager of agents. Any more agents doesn't always create for better system. In fact, it can make for a lot worse systems, actually, if you just let them go and do whatever they want. So really knowing how to properly handle multiple agents is like the last boss in a game. Like if you can do that really, really well, then you are like literally like the top, top point one percent of users even today. I'm Mihail. I lead AI at an early stage startup here in San Francisco. I also teach class at Stanford. The title of the class is the Modern Software Developer. It's something the first class where the focus is AI across the SDLC within like a few hours of the class being announced and then kind of open up for enrollment, filled up over 100 students trying to get into the class. What is happening to junior software engineers? There was this huge momentum around something kind of crazy is happening. Software development and AI is really starting to make its way into every single part of how software is being done. And clearly something was changing. I've heard some pretty scary anecdotes where I was talking to someone that had just graduated at Berkeley and they were saying that they had applied to like a thousand places and had heard back from like only heard back from like two places. So not even like got interviews and you know had gone through the pipeline, but really were just heard back. So the reality is for a lot of junior engineers is very difficult for them to get some of these roles. It's interesting time in the ecosystem actually, the software system where basically three things happened came together in this kind of like perfect storm. The first thing that happened was in around 2021, there was this huge surge of like hiring. Soon after COVID, there was just a bunch of companies that felt they needed to increase their employee count. And then I think a lot of companies realized that they like over hired. So there was like massive layoffs that happened where all these companies that had hired a ton of people realized that actually we can like reduce our workforce by 20%, 30% and it's still OK. That was combined with the fact that the growth of the CS curriculum, like the CS major nationally and internationally has grown tremendously in the last 10 to 15 years. So when I was graduating, you know, there's like some number of graduates. And I think since then, like it's doubled to maybe 3x in terms of how many graduates from CS are graduating every year. And so you have a huge workforce of people that have essentially like been laid off. You have this new overwhelming, like new generation of engineers. We want jobs. And then the third thing I think was contributed to all this was AI became popular, right? Like people started like really paying attention to AI. And so for a lot of employers, they started considering, do I need to hire more people to fill my gaps or can I just hire fewer people that are maybe native at AI and that way cover the quota that I have maybe for employment? And so this particular generation of junior developers, of junior engineers, the people that are now entering the workforce, I think the first kind of generation of that new shift, right, where they have to both have good fundamentals, but also know how to be fully AI native. How top 1% AI native engineers orchestrate agents. At its core, I think that the AI native engineer is one that both has like a strong backing and foundation in traditional programming, system design and algorithmic thinking, but is very competent at using like agentic workflows. I always teach them like, build it up piecemeal. You know, Boris from Claude said he does like 10 agents at once. And so I should start doing 10 agents at once. Like that's like the wrong outcome that you should emphasize. Again, I would build it one at a time. I would say, hey, like I'm really good at doing one agent workflow quite well. And I can build like a complex piece of software with one agent. But then I know that I have to do this like other thing, which is maybe a small chain, thinking about your tasks as something that are isolated and that can be done with confidence by something that is that is a second or third agent. And so you add a second agent to fix the logo and then like, well, this agent is fixing the logo. Another agent maybe could also update the copy on the header of the website. And again, this is like an isolated change that has nothing to do with what the second agent was doing. And so the way I would think about it is iteratively add more work for the agents. Make sure that you first understand what has to be done and then know where the lines are between those those items of work. And then like when you're feeling good about how one agent is doing something, then add a second one. Then if the second one is doing well and you're feeling confident, then add a third one. You know, so I would build it up more step by step rather than 10 agents at once. The second thing that I think is really, really important there is knowing how to like context switch. In practice, what you're doing is you're like kicking off these like interns basically. They're like very eager, savvy interns, these agents, and they're doing a thing. And then you're just watching them in the terminal or like in the IDE. And you're just like seeing them do work and they're like contributing code and it's just getting written somewhere. And then but sometimes they get stuck. Right. How do you go from like one to another to like understanding, hey, this agent one was working on this particular task. Agent two was working on another task. Agent three was working on another task. And then you're like constantly switching back and forth. And it's a very difficult thing to do even as a human, right, to know how to like remember what the last thing was working on, but still have enough context to meaningfully push that task forward. And so that switching, I think, is probably one of the core skills of getting multi-agent workflows to work really well. That what I've described is basically what makes a good manager, like a good human manager. It has nothing to do with like an agent. Like if you can do that task really, really well, then you also are just like a very good, you'd be like a good human manager in general. And so the people that I see best at doing that are the ones that are also have been managers of like humans, you know, or human developers and have learned how to do that context switching and then apply similar principles to agents. There's this concept that I'm calling like an agent friendly code base or an agent friendly development ecosystem. And what I mean here is if an agent was released into your code base, would it know how to understand what's happening in the code base? When you release an agent to go and build in the context of your code base, the way you ensure that they're going to like not break something and that whatever they contribute will work is they test it against your tests, which are basically contracts that define the correctness of software. You need to define these contracts. If you don't have enough test coverage, then you don't have contracts for your software agents only can operate on contracts like explicitly defined contracts of software. Any developer who's been in the industry knows that read me is get out of date with what's happening in code almost immediately. And so you have these like two descriptions of the same thing. The code says one thing, but the read me says a completely different thing. If your code has that kind of a situation, then the agent will read the read me and maybe the code and they'll, and they'll ask them, it's like, which of these, what's the right interpretation? Should I follow the read me's what the read me says or what the code base says? And so make sure they're consistent, right? This is just like a simple thing. When you get spaghetti code, it's typically when an agent has maybe gone on and built something for multiple iterations, maybe multiple features. And it just started kind of like going off the rails a little bit. One bad thing that they're really good at is agents can compound errors very quickly. If an agent has one misunderstanding in a code and then it sees that misunderstanding that it created in step one, it can double down and create another error in step two. It'll magnify it. The most important thing is like having, making sure that the first thing that the agent sees is completely robust and it's completely airtight in terms of design, in terms of testing, in terms of like the build, like a lot of these like kind of core parts of the code base itself before you even think about the agent. So again, like making sure that like the first version of your code that an agent sees is self-consistent, making sure that it's well-tested, making sure that you have linting in place and style checking so that, you know, your code bases is consistently formatted. A lot of these things will ensure that your agent is always adhering to the, the kind of the rules of your code base that you've already defined. And then the last thing that I'll add, just, just to give another example of like agent-friendly, agent-first code bases, are you consistent about like design patterns in your code? What I mean here is if, if there's one part of your code base where when you create a certain kind of object, you use this one API and there's another part of the code base, you also create the same object, but you're using a different API. When an agent now has to develop in your code base, which of the two should it use? Should it use the API one or API two? And if people have an agent that goes and picks the wrong API, well, a human would also have been confused. If I were walking to your code base and saw the two different ways of doing it, I would also ask myself, should I do one or two? I don't know, I see both. And I would probably end up asking a teammate, hey, which of these are we actually supposed to use? Consistent design patterns and kind of programmatic patterns, I think is also something that the best agent-friendly code base I've seen use. Functional software versus incredible software. A few things that define functional software from like incredible software. The one version of the answer is just taste. Like what is good software taste? Right. And genuinely, there's many people that have taste and don't have taste. There's people that have taste that spend more time developing that taste. When I look at sort of the students in my class, we had some requirements, like you have to build like five different flows or something like that. You can create those flows, but if you want to push yourself, like do the bonus, you know, the bonus and then the extra credit, that is like, I think where the difference starts to arise is when someone is like, I know that I've already like hit a hundred percent on this or, you know, got most of the credit for the assignment or the project, but I really want to like, I'm invested in like building the most complex thing because I want to solve a problem more than just get the grade, right? But the taste building happens in that, like that last mile, like where you go spend and you like do the extra work to like expand the feature, make it more robust, make more things possible in the application. You know, the students, again, that I think they're the best are the ones that like are now literally building startups around their projects because they like see that there's something there and they're going to like, they're rolling with it, you know, like the class ended, but they're like, we're still, we're still working on the exact same thing because we think there's more to build here. And that I think is where the way the top engineers think. Experimentation is sort of the name of the game in becoming an AI native software developer. One example that comes to mind is when Boris came from Cloudco came to speak, someone like Boris, even a team like, you know, Claude at Anthropic that is building such an amazing piece of software, they basically rewrite Claude every week or like week or two weeks using Claude, right? So they are like constantly rewriting their own piece of software with software like that they've built. And so they themselves are also figuring things out as they go. Like they are building their system, but they are experimenting and constantly iterating based on feedback from their users. And even if they seem like they have all the answers, they don't, you know, they themselves are also discovering what works and what doesn't work. And so the more important thing is to build experimentation into your own workflows. And I tried to reinforce in the students was, look, I can come here and I can give you suggestions. I can say, you should try this tool. Here's what I think is good about this tool. But at the end of the day, you have to sort of like beat your head against the wall a little bit yourself. You have to be able to experiment. You have to be able to see what works for you and what doesn't work for you and really just kind of make that a part of the kind of the new way of doing software development, experimentation, hacking, and just making that a part of your workflow. Why the world still needs junior software engineers. Senior developers historically tend to be a little bit resistant to AI tools because they're so ingrained in their own way of doing things because they've been developing for 20 years and they're like, oh, the only way to do this is the way that I've done. I use them. The senior developers sometimes intervene the most stubborn, but someone who is coming to the industry for the first time, they're like, they're like a sponge. Like everything is possible to them. Like they're learning things for the first time. And so all of the things that are difficult about the world and society and industries and verticals, they don't yet, they haven't internalized that yet. They're not like scarred by like how hard health care is. They just see like, oh, I see a problem. I don't know. Like, why don't I go try and do it? And so there's like, there's like a good naivety to how young, young people think, which is perfect for a startup founder. They're going to be brave enough to go and tackle the thing. In those situations, they end up being the best people that have adopted that skill set that everyone is now asking for. Even if there is concern that, you know, it's becoming harder to kind of get employed. I think the people that are learning these skills for the first time end up being the most nimble and then it being the most like fast at like kind of using those skills. So I actually think they can still succeed in ways that senior developers cannot. Fundamentally, like what you're teaching with software is like how to think about building of a complex system using digital means and like learning how to use algorithms to solve that system. This is almost like more like math than it is like CS, right? It's like, it's like you're learning like math skills almost. And I think that is just like teaching someone how to think because so much of the CS profession is, is breaking things up and seeing how things work and then fixing things and then expanding on things and kind of iterating on things. And so I think that the people that are developers by trade, there are a lot more willing to customize things. They're a lot more willing to to kind of fix things when they don't work. They're a lot more willing to say like, hey, why did this happen? Let me see if I can kind of get into that and get into internals a little bit in ways that other people are more like, oh, like this system doesn't work. OK, I guess I need to move away from it. Almost like arrogance, like the arrogance of a developer sees any problem and thinks software is the solution to the problem. It's like the confidence to say like, hey, I'm going to try and fix this in a way that I know how to use and I'm using the tools that I know how to use and let's see if we can make this work. And that that I think is the kind of the most powerful properties of CS developers. So you're like, Claude, make me something, Codex, make me something. And then you're like, let's add this other feature and then like, let's do another one. And a month goes by and you've built the most beautiful piece of software. It's crazy over engineered. And then you launch and nobody wants it. Hi, my name is Rem Koning. I'm a professor at Harvard Business School and I study entrepreneurship in AI. I think we're in a world where increasingly what matters is your ability to allocate intelligence. The key for AI native is that you're not just using it to do the work. You're embedding it in the product so that the AI can directly do the work with the customer. You want to take you as the human out of the loop. That's the key to building and native organizations. What happens when the AI starts talking to one another? What happens when the AI start collaborating? What do they need for one another? I think is a big, interesting, open question. It's a little provocative to think that way. But I think it's one where there'll probably be some trillion dollar companies that come out of answering that question.",
     "summary": {
-      "smart_brevity": {
-        "why": "Paul이 Workers 3개와 Skills 13개로 운영하는 멀티AI 오케스트레이션이 바로 이 영상이 말하는 '상위 0.1% 에이전트 관리자'의 실전 사례이며, 에이전트 친화적 코드베이스 조건(테스트 계약, 문서-코드 일치, 일관된 설계 패턴)은 mcp-memory와 tech-review 자동화 파이프라인의 안정성을 직접 좌우하는 기준이다.",
-        "what": "발표자는 AI를 단순한 보조 도구가 아니라 새로운 언어로 정의하고, 앞으로의 개발자는 전통적 프로그래밍 기초와 에이전트 워크플로 운용 능력을 함께 갖춰야 한다고 주장한다. 영상은 주니어 채용 시장이 악화된 구조적 이유를 2021년 과잉 채용과 대규모 해고, 지난 10~15년간 CS 전공자 급증, 그리고 AI 확산이라는 세 축으로 설명한다. 이어서 멀티 에이전트 오케스트레이션을 단계적으로 확장하는 방법, 컨텍스트 스위칭과 관리 역량, 테스트와 일관된 설계 패턴을 갖춘 에이전트 친화적 코드베이스의 조건을 세밀하게 짚는다. 마지막으로 훌륭한 소프트웨어를 만드는 취향과 실험 문화, 주니어 엔지니어의 장점, 그리고 AI를 제품 자체에 내장한 조직이 만들어낼 다음 기회를 제품 전략 관점까지 확장해 설명한다."
-      },
       "sections": [
         {
-          "heading": "AI 네이티브 엔지니어의 등장과 Stanford 수업의 신호",
-          "body": "발표자는 AI를 새로운 언어로 다루는 새로운 개발자 계층을 AI 네이티브 엔지니어라고 규정한다. 그는 샌프란시스코의 초기 단계 스타트업에서 AI를 이끌고 Stanford에서 Modern Software Developer 수업을 가르치며, 이 수업은 소프트웨어 개발 생애주기 전체에 AI를 적용하는 데 초점을 맞춘 첫 수업이라고 설명한다. 수업은 공개 후 몇 시간 만에 100명 이상이 몰릴 정도로 반응이 컸고, 이는 업계가 이미 큰 전환을 체감하고 있음을 보여준다. 그가 반복해서 강조하는 변화의 핵심은 AI가 코딩 보조 도구를 넘어 소프트웨어가 만들어지는 모든 단계로 들어왔다는 점이다. 따라서 이제 막 노동시장에 진입하는 주니어 세대는 전통적 개발 역량만으로는 부족하고 AI를 모국어처럼 다루는 첫 세대가 될 가능성이 높다.",
+          "heading": "AI 네이티브 엔지니어의 부상과 주니어 개발자의 전환점",
+          "body": "새로운 유형의 엔지니어인 'AI 네이티브 엔지니어'가 등장하고 있으며, AI는 새로운 언어이자 핵심 도구로 부상하고 있습니다. 현재 노동 시장에 진입하는 주니어 개발자 세대가 이러한 새로운 변화의 첫 세대가 될 것으로 예상됩니다. 이들은 좋은 개발 기초와 함께 AI 네이티브 역량을 모두 갖춰야 하는 과제를 안고 있습니다. 2021년 COVID-19 이후 대규모 채용이 있었으나, 이후 기업들이 과도하게 채용했음을 깨닫고 20~30% 규모의 대규모 해고가 발생했습니다. 동시에 지난 10~15년간 국내외 CS 전공자 수가 2~3배 급증하여 졸업생 수가 크게 늘어났습니다. 이러한 상황에서 AI의 인기가 높아지면서 고용주들은 부족한 인력을 채우기 위해 더 많은 사람을 고용할지, 아니면 AI에 능통한 소수의 인력을 고용할지 고민하게 되었습니다. 이러한 복합적인 요인들이 주니어 엔지니어들이 일자리를 얻기 어렵게 만드는 '퍼펙트 스톰'을 형성했습니다. Berkeley 졸업생이 1000곳에 지원하여 단 2곳에서만 연락을 받았다는 사례는 이러한 현실을 잘 보여줍니다.",
           "highlights": [
-            "발표자는 AI를 새로운 언어로 다루는 새로운 개발자 계층을 AI 네이티브 엔지니어라고 규정한다.",
-            "수업은 공개 후 몇 시간 만에 100명 이상이 몰릴 정도로 반응이 컸고, 이는 업계가 이미 큰 전환을 체감하고 있음을 보여준다."
+            "There is this emergence of kind of like a new, I would say, class of like engineer, which is like the AI native engineer.",
+            "This particular generation of junior developers, of junior engineers, the people that are now entering the workforce, will I think be the first kind of generation of that new shift.",
+            "The first thing that happened was in around 2021, there was this huge surge of like hiring.",
+            "I've heard some pretty scary anecdotes where I was talking to someone that had just graduated at Berkeley and they were saying that they had applied to like a thousand places and had heard back from like only heard back from like two places."
           ],
-          "quote": "AI is that new language."
+          "quote": "So the reality is for a lot of junior engineers is very difficult for them to get some of these roles."
         },
         {
-          "heading": "주니어 채용 시장을 바꾼 퍼펙트 스톰",
-          "body": "그는 오늘의 주니어 소프트웨어 엔지니어가 겪는 어려움이 단일 원인이 아니라 세 가지 사건이 겹친 결과라고 설명한다. 첫 번째 축은 2021년 전후 COVID 이후 기업들이 공격적으로 채용을 늘렸다가 과잉 채용을 깨닫고 20%에서 30%까지 인력을 줄여도 된다고 판단하면서 대규모 해고가 발생한 것이다. 두 번째 축은 지난 10년에서 15년 사이 CS 전공 규모가 국내외에서 크게 늘어나 매년 졸업하는 인원이 예전보다 2배에서 많게는 3배 수준으로 늘었다는 점이다. 세 번째 축은 AI가 급부상하면서 고용주들이 빈자리를 채우기 위해 더 많은 인력을 뽑기보다 AI에 익숙한 소수 인력으로 같은 고용 할당량을 커버할 수 있는지 계산하기 시작했다는 점이다. 그는 Berkeley를 막 졸업한 누군가가 1000곳에 지원하고도 실제로 답장을 받은 곳은 2곳뿐이었다는 일화를 들며, 주니어에게 현재 시장은 단순히 경쟁이 심한 정도가 아니라 구조적으로 매우 어려운 상태라고 말한다.",
+          "heading": "최고의 AI 네이티브 엔지니어 역량: 에이전트 오케스트레이션과 컨텍스트 전환",
+          "body": "AI 네이티브 엔지니어는 전통적인 프로그래밍, 시스템 설계, 알고리즘 사고에 대한 강력한 기초를 가지면서도 에이전트 워크플로우를 능숙하게 사용하는 사람입니다. 최고의 AI 네이티브 엔지니어는 에이전트의 효율적인 오케스트레이션(조정) 능력을 보유하고 있으며, 이는 마치 게임의 마지막 보스를 잡는 것과 같다고 비유됩니다. 단순히 많은 수의 에이전트(예: Boris가 10개의 에이전트를 동시에 사용한다고 한 것)를 한 번에 사용하는 것이 아니라, 작업을 고립된 단위로 나누어 한 번에 하나의 에이전트를 추가하며 점진적으로 기능을 확장하는 방식이 중요합니다. 예를 들어, 로고를 수정하는 에이전트가 잘 작동하면, 헤더 카피를 업데이트하는 다른 에이전트를 추가하는 식입니다. 에이전트가 작업을 수행하는 동안 개발자는 마치 인턴을 지켜보듯 에이전트의 진행 상황을 모니터링하고, 에이전트가 막힐 때 개입하여 컨텍스트를 전환하는 능력이 매우 중요합니다. 여러 에이전트가 동시에 다른 작업을 수행할 때 각 에이전트의 상황을 이해하고 적절히 개입하여 작업을 진척시키는 '컨텍스트 전환' 능력은 다중 에이전트 워크플로우를 성공적으로 이끄는 핵심 기술이며, 이는 훌륭한 인간 관리자에게 필요한 능력과 유사합니다.",
           "highlights": [
-            "첫 번째 축은 2021년 전후 COVID 이후 기업들이 공격적으로 채용을 늘렸다가 과잉 채용을 깨닫고 20%에서 30%까지 인력을 줄여도 된다고 판단하면서 대규모 해고가 발생한 것이다.",
-            "그는 Berkeley를 막 졸업한 누군가가 1000곳에 지원하고도 실제로 답장을 받은 곳은 2곳뿐이었다는 일화를 들며, 주니어에게 현재 시장은 단순히 경쟁이 심한 정도가 아니라 구조적으로 매우 어려운 상태라고 말한다."
-          ],
-          "quote": "I've heard some pretty scary anecdotes where I was talking to someone that had just graduated at Berkeley and they were saying that they had applied to like a thousand places and had heard back from like only heard back from like two places."
-        },
-        {
-          "heading": "AI 네이티브 엔지니어의 기준과 상위 0.1% 역량",
-          "body": "발표자가 정의하는 AI 네이티브 엔지니어는 전통적인 프로그래밍, 시스템 설계, 알고리즘 사고의 강한 기반을 가지면서도 agentic workflows를 능숙하게 다루는 사람이다. 그는 앞으로 단일 개발자가 직접 모든 코드를 쓰는 사람이 아니라 여러 에이전트를 관리하는 매니저가 되는 방향으로 역할이 이동한다고 본다. 다만 에이전트를 많이 붙인다고 시스템이 자동으로 좋아지는 것은 아니며, 통제 없이 풀어두면 오히려 훨씬 나쁜 시스템이 될 수 있다고 경고한다. 그래서 여러 에이전트를 정확히 다루는 능력을 게임의 마지막 보스에 비유하며, 이것을 정말 잘하는 사람은 지금도 상위 0.1% 사용자에 속한다고 말한다. 이 기준은 단순히 도구 사용법을 아는 수준이 아니라 어디까지 AI에 맡기고 어디서 인간이 구조를 정해야 하는지를 이해하는 운영 역량까지 포함한다.",
-          "highlights": [
-            "발표자가 정의하는 AI 네이티브 엔지니어는 전통적인 프로그래밍, 시스템 설계, 알고리즘 사고의 강한 기반을 가지면서도 agentic workflows를 능숙하게 다루는 사람이다.",
-            "그래서 여러 에이전트를 정확히 다루는 능력을 게임의 마지막 보스에 비유하며, 이것을 정말 잘하는 사람은 지금도 상위 0.1% 사용자에 속한다고 말한다."
-          ],
-          "quote": "So really knowing how to properly handle multiple agents is like the last boss in a game."
-        },
-        {
-          "heading": "멀티 에이전트 오케스트레이션은 하나씩 쌓아 올려야 한다",
-          "body": "그는 Boris from Claude가 한 번에 10개 에이전트를 돌린다고 해서 처음부터 10개를 흉내 내는 것은 완전히 잘못된 결론이라고 못 박는다. 출발점은 하나의 에이전트 워크플로를 아주 잘 다루는 것이며, 먼저 한 에이전트만으로도 복잡한 소프트웨어를 만들 수 있을 정도의 신뢰를 확보해야 한다는 것이다. 그다음에는 작업을 서로 간섭하지 않는 단위로 분해해 두 번째나 세 번째 에이전트가 독립적으로 처리할 수 있는지 판단해야 한다. 예시로 그는 한 에이전트가 로고를 고치는 동안 다른 에이전트는 웹사이트 헤더 카피를 수정할 수 있다고 말하며, 이런 변경은 서로 고립된 작업이기 때문에 병렬화하기 적합하다고 설명한다. 핵심은 먼저 해야 할 일을 정확히 이해하고 각 일의 경계를 아는 것이며, 한 에이전트가 안정적으로 동작할 때만 두 번째, 세 번째 에이전트를 순차적으로 추가해야 한다는 점이다.",
-          "highlights": [
-            "출발점은 하나의 에이전트 워크플로를 아주 잘 다루는 것이며, 먼저 한 에이전트만으로도 복잡한 소프트웨어를 만들 수 있을 정도의 신뢰를 확보해야 한다는 것이다.",
-            "핵심은 먼저 해야 할 일을 정확히 이해하고 각 일의 경계를 아는 것이며, 한 에이전트가 안정적으로 동작할 때만 두 번째, 세 번째 에이전트를 순차적으로 추가해야 한다는 점이다."
-          ],
-          "quote": "I would build it up more step by step rather than 10 agents at once."
-        },
-        {
-          "heading": "컨텍스트 스위칭과 에이전트 관리 능력이 핵심이다",
-          "body": "발표자는 실제 현장에서 에이전트를 매우 의욕적이고 눈치 빠른 인턴처럼 다뤄야 한다고 표현한다. 개발자는 terminal이나 IDE에서 이 인턴들이 코드를 작성하는 과정을 지켜보게 되는데, 문제는 각 에이전트가 서로 다른 일을 하다가 중간에 막히는 순간이 반드시 온다는 점이다. 그때는 에이전트 1이 무슨 작업을 했는지, 에이전트 2가 어디까지 진행했는지, 에이전트 3이 무엇에 걸렸는지를 기억한 상태로 계속 왔다 갔다 해야 한다. 그는 이런 전환 능력이 멀티 에이전트 워크플로를 실제로 잘 굴리게 만드는 핵심 기술이라고 말한다. 더 나아가 자신이 방금 설명한 역량은 사실 좋은 인간 매니저의 역량과 거의 동일하며, 사람 개발자를 관리해 본 경험이 있는 이들이 비슷한 원리를 에이전트에게도 적용해 더 잘해내는 경우가 많다고 본다.",
-          "highlights": [
-            "그는 이런 전환 능력이 멀티 에이전트 워크플로를 실제로 잘 굴리게 만드는 핵심 기술이라고 말한다.",
-            "더 나아가 자신이 방금 설명한 역량은 사실 좋은 인간 매니저의 역량과 거의 동일하며, 사람 개발자를 관리해 본 경험이 있는 이들이 비슷한 원리를 에이전트에게도 적용해 더 잘해내는 경우가 많다고 본다."
-          ],
-          "quote": "That what I've described is basically what makes a good manager, like a good human manager."
-        },
-        {
-          "heading": "에이전트 친화적 코드베이스의 조건은 계약과 일관성이다",
-          "body": "그는 agent friendly code base 또는 agent friendly development ecosystem이라는 개념을 제시하며, 에이전트가 코드베이스에 들어왔을 때 현재 상황을 스스로 이해할 수 있어야 한다고 말한다. 이를 보장하는 가장 중요한 장치는 테스트이며, 테스트는 소프트웨어의 정확성을 규정하는 계약이기 때문에 테스트 커버리지가 부족하면 에이전트가 의지할 계약 자체가 없는 셈이라고 설명한다. README는 현실보다 빨리 낡기 때문에 코드와 문서가 서로 다른 말을 하는 순간 에이전트는 어느 쪽을 따라야 할지 혼란에 빠지며, 이 경우 사람도 똑같이 헷갈릴 것이라고 지적한다. 그는 에이전트가 한 번 오해한 코드를 다음 단계에서 다시 읽고 그 오해를 증폭시키는 식으로 오류를 매우 빠르게 누적할 수 있다고 경고하며, 그래서 에이전트가 처음 보는 버전의 코드가 설계, 테스트, 빌드 면에서 단단하고 자기모순이 없어야 한다고 강조한다. 또한 linting과 style checking으로 형식을 통일하고, 같은 객체를 생성할 때 코드베이스의 어느 곳에서나 동일한 API와 설계 패턴을 쓰도록 맞춰야 에이전트가 잘못된 길을 선택하지 않는다. 결국 좋은 에이전트 친화성은 에이전트만을 위한 특수한 요령이 아니라 사람과 기계 모두가 헷갈리지 않는 코드베이스를 만드는 일과 거의 같다.",
-          "highlights": [
-            "이를 보장하는 가장 중요한 장치는 테스트이며, 테스트는 소프트웨어의 정확성을 규정하는 계약이기 때문에 테스트 커버리지가 부족하면 에이전트가 의지할 계약 자체가 없는 셈이라고 설명한다.",
-            "그는 에이전트가 한 번 오해한 코드를 다음 단계에서 다시 읽고 그 오해를 증폭시키는 식으로 오류를 매우 빠르게 누적할 수 있다고 경고하며, 그래서 에이전트가 처음 보는 버전의 코드가 설계, 테스트, 빌드 면에서 단단하고 자기모순이 없어야 한다고 강조한다."
-          ],
-          "quote": "If you don't have enough test coverage, then you don't have contracts for your software agents only can operate on contracts like explicitly defined contracts of software."
-        },
-        {
-          "heading": "기능하는 소프트웨어와 놀라운 소프트웨어를 가르는 것은 취향과 마지막 1마일이다",
-          "body": "그는 functional software와 incredible software를 가르는 요소로 taste를 가장 먼저 든다. 어떤 사람은 좋은 소프트웨어 취향을 갖고 있고 어떤 사람은 그렇지 않으며, 취향은 더 오래 만들고 더 깊이 밀어붙일수록 길러진다고 본다. 자신의 수업에서는 예를 들어 다섯 개 정도의 플로를 구현하는 기본 요구사항이 있지만, 진짜 차이는 bonus와 extra credit 같은 추가 과제를 스스로 밀어붙이는 마지막 구간에서 발생한다고 말한다. 이미 과제 점수의 대부분을 확보했더라도 문제 자체를 더 잘 풀고 싶어서 기능을 확장하고 더 견고하게 만들고 더 많은 가능성을 열어주는 학생들이 결국 상위권으로 올라온다는 것이다. 그는 특히 최고의 학생들은 수업이 끝난 뒤에도 같은 프로젝트를 계속 발전시켜 아예 스타트업으로 만들고 있으며, 이것이 성적보다 문제 해결과 제품 잠재력에 집착하는 상위 엔지니어의 사고방식이라고 설명한다.",
-          "highlights": [
-            "그는 functional software와 incredible software를 가르는 요소로 taste를 가장 먼저 든다.",
-            "그는 특히 최고의 학생들은 수업이 끝난 뒤에도 같은 프로젝트를 계속 발전시켜 아예 스타트업으로 만들고 있으며, 이것이 성적보다 문제 해결과 제품 잠재력에 집착하는 상위 엔지니어의 사고방식이라고 설명한다."
-          ],
-          "quote": "The one version of the answer is just taste."
-        },
-        {
-          "heading": "AI 네이티브 개발자의 기본 태도는 실험과 반복이다",
-          "body": "발표자는 AI 네이티브 소프트웨어 개발자가 되는 과정에서 experimentation이 게임의 이름이라고까지 표현하며, 정답 암기보다 실험 습관이 중요하다고 본다. 그는 Boris from Claude가 강연하러 왔을 때의 예를 들며, Anthropic의 Claude 팀처럼 이미 뛰어난 제품을 만드는 조직조차 Claude를 사용해 매주 혹은 2주에 한 번씩 자기 소프트웨어를 다시 쓸 정도로 끊임없이 실험한다고 말한다. 이 말의 핵심은 겉보기에 모든 답을 가진 팀처럼 보여도 실제로는 사용자 피드백을 보며 무엇이 먹히고 무엇이 안 되는지 계속 새로 배우고 있다는 점이다. 그래서 학생들에게도 특정 도구를 추천할 수는 있지만, 결국 스스로 머리를 부딪치며 무엇이 자신에게 잘 맞고 무엇이 안 맞는지 확인해야 한다고 강조한다. 해킹, 실험, 반복을 일회성 이벤트가 아니라 소프트웨어 개발의 새로운 기본 워크플로로 받아들이는 태도가 AI 네이티브 역량의 핵심이라는 것이 그의 결론이다.",
-          "highlights": [
-            "발표자는 AI 네이티브 소프트웨어 개발자가 되는 과정에서 experimentation이 게임의 이름이라고까지 표현하며, 정답 암기보다 실험 습관이 중요하다고 본다.",
-            "해킹, 실험, 반복을 일회성 이벤트가 아니라 소프트웨어 개발의 새로운 기본 워크플로로 받아들이는 태도가 AI 네이티브 역량의 핵심이라는 것이 그의 결론이다."
-          ],
-          "quote": "Experimentation is sort of the name of the game in becoming an AI native software developer."
-        },
-        {
-          "heading": "주니어 엔지니어는 오히려 AI 시대에 더 민첩할 수 있다",
-          "body": "그는 세계가 여전히 junior software engineers를 필요로 한다고 보며, 오히려 AI 도구 도입에서는 시니어보다 주니어가 유리한 측면이 있다고 설명한다. 역사적으로 senior developers는 20년 동안 굳어진 자기 방식이 있어서 AI 도구에 저항적인 경우가 많고, 실제로 가장 완고하게 개입하는 경우도 적지 않다고 말한다. 반면 업계에 처음 들어오는 사람은 스펀지처럼 모든 가능성을 흡수하고, 특정 산업이 얼마나 어려운지에 대한 상처나 선입견이 아직 체화되지 않았기 때문에 문제를 보면 일단 해보려는 순진한 용기를 가진다. 그는 이런 좋은 나이브함이 스타트업 창업자에게도 완벽한 속성이며, 지금 시장이 고용 측면에서 더 어려워졌더라도 처음부터 이 스킬셋을 익히는 사람들은 가장 민첩하고 가장 빠르게 적응할 수 있다고 본다. 그래서 AI 네이티브 역량을 처음부터 체득한 주니어는 어떤 면에서는 시니어가 따라오기 어려운 방식으로도 성공할 수 있다는 것이 그의 주장이다.",
-          "highlights": [
-            "반면 업계에 처음 들어오는 사람은 스펀지처럼 모든 가능성을 흡수하고, 특정 산업이 얼마나 어려운지에 대한 상처나 선입견이 아직 체화되지 않았기 때문에 문제를 보면 일단 해보려는 순진한 용기를 가진다.",
-            "그래서 AI 네이티브 역량을 처음부터 체득한 주니어는 어떤 면에서는 시니어가 따라오기 어려운 방식으로도 성공할 수 있다는 것이 그의 주장이다."
+            "A single developer become a manager of agents.",
+            "At its core, I think that the AI native engineer is one that both has like a strong backing and foundation in traditional programming, system design and algorithmic thinking, but is very competent at using like agentic workflows.",
+            "Again, I would build it one at a time. I would say, hey, like I'm really good at doing one agent workflow quite well.",
+            "The second thing that I think is really, really important there is knowing how to like context switch."
           ]
         },
         {
-          "heading": "복잡계 사고, 과잉 엔지니어링 경고, 그리고 AI 네이티브 조직의 다음 질문",
-          "body": "발표자는 소프트웨어를 가르친다는 것이 결국 디지털 수단으로 복잡한 시스템을 만드는 방법과 알고리즘으로 그 시스템을 푸는 방법을 가르치는 일이며, 어떤 면에서는 CS보다 수학에 더 가깝다고 설명한다. 이런 훈련을 받은 개발자들은 문제를 쪼개고, 왜 고장 났는지 파고들고, 필요하면 내부를 직접 손보며, 시스템이 안 되면 그냥 떠나는 대신 고쳐서 맞춤화하려는 경향이 강하다. 그는 개발자의 일종의 오만함이 어떤 문제를 봐도 소프트웨어가 해법이라고 믿고 일단 도전하게 만든다고 말하지만, 동시에 Claude나 Codex에게 계속 기능을 붙여 한 달 만에 아름답고 과하게 엔지니어링된 제품을 만들고도 아무도 원하지 않는 상태로 출시할 위험을 경고한다. 이어서 Harvard Business School의 Rem Koning은 앞으로 더 중요해지는 것은 intelligence를 어떻게 allocate하느냐이며, 진정한 AI 네이티브는 AI를 단순히 업무 수행 도구로 쓰는 것이 아니라 제품 안에 내장해 고객과 직접 일을 하게 만들고 인간을 루프에서 빼내는 조직이라고 설명한다. 그는 AI들이 서로 대화하고 협업하기 시작하면 어떤 일이 벌어지고, 서로에게 무엇을 필요로 하게 되는지가 매우 크고 흥미로운 열린 질문이라고 말한다. 그리고 바로 그 질문에 답하는 과정에서 앞으로 수조 달러 규모의 회사들이 나올 수 있다고 전망한다.",
+          "heading": "에이전트 친화적인 코드베이스 구축 전략",
+          "body": "에이전트 친화적인 코드베이스 또는 개발 생태계는 에이전트가 코드베이스의 작동 방식을 이해하고 안전하게 기여할 수 있는 환경을 의미합니다. 에이전트가 코드를 손상시키지 않고 올바르게 작동하도록 보장하는 핵심은 '테스트'입니다. 테스트는 소프트웨어의 정확성을 정의하는 '계약' 역할을 하므로, 충분한 테스트 커버리지가 필수적입니다. 테스트가 부족하면 에이전트가 의존할 수 있는 명시적인 계약이 없어 문제가 발생할 수 있습니다. 또한, README 파일과 실제 코드 간의 불일치는 에이전트를 혼란스럽게 하여 잘못된 결정을 내리게 할 수 있으므로, 항상 최신 상태로 일관성을 유지해야 합니다. 스파게티 코드처럼 복잡하고 일관성 없는 코드베이스는 에이전트가 오류를 빠르게 증폭시키는 원인이 됩니다. 에이전트가 초기 단계에서 하나의 오해를 기반으로 코드를 생성하면, 다음 단계에서 이 오해를 다시 기반으로 하여 더 큰 오류를 만들어낼 수 있습니다. 따라서, 에이전트가 처음 접하는 코드베이스가 디자인, 테스트, 빌드 측면에서 견고하고 자체 일관성을 갖추도록 하는 것이 중요합니다. 린팅(linting) 및 스타일 검사를 통해 코드 일관성을 유지하고, 코드 전체에서 일관된 디자인 패턴과 프로그래밍 패턴을 사용하는 것도 에이전트가 올바른 API를 선택하고 예상대로 작동하도록 돕는 데 필수적입니다.",
           "highlights": [
-            "그는 개발자의 일종의 오만함이 어떤 문제를 봐도 소프트웨어가 해법이라고 믿고 일단 도전하게 만든다고 말하지만, 동시에 Claude나 Codex에게 계속 기능을 붙여 한 달 만에 아름답고 과하게 엔지니어링된 제품을 만들고도 아무도 원하지 않는 상태로 출시할 위험을 경고한다.",
-            "그는 AI들이 서로 대화하고 협업하기 시작하면 어떤 일이 벌어지고, 서로에게 무엇을 필요로 하게 되는지가 매우 크고 흥미로운 열린 질문이라고 말한다."
+            "There's this concept that I'm calling like an agent friendly code base or an agent friendly development ecosystem.",
+            "You need to define these contracts. If you don't have enough test coverage, then you don't have contracts for your software agents only can operate on contracts like explicitly defined contracts of software.",
+            "One bad thing that they're really good at is agents can compound errors very quickly.",
+            "Are you consistent about like design patterns in your code?"
           ],
-          "quote": "The key for AI native is that you're not just using it to do the work."
+          "quote": "The most important thing is like having, making sure that the first thing that the agent sees is completely robust and it's completely airtight in terms of design, in terms of testing, in terms of like the build, like a lot of these like kind of core parts of the code base itself before you even think about the agent."
+        },
+        {
+          "heading": "훌륭한 소프트웨어 개발: '맛'과 끊임없는 실험",
+          "body": "기능적인 소프트웨어와 '놀라운(incredible)' 소프트웨어의 차이는 단순히 '취향(taste)'에 달려 있습니다. 이 '취향'은 개발자가 더 많은 시간을 투자하고 스스로를 밀어붙이며 개발되는 것입니다. 강사의 수업에서 학생들은 최소한의 요구사항(예: 5가지 흐름 구축)을 충족할 수 있지만, 진정으로 뛰어난 학생들은 보너스나 추가 학점을 위해 더 복잡한 것을 만들려고 노력합니다. 이는 단순히 과제를 완수하는 것을 넘어, 문제 해결 자체에 대한 투자와 열정이 있을 때 가능합니다. 이러한 '취향'은 마지막 단계, 즉 기능을 확장하고, 견고성을 높이며, 애플리케이션에 더 많은 가능성을 추가하기 위해 추가적인 노력을 기울이는 과정에서 형성됩니다. 최고의 학생들은 이러한 프로젝트를 바탕으로 스타트업을 만들고 있으며, 수업이 끝난 후에도 계속해서 더 많은 것을 구축하려 합니다. AI 네이티브 소프트웨어 개발자가 되기 위해서는 '실험'이 핵심입니다. Anthropic의 Claude 팀조차도 매주 또는 2주마다 자신들이 만든 Claude를 사용하여 Claude를 다시 작성하며 끊임없이 시스템을 개선하고 실험합니다. 그들은 모든 답을 알고 있는 것이 아니라, 사용자의 피드백을 바탕으로 무엇이 작동하고 무엇이 작동하지 않는지 지속적으로 발견해 나갑니다. 따라서 개발자들은 스스로 도구와 기술을 실험하고, 자신에게 맞는 것을 찾아 워크플로우에 통합해야 합니다.",
+          "highlights": [
+            "The one version of the answer is just taste. Like what is good software taste?",
+            "But the taste building happens in that, like that last mile, like where you go spend and you like do the extra work to like expand the feature, make it more robust, make more things possible in the application.",
+            "Experimentation is sort of the name of the game in becoming an AI native software developer.",
+            "Someone like Boris, even a team like, you know, Claude at Anthropic that is building such an amazing piece of software, they basically rewrite Claude every week or like week or two weeks using Claude, right?"
+          ],
+          "quote": "And so the more important thing is to build experimentation into your own workflows."
+        },
+        {
+          "heading": "AI 시대에도 주니어 개발자가 필요한 이유: 순진함과 문제 해결 능력",
+          "body": "역사적으로 시니어 개발자들은 20년 이상 개발을 해왔기 때문에 자신들의 방식에 깊이 뿌리박혀 AI 도구에 저항하는 경향이 있습니다. 반면, 주니어 개발자들은 마치 스펀지처럼 모든 것을 처음 배우고 받아들이기에 AI 도구를 더 개방적으로 수용합니다. 그들은 산업이나 사회의 난이도에 대한 내면화된 상처가 없기 때문에 '이 문제가 왜 어려워? 내가 한번 해볼까?'와 같은 순진한 사고방식을 가집니다. 이러한 '좋은 순진함(good naivety)'은 스타트업 창업자에게 완벽하며, 새로운 과제에 용감하게 도전할 수 있게 합니다. 비록 취업이 어려워지고 있다는 우려가 있지만, 이러한 새로운 기술을 처음 배우는 사람들은 가장 민첩하고 빠르게 기술을 습득할 수 있어 시니어 개발자들이 할 수 없는 방식으로 성공할 수 있다고 강연자는 주장합니다. 근본적으로 소프트웨어 개발은 디지털 수단을 사용하여 복잡한 시스템을 구축하고 알고리즘으로 문제를 해결하는 방법을 가르치는 것이며, 이는 CS를 넘어 수학적 사고와 유사합니다.",
+          "highlights": [
+            "Senior developers historically tend to be a little bit resistant to AI tools because they're so ingrained in their own way of doing things.",
+            "But someone who is coming to the industry for the first time, they're like, they're like a sponge.",
+            "There's like, there's like a good naivety to how young, young people think, which is perfect for a startup founder.",
+            "I think the people that are learning these skills for the first time end up being the most nimble and then it being the most like fast at like kind of using those skills."
+          ],
+          "quote": "I actually think they can still succeed in ways that senior developers cannot."
+        },
+        {
+          "heading": "개발자의 본질: 문제 해결에 대한 자신감과 집념",
+          "body": "CS 직업의 대부분은 문제를 분해하고, 작동 방식을 이해하며, 고치고, 확장하고, 반복하는 과정입니다. 개발자들은 본질적으로 무언가를 작동하지 않을 때 기꺼이 고치고, '왜 이런 일이 일어났지?'라고 질문하며 내부를 파고들어 원인을 파악하려는 의지가 강합니다. 다른 사람들은 시스템이 작동하지 않으면 단순히 외면하거나 다른 시스템으로 옮겨가려는 경향이 있지만, 개발자들은 문제를 해결하려는 강한 의지를 가지고 있습니다. 이러한 개발자의 '오만함' 또는 '자신감'은 어떤 문제든 소프트웨어로 해결할 수 있다고 믿는 태도로 나타납니다. 자신이 아는 도구와 방식을 사용하여 문제를 해결하려고 시도하는 이러한 자신감이야말로 CS 개발자의 가장 강력한 특성입니다. 단순히 AI에 'Claude, 이걸 만들어줘', 'Codex, 이걸 만들어줘'라고 지시하며 여러 기능을 추가하여 한 달 안에 아름답지만 '과도하게 설계된(over engineered)' 소프트웨어를 만들었지만 아무도 원치 않는 상황이 발생할 수도 있습니다. 이는 문제 해결에 대한 본질적인 사고 없이 도구에만 의존했을 때의 위험성을 시사합니다.",
+          "highlights": [
+            "The people that are developers by trade, there are a lot more willing to customize things. They're a lot more willing to to kind of fix things when they don't work.",
+            "Almost like arrogance, like the arrogance of a developer sees any problem and thinks software is the solution to the problem.",
+            "It's like the confidence to say like, hey, I'm going to try and fix this in a way that I know how to use and I'm using the tools that I know how to use and let's see if we can make this work."
+          ],
+          "quote": "And that that I think is the kind of the most powerful properties of CS developers."
+        },
+        {
+          "heading": "AI 네이티브 조직의 미래: 지능 할당과 AI 협업",
+          "body": "하버드 비즈니스 스쿨 교수 Rem Koning은 AI 시대에 점점 더 중요해지는 것은 '지능을 할당하는 능력(ability to allocate intelligence)'이라고 강조합니다. AI 네이티브의 핵심은 AI를 단순히 작업 수행에 사용하는 것을 넘어, AI를 제품에 내장하여 AI가 고객과 직접 소통하며 작업을 수행하게 함으로써 인간을 루프에서 제거하는 것입니다. 이는 AI 네이티브 조직을 구축하는 데 필수적입니다. AI들이 서로 대화하고 협력하기 시작하면 어떤 일이 일어날지, 그리고 AI들이 서로에게 무엇을 필요로 할지는 매우 흥미롭고 미지의 질문입니다. 이러한 질문에 답을 찾는 과정에서 아마도 수 조 달러 규모의 기업들이 탄생할 것이라고 그는 예측하며, 이는 다소 도발적이지만 중요한 생각임을 시사합니다.",
+          "highlights": [
+            "I think we're in a world where increasingly what matters is your ability to allocate intelligence.",
+            "The key for AI native is that you're not just using it to do the work. You're embedding it in the product so that the AI can directly do the work with the customer.",
+            "What happens when the AI starts talking to one another? What happens when the AI start collaborating? What do they need for one another?"
+          ],
+          "quote": "You want to take you as the human out of the loop. That's the key to building and native organizations."
         }
       ],
       "key_takeaways": [
-        "AI 네이티브 개발자는 전통적 컴퓨터공학 기초와 에이전트 워크플로 운용 능력을 동시에 갖춘 사람이다.",
-        "주니어 채용 위기는 과잉 채용 후 해고, CS 전공자 급증, AI 도입이 겹친 구조적 문제다.",
-        "멀티 에이전트 오케스트레이션의 핵심은 많은 에이전트가 아니라 작업 분해, 경계 설정, 컨텍스트 스위칭 능력이다.",
-        "에이전트가 잘 일하게 하려면 테스트 계약, 문서와 코드의 일치, 일관된 설계 패턴을 갖춘 코드베이스가 먼저 필요하다.",
-        "진짜 경쟁력은 도구 자체보다 실험 문화, 제품 감각, 그리고 고객이 실제로 원하는 문제를 푸는 방향 감각에서 나온다."
+        "AI 네이티브 엔지니어는 전통적 개발 기초와 에이전트 워크플로우 능력을 겸비해야 하며, 현재 주니어 개발자들이 그 전환의 최전선에 서 있다.",
+        "다중 에이전트 시스템을 효과적으로 관리하는 능력(오케스트레이션)과 에이전트 간 컨텍스트를 전환하는 능력은 최상위 0.1% 개발자의 핵심 역량이다.",
+        "에이전트가 오작동하지 않도록 테스트 커버리지, 일관된 코드 스타일, 명확한 디자인 패턴을 갖춘 '에이전트 친화적인 코드베이스' 구축이 필수적이다.",
+        "탁월한 소프트웨어는 끊임없는 실험과 '개발자의 취향'을 통해 완성되며, Anthropic의 Claude 팀처럼 자신들이 만든 도구로 스스로를 재작성하며 발전해야 한다.",
+        "주니어 개발자들은 AI 도구에 대한 개방성과 문제 해결에 대한 '순진한 용기' 덕분에 AI 시대에도 성공 가능성이 높으며, 이는 시니어 개발자가 가지기 어려운 강점이다."
       ],
       "tech_stack": [
         "AI",
-        "agentic workflows",
         "Claude",
-        "Codex",
         "Anthropic",
-        "terminal",
-        "IDE",
-        "README",
-        "tests",
-        "linting",
-        "style checking",
-        "API"
+        "Codex"
       ],
       "apply_points": [
         {
-          "text": "Tech Review 자동화 파이프라인을 포스트 생성, 번역, 댓글 반영, 배포 검증처럼 서로 간섭하지 않는 작업으로 더 선명하게 분리하면 orchestration 안정성이 높아진다.",
-          "key": false
-        },
-        {
-          "text": "지금 운영 중인 create-post와 comments 흐름에 테스트 계약과 결과 검증 단계를 추가해 에이전트가 잘못 만든 포스트나 메타데이터를 다음 단계에서 증폭시키지 못하게 막는 것이 가장 즉각적인 개선 포인트다.",
+          "text": "Paul의 orchestration 프로젝트에서 다중 에이전트 간의 컨텍스트 전환 및 작업 할당 로직을 더욱 명확하고 효율적으로 설계하여 에이전트 관리의 복잡성을 줄인다.",
           "key": true
         },
         {
-          "text": "mcp-memory recall과 세션 저장을 각 자동화 단계의 시작과 종료에 붙여 에이전트가 블로그 상태, 최근 실패, 다음 작업 맥락을 잃지 않게 만들면 실제 운영에서 컨텍스트 스위칭 비용을 줄일 수 있다.",
+          "text": "mcp-memory 프로젝트에 에이전트 친화적인 코드베이스 원칙을 적용하여, 테스트 커버리지를 높이고 일관된 디자인 패턴을 강제하여 에이전트가 메모리 접근 및 조작 로직을 안정적으로 이해하고 활용할 수 있도록 개선한다.",
           "key": true
         },
         {
-          "text": "블로그 설명 문서, 실제 워크플로 동작, 포트폴리오로 전달되는 피드 규칙을 계속 일치시켜 두면 오래된 설명을 따라가는 에이전트 오류를 줄일 수 있다.",
+          "text": "tech-review 프로젝트에서 새로운 AI 도구나 에이전트 프레임워크를 리뷰할 때, 단순 기능 요약보다 실제 Paul의 프로젝트에 적용하는 실험적인 워크플로우를 포함하여 실질적인 효과와 한계를 파악하는 내용을 추가한다.",
           "key": false
         },
         {
-          "text": "현재 시스템도 기능을 더 붙이기 전에 독자가 정말 원하는 리서치 품질과 요약 정확도를 먼저 측정해야 아름답지만 불필요한 자동화를 피할 수 있다.",
+          "text": "portfolio 프로젝트의 각 모듈을 에이전트가 이해하고 확장하기 쉬운 형태로 설계하기 위해, 각 기능 단위별로 독립적인 테스트를 강화하고, 일관된 API 사용 패턴을 유지하여 에이전트의 개발 효율성을 높인다.",
           "key": false
         }
-      ]
+      ],
+      "smart_brevity": {
+        "why": "",
+        "what": "",
+        "axioms": []
+      }
     },
     "fetched_at": "2026-03-09",
     "playlist_index": 8

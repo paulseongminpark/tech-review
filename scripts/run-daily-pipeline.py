@@ -113,13 +113,17 @@ tags: [{DAY_TAGS.get(datetime.strptime(post_date, '%Y-%m-%d').weekday(), 'ai-ml'
     prompt_file.write_text(prompt, encoding="utf-8")
 
     # Claude Code CLI 실행
-    result = subprocess.run(
-        f'claude -p "$(cat {str(prompt_file).replace(chr(92), "/")})" --output-format text',
-        capture_output=True, text=True, encoding="utf-8", errors="replace",
-        timeout=300, shell=True, cwd=str(BLOG_DIR),
-    )
+    try:
+        result = subprocess.run(
+            f'claude -p "$(cat {str(prompt_file).replace(chr(92), "/")})" --output-format text',
+            capture_output=True, text=True, encoding="utf-8", errors="replace",
+            timeout=300, shell=True, cwd=str(BLOG_DIR),
+        )
+        output = result.stdout.strip()
+    except subprocess.TimeoutExpired:
+        log(f"  [WARN] Claude CLI 타임아웃 (300초), raw 그대로 사용")
+        output = ""
 
-    output = result.stdout.strip()
     if not output or len(output) < 500:
         log(f"  [WARN] Claude 출력 부족 ({len(output)}자), raw 그대로 사용")
         # fallback: raw 내용을 기본 포스트 형식으로 래핑
