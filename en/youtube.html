@@ -349,8 +349,9 @@ function selectVideo(vid) {
   setTimeout(() => {
     const col = document.getElementById('yt-col-videos');
     const active = col.querySelector('.yt-vid-item.active');
-    if (active) col.scrollTop = active.offsetTop - col.querySelector('.yt-col-header').offsetHeight;
-  }, 30);
+    const header = col.querySelector('.yt-col-header');
+    if (active && header) col.scrollTop = active.offsetTop - header.offsetHeight;
+  }, 50);
 }
 
 /* ── Col 3: Sections ── */
@@ -365,14 +366,11 @@ function renderSections() {
 
   let html = `<div class="yt-col-header">Overview</div>`;
   if (sections.length) {
-    html += '<div class="yt-sec-divider"></div>';
-    html += '<div class="yt-sec-header">Sections</div>';
     html += sections.map((sec, i) =>
       `<div class="yt-sec-item${selectedView===i?' active':''}" onclick="selectView(${i})"><span class="yt-sec-num">${String(i+1).padStart(2,'0')}</span>${esc(sec.heading.includes(':') ? sec.heading.split(':')[0].trim() : (sec.heading.length > 20 ? sec.heading.slice(0,18)+'…' : sec.heading))}</div>`
     ).join('');
   }
   if ((s.key_takeaways||[]).length || (s.tech_stack||[]).length || (s.apply_points||[]).length) {
-    html += '<div class="yt-sec-divider"></div>';
     if ((s.key_takeaways||[]).length) html += `<div class="yt-sec-meta-item${selectedView==='takeaways'?' active':''}" onclick="selectView('takeaways')">Takeaways</div>`;
     if ((s.tech_stack||[]).length) html += `<div class="yt-sec-meta-item${selectedView==='tech'?' active':''}" onclick="selectView('tech')">Tech Stack</div>`;
     if ((s.apply_points||[]).length) html += `<div class="yt-sec-meta-item${selectedView==='apply'?' active':''}" onclick="selectView('apply')">Apply Points</div>`;
