@@ -320,10 +320,15 @@ for (const v of ALL_VIDEOS) {
 ALL_VIDEOS.length = 0;
 ALL_VIDEOS.push(...UNIQUE_VIDEOS);
 
+// playlist 순서: youtube-sources.json 정의 순서 유지
+const PLAYLIST_ORDER = ['claude', 'build', 'design', 'insight', 'ontology'];
 ALL_VIDEOS.sort((a, b) => {
-  const ia = a.playlist_index ?? 9999;
-  const ib = b.playlist_index ?? 9999;
-  return ia - ib;
+  const pa = PLAYLIST_ORDER.indexOf(a.playlist);
+  const pb = PLAYLIST_ORDER.indexOf(b.playlist);
+  const oa = pa >= 0 ? pa : 999;
+  const ob = pb >= 0 ? pb : 999;
+  if (oa !== ob) return oa - ob;
+  return (a.playlist_index ?? 9999) - (b.playlist_index ?? 9999);
 });
 
 /* ── 카테고리 매핑 ── */
