@@ -8,7 +8,8 @@ permalink: /en/youtube/
 <style>
 /* ── reset ── */
 body { max-width: none !important; margin: 0 !important; padding: 0 !important; }
-nav.site-nav { position: relative; z-index: 200; background: #fff; padding: 0.75rem 1.5rem !important; }
+nav.site-nav { position: relative; z-index: 200; background: #fff; padding: 0.75rem 1.5rem !important; margin-bottom: 0 !important; }
+.site-content, .wrapper, .page-content { margin: 0 !important; padding: 0 !important; }
 
 /* ── 4-column finder ── */
 .yt-finder {
@@ -311,8 +312,9 @@ function selectCat(cat) {
   document.getElementById('yt-col-content').innerHTML = '<p class="yt-content-empty">← 영상을 선택하세요</p>';
   // 클릭한 카테고리를 Col 1 상단으로
   setTimeout(() => {
-    const active = document.querySelector('#yt-col-cat .yt-cat-item.active');
-    if (active) active.scrollIntoView({ block: 'start', behavior: 'smooth' });
+    const col = document.getElementById('yt-col-cat');
+    const active = col.querySelector('.yt-cat-item.active');
+    if (active) col.scrollTop = active.offsetTop;
   }, 30);
 }
 
@@ -345,8 +347,9 @@ function selectVideo(vid) {
   renderContent();
   // 클릭한 영상을 Col 2 상단으로
   setTimeout(() => {
-    const active = document.querySelector('#yt-col-videos .yt-vid-item.active');
-    if (active) active.scrollIntoView({ block: 'start', behavior: 'smooth' });
+    const col = document.getElementById('yt-col-videos');
+    const active = col.querySelector('.yt-vid-item.active');
+    if (active) col.scrollTop = active.offsetTop - col.querySelector('.yt-col-header').offsetHeight;
   }, 30);
 }
 
@@ -390,8 +393,15 @@ function selectView(view) {
     setTimeout(() => {
       const targetId = typeof view === 'number' ? 'yt-sec-' + view : 'yt-sec-' + view;
       const target = document.getElementById(targetId);
-      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (target) contentEl.scrollTop = target.offsetTop - contentEl.offsetTop;
     }, 50);
+    // Col 3에서 클릭한 항목을 상단으로
+    setTimeout(() => {
+      const col = document.getElementById('yt-col-sections');
+      const headerH = col.querySelector('.yt-col-header')?.offsetHeight || 0;
+      const active = col.querySelector('.yt-sec-item.active, .yt-sec-meta-item.active');
+      if (active) col.scrollTop = active.offsetTop - headerH;
+    }, 60);
     return;
   }
   selectedView = view;
