@@ -1,5 +1,16 @@
 [
   {
+    "video_id": "SIZ1qeZWBTY",
+    "title": "언제 어디서든 나를 위해 대기하는 AI 에이전트 팀 만들기 | 클로드코드 코덱스",
+    "channel": "코드깎는노인",
+    "published_at": "",
+    "fetched_at": "2026-03-22",
+    "playlist_index": 2,
+    "url": "https://www.youtube.com/watch?v=SIZ1qeZWBTY",
+    "playlist": "build",
+    "source_type": "youtube"
+  },
+  {
     "video_id": "0xF13rNDD0A",
     "title": "How to have AI do the work and just relax: The true identity of 'Polychronic'",
     "channel": "홍정모",
@@ -7,6 +18,28 @@
     "fetched_at": "2026-03-22",
     "playlist_index": 13,
     "url": "https://www.youtube.com/watch?v=0xF13rNDD0A",
+    "playlist": "insight",
+    "source_type": "youtube"
+  },
+  {
+    "video_id": "NwSgwp47uWg",
+    "title": "The New Google Stitch + Kling Destroys Every Designer",
+    "channel": "Viktor Oddy",
+    "published_at": "",
+    "fetched_at": "2026-03-22",
+    "playlist_index": 9,
+    "url": "https://www.youtube.com/watch?v=NwSgwp47uWg",
+    "playlist": "design",
+    "source_type": "youtube"
+  },
+  {
+    "video_id": "YbcCKCy1bd0",
+    "title": "팔란티어의 AI agent가 독보적인 이유(DevCon5)",
+    "channel": "빅데이터닥터 BIGDATA DOCTOR",
+    "published_at": "",
+    "fetched_at": "2026-03-22",
+    "playlist_index": 14,
+    "url": "https://www.youtube.com/watch?v=YbcCKCy1bd0",
     "playlist": "insight",
     "source_type": "youtube"
   }
