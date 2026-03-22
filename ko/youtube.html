@@ -125,12 +125,7 @@ nav.site-nav {
   gap: 4px;
 }
 .yt-toc-cat:first-child { border-top: none; margin-top: 0; }
-.yt-toc-cat::before {
-  content: '▾';
-  font-size: 0.55rem;
-  transition: transform 0.15s;
-}
-.yt-toc-cat.collapsed::before { transform: rotate(-90deg); }
+.yt-toc-cat.collapsed { opacity: 0.5; }
 .yt-toc-cat-items { }
 .yt-toc-cat-items.collapsed { display: none; }
 
