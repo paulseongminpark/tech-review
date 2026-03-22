@@ -6,6 +6,7 @@ lang: ko
 permalink: /ko/2026/03/11/daily-tech-review/
 pair: 2026-03-11-daily-tech-review
 tags: ["ai-industry", "business-model", "enterprise-ai", "vertical-ai"]
+source_type: perplexity
 ---
 
 ## Today in One Line

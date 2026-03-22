@@ -494,8 +494,8 @@ def main():
             import time; time.sleep(wait)
         return None
 
-    analyze_fn = analyze_with_gemini_cli if args.use_gemini else analyze_with_codex
-    engine_name = "Gemini CLI" if args.use_gemini else "Codex"
+    analyze_fn = analyze_with_gemini if args.use_gemini else analyze_with_codex
+    engine_name = "Gemini API" if args.use_gemini else "Codex"
 
     print(f"\n=== 순차 파이프라인 시작: {total}개 ===")
     for filepath, videos, video in pending:

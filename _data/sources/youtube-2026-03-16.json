@@ -113,9 +113,18 @@
         }
       ],
       "smart_brevity": {
-        "why": "",
+        "why": "스킬 하나를 만드는 게 아니라, 스킬이 스스로 좋아지는 조건을 설계하는 것 — Skills 2.0의 내장 평가가 그 전환점이다. orchestration의 모든 스킬에 Eval 루프를 붙이면 '대략 작동'이 '거의 항상 작동'으로 바뀐다.",
         "what": "",
-        "axioms": []
+        "axioms": [
+          {
+            "label": "What's next",
+            "content": "Loops·Scheduled Tasks·Google Workspace CLI로 Claude Code는 OS 수준으로 확장 중. 다음 단계는 스킬 품질 자동화다."
+          },
+          {
+            "label": "The bottom line",
+            "content": "Skills 2.0 = 평가 내장 + AB 테스트. '만들고 잊는' 스킬에서 '측정하고 수렴하는' 스킬로."
+          }
+        ]
       }
     }
   },
@@ -252,9 +261,18 @@
         }
       ],
       "smart_brevity": {
-        "why": "",
+        "why": "스킬을 고치는 행위 자체를 에이전트에게 위임하는 것 — AutoResearch는 '측정 기준 + 자동 도구 + 프롬프트'라는 세 조건만 설계하면 나머지를 시스템이 수렴한다. mcp-memory와 orchestration 스킬의 30% 실패율을 줄이는 직접 경로다.",
         "what": "",
-        "axioms": []
+        "axioms": [
+          {
+            "label": "Be smart",
+            "content": "Eval은 '예/아니오' 이진 질문이어야 효과적. 복잡한 기준일수록 모델이 품질 대신 점수를 최적화한다."
+          },
+          {
+            "label": "The bottom line",
+            "content": "AutoResearch = Karpathy 방법론 + Claude 스킬. 사람이 수동으로 반복하던 스킬 개선 사이클을 에이전트 루프로 교체한다."
+          }
+        ]
       }
     }
   },

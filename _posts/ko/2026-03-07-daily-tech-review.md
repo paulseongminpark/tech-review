@@ -6,6 +6,7 @@ lang: ko
 permalink: /ko/2026/03/07/daily-tech-review/
 pair: 2026-03-07-daily-tech-review
 tags: ["ai-usecase", "enterprise", "adoption", "regulation"]
+source_type: perplexity
 ---
 
 ## Today in One Line

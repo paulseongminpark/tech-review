@@ -6,9 +6,10 @@ lang: ko
 permalink: /ko/2026/03/08/daily-tech-review/
 pair: 2026-03-08-daily-tech-review
 tags: ["weekly-review", "ai-trends", "tech-summary"]
+source_type: perplexity
 ---
 
-## Today in One Line  
+## Today in One Line
 이번 주 AI/Tech는 ‘에이전트 시대’로의 전환, AI 인프라 자본비용 폭발, 그리고 정부·규제·교육 시스템의 본격적인 재정렬이 동시에 가속한 주였다고 볼 수 있다.
 
 ---

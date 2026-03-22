@@ -6,6 +6,7 @@ lang: ko
 permalink: /ko/2026/03/10/daily-tech-review/
 pair: 2026-03-10-daily-tech-review
 tags: ["bigtech", "google", "microsoft", "meta", "apple", "nvidia"]
+source_type: perplexity
 ---
 
 ## Today in One Line

@@ -6,6 +6,7 @@ lang: ko
 permalink: /ko/2026/03/04/daily-tech-review/
 pair: 2026-03-04-daily-tech-review
 tags: ["enterprise"]
+source_type: perplexity
 ---
 
 

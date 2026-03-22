@@ -6,6 +6,7 @@ lang: ko
 permalink: /ko/2026/03/06/daily-tech-review/
 pair: 2026-03-06-daily-tech-review
 tags: ["hardware", "chips", "datacenter", "cloud", "infrastructure"]
+source_type: perplexity
 ---
 
 ## Today in One Line

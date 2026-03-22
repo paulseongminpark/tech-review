@@ -6,6 +6,7 @@ lang: ko
 permalink: /ko/2026/03/16/daily-tech-review/
 pair: 2026-03-16-daily-tech-review
 tags: ["ai-ml", "models", "research", "benchmarks"]
+source_type: perplexity
 ---
 
 ## Today in One Line

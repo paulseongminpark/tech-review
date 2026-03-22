@@ -6,6 +6,7 @@ lang: ko
 permalink: /ko/2026/03/15/daily-tech-review/
 pair: 2026-03-15-daily-tech-review
 tags: ["weekly-review", "ai-trends", "tech-summary"]
+source_type: perplexity
 ---
 
 ## Today in One Line

@@ -147,9 +147,18 @@
         }
       ],
       "smart_brevity": {
-        "why": "",
+        "why": "Karpathy의 AutoResearch는 AI가 스스로 실험하고 학습하는 루프를 완성한다. 인간이 설계한 지표와 입력이 있으면 최적화 자체가 자동화된다.",
         "what": "",
-        "axioms": []
+        "axioms": [
+          {
+            "label": "The big picture",
+            "content": "객관적 지표 + 수정 가능한 입력 + 빠른 피드백 루프. 이 세 조건이 갖춰지면 어떤 도메인이든 AutoResearch 대상이 된다."
+          },
+          {
+            "label": "What's next",
+            "content": "이메일 카피에서 YouTube 제목, 랜딩 페이지까지. 24시간 자율 실험이 인간 반복 주기를 대체하는 시대가 시작됐다."
+          }
+        ]
       }
     }
   }

@@ -6,6 +6,7 @@ lang: ko
 permalink: /ko/2026/03/03/daily-tech-review/
 pair: 2026-03-03-daily-tech-review
 tags: ["apple", "google", "meta", "microsoft", "nvidia"]
+source_type: perplexity
 ---
 
 

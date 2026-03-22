@@ -111,7 +111,7 @@ nav.site-nav { position: relative; z-index: 200; background: #fff; padding: 0.75
 
 /* Col 3: 섹션 네비 */
 .yt-col-sections {
-  width: 220px; min-width: 220px;
+  width: 160px; min-width: 160px;
   background: #f9f9f9;
   padding: 0;
 }
@@ -368,7 +368,7 @@ function renderSections() {
     html += '<div class="yt-sec-divider"></div>';
     html += '<div class="yt-sec-header">Sections</div>';
     html += sections.map((sec, i) =>
-      `<div class="yt-sec-item${selectedView===i?' active':''}" onclick="selectView(${i})"><span class="yt-sec-num">${String(i+1).padStart(2,'0')}</span>${esc(sec.heading.length > 30 ? sec.heading.slice(0,28)+'…' : sec.heading)}</div>`
+      `<div class="yt-sec-item${selectedView===i?' active':''}" onclick="selectView(${i})"><span class="yt-sec-num">${String(i+1).padStart(2,'0')}</span>${esc(sec.heading.includes(':') ? sec.heading.split(':')[0].trim() : (sec.heading.length > 20 ? sec.heading.slice(0,18)+'…' : sec.heading))}</div>`
     ).join('');
   }
   if ((s.key_takeaways||[]).length || (s.tech_stack||[]).length || (s.apply_points||[]).length) {

@@ -84,7 +84,17 @@
         "url": "https://pbs.twimg.com/amplify_video_thumb/2029509470423048192/img/CINRhdouxy-GUpPo.jpg",
         "video_url": "https://video.twimg.com/amplify_video/2029509470423048192/vid/avc1/1880x1080/0u6oJKu_9UJg0ImO.mp4?tag=21"
       }
-    ]
+    ],
+    "smart_brevity": {
+      "why": "UI 수정의 진입점이 텍스트에서 시각 선택으로 바뀐다. 에이전트에게 '어떤 요소를'을 말하는 비용이 사라지면, 디자이너와 개발자 사이의 커뮤니케이션 단계 자체가 제거된다.",
+      "what": "React Grab: 페이지 요소를 직접 클릭해 Claude Code / Codex에 변경을 지시하는 오픈소스 도구. npx react-grab@latest",
+      "axioms": [
+        {
+          "label": "The big picture",
+          "content": "AI 코딩 도구가 텍스트 입력에서 시각 상호작용으로 이동하는 초기 신호다."
+        }
+      ]
+    }
   },
   {
     "id": "bm-004",
@@ -103,7 +113,17 @@
     "text": "Here's the prompt:\n\n## Workflow Orchestration\n\n### 1. Plan Mode Default\n- Enter plan mode for ANY non-trivial task (3+ steps or architectural decisions)\n- If something goes sideways, STOP and re-plan immediately – don't keep pushing\n- Use plan mode for verification steps, not just building\n- Write detailed specs upfront to reduce ambiguity\n\n### 2. Subagent Strategy\n- Use subagents liberally to keep main context window clean\n- Offload research, exploration, and parallel analysis to subagents\n- For complex problems, throw more compute at it via subagents\n- One task per subagent for focused execution\n\n### 3. Self-Improvement Loop\n- After ANY correction from the user: update `tasks/lessons.md` with the pattern\n- Write rules for yourself that prevent the same mistake\n- Ruthlessly iterate on these lessons until mistake rate drops\n- Review lessons at session start for relevant project\n\n### 4. Verification Before Done\n- Never mark a task complete without proving it works\n- Diff your behavior between main and your changes when relevant\n- Ask yourself: \"Would a staff engineer approve this?\"\n- Run tests, check logs, demonstrate correctness\n\n### 5. Demand Elegance (Balanced)\n- For non-trivial changes: pause and ask \"is there a more elegant way?\"\n- If a fix feels hacky: \"Knowing everything I know now, implement the elegant solution\"\n- Skip this for simple, obvious fixes – don't over-engineer\n- Challenge your own work before presenting it\n\n### 6. Autonomous Bug Fixing\n- When given a bug report: just fix it. Don't ask for hand-holding\n- Point at logs, errors, failing tests – then resolve them\n- Zero context switching required from the user\n- Go fix failing CI tests without being told how\n\n### 7. Task Management\n1. **Plan First**: Write plan to `tasks/todo.md` with checkable items\n2. **Verify Plan**: Check in before starting implementation\n3. **Track Progress**: Mark items complete as you go\n4. **Explain Changes**: High-level summary at each step\n5. **Document Results**: Add review section to `tasks/todo.md`\n6. **Capture Lessons**: Update `tasks/lessons.md` after corrections\n\n### Core Principles\n- **Simplicity First**: Make every change as simple as possible. Impact minimal code.\n- **No Laziness**: Find root causes. No temporary fixes. Senior developer standards.\n- **Minimal Impact**: Changes should only touch what's necessary. Avoid introducing bugs.",
     "whats_happening": "게시글은 에이전트용 Workflow Orchestration 프롬프트 일부를 공개하며, 비사소한 작업은 Plan Mode를 기본으로 하고 문제가 생기면 즉시 멈춰 재계획하라는 규칙을 제시한다.",
     "why_it_matters": "이 프롬프트가 보여주는 핵심은 에이전트 오케스트레이션의 실전 패턴이다. Plan Mode 기본, 문제 시 즉시 재계획, 비사소한 작업의 구조화 — 이 원칙들은 에이전트가 자율적으로 동작할 때 필요한 가드레일의 최소 단위를 정의한다. 에이전트 시대의 소프트웨어 엔지니어링은 코드가 아니라 이런 규칙 설계가 핵심 역량이 된다.",
-    "translation": "프롬프트는 다음과 같습니다:\n\n워크플로 오케스트레이션\n\n1. Plan Mode 기본값\n- 사소하지 않은 작업(3단계 이상이거나 아키텍처 결정이 필요한 작업)이면 무엇이든 Plan Mode로 들어가라\n- 뭔가 꼬이기 시작하면 즉시 멈추고 다시 계획하라. 계속 밀어붙이지 마라\n- Plan Mode는 구현할 때만이 아니라 검증 단계에도 사용하라\n- 모호함을 줄이기 위해 처음부터 상세한 명세를 작성하라\n\n2. Subagent 전략\n- 메인 context window를 깔끔하게 유지하기 위해 subagent를 아낌없이 활용하라\n- 리서치, 탐색, 병렬 분석은 subagent에 넘겨라\n- 복잡한 문제에는 subagent를 통해 더 많은 compute를 투입하라\n- 집중된 실행을 위해 subagent당 하나의 작업만 맡겨라\n\n3. 자기 개선 루프\n- 사용자로부터 어떤 수정이든 받으면 그 패턴을 tasks/lessons.md에 업데이트하라\n- 같은 실수를 막을 수 있도록 자신만의 규칙을 작성하라\n- 실수율이 떨어질 때까지 이 교훈들을 가차 없이 반복 개선하라\n- 관련 프로젝트의 세션을 시작할 때 교훈들을 검토하라\n\n4. 완료 전 검증\n- 작동함을 입증하기 전에는 절대 작업을 완료로 표시하지 마라\n- 관련이 있을 때는 main과 네 변경 사항 사이의 동작 차이를 비교하라\n- 스스로에게 물어라: \"스태프 엔지니어가 이걸 승인할까?\"\n- 테스트를 돌리고, 로그를 확인하고, 정확성을 입증하라\n\n5. 우아함 요구하기(균형 있게)\n- 사소하지 않은 변경이라면 잠시 멈추고 \"더 우아한 방법이 있나?\"라고 자문하라\n- 해결책이 hacky하게 느껴진다면 \"지금 내가 아는 모든 것을 바탕으로, 우아한 해법을 구현하라\"라고 생각하라\n- 단순하고 뻔한 수정에는 이 단계를 건너뛰어라. 과도하게 설계하지 마라\n- 내놓기 전에 자기 작업을 스스로 비판하라\n\n6. 자율적 버그 수정\n- 버그 리포트를 받으면 그냥 고쳐라. 일일이 손을 잡아주길 요구하지 마라\n- 로그, 에러, 실패하는 테스트를 짚어낸 다음 그것들을 해결하라\n- 사용자에게는 맥락 전환이 전혀 필요 없어야 한다\n- 어떻게 하라고 지시받지 않아도 실패하는 CI 테스트를 가서 고쳐라\n\n7. 작업 관리\n1. 먼저 계획: 체크 가능한 항목들로 계획을 tasks/todo.md에 작성하라\n2. 계획 검증: 구현을 시작하기 전에 확인하고 들어가라\n3. 진행 추적: 진행하면서 항목들을 완료로 표시하라\n4. 변경 설명: 각 단계마다 상위 수준 요약을 남겨라\n5. 결과 문서화: tasks/todo.md에 review 섹션을 추가하라\n6. 교훈 기록: 수정이 발생한 뒤 tasks/lessons.md를 업데이트하라\n\n핵심 원칙\n- 단순함 우선: 모든 변경은 가능한 한 단순하게 만들어라. 영향은 최소한의 코드에만 미치게 하라.\n- 게으름 금지: 근본 원인을 찾아라. 임시방편은 없다. 시니어 개발자 기준을 지켜라.\n- 영향 최소화: 변경은 필요한 것만 건드려야 한다. 버그를 새로 끌어들이지 마라."
+    "translation": "프롬프트는 다음과 같습니다:\n\n워크플로 오케스트레이션\n\n1. Plan Mode 기본값\n- 사소하지 않은 작업(3단계 이상이거나 아키텍처 결정이 필요한 작업)이면 무엇이든 Plan Mode로 들어가라\n- 뭔가 꼬이기 시작하면 즉시 멈추고 다시 계획하라. 계속 밀어붙이지 마라\n- Plan Mode는 구현할 때만이 아니라 검증 단계에도 사용하라\n- 모호함을 줄이기 위해 처음부터 상세한 명세를 작성하라\n\n2. Subagent 전략\n- 메인 context window를 깔끔하게 유지하기 위해 subagent를 아낌없이 활용하라\n- 리서치, 탐색, 병렬 분석은 subagent에 넘겨라\n- 복잡한 문제에는 subagent를 통해 더 많은 compute를 투입하라\n- 집중된 실행을 위해 subagent당 하나의 작업만 맡겨라\n\n3. 자기 개선 루프\n- 사용자로부터 어떤 수정이든 받으면 그 패턴을 tasks/lessons.md에 업데이트하라\n- 같은 실수를 막을 수 있도록 자신만의 규칙을 작성하라\n- 실수율이 떨어질 때까지 이 교훈들을 가차 없이 반복 개선하라\n- 관련 프로젝트의 세션을 시작할 때 교훈들을 검토하라\n\n4. 완료 전 검증\n- 작동함을 입증하기 전에는 절대 작업을 완료로 표시하지 마라\n- 관련이 있을 때는 main과 네 변경 사항 사이의 동작 차이를 비교하라\n- 스스로에게 물어라: \"스태프 엔지니어가 이걸 승인할까?\"\n- 테스트를 돌리고, 로그를 확인하고, 정확성을 입증하라\n\n5. 우아함 요구하기(균형 있게)\n- 사소하지 않은 변경이라면 잠시 멈추고 \"더 우아한 방법이 있나?\"라고 자문하라\n- 해결책이 hacky하게 느껴진다면 \"지금 내가 아는 모든 것을 바탕으로, 우아한 해법을 구현하라\"라고 생각하라\n- 단순하고 뻔한 수정에는 이 단계를 건너뛰어라. 과도하게 설계하지 마라\n- 내놓기 전에 자기 작업을 스스로 비판하라\n\n6. 자율적 버그 수정\n- 버그 리포트를 받으면 그냥 고쳐라. 일일이 손을 잡아주길 요구하지 마라\n- 로그, 에러, 실패하는 테스트를 짚어낸 다음 그것들을 해결하라\n- 사용자에게는 맥락 전환이 전혀 필요 없어야 한다\n- 어떻게 하라고 지시받지 않아도 실패하는 CI 테스트를 가서 고쳐라\n\n7. 작업 관리\n1. 먼저 계획: 체크 가능한 항목들로 계획을 tasks/todo.md에 작성하라\n2. 계획 검증: 구현을 시작하기 전에 확인하고 들어가라\n3. 진행 추적: 진행하면서 항목들을 완료로 표시하라\n4. 변경 설명: 각 단계마다 상위 수준 요약을 남겨라\n5. 결과 문서화: tasks/todo.md에 review 섹션을 추가하라\n6. 교훈 기록: 수정이 발생한 뒤 tasks/lessons.md를 업데이트하라\n\n핵심 원칙\n- 단순함 우선: 모든 변경은 가능한 한 단순하게 만들어라. 영향은 최소한의 코드에만 미치게 하라.\n- 게으름 금지: 근본 원인을 찾아라. 임시방편은 없다. 시니어 개발자 기준을 지켜라.\n- 영향 최소화: 변경은 필요한 것만 건드려야 한다. 버그를 새로 끌어들이지 마라.",
+    "smart_brevity": {
+      "why": "에이전트 오케스트레이션의 실전 가드레일은 코드가 아니라 규칙 설계다. Plan Mode 기본·즉시 재계획·검증 후 완료라는 3원칙이 자율 에이전트의 최소 안전망을 정의한다.",
+      "what": "Workflow Orchestration 프롬프트 공개 — Plan Mode 기본, 서브에이전트 전략, 자기개선 루프, 완료 전 검증, 자율 버그 수정 7개 섹션.",
+      "axioms": [
+        {
+          "label": "Be smart",
+          "content": "에이전트 시대의 소프트웨어 엔지니어링은 코드 작성보다 규칙 설계가 핵심 역량이 된다."
+        }
+      ]
+    }
   },
   {
     "id": "bm-005",
@@ -240,7 +260,12 @@
         "url": "https://pbs.twimg.com/amplify_video_thumb/2029952666768637952/img/WZlbEDHH2qVIHTEJ.jpg",
         "video_url": "https://video.twimg.com/amplify_video/2029952666768637952/vid/avc1/1280x720/x4pDoI7MYxwk1ZK1.mp4?tag=14"
       }
-    ]
+    ],
+    "smart_brevity": {
+      "why": "에이전트의 정보 접근 범위가 API 제공 서비스에서 인터넷 전체로 확장된다. 임의의 웹페이지를 구조화된 데이터로 변환하는 능력은 정보 수집 자동화의 전제조건이다.",
+      "what": "Claude Code에 범용 웹 파싱 능력을 붙이는 방법을 보여주는 영상.",
+      "axioms": []
+    }
   },
   {
     "id": "bm-010",
@@ -267,6 +292,16 @@
       "domain": "github.com",
       "url": "https://t.co/uWFUZanlNj",
       "thumbnail": "https://pbs.twimg.com/card_img/2032810213624193024/WS1AWKDk?format=jpg&name=orig"
+    },
+    "smart_brevity": {
+      "why": "구글이 생산성 도구를 프로그래머블하게 만드는 것은 에이전트가 GUI 대신 공식 인터페이스로 자동화할 수 있게 해준다. GUI 조작 기반의 불안정한 자동화에서 CLI 기반 안정 자동화로의 전환 신호다.",
+      "what": "Google Workspace 공식 CLI 출시 — Drive, Gmail, Calendar, Sheets, Docs, Chat, Admin을 하나의 CLI로.",
+      "axioms": [
+        {
+          "label": "What's next",
+          "content": "Google의 CLI 지원은 Workspace 자동화 에이전트 생태계의 공식 인프라가 된다."
+        }
+      ]
     }
   },
   {
@@ -294,6 +329,11 @@
       "domain": "anthropic.com",
       "url": "https://t.co/zzVvwfNu3C",
       "thumbnail": "https://pbs.twimg.com/card_img/2033120979757481984/slofUFqN?format=jpg&name=orig"
+    },
+    "smart_brevity": {
+      "why": "모델이 어떻게 생각하는지 알면 프롬프트 설계가 시행착오에서 의도적 구조 설계로 전환된다. Anthropic의 해석 가능성 연구는 안전성뿐 아니라 실무 활용도에 직접 영향을 준다.",
+      "what": "Claude 내부 추론 메커니즘을 들여다보는 Anthropic 논문 — Tracing the Thoughts of a Large Language Model.",
+      "axioms": []
     }
   },
   {
@@ -321,7 +361,17 @@
         "url": "https://pbs.twimg.com/amplify_video_thumb/2028436582907437056/img/NJg6xUISfe64ZIw1.jpg",
         "video_url": "https://video.twimg.com/amplify_video/2028436582907437056/vid/avc1/1280x720/2ABmjJAB5fBF3QWi.mp4?tag=14"
       }
-    ]
+    ],
+    "smart_brevity": {
+      "why": "코드베이스를 지식 그래프로 변환하는 것은 AI 에이전트가 수정 전에 전체 구조를 파악하는 필수 인프라다. 4-pass AST 분석 + Cypher 쿼리 기반 Graph RAG는 임베딩 검색보다 실제 관계를 추적한다.",
+      "what": "GitNexus: GitHub repo를 D3.js 지식 그래프로 변환, KuzuDB 저장, AI 에이전트로 자연어 질의. 브라우저 전용, MIT 오픈소스.",
+      "axioms": [
+        {
+          "label": "The big picture",
+          "content": "코드베이스 이해의 병목을 시각화로 푸는 것은 대규모 AI 보조 개발의 전제조건이 된다."
+        }
+      ]
+    }
   },
   {
     "id": "bm-013",
@@ -349,7 +399,17 @@
         "type": "photo",
         "url": "https://pbs.twimg.com/media/HC4xVZMboAE4EUa.jpg"
       }
-    ]
+    ],
+    "smart_brevity": {
+      "why": "LLM을 검색 엔진이 아니라 사고 파트너로 쓰는 질문 설계가 핵심이다. '고객이 말하지 않는 것을 찾아라', '시장 가정 3개와 반증 조건을 제시하라'는 질문은 정보 수집이 아니라 전략적 추론을 이끌어낸다.",
+      "what": "YC founder의 Claude 조사 워크플로 — 경쟁사 랜딩·실적 콜·리뷰·Reddit을 먹이고 시장의 묵시적 가정과 공격 각도를 3시간 만에 추출.",
+      "axioms": [
+        {
+          "label": "Be smart",
+          "content": "3시간과 3개월의 차이는 정보량이 아니라 어떤 질문을 던지느냐에서 결정된다."
+        }
+      ]
+    }
   },
   {
     "id": "bm-014",
@@ -377,7 +437,12 @@
         "type": "photo",
         "url": "https://pbs.twimg.com/media/HC3pp8JXUAA4kuN.jpg"
       }
-    ]
+    ],
+    "smart_brevity": {
+      "why": "Anthropic이 Skills 설계 방법론을 공식 문서로 정리한 것은 에이전트 개발이 프롬프트 해킹에서 엔지니어링 디시플린으로 넘어가는 신호다. 재사용 가능한 지식 단위가 에이전트 생태계의 경쟁 우위 원천이 된다.",
+      "what": "Anthropic의 Claude Skills 구축 가이드 33페이지 치트시트 PDF 공개.",
+      "axioms": []
+    }
   },
   {
     "id": "bm-015",
@@ -403,7 +468,17 @@
         "type": "photo",
         "url": "https://pbs.twimg.com/media/HC7AMycaUAAUwJ-.jpg"
       }
-    ]
+    ],
+    "smart_brevity": {
+      "why": "terminal-native 코딩 에이전트의 설계 패턴이 OpenDev 81페이지 논문으로 형식화됐다. dual-agent(계획/실행 분리), adaptive context compaction, instruction hierarchy — 이 세 원칙이 현재 가장 효과적인 코딩 에이전트의 공통 구조다.",
+      "what": "OpenDev 논문: scaffolding, harness design, context engineering, dual-agent architecture, lazy tool discovery, adaptive context compaction, 세션 간 자동 메모리, 안전 제어 설계.",
+      "axioms": [
+        {
+          "label": "The big picture",
+          "content": "IDE 플러그인에서 terminal-native 에이전트로의 전환이 이미 업계 방향이 됐다."
+        }
+      ]
+    }
   },
   {
     "id": "bm-016",
@@ -431,7 +506,17 @@
         "type": "photo",
         "url": "https://pbs.twimg.com/media/HC5sStcW8AAzuLb.jpg"
       }
-    ]
+    ],
+    "smart_brevity": {
+      "why": "AI agency를 GitHub 레포 하나로 띄울 수 있다는 것은 멀티에이전트 조직의 최소 단위를 오픈소스로 공개한 것이다. 문제는 에이전트를 만드는 것이 아니라 에이전트 간 협업과 분업을 설계하는 것이다.",
+      "what": "AI 직원 구성 GitHub 레포 — 엔지니어링 7·디자인 7·마케팅 8·제품 3·PM 5·테스팅 7·지원 6·전문화 6개 에이전트. 7일 만에 1만 스타.",
+      "axioms": [
+        {
+          "label": "What's next",
+          "content": "하나의 큰 에이전트 대신 전문화된 에이전트들의 협업 구조가 스케일의 핵심이 된다."
+        }
+      ]
+    }
   },
   {
     "id": "bm-017",
@@ -459,7 +544,12 @@
         "url": "https://pbs.twimg.com/amplify_video_thumb/2030663001477697536/img/gMa4jYgrD7AYMIzT.jpg",
         "video_url": "https://video.twimg.com/amplify_video/2030663001477697536/vid/avc1/1920x1080/iloS-q9Nd4eVBGFI.mp4?tag=21"
       }
-    ]
+    ],
+    "smart_brevity": {
+      "why": "shadcn/cli v4의 skills·프리셋 기능은 UI 컴포넌트 라이브러리가 AI 에이전트 친화적으로 진화하는 방향을 보여준다. 에이전트가 UI를 수정할 때 코딩 스타일 맥락을 자동으로 제공하는 인프라가 된다.",
+      "what": "shadcn/cli v4: shadcn/skills로 에이전트에게 컴포넌트 맥락 제공, --preset으로 디자인 설정 공유, Claude/Codex/v0 공통 사용.",
+      "axioms": []
+    }
   },
   {
     "id": "bm-018",
@@ -488,7 +578,17 @@
         "type": "photo",
         "url": "https://pbs.twimg.com/media/HC1KyorbEAAoGWr.jpg"
       }
-    ]
+    ],
+    "smart_brevity": {
+      "why": "사람은 프롬프트(.md)를 반복하고 에이전트는 학습 코드(.py)를 반복하는 분업 구조가 1인 연구자의 실험 인프라를 lab 수준으로 높인다. 단일 GPU에서 자체 완결적으로 동작하는 설계가 접근성의 핵심이다.",
+      "what": "autoresearch: nanochat LLM training core를 단일 GPU·630줄로 축소 + 사람(프롬프트 반복) / 에이전트(코드 반복) 분업 구조. GitHub 공개.",
+      "axioms": [
+        {
+          "label": "The big picture",
+          "content": "에이전트가 연구 루프를 자율 실행하는 패러다임의 최소 구현이 공개됐다."
+        }
+      ]
+    }
   },
   {
     "id": "bm-019",
@@ -508,7 +608,17 @@
     "text": "Do you realize what this means?\n\nKarpathy just released the great equalizer\n\nNow ANYONE can become their own AI lab\n\nIf all you own is one GPU, you can automate it so it builds its own model and continuously improves it\n\nYou become a 1 man OpenAI\n\nJust bought a 2nd DGX Spark so I can run double the experiments at once\n\nFor those unaware of how this works:\n\nWith Karpathy’s autoresearch project your GPU stays up all night running experiments on itself\n\nPlaying around with an open weights model\n\nImplements experiments that improves the model\n\nThrows away experiments that hurt the model\n\nContinuously self improving AI. In your home. On your desk. \n\nMaybe the biggest release in the last several years\n\nIt is so painfully obvious where this world is going\n\nThose with their own hardware will have all the power. Self improving super intelligence\n\nThose with no hardware will rent whatever the corporate labs decide to lease to them at the moment\n\nOwn. Your. Intelligence.",
     "whats_happening": "글쓴이는 Karpathy가 개인도 사실상 자기만의 AI lab처럼 움직일 수 있게 하는 무언가를 공개했다고 본다. GPU 한 장만 있어도 모델을 만들고 계속 개선하는 자동화가 가능해졌다고 주장한다.",
     "why_it_matters": "Karpathy의 autoresearch가 개인에게 AI lab 수준의 실험 능력을 부여한다는 해석은 AI 민주화의 핵심을 짚는다. GPU 한 장으로 모델을 만들고 개선하는 자동화가 가능해지면, 연구의 병목이 컴퓨팅에서 아이디어로 이동한다. 1인 연구자 시대의 인프라가 갖춰지고 있다.",
-    "translation": "이게 무슨 뜻인지 알겠는가?\n\nKarpathy가 방금 모두를 같은 선상에 세울 그 결정적 도구를 공개했다\n\n이제는 정말 누구나 자기만의 AI 연구소가 될 수 있다\n\n당신이 가진 게 GPU 하나뿐이라 해도, 그것이 자기 자신의 모델을 만들고 계속 개선해 나가도록 자동화할 수 있다\n\n당신은 1인 OpenAI가 된다\n\n방금 2번째 DGX Spark를 샀다. 이제 한 번에 실험을 두 배로 돌릴 수 있다\n\n이게 어떻게 작동하는지 잘 모르는 사람들을 위해 설명하자면:\n\nKarpathy의 autoresearch 프로젝트를 쓰면 당신의 GPU가 밤새 깨어서 자기 자신을 상대로 실험을 돌린다\n\n오픈 웨이트 모델을 이리저리 실험해 보고\n\n모델을 개선하는 실험은 구현하고\n\n모델에 해를 끼치는 실험은 버린다\n\n지속적으로 스스로를 개선하는 AI. 당신의 집에서. 당신의 책상 위에서.\n\n어쩌면 지난 몇 년 사이 가장 큰 공개일지도 모른다\n\n세상이 어디로 가고 있는지는 너무도 뻔할 정도로 명확하다\n\n자기 하드웨어를 가진 자들이 모든 힘을 갖게 될 것이다. 스스로를 개선하는 초지능이다\n\n하드웨어가 없는 자들은 그 순간 기업 연구소들이 임대해 주기로 결정한 것이 무엇이든 빌려 쓰게 될 것이다\n\n당신의. 지능을. 소유하라."
+    "translation": "이게 무슨 뜻인지 알겠는가?\n\nKarpathy가 방금 모두를 같은 선상에 세울 그 결정적 도구를 공개했다\n\n이제는 정말 누구나 자기만의 AI 연구소가 될 수 있다\n\n당신이 가진 게 GPU 하나뿐이라 해도, 그것이 자기 자신의 모델을 만들고 계속 개선해 나가도록 자동화할 수 있다\n\n당신은 1인 OpenAI가 된다\n\n방금 2번째 DGX Spark를 샀다. 이제 한 번에 실험을 두 배로 돌릴 수 있다\n\n이게 어떻게 작동하는지 잘 모르는 사람들을 위해 설명하자면:\n\nKarpathy의 autoresearch 프로젝트를 쓰면 당신의 GPU가 밤새 깨어서 자기 자신을 상대로 실험을 돌린다\n\n오픈 웨이트 모델을 이리저리 실험해 보고\n\n모델을 개선하는 실험은 구현하고\n\n모델에 해를 끼치는 실험은 버린다\n\n지속적으로 스스로를 개선하는 AI. 당신의 집에서. 당신의 책상 위에서.\n\n어쩌면 지난 몇 년 사이 가장 큰 공개일지도 모른다\n\n세상이 어디로 가고 있는지는 너무도 뻔할 정도로 명확하다\n\n자기 하드웨어를 가진 자들이 모든 힘을 갖게 될 것이다. 스스로를 개선하는 초지능이다\n\n하드웨어가 없는 자들은 그 순간 기업 연구소들이 임대해 주기로 결정한 것이 무엇이든 빌려 쓰게 될 것이다\n\n당신의. 지능을. 소유하라.",
+    "smart_brevity": {
+      "why": "GPU 한 장으로 에이전트가 모델을 지속 개선하는 자율 루프가 가능해지면, 연구의 병목이 컴퓨팅에서 아이디어로 이동한다. 1인 연구자가 대형 lab 없이 체계적 실험을 할 수 있는 인프라가 갖춰지고 있다.",
+      "what": "Karpathy의 autoresearch를 '누구나 자기만의 AI lab이 될 수 있게 하는 평등화 도구'로 해석한 반응 — GPU 한 장으로 모델이 밤새 자기 개선.",
+      "axioms": [
+        {
+          "label": "The bottom line",
+          "content": "자기 소유의 하드웨어가 있는 사람과 없는 사람의 AI 능력 격차가 벌어질 것이라는 경고."
+        }
+      ]
+    }
   },
   {
     "id": "bm-020",
@@ -528,7 +638,12 @@
       "북마크 생성 체인을 최소 재현본으로 분리",
       "Codex+recall 처리 품질을 단일 샘플로 검증",
       "실험형 포스트는 작은 데모 단위로 큐레이션"
-    ]
+    ],
+    "smart_brevity": {
+      "why": "에이전트 자율 루프의 최소 구현이 주말에 돌려볼 수 있는 단일 파일로 공개됐다. 문서 읽기·코드 수정·실험·기록의 전체 사이클을 자체적으로 돌리는 패턴의 확산이 가속된다.",
+      "what": "autoresearch 최소 자체완결 레포 — 단일 GPU, 630줄, 외부 의존성 최소화. 주말 직접 실험용으로 패키징.",
+      "axioms": []
+    }
   },
   {
     "id": "bm-021",
@@ -547,7 +662,12 @@
       "한·영 다이제스트 초안을 분리 실행한다.",
       "Comments 생성만 별도 에이전트로 둔다.",
       "feed.json 갱신 전 연동 점검을 둔다."
-    ]
+    ],
+    "smart_brevity": {
+      "why": "Obsidian 내부에서 타이머 기반으로 에이전트가 주기적으로 작동하는 구조는 지식 환경과 AI 자동화가 같은 공간에서 공존하는 모델이다. 외부 자동화 시스템 없이 노트 앱 안에서 에이전트 루프가 완결된다.",
+      "what": "/loop 패턴: Obsidian 내부에서 타이머 기반으로 3개 에이전트를 주기 실행하는 자동화 구조.",
+      "axioms": []
+    }
   },
   {
     "id": "bm-022",
@@ -566,7 +686,12 @@
       "add-bookmark에 PM 도구 태그를 추가.",
       "inbox 분류에 제품결정 트랙을 신설.",
       "create-post에 PM 툴 큐레이션 규칙 추가."
-    ]
+    ],
+    "smart_brevity": {
+      "why": "AI가 제품 의사결정 지원 영역에 진입하는 것은 실행 자동화를 넘어 판단 영역으로의 확장이다. 데이터·직관·맥락이 교차하는 복합 판단에서 AI의 역할 정의는 아직 초기 단계다.",
+      "what": "PM Skills Marketplace: 'AI OS for Better Product Decisions' 포지셔닝으로 제품 의사결정 지원 AI 플랫폼 출시.",
+      "axioms": []
+    }
   },
   {
     "id": "bm-023",
@@ -586,7 +711,17 @@
       "북마크 처리 전에 recall로 현재 목표 주입.",
       "초안 생성 시 운영 중 파이프라인 상태 반영.",
       "Codex 단계에 Jekyll 블로그 목적 연결."
-    ]
+    ],
+    "smart_brevity": {
+      "why": "문자열 매칭에서 맥락 기반 기억으로의 전환은 코드베이스가 커질수록 결정적인 생산성 차이를 만든다. 에이전트가 이전 세션의 탐색 맥락을 기억하면 매번 처음부터 이해하는 비효율이 사라진다.",
+      "what": "Claude Code에 세션 간 코드 탐색 기억을 붙이는 방법 — grep 기반 검색에서 의미 맥락 기반 검색으로 전환.",
+      "axioms": [
+        {
+          "label": "Be smart",
+          "content": "grep을 버리고 맥락 기억을 쓰는 전환이 코딩 에이전트 숙련도의 다음 단계다."
+        }
+      ]
+    }
   },
   {
     "id": "bm-024",
@@ -606,7 +741,12 @@
       "Mac Mini 로컬 추론을 tech-review로 검증.",
       "OpenClaw 연동법을 mcp-memory Signal로 기록.",
       "로컬 모델 연결을 orchestration 실험에 편입."
-    ]
+    ],
+    "smart_brevity": {
+      "why": "API 비용 없이 무제한 에이전트 실험이 가능한 로컬 추론 연결은 실험·반복의 경제적 제약을 해제한다. 로컬 추론 + 클라우드 API의 하이브리드 구조가 개인 개발자의 최적 비용 효율점이다.",
+      "what": "OpenClaw를 로컬 모델에 연결하는 방법 — Mac Mini 포함, 무제한 무료 에이전트 실행 구성.",
+      "axioms": []
+    }
   },
   {
     "id": "bm-025",
@@ -625,7 +765,17 @@
       "add-bookmark의 고정 문맥을 캐시 분리.",
       "mcp-memory recall 요약을 재사용 문맥화.",
       "포스트 생성 지시문을 공통 템플릿화."
-    ]
+    ],
+    "smart_brevity": {
+      "why": "Prompt Caching이 Claude Code의 가장 큰 교훈이라는 고백은 AI 애플리케이션 개발에서 인프라 최적화가 모델 선택만큼 중요하다는 것을 실증한다. Context Engineering의 비용 효율은 캐시 설계에서 결정된다.",
+      "what": "Claude Code 개발 최대 교훈 — Prompt Caching 설계가 성능과 비용을 동시에 좌우함.",
+      "axioms": [
+        {
+          "label": "Be smart",
+          "content": "좋은 모델보다 좋은 캐시 설계가 LLM 애플리케이션의 실제 성능을 결정한다."
+        }
+      ]
+    }
   },
   {
     "id": "bm-026",
@@ -645,7 +795,12 @@
       "Obsidian 메모를 mcp-memory 입력원으로 고정",
       "Claude 추출을 tech-review 글감 큐와 연결",
       "orchestration 문서 구조와 Obsidian 정렬"
-    ]
+    ],
+    "smart_brevity": {
+      "why": "Obsidian 노트 시스템이 AI의 장기 기억 저장소로 전환되는 것은 개인 생산성 도구의 다음 진화 방향이다. 노트가 단순 기록을 넘어 에이전트의 외부 메모리로 기능하는 구조가 실전에서 구현된다.",
+      "what": "Obsidian + Claude 통합 구조 전체 워크스루 — 개인 지식 관리와 AI 협업의 실전 설정.",
+      "axioms": []
+    }
   },
   {
     "id": "bm-027",
@@ -666,7 +821,17 @@
       "orchestration에 역할별 스웜 분리를 붙인다.",
       "mcp-memory를 스웜 공용 기억층으로 둔다.",
       "tech-review 글 생성을 병렬 체인으로 묶는다."
-    ]
+    ],
+    "smart_brevity": {
+      "why": "OpenClaw + Codex + Claude Code Swarm으로 설계·구현·리뷰를 각기 다른 에이전트가 담당하는 구조는 팀 없이도 팀의 분업 효과를 얻는 1인 개발의 실전 패턴이다.",
+      "what": "1인 개발팀 전체 설정 — OpenClaw + Codex/ClaudeCode Agent Swarm 조합, 역할별 에이전트 분업 구조.",
+      "axioms": [
+        {
+          "label": "The big picture",
+          "content": "1인 개발자의 생산성 한계가 멀티에이전트 분업으로 재정의되고 있다."
+        }
+      ]
+    }
   },
   {
     "id": "bm-028",
@@ -692,7 +857,12 @@
         "url": "https://pbs.twimg.com/amplify_video_thumb/2033223392007208960/img/_MIpVjvSZODQFYQK.jpg",
         "video_url": "https://video.twimg.com/amplify_video/2033223392007208960/vid/avc1/2422x1512/41pNe6n7zu9htUi3.mp4?tag=21"
       }
-    ]
+    ],
+    "smart_brevity": {
+      "why": "Claude 혼잡 시간대를 실시간으로 파악하는 것은 AI API 의존 자동화 파이프라인의 운영 안정성에 직접 기여한다. 혼잡 시간 회피가 파이프라인 신뢰성의 최소 운영 조건이 된다.",
+      "what": "claudethrottle.com — Claude 피크 타임 실시간 확인 도구.",
+      "axioms": []
+    }
   },
   {
     "id": "bm-029",
@@ -718,7 +888,12 @@
         "type": "photo",
         "url": "https://pbs.twimg.com/media/HAhYORcacAUQbE9.png"
       }
-    ]
+    ],
+    "smart_brevity": {
+      "why": "해커톤 우승 경험에서 나온 70가지 Claude Code 실전 팁은 에이전트 도구의 숙련도가 생산성 격차를 만드는 시대의 레시피 모음이다. 이론이 아닌 검증된 워크플로우가 압축됐다.",
+      "what": "Claude Code 완전 가이드 54페이지 PDF — Anthropic 해커톤 우승자 ykdojo의 70가지 파워 팁 + Part 1~13.",
+      "axioms": []
+    }
   },
   {
     "id": "bm-030",
@@ -758,7 +933,12 @@
         "type": "photo",
         "url": "https://pbs.twimg.com/media/HDdPT8iacAACyuJ.jpg"
       }
-    ]
+    ],
+    "smart_brevity": {
+      "why": "모델별 특성에 맞춘 프롬프트 설계가 같은 API 비용으로 더 나은 결과를 만든다. Opus/Sonnet/Haiku 각각의 best practice를 한국어로 재정리한 실용 레퍼런스다.",
+      "what": "Claude 프롬프트 Best Practices 한글 PDF 25페이지 — Opus 4.6·Sonnet 4.6·Haiku 4.5별, 기본원칙·출력제어·도구·추론·에이전트·마이그레이션.",
+      "axioms": []
+    }
   },
   {
     "id": "bm-031",
@@ -783,7 +963,12 @@
         "type": "photo",
         "url": "https://pbs.twimg.com/media/HDN29ZsbQAE1wGj.jpg"
       }
-    ]
+    ],
+    "smart_brevity": {
+      "why": "에이전트 위임에서 초기 컨텍스트와 프롬프트의 품질이 전체 작업 품질을 결정한다는 원칙이 Codex 모범사례에서도 반복된다. 첫 설정을 강하게 잡는 것이 반복 수정 비용을 줄이는 가장 효율적인 방법이다.",
+      "what": "Codex Best Practices 한글 PDF — 강력한 첫 컨텍스트, 사전 계획, AGENTS.md 재사용, 스킬·자동화·세션 컨트롤.",
+      "axioms": []
+    }
   },
   {
     "id": "bm-032",
@@ -808,6 +993,16 @@
       "domain": "news.hada.io",
       "url": "https://t.co/0XMP64I3Ki",
       "thumbnail": "https://pbs.twimg.com/card_img/2032325000993320960/rPF101Au?format=png&name=orig"
+    },
+    "smart_brevity": {
+      "why": "에이전트 설계의 최소 공통분모는 모델·도구·지침 3요소다. 어떤 프레임워크를 쓰든 이 세 가지를 어떻게 구성하느냐가 에이전트의 성능을 결정한다. 복잡한 프레임워크보다 기본 구조의 품질이 더 중요하다.",
+      "what": "OpenAI 에이전트 구축 실용 가이드 — 모델(LLM)·도구(API/외부함수)·지침(가이드라인) 3요소 프레임워크.",
+      "axioms": [
+        {
+          "label": "Be smart",
+          "content": "에이전트 프레임워크의 복잡성보다 모델·도구·지침 3요소의 품질이 실제 성능을 결정한다."
+        }
+      ]
     }
   },
   {
@@ -835,6 +1030,11 @@
       "domain": "openai.com",
       "url": "https://t.co/EqeXfB1FbE",
       "thumbnail": "https://pbs.twimg.com/card_img/2031602219741753345/YsBPiV1R?format=jpg&name=orig"
+    },
+    "smart_brevity": {
+      "why": "빈 프로젝트에서 에이전트가 구현 대부분을 수행하는 흐름이 이미 실전 워크플로우가 됐다. 개발자의 역량이 코드 작성에서 에이전트 감독과 품질 판단으로 이동하고 있다.",
+      "what": "Sonnet 3.7 이후 수동 코드 작성이 사실상 없어진 실무 경험 공유 — 빈 프로젝트에서 에이전트가 구현을 수행하는 워크플로우.",
+      "axioms": []
     }
   },
   {
@@ -862,7 +1062,12 @@
         "url": "https://pbs.twimg.com/amplify_video_thumb/2031926071621533696/img/zfHqoHxNjQ09t6gd.jpg",
         "video_url": "https://video.twimg.com/amplify_video/2031926071621533696/vid/avc1/1920x1080/ggRs-ciL__osB75U.mp4?tag=21"
       }
-    ]
+    ],
+    "smart_brevity": {
+      "why": "에이전트를 개별 단위가 아니라 조직으로 설계하는 swarm native 접근은 에이전트 스케일링의 핵심 과제를 정면으로 다룬다. 에이전트 수를 늘리되 비용을 통제하는 것이 다음 경쟁 전선이다.",
+      "what": "Slate V1: 최초의 swarm native agent — 대규모 병렬 실행, 고토큰효율, 어떤 지원 모델이든 오케스트레이션·실행 가능.",
+      "axioms": []
+    }
   },
   {
     "id": "bm-035",
@@ -890,6 +1095,16 @@
       "domain": "github.com",
       "url": "https://t.co/MhdH7YF1PP",
       "thumbnail": "https://pbs.twimg.com/card_img/2031704736978907136/_7Qn7T_r?format=jpg&name=orig"
+    },
+    "smart_brevity": {
+      "why": "autoresearch가 '완성품이 아니라 레시피'라는 정의는 도구가 아니라 방법론을 공유하는 새로운 지식 전파 방식이다. 코드 공유에서 워크플로우 공유로의 전환이 진행 중이다.",
+      "what": "autoresearch GitHub 재링크 — '직접 쓰는 도구가 아니라 에이전트에게 넘겨 적용하는 연구 레시피'라는 핵심 정의.",
+      "axioms": [
+        {
+          "label": "Be smart",
+          "content": "'이것을 에이전트에 넘겨 네가 관심 있는 것에 적용하라' — 레시피로서의 오픈소스가 확산의 방식이다."
+        }
+      ]
     }
   },
   {
@@ -915,6 +1130,16 @@
       "domain": "techcrunch.com",
       "url": "https://t.co/eWHyGLXwCA",
       "thumbnail": "https://pbs.twimg.com/card_img/2031233889235337216/-PwLS_Jw?format=jpg&name=orig"
+    },
+    "smart_brevity": {
+      "why": "AMI Labs의 $1.03B seed는 LeCun의 world model 방향에 시장이 확신을 보냈다는 신호다. LLM 패러다임과 근본적으로 다른 접근에 이 규모의 투자가 들어갔다는 것은 AI 연구의 다양성이 유지되고 있다는 긍정적 신호다.",
+      "what": "AMI Labs(Yann LeCun) 설립 + $1.03B seed 라운드 완료 — 역대 최대 seed 중 하나, 유럽 기업 최대 가능성. world model 연구.",
+      "axioms": [
+        {
+          "label": "By the numbers",
+          "content": "$1.03B seed — LLM 이외의 AI 연구 방향에 대한 시장의 대규모 베팅."
+        }
+      ]
     }
   },
   {
@@ -941,7 +1166,17 @@
         "type": "photo",
         "url": "https://pbs.twimg.com/media/HC_-jW0bUAA_Hga.jpg"
       }
-    ]
+    ],
+    "smart_brevity": {
+      "why": "수동 튜닝 위에서 에이전트가 추가 11% 개선을 찾아낸 실측 결과는 에이전트 자율 실험의 실효성을 입증한다. 'frontier lab이 이미 모두 이걸 하고 있다'는 말은 자동화 실험 루프가 이미 업계 표준 경쟁력이 됐음을 의미한다.",
+      "what": "autoresearch 실측 결과 — 수동 튜닝 상단에서 추가 11% 개선, 모든 변경이 큰 모델에도 전이. 에이전트가 700개 실험을 자율 수행.",
+      "axioms": [
+        {
+          "label": "By the numbers",
+          "content": "Time to GPT-2: 2.02h → 1.80h. 수동으로 찾지 못했던 개선을 에이전트가 발굴."
+        }
+      ]
+    }
   },
   {
     "id": "bm-038",
@@ -959,7 +1194,17 @@
       "발행 전 검수 반복 횟수를 메타로 남겨라.",
       "요약 카드에 사람 편집 기여를 표시하라."
     ],
-    "tweet_id": "2033184119958409616"
+    "tweet_id": "2033184119958409616",
+    "smart_brevity": {
+      "why": "8시간·5번 반복·시니어 3명이라는 실상은 프롬프트 한 번으로 완성품이 나온다는 환상과 대조된다. AI 도구의 진정한 가치는 즉시 완성이 아니라 반복 비용 절감에 있다.",
+      "what": "좋은 결과물의 실제 비용 공개 — '프롬프트 하나가 아니라' 8시간·5회 반복·3명 시니어 디자이너.",
+      "axioms": [
+        {
+          "label": "Yes but",
+          "content": "AI가 빠르게 만들어준다는 것은 사실이지만, 좋은 결과물은 여전히 깊은 반복 작업을 요구한다."
+        }
+      ]
+    }
   },
   {
     "id": "bm-039",
@@ -980,7 +1225,12 @@
       "mcp-memory recall 세팅을 팀 기본값으로 묶어라.",
       "tech-review 온보딩을 붙여넣기 2번으로 줄여라."
     ],
-    "tweet_id": "2032014576557179044"
+    "tweet_id": "2032014576557179044",
+    "smart_brevity": {
+      "why": "팀 전체의 AI 도구 설정을 붙여넣기 한 번으로 배포하는 것은 에이전트 설정의 재현성(reproducibility) 문제를 가장 낮은 마찰로 해결하는 패턴이다. MIT 오픈소스가 빠른 확산을 가능하게 한다.",
+      "what": "gstack — MIT 오픈소스. 로컬 Claude Code에 한 번 붙여넣기, 팀원 repo에 두 번째 붙여넣기로 설치.",
+      "axioms": []
+    }
   },
   {
     "id": "bm-040",
@@ -1007,7 +1257,17 @@
       "recall 뒤 인용·번역 자기검증을 고정하라.",
       "apply_points를 별도 판단 단계로 떼어라."
     ],
-    "tweet_id": "2032146316730778004"
+    "tweet_id": "2032146316730778004",
+    "smart_brevity": {
+      "why": "2인 로펌이 Claude 중심으로 인수계약 협상부터 규제 리서치까지 처리하는 것은 AI의 전문 서비스 침투를 구체적으로 보여준다. 법률처럼 전문성과 신뢰가 핵심인 영역에서 AI가 실무 도구로 자리잡으면, 다른 전문 서비스로의 확산은 시간문제다.",
+      "what": "Claude 네이티브 로펌 운영 상세 — skills로 개인 판단 코드화, Cowork 자율 모드로 문서 처리, Code 모드로 법률 문서 → 음성 변환 CLI 직접 개발.",
+      "axioms": [
+        {
+          "label": "The bottom line",
+          "content": "Harvey 같은 전문 legal AI보다 판단을 skills로 인코딩한 범용 Claude가 소규모 실무에 더 강력하다는 실전 검증."
+        }
+      ]
+    }
   },
   {
     "id": "bm-041",
@@ -1028,7 +1288,17 @@
       "북마크 재처리는 90분 블록으로만 묶어라.",
       "recall 뒤 메신저 차단을 운영 규칙화하라."
     ],
-    "tweet_id": "2032752995730121013"
+    "tweet_id": "2032752995730121013",
+    "smart_brevity": {
+      "why": "deep focus를 감각이나 의지가 아니라 aMCC·도파민·아세틸콜린 경로를 설계하는 생물학적 프로토콜로 접근하면, 집중 상태를 재현 가능한 운영 절차로 만들 수 있다. 지식 노동자에게 가장 희소한 자원인 '깊은 집중'을 시스템으로 확보하는 방법론이다.",
+      "what": "deep focus 생물학 프로토콜 — aMCC 성장 원리, 에피네프린·아세틸콜린·도파민 3화학물질 설계, 90분 블록, 생리적 리셋, AI meta-prompt.",
+      "axioms": [
+        {
+          "label": "Be smart",
+          "content": "AI는 aMCC를 대신 키울 수 없지만, 집중을 방해하는 행정 노이즈를 제거해 뇌가 진짜 작업에 100% 투입되도록 도울 수 있다."
+        }
+      ]
+    }
   },
   {
     "id": "bm-042",
@@ -1051,7 +1321,12 @@
       "모바일 Safari 저장도 수집 큐에 넣어라.",
       "트위터 외 웹 아티클 수집원을 붙여라."
     ],
-    "tweet_id": "2034374935569891833"
+    "tweet_id": "2034374935569891833",
+    "smart_brevity": {
+      "why": "Obsidian Web Clipper가 앱 없이, 모바일 Safari까지 지원한다는 것은 정보 수집 워크플로우에서 도구 종속성을 제거한다. 분산된 소스에서 정보를 모으는 자동화 파이프라인의 진입 장벽이 낮아진다.",
+      "what": "Obsidian Web Clipper — Obsidian 앱 없이 동작, 모바일 Safari·Firefox 포함 확장 지원 브라우저 전체 지원.",
+      "axioms": []
+    }
   },
   {
     "id": "bm-043",
@@ -1075,7 +1350,17 @@
       "북마크에 AI fluency·AI agents 태그를 넣어라.",
       "Daily Digest를 신뢰 필터형으로 묶어라."
     ],
-    "tweet_id": "2031889622385729730"
+    "tweet_id": "2031889622385729730",
+    "smart_brevity": {
+      "why": "정보 생산 비용이 0에 수렴할수록 '무엇을 만드느냐'보다 '무엇을 걸러내느냐'가 더 가치 있어진다. AI 시대의 커리어 전략은 생산이 아니라 신호 필터링·신뢰 구축·판단에 집중해야 한다.",
+      "what": "AI·로보틱스 시대 생존 전략 가이드 — 신호 필터링·신뢰·Storytelling·AI fluency·에이전트 운용·attention 확보 6가지 핵심 기술.",
+      "axioms": [
+        {
+          "label": "The bottom line",
+          "content": "5년 후 AI가 당신의 일을 100배 빠르고 90% 저렴하게 할 수 있다면, 당신을 고용해야 할 이유는 무엇인가?"
+        }
+      ]
+    }
   },
   {
     "id": "bm-044",
@@ -1112,7 +1397,17 @@
       "오답 수정 근거를 mcp-memory에 누적하라.",
       "북마크별 주제·정의·규칙을 온톨로지화하라."
     ],
-    "tweet_id": "2031063578082754924"
+    "tweet_id": "2031063578082754924",
+    "smart_brevity": {
+      "why": "데이터 에이전트 실패의 핵심은 모델 성능이 아니라 context layer 부재다. 기업 데이터·비즈니스 정의·tribal knowledge를 통합하는 맥락 계층 없이는 아무리 좋은 모델도 틀린 답을 낸다.",
+      "what": "데이터 에이전트 context layer 설계 — semantic layer를 초월한 맥락 계층: 자동 구축·인간 보정·API/MCP 연결·self-updating. 시장 지형 분석 포함.",
+      "axioms": [
+        {
+          "label": "Be smart",
+          "content": "에이전트 정확도의 병목은 더 좋은 모델이 아니라 더 나은 맥락 인프라에 있다."
+        }
+      ]
+    }
   },
   {
     "id": "bm-045",
@@ -1135,7 +1430,17 @@
       "mcp-memory 근거 누락률을 체크리스트화",
       "KO 생성 후 번역 일치율을 자동 회귀검증"
     ],
-    "tweet_id": "2033919415771713715"
+    "tweet_id": "2033919415771713715",
+    "smart_brevity": {
+      "why": "에이전트가 yes/no 체크리스트로 자신의 skill 프롬프트를 반복 평가·수정하는 메타 루프는 수동 프롬프트 엔지니어링의 한계를 구조적으로 넘는다. skill 통과율 56% → 92% 실측이 효과를 입증한다.",
+      "what": "autoresearch 방법론을 Claude Skills에 적용 — skill을 자동으로 테스트·개선하는 에이전트 루프. 랜딩 페이지 카피 skill 56%→92% 통과율 향상 사례.",
+      "axioms": [
+        {
+          "label": "Be smart",
+          "content": "스킬을 만드는 것보다 스킬을 스스로 개선하게 하는 것이 더 높은 수준의 에이전트 운용이다."
+        }
+      ]
+    }
   },
   {
     "id": "bm-046",
@@ -1162,7 +1467,17 @@
       "mcp-memory recall 분석을 스킬로 분리한다.",
       "checkpoint Layer B 승격 검증을 runbook화한다."
     ],
-    "tweet_id": "2033949937936085378"
+    "tweet_id": "2033949937936085378",
+    "smart_brevity": {
+      "why": "Anthropic이 수백 개 Skills를 운영하며 얻은 실전 교훈은 에이전트 운영 best practice의 실증 데이터다. Skills를 단순 프롬프트가 아니라 스크립트·자산·데이터·hooks를 포함하는 확장 단위로 다루는 것이 핵심이다.",
+      "what": "Anthropic의 Skills 운영 best practice — 수백 개 Skills 실전 운영 교훈, 스크립트·자산·데이터·hooks 포함 확장 단위 설계.",
+      "axioms": [
+        {
+          "label": "The bottom line",
+          "content": "AI 코딩 에이전트의 성능은 모델보다 재사용 가능한 운영 지식의 축적에서 결정된다."
+        }
+      ]
+    }
   },
   {
     "id": "bm-047",
@@ -1185,7 +1500,12 @@
       "역할 설명을 라우팅 신호로 세분화한다.",
       "recall 결과 합성은 parent 하나만 맡긴다."
     ],
-    "tweet_id": "2033167408463069526"
+    "tweet_id": "2033167408463069526",
+    "smart_brevity": {
+      "why": "sub-agents는 격리된 병렬 작업에, agent teams는 공유 상태와 협업에 적합하다. 에이전트 수를 늘리는 것이 아니라 작업이 요구하는 정보 흐름과 의사결정 구조에 맞는 패턴 선택이 핵심이다.",
+      "what": "sub-agents vs agent teams 비교 — 격리/병렬 작업 vs 공유 상태/협업 작업, 멀티에이전트 아키텍처 선택 기준.",
+      "axioms": []
+    }
   },
   {
     "id": "bm-048",
@@ -1212,7 +1532,12 @@
       "subagent 프롬프트에 컨텍스트 고정 전달",
       "Claude Architect 시리즈를 연속 포스트화"
     ],
-    "tweet_id": "2033198345045336559"
+    "tweet_id": "2033198345045336559",
+    "smart_brevity": {
+      "why": "Claude Certified Architect 시험 가이드가 Claude Code·Agent SDK·API·MCP 전반을 프로덕션 관점에서 다룬다는 것은 Claude 생태계의 깊이를 가늠하는 지형도 역할을 한다. 단순 사용이 아닌 아키텍처 수준의 이해를 요구하는 것이 차별점이다.",
+      "what": "Claude Certified Architect 시험 준비 가이드 — Claude Code·Agent SDK·API·MCP 프로덕션 아키텍처 관점 전체 커버.",
+      "axioms": []
+    }
   },
   {
     "id": "bm-049",
@@ -1241,7 +1566,17 @@
       "recall 문맥을 분석 전 기본 프롬프트에 넣어라.",
       "수정 이유를 결정 노트로 함께 남겨라."
     ],
-    "tweet_id": "2026492755430474002"
+    "tweet_id": "2026492755430474002",
+    "smart_brevity": {
+      "why": "AI가 코딩에서 먼저 성과를 낸 이유는 코드라는 순회 가능한 구조가 이미 존재했기 때문이다. 다음 자동화 영역은 기업의 비구조화된 지식을 company graph로 정리하는 것이며, 지식의 구조화가 선행되어야 AI 자동화가 가능하다.",
+      "what": "AI 자동화의 다음 병목 분석 — 코드 이후, 비구조화된 기업 지식(결정·회의·리서치·경쟁 분석)을 에이전트가 순회 가능한 company graph로 정리하는 과제.",
+      "axioms": [
+        {
+          "label": "What's next",
+          "content": "코드가 구조화된 것처럼 기업 지식이 구조화될 때, 그 다음 AI 자동화 물결이 온다."
+        }
+      ]
+    }
   },
   {
     "id": "bm-050",
@@ -1261,7 +1596,17 @@
       "긴 글 재분석에 저자 판단력 태그를 넣어라.",
       "recall에 선별 기준을 쌓아 재가공에 넣어라."
     ],
-    "tweet_id": "2031717962948690355"
+    "tweet_id": "2031717962948690355",
+    "smart_brevity": {
+      "why": "AI가 BigLaw의 레버리지 기반 수익 모델을 흔드는 것은 전문 서비스 전반에 적용된다. 대규모 인력으로 시간을 팔던 모델에서 소수 전문가가 AI로 결과를 파는 모델로의 전환은 컨설팅·회계·금융 전반의 재편을 예고한다.",
+      "what": "AI가 BigLaw 비즈니스 모델을 바꾸는 분석 — 시간 기반 레버리지 모델의 해체, 개인 판단력 기반 결과 판매 모델로의 전환.",
+      "axioms": [
+        {
+          "label": "The big picture",
+          "content": "기관의 브랜드보다 개인의 판단력이 가치를 갖는 시대가 법률에서 먼저 시작됐다."
+        }
+      ]
+    }
   },
   {
     "id": "bm-051",
@@ -1285,7 +1630,17 @@
       "Daily Digest 초안도 인덱스형으로 묶어라.",
       "트위터·유튜브 요약을 같은 그래프로 연결하라."
     ],
-    "tweet_id": "2023957499183829467"
+    "tweet_id": "2023957499183829467",
+    "smart_brevity": {
+      "why": "단일 SKILL.md 대신 wikilink로 연결된 skill graph는 에이전트가 필요한 맥락만 탐색하며 가져오는 구조를 가능하게 한다. 평면적 지시서에서 그래프형 지식 구조로의 전환이 대규모 에이전트 운용의 다음 단계다.",
+      "what": "skill graph 설계 — SKILL.md를 여러 작은 skill 파일로 분리하고 wikilink로 연결, 치료·법률·트레이딩·회사 지식 등 깊은 도메인 커버.",
+      "axioms": [
+        {
+          "label": "Be smart",
+          "content": "에이전트 지식 관리는 단일 파일이 아니라 탐색 가능한 그래프 구조가 되어야 한다."
+        }
+      ]
+    }
   },
   {
     "id": "bm-052",
@@ -1314,7 +1669,17 @@
       "mcp-memory에 지표 정의 변경 이력 축적",
       "Twitter·YouTube 공통 정의를 맥락 레이어로 통합"
     ],
-    "tweet_id": "2031371431129526446"
+    "tweet_id": "2031371431129526446",
+    "smart_brevity": {
+      "why": "데이터 에이전트의 병목이 모델이 아니라 맥락 레이어라는 반복되는 진단은 업계 컨센서스에 가깝다. 데이터 에이전트 시장의 승자는 모델을 만드는 회사가 아니라 맥락 인프라를 장악하는 회사가 될 가능성이 높다.",
+      "what": "데이터 에이전트 실패 분석 — semantic layer만으론 부족, 비즈니스 정의·조직 관행·최근 변경사항까지 포함하는 풍부한 맥락 인프라 필요.",
+      "axioms": [
+        {
+          "label": "The bottom line",
+          "content": "데이터 에이전트 시장의 승자는 모델 회사가 아니라 맥락 인프라 회사다."
+        }
+      ]
+    }
   },
   {
     "id": "bm-053",
@@ -1345,7 +1710,17 @@
       "반도체·전력·AI팩토리 글을 시리즈로 묶어라.",
       "앱 수요가 칩·전력으로 번지는 흐름을 추적하라."
     ],
-    "tweet_id": "2031311890752704790"
+    "tweet_id": "2031311890752704790",
+    "smart_brevity": {
+      "why": "NVIDIA가 AI를 에너지→칩→인프라→모델→앱의 5계층 산업으로 재정의한 것은 모델 성능 중심 시각에서 벗어나 전력·데이터센터·제조·노동시장까지 포함하는 실물 경제 관점을 요구한다. AI가 소프트웨어를 넘어 산업 인프라로 확장되는 전환기에 있다.",
+      "what": "NVIDIA CEO: AI = 에너지·칩·인프라·모델·앱 5계층 산업. 데이터센터 전기 소비, 제조·노동 시장 영향까지 포함한 실물 경제 전환 분석.",
+      "axioms": [
+        {
+          "label": "The big picture",
+          "content": "AI를 소프트웨어가 아니라 전력·제조·노동을 재편하는 산업 인프라로 볼 때 다음 10년이 보인다."
+        }
+      ]
+    }
   },
   {
     "id": "bm-054",
@@ -1371,7 +1746,17 @@
       "새 흐름은 문서보다 시안+검토로 굴려라.",
       "프롬프트에 독자 가치 기준을 명시하라."
     ],
-    "tweet_id": "2031051115169808685"
+    "tweet_id": "2031051115169808685",
+    "smart_brevity": {
+      "why": "코딩 에이전트가 구현 비용을 낮추면서 EPD 운영이 PRD 중심에서 프로토타입 중심으로 이동한다. 코드 작성이 쉬워질수록 경쟁력은 더 많이 만드는 것이 아니라 무엇을 만들지 판단하는 것에 집중된다.",
+      "what": "코딩 에이전트 시대 EPD 운영 변화 분석 — PRD 중심에서 프로토타입 중심으로, 소프트웨어 조직 가치 사슬 재배열.",
+      "axioms": [
+        {
+          "label": "What's next",
+          "content": "소프트웨어 조직에서 '더 많이 만드는 능력'보다 '무엇을 만들지 판단하는 능력'의 가치가 역전된다."
+        }
+      ]
+    }
   },
   {
     "id": "bm-055",
@@ -1397,6 +1782,16 @@
       "Obsidian vault 연동형 지식그래프 검토",
       "세션 로그→Pattern 승격을 파이프라인화"
     ],
-    "tweet_id": "2030904887186514336"
+    "tweet_id": "2030904887186514336",
+    "smart_brevity": {
+      "why": "CLAUDE.md·자동 메모리·Obsidian MCP를 3계층으로 조합해 매 세션이 이전 맥락을 이어받는 구조는, LLM 성능의 병목이 추론이 아니라 컨텍스트 연속성에 있다는 것을 실증한다.",
+      "what": "Claude + Obsidian 3계층 메모리 스택 — CLAUDE.md(규칙), 자동 메모리(세션 간 학습), Obsidian MCP(영구 지식 베이스).",
+      "axioms": [
+        {
+          "label": "Be smart",
+          "content": "세션이 끝나도 기억이 이어지는 구조는 LLM을 일회성 도구에서 장기 파트너로 전환한다."
+        }
+      ]
+    }
   }
 ]
