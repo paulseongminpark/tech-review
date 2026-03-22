@@ -29,7 +29,7 @@ nav.site-nav { position: relative; z-index: 200; background: #fff; padding: 0.75
 .yt-col-cat {
   width: 140px; min-width: 140px;
   background: #f7f7f7;
-  padding: 1rem 0;
+  padding: 0;
 }
 .yt-cat-item {
   display: block;
@@ -309,6 +309,11 @@ function selectCat(cat) {
   renderVideos();
   document.getElementById('yt-col-sections').innerHTML = '';
   document.getElementById('yt-col-content').innerHTML = '<p class="yt-content-empty">← 영상을 선택하세요</p>';
+  // 클릭한 카테고리를 Col 1 상단으로
+  setTimeout(() => {
+    const active = document.querySelector('#yt-col-cat .yt-cat-item.active');
+    if (active) active.scrollIntoView({ block: 'start', behavior: 'smooth' });
+  }, 30);
 }
 
 /* ── Col 2: Videos ── */
@@ -338,6 +343,11 @@ function selectVideo(vid) {
   renderVideos();
   renderSections();
   renderContent();
+  // 클릭한 영상을 Col 2 상단으로
+  setTimeout(() => {
+    const active = document.querySelector('#yt-col-videos .yt-vid-item.active');
+    if (active) active.scrollIntoView({ block: 'start', behavior: 'smooth' });
+  }, 30);
 }
 
 /* ── Col 3: Sections ── */
@@ -491,8 +501,12 @@ function updateSecHighlight() {
   }
 }
 
-/* ── Init ── */
+/* ── Init: 모두 열린 상태 ── */
 selectedCat = 'all';
 renderCats();
 renderVideos();
+// 첫 영상 자동 선택
+if (ALL_VIDEOS.length) {
+  selectVideo(ALL_VIDEOS[0].video_id);
+}
 </script>
