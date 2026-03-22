@@ -56,7 +56,20 @@ nav.site-nav { position: relative; z-index: 200; background: #fff; padding: 0.75
 .yt-col-videos {
   width: 260px; min-width: 260px;
   background: #fcfcfc;
-  padding: 0.5rem 0;
+  padding: 0;
+}
+.yt-col-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: inherit;
+  padding: 10px 14px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-bottom: 1px solid #eee;
 }
 .yt-vid-item {
   display: block;
@@ -99,7 +112,7 @@ nav.site-nav { position: relative; z-index: 200; background: #fff; padding: 0.75
 .yt-col-sections {
   width: 220px; min-width: 220px;
   background: #f9f9f9;
-  padding: 0.5rem 0;
+  padding: 0;
 }
 .yt-sec-header {
   padding: 10px 14px;
@@ -307,8 +320,8 @@ function getVideos() {
 function renderVideos() {
   const videos = getVideos();
   const el = document.getElementById('yt-col-videos');
-  if (!videos.length) { el.innerHTML = '<p style="color:#ccc;padding:1rem;font-size:0.8rem;">영상 없음</p>'; return; }
-  el.innerHTML = videos.map(v => {
+  if (!videos.length) { el.innerHTML = '<div class="yt-col-header">Titles</div><p style="color:#ccc;padding:1rem;font-size:0.8rem;">영상 없음</p>'; return; }
+  el.innerHTML = '<div class="yt-col-header">Titles</div>' + videos.map(v => {
     const vid = v.video_id;
     const hasSummary = v.summary && (v.summary.sections || v.summary.key_takeaways);
     return `<div class="yt-vid-item${selectedVideoId===vid?' active':''}" onclick="selectVideo('${vid}')">
@@ -337,7 +350,7 @@ function renderSections() {
   const s = v.summary || {};
   const sections = s.sections || [];
 
-  let html = `<div class="yt-sec-item${selectedView==='overview'?' active':''}" onclick="selectView('overview')">Overview</div>`;
+  let html = `<div class="yt-col-header">Overview</div>`;
   if (sections.length) {
     html += '<div class="yt-sec-divider"></div>';
     html += '<div class="yt-sec-header">Sections</div>';
