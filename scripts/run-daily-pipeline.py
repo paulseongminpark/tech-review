@@ -71,10 +71,10 @@ def _try_gemini_wim(prompt_file: Path) -> str:
     """Gemini CLI로 WIM 재작성. Claude 실패 시 fallback."""
     log("  [Step 2b] Gemini CLI fallback...")
     try:
-        # Gemini CLI 출력을 파일로 받음 (터미널 인코딩 문제 우회)
+        # Gemini CLI: Claude와 동일한 프롬프트 파일 사용 (DR raw + WIM 규칙 전부 포함)
         out_file = TMP_DIR / "gemini-wim-output.md"
         result = subprocess.run(
-            f'gemini -p "파일 {prompt_file} 을 읽고 지시대로 Jekyll 포스트를 만들어라. 결과를 {out_file} 에 저장해라." -y --extensions ""',
+            f'gemini -p "파일 {prompt_file} 의 내용을 그대로 따라라. 프롬프트 안에 raw 데이터와 변환 규칙이 전부 있다. Why it matters만 재작성하고 나머지 팩트는 원문 그대로 유지해라. 분량을 줄이지 마라. 결과를 {out_file} 에 저장해라." -y --extensions ""',
             capture_output=True, text=True, encoding="utf-8", errors="replace",
             timeout=300, shell=True, cwd=str(BLOG_DIR),
             stdin=subprocess.DEVNULL,
