@@ -13,7 +13,17 @@
     "summary": {
       "smart_brevity": {
         "why": "이 강의는 5개 브라우저 에이전트 데모, 3대 플랫폼 비교, self-modifying prompt, MCP orchestration, video-to-action, 10-agent consensus 사례를 한 번에 묶어, 비개발자도 병렬 자동화와 역할 분리만으로 생산성과 의사결정 품질을 크게 끌어올릴 수 있음을 보여준다.",
-        "what": "강사는 Codex, Claude Code, Anti-Gravity를 오가며 에이전트의 본질을 관찰-추론-행동 루프와 definition of done으로 설명한다.\n이후 self-modifying Agents.md, skills, multi-agent MCP orchestration, video-to-action pipeline, stochastic multi-agent consensus를 실제 데모로 시연하며 모델별 장단점과 운영 패턴을 비교한다.\n핵심 메시지는 단일 모델의 절대 지능보다 도구, 메모리, 라우팅, 검증, 병렬화 설계가 더 큰 성능 차이를 만든다는 것이다.\n다만 제공된 자막은 agent chat rooms 설명 도입부에서 종료되어 이후 심화 파트는 포함되지 않는다."
+        "what": "강사는 Codex, Claude Code, Anti-Gravity를 오가며 에이전트의 본질을 관찰-추론-행동 루프와 definition of done으로 설명한다.\n이후 self-modifying Agents.md, skills, multi-agent MCP orchestration, video-to-action pipeline, stochastic multi-agent consensus를 실제 데모로 시연하며 모델별 장단점과 운영 패턴을 비교한다.\n핵심 메시지는 단일 모델의 절대 지능보다 도구, 메모리, 라우팅, 검증, 병렬화 설계가 더 큰 성능 차이를 만든다는 것이다.\n다만 제공된 자막은 agent chat rooms 설명 도입부에서 종료되어 이후 심화 파트는 포함되지 않는다.",
+        "axioms": [
+          {
+            "label": "The big picture",
+            "content": "Codex·Claude Code·MCP·N8n이 한 강의에서 교차하는 것은 agentic AI가 단일 도구가 아닌 조합 설계의 문제임을 보여주는 2026년 현재 시점의 단면이다."
+          },
+          {
+            "label": "Be smart",
+            "content": "2시간 full course의 실질적 가치는 특정 모델 선택보다 tool call 설계·MCP 연결·워크플로우 오케스트레이션 패턴을 내면화하는 데 있다."
+          }
+        ]
       },
       "sections": [
         {

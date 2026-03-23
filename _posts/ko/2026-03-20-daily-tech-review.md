@@ -59,3 +59,7 @@ NVIDIA와 AWS가 GTC 2026에서 발표한 확장 협력에 따라 AWS가 2026년
 **What's next:** NVIDIA는 2026년 중으로 중국향 H200 공급을 점진적으로 확대하는 한편, Groq LPU 기반 추론 칩 변형과 Rubin·Vera 플랫폼을 포함한 차세대 제품군을 병행 공급한다는 방침이어서, 미국 수출 규제·중국 자립 전략·글로벌 AI 칩 가격 구조가 재조정될 가능성이 크다.
 
 **Source:** [Nvidia gets Beijing's nod for H200 chip sales](https://www.reuters.com/world/china/chinese-authorities-approve-nvidias-h200-ai-chip-sales-source-says-2026-03-18/) · [NVIDIA Resumes H200 Production for Chinese Market](https://www.chosun.com/english/industry-en/2026/03/18/63U4KDDW7NG6JKWVXATLPGUIDY/)
+
+## Comments
+
+

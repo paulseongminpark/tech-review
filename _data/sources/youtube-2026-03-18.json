@@ -13,7 +13,17 @@
     "summary": {
       "smart_brevity": {
         "why": "이 영상은 10개 이상 코드베이스와 여러 디바이스에서 흩어지는 private skill, agent, prompt를 library라는 meta skill 하나로 참조형 배포하고, 실제 데모에서 로컬 전역 스킬을 42개에서 46개로, agent device의 전역 스킬을 1개에서 5개로 늘리며 동기화와 push-back까지 보여 준다는 점에서 중요하다.",
-        "what": "핵심 주장은 private agentics를 복사본으로 퍼뜨리지 말고, GitHub repo와 local path를 가리키는 단일 YAML catalog로 관리하라는 것이다.\n발표자는 skills, agents, prompts를 각각 capability, scale, orchestration primitive로 구분하고, library를 그 위를 여는 meta layer로 둔다.\n데모에서는 personal reference library와 실제 reusable repo를 분리한 뒤 add, use, sync, push 명령으로 로컬 환경과 Mac Mini agent device에 meta skill들을 설치한다.\n결론은 orchestrator 시대에는 private agentics의 단일 source of truth가 trust, 재사용, 팀 협업, multi-device 운영의 핵심이라는 것이다."
+        "what": "핵심 주장은 private agentics를 복사본으로 퍼뜨리지 말고, GitHub repo와 local path를 가리키는 단일 YAML catalog로 관리하라는 것이다.\n발표자는 skills, agents, prompts를 각각 capability, scale, orchestration primitive로 구분하고, library를 그 위를 여는 meta layer로 둔다.\n데모에서는 personal reference library와 실제 reusable repo를 분리한 뒤 add, use, sync, push 명령으로 로컬 환경과 Mac Mini agent device에 meta skill들을 설치한다.\n결론은 orchestrator 시대에는 private agentics의 단일 source of truth가 trust, 재사용, 팀 협업, multi-device 운영의 핵심이라는 것이다.",
+        "axioms": [
+          {
+            "label": "The big picture",
+            "content": "Library meta-skill은 개인 skill을 GitHub·YAML·package.json으로 배포 가능한 패키지로 만드는 것—Claude Code 생태계의 개인 npm처럼 동작한다."
+          },
+          {
+            "label": "Be smart",
+            "content": "skill.md + library.yaml로 private skill을 배포하는 구조는 tool shed 패턴의 핵심—공유 불가 전제를 뒤집는 조건 설계가 팀 생산성의 레버리지다."
+          }
+        ]
       },
       "sections": [
         {
@@ -186,7 +196,17 @@
     "summary": {
       "smart_brevity": {
         "why": "이 영상은 AI agent의 진짜 경쟁력이 개별 모델의 절대 지능보다 병렬화, 도구 사용, 메모리, 오케스트레이션에 있다는 점을 5개 브라우저 병렬 데모, 2000명 교육과 연 400만 달러 비즈니스 사례, TikTok 문제를 10개 agent와 3~4달러 수준의 토큰 비용으로 분석하는 예시까지 붙여 매우 구체적으로 보여 준다.",
-        "what": "이 강의는 AI agent를 단일 LLM이 아니라 병렬화 가능한 작업 시스템으로 이해하게 만든다.\n도입부에서는 5개 브라우저를 동시에 돌려 리드 contact form을 채우는 데모로 경제적 가치와 병렬화의 힘을 먼저 보여 준다.\n이후 observe-think-act 루프, definition of done, tools와 memory의 역할, Codex·Claude Code·Anti-Gravity의 차이, self-modifying prompts와 skills를 차례로 설명한다.\n후반부에서는 multi-agent MCP orchestration, video-to-action pipeline, stochastic multi-agent consensus까지 연결해 고급 실무 패턴이 어떻게 만들어지는지 보여 준다."
+        "what": "이 강의는 AI agent를 단일 LLM이 아니라 병렬화 가능한 작업 시스템으로 이해하게 만든다.\n도입부에서는 5개 브라우저를 동시에 돌려 리드 contact form을 채우는 데모로 경제적 가치와 병렬화의 힘을 먼저 보여 준다.\n이후 observe-think-act 루프, definition of done, tools와 memory의 역할, Codex·Claude Code·Anti-Gravity의 차이, self-modifying prompts와 skills를 차례로 설명한다.\n후반부에서는 multi-agent MCP orchestration, video-to-action pipeline, stochastic multi-agent consensus까지 연결해 고급 실무 패턴이 어떻게 만들어지는지 보여 준다.",
+        "axioms": [
+          {
+            "label": "The big picture",
+            "content": "Codex·Claude Code·MCP·N8n이 한 강의에서 교차하는 것은 agentic AI가 단일 도구가 아닌 조합 설계의 문제임을 보여주는 2026년 현재 시점의 단면이다."
+          },
+          {
+            "label": "Be smart",
+            "content": "2시간 full course의 실질적 가치는 특정 모델 선택보다 tool call 설계·MCP 연결·워크플로우 오케스트레이션 패턴을 내면화하는 데 있다."
+          }
+        ]
       },
       "sections": [
         {

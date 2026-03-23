@@ -13,7 +13,17 @@
     "summary": {
       "smart_brevity": {
         "why": "이 영상은 GSD가 단순한 새 유행이 아니라 요구사항이 흔들리고 실험이 많은 제품에 맞는 프레임워크라는 점을 BMAD·Superpowers와 대비해 설명하며, Claude Opus 4.6의 100만 컨텍스트와 실제 13만8천 토큰 반복 사례를 근거로 프레임워크 선택 기준 자체를 다시 세우게 만든다.",
-        "what": "화자는 AI 코딩 프레임워크를 최고와 최악으로 고르는 대신 어떤 종류의 프로젝트에 어떤 운영 철학이 맞는지로 판단해야 한다고 주장한다.\nGSD는 미리 모든 것을 잠그지 않고 실험 가능한 MVP와 불확실한 요구사항에 맞고, B-mad는 요구사항이 명확한 전통적 시스템에, Superpowers는 테스트 우선과 고비용 edge case 방지에 맞는다고 정리한다.\n이후 GSD의 실제 설치, 초기화, research, roadmap, phase planning, wave 병렬화, Playwright 검증, verifier 교차검증까지 데모 흐름 전체를 보여준다.\n결론은 GSD가 큰 앱에는 강력하지만 단순한 앱에는 과한 도구이며, 필요하면 GSD와 Superpowers를 섞거나 결국 자신만의 프레임워크를 설계해야 한다는 것이다."
+        "what": "화자는 AI 코딩 프레임워크를 최고와 최악으로 고르는 대신 어떤 종류의 프로젝트에 어떤 운영 철학이 맞는지로 판단해야 한다고 주장한다.\nGSD는 미리 모든 것을 잠그지 않고 실험 가능한 MVP와 불확실한 요구사항에 맞고, B-mad는 요구사항이 명확한 전통적 시스템에, Superpowers는 테스트 우선과 고비용 edge case 방지에 맞는다고 정리한다.\n이후 GSD의 실제 설치, 초기화, research, roadmap, phase planning, wave 병렬화, Playwright 검증, verifier 교차검증까지 데모 흐름 전체를 보여준다.\n결론은 GSD가 큰 앱에는 강력하지만 단순한 앱에는 과한 도구이며, 필요하면 GSD와 Superpowers를 섞거나 결국 자신만의 프레임워크를 설계해야 한다는 것이다.",
+        "axioms": [
+          {
+            "label": "Be smart",
+            "content": "GSD·TDD·Playwright를 vibe coding에 결합하는 것은 직관적 코딩의 속도를 유지하면서 Context 7 MCP로 hallucination을 구조적으로 차단하는 조건 설계다."
+          },
+          {
+            "label": "The bottom line",
+            "content": "Claude Opus 4.6 + Sonnet 조합의 실전 패턴이 보여주는 것은 모델 선택보다 프롬프트·컨텍스트·테스트 루프의 설계가 결과물 품질을 결정한다는 점이다."
+          }
+        ]
       },
       "sections": [
         {
@@ -173,7 +183,17 @@
     "summary": {
       "smart_brevity": {
         "why": "Jenny Wen은 AI가 PM의 즉시 프로토타이핑과 Claude의 10분에서 20분 자율 리서치를 가능하게 만든 시대에는 학교와 업계가 가르친 경직된 디자인 프로세스보다 craft, intuition, solution-first 탐색이 실제 제품 성과를 만든다고 주장한다.",
-        "what": "이 발표는 사용자 리서치에서 persona, journey map, problem statement, brainstorm, wireframe으로 이어지는 고전적 디자인 프로세스가 왜 더 이상 현실과 맞지 않는지 해부한다.\nJenny Wen은 Anthropic, Figma, Dropbox 경험을 바탕으로 AI, 감원, 역할 확장, craft 경쟁이 디자이너의 가치 정의를 어떻게 바꾸고 있는지 설명한다.\n그녀는 solution-first prototyping, 디테일 집착, 축적된 intuition, 단계 생략과 재조합, 사람을 웃게 만드는 기능이 실제 훌륭한 제품을 만드는 방식이라고 사례로 보여 준다.\n결론은 프로세스를 믿기보다 변화하는 도구와 맥락 속에서 스스로 판단하고 책임지는 디자이너의 감각을 다시 신뢰하라는 것이다."
+        "what": "이 발표는 사용자 리서치에서 persona, journey map, problem statement, brainstorm, wireframe으로 이어지는 고전적 디자인 프로세스가 왜 더 이상 현실과 맞지 않는지 해부한다.\nJenny Wen은 Anthropic, Figma, Dropbox 경험을 바탕으로 AI, 감원, 역할 확장, craft 경쟁이 디자이너의 가치 정의를 어떻게 바꾸고 있는지 설명한다.\n그녀는 solution-first prototyping, 디테일 집착, 축적된 intuition, 단계 생략과 재조합, 사람을 웃게 만드는 기능이 실제 훌륭한 제품을 만드는 방식이라고 사례로 보여 준다.\n결론은 프로세스를 믿기보다 변화하는 도구와 맥락 속에서 스스로 판단하고 책임지는 디자이너의 감각을 다시 신뢰하라는 것이다.",
+        "axioms": [
+          {
+            "label": "The big picture",
+            "content": "AI가 Figma·FigJam·Slides를 직접 생성하는 시대에 디자인 프로세스의 붕괴는 산출물 전달자 역할의 소멸—디자이너의 가치가 판단과 방향 설정으로 이동하는 전환점이다."
+          },
+          {
+            "label": "Yes, but",
+            "content": "Google Ventures Design Sprint·Amazon Working Backwards 같은 기존 프레임워크는 AI 시대에도 의사결정 구조로는 유효하지만, 그 안의 수작업 산출물 생성 단계는 AI로 대체되고 있다."
+          }
+        ]
       },
       "sections": [
         {
@@ -689,7 +709,17 @@
     "summary": {
       "smart_brevity": {
         "why": "이 영상은 Figma와 코드 사이의 깨진 핸드오프 때문에 디자인 재구현에 시간을 쓰는 개발자 62% 문제를, Figma MCP로 추출한 토큰과 컴포넌트를 Claude가 TypeScript 기반 디자인 시스템으로 옮겨 한 오후 안에 정리하면 새 기능 출시 시간을 2주에서 2시간 수준으로 압축할 수 있다고 보여준다.",
-        "what": "발표자는 먼저 Figma component library의 foundations, colors, typography, icons를 Claude로 읽어 style tokens.ts와 style guide page를 만든다.\n그 다음 KPI card 하나를 예제로 잡아 hover, interaction, variant, preview, documentation까지 포함한 세밀한 workflow prompt로 컴포넌트를 코드화한다.\n이어 같은 방식으로 여러 컴포넌트를 조합한 실제 화면을 구현하고, 첫 시안에서 spacing 이슈를 수치 수정으로 바로 잡는다.\n마지막에는 기능별로 Claude 채팅을 분리하고 세션 기록을 project context.md에 저장해 다음 작업까지 이어지는 운영 습관을 제안한다."
+        "what": "발표자는 먼저 Figma component library의 foundations, colors, typography, icons를 Claude로 읽어 style tokens.ts와 style guide page를 만든다.\n그 다음 KPI card 하나를 예제로 잡아 hover, interaction, variant, preview, documentation까지 포함한 세밀한 workflow prompt로 컴포넌트를 코드화한다.\n이어 같은 방식으로 여러 컴포넌트를 조합한 실제 화면을 구현하고, 첫 시안에서 spacing 이슈를 수치 수정으로 바로 잡는다.\n마지막에는 기능별로 Claude 채팅을 분리하고 세션 기록을 project context.md에 저장해 다음 작업까지 이어지는 운영 습관을 제안한다.",
+        "axioms": [
+          {
+            "label": "By the numbers",
+            "content": "4시간 만에 Claude + Cursor + Figma MCP로 완성한 디자인 시스템은 도구 조합이 설계 속도의 병목을 제거할 때 발생하는 구조적 시간 압축의 실측값이다."
+          },
+          {
+            "label": "Be smart",
+            "content": "Figma MCP를 통해 Claude가 직접 컴포넌트를 생성하는 루프는 설계-구현 간 컨텍스트 전환 비용을 없애는 조건—TypeScript 타입과 디자인 토큰의 단일 소스 설계가 전제다."
+          }
+        ]
       },
       "sections": [
         {

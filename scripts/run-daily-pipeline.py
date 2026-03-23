@@ -54,7 +54,7 @@ def _try_claude_wim(prompt_file: Path) -> str:
     """Claude Code CLI로 WIM 재작성. 타임아웃 시 빈 문자열 반환."""
     try:
         result = subprocess.run(
-            f'claude -p "$(cat {str(prompt_file).replace(chr(92), "/")})" --output-format text',
+            f'claude -p "$(cat {str(prompt_file).replace(chr(92), "/")})" --output-format text --allowedTools ""',
             capture_output=True, text=True, encoding="utf-8", errors="replace",
             timeout=300, shell=True, cwd=str(BLOG_DIR),
         )

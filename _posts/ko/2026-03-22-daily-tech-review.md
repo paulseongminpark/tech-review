@@ -9,22 +9,6 @@ tags: ["weekly-recap"]
 source_type: perplexity
 ---
 
-쓰기 권한이 아직 승인되지 않았다. 전체 수정본을 출력하겠다 — 확인 후 승인해 주면 파일에 반영하겠다.
-
----
-
-```
----
-layout: post
-title: "에이전틱 AI가 연구자·직원·운영체제 수준으로 올라서고, 이를 측정·규율할 AGI 프레임워크와 GPU·오픈소스 인프라 패권 경쟁이 동시에 가속된 한 주였다"
-date: 2026-03-22
-lang: ko
-permalink: /ko/2026/03/22/daily-tech-review/
-pair: 2026-03-22-daily-tech-review
-tags: ["weekly-recap"]
-source_type: perplexity
----
-
 ## Today in One Line
 에이전틱 AI가 연구자·직원·운영체제 수준으로 올라서고, 이를 측정·규율할 AGI 프레임워크와 GPU·오픈소스 인프라 패권 경쟁이 동시에 가속된 한 주였다.
 
@@ -114,8 +98,5 @@ r/LocalLLaMA에서는 Holotron-12B를 "로컬·온프렘 에이전틱 워크로�
 
 ## This Week's Pattern
 이번 주의 공통 키워드는 "에이전틱 AI의 산업화"라 할 수 있다. OpenAI의 AI 연구원 로드맵, DeepMind의 AGI 인지 프레임워크, NVIDIA·Hugging Face·H Company의 에이전틱 인프라·오픈 모델 발표는 모두 "오래 생각하고, 스스로 행동하며, 대규모 인프라 위에서 돌아가는 에이전트"를 전제하고 있다. 그 위에서 AGI를 어떻게 정의·측정·규율할지, 그리고 어떤 하드웨어·라이선스·국가 전략을 선택할지가 앞으로 몇 년간 AI/Tech 전체를 가르는 구조적 쟁점으로 부상하고 있다고 읽을 수 있다.
-
-## Comments
-```
 
 ## Comments
