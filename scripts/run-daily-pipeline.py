@@ -67,40 +67,6 @@ def _try_claude_wim(prompt_file: Path) -> str:
         return ""
 
 
-def _try_gemini_wim(prompt_file: Path) -> str:
-    """Gemini CLI로 WIM 재작성. Claude 실패 시 fallback."""
-    log("  [Step 2b] Gemini CLI fallback...")
-    try:
-        # Gemini CLI: Claude와 동일한 프롬프트 파일 사용 (DR raw + WIM 규칙 전부 포함)
-        out_file = TMP_DIR / "gemini-wim-output.md"
-        result = subprocess.run(
-            f'gemini -p "파일 {prompt_file} 의 내용을 그대로 따라라. 프롬프트 안에 raw 데이터와 변환 규칙이 전부 있다. Why it matters만 재작성하고 나머지 팩트는 원문 그대로 유지해라. 분량을 줄이지 마라. 결과를 {out_file} 에 저장해라." -y --extensions ""',
-            capture_output=True, text=True, encoding="utf-8", errors="replace",
-            timeout=300, shell=True, cwd=str(BLOG_DIR),
-            stdin=subprocess.DEVNULL,
-        )
-        if out_file.exists():
-            output = out_file.read_text(encoding="utf-8")
-            out_file.unlink(missing_ok=True)
-            return output.strip()
-        # 파일 저장 실패 시 stdout fallback
-        output = result.stdout.strip()
-        lines = output.split('\n')
-        content_lines = []
-        started = False
-        for line in lines:
-            if line.startswith('---') or line.startswith('layout:') or line.startswith('##'):
-                started = True
-            if started:
-                content_lines.append(line)
-        return '\n'.join(content_lines) if content_lines else output
-    except subprocess.TimeoutExpired:
-        log("  [WARN] Gemini CLI 타임아웃 (300초)")
-        return ""
-    except Exception as e:
-        log(f"  [WARN] Gemini CLI 실패: {e}")
-        return ""
-
 
 def _clean_perplexity_raw(text: str) -> str:
     """Perplexity DR raw 텍스트에서 citation tag 제거 + 포맷 정리."""
@@ -223,14 +189,9 @@ tags: [{DAY_TAGS.get(datetime.strptime(post_date, '%Y-%m-%d').weekday(), 'ai-ml'
     # 1차: Claude Code CLI
     output = _try_claude_wim(prompt_file)
 
-    # 2차: Gemini CLI fallback
+    # 2차: raw 정리 fallback
     if not output or len(output) < 500:
-        log(f"  [WARN] Claude 출력 부족 ({len(output) if output else 0}자), Gemini CLI 시도")
-        output = _try_gemini_wim(prompt_file)
-
-    # 3차: raw 정리 fallback
-    if not output or len(output) < 500:
-        log(f"  [WARN] Gemini도 실패, raw 정리 후 사용")
+        log(f"  [WARN] Claude 출력 부족 ({len(output) if output else 0}자), raw 정리 후 사용")
         output = _clean_perplexity_raw(raw_content)
 
     # 저장
