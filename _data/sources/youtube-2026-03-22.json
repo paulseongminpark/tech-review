@@ -75,8 +75,8 @@
         "what": "",
         "axioms": [
           {
-            "label": "Always-on agents",
-            "content": "에이전트는 잠들지 않는다. 나만 잠들 뿐이다."
+            "label": "Be smart",
+            "content": "에이전트는 멈추지 않는다. 항상 대기 상태다."
           }
         ]
       }
