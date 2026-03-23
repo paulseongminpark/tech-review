@@ -1,0 +1,45 @@
+{
+  "date": "2026-03-23",
+  "lang": "ko",
+  "post_url": "/ko/2026/03/23/daily-tech-review/",
+  "post_title": "NVIDIA Nemotron-Cascade 2, MiniMax M2.7, Mamba-3: 고밀도 지능과 자율 진화의 시대",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "NVIDIA Nemotron-Cascade 2: 30B MoE로 구현한 고밀도 추론",
+      "lead": "NVIDIA가 30B Mixture-of-Experts(MoE) 모델인 **Nemotron-Cascade 2**를 공개했습니다. 총 30B 파라미터 중 단 3B만 활성화되는 이 모델은 'Cascade RL'이라는 새로운 사후 학습 기법을 통해 적은 자원으로도 최상급 추론 능력을 보여줍니다.",
+      "tags": [
+        "ai-models",
+        "research",
+        "benchmarks",
+        "nvidia"
+      ],
+      "anchor": "nvidia-nemotron-cascade-2-30b-moe로-구현한-고밀도-추론"
+    },
+    {
+      "index": 2,
+      "title": "MiniMax M2.7: 스스로 진화하는 에이전트 모델의 첫걸음",
+      "lead": "중국의 MiniMax가 자가 개선(Self-improvement) 능력을 갖춘 **M2.7** 모델을 발표했습니다. 이 모델은 복잡한 추론 과정에서 스스로 피드백을 주고받으며 성능을 높이는 '자율 진화'에 초점을 맞췄습니다.",
+      "tags": [
+        "ai-models",
+        "research",
+        "benchmarks",
+        "ma"
+      ],
+      "anchor": "minimax-m27-스스로-진화하는-에이전트-모델의-첫걸음"
+    },
+    {
+      "index": 3,
+      "title": "Mamba-3: 트랜스포머를 앞지른 차세대 SSM",
+      "lead": "Together AI, CMU, Princeton 등이 협력하여 **Mamba-3**를 공개했습니다. 트랜스포머 아키텍처의 한계를 극복하기 위한 SSM(State Space Model) 기반의 이 모델은 성능과 속도라는 두 마리 토끼를 모두 잡았습니다.",
+      "tags": [
+        "ai-models",
+        "research",
+        "benchmarks",
+        "ma"
+      ],
+      "anchor": "mamba-3-트랜스포머를-앞지른-차세대-ssm"
+    }
+  ]
+}
