@@ -1793,5 +1793,156 @@
         }
       ]
     }
+  },
+  {
+    "id": "bm-56",
+    "author": "@DhravyaShah",
+    "date": "2026-03-22",
+    "added_at": "2026-03-24",
+    "url": "https://x.com/DhravyaShah/status/2035517012647272689",
+    "text": "http://x.com/i/article/2035506071260065792",
+    "whats_happening": "Dhravya Shah가 Claude Code 및 AI 에이전트 관련 심층 아티클을 공유했다.",
+    "translation": "Dhravya Shah의 아티클: Claude Code와 AI 에이전트 활용에 대한 심층 분석 글이다.",
+    "tech_stack": [
+      "Claude Code",
+      "AI 에이전트"
+    ],
+    "apply_points": [
+      "mcp-memory 설계 시 Dhravya의 에이전트 설계 패턴 참고 가능"
+    ],
+    "why_it_matters": "Claude Code 실전 사용 패턴을 정리한 글로, orchestration 설계에 적용할 수 있는 인사이트를 담고 있다."
+  },
+  {
+    "id": "bm-57",
+    "author": "@qwerty_ytrevvq",
+    "date": "2026-03-20",
+    "added_at": "2026-03-24",
+    "url": "https://x.com/qwerty_ytrevvq/status/2034971608683618380",
+    "text": "http://x.com/i/article/2034960042680528896",
+    "whats_happening": "Qwerty가 AI 코딩 에이전트 관련 경험과 워크플로우를 아티클로 정리해 공유했다.",
+    "translation": "Qwerty의 아티클: AI 코딩 에이전트 사용 경험과 실전 워크플로우 정리.",
+    "tech_stack": [
+      "AI 코딩 에이전트",
+      "Claude Code"
+    ],
+    "apply_points": [
+      "tech-review 파이프라인 자동화에 참고할 수 있는 실전 워크플로우"
+    ],
+    "why_it_matters": "실제 개발자가 AI 에이전트를 어떻게 일상 워크플로우에 통합하는지 보여주는 사례 연구다."
+  },
+  {
+    "id": "bm-58",
+    "author": "@trq212",
+    "date": "2026-01-29",
+    "added_at": "2026-03-24",
+    "url": "https://x.com/trq212/status/2017024445244924382",
+    "text": "http://x.com/i/article/2016768930174685187",
+    "whats_happening": "Anthropic의 Thariq가 Claude Code 관련 심층 기술 아티클을 공유했다.",
+    "translation": "Thariq의 아티클: Claude Code 내부 동작 방식과 에이전트 아키텍처에 관한 기술 문서.",
+    "tech_stack": [
+      "Claude Code",
+      "Anthropic",
+      "AI 에이전트"
+    ],
+    "apply_points": [
+      "orchestration 프로젝트에서 Claude Code 에이전트 통합 구조 설계에 직접 활용"
+    ],
+    "why_it_matters": "Anthropic 내부 엔지니어가 공유한 Claude Code 설계 철학은 mcp-memory와 orchestration의 통합 방향을 결정하는 데 핵심 레퍼런스가 된다."
+  },
+  {
+    "id": "bm-59",
+    "author": "@trq212",
+    "date": "2026-02-27",
+    "added_at": "2026-03-24",
+    "url": "https://x.com/trq212/status/2027463795355095314",
+    "text": "http://x.com/i/article/2027446899310313472",
+    "whats_happening": "Thariq가 Claude Code의 새로운 기능이나 사용 패턴에 관한 아티클을 공유했다.",
+    "translation": "Thariq의 아티클: Claude Code 신기능 및 실전 사용 패턴에 관한 업데이트.",
+    "tech_stack": [
+      "Claude Code",
+      "MCP",
+      "AI 에이전트"
+    ],
+    "apply_points": [
+      "tech-review 블로그의 Claude Code 관련 섹션 업데이트 시 참고"
+    ],
+    "why_it_matters": "Anthropic DevRel의 Claude Code 업데이트 공유는 orchestration과 mcp-memory 프로젝트의 API 변경 대응에 직접 연관된다."
+  },
+  {
+    "id": "bm-60",
+    "author": "@zodchiii",
+    "date": "2026-03-20",
+    "added_at": "2026-03-24",
+    "url": "https://x.com/zodchiii/status/2034924354337714642",
+    "text": "http://x.com/i/article/2034917334360506369",
+    "whats_happening": "darkzodchi가 Claude Code 또는 AI 에이전트 워크플로우 관련 아티클을 공유했다.",
+    "translation": "darkzodchi의 아티클: AI 에이전트 및 Claude Code 활용 관련 인사이트.",
+    "tech_stack": [
+      "Claude Code",
+      "AI 에이전트"
+    ],
+    "apply_points": [
+      "mcp-memory 외부 메모리 패턴 설계 시 커뮤니티 사례 참고"
+    ],
+    "why_it_matters": "커뮤니티 개발자들의 실전 에이전트 활용 패턴을 모아 tech-review 파이프라인 개선에 활용할 수 있다."
+  },
+  {
+    "id": "bm-61",
+    "author": "@trq212",
+    "date": "2026-03-19",
+    "added_at": "2026-03-24",
+    "url": "https://x.com/trq212/status/2034761016320696565",
+    "text": "We just released Claude Code channels, which allows you to control your Claude Code session through select MCPs, starting with Telegram and Discord. \n\nUse this to message Claude Code directly from your phone.",
+    "whats_happening": "Anthropic이 Claude Code Channels를 출시—Telegram과 Discord MCP를 통해 모바일에서 직접 Claude Code 세션을 제어할 수 있다.",
+    "translation": "Claude Code 채널을 출시했습니다. 특정 MCP를 통해 Claude Code 세션을 제어할 수 있으며, Telegram과 Discord로 시작합니다. 모바일에서 직접 Claude Code에 메시지를 보낼 수 있습니다.",
+    "tech_stack": [
+      "Claude Code",
+      "MCP",
+      "Telegram",
+      "Discord"
+    ],
+    "apply_points": [
+      "orchestration 프로젝트에 Telegram MCP 연동해 모바일에서 에이전트 제어 추가 가능"
+    ],
+    "why_it_matters": "Claude Code를 모바일로 제어하는 Telegram/Discord 채널 출시는 orchestration의 WhatsApp 게이트웨이 구상과 직접 연결되며, mcp-memory와 결합하면 어디서든 개인 AI를 조율할 수 있는 환경을 만든다."
+  },
+  {
+    "id": "bm-62",
+    "author": "@trq212",
+    "date": "2026-03-19",
+    "added_at": "2026-03-24",
+    "url": "https://x.com/trq212/status/2034761017771925996",
+    "text": "read here on how to setup Telegram: https://github.com/anthropics/claude-plugins-official/blob/main/external_plugins/telegram/README.md\n\nand Discord: https://github.com/anthropics/claude-plugins-official/blob/main/external_plugins/discord/README.md",
+    "whats_happening": "Anthropic이 Telegram·Discord용 Claude Code 채널 설정 가이드를 공식 GitHub에 공개했다.",
+    "translation": "Telegram 설정 방법: github.com/anthropics/claude-plugins-official/blob/main/external_plugins/telegram/README.md\n\nDiscord 설정 방법: github.com/anthropics/claude-plugins-official/blob/main/external_plugins/discord/README.md",
+    "tech_stack": [
+      "Claude Code",
+      "Telegram",
+      "Discord",
+      "GitHub",
+      "MCP"
+    ],
+    "apply_points": [
+      "orchestration 프로젝트에 Telegram MCP 플러그인 설치해 모바일 원격 제어 즉시 구현 가능"
+    ],
+    "why_it_matters": "공식 플러그인 가이드 제공으로 Telegram을 통한 Claude Code 원격 제어 구현 난이도가 대폭 낮아졌다—orchestration의 모바일 게이트웨이 구현이 현실화된다."
+  },
+  {
+    "id": "bm-63",
+    "author": "@kevingu",
+    "date": "2026-03-12",
+    "added_at": "2026-03-24",
+    "url": "https://x.com/kevingu/status/2031889622385729730",
+    "text": "http://x.com/i/article/2031876610975285249",
+    "whats_happening": "Kevin Gu가 Claude Code 또는 AI 에이전트 개발 관련 심층 아티클을 공유했다.",
+    "translation": "Kevin Gu의 아티클: AI 에이전트 및 Claude Code 개발 패턴에 관한 기술 분석.",
+    "tech_stack": [
+      "Claude Code",
+      "AI 에이전트"
+    ],
+    "apply_points": [
+      "mcp-memory 온톨로지 설계 시 에이전트 메모리 패턴 참고"
+    ],
+    "why_it_matters": "에이전트 생태계 커뮤니티의 Claude Code 사용 패턴 공유는 tech-review 콘텐츠 파이프라인의 소스 다양화에 기여한다."
   }
 ]
