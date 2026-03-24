@@ -1,0 +1,48 @@
+{
+  "date": "2026-03-24",
+  "lang": "ko",
+  "post_url": "/ko/2026/03/24/daily-tech-review/",
+  "post_title": "애플은 WWDC26로 AI 반격의 시동을 걸고, 구글은 뉴스 출판사 반독점 소송을 털어냈으며, 엔비디아는 전력 회사들과 손잡고 전력망 연동형 AI 팩토리를 밀어붙이고 있다",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "[애플, WWDC26를 6월 8~12일 개최하며 ‘AI 반격’의 무대 시동]",
+      "lead": "애플이 2026년 6월 8일부터 12일까지 온라인·오프라인 혼합 형태로 WWDC26를 개최하고, iOS 27를 포함한 플랫폼 전반의 AI 중심 업데이트를 예고했다.",
+      "tags": [
+        "google",
+        "microsoft",
+        "meta",
+        "apple",
+        "nvidia"
+      ],
+      "anchor": "애플-wwdc26를-6월-812일-개최하며-ai-반격의-무대-시동"
+    },
+    {
+      "index": 2,
+      "title": "[구글, 뉴스 출판사 집단소송(검색·AI 남용) 기각 승리로 규제 리스크 한숨 돌리다]",
+      "lead": "미국 워싱턴 D.C. 연방법원에서 Helena World Chronicle·Emmerich Newspapers 등이 제기한 ‘온라인 뉴스·AI 남용’ 반독점 집단소송이 2026년 3월 20일 판결로 전면 기각되면서, 구글이 온라인 뉴스·검색 관련 중대 규제 리스크 하나를 정리했다.",
+      "tags": [
+        "google",
+        "microsoft",
+        "meta",
+        "apple",
+        "nvidia"
+      ],
+      "anchor": "구글-뉴스-출판사-집단소송검색·ai-남용-기각-승리로-규제-리스크-한숨-돌리다"
+    },
+    {
+      "index": 3,
+      "title": "[엔비디아·Emerald AI, 전력사 6곳과 손잡고 ‘전력망 연동형 AI 팩토리’로 AI 인프라 한계를 정면 돌파]",
+      "lead": "엔비디아가 에너지 스타트업 Emerald AI 및 AES·Constellation·Invenergy·NextEra Energy·Nscale Energy & Power·Vistra 등 6개 미국 전력·에너지 기업과 협력해, 전력망에 유연하게 연결되는 새로운 형태의 ‘AI 팩토리’를 구축하겠다는 계획을 CERAWeek 2026에서 발표했다.",
+      "tags": [
+        "google",
+        "microsoft",
+        "meta",
+        "apple",
+        "nvidia"
+      ],
+      "anchor": "엔비디아·emerald-ai-전력사-6곳과-손잡고-전력망-연동형-ai-팩토리로-ai-인프라-한계를-정면-돌파"
+    }
+  ]
+}
