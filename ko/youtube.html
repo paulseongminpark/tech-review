@@ -213,6 +213,9 @@ nav.site-nav { position: relative; z-index: 200; background: #fff; padding: 0.75
   color: #1d4ed8; font-style: italic; line-height: 1.7;
 }
 
+.yt-c-transcript-p { font-size: 0.85rem; color: #555; line-height: 1.8; margin-bottom: 1rem; }
+.yt-c-transcript { max-height: 600px; overflow-y: auto; padding-right: 0.5rem; }
+
 .yt-c-takeaways { background: #f8f8f8; border-radius: 8px; padding: 1.1rem 1.3rem; margin: 1.5rem 0; }
 .yt-c-takeaways-label { font-size: 0.7rem; font-weight: 700; color: #999; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.6rem; }
 .yt-c-takeaways ul { list-style: none; padding: 0; margin: 0; }
@@ -386,6 +389,8 @@ function renderSections() {
   if (sections.length) {
     html += `<div class="yt-sec-meta-item" onclick="selectView('sections')">Sections (${sections.length})</div>`;
   }
+  const v3 = ALL_VIDEOS.find(v => v.video_id === selectedVideoId);
+  if (v3 && (v3.transcript_ko || v3.transcript)) html += `<div class="yt-sec-meta-item" onclick="selectView('transcript')">Transcript</div>`;
   if ((s.key_takeaways||[]).length) html += `<div class="yt-sec-meta-item" onclick="selectView('takeaways')">Takeaways</div>`;
   el.innerHTML = html;
 }
@@ -400,10 +405,10 @@ function selectView(view) {
     renderContent();
   }
   setTimeout(() => {
-    // sections 클릭 시 details 토글 열기
-    if (view === 'sections') {
-      const details = contentEl.querySelector('details.yt-c-details');
-      if (details) { details.open = true; details.scrollIntoView({behavior:'smooth', block:'start'}); }
+    // sections/transcript 클릭 시 details 토글 열기
+    if (view === 'sections' || view === 'transcript') {
+      const target = document.getElementById('yt-sec-' + view);
+      if (target) { target.open = true; target.scrollIntoView({behavior:'smooth', block:'start'}); }
       return;
     }
     const targetId = typeof view === 'number' ? 'yt-sec-' + view : 'yt-sec-' + view;
@@ -471,6 +476,24 @@ function renderContent() {
         </div>`;
       });
       body += `</div></details>`;
+    }
+    // 4b. Transcript (토글)
+    if (v.transcript_ko || v.transcript) {
+      const txt = v.transcript_ko || v.transcript;
+      // quote 하이라이트: sections의 quote를 transcript에서 찾아 mark 처리
+      const quotes = (s.sections||[]).map(sec => sec.quote).filter(Boolean);
+      let tHtml = txt.split(/\n\n+/).map(p => {
+        let para = esc(p.trim());
+        quotes.forEach(q => {
+          const eq = esc(q).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+          para = para.replace(new RegExp(eq, 'gi'), m => `</p><blockquote class="yt-c-quote" style="margin:0.75rem 0;">"${m}"</blockquote><p class="yt-c-transcript-p">`);
+        });
+        return `<p class="yt-c-transcript-p">${para}</p>`;
+      }).join('');
+      body += `<details id="yt-sec-transcript" class="yt-c-details" style="margin-bottom:1rem;">`;
+      body += `<summary class="yt-c-sb-label" style="cursor:pointer; user-select:none;">Transcript</summary>`;
+      body += `<div class="yt-c-transcript" style="margin-top:0.5rem;">${tHtml}</div>`;
+      body += `</details>`;
     }
     // 5. Takeaways / Tech
     if ((s.key_takeaways||[]).length) {
