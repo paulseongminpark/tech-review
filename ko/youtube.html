@@ -151,14 +151,16 @@ nav.site-nav { position: relative; z-index: 200; background: #fff; padding: 0.75
 }
 .yt-sec-meta-item {
   display: block;
-  padding: 6px 14px;
-  font-size: 0.72rem;
-  color: #888;
+  padding: 8px 16px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #666;
   cursor: pointer;
+  border-left: 3px solid transparent;
   transition: all 0.12s;
 }
-.yt-sec-meta-item:hover { color: #555; background: #f0f0f0; }
-.yt-sec-meta-item.active { color: #D4632D; font-weight: 600; }
+.yt-sec-meta-item:hover { color: #333; background: #f0f0f0; }
+.yt-sec-meta-item.active { color: #D4632D; border-left-color: #D4632D; background: rgba(212,99,45,0.06); }
 
 /* Col 4: 본문 */
 .yt-col-content {
@@ -372,16 +374,19 @@ function renderSections() {
   const sections = s.sections || [];
 
   let html = `<div class="yt-col-header">Overview</div>`;
+  const sb3 = s.smart_brevity || {};
+  const ap3 = s.apply_points || {};
+  const hasAP = ap3.what || ap3.why_it_matters;
+  // Nav items matching Col 4 order
+  if (sb3.why) html += `<div class="yt-sec-meta-item" onclick="selectView('wim')">Why it matters</div>`;
+  if (hasAP) {
+    html += `<div class="yt-sec-meta-item" onclick="selectView('apply')">Apply Point</div>`;
+  }
+  if (sb3.what) html += `<div class="yt-sec-meta-item" onclick="selectView('whats')">What's happening</div>`;
   if (sections.length) {
-    html += sections.map((sec, i) =>
-      `<div class="yt-sec-item${selectedView===i?' active':''}" onclick="selectView(${i})"><span class="yt-sec-num">${String(i+1).padStart(2,'0')}</span>${esc(sec.heading.includes(':') ? sec.heading.split(':')[0].trim() : (sec.heading.length > 20 ? sec.heading.slice(0,18)+'…' : sec.heading))}</div>`
-    ).join('');
+    html += `<div class="yt-sec-meta-item" onclick="selectView('sections')">Sections (${sections.length})</div>`;
   }
-  if ((s.key_takeaways||[]).length || (s.tech_stack||[]).length || (s.apply_points||[]).length) {
-    if ((s.key_takeaways||[]).length) html += `<div class="yt-sec-meta-item${selectedView==='takeaways'?' active':''}" onclick="selectView('takeaways')">Takeaways</div>`;
-    if ((s.tech_stack||[]).length) html += `<div class="yt-sec-meta-item${selectedView==='tech'?' active':''}" onclick="selectView('tech')">Tech Stack</div>`;
-    if ((s.apply_points||[]).length) html += `<div class="yt-sec-meta-item${selectedView==='apply'?' active':''}" onclick="selectView('apply')">Apply Points</div>`;
-  }
+  if ((s.key_takeaways||[]).length) html += `<div class="yt-sec-meta-item" onclick="selectView('takeaways')">Takeaways</div>`;
   el.innerHTML = html;
 }
 
@@ -389,29 +394,22 @@ let activeSecIndex = null;
 
 function selectView(view) {
   const contentEl = document.getElementById('yt-col-content');
-  if (typeof view === 'number' || view === 'takeaways' || view === 'tech' || view === 'apply') {
-    // overview 모드에서 해당 위치로 스크롤
-    if (selectedView !== 'overview') {
-      selectedView = 'overview';
-      renderContent();
-    }
-    setTimeout(() => {
-      const targetId = typeof view === 'number' ? 'yt-sec-' + view : 'yt-sec-' + view;
-      const target = document.getElementById(targetId);
-      if (target) contentEl.scrollTop = target.offsetTop - contentEl.offsetTop;
-    }, 50);
-    // Col 3에서 클릭한 항목을 상단으로
-    setTimeout(() => {
-      const col = document.getElementById('yt-col-sections');
-      const headerH = col.querySelector('.yt-col-header')?.offsetHeight || 0;
-      const active = col.querySelector('.yt-sec-item.active, .yt-sec-meta-item.active');
-      if (active) col.scrollTop = active.offsetTop - headerH;
-    }, 60);
-    return;
+  // overview 모드 유지하면서 해당 위치로 스크롤
+  if (selectedView !== 'overview') {
+    selectedView = 'overview';
+    renderContent();
   }
-  selectedView = view;
-  renderSections();
-  renderContent();
+  setTimeout(() => {
+    // sections 클릭 시 details 토글 열기
+    if (view === 'sections') {
+      const details = contentEl.querySelector('details.yt-c-details');
+      if (details) { details.open = true; details.scrollIntoView({behavior:'smooth', block:'start'}); }
+      return;
+    }
+    const targetId = typeof view === 'number' ? 'yt-sec-' + view : 'yt-sec-' + view;
+    const target = document.getElementById(targetId);
+    if (target) contentEl.scrollTop = target.offsetTop - contentEl.offsetTop;
+  }, 50);
 }
 
 /* ── Col 4: Content ── */
@@ -425,45 +423,70 @@ function renderContent() {
   // Header (always shown)
   let header = `
     <h2 class="yt-c-title"><a href="${v.url}" target="_blank" rel="noopener">${esc(v.title)} ↗</a></h2>
-    <p class="yt-c-meta">${esc(v.channel||'')}${v.fetched_at ? ' · '+v.fetched_at : ''}</p>`;
+    <p class="yt-c-meta">${esc(v.channel||'')}${v.published_at ? ' · '+v.published_at : (v.fetched_at ? ' · '+v.fetched_at : '')}</p>`;
 
   let body = '';
 
   if (selectedView === 'overview') {
-    // Smart Brevity
-    if (sb.why || sb.what) {
+    const ap = s.apply_points;
+    // 1. WIM (hero)
+    if (sb.why) {
       body += `<div class="yt-c-sb">`;
-      if (sb.why) body += `<p class="yt-c-sb-label">Why it matters</p><p class="yt-c-sb-why">${esc(sb.why)}</p>`;
-      if (sb.what) body += `<p class="yt-c-sb-label" style="margin-top:0.5rem;">What's happening</p><p class="yt-c-sb-what">${esc(sb.what)}</p>`;
-      (sb.axioms||[]).forEach(ax => { body += `<p class="yt-c-sb-label" style="margin-top:0.5rem;">${esc(ax.label)}</p><p class="yt-c-sb-what">${esc(ax.content)}</p>`; });
-      body += '</div>';
+      body += `<div id="yt-sec-wim"><p class="yt-c-sb-label">Why it matters</p><p class="yt-c-sb-why">${esc(sb.why)}</p></div>`;
+      body += `</div>`;
     }
-    // All sections (continuous scroll)
-    (s.sections||[]).forEach((sec, i) => {
-      body += `<div id="yt-sec-${i}" style="margin-bottom:1.5rem; scroll-margin-top: 1rem;">
-        <h3 class="yt-c-section-heading"><span style="color:#bbb;font-weight:500;margin-right:8px;font-size:0.85em;">${String(i+1).padStart(2,'0')}</span>${esc(sec.heading)}</h3>
-        <div class="yt-c-section-body">${highlight(sec.body, sec.highlights)}</div>
-        ${sec.quote ? `<blockquote class="yt-c-quote">"${esc(sec.quote)}"</blockquote>` : ''}
-      </div>`;
-    });
-    // Takeaways / Tech / Apply at bottom
+    // 2. Apply Point (새 구조: level/where/action/trigger)
+    if (ap && ap.what) {
+      const lvLabels = {1:'시스템 액션', 2:'설계 참고', 3:'사고 자극'};
+      const lv = ap.level || 3;
+      const fields = ['where','what','why','how','when'];
+      body += `<div id="yt-sec-apply" class="yt-c-sb" style="margin-top:0.75rem; border-left:3px solid #2563eb; padding-left:12px;">`;
+      body += `<p class="yt-c-sb-label" style="color:#1d4ed8;">Apply Point · L${lv} ${lvLabels[lv]}</p>`;
+      fields.forEach(f => { if (ap[f]) body += `<p class="yt-c-sb-label" style="margin-top:0.5rem; color:#1d4ed8;">${f.toUpperCase()}</p><p class="yt-c-sb-what">${esc(ap[f])}</p>`; });
+      body += `</div>`;
+    }
+    // 2b. 이전 구조 호환 (why_it_matters 형태)
+    if (ap && ap.why_it_matters && !ap.what) {
+      body += `<div id="yt-sec-apply" class="yt-c-sb" style="margin-top:0.75rem; border-left:3px solid #2563eb;">`;
+      body += `<p class="yt-c-sb-label" style="color:#1d4ed8;">Why it matters to me</p><p class="yt-c-sb-why">${esc(ap.why_it_matters)}</p>`;
+      body += `</div>`;
+    }
+    // 3. What's happening + SB axioms (펼침)
+    if (sb.what) {
+      body += `<div id="yt-sec-whats" style="margin-bottom:1rem; margin-top:1rem;">`;
+      body += `<p class="yt-c-sb-label">What's happening</p><p class="yt-c-sb-what">${esc(sb.what)}</p>`;
+      (sb.axioms||[]).forEach(ax => { body += `<p class="yt-c-sb-label" style="margin-top:0.5rem;">${esc(ax.label)}</p><p class="yt-c-sb-what">${esc(ax.content)}</p>`; });
+      body += `</div>`;
+    }
+    // 4. Sections (토글 접힘)
+    if ((s.sections||[]).length) {
+      body += `<details id="yt-sec-sections" class="yt-c-details" style="margin-bottom:1rem;">`;
+      body += `<summary class="yt-c-sb-label" style="cursor:pointer; user-select:none;">Sections (${s.sections.length})</summary>`;
+      body += `<div style="margin-top:0.5rem;">`;
+      (s.sections||[]).forEach((sec, i) => {
+        body += `<div id="yt-sec-${i}" style="margin-bottom:1.5rem; scroll-margin-top: 1rem;">
+          <h3 class="yt-c-section-heading"><span style="color:#bbb;font-weight:500;margin-right:8px;font-size:0.85em;">${String(i+1).padStart(2,'0')}</span>${esc(sec.heading)}</h3>
+          <div class="yt-c-section-body">${highlight(sec.body, sec.highlights)}</div>
+          ${sec.quote ? `<blockquote class="yt-c-quote">"${esc(sec.quote)}"</blockquote>` : ''}
+        </div>`;
+      });
+      body += `</div></details>`;
+    }
+    // 5. Takeaways / Tech
     if ((s.key_takeaways||[]).length) {
-      body += `<div id="yt-sec-takeaways" style="scroll-margin-top:1rem;"><div class="yt-c-takeaways"><p class="yt-c-takeaways-label">핵심 요점</p><ul>${(s.key_takeaways||[]).map(t=>`<li>${esc(t)}</li>`).join('')}</ul></div></div>`;
+      body += `<div id="yt-sec-takeaways" style="scroll-margin-top:1rem; margin-top:2rem; padding-top:1.5rem; border-top:1px solid #eee;"><div class="yt-c-takeaways"><p class="yt-c-takeaways-label">Takeaways</p><ul>${(s.key_takeaways||[]).map(t=>`<li>${esc(t)}</li>`).join('')}</ul></div></div>`;
     }
     if ((s.tech_stack||[]).length) {
-      body += `<div id="yt-sec-tech" style="scroll-margin-top:1rem;"><p class="yt-c-row-label">Tech / Stack</p><div class="yt-c-tags">${(s.tech_stack||[]).map(t=>`<span class="yt-c-tag">${esc(t)}</span>`).join('')}</div></div>`;
-    }
-    if ((s.apply_points||[]).length) {
-      body += `<div id="yt-sec-apply" style="scroll-margin-top:1rem;"><div class="yt-c-apply"><p class="yt-c-row-label">적용 포인트</p><ul>${(s.apply_points||[]).map(p=>{const text=typeof p==='object'?(p.text||''):p;const key=typeof p==='object'?p.key:false;return key?`<li><mark class="yt-c-apply-key">${esc(text)}</mark></li>`:`<li>${esc(text)}</li>`;}).join('')}</ul></div></div>`;
+      body += `<div id="yt-sec-tech" style="scroll-margin-top:1rem; margin-top:2rem; padding-top:1.5rem; border-top:1px solid #eee;"><p class="yt-c-row-label">Tech / Stack</p><div class="yt-c-tags">${(s.tech_stack||[]).map(t=>`<span class="yt-c-tag">${esc(t)}</span>`).join('')}</div></div>`;
     }
   }
 
   el.innerHTML = header + body;
   el.scrollTop = 0;
 
-  // overview 모드일 때 스크롤 observer 연결 + 첫 섹션 하이라이트
+  // overview 모드일 때 스크롤 observer 연결
   if (selectedView === 'overview') {
-    activeSecIndex = '0';
+    activeSecIndex = 'yt-sec-wim';
     updateSecHighlight();
     initContentObserver();
   }
@@ -472,48 +495,44 @@ function renderContent() {
 /* ── Col 4 스크롤 → Col 3 하이라이트 ── */
 function initContentObserver() {
   const contentEl = document.getElementById('yt-col-content');
-  const v = getVideo();
-  if (!v) return;
-  const sectionCount = ((v.summary||{}).sections||[]).length;
-  const ids = [];
-  for (let i = 0; i < sectionCount; i++) ids.push('yt-sec-' + i);
-  ['takeaways','tech','apply'].forEach(k => {
-    if (document.getElementById('yt-sec-' + k)) ids.push('yt-sec-' + k);
-  });
+  if (!contentEl) return;
+  // Col 4에 실제 존재하는 앵커만 수집
+  const ids = ['yt-sec-wim','yt-sec-apply','yt-sec-whats','yt-sec-sections','yt-sec-takeaways']
+    .filter(id => document.getElementById(id));
 
   contentEl.addEventListener('scroll', function onScroll() {
     if (selectedView !== 'overview') { contentEl.removeEventListener('scroll', onScroll); return; }
+    // 스크롤 끝 감지
+    const atBottom = contentEl.scrollTop + contentEl.clientHeight >= contentEl.scrollHeight - 10;
+    if (atBottom && ids.length) {
+      if (activeSecIndex !== ids[ids.length - 1]) { activeSecIndex = ids[ids.length - 1]; updateSecHighlight(); }
+      return;
+    }
     let current = null;
+    const containerRect = contentEl.getBoundingClientRect();
     for (const id of ids) {
       const el = document.getElementById(id);
       if (!el) continue;
       const rect = el.getBoundingClientRect();
-      const containerRect = contentEl.getBoundingClientRect();
-      if (rect.top - containerRect.top <= containerRect.height * 0.3) current = id;
+      if (rect.top - containerRect.top <= containerRect.height * 0.5) current = id;
     }
-    if (current !== null) {
-      const newIndex = current.startsWith('yt-sec-') ? current.replace('yt-sec-','') : current;
-      if (newIndex !== activeSecIndex) {
-        activeSecIndex = newIndex;
-        updateSecHighlight();
-      }
+    if (current !== null && current !== activeSecIndex) {
+      activeSecIndex = current;
+      updateSecHighlight();
     }
   }, { passive: true });
 }
 
 function updateSecHighlight() {
-  document.querySelectorAll('#yt-col-sections .yt-sec-item, #yt-col-sections .yt-sec-meta-item').forEach(el => {
-    el.classList.remove('active');
+  const col = document.getElementById('yt-col-sections');
+  if (!col) return;
+  col.querySelectorAll('.yt-sec-meta-item').forEach(el => el.classList.remove('active'));
+  if (!activeSecIndex) return;
+  const key = activeSecIndex.replace('yt-sec-','');
+  col.querySelectorAll('.yt-sec-meta-item').forEach(el => {
+    const onclick = el.getAttribute('onclick') || '';
+    if (onclick.includes("'" + key + "'")) el.classList.add('active');
   });
-  const idx = parseInt(activeSecIndex);
-  if (!isNaN(idx)) {
-    const items = document.querySelectorAll('#yt-col-sections .yt-sec-item');
-    if (items[idx]) items[idx].classList.add('active');
-  } else {
-    document.querySelectorAll('#yt-col-sections .yt-sec-meta-item').forEach(el => {
-      if (el.textContent.toLowerCase().includes(activeSecIndex)) el.classList.add('active');
-    });
-  }
 }
 
 /* ── Init: 모두 열린 상태 ── */

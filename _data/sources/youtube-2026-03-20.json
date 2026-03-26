@@ -1,366 +1,5 @@
 [
   {
-    "video_id": "nafNPuElCtY",
-    "title": "I Built My Entire Design System in 4 Hours With AI. Full Tutorial (Claude + Cursor + Figma)",
-    "channel": "The Design Project",
-    "published_at": "2025-11-28",
-    "fetched_at": "2026-03-20",
-    "playlist_index": 8,
-    "url": "https://www.youtube.com/watch?v=nafNPuElCtY",
-    "playlist": "design",
-    "source_type": "youtube",
-    "transcript": "Your team takes two weeks to ship a new feature. My team takes two hours. The difference, we built our design system in code and it took us one afternoon. 62% of devs waste time rebuilding designs because of broken handoffs between Figma and code. But what if I told you you could take your entire design system and rebuild it in code in just one afternoon? So why doesn't everyone have a design system in code? because historically it's been incredibly timeconuming and complex until now. We need to establish our design foundation. I'm going to have Claude build out the full style guide using our Figma component library. Take a look. Here we have our foundations, our colors. I t our typography, our icons. This is a very mini version that I'm showing. Of course, yours can be way more robust. So, we're going to start a new Claude conversation. A key here is every time you start a new feature, a new part of a project, you should open a new claude window to chat with. This means that that whole context will be in this one chat. I'm also going to give you a tip on how to make sure you save all this at the end, so stick around. To create the style guide, we're going to prompt it. Create the style guide. Call it style tokens.ts. All color variables, typography, spacing, borders. create a style guide page and then extract those values from the MCP connection. So look when it's done we will have this um it is definitely a very entry point version but you can see that everything is clearly defined here. We have the color palette icons some usage recommendations common all pulled and extracted from the Figma MCP. So now we have the single source of truth for all of our components and tokens from here on out. Every color, every spacing style, every font all pulled directly from Figma and codified in Typescript. Now let's start to build our component library. So I have already started to compile this component library and I'm going to show you how to start it and to build upon it. Here you can see that we have everything defined and how we do it. Let me go back to this one. So we have the interactions, the designs and we have very detailed how everything should function. This is pulled directly from our Figma files and we work with our devs to make sure this is clearly defined for them as well. You can see we do this. We also provide a usage example. Perfect. Let's go ahead and build out these KPI cards. I'm going to use a very detailed prompt. Let me show you. Let me walk through what I've done here. I am creating a workflow. This is important because it's going to set up Claude to go through each step of my workflow before throwing and designing something that might not be following the exact guidelines that I'm suggesting. So here's my workflow. Initialize, setup, and analysis. So this is basically looking at the Figma file. Analyze and extract the component data. This is really important. It's not going to build it just from what it sees. actually going to pull how every hover state, every interaction works. Follow the visual specifications. Look at the behavioral specifications. Now implement then create the interactive component. Build it fully. Add the proper TypeScript. Include all variants. Create a preview. and make sure you are applying the design tokens preview property preview. Now the component specific feature should be built. Now documentation generation create a txt. So every single component can have a txt with all of these rules and specifications so that every time you're using this component, it is following this exact framework. Now the output structure add it to the component page in an additional tab again. Here's the execution order. Go. So I'm going to run this. See here, this is the task list. This is amazing. I love this about cloud code because it's going to start work through that list that I gave it and it's going to check off each stage. It's getting the context here. Okay, so it has done every step and it is documenting. It did step one, step two, step three, four. Okay, so let's go take a look and see it matches. We can go here and head to metric card. So we have this metric card. Here it is the full design. It matches Figma perfectly. It also has this documentation. So this is for Claude and for the devs and for the designers to understand this is exactly what tokens it's using, how it's being built. So whenever there's a change in anything, we will update this file and this component which will apply to every place that this component lives in the product. Okay. So now let's build a real feature. We're going to build a feature using a screen that features this card in it. Let's build this screen. So, we're starting to put these components together. This is a component. This is a component. These are components. So, I'm going to ask it to start to build the screen and adhere to the components in the platform. Okay. So, let's open a new window. And we're going to paste the prompt. Again, this is a very detailed prompt. It's very similar to the one you just saw. I'm asking it to follow the specific workflow to make sure that it is starting to build the screen adhering to the components in the layout of the screen. Initiating, analyzing, generating the screen specifications following the exact Figma implementation. Create preview follow the design token. So this is really important, right? Follow the design tokens. style the preview content preview. So, it has to go through every single one of these items before it actually builds it. Let's see what happens. So, again, it's coming up with this to-do list. It reviewed everything I said, the KPI card, everything. Let's see. Look, it has completed every section, every task. So, in Philadelphia, let's go file structure. This is great. Kept this updated. Added new pages. Let's go test it out. Okay. So, there's some spacing issues going on [laughter] that we need to fix. Um, which is fine. We'll get into that. But for a first draft, this being able to clearly define this information, this KPI component. Overall, good. Let me go in and see if I can clean this up a little bit. And let's see if we can get it performing more correctly. Back mode. So, it should be 16 point, right? Okay, let's go see. There we go. Fixed. Beautiful. Follows the exact Figma design you see here. Now we can continue to add components. So you'll see some of these pages have these additional components which we will build on. Now last thing, remember I said a little tip about setting up all of your separate chats. I want to make sure that any content that I've done, it's saved. So I want to say save this chat record to project context dot MD. So now it's going to keep track of this entire project. See it's putting session three date and what happened from this chat. So I suggest doing this with all your chats. And if you want to try this yourself, this is what I recommend. Build your style guide first. Start with one component, build one feature, and use notes.md. If you found this valuable, give it a like and subscribe. I'm creating more content on building faster product teams with AI. Thanks for watching. Now go build something amazing.",
-    "summary": {
-      "sections": [
-        {
-          "heading": "디자인 시스템, 한 번에 구축",
-          "body": "기존에는 디자인 시스템을 코드로 구축하는 데 많은 시간과 노력이 필요했다. 하지만 Claude, Cursor, Figma를 활용하면 단 하루 만에 전체 디자인 시스템을 코드로 재구성할 수 있다. 모든 색상, 타이포그래피, 아이콘 등 디자인 토큰을 Figma에서 추출해 Typescript로 명확하게 정의한다. 이 방식은 디자인과 개발 간의 핸드오프 문제를 근본적으로 해결한다. 결과적으로 팀의 개발 속도가 획기적으로 빨라진다.",
-          "highlights": [
-            "하지만 Claude, Cursor, Figma를 활용하면 단 하루 만에 전체 디자인 시스템을 코드로 재구성할 수 있다.",
-            "모든 색상, 타이포그래피, 아이콘 등 디자인 토큰을 Figma에서 추출해 Typescript로 명확하게 정의한다.",
-            "이 방식은 디자인과 개발 간의 핸드오프 문제를 근본적으로 해결한다."
-          ],
-          "quote": "62% of devs waste time rebuilding designs because of broken handoffs between Figma and code."
-        },
-        {
-          "heading": "스타일 가이드 자동화",
-          "body": "Claude에게 Figma 컴포넌트 라이브러리를 기반으로 전체 스타일 가이드를 생성하도록 프롬프트를 작성한다. style tokens.ts 파일에 색상, 타이포그래피, 스페이싱, 보더 등 모든 토큰을 정리한다. Figma MCP에서 값을 추출해 단일 소스 오브 트루스로 관리한다. 이 과정을 통해 모든 컴포넌트와 토큰이 일관되게 코드에 반영된다. 개발자는 언제든지 최신 디자인 토큰을 참조할 수 있다.",
-          "highlights": [
-            "Claude에게 Figma 컴포넌트 라이브러리를 기반으로 전체 스타일 가이드를 생성하도록 프롬프트를 작성한다.",
-            "Figma MCP에서 값을 추출해 단일 소스 오브 트루스로 관리한다.",
-            "이 과정을 통해 모든 컴포넌트와 토큰이 일관되게 코드에 반영된다."
-          ],
-          "quote": "Every color, every spacing style, every font all pulled directly from Figma and codified in Typescript."
-        },
-        {
-          "heading": "컴포넌트 라이브러리 구축",
-          "body": "Figma 파일에서 컴포넌트 데이터를 분석해 인터랙션, 디자인, 사용 예시까지 상세히 정의한다. Claude는 워크플로우를 따라 각 단계별로 컴포넌트를 생성한다. 모든 상태, 변형, 프리뷰, 문서화까지 자동으로 처리된다. 각 컴포넌트는 txt 파일로 명확한 규칙과 스펙이 기록된다. 변경 사항이 생기면 해당 파일과 컴포넌트가 자동으로 업데이트된다.",
-          "highlights": [
-            "Claude는 워크플로우를 따라 각 단계별로 컴포넌트를 생성한다.",
-            "모든 상태, 변형, 프리뷰, 문서화까지 자동으로 처리된다.",
-            "각 컴포넌트는 txt 파일로 명확한 규칙과 스펙이 기록된다."
-          ],
-          "quote": "It's not going to build it just from what it sees. actually going to pull how every hover state, every interaction works."
-        },
-        {
-          "heading": "실제 기능 화면 빠르게 구현",
-          "body": "생성된 컴포넌트를 조합해 실제 기능 화면을 빠르게 제작할 수 있다. Claude에게 상세한 프롬프트와 워크플로우를 제공하면, Figma 구현을 그대로 반영한 화면을 자동으로 생성한다. 각 단계별로 체크리스트를 만들고, 모든 작업 내역을 기록한다. 생성된 화면에서 발견된 이슈도 즉시 수정 가능하다. 반복적으로 컴포넌트를 추가하며 점진적으로 확장할 수 있다.",
-          "highlights": [
-            "Claude에게 상세한 프롬프트와 워크플로우를 제공하면, Figma 구현을 그대로 반영한 화면을 자동으로 생성한다.",
-            "각 단계별로 체크리스트를 만들고, 모든 작업 내역을 기록한다.",
-            "생성된 화면에서 발견된 이슈도 즉시 수정 가능하다."
-          ],
-          "quote": "Follows the exact Figma design you see here. Now we can continue to add components."
-        },
-        {
-          "heading": "작업 기록과 협업 최적화",
-          "body": "각 기능별로 별도의 Claude 채팅창을 열어 맥락을 분리해 관리한다. 모든 작업 내역은 project context.md 파일로 저장해 프로젝트 전체 히스토리를 남긴다. 세션별로 날짜와 주요 변경사항이 자동 기록된다. 이를 통해 팀원 간 협업과 추적이 용이해진다. 향후 변경이나 회고 시에도 빠르게 맥락을 파악할 수 있다.",
-          "highlights": [
-            "모든 작업 내역은 project context.md 파일로 저장해 프로젝트 전체 히스토리를 남긴다.",
-            "세션별로 날짜와 주요 변경사항이 자동 기록된다.",
-            "이를 통해 팀원 간 협업과 추적이 용이해진다."
-          ],
-          "quote": "save this chat record to project context dot MD. So now it's going to keep track of this entire project."
-        },
-        {
-          "heading": "AI 기반 개발팀의 미래",
-          "body": "AI 도구를 활용하면 제품팀의 개발 속도와 품질이 혁신적으로 향상된다. 스타일 가이드, 컴포넌트, 화면, 문서화까지 모두 자동화할 수 있다. 반복적인 작업을 AI가 처리해 개발자는 더 창의적인 일에 집중할 수 있다. 빠른 피드백과 지속적인 개선이 가능해진다. AI와 협업하는 개발팀이 곧 표준이 될 전망이다.",
-          "highlights": [
-            "AI 도구를 활용하면 제품팀의 개발 속도와 품질이 혁신적으로 향상된다.",
-            "스타일 가이드, 컴포넌트, 화면, 문서화까지 모두 자동화할 수 있다.",
-            "AI와 협업하는 개발팀이 곧 표준이 될 전망이다."
-          ],
-          "quote": "I'm creating more content on building faster product teams with AI."
-        }
-      ],
-      "key_takeaways": [
-        "Claude, Cursor, Figma를 활용하면 디자인 시스템을 하루 만에 코드로 구축할 수 있다.",
-        "스타일 가이드와 디자인 토큰을 자동으로 추출해 일관된 개발이 가능하다.",
-        "컴포넌트와 화면 생성, 문서화까지 AI가 단계별로 자동 처리한다.",
-        "작업 내역과 히스토리를 체계적으로 기록해 협업 효율이 높아진다.",
-        "AI 기반 개발팀이 제품 개발의 새로운 표준이 되고 있다."
-      ],
-      "tech_stack": [
-        "Claude",
-        "Cursor",
-        "Figma",
-        "Typescript"
-      ],
-      "smart_brevity": {
-        "why": "AI와 자동화 도구를 활용하면 디자인 시스템 구축과 제품 개발의 속도와 효율이 극적으로 향상된다. 이는 팀의 경쟁력을 높이고, 반복적 비효율을 제거하는 데 결정적이다.",
-        "what": "디자인 시스템을 코드로 빠르게 구축하는 방법이 AI와 최신 도구를 통해 현실화되고 있다. Claude, Cursor, Figma를 연동해 스타일 가이드, 컴포넌트, 실제 화면까지 모두 자동화할 수 있다. 각 단계별 워크플로우와 작업 기록을 체계적으로 관리해 협업과 유지보수도 쉬워진다. 반복적인 수작업 대신 AI가 표준화된 결과물을 제공함으로써 개발팀은 더 빠르고 일관된 제품을 만들 수 있다. 결론적으로, AI 기반 개발팀이 곧 업계의 표준이 될 것이다.",
-        "axioms": [
-          {
-            "label": "Why it matters",
-            "content": "AI와 자동화로 디자인-개발 간 비효율을 근본적으로 해결할 수 있다."
-          },
-          {
-            "label": "The big picture",
-            "content": "AI와 협업하는 개발팀이 제품 개발의 미래 표준으로 자리 잡고 있다."
-          },
-          {
-            "label": "Be smart",
-            "content": "모든 작업 내역을 체계적으로 기록해 협업과 추적성을 높여라."
-          },
-          {
-            "label": "What's next",
-            "content": "스타일 가이드부터 컴포넌트, 전체 화면까지 AI 자동화 범위가 계속 확장될 것이다."
-          },
-          {
-            "label": "Go deeper",
-            "content": "Figma, Claude, Cursor, Typescript 등 실제 워크플로우와 프롬프트 사례를 참고하라."
-          },
-          {
-            "label": "By the numbers",
-            "content": "62%의 개발자가 디자인-코드 핸드오프 문제로 시간을 낭비한다."
-          }
-        ]
-      }
-    }
-  },
-  {
-    "video_id": "uEit1oOJK0w",
-    "title": "GSD Is the Missing Piece For Claude Code",
-    "channel": "AI LABS",
-    "published_at": "2026-03-17",
-    "fetched_at": "2026-03-20",
-    "playlist_index": 13,
-    "url": "https://www.youtube.com/watch?v=uEit1oOJK0w",
-    "playlist": "claude",
-    "source_type": "youtube",
-    "transcript": "AI coding frameworks keep multiplying and every one of them claims to be the best way to build with agents. But the best way to build with agents doesn't entirely depend on the framework you pick. There are other factors people forget to evaluate and then they get frustrated when the framework doesn't fit their project. But that's not the framework's problem. That's a selection problem. Each framework works well for the use case it was designed for and there's no oneizefits-all here. Now, our team has previously covered AI coding frameworks on the channel, but recently we came across one that's been gaining a lot of traction lately. The reason we're making a video on this is not because it's another best framework that is going to cause you to leave the other ones. It's because when we tested it, we found it to be genuinely different and it fits use cases that these frameworks don't. We've covered multiple frameworks in previous videos like BMAD and Superpowers. Picking the wrong one means you're either overengineering or underpreparing. Today we're going over this framework called GSD, which is short for get done. And you'll understand why. By the end of this video, you'll understand where to use which framework. Starting with the first one, which is GSD. You use GSD where you aren't really sure what to build and you don't want to pre-plan everything because the requirements might change in the future. Now, this doesn't mean that you don't know what to build at all. It means that the product you want requires a lot of experimentation in each step. This is great if you want to quickly build out MVPs for experimental projects as quickly as possible. With GSD, it does ask you about a broader scope, but unlike the BMAD method, it doesn't really lock you in. Using the initial scope, it plans each implementation step by step. This means that you're not locked into the later phases because they have not been pre-planned by the system in extensive detail. So, if you're building a custom solution that hasn't really been built before, it would be better if you go ahead with GST. Let's say if you were building an on-screen interview assistant like Cluey, you would need to figure out a lot of things as to how the user experience would look like or how to make sure that all screen sharing platforms don't detect it during screen sharing. A lot of things might need experimentation with no way to determine them before the planning. BMAD on the other hand takes the opposite approach. It's a step-by-step framework that creates thorough documentation for each phase before implementing anything. You need to be sure about what you're building at the very start and it's not like it messes up. It has a whole research department as a module where the creator of BMAD has poured in all the context about these different roles such as a business analyst and design thinker that make sure that the product you want to make is thought about from all angles but it's all pre-loaded and based on that you make your PRD and architecture documents and then based on those you get sharded tasks that the implementation team just needs to follow. When we made our video on the BMAD system, we praised it because of how locked up it was. The system is so well built in the prompts that it doesn't really let the agent deviate from the tasks. But over an extended period of usage, we've noticed that when you actually need a change in the requirements, that is when the system becomes unstable because even the best of the models actually miss little details when changing the requirements. Another complaint that people mention is that it takes too much time to plan out everything before any implementation actually starts. But that's because it shouldn't be used for those sorts of projects. You should be using it when you're absolutely sure of the requirements and just want the system built without any loopholes in it because all the specs that it makes are heavily interlin or when you want to build conventional systems such as a custom CRM solution for a client or your own custom community platform. Now, superpowers is based on TDD and the whole point of the ideology is that you know what you are building. TDD is important where the cost of an edge case is too high to miss and this cost doesn't include a simple stripe integration with an Nex.js app. But let's say something like an agentic platform where AI agents take actions on behalf of your users and a wrong action can't be undone and is too costly. In terms of usability, it's like GSD where the planning is done feature by feature with just an outline of what the project needs to be. But since tests are generated first, it doesn't really give you that room to experiment with different things and isn't ideal for projects where the planning is done beforehand. But another thing that you can do is that if the project lies in both domains is that you can implement a version of the project with GSD where the main functionality is completed and then you can continue the rest of the app by onboarding superpowers on the app. We do have separate videos on both superpowers and the BMAD method and they would be linked down in the description below if you want to explore these in more detail. GSD was also built with preventing context rot in mind by using sub aents spawning separate processes for isolated tasks keeping the main agents context clean so that it can focus on what actually matters without drifting. Majority of the AI coding agents now support sub aents. So it doesn't matter if you use claude code with this or not. But Claude also received another update recently, the new Opus 4.6 with a 1 million context window. So a lot of techniques that we've taught on this channel to actively manage your context don't really matter that much anymore. So to install it, you're going to copy the command and paste it in the project folder where you are working. Then select which agent you want to install it for. In my case, it was Claude, so I installed it for that. You then have to choose what should be the scope of the installation. I prefer project level because each project may use a different framework and this keeps the configuration scoped to the one chosen for this project. Since we were using Nex.js for building, we installed it in our newly initialized project. And once installed, the GSD framework should show up in your.claude folder in the form of agents, commands, and hooks. If you're not using claude, they will be stored in the aagent folder in the root of the project. It has multiple agents intended for different specific tasks. But unlike normal markdown based prompts, everything is structured in XML format and this is done on purpose. Cloud models are known to work better with XML formatted instructions since it lets them parse the structure more easily. So it's a performance optimization towards whatever agent that you're using. But before we move forwards, let's have a word from our sponsor, GenSpark. Most people are currently stuck juggling multiple AI subscriptions, paying individual fees for Chat, GPT, Claude, and various media tools. Genpark is an all-in-one AI workspace that hit $200 million ARR in just 11 months by consolidating everything into a single subscription. It uses a super agent system to choose the best model for any task. It handles your entire workflow from building AI slides and automating AI sheets to generating AI media and even making real world phone calls with the call forme feature. You can even turn your research into AI pods to listen to on the go. Plus, use Speakly to turn a 15-minute recording into 3,000 words of perfect text instantly. The wildest part, Gen Spark offers unlimited AI chat and image features throughout 2026. Nano Banana 2, GPT Image, Flux, Seedream, Gemini 3.1 Pro, GPT 5.2, Claude Opus 4.6, and more top models are all included with unlimited access. Hit the link in the pinned comment to start building with Gen Spark. To start using GST, you're going to use this new project command. By running this command, the agent started working according to the initialization prompt and started with exploring the codebase first. Since I had initialized the NexJS app already, it detected that there was code present and asked if it should explore the existing codebase first. We told it to skip the mapping to avoid wasting time. If you were working on an existing project, it would be better to ask it to map the codebase first, but since it contained the blank template, I skipped it. After that, it will ask you to tell it the app idea you want to work on. After which, it asks a lot of questions regarding the target audience of your app, its features, the scope of the project, and more. But the question answer session GSD conducts is noticeably different from that of the superpowers. Superpowers try to extract edge cases from you during this phase. GSD does not, and it focuses more on understanding what to build, not stress testing how it might break. Once it gathers enough information from the session, it creates the project.md inside the dotplanning folder which contains the description out of scope items, context constraints, and key decisions all deduced from the questioning. But here's where the context rot prevention shows up in practice. It keeps project.md deliberately short and focused so the agents wouldn't deviate from the main aims by getting buried in documentation. It tracks all the work through git, but it doesn't use a straightforward git commit. It runs a script underneath that performs checks before committing, ensuring everything is up to the standards before actually using git to commit. Once planning was done, GSD moved to the research phase. It spawns multiple agents researching different aspects of the app in parallel, all running in the background. After the research completes, the research synthesizer agent kicks in. Since all these agents are tuned to use appropriate models for the tasks, the synthesizer agent uses the sonnet model, not the heavier opus. GSD has a proper reference mapping each sub aent to the right model based on the weight of work it handles so that it doesn't waste extra efforts. It condenses the research findings and also flagged potential issues. Things to watch out for that could hinder the work long-term. After the research is synthesized, the requirement stage begins. It asks you targeted questions about the MVP, identifying which features are truly essential for version one. Because GSD is focused on fast delivery, it makes sure V1 contains only what is necessary. After it confirms the MVP with you, it then generates the road map structure which you have to approve. And your approval marks the project initialization as complete. Also, if you are enjoying our content, consider pressing the hype button because it helps us create more content like this and reach out to more people. Now that the initialization phase is over, the next step is to implement the plan. In the previous phase, it had broken the project down into four phases based on the requirement. It will give you two ways to work. either skip discussions or proceed with discussions. Discussion for this framework means questioning sessions with the agent where it ensures it understands the plan properly. We chose to discuss first so that we can clarify the requirements as much as we can. But you can choose to skip discussions if you think the previous questioning session was enough for it to build the app. Once the discussion session is over, it creates a context.md file in the phases folder inside the planning folder. This file contains all the details of what we have discussed and map the phase we just talked about with the agent. But true to GSD's philosophy, this file is also concise in length so that Claude can stay focused on what actually matters. Next, you begin the planning of phase one. The planning phase starts with the research based on the context.md file it just created using a dedicated research agent with the set model exploring different aspects. But we thought it would use context 7 or actually look up against the docs properly. Instead, it was using web search with the year 2025 in the search keywords, which it shouldn't have been doing. It would have been more controlled if we had connected context 7 MCP so that its research was better grounded. So, when you are using, make sure to connect with such MCP for better grounding. It created a research.md file and documented all of its research including the confidence level for its research, which indicated how trustworthy are its sources. After the research, it created a plan. These plans listed in detail the dependencies of each phase and all the requirements with proper IDs. But here's the thing. This is where GSD is different because instead of just writing the plan one way like others do, it actually cross-verifies the plan across multiple dimensions and validates whether the plan is actually implementable and aligned with the goals. It uses dedicated planning and verifying plan agents where the planning agent creates the plans and the verifier keeps checking them sending warnings back. So it basically performs the adversarial planning on its own without us having to control any of that manually. Once the plan was final and all the steps had passed, it committed and broke the plan down into two waves. It actually breaks down into as many waves as required and parallelizes those that are independent so that sub agents can handle them in parallel. It started implementing the project waves using the dedicated agent to carry out the plan it created. Once it is finished, it verifies the checkpoint using proper playright testing underneath, creating scripts, deleting them after using to clean the folder, and performing multiple automated tasks under the hood. It then gave us a summary of what was built and provided instructions on how to verify it for ourselves. The first iteration builds the app that is just a placeholder with all the initial elements visible to show how the app would actually look. Further iterations will build one aspect of the app at a time, leading to a complete app at the end of the cycle. The entire iteration used 138,000 tokens, which was actually not much given a 1 million token context window. But with an agent with a 200,000 context window, it would signal that it's time to compact. But since this relies on documentation of phases, even if we clear the context, the agents would know where to start. When we approved the work, it ran multiple tests and marked wave 2 as complete as well. After that, it spawned the GSD verifier again and cross-cheed whether the implementation actually matched the initial goal. Once verified, it marked phase one as complete, including the verifications, and prompted us to proceed to the next phase of the application. Now, once we ran the app through all of the phases, the previously placeholder features were all functional and working as intended. GST works well when you're working on a large-scale application with multiple features, but it's overkill if the app you're building is much simpler and doesn't need the heavy lifting. For simpler apps, Claude or any other agent on its own is sufficient and doesn't need this thorough planning. However, if you want controlled execution with proper planning without wasting too much effort on this phase, you should definitely go for GSD. Now, this is one framework, but often times there are use cases where the existing ones don't hold up and you need to build one of your own. For that, you need to know certain principles before actually building your own. We covered those principles in a previous video that would help you build better workflows. You might end up seeing that video on the end screen, so you can just click on it instead of looking it up. That brings us to the end of this video. If you'd like to support the channel and help us keep making videos like this, you can do so by joining AIAS Pro. As always, thank you for watching and I'll see you in the next one.",
-    "summary": {
-      "sections": [
-        {
-          "heading": "GSD는 실험적 프로젝트에 최적",
-          "body": "GSD(Get Done)는 요구사항이 명확하지 않고 자주 변할 수 있는 프로젝트에 적합한 AI 코딩 프레임워크다. 초기 범위를 기반으로 단계별 구현을 계획하지만, 후속 단계가 사전에 고정되지 않아 유연성을 유지한다. 이는 MVP를 빠르게 구축하고 실험적인 기능을 반복적으로 개발하는 데 유리하다. 예를 들어, 화면 공유 플랫폼 탐지 회피가 필요한 온스크린 인터뷰 보조 앱 같은 경우, 많은 실험이 필요해 GSD가 적합하다. GSD는 문서화를 간결하게 유지하고, 여러 하위 에이전트를 통해 작업을 병렬 처리하며, 컨텍스트 로트를 방지하는 구조를 갖추고 있다.",
-          "highlights": [
-            "GSD(Get Done)는 요구사항이 명확하지 않고 자주 변할 수 있는 프로젝트에 적합한 AI 코딩 프레임워크다.",
-            "이는 MVP를 빠르게 구축하고 실험적인 기능을 반복적으로 개발하는 데 유리하다.",
-            "GSD는 문서화를 간결하게 유지하고, 여러 하위 에이전트를 통해 작업을 병렬 처리하며, 컨텍스트 로트를 방지하는 구조를 갖추고 있다."
-          ],
-          "quote": "GSD was also built with preventing context rot in mind by using sub aents spawning separate processes for isolated tasks keeping the main agents context clean so that it can focus on what actually matters without drifting."
-        },
-        {
-          "heading": "BMAD는 확실한 요구에 최적",
-          "body": "BMAD는 단계별로 철저한 문서화와 사전 계획을 요구하는 프레임워크다. 제품을 처음부터 명확히 알고 있어야 하며, 비즈니스 분석가와 디자인 씽커 같은 역할을 모듈화해 모든 각도에서 제품을 검토한다. PRD와 아키텍처 문서를 기반으로 구현팀이 작업을 수행한다. BMAD는 요구사항 변경 시 불안정해질 수 있고, 초기 계획에 많은 시간이 소요된다. 따라서 확실한 요구사항이 있을 때, 예를 들어 맞춤형 CRM이나 커뮤니티 플랫폼 개발에 적합하다.",
-          "highlights": [
-            "BMAD는 단계별로 철저한 문서화와 사전 계획을 요구하는 프레임워크다.",
-            "BMAD는 요구사항 변경 시 불안정해질 수 있고, 초기 계획에 많은 시간이 소요된다.",
-            "확실한 요구사항이 있을 때, 예를 들어 맞춤형 CRM이나 커뮤니티 플랫폼 개발에 적합하다."
-          ],
-          "quote": "The system is so well built in the prompts that it doesn't really let the agent deviate from the tasks."
-        },
-        {
-          "heading": "Superpowers는 TDD 기반 안전성 중시",
-          "body": "Superpowers는 테스트 주도 개발(TDD)에 기반한 프레임워크로, 무엇을 만드는지 명확히 알고 있어야 한다. 에지 케이스의 비용이 매우 높을 때 적합하며, 기능별로 계획을 세우지만 실험적 변경에는 적합하지 않다. 예를 들어, AI 에이전트가 사용자 대신 행동하는 플랫폼처럼 잘못된 행동이 치명적인 경우에 유용하다. GSD와 결합해 주요 기능을 먼저 구현한 뒤 Superpowers로 확장하는 방식도 가능하다.",
-          "highlights": [
-            "Superpowers는 테스트 주도 개발(TDD)에 기반한 프레임워크로, 무엇을 만드는지 명확히 알고 있어야 한다.",
-            "에지 케이스의 비용이 매우 높을 때 적합하며, 기능별로 계획을 세우지만 실험적 변경에는 적합하지 않다.",
-            "GSD와 결합해 주요 기능을 먼저 구현한 뒤 Superpowers로 확장하는 방식도 가능하다."
-          ],
-          "quote": "TDD is important where the cost of a edge case is too high to miss and this cost doesn't include a simple stripe integration with an Nex.js app."
-        },
-        {
-          "heading": "GSD 설치 및 사용법",
-          "body": "GSD 설치는 프로젝트 폴더에서 명령어를 복사해 붙여넣고, 사용할 에이전트를 선택하는 방식이다. 프로젝트 단위 설치를 권장하며, Nex.js 같은 프레임워크와 함께 사용할 수 있다. 설치 후 .claude 폴더에 에이전트, 명령어, 훅이 생성된다. GSD는 XML 형식으로 명령을 구조화해 클라우드 모델이 더 잘 파싱하도록 최적화했다. 초기화 시 코드베이스 탐색, 앱 아이디어 및 대상 사용자, 기능, 범위 등에 대해 질문하며, 질문 세션은 GSD와 Superpowers가 다르다. GSD는 무엇을 만들지 이해하는 데 집중한다.",
-          "highlights": [
-            "GSD 설치는 프로젝트 폴더에서 명령어를 복사해 붙여넣고, 사용할 에이전트를 선택하는 방식이다.",
-            "GSD는 XML 형식으로 명령을 구조화해 클라우드 모델이 더 잘 파싱하도록 최적화했다.",
-            "초기화 시 코드베이스 탐색, 앱 아이디어 및 대상 사용자, 기능, 범위 등에 대해 질문하며, 질문 세션은 GSD와 Superpowers가 다르다."
-          ],
-          "quote": "Unlike normal markdown based prompts, everything is structured in XML format and this is done on purpose."
-        },
-        {
-          "heading": "GSD의 계획 및 실행 프로세스",
-          "body": "GSD는 초기 질문 세션 후 project.md 파일을 생성해 핵심 결정사항과 범위, 제약 조건을 간결하게 기록한다. 이후 여러 하위 에이전트를 통해 병렬로 연구를 수행하고, 연구 결과를 요약해 잠재적 문제를 식별한다. MVP에 필요한 핵심 기능을 선별하고 로드맵을 작성해 승인받는다. 계획 수립 시 다차원 검증과 적합성 확인을 자동으로 수행해 안정성을 높인다. 구현은 여러 파동(waves)으로 나누어 병렬 처리하며, 각 단계별로 테스트와 검증을 거쳐 다음 단계로 진행한다.",
-          "highlights": [
-            "GSD는 초기 질문 세션 후 project.md 파일을 생성해 핵심 결정사항과 범위, 제약 조건을 간결하게 기록한다.",
-            "여러 하위 에이전트를 통해 병렬로 연구를 수행하고, 연구 결과를 요약해 잠재적 문제를 식별한다.",
-            "계획 수립 시 다차원 검증과 적합성 확인을 자동으로 수행해 안정성을 높인다.",
-            "구현은 여러 파동(waves)으로 나누어 병렬 처리하며, 각 단계별로 테스트와 검증을 거쳐 다음 단계로 진행한다."
-          ],
-          "quote": "It uses dedicated planning and verifying plan agents where the planning agent creates the plans and the verifier keeps checking them sending warnings back."
-        },
-        {
-          "heading": "GSD의 활용과 한계",
-          "body": "GSD는 다기능 대규모 애플리케이션에 적합하며, 복잡한 계획과 통제를 원할 때 효과적이다. 반면 단순한 앱에는 과도한 도구일 수 있다. 간단한 앱은 Claude 같은 단일 에이전트로도 충분하다. GSD는 컨텍스트 윈도우가 크고 문서 기반으로 상태를 유지해 컨텍스트 로트 문제를 최소화한다. 프로젝트에 맞는 프레임워크 선택이 중요하며, 필요에 따라 직접 프레임워크를 설계하는 원칙도 존재한다.",
-          "highlights": [
-            "GSD는 다기능 대규모 애플리케이션에 적합하며, 복잡한 계획과 통제를 원할 때 효과적이다.",
-            "단순한 앱에는 과도한 도구일 수 있다.",
-            "프로젝트에 맞는 프레임워크 선택이 중요하며, 필요에 따라 직접 프레임워크를 설계하는 원칙도 존재한다."
-          ],
-          "quote": "GST works well when you're working on a large-scale application with multiple features, but it's overkill if the app you're building is much simpler and doesn't need the heavy lifting."
-        }
-      ],
-      "key_takeaways": [
-        "AI 코딩 프레임워크는 프로젝트 특성에 맞게 선택해야 한다.",
-        "GSD는 요구사항이 불확실하고 실험적 개발에 적합하다.",
-        "BMAD는 명확한 요구와 철저한 사전 계획이 필요한 프로젝트에 적합하다.",
-        "Superpowers는 TDD 기반으로 에지 케이스 비용이 큰 프로젝트에 유리하다.",
-        "GSD는 병렬 연구, 다차원 계획 검증, 컨텍스트 로트 방지 기능을 갖추고 있다."
-      ],
-      "tech_stack": [
-        "Nex.js",
-        "Claude",
-        "Playwright",
-        "GenSpark"
-      ],
-      "smart_brevity": {
-        "why": "AI 코딩 프레임워크를 잘못 선택하면 과도한 작업이나 준비 부족으로 프로젝트가 실패할 수 있어, 각 프레임워크의 특성과 적합한 사용 사례를 이해하는 것이 중요하다.",
-        "what": "AI 코딩 프레임워크는 GSD, BMAD, Superpowers 등 각기 다른 접근법과 강점을 가진다. GSD는 불확실한 요구사항과 빠른 실험에 적합하며, BMAD는 명확한 계획과 문서화가 필요한 프로젝트에 적합하다. Superpowers는 테스트 주도 개발로 안전성이 중요한 경우에 유리하다. 이 영상은 각 프레임워크의 특징, 사용법, 장단점을 비교하고, GSD의 설치부터 실행, 검증까지 상세한 과정을 소개한다. 또한, 프로젝트에 맞는 프레임워크 선택의 중요성을 강조하며, 필요 시 직접 프레임워크를 설계하는 원칙도 안내한다.",
-        "axioms": [
-          {
-            "label": "Why it matters",
-            "content": "AI 코딩 프레임워크를 잘못 선택하면 과도한 작업이나 준비 부족으로 프로젝트가 실패할 수 있어, 각 프레임워크의 특성과 적합한 사용 사례를 이해하는 것이 중요하다."
-          },
-          {
-            "label": "The big picture",
-            "content": "AI 코딩 프레임워크는 다양한 요구와 프로젝트 특성에 맞춰 발전하고 있으며, 단일 프레임워크로 모든 상황을 커버할 수 없다."
-          },
-          {
-            "label": "Be smart",
-            "content": "프로젝트 요구사항과 특성에 맞는 프레임워크를 선택하고, 필요 시 여러 프레임워크를 조합하거나 직접 설계하는 전략이 필요하다."
-          },
-          {
-            "label": "Zoom in",
-            "content": "GSD는 컨텍스트 로트 방지, 병렬 에이전트 활용, 다차원 계획 검증 등 구체적인 기술적 차별점을 가진다."
-          },
-          {
-            "label": "What we're watching",
-            "content": "Claude Opus 4.6 업데이트와 1백만 토큰 컨텍스트 윈도우 도입으로 AI 코딩 에이전트의 컨텍스트 관리 방식이 변화하고 있다."
-          },
-          {
-            "label": "Go deeper",
-            "content": "영상 설명란에 BMAD와 Superpowers 관련 심층 영상 링크가 제공되어 추가 학습이 가능하다."
-          }
-        ]
-      }
-    }
-  },
-  {
-    "video_id": "4u94juYwLLM",
-    "title": "Jenny Wen: The design process is dead. Why Designers can no longer trust it.",
-    "channel": "Hatch Conference",
-    "published_at": "2025-12-29",
-    "fetched_at": "2026-03-20",
-    "playlist_index": 0,
-    "url": "https://www.youtube.com/watch?v=4u94juYwLLM",
-    "playlist": "design",
-    "source_type": "youtube",
-    "transcript": "[Applause] Okay, imagine this. It is the start of a quarter. Your team has to figure out what to do and you're like, \"Cool. I know exactly what to do. I know the steps to follow.\" So, you go do some some user research. You go and take that user research and you make this persona. It's perfect. It's got demographic data and it's got a fake name and a and a photo that you've generated. And from that user persona, you make this perfect user journey map and it shows every step of this person's journey throughout your product, all the problems they have, all the emotional sequences that they're going through. And then you as a designer, you're like, \"Okay, cool. We're going to go lead a brainstorm and bring all your crossunctional partners in.\" And there you're going to brainstorm all the problems that you can solve to help meet your OKRs. And then you write the perfect problem statement. Maybe it starts with how might we maybe it's actually in this format. It's like as a blank I want to blank so that I can blank so that way you can really understand the user's goals and problems. And then you're like, okay, it's time for a brainstorm again. A lot more sticky notes, except this time you're brainstorming solutions instead of problems. And then you pick a solution. And you're like, cool, I'm going to go do wireframes. I'm going to do them really in lowfi first. And then I'm going to go a little higher fidelity, maybe like this. And then it's time for research again. You're going to take the solutions. You're going to understand what problems there are from users. And then they're gonna make them higher fidelity and they're going to look great like this. And hooray, you just did this perfect design process. You solved all the company's problems. You made millions of dollars. You created a a product that people really love. Right. Right. Yeah. I am calling Also, hi, my name is Jenny Wen. I'm normally based out of Brooklyn, New York, but I'm actually from the Toronto area in Canada. Work-wise, I'm a design lead at Anthropic where I work on the core claw.ai AI product which is a chatbot built on top of the cloud foundational models. I joined earlier this year in January. But before that I was at Figma for five and a half years where I was director of design. I led teams at a h that led a handful of new products in our growth team. So Fig Jam, slides community, Figma Buzz, site CMS and our growth teams. And I was also the first designer on Fig Jam and I took it to launch and grew that team as well. And before that I was at Dropbox for a few years where I was a designer on Dropbox paper. It's a document editor. I don't know if you remember it. I just got an email this week that they're shutting down the mobile apps. Rest in peace. Um, it was just one of the first document editors that challenged the norms of Google Docs and made it really sort of pleasant to use. Okay, so where were we? You know, you'd followed this design process. You, you know, solved world peace and you made this beautiful product and you made so much money, right? Okay, so this is where you have that like DJ Scratch sound effect. um that did not sound very realistic at all, right? But at the same time, that's the process that everyone has been preaching for the past few years and has been taught to us in schools and maybe some people even have like an MBA in this process. But we actually need to do a reality check of this environment that we're in right now. So, first thing to consider is AI. I don't know, maybe you've heard of it, but uh it stands for artificial intelligence in case you actually weren't aware. Basically what's happening is tools are changing. AI is making us more capable. There are a bunch of new tools popping up. I feel like there's new tools that come up every day and I'm overwhelmed. I don't know all the tools to try. And the thing that's changing because of this is basically a PM can get to a working prototype faster than you can write this perfect problem statement or write a brainstorm. They do this without doing any research, making any personas, etc. And I've seen this at a few companies now where actually it's the expectation that product managers for example are vibe coding or prototyping. And this is something that just used to be the designer's responsibility but now becomes the responsibility of more and more functions. But at the same time it's also making designers more powerful too. You know it's no longer should designers code but designers can code. We don't have to just make static pictures anymore. We can prototype really easily and we can implement to fit and finish all all by ourselves. So the reality check here is that it's outdated. The the design process is really outdated for today's tools and tech. It's feeling less and less right for this moment. Another thing I'm hearing a lot is do less with more. I think this one's been pretty universal for the past few years and I'm hearing about this both from IC designers as well as leaders across the industry. There have been a lot of layoffs and headcount reductions. Maybe you've been impacted by it too, either as a leader or a designer. And I think people are just realizing that it's possible and sometimes even more effective to have smaller teams as well. It's less coordination overhead. And I think small teams are really powerful actually. But at the same time, our roles are evolving. You know, we have we were designers. We had these existing responsibilities that fell within our bucket. But because of things like AI, you know, we are expected to span more and more parts of our roles and that's actually more possible like being more PMshaped and strategic or also implementing and prototyping our work. And I think the exact same thing is also happening to all these other functions around us. So in this world, do we even have time to follow this rigid process? Like what could we be cutting from it to make room for all these other things that we're now expected to do? I think the good thing is like I don't think we need all these steps. And so the reality is our roles are changing. We're expected to do more with less and we just don't have time to follow a process to a tea anymore. I'm hearing more and more of these words, you know, taste and craft and quality. We're throwing these around more and more and talking about them in terms of the design process. I think the running hypothesis that comes from this is that in a world where you can start to make anything with AI, what really matters is your ability to choose and curate what you make. I think that's a good hypothesis. Like if you can oneshot prompt something that looks like this, what does that mean for designers? Like this is not really that good, but it does raise the bar and that it raises the floor and the baseline of what a designer's expected to do. like your work has to be better than this for you to be valuable and somebody that could be hired. I've also noticed that we're like starting to gravitate towards apps like this, like the not boring software apps. Uh this one is called is this one is their camera app which is just it's a camera app but it's beautiful and it has all these tactile knobs and sound effects and it just feels delightful to use. This doesn't feel like you could just make it with a few prompts or apps like Linear which it's it's a task tracking app. We've all used different task track tracking apps. They're dime a dozen, but it's wellcrafted. It's fast. It's snappy to use. People like using it and prefer to pay for it. Or apps like Notion Calendar, which again, it's like not that different functionalitywise, but it feels high craft and worth paying for. I think these apps are the anti-AI slop. They feel valuable to pay for. They're enjoyable to use. And when I talked to the designers behind these apps and the highest craft designers I know, they didn't make their work with any set process, let alone like the design process. So I think the reality is there aren't these great there aren't steps in the design process that encourage great craft. It's just like not the right process for this and it never really compensated in a way that helped you in do great craft. And finally, every project is just so different and the range of projects that we're working on is changing too. The design process was like selling you something like this, like a format, a step-by-step thing where you can worship and it said like every day you do this and it'll even insold you like entire degrees in ways to do the design process. But then I think what ended up happening to us is that it made people worship this process and spend a lot of time on these process artifacts, not the end result. I see this in portfolios all the time where there's like 80% process artifacts and you can tell they spent so much time on these things and then like there's one screen at the very end that is like just it's like here's the end experience. The design process taught us like follow these steps in this like very rigid order in this you know in these with these arrows. But I think the reality is like the user doesn't give a about the process artifacts you made or whether you made the perfect user journey. They care about the end experience that they're feeling and seeing. And every project is just so different. You know, every project has different stakeholders, complexity, problem space, unknowns, technical constraints, timelines, business needs, staffing, etc. There's just no way that the same set of steps works across all of these different companies. You just can't produce great work this way. Like, it just doesn't produce better work. And you can't repeat this process for every single project. But oddly enough, the sentiment in the industry in the W was wall has been, you know, trust the process, follow the steps, have a rigorous design process, and you're doing your job really well. Well, I'm here to say, don't trust the process. It just doesn't really make sense, especially in this new era. And I'm sorry if this is a process you love, trust, rely on, or is mandated by your job, but honestly, it's my policy here. This is going to be uncomfortable, but I think discomfort is what is warranted to help us shepherd in this new era. I get how we got here though. You know, in the early 2000s, we were doing this sort of work, which was gorgeous, but we were pivoting from graphic design and web design into designing full fully experienced apps and and in things where people were on their mobile phones and had to consider all the environment around them. And we were just seen as these people who just come in and like make things pretty. But there's this whole movement, you know, design needed to see at the table. We needed to have legitimacy. We needed also to design for more complex experiences. And we weren't just designing a simple, you know, step-by-step web page anymore, but we were designing for like complex mobile apps. So then there's this this explosion in the idea of design thinking and usercentric design generally I think all good things because we considered not just how things looked but how they felt, how they worked, how they could impact the day-to-day of someone's lives and their impact on the business as well. But because of that, I think we tilted the balances a lot. you know, where we prioritize strategy way over craft to the extent that our overall craft suffered. And so now I think we need to retip the balances a little bit more, make sure our job balances both strategy and craft. But we also have to untangle this like hairball of mess of like these new factors that are in our world right now. Things like, you know, lower barriers to design, all this exponential change from AI, role shifting, less headcount craft, and new tools. Oh, there goes the slide. But these things are changing maybe faster than they have been in the last 10 to 15 years. So for our sake, we cannot trust the old process anymore. But but even before this, I think I was already not trusting this process. And that's partly because in the last few years, the work of designers that I've seen in the industry, like I've just just grown increasingly skeptical of this the ability of the process to create great work. Most of the time when I think about the work that I'm proudest of or most in awe of, they're usually not using this process or anything close to it. The best work that I've seen is it's starting from solution first, not a problem. Actually, a solution that everyone gravitates towards and makes everybody say, \"Wow.\" It's when a team cares so much they spend a lot of time iterating on the details and just trying to get them right. Or when a designer has strong intuition or conviction. Maybe it's not something that everyone agrees with off the bat or doesn't show up directly in a user research study. It's when a designer skips steps or when they make them up to get what they need or when a team does something to just make people smile. Not because it came up in a persona or a user journey, but because they wanted to make people smile. So, let's start with this one and break it down a bit. Starting from solution first. For some reason with the design process, this felt super illegal and you just like couldn't do it or you're a bad designer. But one example is when the team at Enthropic, this predated me when they created claude artifacts where artifacts are basically this right panel that is showing you like the interactive code. Basically, this was they were the team was the first kind of like AI team to actually create this pattern, but it's used across like all these different AI apps now. And it basically generates code instantly and lets you interact with it right there. This was a prototype that one of the researchers on the team built and it you know it doesn't look awesome but it basically when Claude was generating code it would create this interactive artifact on the side and it was just really kind of like interesting to see but one of the designers on the team Michael he saw this and he was like I love this and he iterated on it and built his own prototype and the reactions across the team were just so positive and they just felt like there was something there. It didn't come from a pro product problem statement. Uh but but when we launched it, it was really successful. It was just this thing that finally made people realize like, oh  like AI is not just writing code, but it's like creating these interactive applications that I can use. I think it fundamentally changed the way that people perceived AI. And if we I think if we started problem statement first, we maybe would have never gotten here. We didn't know that it was a problem worth solving until we actually saw the solution. And this used to happen mostly on teams with like really good prototypers, but with all these new tools, I think it's starting to happen all the time. And not just with designers either. It's starting to be the expectation. But this feels sort of illegal in the old design process, right? But I think what we're seeing more and more now, especially if you're working with AI or products that are built on top of AI, which I think more and more of us probably are over time, we have this like new technology. It's like pretty drastically different than anything we've ever seen. It's new. We sort of know what it's good at. But since it's new, we have all these existing problems that we've solved before without AI. And we basically have to look at all of them and see and say like, hey, how do we actually take this technology that's new and apply it backwards to all these problems? Like how can we solve these problems in a different way? I think this is like fundamentally different in than the last era because the technology was relatively static. We didn't have anything that like changed the game for us this much. And that and because of that, we had to look for problems to solve instead of solutions to have. And we ba we basically at at Enthropic do this every time the model gets better. We see what it's capable of and what it's good at and we have to figure out like, hey, what problems could it solve to help people? So, for example, in the last year or so, the cloud model has gotten better at a bunch of these things. You know, it's gotten larger context windows, a better ability to use tools, it's able to orchestrate agents, it's able to plan and do multi-step reasoning. And all those capabilities made it possible for us to launch a research feature earlier this year where Claude can basically go off for 10, 20 minutes at a time and write you this full-on research report, which is like kind of a marvel, right? It's basically deploying these like sub agents to do different parts of this, slowing down to think about what to write, as opposed to before when AI would just like spit out an answer instantaneously and not think that hard about it. But this is all because the technology got us there first. So it's okay to do things out of order, especially in this AI era where the technology is changing faster than ever. I think it changes the process that we need to use. Another way that I've seen really great work made is when the team just like cares ruthlessly about the details. So for example, we launched Big Jam in 2021 and we launched it and it worked pretty well, but after the launch, we weren't just like adding new features to it. We just continued to iterate on it and make the quality better. So, we spent a large percentage of the time in the years that followed just iterating on details, making sure the core mechanics of the product actually felt good. We iterated on snapping and and alignments. We changed the way that we showed selection borders on canvas to feel less noisy. We iterated on the colors a bunch just to make sure we were we got the right range and we the colors weren't too loud. We added a bunch of ways to change the font size and adjust them. We gave images a border so that way they'd stand up stand out on canvas. We iterated a bunch on how shapes would overflow as you were typing. We tweaked and refined a bunch of the toolbar interactions and so so many more. Like I could probably fill a full talk slot just like talking about the iterations that we made over time. But the actual process for this was like not the standard design process. It was like more like this where you're just continuing to do a long tale of quality and iterations endlessly. It's not something this like double diamond thing just really makes room for. We're always just trying to learn and iterate and make things better. They take time, you know, like they take concerted time. They're not accommodated for the design process. It's just something that you have to care about and you have to a lot time for. Okay. Another way that I've seen great work made is just operating on intuition. I think this is like one of my favorites because I love intuition. And I think intuition is just like a dirty word for designers. Like it's it's like you're not being userentric enough. You don't care. You're not dataentric enough. That's that's not legit if you're just using your intuition. But intuition is not guessing. It's I think people think it's like vibes or guessing or whoever has the best argument, but I actually think intuition is incredibly valuable and it's actually incredibly rare. It's something you have to build. I think intuition is the ability to make reason judgments quickly. It's a shortcut to thinking really long and hard or having to gather evidence because you know the subject area so deeply and in such an expert way. I think having great intuition is something to be respected and to really aspire to. It's I don't think we should be looking down on it. like I think we should be trying to build it. I think these are some of the ways that I have been trying to build mine. I just build it by like constantly reading feedback of the about the product whether that's in Twitter or Reddit or wherever you you know you find feedback about your product. It's sometimes internal feedback boards. I think your sales team might be collecting it a lot too. So talk to them. I make sure I go to user research sessions regularly. I watch back old ones. I read old reports. I will go to user research sessions that are not about my part of the product just because I'm learning more about our user base. I'm looking at dashboards regularly. I just like see what the trends are on overall usage and activity. I'm also drawing on things that are like these cognitive biases and design principles that you learn in like a textbook from school and psychology because I think these things are just like helping you predict how people behave and make decisions overall. But what I'm doing here I think really is like building my internal model of the world of our users and our end product. So that way I don't have to research every single decision or AB test every single decision. I'm trying to make educated guesses to move quickly. But also I think it creates better design work because you can now apply this intuition not towards just like big product decisions but as well as like smaller ones like oh how do I group these buttons together or like what do I show on this like login page because intuition is not guessing. building a great intuition. Like that is what is going to make you a great designer because you're going to wield this intuition for decisions of all sizes and scales like picking the right design pattern for defending a a design or making a snap choice. That's like something you can't really pay for get AI to generate. The next way that I've seen great work made is skipping steps and making them up. Also a favorite of mine. So you probably know the Google Ventures design sprint. it's like pretty rigid and they stay they're like really adamant about how every step really matters. You can't you know there's reasons that they're there and I've run this sprint a bunch of times but honestly like most of the time I'm like these steps don't really matter to me right now and they don't feel useful and I think especially if you're at a startup like a whole week is such a long time like that's like a year in startup time. So over the years I've run a bunch of different variants of it where I mix the steps remove them etc. And this is like one of my favorite ways to do it where I just spend most of the time prototyping and ideulating because I find that prototypes are the thing that that like when you produce them out of the sprint, people really see them and they really understand the concept. So I also do it in three days as opposed to five. And I think this is the thing that's worked for me and the teams I've been on, but I try to play with it every time and maybe something else works better for you and your team. Another process thing is the working backwards Amazon thing where you write a press release to imagine how a reporter would write about your feature. And I like the goal of this, but it felt static and not relevant to us when we're using this at Figma. So I thought, how do I actually make this work for us? And so I think the Figma equivalent is the tweet, you know, because we always like would talk to our users a bunch and we would communicate with them through there. And so I made this component one time for a brainstorm where instead of a press release, I got them to imagine like, hey, how would someone react on Twitter to this feature? And this is the component in use actually for a bunch of big jam features that we built like cursor chat, handshakes, emotes, and stamps. And you can actually see the first sketches of those features here. And when we actually did launch the product, we saw tweets that resembled these, which was really cool to see because it meant that these features that we built actually evoked the emotions that we wanted them to. And something similar I also tried doing is uh writing and making fake landing page headlines to imagine how we might might package features together and brainstorm those features. This is another riff on the on the press release that felt faster and like more relevant to us at Figma. I love just trying to figure out every time like what steps make the most sense for my team and to get the best results. It's actually like weirdly fun to me because I sort of think about the existing design process as like this like set of instructions that you get from IKEA furniture that's like kind of hard to decipher. Um, and it's just the same steps. You follow them every time and you're supposed to get an outcome, right? But the thing is, when you're designing something, it's kind of different. Like, you actually don't know what the end outcome is. Like, you don't know if it's going to be this Billy bookshelf. It could also be a chair or a lamp or even like a hot dog. Like, you just you start the process and you actually don't know what you're trying to get at the very end, unlike IKEA furniture. So, if you don't know what you're building, how do you know what the steps are, right? like how can you use the same steps to get to that that result every time? So every time you have to both chart the chart the map and define what the thing is that you're building that seems hard, right? Like there's there's no manual. So here's where that dirty word intuition comes into play again. You have to use another part of your intuition in this new world to know how to get through a project. No one's going to hand you this manual that's going to solve all your problems. So your value as a designer is in honing that process to get to the best results, not following one. If anyone if you could follow a process, then like anyone could do it. Finally, the last way that I've seen great work made is doing something just for the sake of making people smile. So if you've ever played with these features in Pig Jam, the stamps, the emotes, the the cursor chat, they're some of my favorite things that I've ever built I've built in my career ever. But part of our process for them honestly was just prototyping them in real code, trying them out in our internal builds. And we just like show up to people's meetings and ask them to try them out. Like these are actual recordings of people trying them out in meetings uh with the prototypes. And even as we were prototyping them, there was like a ton of usability issues and things wrong with them. But we noticed that people were smiling, laughing, and they transformed them from the beginning of the meeting. And so we knew there was something good there and that we had to keep going. And ultimately when we launched these features, they set the precedence for a ton of other features on Fig Jam, but also at Figma generally. The goal became to just like make people smile and we just added details that would be delightful. And that was some of like the work that everyone was most proud of there. I think these didn't come from a problem statement. There's no step in the process for them. They just came from a team of design designers and engineers that cared very deeply. So there's a list of things I mentioned. Everyone loves a summary slide. Uh but unlike the design process, these aren't hard and fast rules. You shouldn't probably shouldn't do all of them in anything. You don't need to do them in order. They don't guarantee good work even. And there are probably also a ton of other things that I've missed. Like you've probably done great other things on your teams that have created great work that I don't have on the here. So I hope I've shown you this old adage like trust the process. I think that's dead in this new era. We can't really trust the process anymore. And personally, I don't ever think we really could have trusted it. But in this era, more than ever, we can't. Our roles are changing. The tools that we're using are changing, but at the same time, the design process that's dictated to us is the same. You know, our value isn't in repeating a process. If it was, anybody could be a designer. We're rewriting the process right now. This is like pretty scary because we don't have precedent to follow. But I don't know about you, it's like sort of fun for me. We need to both figure out what we're building and the map to getting there every single time. But our power is in wielding the right tools in mixing and matching and creating great results no matter how we got there. So we can't trust the process. If we want to both survive and thrive through this era, we have to do something scarier, bolder, but at the same time more exhilarating. Think we have to trust ourselves again as designers, as practitioners, as people with experience and a valuable skill set. We have to trust ourselves to try new things, to wield the right tools, to feel and know when we've designed something or built something great. It's the most empowering, but also probably one of the most vulnerable things we can do right now. It's time. Thank you.",
-    "summary": {
-      "sections": [
-        {
-          "heading": "디자인 프로세스는 죽었다",
-          "body": "기존의 디자인 프로세스는 사용자 조사, 페르소나 제작, 문제 정의, 브레인스토밍, 와이어프레임, 프로토타입, 리서치, 고도화의 순서로 진행된다. 하지만 현실에서는 이 과정이 너무 이상적이고 비현실적이다. AI와 새로운 도구들이 등장하면서 PM이나 다른 팀원들도 빠르게 프로토타입을 만들고, 디자이너만이 담당하던 역할이 분산되고 있다. 따라서 기존의 엄격한 디자인 프로세스는 오늘날의 환경과 도구에 맞지 않으며, 점점 더 시대에 뒤처지고 있다. 디자인 프로세스에 대한 맹신은 불필요하며, 변화하는 역할과 기술에 맞춰 유연하게 접근해야 한다.",
-          "highlights": [
-            "기존의 디자인 프로세스는 너무 이상적이고 비현실적이다.",
-            "AI와 새로운 도구들이 등장하면서 PM이나 다른 팀원들도 빠르게 프로토타입을 만든다.",
-            "기존의 엄격한 디자인 프로세스는 오늘날의 환경과 도구에 맞지 않는다.",
-            "디자인 프로세스에 대한 맹신은 불필요하다.",
-            "변화하는 역할과 기술에 맞춰 유연하게 접근해야 한다."
-          ],
-          "quote": "I am calling Also, hi, my name is Jenny Wen."
-        },
-        {
-          "heading": "AI가 바꾸는 디자인 역할",
-          "body": "AI는 디자이너의 역할을 확장시키면서도 동시에 빠르게 프로토타입을 제작할 수 있게 한다. PM들도 코딩이나 프로토타이핑을 하며, 디자이너가 아닌 다른 직군도 제품 개발에 깊게 관여한다. 디자이너는 단순히 시각적 결과물을 만드는 것을 넘어, 코딩과 프로토타입 구현까지 할 수 있게 되었다. 하지만 이러한 변화는 기존 디자인 프로세스가 더 이상 적합하지 않다는 현실을 보여준다. 역할이 확장되고, 적은 인원으로 더 많은 일을 해야 하는 상황에서, 엄격한 프로세스는 오히려 비효율적이다.",
-          "highlights": [
-            "AI는 디자이너의 역할을 확장시키면서도 빠르게 프로토타입을 제작할 수 있게 한다.",
-            "PM들도 코딩이나 프로토타이핑을 하며, 다른 직군도 제품 개발에 깊게 관여한다.",
-            "디자이너는 코딩과 프로토타입 구현까지 할 수 있게 되었다.",
-            "기존 디자인 프로세스가 더 이상 적합하지 않다는 현실을 보여준다.",
-            "엄격한 프로세스는 오히려 비효율적이다."
-          ],
-          "quote": "The reality check here is that it's outdated."
-        },
-        {
-          "heading": "작고 강한 팀과 역할 변화",
-          "body": "최근 몇 년간 많은 해고와 인원 감축이 있었고, 그 결과 소규모 팀이 더 강력하고 효율적이라는 인식이 확산되고 있다. 소규모 팀은 조율 부담이 적고 빠른 의사결정이 가능하다. 동시에 디자이너의 역할도 전략적 기획, 프로토타입 구현 등으로 확장되고 있다. 다른 직군들도 비슷한 변화를 겪으며 역할이 다변화되고 있다. 이런 상황에서 기존의 엄격한 디자인 프로세스를 따를 시간이나 여유가 없다. 따라서 프로세스의 일부를 과감히 생략하거나 재구성할 필요가 있다.",
-          "highlights": [
-            "소규모 팀이 더 강력하고 효율적이라는 인식이 확산되고 있다.",
-            "디자이너의 역할도 전략적 기획, 프로토타입 구현 등으로 확장되고 있다.",
-            "다른 직군들도 역할이 다변화되고 있다.",
-            "기존의 엄격한 디자인 프로세스를 따를 시간이나 여유가 없다.",
-            "프로세스의 일부를 과감히 생략하거나 재구성할 필요가 있다."
-          ],
-          "quote": "Another thing I'm hearing a lot is do less with more."
-        },
-        {
-          "heading": "해결책 먼저, 문제는 나중에",
-          "body": "전통적인 디자인 프로세스는 문제를 먼저 정의하고 해결책을 찾는 순서지만, AI 시대에는 해결책을 먼저 만들고 나중에 문제를 발견하는 경우가 많아지고 있다. Anthropic 팀이 만든 Claude artifacts가 대표적인 사례로, 초기 프로토타입은 문제 정의 없이 시작되었지만 성공적인 제품으로 자리잡았다. AI 기술이 빠르게 발전하면서 기존 문제들을 재해석하고 새로운 해결책을 탐색하는 방식이 필요하다. 이로 인해 디자인 프로세스의 순서와 방식이 근본적으로 바뀌고 있다.",
-          "highlights": [
-            "AI 시대에는 해결책을 먼저 만들고 나중에 문제를 발견하는 경우가 많아지고 있다.",
-            "Anthropic 팀이 만든 Claude artifacts는 문제 정의 없이 시작되었지만 성공했다.",
-            "AI 기술이 빠르게 발전하면서 기존 문제들을 재해석하는 방식이 필요하다.",
-            "디자인 프로세스의 순서와 방식이 근본적으로 바뀌고 있다.",
-            "기술 변화가 프로세스 변화를 촉진한다."
-          ],
-          "quote": "We didn't know that it was a problem worth solving until we actually saw the solution."
-        },
-        {
-          "heading": "디테일에 대한 집착과 직관의 가치",
-          "body": "훌륭한 디자인 작업은 디테일에 대한 집착과 반복적인 개선에서 나온다. 예를 들어 Fig Jam은 출시 후에도 색상, 정렬, 인터랙션 등 수많은 세부 요소를 지속적으로 다듬었다. 이러한 긴 호흡의 개선 과정은 전통적인 디자인 프로세스에서 충분히 고려되지 않는다. 또한 직관은 단순한 추측이 아니라 깊은 전문성과 경험에서 나오는 빠른 판단력이다. 직관을 키우기 위해서는 사용자 피드백, 리서치, 데이터 분석, 심리학적 원리 등을 꾸준히 학습하고 내면화해야 한다. 직관은 크고 작은 디자인 결정 모두에 영향을 미치며, AI가 대체할 수 없는 디자이너의 핵심 역량이다.",
-          "highlights": [
-            "훌륭한 디자인 작업은 디테일에 대한 집착과 반복적인 개선에서 나온다.",
-            "Fig Jam은 출시 후에도 수많은 세부 요소를 지속적으로 다듬었다.",
-            "긴 호흡의 개선 과정은 전통적인 디자인 프로세스에서 충분히 고려되지 않는다.",
-            "직관은 깊은 전문성과 경험에서 나오는 빠른 판단력이다.",
-            "직관은 AI가 대체할 수 없는 디자이너의 핵심 역량이다."
-          ],
-          "quote": "Intuition is the ability to make reason judgments quickly."
-        },
-        {
-          "heading": "프로세스는 유연하게, 즐겁게",
-          "body": "디자인 프로세스는 고정된 규칙이 아니라 팀과 프로젝트에 맞게 유연하게 변형되어야 한다. Google Ventures의 디자인 스프린트를 변형하거나, Amazon의 프레스 릴리스를 트위터 반응으로 바꾸는 등 다양한 시도가 이루어지고 있다. 또한, 단순히 문제 해결뿐 아니라 사람들을 웃게 만드는 즐거운 경험을 만드는 것도 중요한 디자인 가치다. Fig Jam의 스탬프, 이모트, 커서 채팅 기능은 문제 정의 없이도 팀의 열정과 반복적인 프로토타이핑으로 탄생했다. 결국 디자이너의 가치는 프로세스를 따르는 데 있지 않고, 스스로 프로세스를 만들어 최고의 결과를 내는 데 있다.",
-          "highlights": [
-            "디자인 프로세스는 팀과 프로젝트에 맞게 유연하게 변형되어야 한다.",
-            "Google Ventures 디자인 스프린트나 Amazon 프레스 릴리스를 변형하는 시도가 있다.",
-            "사람들을 웃게 만드는 즐거운 경험도 중요한 디자인 가치다.",
-            "Fig Jam의 스탬프, 이모트, 커서 채팅은 문제 정의 없이 탄생했다.",
-            "디자이너의 가치는 스스로 프로세스를 만들어 최고의 결과를 내는 데 있다."
-          ],
-          "quote": "If anyone if you could follow a process, then like anyone could do it."
-        }
-      ],
-      "key_takeaways": [
-        "기존 디자인 프로세스는 AI와 새로운 도구 시대에 맞지 않아 유연한 접근이 필요하다.",
-        "AI는 디자이너 역할을 확장시키고, 다른 직군도 프로토타이핑에 참여한다.",
-        "소규모 팀과 역할 다변화가 증가하며, 엄격한 프로세스는 비효율적이다.",
-        "해결책을 먼저 만들고 문제를 나중에 찾는 방식이 AI 시대에 적합하다.",
-        "디테일에 대한 집착과 직관은 AI가 대체할 수 없는 디자이너의 핵심 역량이다."
-      ],
-      "tech_stack": [
-        "Claude",
-        "Fig Jam",
-        "Dropbox Paper"
-      ],
-      "smart_brevity": {
-        "why": "기존 디자인 프로세스는 AI와 빠르게 변화하는 도구 환경에 적합하지 않아 디자이너가 유연하고 창의적으로 역할을 재정의해야 한다.",
-        "what": "디자인 프로세스는 더 이상 고정된 순서나 엄격한 규칙을 따르지 않는다. AI와 신기술의 등장으로 프로토타입 제작과 문제 해결의 순서가 뒤바뀌고, 디자이너 역할은 확장되고 있다. 소규모 팀과 역할 다변화 속에서 디테일에 집중하고 직관을 활용하는 것이 중요하다. 또한, 팀과 프로젝트에 맞게 프로세스를 변형하고 즐거운 경험을 만드는 것이 새로운 디자인의 핵심이다. 결국, 디자이너는 정해진 프로세스를 따르는 것이 아니라 스스로 프로세스를 재창조하며 최고의 결과를 만들어내야 한다.",
-        "axioms": [
-          {
-            "label": "Why it matters",
-            "content": "기존 디자인 프로세스는 AI와 빠르게 변화하는 도구 환경에 적합하지 않다."
-          },
-          {
-            "label": "The big picture",
-            "content": "디자인 역할과 도구가 변화하면서 프로세스도 근본적으로 재설계되어야 한다."
-          },
-          {
-            "label": "Be smart",
-            "content": "디자이너는 직관과 디테일에 집중하고, 유연한 프로세스 운영으로 가치를 창출해야 한다."
-          },
-          {
-            "label": "What we're watching",
-            "content": "AI 기반 제품 개발과 역할 다변화가 디자인 프로세스 변화를 가속화하고 있다."
-          }
-        ]
-      }
-    }
-  },
-  {
     "video_id": "_TZhiX4qajk",
     "title": "How to easily use the hot Claude skill and Open Claw in Silicon Valley",
     "channel": "월텍남 - 월스트리트 테크남",
@@ -456,10 +95,6 @@
         "what": "마누스의 스킬스와 텔레그램 연동은 AI 업무 자동화의 새로운 표준을 제시한다. 사용자는 반복적이고 복잡한 작업을 스킬로 저장해 언제든지 동일한 품질로 실행할 수 있다. 토큰 절감, 비용 감소, 답변 품질 향상 등 실질적 이점이 크다. 공식 스킬, 직접 제작, 기터브 연동 등 다양한 방식으로 스킬을 추가할 수 있고, 슬랙·캠바·인비디오 등 외부 앱과 연동해 복합 워크플로우도 자동화된다. 텔레그램 연동으로 24시간 반복 업무도 자동 처리되며, 실제 사용자는 높은 만족도와 결제 의향을 보인다. 결론적으로, 스킬스와 메신저 연동은 AI 활용의 실질적 혁신을 이끈다.",
         "axioms": [
           {
-            "label": "Why it matters",
-            "content": "AI 자동화와 일관성은 업무 효율과 품질을 동시에 높인다."
-          },
-          {
             "label": "The big picture",
             "content": "AI 에이전트와 업무 자동화는 미래 일자리 구조를 변화시킨다."
           },
@@ -480,6 +115,12 @@
             "content": "기터브, 공식 스킬, 외부 앱 연동 등 다양한 확장 방법이 존재한다."
           }
         ]
+      },
+      "apply_points": {
+        "level": 2,
+        "where": "orchestration/skills 시스템",
+        "what": "자주 쓰는 반복 프롬프트 패턴을 스킬 파일로 패키지화하고, 스킬 description에 '자동 실행 조건'을 명시하라",
+        "why": "Manus Skills가 반복 프롬프트를 이름+설명으로 압축 저장해 토큰 절감과 품질 일관성을 동시에 달성했고, Paul의 skills 시스템이 동일한 구조를 운영 중이므로 description 품질이 자동 실행 정확도를 결정한다"
       }
     }
   },
@@ -590,10 +231,6 @@
         "what": "샘 호트만 님은 AI 자동화 비즈니스를 1인 기업가 관점에서 실행하며, 클로드 코드와 NAAN을 활용해 고객 문의부터 계약, 콘텐츠 제작까지 자동화한다. 미팅 직후 자동으로 제한서 초안과 PPT를 생성해 빠른 대응으로 전환율을 높이고, 콘텐츠 자동화는 대본 생성부터 영상 렌더링까지 병렬 처리한다. 자동화 비즈니스 로드맵은 7단계로 구성되어 있으며, 장기적으로는 팀 확장과 해외 클라이언트 확보를 목표로 한다. 엔트로픽의 빠른 피드백 수용과 기능 개선을 주목하며, AI 시대에 적응하고 즐기는 자세를 강조한다.",
         "axioms": [
           {
-            "label": "Why it matters",
-            "content": "AI 자동화는 빠른 실행력과 일관성이 중요하며, 1인 기업가가 대규모 팀보다 시장 변화에 더 민첩하게 대응할 수 있기 때문이다."
-          },
-          {
             "label": "The big picture",
             "content": "AI 자동화 시장은 개인 맞춤형과 반복 업무 자동화가 공존하며, 하이브리드 도구 활용과 아웃바운드 영업 전략이 성장의 핵심이다."
           },
@@ -610,6 +247,14 @@
             "content": "엔트로픽의 빠른 기능 개선과 AI 자동화 도구 발전이 시장 판도를 바꾸고 있어 지속적인 학습과 적응이 필요하다."
           }
         ]
+      },
+      "apply_points": {
+        "level": 1,
+        "where": "orchestration/파이프라인 + 자동화 도구 분류",
+        "what": "작업 시작 전 '비결정론적(개인 맞춤·판단 필요)' vs '결정론적(반복·정형화)'으로 분류하고, 전자는 Claude Code로, 후자는 n8n 또는 스케줄러로 라우팅하라",
+        "why": "샘 호트만이 Claude Code + n8n 하이브리드로 1인 기업 자동화를 구축하면서 두 도구의 혼용이 비효율을 낳는다는 것을 실증했다 — 비결정론적 작업에 n8n을 쓰면 유연성이 사라지고, 정형 작업에 Claude Code를 쓰면 토큰이 낭비된다",
+        "how": "작업 인테이크 시 체크: '매번 같은 결과가 나와야 하는가?' YES → n8n/스케줄러, NO → Claude Code. 분류 결과를 파이프라인 context.md의 tooling 섹션에 기록",
+        "when": "새 자동화 작업 설계 시 또는 기존 작업 리팩토링 시"
       }
     }
   },
@@ -715,10 +360,6 @@
         "what": "G스텍은 클로드 코드를 가상 엔지니어링 팀으로 전환하는 오픈소스 프레임워크로, CEO 리뷰부터 QA 테스트, 릴리즈까지 전체 개발 라이프사이클을 자동화한다. 역할 기반 분리와 완전성, 구조화된 거버넌스가 핵심 설계 철학이며, 번(deno) 기반의 빠른 실행과 네이티브 기능을 활용한다. 크로미움의 접근성 트리를 AI 에이전트의 눈으로 활용해 안정적인 DOM 접근을 구현하고, 13가지 전문 스킬로 역할별 워크플로우를 지원한다. 다층 보안과 성능 최적화로 긴 대화와 복잡한 작업도 가능하게 하며, 하루 만에 1만 개 이상의 GitHub 스타를 받으며 큰 주목을 받고 있다.",
         "axioms": [
           {
-            "label": "Why it matters",
-            "content": "G스텍은 AI 기반 소프트웨어 개발의 생산성과 품질을 획기적으로 개선해 개발자의 업무 방식을 혁신한다."
-          },
-          {
             "label": "The big picture",
             "content": "AI가 소프트웨어 개발 전 과정을 자동화하며, 역할 분리와 완전성 원칙을 통해 품질과 효율성을 동시에 달성하는 새로운 패러다임을 제시한다."
           },
@@ -735,6 +376,12 @@
             "content": "G스텍은 지속적으로 업데이트되고 있으며, 앞으로 더 많은 전문 스킬과 기능이 추가될 예정이다."
           }
         ]
+      },
+      "apply_points": {
+        "level": 2,
+        "where": "orchestration/파이프라인 역할 분리",
+        "what": "복잡한 개발 파이프라인에서 CEO 리뷰·엔지니어링 리뷰·QA·릴리즈를 역할별 단계로 명시적으로 분리하고, 각 단계에 별도 프롬프트/체크리스트를 할당하라",
+        "why": "gstack이 전체 개발 라이프사이클을 역할 기반으로 분리한 설계로 하루 만에 GitHub Star 10,000개를 받은 것은, 역할 분리가 품질과 반복 가능성을 동시에 높인다는 실증이다"
       }
     }
   },
@@ -824,10 +471,6 @@
         "what": "코드에서 시스템 아키텍처 다이어그램을 자동 생성하는 방법이 소개된다. Miro MCP와 Claude를 연동해 코드 기반의 시각적 다이어그램을 만들고, 이를 통해 시스템 구조, 요청 흐름, 인증 절차, 도구 현황 등을 한눈에 파악할 수 있다. 각 다이어그램은 Miroboard에서 실시간 편집이 가능하며, 실제 내부 엔지니어 온보딩에 활용되고 있다. 이 방식은 반복적인 설명 없이도 신규 개발자가 시스템을 빠르게 이해할 수 있게 해준다.",
         "axioms": [
           {
-            "label": "Why it matters",
-            "content": "코드만으로 시스템 구조를 시각화해 개발 효율과 온보딩 속도를 높일 수 있다."
-          },
-          {
             "label": "The big picture",
             "content": "AI와 협업 도구의 결합으로 소프트웨어 문서화와 시각화가 자동화되는 트렌드를 보여준다."
           },
@@ -848,6 +491,12 @@
             "content": "자동 생성 다이어그램은 개발자 협업과 시스템 이해도를 크게 높여준다."
           }
         ]
+      },
+      "apply_points": {
+        "level": 2,
+        "where": "orchestration/documentation + index-system",
+        "what": "시스템 아키텍처 다이어그램을 수동으로 그리지 말고, 코드베이스 스캔으로 자동 생성하는 스크립트를 파이프라인에 포함시켜라",
+        "why": "Miro MCP + Claude 조합이 코드에서 직접 다이어그램을 추출하는 방식으로 '문서는 항상 낡는다'는 문제를 구조적으로 제거했다 — 수동 다이어그램은 코드와 즉시 불일치가 발생한다"
       }
     }
   },
@@ -945,10 +594,6 @@
         "what": "워크트리와 AI 기반 자동 커밋/머지 스킬을 활용하면, 여러 브랜치의 작업을 독립적으로 병렬 처리하고, 커밋 히스토리와 컨플릭트 관리까지 자동화할 수 있다. 영상은 브랜치 전략, 워크트리 개념, 실전 적용법, 자동화 흐름, 그리고 실제 사용 시 얻을 수 있는 이점까지 단계별로 설명한다. 실제 스크립트와 설정 예시, 자동화된 커밋/머지 과정, 실질적 개발 효율성 증대 사례를 통해, 복잡한 협업 환경에서도 신뢰성 있는 소스 관리가 가능함을 보여준다. 결론적으로, 이 스킬과 훅은 개발자의 시간과 뇌 용량을 극대화하는 도구다.",
         "axioms": [
           {
-            "label": "Why it matters",
-            "content": "병렬 개발과 자동화는 현대 소프트웨어 개발의 필수 역량이다."
-          },
-          {
             "label": "The big picture",
             "content": "AI와 자동화 도구가 개발 프로세스의 표준이 되고 있다."
           },
@@ -973,6 +618,14 @@
             "content": "워크트리와 자동화 스킬로 개발 생산성과 신뢰성을 동시에 잡을 수 있다."
           }
         ]
+      },
+      "apply_points": {
+        "level": 1,
+        "where": "orchestration/git worktree + commit 전략",
+        "what": "병렬 worktree 작업 시 각 worktree에서 WP Commit을 자주 남기고, 머지 시 스쿼시해 결정·이유·변경 내용이 모두 기록된 최종 커밋을 만들어라",
+        "why": "git worktree에 자동 커밋/머지 훅을 결합한 패턴이 커밋 히스토리를 문서화·AI 컨텍스트·회고에 재활용 가능한 자산으로 만든다는 것을 영상이 보여줬고, Paul이 이미 worktree를 사용 중이라 즉시 적용 가능하다",
+        "how": "worktree 세션 중 의미 있는 단위마다 WP 커밋, 머지 전 squash로 히스토리 정리. commit 메시지에 '결정 이유' 한 줄 필수",
+        "when": "worktree 병렬 개발 세션 시작 시"
       }
     }
   },
@@ -1075,10 +728,6 @@
         "what": "Cloud Code는 컨텍스트 윈도우가 가득 차면 이전 정보를 잊어버려 코드 품질이 떨어진다. 이를 해결하기 위해 상태 표시줄로 컨텍스트를 모니터링하고, Superpowers 플러그인으로 서브 에이전트 기반 개발을 도입한다. 추가로 Sequential Thinking과 Context 7 플러그인으로 사고력과 최신성 문제를 보완한다. Warp 터미널과 Happy Engineering 앱을 활용하면 작업 효율과 이동성을 극대화할 수 있다. 마지막으로, 반복 작업은 커스텀 스킬로 자동화해 시간과 노력을 절약한다. 이 모든 과정을 통해 Cloud Code를 더 똑똑하고 생산적으로 사용할 수 있다.",
         "axioms": [
           {
-            "label": "Why it matters",
-            "content": "Cloud Code의 컨텍스트 윈도우 한계는 AI 코딩의 생산성과 정확성을 크게 저해한다."
-          },
-          {
             "label": "Be smart",
             "content": "컨텍스트 모니터링과 서브 에이전트 기반 개발, 최신 정보 플러그인 도입으로 AI 코딩 효율을 극대화하라."
           },
@@ -1095,6 +744,14 @@
             "content": "Cloud Code와 AI 개발 도구들이 점점 더 복잡한 협업과 자동화 구조로 진화하고 있다."
           }
         ]
+      },
+      "apply_points": {
+        "level": 1,
+        "where": "orchestration/Context Engineering + compact 전략",
+        "what": "Claude Code 컨텍스트 윈도우가 50% 도달 시 즉시 checkpoint를 실행하고, 70%에서 compact를 강제하라",
+        "why": "영상이 컨텍스트 50% 초과 시 이미 중요한 정보 손실이 시작된다고 실측 확인했고, 이는 Paul의 Gate 설계(500K checkpoint / 700K compact)와 정확히 같은 임계값이다 — 독립적 검증이 기준의 정확성을 확인했다",
+        "how": "현재 orchestration context-cascade Gate A/B/C 임계값 유지. 50% 시점에 /checkpoint 커맨드를 habit으로 실행",
+        "when": "Claude Code 세션 중 토큰 카운터가 50% 도달 시"
       }
     }
   },
@@ -1183,10 +840,6 @@
         "what": "AI를 잘 쓰는 사람은 첫 답변에서 끝내지 않고 반복적으로 질문하고, 결과물을 꼼꼼히 검증하며, 명확한 협업 규칙을 세운다. 엔스로픽의 만 명 분석 결과, 반복과 다듬기 행동이 AI 플루언시의 핵심임이 데이터로 확인됐다. 코드나 문서처럼 결과물이 명확할수록 오히려 검증이 줄어드는 경향이 있어 주의가 필요하다. 실제로 선호도와 규칙을 명확히 밝힌 사용자일수록 협업 품질이 높았다. 결론적으로, AI를 동료로 대하고 반복-검증-명확화 습관을 갖는 것이 AI 시대의 경쟁력이다.",
         "axioms": [
           {
-            "label": "Why it matters",
-            "content": "AI 활용 습관이 생산성과 협업 품질을 결정한다."
-          },
-          {
             "label": "By the numbers",
             "content": "전체 대화의 85.7%에서 반복과 다듬기 행동이 관찰됐다."
           },
@@ -1211,6 +864,12 @@
             "content": "AI를 동료로 대하고 반복-검증-명확화 습관을 갖는 것이 핵심이다."
           }
         ]
+      },
+      "apply_points": {
+        "level": 2,
+        "where": "orchestration/CLAUDE.md + skills 시스템",
+        "what": "CLAUDE.md와 각 스킬 파일에 작업 선호도·협업 규칙·금지 패턴을 명시적으로 기록하고, 세션 시작마다 AI가 이를 참조하도록 구조화하라",
+        "why": "Anthropic의 9,830건 분석에서 선호도와 협업 규칙을 명시적으로 전달한 사용자가 30%뿐이었고, 이 한 줄의 규칙이 세션 품질 전체를 바꾼다는 것이 데이터로 확인됐다"
       }
     }
   },
@@ -1298,10 +957,6 @@
         "what": "15% 할인액이 30 reais인 상품의 원래 가격을 비례식으로 구하는 방법을 단계별로 설명한다. 먼저 전체 가격을 X로 두고, 15%가 30 reais임을 비례식으로 연결한다. 교차 곱셈과 나눗셈을 통해 X = 200임을 계산한다. 이 과정을 통해 비례식 활용법과 실생활 적용법을 익힐 수 있다.",
         "axioms": [
           {
-            "label": "Why it matters",
-            "content": "비례식과 할인 문제는 실생활 금융에서 자주 활용되므로 실용적이다."
-          },
-          {
             "label": "Be smart",
             "content": "문제를 직접 풀어보고 해설과 비교하는 습관이 중요하다."
           },
@@ -1314,6 +969,12 @@
             "content": "비례식과 교차 곱셈을 통해 원래 가격이 200 reais임을 도출한다."
           }
         ]
+      },
+      "apply_points": {
+        "level": 2,
+        "where": "orchestration/파이프라인 설계",
+        "what": "시스템 설계 시 목표 상태를 먼저 정의하고, 역으로 그 상태에 도달하기 위한 조건과 단계를 추론하라",
+        "why": "결과에서 원인을 거슬러 올라가는 역산 사고법은 시스템 설계에서 목표 상태를 먼저 정의하고 조건을 역으로 도출하는 접근과 구조적으로 동일하다"
       }
     }
   },
@@ -1416,10 +1077,6 @@
         "what": "스킬 자동 개선 루프는 AI가 스킬 코드를 자율적으로 수정하고 테스트해 성능을 향상시키는 시스템이다. Andre Carpathy의 auto research 아이디어를 기반으로, Claude Code 스킬에 적용해 skill.md 파일을 반복 수정하며 25개의 이진 assertion 테스트를 통과율로 평가한다. 이 과정은 인간 개입 없이 무한 반복되며, 스킬 활성화 개선과 출력 품질 개선 두 단계로 구성된다. 실제 마케팅 카피라이팅 스킬에 적용해 성공률 95.8%에서 완벽한 점수로 개선하는 사례를 보여준다. 또한 Claw Code 기반 완전한 에이전트 운영체제를 통해 비즈니스 전반을 자동화하고 최적화할 수 있다.",
         "axioms": [
           {
-            "label": "Why it matters",
-            "content": "스킬 개선 자동화는 반복적이고 느린 수동 작업을 대체해 생산성을 극대화하며, AI가 스스로 개선하는 자율 시스템 구축에 필수적이다."
-          },
-          {
             "label": "The big picture",
             "content": "AI 자율 개선 루프는 미래 비즈니스 자동화와 AI 활용의 핵심 트렌드로, 지속적 성능 향상을 가능하게 한다."
           },
@@ -1436,6 +1093,14 @@
             "content": "Claw Code 기반 완전한 에이전트 운영체제의 확장과 실제 비즈니스 적용 사례가 주목된다."
           }
         ]
+      },
+      "apply_points": {
+        "level": 1,
+        "where": "orchestration/skills 자동 개선 루프",
+        "what": "각 스킬에 이진 assertion 테스트(true/false로 판별 가능한 기준 20개 이상)를 작성하고, 실패 항목의 패턴을 스킬 본문에 규칙으로 추가하는 자동 개선 루프를 구축하라",
+        "why": "Claude Code 스킬에 auto-research 루프를 적용해 마케팅 스킬을 95.8%에서 100%로 개선한 사례가 검증됐다. 주관적 평가는 인간이, 객관적 평가(단어 수, 금지 패턴, 형식)는 자동 루프가 담당한다",
+        "how": "각 스킬 파일에 Tests 섹션 추가 → 이진 assertion 20+ 작성 → /auto-iterate 스킬로 실패 항목 분석 → 규칙 추가 → 재테스트",
+        "when": "스킬 초안 완성 후, 또는 스킬 품질 불만족 시"
       }
     }
   },
@@ -1533,10 +1198,6 @@
         "what": "Claude Co-work는 복사 작성, 시각 자료 제작, 리서치, 데이터 분석, SEO 등 마케팅 전 과정을 자동화하는 스킬 기반 플랫폼이다. 사용자는 스킬을 직접 만들고, 참조 문서와 브랜드 가이드라인을 활용해 맞춤형 자동화를 구축할 수 있다. 스킬은 점진적으로 개선되며, 명령어와 스케줄링 기능으로 복잡한 워크플로우도 자동화 가능하다. 예를 들어, 뉴스레터 작성 스킬은 유튜브 영상 스크립트 스크래핑부터 앵글 선정, 아웃라인 작성, 최종 원고 생성까지 단계별로 진행된다. 시각 자료는 Google Nano Banana MCP를 통해 브랜드 스타일에 맞게 생성하며, 데이터 분석과 SEO 감사도 스킬로 자동화한다. 이 모든 과정은 반복 작업을 줄이고 팀의 생산성을 극대화한다.",
         "axioms": [
           {
-            "label": "Why it matters",
-            "content": "마케팅 자동화는 반복 업무를 줄이고 생산성을 극대화하는 핵심 전략이다."
-          },
-          {
             "label": "Be smart",
             "content": "스킬 구축에 시간과 노력을 투자해 참조 문서를 체계적으로 관리하면 결과물의 품질이 크게 향상된다."
           },
@@ -1553,6 +1214,14 @@
             "content": "더 많은 스킬과 커넥터, 명령어 활용법은 영상 설명란의 커뮤니티 링크에서 확인할 수 있다."
           }
         ]
+      },
+      "apply_points": {
+        "level": 1,
+        "where": "tech-review/파이프라인 + orchestration/skills",
+        "what": "스킬이 참조하는 외부 문서(브랜드 가이드, ICP, 전략 문서)를 체계적으로 관리하는 참조 파일 레지스트리를 만들고, 스킬 업데이트 시 참조 파일도 함께 갱신하라",
+        "why": "Claude Cowork 마케팅 자동화에서 스킬의 실제 품질은 명령 구조가 아니라 참조 문서 품질이 결정한다는 것이 확인됐다. 중복 방지를 위한 데이터베이스 관리 없이는 아이디어 풀이 오염된다",
+        "how": "orchestration/references/ 폴더 생성, 스킬별 참조 파일 목록을 frontmatter에 refs 필드로 명시, 월 1회 freshness 점검",
+        "when": "스킬 신규 생성 시 및 참조 문서 변경 시"
       }
     }
   },
@@ -1661,10 +1330,6 @@
         "what": "클로드 코드 팀스는 여러 개의 독립적인 클로드 코드 인스턴스를 한 곳에서 오케스트레이션할 수 있는 공식 기능이다. 기존 서브에트 방식과 달리, 각 인스턴스가 완전히 분리되어 실시간 메시지 교환과 병렬 작업이 가능하다. 설정 파일과 tmux 등 도구를 활용해 손쉽게 활성화할 수 있으며, 복잡한 협업이나 교차 계층 작업에 특히 강점을 보인다. 단, 토큰 소모가 많으므로 작업 특성에 따라 서브에트와 팀스를 구분해 사용하는 전략이 필요하다. 실제 사용 경험을 통해 상황별 최적의 활용법을 익히는 것이 중요하다.",
         "axioms": [
           {
-            "label": "Why it matters",
-            "content": "팀스는 개발 협업의 병목을 해소하고, 병렬 작업을 통해 생산성을 극대화한다."
-          },
-          {
             "label": "The big picture",
             "content": "AI 기반 개발 도구의 진화가 협업 방식 자체를 혁신하고 있다."
           },
@@ -1693,6 +1358,12 @@
             "content": "복잡한 협업과 병렬 작업에는 팀스가, 단순 반복 작업에는 서브에트가 적합하다."
           }
         ]
+      },
+      "apply_points": {
+        "level": 2,
+        "where": "orchestration/멀티에이전트 전략",
+        "what": "복잡한 협업·일관성 유지 작업에만 Agent Teams를 선택하고, 단순 순차 작업과 동일 파일 편집은 서브에이전트 구조를 유지하라",
+        "why": "Claude Code Teams가 인스턴스 간 직접 메시지 교환을 가능하게 하지만 토큰 소모가 크게 증가하고, Windows에서 teammate 모드가 미지원(Paul 환경)이라 수동 tmux pane이 현실적 대안이다"
       }
     }
   },
@@ -1800,10 +1471,6 @@
         "what": "Claude Code를 800시간 넘게 실전 투입한 경험을 바탕으로, 반복 작업 자동화, 최신 문서 활용, 병렬 작업, 플러그인 등 핵심 기능과 실전 워크플로우를 소개한다. 각 기능은 실제 개발 현장에서 시간을 절약하고, 코드 품질을 높이는 데 중점을 둔다. MCP 서버와 커스텀 커맨드, 서브 에이전트 등은 복잡한 작업을 효율적으로 분산 처리하게 해준다. 플러그인으로 워크플로우를 쉽게 공유·복제할 수 있어, 초보자도 빠르게 실무 환경을 구축할 수 있다. 무엇보다 AI를 도구로 활용하되, 명확한 프롬프트와 인간의 검증이 필수임을 강조한다.",
         "axioms": [
           {
-            "label": "Why it matters",
-            "content": "AI 도구의 효율적 활용은 개발자의 생산성과 코드 품질을 직접적으로 좌우한다."
-          },
-          {
             "label": "The big picture",
             "content": "AI 기반 개발 환경이 점점 복잡해지고, 자동화·병렬화·플러그인화가 대세가 되고 있다."
           },
@@ -1824,6 +1491,12 @@
             "content": "AI가 코드를 생성해도, 최종 책임과 품질 관리는 개발자에게 있다."
           }
         ]
+      },
+      "apply_points": {
+        "level": 2,
+        "where": "orchestration/skills + Claude Code 운영",
+        "what": "반복 사용하는 프롬프트를 커스텀 커맨드로 패키지화하고, Context 7 MCP를 연결해 최신 API 문서가 자동 주입되도록 설정하라",
+        "why": "800시간 실전 운용에서 커스텀 커맨드 라이브러리와 Context 7 MCP가 솔로 개발자가 팀 규모 산출물을 내는 핵심 인프라임이 확인됐다 — 'use context 7' 한 줄이 매번 구글링을 대체한다"
       }
     }
   },
@@ -1923,10 +1596,6 @@
         "what": "클로드 코드와 Visualization 스킬을 설치하면 PPT, 보고서, 차트 등 다양한 업무 산출물을 명령어 한 줄로 자동 생성할 수 있다. Cowork, GitHub 등으로 스킬을 쉽게 설치하고, 플러그인 형태로 바로 활용 가능하다. 웹사이트(HTML) 기반 결과물은 기존 소프트웨어보다 더 자유롭고 강력한 시각화가 가능하며, 이미지·HTML 등 다양한 형식으로 저장·공유할 수 있다. 실제 영상에서는 슬라이드, 대시보드, 포스터, 인포그래픽 등 다양한 실전 예시를 통해 업무 자동화와 효율 극대화 과정을 보여준다. 개발 지식이 없어도 누구나 AI와 에이전트로 업무 혁신을 경험할 수 있다.",
         "axioms": [
           {
-            "label": "Why it matters",
-            "content": "AI 스킬로 누구나 개발자처럼 업무 자동화가 가능해져, 업무 효율이 혁신적으로 높아진다."
-          },
-          {
             "label": "The big picture",
             "content": "웹사이트와 AI 에이전트가 기존 오피스 소프트웨어를 대체하는 시대가 도래했다."
           },
@@ -1947,6 +1616,12 @@
             "content": "컴포넌트 갤러리, Cowork, GitHub 등 다양한 도구와 자료를 활용해 원하는 시각화 방식을 손쉽게 찾을 수 있다."
           }
         ]
+      },
+      "apply_points": {
+        "level": 2,
+        "where": "tech-review/UI 실험 + portfolio",
+        "what": "보고서·대시보드 등 시각화가 필요한 산출물을 PPT 대신 HTML로 생성하고, 이미지로 내보내 기존 문서 흐름에 삽입하라",
+        "why": "Visualization 스킬 + Claude Code 조합이 자연어 명령 한 번으로 PPT보다 자유로운 시각화를 HTML로 생성함을 보였다 — HTML은 레이아웃 제약이 없고 이미지 추출이 가능하다"
       }
     }
   },
@@ -2045,10 +1720,6 @@
         "what": "클로드 코드에 스케줄링(크론잡) 기능이 공식 도입됐다. 슬래시 스케줄/루프 명령어로 다양한 반복 작업을 손쉽게 등록할 수 있고, 크론식 표현을 통한 세밀한 주기 설정도 지원한다. 워크트리 분리, 외부 서비스 연동 등 실전 활용도가 높으며, 컨텍스트 스위칭 최소화로 집중력과 생산성이 향상된다. 다만, 3일 이상 반복 등 일부 제한과 복잡한 자동화는 오픈클로가 더 적합하다. 각자의 워크플로에 맞게 테스트하고 적용하는 것이 중요하다.",
         "axioms": [
           {
-            "label": "Why it matters",
-            "content": "공식 스케줄링 기능 도입으로 반복 작업 자동화가 쉬워졌고, 개발자 생산성에 직접적 영향을 준다."
-          },
-          {
             "label": "The big picture",
             "content": "코딩 툴 내 자동화 트렌드가 확산되며, 개발 환경의 통합과 효율화가 가속화되고 있다."
           },
@@ -2069,6 +1740,14 @@
             "content": "커뮤니티 피드백과 예제를 참고해 다양한 테스트를 해보는 것이 실전 적용에 도움이 된다."
           }
         ]
+      },
+      "apply_points": {
+        "level": 1,
+        "where": "orchestration/Claude Code 스케줄러",
+        "what": "로그 수집·에러 모니터링·배포 상태 체크 등 현재 작업과 밀접한 반복 업무를 Claude Code 크론잡 스케줄러로 등록하고, 3일 이상 주기의 복잡한 자동화는 별도 도구를 유지하라",
+        "why": "Claude Code에 공식 크론잡 스케줄링이 추가되면서 외부 도구 전환 없이 반복 작업을 코딩 환경 안에서 완결할 수 있게 됐다. 단, 초 단위·3일 이상 주기는 제한이 있어 복잡한 장기 실행은 전용 도구가 적합하다",
+        "how": "claude schedule add 명령으로 등록. 현재 Claude Code 세션과 직접 연관된 반복 업무만 등록, 독립 자동화는 n8n 유지",
+        "when": "새 반복 업무 발생 시 또는 외부 스케줄러 마이그레이션 검토 시"
       }
     }
   },
@@ -2183,10 +1862,6 @@
         "what": "클로드, 코워크, 클로드 코드는 각각 전략, 실무, 개발 자동화라는 명확한 역할 분담을 가진다. 영상은 마케터의 맥북 런칭 프로젝트를 예시로, 각 도구의 실제 활용 흐름을 단계별로 보여준다. 클로드는 전략 수립과 외부 자료 연동, 코워크는 폴더 분석과 반복 업무 자동화, 클로드 코드는 데이터 수집·분석·자동화 및 전문가 협업까지 담당한다. 서브 에이전트, 스킬, MCP, 에이전트 팀즈 등 확장 기능을 통해 반복 업무와 협업의 효율성을 높일 수 있다. 결론적으로, 각 도구의 강점을 조합해 실무에 적용하면 AI 기반 업무 혁신이 가능하다.",
         "axioms": [
           {
-            "label": "Why it matters",
-            "content": "AI 도구별 차이와 실제 활용법을 알면 실무 자동화와 협업 효율이 극대화된다."
-          },
-          {
             "label": "The big picture",
             "content": "AI 기반 업무 자동화와 협업이 실무 현장에 빠르게 확산되고 있다."
           },
@@ -2207,6 +1882,12 @@
             "content": "AI 도구의 활용 범위가 점점 넓어지며, 자동화와 협업의 수준이 고도화될 전망이다."
           }
         ]
+      },
+      "apply_points": {
+        "level": 2,
+        "where": "orchestration/도구 선택 전략",
+        "what": "Claude·Claude Cowork·Claude Code를 전략/파일기반자동화/개발 로 역할을 고정하고, 단계별 도구 전환을 작업 인테이크 시 명시하라",
+        "why": "월 30만 원 베타테스터가 실전에서 정리한 세 도구의 역할 분리가 도구 혼용으로 인한 비효율을 제거한다는 것을 실용적으로 확인했다"
       }
     }
   },
@@ -2303,10 +1984,6 @@
         "what": "프로젝트 관리와 품질 보장을 위한 스킬 구조와 예제가 무료로 배포된다. 스킬은 프론트메터, 마크다운 바디, 외부 레퍼런스 파일의 3단계로 설계되어, 컨텍스트와 토큰 사용을 극대화로 절약한다. 매니지 스킬로 모든 스킬의 생성, 업데이트, 삭제를 자동화하며, 베리파이 임플리멘테이션 스킬로 전체 스탠더드 준수 여부를 한 번에 점검할 수 있다. 단계적 공개(progressive disclosure) 방식과 오픈소스 특성으로 다양한 AI 인터페이스에서 활용 가능하다. 결론적으로, 이 구조는 대규모 프로젝트의 표준화와 자동화, 생산성 향상에 최적화된 솔루션이다.",
         "axioms": [
           {
-            "label": "Why it matters",
-            "content": "대규모 프로젝트의 품질 관리와 표준 준수를 자동화해 개발 효율을 극대화할 수 있다."
-          },
-          {
             "label": "The big picture",
             "content": "스킬 구조는 AI 활용 프로젝트의 관리 자동화와 컨텍스트 최적화라는 최신 트렌드를 반영한다."
           },
@@ -2331,6 +2008,14 @@
             "content": "스킬 구조와 자동화 도구는 복잡한 프로젝트의 일관성과 생산성을 혁신적으로 개선한다."
           }
         ]
+      },
+      "apply_points": {
+        "level": 1,
+        "where": "orchestration/skills 시스템",
+        "what": "스킬 파일을 프론트메터(~100 토큰 상시 로딩) → 마크다운 바디(트리거 시 로딩) → 외부 참조 파일(필요 시만 로딩) 3단계로 구조화하고, verify 스킬을 병렬 실행해 push 전 전체 스탠더드를 점검하라",
+        "why": "Progressive Disclosure 3단계 스킬 구조가 Paul의 skills 시스템과 구조적으로 동일하며, verify 스킬 18개 병렬 실행으로 프로젝트 전체 스탠더드를 한 번에 점검하는 방식이 harden 파이프라인과 직접 대응된다",
+        "how": "skills/*.md 각 파일: frontmatter(name/description/when) → Body(실행 지시) → References(외부 파일 경로). /verify 스킬을 병렬 실행하는 /harden-check 커맨드 생성",
+        "when": "스킬 신규 작성 시 및 git push 전 harden 단계"
       }
     }
   },
@@ -2424,10 +2109,6 @@
         "what": "클로드 스킬스는 사용자의 전문 지식과 코드를 폴더 구조로 패키징하여, 클로드가 필요에 따라 동적으로 로딩·실행하는 기능이다. 핵심 구조는 스킬.md와 관련 파일들로 구성되며, progressive disclosure 방식으로 컨텍스트 소모를 최소화한다. 전통적 코드 실행과 결합해 디터미니스틱(항상 같은 결과) 자동화가 가능하다. 커스텀 커맨드/서베이전트와 달리, 자동 실행·컨텍스트 절약·일관성에서 차별화된다. 실제 PDF 변환 예제처럼 반복적 작업, 자동화에 강력한 효과를 발휘한다.",
         "axioms": [
           {
-            "label": "Why it matters",
-            "content": "스킬스는 LLM 자동화의 효율성과 신뢰성을 크게 높인다."
-          },
-          {
             "label": "The big picture",
             "content": "LLM 기반 에이전트의 확장성과 자동화 패러다임을 바꾼다."
           },
@@ -2452,6 +2133,14 @@
             "content": "스킬스는 효율적이고 신뢰성 높은 LLM 자동화의 핵심 도구다."
           }
         ]
+      },
+      "apply_points": {
+        "level": 1,
+        "where": "orchestration/skills 시스템",
+        "what": "스킬 description을 최대한 상세히 작성해 Claude가 자동 실행 조건을 정확히 판단하도록 하고, 바디는 5,000 토큰 미만을 유지하라",
+        "why": "Claude Skills의 Progressive Disclosure 아키텍처에서 description이 자동 실행 트리거 정확도를 결정하고, 바디 5,000 토큰 제한이 자동 실행의 전제 조건이다 — description 부실 = 스킬 비활성화와 같다",
+        "how": "스킬 작성 시 description 필드에: 1) 언제 이 스킬이 필요한지, 2) 이 스킬이 하는 것, 3) 이 스킬이 하지 않는 것을 각 1문장씩 기록. 바디 토큰 초과 시 외부 파일로 분리",
+        "when": "스킬 신규 작성 또는 기존 스킬 개선 시"
       }
     }
   },
@@ -2544,10 +2233,6 @@
         "what": "에이전트 팀은 클라우드 코드에서 복잡한 협업과 병렬 작업을 가능하게 하는 혁신적 구조입니다. 기존 단일/서브 에이전트 구조의 한계를 극복하고, 팀메이트 간 직접 소통과 일관성 있는 결과물을 제공합니다. 실제 적용을 위해서는 실험적 기능 활성화, 버전 관리, 프롬프트 명확화가 필수입니다. 작업의 복잡도와 협업 필요성에 따라 단일, 서브, 팀 구조를 구분해 사용해야 하며, 팀 구조는 토큰 비용과 컨텍스트 관리에 주의해야 합니다. 결론적으로, 프로젝트 특성에 맞는 에이전트 구조 선택이 AI 생산성의 핵심입니다.",
         "axioms": [
           {
-            "label": "Why it matters",
-            "content": "복잡한 AI 프로젝트에서 협업 효율성과 품질을 높일 수 있기 때문입니다."
-          },
-          {
             "label": "The big picture",
             "content": "AI 코드 자동화와 협업 구조의 진화는 생산성 혁신의 핵심 트렌드입니다."
           },
@@ -2568,6 +2253,22 @@
             "content": "실제 설정법, 프롬프트 예시, 다양한 사용 사례는 영상과 공식 문서를 참고하세요."
           }
         ]
+      },
+      "apply_points": {
+        "level": 1,
+        "where": "orchestration",
+        "what": "AGENTS.md Workers 정의에 작업 위임 판단 매트릭스를 추가하라: 작업 복잡도, 컨텍스트 전환 비용, 인간 개입 필요성을 기준으로 Workers 3개 각각의 위임 임계값을 명시하라",
+        "why": "영상은 Claude Code를 단일 컨텍스트로 사용하면 대규모 프로젝트에서 품질이 저하된다고 지적했다. 현재 Workers 3개 정의에 어떤 조건에서 위임하는지 기준이 없어 위임 결정이 즉흥적이다",
+        "how": "AGENTS.md Workers 섹션에 위임 테이블 추가: 작업규모(파일수)|컨텍스트비용|전환권장|위임대상. Workers 3개(code-reviewer/compressor/commit-writer) 각각에 위임 조건과 위임 불가 조건을 명시. Windows 환경 teammate 불가 시 tmux pane 대안 포함",
+        "when": "다음 Workers 정의 갱신 시"
+      },
+      "apply_point_5w1h": {
+        "level": 1,
+        "where": "orchestration",
+        "what": "AGENTS.md Workers 섹션에 구조 선택 매트릭스를 추가하라: 단일/서브/팀 구조 전환 조건(작업 복잡도, 파일 분리 가능 여부, 협업 필요성)을 명시하라",
+        "why": "영상이 단일→서브→팀 구조의 병목 이동 패턴을 증명했다. 공유 작업 목록 기반 팀메이트 간 직접 통신이 가능하지만 Windows에서 teammate 모드가 미지원임이 확인됐다. Workers 3개 설계에 선택 근거가 없으면 확장 시 판단 기준이 없어진다",
+        "how": "AGENTS.md Workers 섹션에 테이블 추가: 작업유형|병목위치|추천구조|전환조건. Workers 3개(code-reviewer/compressor/commit-writer)는 협업 불필요 독립 실행 조건 만족임을 명시. Windows 미지원으로 수동 tmux pane이 현재 Teams 대안임을 기록",
+        "when": "다음 Workers 구조 검토 전"
       }
     }
   },
@@ -2675,10 +2376,6 @@
         "what": "구독 결제 구현은 단순 자동 결제를 넘어 구독 상태 관리, 취소 및 철회, 업그레이드/다운그레이드 기능을 포함한다. 본 영상은 Ruby on Rails와 Tailwind CSS를 활용해 회원가입부터 구독 모델 설계, 토스페이먼츠 연동, 자동 갱신 잡 처리, 관리자 페이지 및 디자인 개선까지 단계별로 상세히 구현하는 과정을 다룬다. 특히 구독 취소는 즉시 해지가 아닌 기간 만료 후 적용되며, 잡을 통해 사용자별 결제 주기에 맞춘 자동 갱신이 필수임을 강조한다. 또한 개발 환경에서 테스트 편의를 위한 갱신 주기 단축, AI를 활용한 디자인 개선 전략도 소개한다. 결론적으로, 이 영상은 구독 결제의 복잡한 로직을 체계적으로 구현하는 실무 가이드 역할을 한다.",
         "axioms": [
           {
-            "label": "Why it matters",
-            "content": "구독 결제는 사용자 경험과 서비스 운영에 핵심적인 기능으로, 정확한 상태 관리와 자동 갱신 구현이 필수적이다."
-          },
-          {
             "label": "The big picture",
             "content": "구독 결제는 SaaS와 멤버십 서비스의 주요 수익 모델로 자리 잡으며, 자동화와 사용자 편의성 강화가 산업 전반의 트렌드다."
           },
@@ -2695,6 +2392,11 @@
             "content": "향후 구독 결제 기능 고도화, 보안 강화, 다양한 결제 수단 추가 연동 등이 주목할 만하다."
           }
         ]
+      },
+      "apply_points": {
+        "level": 3,
+        "what": "상태 머신이 필요한 기능을 구현할 때, 코드보다 먼저 상태 전이 다이어그램(활성→취소예정→만료→실패)을 확정하라. edge case(업그레이드, 다운그레이드, 취소 철회)를 코드 작성 전에 UX 정책으로 결정하라.",
+        "why": "영상에서 구독 결제의 핵심은 자동 결제 자체가 아니라 취소→철회→업그레이드→다운그레이드의 상태 전환 로직이라고 강조. 사용자별 결제일이 달라서 자동 갱신 잡을 매일 실행해야 한다는 실전 함정도 언급."
       }
     }
   },
@@ -2777,13 +2479,9 @@
         "Anti-gravity"
       ],
       "smart_brevity": {
-        "why": "이 영상은 과거 고가였던 3D 애니메이션 웹사이트를 누구나 저렴하고 빠르게 제작할 수 있음을 보여주어 웹 개발과 디자인의 진입장벽을 크게 낮춘다.",
+        "why": "과거 고가였던 3D 애니메이션 웹사이트를 누구나 저렴하고 빠르게 제작할 수 있음을 보여주어 웹 개발과 디자인의 진입장벽을 크게 낮춘다.",
         "what": "15분 만에 3D 스크롤 효과가 포함된 고품질 웹사이트를 2~3달러 토큰 비용으로 제작하는 방법을 소개한다. 핵심은 클라우드 코드에 간단한 명령어를 입력해 스킬을 호출하고, Clling 3.0으로 애니메이션을 생성한 뒤, 이를 웹사이트에 통합하는 3단계 프로세스다. 영상은 제작 과정, 애니메이션 최적화, 무료 호스팅 배포까지 상세히 시연하며, 복잡한 기존 방법과 달리 매우 간단하고 효율적임을 강조한다. 결과적으로 누구나 쉽게 세련된 3D 웹사이트를 만들 수 있음을 증명한다.",
         "axioms": [
-          {
-            "label": "Why it matters",
-            "content": "이 영상은 과거 고가였던 3D 애니메이션 웹사이트를 누구나 저렴하고 빠르게 제작할 수 있음을 보여주어 웹 개발과 디자인의 진입장벽을 크게 낮춘다."
-          },
           {
             "label": "The big picture",
             "content": "웹사이트 제작이 AI와 자동화 도구 덕분에 빠르고 저렴해지면서, 고급 디자인도 일반인에게 접근 가능해졌다."
@@ -2801,6 +2499,21 @@
             "content": "앞으로 AI 기반 웹사이트 제작 도구들이 더욱 발전해, 개인과 소규모 기업의 웹 개발 환경을 혁신할 것으로 기대된다."
           }
         ]
+      },
+      "apply_points": {
+        "level": 2,
+        "where": "portfolio",
+        "what": "portfolio 히어로 섹션에 JPEG 시퀀스 기반 스크롤 애니메이션 PoC를 구현하라",
+        "why": "영상은 Kling 3D 애니메이션, JPEG 시퀀스, 스크롤 연동으로 15K 달러급 시각 효과를 3달러 비용으로 구현했다. portfolio 100vh 히어로 영역이 정적 이미지로 방치되어 체류 시간 개선 여지가 있다",
+        "how": "ffmpeg로 영상을 프레임 분리한 뒤 JS 스크롤 이벤트에 frame index를 바인딩하는 PoC 작성. Lighthouse performance 측정 후 WebP 변환 또는 lazy-load 적용 여부 결정",
+        "when": "portfolio 히어로 리뉴얼 작업 착수 시"
+      },
+      "apply_point_5w1h": {
+        "level": 2,
+        "where": "portfolio",
+        "what": "portfolio 히어로 섹션에 JPEG 프레임 시퀀스 스크롤 애니메이션 PoC를 구현하라",
+        "why": "영상이 Kling 3D 애니메이션→JPEG 프레임 추출→스크롤 위치 연동으로 15K 수준 시각 효과를 3달러 토큰 비용으로 달성했다. portfolio 100vh 스냅 스크롤 구조에 시각 임팩트 강화가 열린 과제로 남아 있다",
+        "how": "ffmpeg로 프레임 추출 후 JS 스크롤 이벤트와 frame index 연동 PoC 작성. Lighthouse performance 측정 후 WebP 변환 또는 lazy-load 적용 여부 결정"
       }
     }
   },
@@ -2905,10 +2618,6 @@
         "what": "AI 기반 Claude Code와 front-end design 스킬을 활용해 동일한 가상 비즈니스 아이디어로 UI 디자인을 생성하는 챌린지가 진행 중이다. 참가자는 Claude Code 설치, 스킬 추가, 프롬프트 작성, 결과 제출의 4단계로 참여한다. 프롬프트에 자신의 디자인 선호와 구체적 요구를 담아 다양한 결과를 실험할 수 있다. 결과물은 스크린샷 또는 Figma 링크로 제출하며, 반복적인 프롬프트 개선을 통해 최적의 디자인을 도출할 수 있다. 이 과정을 통해 AI의 디자인 생성 능력과 프롬프트 설계의 중요성을 체감할 수 있다.",
         "axioms": [
           {
-            "label": "Why it matters",
-            "content": "AI와 프롬프트 설계만으로도 차별화된 UI 디자인을 빠르게 만들 수 있다는 점이 실무에 큰 변화를 가져온다."
-          },
-          {
             "label": "The big picture",
             "content": "AI 도구의 발전으로 디자이너의 역할과 워크플로우가 빠르게 변화하고 있다."
           },
@@ -2925,6 +2634,22 @@
             "content": "Figma 플러그인, 챌린지 템플릿 등 추가 자료는 영상 설명란의 링크를 참고할 수 있다."
           }
         ]
+      },
+      "apply_points": {
+        "level": 1,
+        "where": "orchestration",
+        "what": ".agents/skills/frontend-design/skill.md에 DESIGN_INTENT 고정 템플릿을 추가하라",
+        "why": "영상은 단일 Claude Code 세션에서 프롬프트 없이 프로젝트 하나의 일관된 품질을 유지했다. 현재 skill.md에 색상, 레이아웃, 애니메이션 의도를 담는 템플릿이 없어 매번 별도 프롬프트를 작성해야 한다",
+        "how": "skill.md 상단에 DESIGN_INTENT 섹션 추가: color_palette(3-5개 hex), layout_grid(컬럼+gap), animation_style(transition 타입+duration), typography_scale(heading/body px). 새 UI 작업 시 해당 필드를 채워서 호출",
+        "when": "다음 UI 작업 착수 전"
+      },
+      "apply_point_5w1h": {
+        "level": 1,
+        "where": "orchestration",
+        "what": ".agents/skills/frontend-design/skill.md에 DESIGN_INTENT 명세 템플릿 섹션을 추가하라",
+        "why": "챌린지 실험에서 동일 모델 동일 도구 조건에서 프롬프트 하나로 결과 품질이 갈렸다. 현재 skill.md에 색상, 레이아웃, 애니메이션 의도를 구조적으로 심는 템플릿이 없어 매번 장문 프롬프트를 작성해야 한다",
+        "how": "skill.md 상단에 DESIGN_INTENT 블록 추가: color_palette(3-5색 hex), layout_grid(컬럼+gap), animation_style(transition 종류+duration), typography_scale(heading/body px). 이후 UI 작업은 이 필드 채우기부터 시작",
+        "when": "다음 UI 작업 착수 전"
       }
     }
   },
@@ -3016,10 +2741,6 @@
         "what": "애니메이션은 AI 웹사이트 디자인의 차별화를 위한 핵심 요소다. 이 영상은 Nano Banana Pro에서 이미지 생성, Clling 또는 VO로 비디오 제작, Cloud Code로 랜딩 페이지 생성, GitHub와 Verscell로 배포하는 4단계 워크플로우를 소개한다. 좋은 프롬프트와 참고 이미지가 고품질 결과를 보장하며, 비디오 길이와 루프 방식 선택이 사용자 경험에 영향을 미친다. 추가로 UIUX Pro Max 같은 Cloud Code 스킬과 21st 리소스를 활용해 디자인 완성도를 높일 수 있다. 최종적으로 누구나 쉽게 무료로 애니메이션 웹사이트를 배포할 수 있다.",
         "axioms": [
           {
-            "label": "Why it matters",
-            "content": "AI가 생성하는 획일적인 웹사이트 디자인에서 벗어나 차별화된 애니메이션 랜딩 페이지를 만드는 방법을 알면, 경쟁력 있는 웹사이트를 쉽게 제작할 수 있다."
-          },
-          {
             "label": "The big picture",
             "content": "AI 도구들이 웹 디자인을 자동화하는 시대에, 단순한 이미지 생성에서 벗어나 애니메이션과 맞춤형 프론트엔드 생성으로 차별화하는 것이 중요하다."
           },
@@ -3036,6 +2757,21 @@
             "content": "추가 자료와 프롬프트 템플릿, 예제는 Chase AI 커뮤니티와 Cloud Code 마스터클래스에서 확인할 수 있다."
           }
         ]
+      },
+      "apply_points": {
+        "level": 2,
+        "where": "portfolio",
+        "what": "portfolio 작업 스킬에 애니메이션 파이프라인 4단계를 skill.md에 추가하라: 이미지소스, 렌더링, 최적화, 스크롤연동",
+        "why": "영상은 이미지를 시퀀스로 변환하는 단계별 인터페이스 설계가 최종 완성도를 좌우한다고 강조했다. 현재 스크롤 애니메이션 작성 능력만큼 재료 파이프라인 설계가 중요하다는 것이 확인됐다",
+        "how": "frontend-design 스킬에 ANIMATION_PIPELINE 섹션 추가: Step1 이미지소스 | Step2 렌더링엔진(Kling/ffmpeg) | Step3 최적화압축(fps=15) | Step4 스크롤연동(JS). 5초 이상 걸리는 단계를 반드시 기록",
+        "when": "portfolio 애니메이션 작업 착수 시"
+      },
+      "apply_point_5w1h": {
+        "level": 2,
+        "where": "portfolio",
+        "what": "portfolio 시각 섹션용 애니메이션 파이프라인을 스킬로 고정하라: 이미지 생성→비디오 변환→스크롤 통합 4단계를 skill.md에 명세하라",
+        "why": "영상이 이미지→비디오→웹 통합 파이프라인에서 단계 간 인터페이스 설계가 결과를 결정한다는 것을 보여줬다. 참고 스크린샷 제공이 프롬프트 작성 능력만큼 중요하다는 패턴이 확인됐다",
+        "how": "frontend-design 스킬에 ANIMATION_PIPELINE 섹션 추가: Step1 이미지소스 | Step2 비디오생성(Kling/ffmpeg) | Step3 프레임추출(fps=15) | Step4 스크롤연동(JS). 5초 루프 선택 이유(체류시간)를 근거로 기록"
       }
     }
   },
@@ -3138,10 +2874,6 @@
         "what": "디자이너가 Claude Code 등 AI 도구로 포트폴리오 웹사이트를 설계하고 배포하는 전체 과정을 소개한다. 먼저 다양한 사이트에서 영감을 수집하고, Figma로 패턴과 무드를 정리해 방향성을 잡는다. Variant AI로 오리지널 아이디어를 확장한 뒤, Claude Code와 Cursor를 통해 실제 구현을 지시한다. 마지막으로 GitHub와 Vercel을 활용해 5분 만에 사이트를 배포한다. 이 과정에서 중요한 것은 도구가 아니라, 디자이너의 안목과 구체적인 피드백 능력임을 강조한다.",
         "axioms": [
           {
-            "label": "Why it matters",
-            "content": "AI로 디자이너가 개발자 없이도 웹사이트를 빠르게 구축할 수 있는 시대가 열렸다."
-          },
-          {
             "label": "The big picture",
             "content": "AI 기반 워크플로우가 디자인 실무의 패러다임을 바꾸고 있다."
           },
@@ -3162,6 +2894,22 @@
             "content": "디자인의 본질은 도구가 아니라 디자이너의 안목에 있다."
           }
         ]
+      },
+      "apply_points": {
+        "level": 1,
+        "where": "orchestration",
+        "what": "모든 UI 작업 착수 전 레퍼런스 수집을 선행 의무 단계로 AGENTS.md에 추가하라: Savee/Dribbble에서 30개 수집 후 AI 분류로 고정하라",
+        "why": "영상은 레퍼런스 없이 30분 후 Claude Code에게 방향을 잃은 코드를 생성하게 된다고 지적했다. 좋은 AI 프롬프트보다 레퍼런스를 분류하는 것이 최종 품질을 더 크게 좌우한다",
+        "how": "AGENTS.md UI 작업 흐름에 Step 추가: Step1 레퍼런스 수집(30개, 스크린샷 3-5개) -> Step2 패턴 분류(색상/레이아웃/타이포 1단어) -> Step3 Claude Code 착수. feedback-research-first.md 규칙 연계",
+        "when": "새 portfolio 또는 UI 설계 작업 시"
+      },
+      "apply_point_5w1h": {
+        "level": 1,
+        "where": "orchestration",
+        "what": "모든 UI 작업 시작 전 레퍼런스 수집을 의무 단계로 AGENTS.md에 추가하라: Savee/Dribbble에서 30분 수집 후 AI 착수를 규칙화하라",
+        "why": "영상이 영감 수집 30분 후 Claude Code 착수 순서에서 방향 설정이 먼저이고 AI는 도구임을 증명했다. 맥락 없이 AI에 먼저 시작하는 것과 레퍼런스를 가지고 시작하는 것은 결과 품질이 완전히 다르다",
+        "how": "AGENTS.md UI 작업 섹션 추가: Step1 레퍼런스 수집(30분, 스크린샷 3-5개) → Step2 방향 명세(색상/레이아웃/분위기 1단락) → Step3 Claude Code 착수. feedback-research-first.md 규칙과 연결",
+        "when": "다음 portfolio 또는 UI 수정 작업 전"
       }
     }
   },
@@ -3242,13 +2990,9 @@
         "Orchestrate"
       ],
       "smart_brevity": {
-        "why": "이 영상은 AI 디자인과 코딩을 통합하는 새로운 패러다임인 Google Stitch의 design.md를 소개하며, 앱 디자인 품질과 일관성을 획기적으로 개선하는 방법을 보여준다.",
+        "why": "AI 디자인과 코딩을 통합하는 새로운 패러다임인 Google Stitch의 design.md를 소개하며, 앱 디자인 품질과 일관성을 획기적으로 개선하는 방법을 보여준다.",
         "what": "Google Stitch가 design.md라는 디자인 시스템 문서화 방식을 도입해 AI 디자인의 품질과 유지 관리를 혁신했다. 이 시스템은 Claude Code와 연동되어 앱 UI를 일관되게 재설계할 수 있다. 영상은 스크린샷 기반 디자인 개선, 디자인 시스템 생성, Claude Code를 통한 앱 적용 과정을 상세히 설명한다. 실제 사례를 통해 AI 기반 디자인과 코딩 도구의 결합이 조잡한 AI 디자인 문제를 해결하고, 전문적인 앱 디자인을 빠르게 구현하는 강력한 워크플로우임을 입증한다. 완벽하지는 않지만, design.md는 AI 시대 디자인 시스템 관리의 새로운 기준을 제시한다.",
         "axioms": [
-          {
-            "label": "Why it matters",
-            "content": "AI 디자인의 품질과 일관성을 유지하는 것은 앱 성공의 핵심이며, design.md는 이를 가능하게 하는 혁신적 도구다."
-          },
           {
             "label": "The big picture",
             "content": "디자인 시스템을 코드로 관리하는 패러다임은 AI 시대에 디자이너와 개발자의 협업 방식을 근본적으로 바꾸고 있다."
@@ -3266,6 +3010,22 @@
             "content": "Google Stitch와 AI 코딩 도구의 발전이 앞으로 앱 디자인과 개발의 표준을 재정의할 가능성이 크다."
           }
         ]
+      },
+      "apply_points": {
+        "level": 1,
+        "where": "portfolio",
+        "what": "portfolio 루트에 design.md를 생성하라: 색상 토큰, 타이포그래피 스케일, 컴포넌트 스타일 규칙을 마크다운 테이블로 작성하라",
+        "why": "Google Stitch가 design.md를 CLAUDE.md/AGENTS.md와 연동해 일관된 디자인 동작을 만드는 방식이 검증됐다. portfolio 작업 시 매번 색상 토큰과 간격을 구두로 지정하는 반복 패턴의 대안이다",
+        "how": "portfolio 루트에 design.md 작성: 색상토큰(primary/secondary/neutral hex), 타이포그래피(heading1-4 크기+weight), 간격(4px 배수), 컴포넌트별 border-radius. Claude Code 작업 시 첫 다운에 파일 참조 지시",
+        "when": "다음 portfolio UI 작업 시"
+      },
+      "apply_point_5w1h": {
+        "level": 1,
+        "where": "portfolio",
+        "what": "portfolio 프로젝트 루트에 design.md를 생성하라: 색상 토큰, 타이포그래피 스케일, 컴포넌트 간격 규칙을 단일 마크다운으로 관리하라",
+        "why": "Google Stitch의 design.md가 CLAUDE.md/AGENTS.md가 에이전트 행동을 조율하듯 디자인 일관성을 주입하는 구조임이 검증됐다. portfolio 작업 시 매번 스타일 불일치를 교정하는 반복이 발생하는 근본 원인이 설계 의도의 파일 외부화 부재다",
+        "how": "portfolio 루트에 design.md 생성: 색상토큰(primary/secondary/neutral hex), 타이포그래피(heading1-4 크기+weight), 간격(4px 배수), 컴포넌트별 border-radius. Claude Code 작업 시 첫 줄에 이 파일 참조",
+        "when": "다음 portfolio UI 수정 전"
       }
     }
   },
@@ -3279,7 +3039,108 @@
     "url": "https://www.youtube.com/watch?v=uQc4TGhvDHc",
     "playlist": "design",
     "source_type": "youtube",
-    "transcript": "We've all been there. You generate an almost perfect AI image and you just want to change one tiny detail. But the moment you adjust the prompt, the AI ruins the entire image, hallucinates new furniture, or completely messes up the perspective. Today, I'm showing you an absolute game changer. How to use the JSON code format in the Gemini app to get ultimate control over your image editing with the Nano Banana 2 model. We'll start with simple color changes and work our way up to extremely complex perspective and object swaps. Make sure you stick around until the end because the last use case is something most AI models fail at miserably. We are starting in the Gemini app at gemini.google.com. We're going to switch our model from Gemini 3.1 fast to 3.1 Pro. Why? Because our tests showed that the results with Pro are significantly better. Our goal today is to get better control when editing images with Nanobanana 2. The secret to stopping hallucinations is the JSON format. Basically, we break the image down into a pure code structure. We list every single component separately. Furniture, camera angles, lighting. This makes it way easier to control [music] the outcome. Let's start simple with our first use case, changing colors, and materials. We'll load a basic interior scene into Gemini. Our goal [music] here is just to change the color of this armchair. To do this, we use a specific prompt that gives us the JSON code of the image. The focus here is on isolating objects and determining their color and material. Let's run it. And the result looks great. The JSON code is formatted perfectly. It lists the room style first, then breaks down the [music] objects, giving us the name, color, material, and position for each one. To apply this, we copy the JSON code and upload the original image to Gemini. Again, we just type modify this image based on the following JSON prompt and paste the code. Now, we just find the object we want to change in the code. We locate our lounge chair, which currently has the color cream ivory. Let's change the color to light blue. Select the image generation tool and see what Nano Banana 2 does. Okay, the result is perfect. Only the color of the chair changed. All the other furniture and the exact [music] perspective remained identical to the original image. Let's push it a bit further and change the material too. We take the original image, copy our JSON code again, leave the color on light blue, [music] but change the material to velvet. And just for a quick test, [music] let's also change the base color of the lamp. We find the floor lamp object and change its color to [music] matte white. So, a light blue velvet chair and a matte white lamp base. The result is spoton. The material is right, the color is right, and the lamp base is white. [music] Considering we are using Nanobanana 2 and not even the pro version, this accuracy is incredibly strong. To prove this wasn't just luck, let's try another interior shot. We get the JSON code, copy it, upload the original image, and paste the code. This time, I want to change this sideboard. I'll locate it in the object list, and change the material to oak wood. Plus, I want to change this little cup in the front. [music] I'll find it in the code. Change the color to dark red and the material to ceramic. Let's send it. Wow, this is seriously good. The sideboard is exactly the same, [music] but now it's matte oak wood and the cup is glossy, dark red ceramic, not matte. Everything worked perfectly. For our next use case, we're leveling up. We're going to swap out entire objects using JSON prompts. In this image, I want to replace the armchair. This is trickier because the objects are layered and overlapping in the room. [music] Let's see if Gemini can handle this analysis. Quick reminder, all the prompts I'm using today are available in our community Discord. The link is in the video description below. [music] First, we use an adjusted prompt to get a JSON code specifically designed for describing and swapping furniture. This one includes things like [music] proportions, item type, dimensions, and spatial coordinates. In a separate chat, I'm going to convert the image [music] of the new chair into a JSON code as well. This chair is a bit complicated because its orientation doesn't match the original image. Now, to avoid errors, I'll have a fresh Gemini [music] chat merge these two JSON prompts cleanly. I just tell it to swap the existing armchair with the new one, and I get my [music] final JSON code. We copy that code, go back to our first chat [music] upload the original image, the image of the new chair, and paste the merged JSON. Even though the orientation of the reference chair was [music] different, look at this. It nailed it. It's the exact [music] chair, perfectly positioned, it placed the pillow right back on it. And the chair even has the correct shadows from the room's lighting. [music] It looks extremely realistic. In use case three, we are messing with the weather and the time of day. We have another living room scene and this [music] time there's a window directly in the frame which I suspect might cause some issues for Nano Banana. We use a special prompt focused [music] on lighting, weather, and shadows. The JSON structure is different again. [music] I'll tell Gemini to update the lighting and weather in this JSON to a rainy cloudy day. We upload the original image, paste our modified code, and hit send. While that's loading, I'll also prep a night scene Jason with interior lighting. Okay, the first result is [music] a bit sobering. The lighting and weather match perfectly, but it removed the curtains. The reason is actually pretty simple. We asked for a rainy day to show us that it's raining. The window needs to be visible, so the [music] AI just removed the curtains. It's not a bug. We just formulated the Jason poorly. Let's look at the night scene. Same problem here. We asked for a reflection in the window, so the AI made sure the window was fully visible. Let's fix this. We'll try another interior scene. Generate the lighting JSON and change it to a moody rainy day again, but this time I'm removing the part of the code that says exterior weather visible. This stops the AI from forcing the weather into the frame and altering the room. And check it out. The result is vastly better. It barely touched the original room, but the lighting and weather vibe are completely transformed. I did the same thing with a golden hour variant. I had to quickly switch over to AI Studio because my Pro quota ran out, but it's still using the exact same Nano Banana 2 model. Just like before, the room stays identical. Only the lighting and weather change. With the right JSON code, this works beautifully. For use case 4, we are trying something notoriously difficult. We're going to analyze the camera perspective of one image and apply it to another. AI usually hallucinates heavily here because it simply doesn't know what's outside the frame. I chose this extreme fisheye perspective from the corner of a room. We extract the Jason, but this time the code completely ignores the furniture and interior. It focuses purely on camera properties like focal length, depth of field, and focal point placement. We load our previous living room image into the chat and say we want to modify it based on this camera Jason code. I have to say the result is fantastic. Sure, it has to hallucinate the left and right edges, but the fisheye camera perspective was transferred flawlessly. Finally, use case five, changing text and logos. Let's take this complex image, a text made entirely out of bread. We use a prompt specialized for text and logos. In the generated JSON, I'll change the text to sub to renderrop. The code precisely defines the word separation. So, the image structure is replicated one to one. Okay, this result is amazing. Remember, we are using the weaker nano banana 2 variant here. The bread texture is perfect and the text reads exactly what we wanted. For our final test, we'll take this image with a Louis Vuitton logo. We get our logo focused JSON code, open a new chat, and tell Gemini to replace the existing logo with our own logo. We copy the adjusted code, upload the original photo, our custom logo, and the JSON. Let's see if it pulls this off. It actually worked pretty well. This specific logo structure is definitely a tough challenge for this use case, but the concept works and it just proves how incredibly detailed you can get with JSON based image editing. If you want to try this JSON method yourself, jump into our Discord, grab the prompts, and start experimenting. If this video helped you out, make sure to subscribe and leave a like on the video. See you in the next one. Take care."
+    "transcript": "We've all been there. You generate an almost perfect AI image and you just want to change one tiny detail. But the moment you adjust the prompt, the AI ruins the entire image, hallucinates new furniture, or completely messes up the perspective. Today, I'm showing you an absolute game changer. How to use the JSON code format in the Gemini app to get ultimate control over your image editing with the Nano Banana 2 model. We'll start with simple color changes and work our way up to extremely complex perspective and object swaps. Make sure you stick around until the end because the last use case is something most AI models fail at miserably. We are starting in the Gemini app at gemini.google.com. We're going to switch our model from Gemini 3.1 fast to 3.1 Pro. Why? Because our tests showed that the results with Pro are significantly better. Our goal today is to get better control when editing images with Nanobanana 2. The secret to stopping hallucinations is the JSON format. Basically, we break the image down into a pure code structure. We list every single component separately. Furniture, camera angles, lighting. This makes it way easier to control [music] the outcome. Let's start simple with our first use case, changing colors, and materials. We'll load a basic interior scene into Gemini. Our goal [music] here is just to change the color of this armchair. To do this, we use a specific prompt that gives us the JSON code of the image. The focus here is on isolating objects and determining their color and material. Let's run it. And the result looks great. The JSON code is formatted perfectly. It lists the room style first, then breaks down the [music] objects, giving us the name, color, material, and position for each one. To apply this, we copy the JSON code and upload the original image to Gemini. Again, we just type modify this image based on the following JSON prompt and paste the code. Now, we just find the object we want to change in the code. We locate our lounge chair, which currently has the color cream ivory. Let's change the color to light blue. Select the image generation tool and see what Nano Banana 2 does. Okay, the result is perfect. Only the color of the chair changed. All the other furniture and the exact [music] perspective remained identical to the original image. Let's push it a bit further and change the material too. We take the original image, copy our JSON code again, leave the color on light blue, [music] but change the material to velvet. And just for a quick test, [music] let's also change the base color of the lamp. We find the floor lamp object and change its color to [music] matte white. So, a light blue velvet chair and a matte white lamp base. The result is spoton. The material is right, the color is right, and the lamp base is white. [music] Considering we are using Nanobanana 2 and not even the pro version, this accuracy is incredibly strong. To prove this wasn't just luck, let's try another interior shot. We get the JSON code, copy it, upload the original image, and paste the code. This time, I want to change this sideboard. I'll locate it in the object list, and change the material to oak wood. Plus, I want to change this little cup in the front. [music] I'll find it in the code. Change the color to dark red and the material to ceramic. Let's send it. Wow, this is seriously good. The sideboard is exactly the same, [music] but now it's matte oak wood and the cup is glossy, dark red ceramic, not matte. Everything worked perfectly. For our next use case, we're leveling up. We're going to swap out entire objects using JSON prompts. In this image, I want to replace the armchair. This is trickier because the objects are layered and overlapping in the room. [music] Let's see if Gemini can handle this analysis. Quick reminder, all the prompts I'm using today are available in our community Discord. The link is in the video description below. [music] First, we use an adjusted prompt to get a JSON code specifically designed for describing and swapping furniture. This one includes things like [music] proportions, item type, dimensions, and spatial coordinates. In a separate chat, I'm going to convert the image [music] of the new chair into a JSON code as well. This chair is a bit complicated because its orientation doesn't match the original image. Now, to avoid errors, I'll have a fresh Gemini [music] chat merge these two JSON prompts cleanly. I just tell it to swap the existing armchair with the new one, and I get my [music] final JSON code. We copy that code, go back to our first chat [music] upload the original image, the image of the new chair, and paste the merged JSON. Even though the orientation of the reference chair was [music] different, look at this. It nailed it. It's the exact [music] chair, perfectly positioned, it placed the pillow right back on it. And the chair even has the correct shadows from the room's lighting. [music] It looks extremely realistic. In use case three, we are messing with the weather and the time of day. We have another living room scene and this [music] time there's a window directly in the frame which I suspect might cause some issues for Nano Banana. We use a special prompt focused [music] on lighting, weather, and shadows. The JSON structure is different again. [music] I'll tell Gemini to update the lighting and weather in this JSON to a rainy cloudy day. We upload the original image, paste our modified code, and hit send. While that's loading, I'll also prep a night scene Jason with interior lighting. Okay, the first result is [music] a bit sobering. The lighting and weather match perfectly, but it removed the curtains. The reason is actually pretty simple. We asked for a rainy day to show us that it's raining. The window needs to be visible, so the [music] AI just removed the curtains. It's not a bug. We just formulated the Jason poorly. Let's look at the night scene. Same problem here. We asked for a reflection in the window, so the AI made sure the window was fully visible. Let's fix this. We'll try another interior scene. Generate the lighting JSON and change it to a moody rainy day again, but this time I'm removing the part of the code that says exterior weather visible. This stops the AI from forcing the weather into the frame and altering the room. And check it out. The result is vastly better. It barely touched the original room, but the lighting and weather vibe are completely transformed. I did the same thing with a golden hour variant. I had to quickly switch over to AI Studio because my Pro quota ran out, but it's still using the exact same Nano Banana 2 model. Just like before, the room stays identical. Only the lighting and weather change. With the right JSON code, this works beautifully. For use case 4, we are trying something notoriously difficult. We're going to analyze the camera perspective of one image and apply it to another. AI usually hallucinates heavily here because it simply doesn't know what's outside the frame. I chose this extreme fisheye perspective from the corner of a room. We extract the Jason, but this time the code completely ignores the furniture and interior. It focuses purely on camera properties like focal length, depth of field, and focal point placement. We load our previous living room image into the chat and say we want to modify it based on this camera Jason code. I have to say the result is fantastic. Sure, it has to hallucinate the left and right edges, but the fisheye camera perspective was transferred flawlessly. Finally, use case five, changing text and logos. Let's take this complex image, a text made entirely out of bread. We use a prompt specialized for text and logos. In the generated JSON, I'll change the text to sub to renderrop. The code precisely defines the word separation. So, the image structure is replicated one to one. Okay, this result is amazing. Remember, we are using the weaker nano banana 2 variant here. The bread texture is perfect and the text reads exactly what we wanted. For our final test, we'll take this image with a Louis Vuitton logo. We get our logo focused JSON code, open a new chat, and tell Gemini to replace the existing logo with our own logo. We copy the adjusted code, upload the original photo, our custom logo, and the JSON. Let's see if it pulls this off. It actually worked pretty well. This specific logo structure is definitely a tough challenge for this use case, but the concept works and it just proves how incredibly detailed you can get with JSON based image editing. If you want to try this JSON method yourself, jump into our Discord, grab the prompts, and start experimenting. If this video helped you out, make sure to subscribe and leave a like on the video. See you in the next one. Take care.",
+    "summary": {
+      "sections": [
+        {
+          "heading": "JSON 코드로 AI 이미지 편집 제어하기",
+          "body": "Gemini 앱에서 Nano Banana 2 모델을 사용할 때 JSON 코드 형식을 활용하면 이미지 편집을 정밀하게 제어할 수 있다. 핵심 원리는 이미지를 순수 코드 구조로 분해하여 가구, 카메라 앵글, 조명 등 모든 구성 요소를 개별적으로 나열하는 것이다. 이 방법은 프롬프트 수정 시 발생하는 AI의 할루시네이션, 가구 변형, 원근법 왜곡 등의 문제를 효과적으로 방지한다. Gemini 3.1 Pro 모델이 Fast보다 유의미하게 나은 결과를 보여준다. 이 기법은 단순한 색상 변경부터 복잡한 오브젝트 교체, 조명 변경, 카메라 원근법 전환까지 폭넓게 적용된다.",
+          "highlights": [
+            "핵심 원리는 이미지를 순수 코드 구조로 분해하여 가구, 카메라 앵글, 조명 등 모든 구성 요소를 개별적으로 나열하는 것이다.",
+            "이 방법은 프롬프트 수정 시 발생하는 AI의 할루시네이션, 가구 변형, 원근법 왜곡 등의 문제를 효과적으로 방지한다."
+          ],
+          "quote": "The secret to stopping hallucinations is the JSON format. Basically, we break the image down into a pure code structure."
+        },
+        {
+          "heading": "색상과 소재 정밀 변경",
+          "body": "JSON 코드를 활용한 가장 기본적인 사용 사례는 오브젝트의 색상과 소재를 개별적으로 변경하는 것이다. 인테리어 씬을 Gemini에 로드하면 JSON이 방 스타일, 각 오브젝트의 이름, 색상, 소재, 위치를 구조화하여 반환한다. 안락의자의 색상을 cream ivory에서 light blue로, 소재를 velvet으로 변경했을 때 해당 오브젝트만 정확히 변경되고 다른 가구와 원근법은 원본과 동일하게 유지되었다. 사이드보드를 oak wood로, 컵을 dark red ceramic으로 변경하는 복합 테스트에서도 모든 변경이 정확하게 적용되었다. Nano Banana 2의 비프로 버전으로도 이 정도의 정밀도를 달성할 수 있다는 점이 주목할 만하다.",
+          "highlights": [
+            "안락의자의 색상을 cream ivory에서 light blue로, 소재를 velvet으로 변경했을 때 해당 오브젝트만 정확히 변경되고 다른 가구와 원근법은 원본과 동일하게 유지되었다.",
+            "Nano Banana 2의 비프로 버전으로도 이 정도의 정밀도를 달성할 수 있다는 점이 주목할 만하다."
+          ]
+        },
+        {
+          "heading": "가구 오브젝트 통째로 교체",
+          "body": "JSON 프롬프트를 활용하면 방 안에 레이어드되어 겹치는 오브젝트도 통째로 교체할 수 있다. 이 사용 사례에서는 가구의 비율, 유형, 치수, 공간 좌표를 포함하는 특화된 JSON 구조를 사용한다. 원본 이미지의 안락의자 JSON과 새 의자 이미지의 JSON을 별도로 생성한 뒤, 새로운 Gemini 채팅에서 두 JSON을 병합한다. 참조 의자의 방향이 원본과 달랐음에도 불구하고 의자가 정확한 위치에 배치되었고, 쿠션이 올바르게 복원되었으며, 방의 조명에 맞는 그림자까지 생성되었다. 결과물은 극도로 사실적이다.",
+          "highlights": [
+            "참조 의자의 방향이 원본과 달랐음에도 불구하고 의자가 정확한 위치에 배치되었고, 쿠션이 올바르게 복원되었으며, 방의 조명에 맞는 그림자까지 생성되었다."
+          ]
+        },
+        {
+          "heading": "날씨와 시간대 조명 전환",
+          "body": "JSON 코드로 조명, 날씨, 그림자에 초점을 맞춘 구조를 생성하면 같은 공간의 시간대와 날씨를 변경할 수 있다. 첫 시도에서 비 오는 날로 변경했을 때 커튼이 제거되는 문제가 발생했는데, 이는 AI가 비가 보이도록 창문을 드러내야 한다고 판단했기 때문이다. JSON에서 exterior weather visible 항목을 제거하면 AI가 날씨를 프레임에 강제로 반영하지 않게 되어 문제가 해결된다. 올바른 JSON 코드를 사용하면 원본 방은 거의 건드리지 않으면서 조명과 날씨 분위기만 완전히 변환할 수 있다. golden hour 변형에서도 동일한 원리가 적용되었다.",
+          "highlights": [
+            "JSON에서 exterior weather visible 항목을 제거하면 AI가 날씨를 프레임에 강제로 반영하지 않게 되어 문제가 해결된다.",
+            "올바른 JSON 코드를 사용하면 원본 방은 거의 건드리지 않으면서 조명과 날씨 분위기만 완전히 변환할 수 있다."
+          ]
+        },
+        {
+          "heading": "카메라 원근법 전환",
+          "body": "AI 이미지 편집에서 카메라 원근법 전환은 프레임 밖의 영역을 알 수 없어 할루시네이션이 심하게 발생하는 난제로 알려져 있다. JSON 기법에서는 가구와 인테리어를 완전히 무시하고 초점 거리, 피사계 심도, 초점 배치 등 카메라 속성만으로 코드를 구성한다. 극단적인 어안 렌즈 원근법을 다른 거실 이미지에 적용한 테스트에서 좌우 가장자리는 할루시네이션이 불가피했지만 어안 카메라 원근법 자체는 완벽하게 전환되었다. 이는 JSON이 카메라 속성을 분리하여 정의하기 때문에 가능한 결과다.",
+          "highlights": [
+            "극단적인 어안 렌즈 원근법을 다른 거실 이미지에 적용한 테스트에서 좌우 가장자리는 할루시네이션이 불가피했지만 어안 카메라 원근법 자체는 완벽하게 전환되었다."
+          ]
+        },
+        {
+          "heading": "텍스트와 로고 정밀 변경",
+          "body": "JSON 기반 편집은 텍스트와 로고 변경에도 효과적이다. 빵으로 만든 텍스트 이미지에서 JSON이 단어 분리를 정밀하게 정의하여 이미지 구조를 1대1로 복제할 수 있었다. 텍스트를 변경했을 때 빵 텍스처가 완벽하게 유지되면서 원하는 텍스트가 정확히 렌더링되었다. Louis Vuitton 로고를 커스텀 로고로 교체하는 테스트에서도 복잡한 로고 구조임에도 불구하고 개념 자체는 작동했다. 이 모든 결과가 Nano Banana 2의 약한 변형 모델에서 달성되었다는 점이 JSON 기반 접근의 효용을 입증한다.",
+          "highlights": [
+            "텍스트를 변경했을 때 빵 텍스처가 완벽하게 유지되면서 원하는 텍스트가 정확히 렌더링되었다.",
+            "이 모든 결과가 Nano Banana 2의 약한 변형 모델에서 달성되었다는 점이 JSON 기반 접근의 효용을 입증한다."
+          ]
+        }
+      ],
+      "key_takeaways": [
+        "이미지를 JSON 코드로 분해하면 AI 이미지 편집 시 할루시네이션을 방지하고 정밀한 제어가 가능하다.",
+        "Gemini 3.1 Pro + Nano Banana 2 조합으로 색상, 소재, 오브젝트 교체, 조명, 원근법, 텍스트/로고까지 제어할 수 있다.",
+        "JSON 코드에서 불필요한 속성을 제거하면 AI의 의도치 않은 변형을 방지할 수 있다.",
+        "용도별로 다른 JSON 구조(색상/소재용, 가구교체용, 조명용, 카메라용, 텍스트용)를 사용해야 최적의 결과를 얻는다.",
+        "비프로 모델에서도 JSON 기반 접근은 높은 정밀도의 편집 결과를 달성한다."
+      ],
+      "tech_stack": [
+        "Gemini 3.1 Pro",
+        "Nano Banana 2",
+        "Gemini App",
+        "Google AI Studio",
+        "JSON"
+      ],
+      "smart_brevity": {
+        "why": "AI 이미지 편집에서 가장 큰 문제인 할루시네이션과 의도치 않은 변형을 JSON 코드 기반 접근으로 근본적으로 해결할 수 있으며, 이 기법은 색상 변경부터 원근법 전환까지 폭넓게 적용된다.",
+        "what": "Gemini 앱에서 Nano Banana 2 모델을 사용할 때 이미지를 JSON 코드로 분해하면 각 구성 요소를 개별적으로 제어할 수 있다. 색상/소재 변경, 가구 통째로 교체, 날씨/시간대 조명 전환, 카메라 원근법 적용, 텍스트/로고 교체 등 5가지 사용 사례를 통해 JSON 기반 편집의 정밀도가 입증되었다. 용도별로 특화된 JSON 프롬프트 구조를 사용하고, 불필요한 속성을 제거하여 AI의 과잉 해석을 방지하는 것이 핵심이다.",
+        "axioms": [
+          {
+            "label": "The big picture",
+            "content": "AI 이미지 생성 모델의 편집 정밀도가 빠르게 향상되고 있으며, JSON 구조화 기법은 프롬프트 엔지니어링의 다음 단계로 코드 기반 제어를 가능하게 한다."
+          },
+          {
+            "label": "Be smart",
+            "content": "JSON 코드에서 exterior weather visible 같은 불필요한 속성을 제거하면 AI의 의도치 않은 변형을 방지할 수 있다."
+          },
+          {
+            "label": "By the numbers",
+            "content": "5가지 사용 사례(색상/소재, 오브젝트 교체, 조명, 원근법, 텍스트/로고) 전부에서 Nano Banana 2 비프로 모델로 정밀한 결과를 달성했다."
+          },
+          {
+            "label": "Zoom in",
+            "content": "안락의자의 방향이 원본과 달랐음에도 교체 후 정확한 위치, 쿠션 복원, 조명 그림자까지 사실적으로 구현되었다."
+          }
+        ]
+      },
+      "apply_points": {
+        "level": 2,
+        "where": "mcp-memory",
+        "what": "mcp-memory 에이전트 정의 작성 시 JSON 구조화 형식을 적용하라: 역할, 범위, 허용동작, 차단동작, 출력포맷을 객체 속성으로 명시하라",
+        "why": "영상은 이미지를 JSON으로 제어하면 AI 렌더링 파이프라인이 속성별 세밀한 제어가 5초 이내로 가능했다. 현재 에이전트 프롬프트를 산문으로 작성하면 해석 편차가 발생하는 문제가 동일하다",
+        "how": "AGENTS.md 에이전트 정의를 JSON 스키마로 전환: {role, scope, allowed_actions[], blocked_actions[], output_format}. blocked_actions에 명시적으로 채워야 AI가 임의 해석을 줄임"
+      },
+      "apply_point_5w1h": {
+        "level": 2,
+        "where": "mcp-memory",
+        "what": "mcp-memory 에이전트 명세 작성에 JSON 구조화 방식을 도입하라: 자연어 설명 대신 속성-값 쌍으로 에이전트 역할을 정의하는 템플릿을 만들어라",
+        "why": "영상이 이미지를 JSON으로 분해하면 AI 할루시네이션이 줄고 속성별 정밀 제어가 가능함을 5가지 사례로 증명했다. 같은 원리가 에이전트 명세에 적용된다. 무엇을 빼야 할지를 먼저 생각하는 것이 정밀 제어의 핵심이다",
+        "how": "AGENTS.md 에이전트 정의를 JSON 블록으로 전환: {role, scope, allowed_actions[], blocked_actions[], output_format}. blocked_actions를 명시적으로 채워 AI의 과잉 해석을 차단"
+      }
+    }
   },
   {
     "video_id": "_yumjhDbDWk",
@@ -3373,10 +3234,6 @@
         "what": "오늘날 지식 노동자는 AI를 통해 사고를 외주화하고 있으며, 이는 아이디어 다양성 감소와 비판적 사고 저하 등 부정적 영향을 초래한다. 그러나 AI를 단순한 보조가 아닌 사고 도구로 활용하면 인간의 사고 능력을 증진할 수 있다. Microsoft 연구팀은 AI와 인간 사고의 협업을 촉진하는 프로토타입을 개발해, 비판적 사고 재도입과 창의성 회복, 기억력 향상을 입증했다. 인간 사고 보호는 주체성과 번영에 필수적이며, 우리는 AI 도구가 우리를 대신 생각할지 혹은 우리로 하여금 생각하게 할지 선택해야 한다.",
         "axioms": [
           {
-            "label": "Why it matters",
-            "content": "AI가 인간 사고를 대체하는 방식은 창의성, 비판적 사고, 기억력 등 인간 고유의 인지 능력을 약화시킬 수 있다."
-          },
-          {
             "label": "The big picture",
             "content": "오늘날 지식 노동 환경은 AI와의 협업으로 근본적 변화를 겪고 있으며, 이는 산업 전반의 사고 방식에 영향을 미친다."
           },
@@ -3397,6 +3254,20 @@
             "content": "우리는 AI 도구가 우리를 대신 생각하는지, 아니면 우리로 하여금 생각하게 하는지 선택해야 한다."
           }
         ]
+      },
+      "apply_points": {
+        "level": 2,
+        "where": "mcp-memory",
+        "what": "mcp-memory recall() 결과에 Provocations 필드를 추가하라: 저장된 기억 중 현재 맥락에 반하는 관점 1개를 자동 반환하는 옵션을 구현하라",
+        "why": "Microsoft Research 연구에서 AI가 단순 동조보다 다양성 있는 관점을 제시할 때 창의적 성과가 향상됐다. mcp-memory의 recall()이 동조적 기억만 반환하면 반향실 효과가 생긴다",
+        "how": "recall() 반환값에 provocation 필드 추가: 상위 결과 content와 논리적으로 충돌하는 기억 1개를 자동 포함. mode=dmn으로 기본 활성화하여 탐색적 모드에서 반영"
+      },
+      "apply_point_5w1h": {
+        "level": 2,
+        "where": "mcp-memory",
+        "what": "mcp-memory recall() 결과에 Provocations 패턴을 추가하라: 답을 주는 대신 사고를 자극하는 반문 1개를 선택적으로 반환하는 옵션을 구현하라",
+        "why": "Microsoft Research 실험에서 AI를 단순 보조로 쓴 집단은 아이디어 다양성과 비판적 사고가 저하됐다. mcp-memory가 recall()로 답만 줄 때 같은 위험이 있다. 메타인지를 지원하는 도구 설계가 사고 능력을 보호한다",
+        "how": "recall() 반환값에 선택적 provocation 필드 추가: 결과 노드 content를 역방향 검토하는 질문 1개 자동 생성. mode=dmn일 때만 활성화하여 기본 동작 유지"
       }
     }
   },
@@ -3486,10 +3357,6 @@
         "what": "NotebookLM은 다양한 출처의 정보를 통합해 최소한의 오류로 신뢰할 수 있는 답변과 콘텐츠를 생성하는 AI 도구다. 세 개의 주요 패널과 내장 연구 기능으로 빠른 스캔부터 심층 분석까지 가능하며, 슬라이드, 인포그래픽, 영상, 데이터 테이블 등 다양한 출력물을 지원한다. 전략적 질문 제안, 갭 분석, 맞춤형 페르소나 설정 등으로 사용자의 사고를 확장하고 프로젝트 관리에 최적화되어 있다. 학습용 팟캐스트 오디오, 교육 워크숍 패키지, 경쟁사 분석 데이터 테이블 생성 등 7가지 실용적 활용 사례를 통해 업무 생산성을 즉시 높일 수 있다. 마지막으로 Gemini와 연동해 인터랙티브 랜딩 페이지와 대시보드 등 매력적인 사용자 경험을 손쉽게 구현할 수 있다. 이 모든 기능은 NotebookLM을 AI 도구 중 가장 필수적인 툴로 만든다.",
         "axioms": [
           {
-            "label": "Why it matters",
-            "content": "NotebookLM은 흩어진 정보를 신속하게 통합하고 신뢰성 높은 콘텐츠로 전환해 업무 생산성을 혁신적으로 향상시킨다."
-          },
-          {
             "label": "Be smart",
             "content": "맞춤형 페르소나와 다양한 출력 형식으로 개인과 팀 모두의 업무 효율을 극대화할 수 있다."
           },
@@ -3510,6 +3377,20 @@
             "content": "Gemini와의 통합을 통한 인터랙티브 콘텐츠 확장이 앞으로 AI 도구 활용의 핵심 트렌드다."
           }
         ]
+      },
+      "apply_points": {
+        "level": 2,
+        "where": "orchestration",
+        "what": "mcp-memory(기억 레이어)와 Claude(표현 레이어)의 역할 분리를 AGENTS.md 아키텍처 원칙에 명시하라",
+        "why": "NotebookLM의 인풋(수집+출처)과 아웃풋(인터랙티브 요약) 분리 구조가 mcp-memory와 Claude의 역할 분리와 정확히 대응한다는 것이 확인됐다. 이 원칙이 AGENTS.md에 없어 작업 시 역할 혼용이 발생한다",
+        "how": "AGENTS.md 아키텍처 정의에 2레이어 원칙 추가: Layer1 mcp-memory(저장/검색/연결), Layer2 Claude(해석/표현/결정). Claude가 직접 저장하거나 mcp-memory가 해석하는 경우를 anti-pattern으로 명시"
+      },
+      "apply_point_5w1h": {
+        "level": 2,
+        "where": "orchestration",
+        "what": "mcp-memory(저장 계층)와 Claude(표현 계층)의 역할 분리를 AGENTS.md에 아키텍처 원칙으로 명시하라",
+        "why": "NotebookLM의 두뇌(사실+출처)와 빌더(인터랙티브 결과물) 분리 구조가 mcp-memory와 Claude의 역할 분리와 정확히 같은 원리임이 확인됐다. 이 원칙이 AGENTS.md에 명시되어 있지 않아 통합 작업 시 역할 혼재가 발생한다",
+        "how": "AGENTS.md 아키텍처 섹션에 2계층 원칙 추가: Layer1 mcp-memory(저장/검색/관계), Layer2 Claude(해석/표현/결정). Claude가 직접 저장하거나 mcp-memory가 해석하는 경우를 anti-pattern으로 명시"
       }
     }
   },
@@ -3633,10 +3514,6 @@
         "what": "엔비디아는 GTC에서 베라루빈 아키텍처와 그록 3 LPU 등 혁신적 칩을 공개하며 AI 추론 시장의 판을 뒤집었다. AI 추론 수요가 폭증하는 가운데, 엔비디아는 칩 개발부터 데이터센터 설계, 소프트웨어 생태계까지 수직 통합 전략을 강화하고 있다. 2027년 매출 1조 달러 돌파 전망, 상위 6개 하이퍼스케일러 매출 집중, 오픈소스 소프트웨어와 하드웨어 종속 정책 등으로 시장 지배력을 공고히 한다. 구형 칩은 학습, 신형 칩은 추론에 최적화해 자원 효율을 극대화하며, 차세대 로드맵과 미래 비전도 제시했다. 결론적으로 엔비디아는 AI 에이전트 시대의 인프라와 생태계를 완전히 장악하며 시장의 지배자로 자리매김했다.",
         "axioms": [
           {
-            "label": "Why it matters",
-            "content": "AI 추론 수요와 인프라 혁신이 산업 구조를 재편하고 있기 때문이다."
-          },
-          {
             "label": "The big picture",
             "content": "AI 시장의 패러다임이 훈련 중심에서 추론 중심, 에이전트 중심으로 전환되고 있다."
           },
@@ -3661,6 +3538,18 @@
             "content": "엔비디아는 AI 에이전트 시대의 인프라와 생태계를 완전히 장악했다."
           }
         ]
+      },
+      "apply_points": {
+        "level": 3,
+        "where": "tech-review",
+        "what": "GTC 분석 리포트 작성 시 투자 규모(1조 이상 건)와 공급망 변화(서비스가 아닌 하드웨어 수요 증가)를 중심 프레임으로 설정하라",
+        "why": "NVidia 1500조 선주문은 AI 인프라 투자가 소프트웨어가 아닌 물리 설비로 전환되고 있다는 신호다. 1조 이상 규모 수치는 독자에게 시장 방향성을 가장 직관적으로 전달한다"
+      },
+      "apply_point_5w1h": {
+        "level": 3,
+        "where": "tech-review",
+        "what": "GTC 분석 포스트 작성 시 추론 수요 수치(1만 배 증가)와 오픈소스 전략(선의가 아닌 하드웨어 종속 도구)을 중심으로 서술하라",
+        "why": "훈련→추론 전환과 엔비디아 수직통합이 AI 에이전트 경제의 인프라 소유 권력 구조를 형성하는 중이다. 1조 달러 매출 전망보다 구조적 통찰이 독자에게 더 유용하다"
       }
     }
   },
@@ -3764,10 +3653,6 @@
         "what": "고전 전략서(사기, 군주론 등)를 온톨로지 기반 AI 시스템에 통합하는 실험이 진행됐다. 기존 온톨로지는 업무 자동화와 의사결정 지원에 활용됐으나, RAG 방식의 한계로 맥락과 위계가 부족했다. 이를 극복하기 위해 그래프 구조와 메타 온톨로지 OS가 도입됐고, 사기와 군주론의 전략적 사고가 데이터베이스화되어 AI 에이전트의 추론에 활용됐다. 그러나 특정 고전에만 의존할 경우 사고의 편향과 오염이 발생해, 고전은 선택적 조언 렌즈로 재설계됐다. 이 방식은 다양한 인물과 사상, 종교적 관점까지 확장 가능하며, 온톨로지를 맥락 기반 AI 조언 시스템으로 진화시킨다.",
         "axioms": [
           {
-            "label": "Why it matters",
-            "content": "온톨로지 기반 AI가 고전 전략서를 통합함으로써, 기존 RAG의 한계를 극복하고 전략적 의사결정의 깊이와 맥락을 확보했다."
-          },
-          {
             "label": "The big picture",
             "content": "AI 온톨로지는 단순 정보 검색을 넘어, 다양한 인문학적 렌즈를 활용한 맥락 기반 조언 시스템으로 진화하고 있다."
           },
@@ -3788,6 +3673,22 @@
             "content": "온톨로지는 나폴레온 힐, 스티브 잡스 등 다양한 인물과 종교적 관점까지 조언 렌즈로 확장될 예정이다."
           }
         ]
+      },
+      "apply_points": {
+        "level": 1,
+        "where": "mcp-memory",
+        "what": "mcp-memory에 외부 지식 추가 시 context_trigger 호출 조건 태그를 반드시 함께 저장하라",
+        "why": "영상은 병법, 전략서 RAG 이후 적절한 상황에 맥락에 맞는 지식이 자동 호출됐다. mcp-memory recall()이 어떤 상황에 어떤 기억을 꺼내는지 제어하려면 소스만큼 트리거 조건이 설계돼야 한다",
+        "how": "remember() 호출 시 tags에 context_trigger::{상황} 패턴 추가(예: context_trigger::전략결정). recall() 일반 쿼리에서 context_trigger 태그를 별도 가중치로 처리하도록 type_filter 활용",
+        "when": "외부 참고 소스를 mcp-memory에 대량 ingestion 할 때"
+      },
+      "apply_point_5w1h": {
+        "level": 1,
+        "where": "mcp-memory",
+        "what": "mcp-memory에 지식 노드 추가 시 context_trigger 호출 조건 태그를 반드시 함께 저장하라",
+        "why": "영상이 사기·군주론 RAG 통합 후 권력·통제 중심 편향 조언이 나오기 시작했음을 증명했다. mcp-memory recall()의 편향도 어떤 노드를 심느냐와 언제 호출하느냐가 결정한다. 강력한 지식 소스일수록 사용 조건을 좁게 정의해야 한다",
+        "how": "remember() 호출 시 tags에 context_trigger::{조건} 패턴 추가(예: context_trigger::위기대응). recall() 일반 쿼리에서는 context_trigger 태그 노드가 낮은 가중치로 처리되도록 type_filter 활용",
+        "when": "외부 지식 소스를 mcp-memory에 대량 ingestion할 때마다"
       }
     }
   },
@@ -3901,10 +3802,6 @@
         "what": "에이전트 AI 시대에 온톨로지는 정제된 데이터와 개념 간 관계를 체계화하여 AI의 환각 문제를 줄이고 신뢰성을 높인다. 온톨로지는 철학적 개념에서 출발해 동적 액티브 모델로 진화하며, 데이터 파싱, 청킹, 벡터링, 그래프 생성 과정을 통해 구축된다. 메타온톨로지는 복합적 관계와 권한 제어를 담당하며, 에이전트와 결합해 완전한 AI 경험을 제공한다. 실제 사례와 커뮤니티 활동을 통해 온톨로지 구축과 활용이 활발히 진행 중이다.",
         "axioms": [
           {
-            "label": "Why it matters",
-            "content": "AI 환각 문제와 업무 신뢰성 부족을 극복하기 위해 온톨로지 기반 데이터 체계가 필수적이다."
-          },
-          {
             "label": "The big picture",
             "content": "온톨로지는 AI 생태계에서 데이터와 개념 관계를 체계화하는 새로운 트렌드로 자리잡고 있다."
           },
@@ -3921,6 +3818,22 @@
             "content": "온톨로지와 에이전트 커뮤니티가 활발히 성장하며, AI 생태계에서 온톨로지의 중요성이 점차 커지고 있다."
           }
         ]
+      },
+      "apply_points": {
+        "level": 1,
+        "where": "mcp-memory",
+        "what": "mcp-memory 온톨로지 구축을 단계로 쪼개 완성도, 클래스, 속성, 관계 순으로 정의하고 STATE.md에 현재 단계를 표기하라",
+        "why": "영상은 80-90% 완성도에서 동작하면 나머지 10%가 전체 품질을 결정한다고 강조했다. 100% 완성을 기다리면 미완성 데이터로 기회를 잃는다. mcp-memory v3.1.0-dev 15-type 온톨로지 현황이 STATE.md에 없다",
+        "how": "STATE.md mcp-memory 섹션에 온톨로지 진행 단계 추가: 현재 단계 표시(완성도/클래스/속성/관계 각 % 완료), 다음 단계 완료 기준 체크리스트. 미완성 상태를 미완성 데이터로 활용하는 사이클 설계",
+        "when": "다음 mcp-memory 온톨로지 작업 착수 시"
+      },
+      "apply_point_5w1h": {
+        "level": 1,
+        "where": "mcp-memory",
+        "what": "mcp-memory 온톨로지 구축 순서를 도메인 정의→클래스 추출→속성 부여→관계 설정 4단계로 고정하고 STATE.md에 현재 단계를 기록하라",
+        "why": "영상이 80-90% 완성도에서도 작동하며 순서를 지키는 것 자체가 품질을 만든다고 설명했다. 100% 완성을 기다리는 사이 실사용 데이터로 개선할 기회를 잃는다. mcp-memory v3.1.0-dev 15-type 온톨로지 구축 순서가 STATE.md에 명시되어 있지 않다",
+        "how": "STATE.md mcp-memory 섹션에 온톨로지 구축 단계 추가: 현재 단계 표시(도메인/클래스/속성/관계 중 어디까지 완료), 각 단계 완료 기준 체크리스트. 배포 후 실사용 데이터로 개선하는 사이클 명시",
+        "when": "다음 mcp-memory 온톨로지 수정 전"
       }
     }
   }

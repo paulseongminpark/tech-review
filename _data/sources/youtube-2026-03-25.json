@@ -85,10 +85,6 @@
         "what": "AI 네이티브들은 AI를 단순한 보조자가 아닌 협력자로 대하며, AI의 현재와 미래 능력을 정확히 이해하고 복잡한 문제를 맡긴다. 교육 분야에서는 AI 도구 사용이 학습 이해도에 영향을 미치지만, 탐구적 활용은 긍정적 효과를 낸다. AI는 개인 맞춤형 교육과 글로벌 학습 커뮤니티를 가능하게 하며, 인간 중심 교육을 강화한다. AI와의 상호작용은 사회적 기술로 진화하고 있으며, AI 협력 능력은 미래 필수 역량이다. AI 활용은 충분한 맥락 제공과 반복 실험을 통해 한계를 극복하고 확장해야 하며, AI 활용 능력은 앞으로 40년간 모든 전문가에게 요구되는 기본 스킬이 될 것이다.",
         "axioms": [
           {
-            "label": "Why it matters",
-            "content": "AI는 교육과 업무 방식을 근본적으로 변화시키며, AI를 제대로 이해하고 활용하는 능력이 개인과 사회의 경쟁력을 좌우한다."
-          },
-          {
             "label": "The big picture",
             "content": "AI는 개인 맞춤형 교육과 글로벌 학습 커뮤니티를 가능하게 하며, 인간 중심 교육을 강화하는 동시에 직업 역량의 핵심이 되고 있다."
           },
@@ -109,6 +105,22 @@
             "content": "2030년 교실에서는 AI가 보이지 않는 곳에서 작동하며 학생 개개인의 학습 상황과 학교 커리큘럼을 깊이 이해하는 진정한 학습 동반자가 될 것이다."
           }
         ]
+      },
+      "apply_points": {
+        "level": 1,
+        "where": "orchestration",
+        "what": "context engineering Static 레이어 구성에 Pre-flight Recall 단계를 추가하라: recall() 호출 후 STATE.md 요약+링크와 CLAUDE.md 규칙+링크를 자동으로 15K 이내로 생성하는 Step 0을 추가하라",
+        "why": "Anthropic Drew Bent는 상위 AI 학습자는 메타인지에 시간을 쓰며 이것이 성과를 가른다고 했다. AI 사용 시 맥락 없이 작업해도 17% 결과는 나오지만 메타 레이어 AI 활용자의 결과는 그 이상이다. Pre-flight Recall에 Static 레이어 구성 단계가 빠져 있다",
+        "how": "pre-flight-recall.md에 Step 0 추가: recall() 후 Static 컨텍스트 자동 구성(STATE.md 요약 3줄 + 관련 CLAUDE.md 항목 + 관련 규칙 파일 링크). 전체 15K 이내 유지. Gate A 조건에서도 적용",
+        "when": "매 작업 착수 전 Pre-flight Recall 실행 시"
+      },
+      "apply_point_5w1h": {
+        "level": 1,
+        "where": "orchestration",
+        "what": "context engineering Static 레이어 구성을 Pre-flight Recall 단계에 통합하라: recall() 호출 전 STATE.md 요약+관련 CLAUDE.md 섹션+이전 결정사항을 15K 이내로 자동 구성하는 Step 0을 추가하라",
+        "why": "Anthropic Drew Bent가 상위 AI 사용자는 맥락 주입에 시간을 쓰며 이것이 성과 차이를 만든다고 했다. AI 사용 후 개념 이해도 17% 저하 데이터는 맥락 없는 AI 사용의 위험을 수치로 증명한다. Pre-flight Recall은 recall() 호출만 있고 Static 레이어 구성이 별개 단계다",
+        "how": "pre-flight-recall.md에 Step 0 추가: recall() 전 Static 컨텍스트 블록 구성(STATE.md 요약 3줄 + 관련 CLAUDE.md 섹션 + 이전 세션 결정사항). 전체 15K 이내 유지. Gate A 조건에서만 적용",
+        "when": "다음 새 작업 세션 시작 시"
       }
     }
   },
@@ -220,10 +232,6 @@
         "what": "하네스 엔지니어링은 여러 AI 모델을 활용해도 동일한 소프트웨어 결과물을 내도록 설계, 코드 작성, 린터 적용, 평가까지 체계화한 기법이다. 배달 플랫폼 예시를 통해 네 개 소프트웨어를 세 개 AI 모델에 적용해 12개의 일관된 결과물을 도출했다. 기획 단계에서는 CPS 프레임워크와 미팅 로그로 요구사항을 명확히 하고, 설계 단계에서는 원칙과 도메인 주도 설계를 통해 구조를 잡는다. 코드 단계에서는 린터로 코드 품질과 명명 규칙을 강제하며, 평가 단계에서는 조직별 기준에 맞는 AI 결과물 평가를 지속한다. 이 모든 과정은 팀 내 협업과 멘탈 모델 공유를 기반으로 하며, 엔터프라이즈 AI 경험 축적과 문서화가 앞으로의 성장 동력이다.",
         "axioms": [
           {
-            "label": "Why it matters",
-            "content": "AI 모델이 다양해도 일관성 있고 강건한 결과물을 만드는 것은 엔터프라이즈 AI 성공의 핵심이다."
-          },
-          {
             "label": "The big picture",
             "content": "엔터프라이즈 AI는 아직 초기 단계이며, 체계적 경험치 축적과 문서화가 산업 전반의 발전을 견인한다."
           },
@@ -240,6 +248,14 @@
             "content": "https://www.youtube.com/watch?v=영상주소 (원문 영상 참고)"
           }
         ]
+      },
+      "apply_points": {
+        "level": 1,
+        "where": "orchestration",
+        "what": "rulesync v7.9.0이 실제로 '하네스'로 기능하는지 검증하라. Claude/Codex/Gemini에 동일 작업을 위임한 뒤, rulesync가 생성한 CLAUDE.md·GEMINI.md·AGENTS.md 각각에서 동일한 아웃풋이 나오는지 1건 비교 실험.",
+        "why": "영상에서 '하네스 = 모델이 교체되어도 동일 아웃풋을 강제하는 프레임워크'로 정의. 12개 모델에 동시 프롬프트 테스트로 아웃컴 차이를 확인했다고 발언. 온톨로지에 rulesync v7.9.0(#1565)과 하네스 재작성 결정(#1051)이 이미 있지만, 실제 교차 검증은 수행된 적 없음.",
+        "how": "1) /delegate codex와 /delegate gemini로 동일 소규모 작업 위임 2) Claude 직접 실행 결과와 비교 3) 차이가 있으면 rulesync 규칙 보완",
+        "when": "지금 — 다음 /delegate 사용 시 비교 항목 1개 추가"
       }
     }
   }
