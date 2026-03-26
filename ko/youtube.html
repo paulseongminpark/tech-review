@@ -261,7 +261,9 @@ ALL_VIDEOS.push({
   fetched_at:   {{ v.fetched_at | jsonify }},
   playlist:     {{ v.playlist | jsonify }},
   playlist_index: {{ v.playlist_index | default: 9999 }},
-  summary:      {{ v.summary | jsonify }}
+  summary:      {{ v.summary | jsonify }},
+  transcript:   {{ v.transcript | jsonify }},
+  transcript_ko: {{ v.transcript_ko | jsonify }}
 });
     {% endfor %}
   {% endif %}
