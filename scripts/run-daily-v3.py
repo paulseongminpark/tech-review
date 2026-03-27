@@ -198,6 +198,7 @@ source_type: free-sources
 - Why it matters는 Paul의 시스템과 연결: mcp-memory(4685+ 노드 지식그래프), orchestration(멀티AI 조율), tech-review(자동 수집 파이프라인), portfolio(Next.js)
 - 전체 한국어 (고유명사는 영어 유지)
 - front matter의 tags는 영어 소문자
+- 인라인 코드 백틱(`) 사용 금지. 파일명, 패키지명, 기술 용어 모두 일반 텍스트로 쓴다. 이것은 블로그 글이지 기술 문서가 아니다.
 
 마크다운 파일 전체를 출력해라. 설명이나 부연 없이 파일 내용만."""
 
@@ -243,6 +244,8 @@ if os.path.exists(post_path):
     import re as re2
     with open(post_path, "r", encoding="utf-8") as f:
         content = f.read()
+    # 인라인 코드 백틱 제거 — 블로그 글에 모노스페이스 금지
+    content = re2.sub(r'(?<!`)`([^`\n]+)`(?!`)', r'\1', content)
     # 날짜 강제 교정 — Sonnet이 프롬프트 날짜를 무시하는 경우 대비
     content = re2.sub(r'date: \d{4}-\d{2}-\d{2}', f'date: {POST_DATE}', content)
     content = re2.sub(r'permalink: /ko/\d{4}/\d{2}/\d{2}/', f'permalink: /ko/{POST_DATE.replace("-","/")}/', content)

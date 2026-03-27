@@ -16,12 +16,12 @@ AI 도구 생태계를 노린 PyPI 공급망 공격이 Claude Code로 탐지되�
 
 ## 1. LiteLLM 1.82.8 PyPI 공급망 공격 — Claude Code로 분석·신고까지
 
-2026년 3월 24일 10:52, litellm v1.82.8이 PyPI에 업로드되었다. 해당 버전에는 대응하는 GitHub 태그가 없었고 — 공식 최신 버전은 v1.82.6이었다. 피해자 엔지니어 Callum McMahon은 노트북이 멈추는 현상을 시작으로 조사에 착수했고, Claude Code 단일 대화 세션 안에서 악성코드를 분석한 뒤 PyPI 측에 격리를 요청하는 전 과정을 완료했다. 악성코드는 `~/.config/sysmon/sysmon.py` 영속성 설치를 시도했고, 11k 프로세스 포크 폭탄으로 강제 재부팅을 유발했다. `litellm_init.pth` (34 KB) 파일에는 자격증명 탈취, Kubernetes 횡적 이동, 외부 유출 코드가 포함되어 있었다.
+2026년 3월 24일 10:52, litellm v1.82.8이 PyPI에 업로드되었다. 해당 버전에는 대응하는 GitHub 태그가 없었고 — 공식 최신 버전은 v1.82.6이었다. 피해자 엔지니어 Callum McMahon은 노트북이 멈추는 현상을 시작으로 조사에 착수했고, Claude Code 단일 대화 세션 안에서 악성코드를 분석한 뒤 PyPI 측에 격리를 요청하는 전 과정을 완료했다. 악성코드는 ~/.config/sysmon/sysmon.py 영속성 설치를 시도했고, 11k 프로세스 포크 폭탄으로 강제 재부팅을 유발했다. litellm_init.pth (34 KB) 파일에는 자격증명 탈취, Kubernetes 횡적 이동, 외부 유출 코드가 포함되어 있었다.
 
 **Why it matters:** Paul의 orchestration 스택은 litellm을 LLM 라우터로 사용할 가능성이 있고, mcp-memory 서버 및 futuresearch-mcp-legacy 같은 MCP 의존성 체인이 동일한 취약점을 공유할 수 있다. 공격 탐지 자체가 Claude Code 대화 로그로 공개되었다는 점은 tech-review 파이프라인 자동화에서 LLM-assisted security monitoring 패턴의 실증 사례다.
 
 - 10:52 업로드 → 11:13 Claude Code 조사 시작 → 11:40 악성코드 확인 → 11:58 Docker 격리 환경에서 재검증 → 12:00 PyPI 신고: 총 68분
-- `futuresearch-mcp-legacy`가 의존성으로 litellm을 당겨오면서 Cursor 실행 시 감염 — MCP 서버 간접 의존성이 공격 경로가 됨
+- futuresearch-mcp-legacy가 의존성으로 litellm을 당겨오면서 Cursor 실행 시 감염 — MCP 서버 간접 의존성이 공격 경로가 됨
 - 엔지니어 본인 표현: "AI 툴링이 악성코드 생성만이 아니라 탐지 속도도 높였다"
 
 **What's next:** PyPI 공급망 공격은 이번이 처음이 아니다. MCP 생태계가 빠르게 성장하는 지금, 간접 의존성 자동 검증 도구나 버전 핀 전략이 표준 관행이 될 가능성이 높다.
