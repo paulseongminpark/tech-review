@@ -1,10 +1,10 @@
 ---
 layout: post
 title: "LiteLLM 공급망 공격 탐지, Tesla 보안 연구, Mac Pro 단종"
-date: 2026-03-27
+date: 2026-03-25
 lang: ko
-permalink: /ko/2026/03/27/daily-tech-review/
-pair: 2026-03-27-daily-tech-review
+permalink: /ko/2026/03/25/daily-tech-review/
+pair: 2026-03-25-daily-tech-review
 tags: ["security", "supply-chain", "apple", "hardware", "ai-tooling"]
 source_type: free-sources
 ---
