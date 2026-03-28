@@ -139,6 +139,7 @@ def main():
     run(["node", str(SCRIPT_DIR / "build-sources-feed.js")])
 
     # add-bookmark.py가 이미 commit+push 하므로, sources.json만 추가 커밋
+    run(["git", "pull", "--rebase", "origin", "master"])
     run(["git", "add", "sources.json"])
     run(["git", "commit", "-m", f"[auto] sources.json 갱신 (twitter +{added})"])
     r = run(["git", "push"])
