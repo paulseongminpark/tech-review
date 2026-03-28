@@ -12,7 +12,7 @@ Setup:
   pip install python-dotenv
 """
 
-import json, os, re, subprocess, sys, tempfile
+import json, os, re, subprocess, sys, tempfile, urllib.request
 from datetime import datetime
 from pathlib import Path
 
@@ -36,7 +36,7 @@ PROMPT_TEMPLATE = """\
   "whats_happening": "무슨 일인가 — 1-2문장, 핵심 사건·발표·발견을 구체적으로",
   "translation": "원문을 거의 그대로 한글로 번역. 요약 금지. 원문의 문장 구조·뉘앙스·어조를 최대한 살릴 것. 원문이 리스트면 리스트로, 문단이면 문단으로.",
   "tech_stack": ["언급된 실제 기술/도구/라이브러리명만"],
-  "apply_points": ["Paul의 프로젝트(orchestration, mcp-memory, tech-review, portfolio)에 적용 가능한 것. 한 문장으로 간결하게. 파일 경로 금지. 일반론 금지."]
+  "apply_points": ["mcp-memory에서 recall('Paul 프로젝트')로 현재 상태를 조회한 뒤, 실제 프로젝트(orchestration, mcp-memory, tech-review, portfolio)에 적용 가능한 것을 작성. 한 문장으로 간결하게. 파일 경로 금지. 일반론 금지."]
 }}
 
 규칙:
@@ -155,35 +155,37 @@ def load_existing(path):
     return bms, seen
 
 
-# ── Codex CLI ────────────────────────────────────────────────────────────────
+# ── OpenAI API 직접 호출 ──────────────────────────────────────────────────────
 def summarize_with_codex(text: str) -> dict | None:
-    """Codex CLI (GPT-5.4 xhigh) + mcp-memory recall로 분석"""
+    """OpenAI gpt-4.1-mini API 직접 호출로 분석 (Codex CLI sandbox 우회)"""
+    from dotenv import load_dotenv as _ld
+    _ld(Path("C:/dev/01_projects/06_mcp-memory/.env"))
+    api_key = os.environ.get("OPENAI_API_KEY", "")
+    if not api_key:
+        print("  OPENAI_API_KEY 없음")
+        return None
+
     prompt = PROMPT_TEMPLATE.format(text=text[:8000])
 
-    with tempfile.NamedTemporaryFile(
-        mode="w", suffix=".txt", delete=False, encoding="utf-8", dir=BLOG_DIR
-    ) as tf:
-        tf.write(prompt)
-        tf_path = tf.name
-
     try:
-        out_path = BLOG_DIR / "_codex_bm_out.json"
-        result = subprocess.run(
-            [
-                "codex.cmd", "exec",
-                f"파일 {tf_path} 을 읽고 지시대로 JSON을 만들어서 {out_path} 에 저장해라. 순수 JSON만.",
-                "--full-auto", "--reasoning-effort", "high",
+        body = json.dumps({
+            "model": "gpt-4.1-mini",
+            "messages": [
+                {"role": "system", "content": "You are a tweet analyzer. Output ONLY valid JSON, no markdown code blocks."},
+                {"role": "user", "content": prompt}
             ],
-            capture_output=True, text=True, timeout=300,
-            encoding="utf-8", errors="replace",
-            cwd=str(BLOG_DIR)
-        )
+            "temperature": 0.3,
+            "max_completion_tokens": 4096,
+        }).encode("utf-8")
 
-        if out_path.exists():
-            raw = out_path.read_text(encoding="utf-8").strip()
-            out_path.unlink()
-        else:
-            raw = (result.stdout or "").strip()
+        req = urllib.request.Request(
+            "https://api.openai.com/v1/chat/completions",
+            data=body,
+            headers={"Content-Type": "application/json", "Authorization": f"Bearer {api_key}"}
+        )
+        resp = urllib.request.urlopen(req, timeout=60)
+        data = json.loads(resp.read().decode("utf-8"))
+        raw = data["choices"][0]["message"]["content"].strip()
 
         raw = re.sub(r"^```json\s*", "", raw)
         raw = re.sub(r"\s*```$", "", raw.strip())
@@ -194,20 +196,12 @@ def summarize_with_codex(text: str) -> dict | None:
 
         return json.loads(raw)
 
-    except subprocess.TimeoutExpired:
-        print("  Codex 타임아웃 (5분 초과)")
-        return None
     except json.JSONDecodeError as e:
         print(f"  JSON 파싱 실패: {e}")
         return None
     except Exception as e:
         print(f"  오류: {e}")
         return None
-    finally:
-        try:
-            os.unlink(tf_path)
-        except Exception:
-            pass
 
 
 # ── Gemini API fallback ──────────────────────────────────────────────────────
@@ -302,7 +296,7 @@ def main():
         wim = generate_wim_twitter(summary)
         if wim:
             summary["why_it_matters"] = wim
-            print(f" OK  WIM✓ {summary.get('whats_happening', '')[:40]}")
+            print(f" OK  WIM {summary.get('whats_happening', '')[:40]}")
         else:
             print(f" OK  WIM✗ {summary.get('whats_happening', '')[:40]}")
         bm = {
