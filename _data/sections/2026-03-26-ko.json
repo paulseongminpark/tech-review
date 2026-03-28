@@ -1,0 +1,39 @@
+{
+  "date": "2026-03-26",
+  "lang": "ko",
+  "post_url": "/ko/2026/03/26/daily-tech-review/",
+  "post_title": "GitHub Actions의 치명적 결함, Redox OS 캐퍼빌리티 보안, 750페이지 셀프호스팅 가이드",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "GitHub Actions가 엔지니어링 팀을 서서히 죽이고 있다",
+      "lead": "전직 CircleCI 초기 직원 Ian Duncan이 GitHub Actions를 직격 비판한 글이다. Jenkins, Travis, CircleCI, Semaphore, Drone, Concourse, TeamCity, Bamboo, GitLab CI, CodeBuild 등 거의 모든 CI 시스템을 실전 사용한 경험을 바탕으로 \"GitHub Actions는 좋지 않다. 그냥 평범하지도 않다. 인기의 유일한 이유는 레포지토리에 바로 붙어있다는 ",
+      "tags": [
+        "opensource",
+        "developer-tools"
+      ],
+      "anchor": "github-actions가-엔지니어링-팀을-서서히-죽이고-있다"
+    },
+    {
+      "index": 2,
+      "title": "Redox OS, 캐퍼빌리티로 네임스페이스를 커널 밖으로 꺼냈다",
+      "lead": "Ibuki Omatsu가 NGI Zero Commons와 NLnet 지원으로 진행 중인 \"Redox OS 캐퍼빌리티 기반 보안\" 프로젝트 업데이트다. 기존에 커널이 정수 ID로 바인딩해 관리하던 네임스페이스를 유저스페이스로 이전하고, 문자열 기반이던 CWD를 캐퍼빌리티로 재구현했다. Redox OS는 마이크로커널 OS로 파일시스템·프로세스 매니저 등 대부분 컴포넌트가 유저스페이스 별도 프로그램으로 실행되며, 모든 리소스는 /scheme/{sch",
+      "tags": [
+        "opensource",
+        "developer-tools"
+      ],
+      "anchor": "redox-os-캐퍼빌리티로-네임스페이스를-커널-밖으로-꺼냈다"
+    },
+    {
+      "index": 3,
+      "title": "\"AI 슬롭 없음\" — 750페이지 프로덕션 셀프호스팅 가이드",
+      "lead": "r/SelfHosted에 등장한 750페이지짜리 프로덕션 셀프호스팅 가이드가 스코어 1498, 153개 댓글을 기록하며 폭발적 반응을 이끌어냈다. 제목에 \"NO AI SLOP\"을 명시한 점이 핵심이다 — AI 생성 콘텐츠 홍수 속에서 인간이 직접 작성한 고품질 기술 문서에 대한 수요가 여전히 강하다는 신호다.",
+      "tags": [
+        "opensource",
+        "developer-tools"
+      ],
+      "anchor": "ai-슬롭-없음-750페이지-프로덕션-셀프호스팅-가이드"
+    }
+  ]
+}

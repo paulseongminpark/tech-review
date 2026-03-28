@@ -1,11 +1,6 @@
-권한 이슈로 recall 없이 진행. startup hook 컨텍스트(03_pipeline-redesign_0327 — 3소스 현황 점검, free-sources v3)를 참고해 작성한다.
-
----
-
-```markdown
 ---
 layout: post
-title: "GitHub, 모든 사용자 코드로 AI 훈련 자동 동의 / Tesla Model 3 컴퓨터, 폐차 부품으로 책상 위에 / 셀프호스터들의 HDD 소모 현황"
+title: "GitHub Actions의 치명적 결함, Redox OS 캐퍼빌리티 보안, 750페이지 셀프호스팅 가이드"
 date: 2026-03-26
 lang: ko
 permalink: /ko/2026/03/26/daily-tech-review/
@@ -15,55 +10,55 @@ source_type: free-sources
 ---
 
 ## Today in One Line
-GitHub가 전 사용자 Copilot 데이터를 AI 훈련에 자동 사용하기로 바꿨고, 오픈소스 커뮤니티는 폐차 부품부터 HDD 수명까지 제조사 울타리 밖에서 직접 답을 찾고 있다.
+전직 CircleCI 직원이 GitHub Actions를 정면 비판하고, Redox OS는 캐퍼빌리티로 커널 의존성을 줄이며, 750페이지짜리 인간 작성 셀프호스팅 가이드가 커뮤니티를 달궜다.
 
 ---
 
-## 1. GitHub, Copilot 상호작용 데이터를 모든 요금제에서 AI 훈련에 자동 사용
+## 1. GitHub Actions가 엔지니어링 팀을 서서히 죽이고 있다
 
-GitHub가 Copilot 상호작용 데이터 사용 정책을 업데이트했다. 유료 플랜뿐 아니라 무료 포함 모든 사용자 티어가 자동 동의(opt-in) 처리되어, 이제 Copilot 사용 중 발생하는 데이터가 모델 개선에 쓰인다. GitHub는 공식 블로그 포스트를 통해 이 변경을 발표했으며, r/programming에서 665점과 994점짜리 스레드 두 개가 동시에 상위권에 올라 커뮤니티 반응이 뜨겁다. 플랫폼은 이미 Copilot, GitHub Spark, GitHub Models, MCP Registry 등 AI 중심 제품군을 통해 코드 생성 전반에 걸쳐 데이터를 수집하는 구조로 재편되어 있다.
+전직 CircleCI 초기 직원 Ian Duncan이 GitHub Actions를 직격 비판한 글이다. Jenkins, Travis, CircleCI, Semaphore, Drone, Concourse, TeamCity, Bamboo, GitLab CI, CodeBuild 등 거의 모든 CI 시스템을 실전 사용한 경험을 바탕으로 "GitHub Actions는 좋지 않다. 그냥 평범하지도 않다. 인기의 유일한 이유는 레포지토리에 바로 붙어있다는 것"이라고 단언한다. 특히 로그 뷰어가 크롬을 반복적·안정적으로 크래시시키며, 대용량 로그에서는 스크롤바 자체가 작동하지 않아 raw 로그를 텍스트 에디터로 열어야 하는 상황을 "2025년에 세계에서 가장 부유한 기업 중 하나가 만든 제품"이라며 꼬집는다.
 
-**Why it matters:** tech-review 파이프라인 03_pipeline-redesign에서 GitHub 연동 소스 확장을 검토 중인 시점에 중요한 정책 변수다. 공개 레포를 운영하거나 Copilot을 쓰는 개발자라면 opt-out 여부를 확인해야 하며, 오픈소스 기여 데이터가 상업 모델에 흡수되는 구조에 대한 커뮤니티 합의가 없다는 점이 핵심 쟁점이다.
+**Why it matters:** 자동화 파이프라인을 직접 구축·운영하는 Paul의 관점에서 UI 구조 하나가 디버깅 비용을 어떻게 올리는지 보여주는 사례다. tech-review 파이프라인이나 mcp-memory 자동 실행처럼 지속적으로 돌아가는 시스템에서 빌드 실패 원인을 추적하려면 체크 요약 → 워크플로우 런 → 잡 → 스텝까지 4번 클릭해야 하는 구조는 실질적인 운영 비용이다.
 
-- GitHub는 AI 코드 생성, 보안 취약점 탐지, 시크릿 보호 등 전 제품군에 걸쳐 데이터 수집 인프라를 구축해왔다
-- 이번 정책은 유료 사용자에 한정되지 않고 무료 티어도 포함해 자동 동의로 처리된다
-- 커뮤니티에서는 같은 뉴스가 두 개의 독립 스레드(665점, 994점)로 올라올 만큼 개발자 반응이 양분되어 있다
+- 로그 뷰어가 크롬을 크래시시키는 것은 한 번이 아니라 반복적·안정적으로 발생한다
+- 뒤로가기 버튼은 "룰렛 휠"이다 — PR로 돌아가지 않고 무작위 페이지로 이동한다
+- Nix 환경에는 YAML 설정이 필요 없는 Garnix를 대안으로 제시한다 — flake를 보고 빌드할 것을 자동 판단한다
 
-**What's next:** opt-out 옵션이 실제로 작동하는지, 기업용 GitHub AE나 GHES 환경에는 어떻게 적용되는지가 다음 논점이 될 것이다. 오픈소스 프로젝트 측에서 별도 대응 정책을 내놓을 가능성도 있다.
+**What's next:** 저자는 Buildkite를 "CI가 느껴져야 하는 것"으로 추천한다. GitHub Actions 점유율이 편의성에 기반한 것인 만큼, 대안 생태계로의 이동이 본격화될 가능성이 있다.
 
-**Source:** [Updates to GitHub Copilot interaction data usage policy](https://github.blog/news-insights/company-news/updates-to-github-copilot-interaction-data-usage-policy/)
-
----
-
-## 2. Tesla Model 3 컴퓨터, 폐차 부품으로 책상 위에서 구동
-
-보안 연구자 xdavidhu가 사고 폐차에서 수거한 부품으로 Tesla Model 3의 온보드 컴퓨터를 책상 위에서 직접 구동하는 데 성공했다. 이 프로젝트는 HN에서 901점, 312개의 댓글을 기록하며 단숨에 상위권에 올랐다. Tesla는 자사 하드웨어에 대한 독립적 연구를 공식적으로 허용하지 않지만, 연구자는 폐차 시장에서 부품을 합법적으로 확보해 분해·실험하는 방식으로 이 한계를 우회했다.
-
-**Why it matters:** 수리권(right to repair)과 오픈 하드웨어 생태계의 실질적 사례다. 제조사가 소프트웨어 잠금으로 제어하는 차량 컴퓨터를 외부 연구자가 독립 환경에서 재현할 수 있다는 것은, EV 플랫폼의 보안 구조와 오픈소스 호환성 모두에 영향을 미친다. HN 댓글 312개는 이 주제에 대한 기술 커뮤니티의 관심이 단순 호기심을 넘어섰음을 보여준다.
-
-- 부품 출처는 사고 폐차 — 시중 중고 부품상에서 합법적으로 수급 가능하다
-- 구동 환경은 실제 차량이 아닌 데스크탑 세팅으로, 차량 CAN 버스 없이 독립 실행
-- 연구자 도메인(bugs.xdavidhu.me)은 Tesla 관련 보안 취약점을 지속 추적해온 이력이 있다
-
-**What's next:** 이런 독립 연구가 쌓이면 Tesla 차량의 소프트웨어 구조에 대한 오픈소스 문서화가 가능해지고, 결국 수리권 법제화 논의에도 구체적 근거로 활용될 수 있다.
-
-**Source:** [Running Tesla Model 3's computer on my desk using parts from crashed cars](https://bugs.xdavidhu.me/tesla/2026/03/23/running-tesla-model-3s-computer-on-my-desk-using-parts-from-crashed-cars/)
+**Source:** [GitHub Actions Is Slowly Killing Your Engineering Team](https://www.iankduncan.com/engineering/2026-02-05-github-actions-killing-your-team)
 
 ---
 
-## 3. 셀프호스터들의 HDD 소모 실태, r/SelfHosted 최다 공감
+## 2. Redox OS, 캐퍼빌리티로 네임스페이스를 커널 밖으로 꺼냈다
 
-r/SelfHosted에 올라온 HDD 교체 현황 이미지가 2496점이라는 이번 주 최고 점수를 기록했다. 98개의 댓글과 함께 오픈소스 인프라를 직접 운영하는 커뮤니티의 공통된 경험이 집약된 스레드다. 클라우드 서비스 대신 자체 서버를 운영하는 사람들이 직접 겪는 HDD 마모, 교체 주기, 비용 구조가 이 게시물 하나에 공명한 것이다.
+Ibuki Omatsu가 NGI Zero Commons와 NLnet 지원으로 진행 중인 "Redox OS 캐퍼빌리티 기반 보안" 프로젝트 업데이트다. 기존에 커널이 정수 ID로 바인딩해 관리하던 네임스페이스를 유저스페이스로 이전하고, 문자열 기반이던 CWD를 캐퍼빌리티로 재구현했다. Redox OS는 마이크로커널 OS로 파일시스템·프로세스 매니저 등 대부분 컴포넌트가 유저스페이스 별도 프로그램으로 실행되며, 모든 리소스는 /scheme/{scheme-name}/{resource-name} 형식의 Scheme 경로로 접근한다.
 
-**Why it matters:** tech-review 파이프라인이 free-sources v3에서 r/SelfHosted를 포함한 커뮤니티 소스를 추적하는 이유가 여기 있다. 이 커뮤니티는 제품 발표 없이도 실사용 데이터를 집단적으로 생성한다. 2496점은 같은 날 GitHub Copilot 정책 스레드(665점, 994점)를 합친 것보다 높으며, 셀프호스팅 하드웨어 피로도가 현재 이 커뮤니티의 핫이슈임을 수치로 보여준다.
+**Why it matters:** mcp-memory의 4685개 이상 노드처럼 복잡한 권한 경계를 다루는 시스템에서 캐퍼빌리티 모델은 중요한 설계 원칙이다. Redox의 네임스페이스 가시성 제어 방식 — file과 uds 네임스페이스에 속하면 네트워크 스택에는 접근 불가 — 은 Paul이 파이프라인에서 각 에이전트의 접근 범위를 명시적으로 정의하는 방식과 구조적으로 유사하다.
 
-- r/SelfHosted 기준 이번 주 최다 upvote 게시물로, 순수 커뮤니티 공감형 콘텐츠
-- 댓글 98개는 단순 공감을 넘어 개인 경험 공유와 대안 논의가 이어졌음을 시사한다
-- HDD 소모 문제는 ZFS, RAID, 스토리지 풀 관리 등 오픈소스 인프라 스택 전체와 연결된다
+- Scheme은 유저스페이스 서비스로, 모든 리소스 접근이 scheme/{scheme-name}/{resource-name} 경로를 통해 이뤄진다
+- 네임스페이스가 Scheme 가시성을 제어한다 — file, uds 네임스페이스라면 네트워크 스택에는 접근 불가다
+- relibc의 redox-rt가 POSIX 호환 레이어를 제공하며, Redox에서 스레드와 프로세스는 파일 디스크립터로 관리된다
 
-**What's next:** SSD 전환 비용이 낮아지면서 셀프호스팅 스택에서 HDD를 완전히 걷어내는 흐름이 가속될 것이다. 이 트렌드는 오픈소스 NAS 솔루션(TrueNAS, Unraid 등)의 스토리지 전략에도 영향을 미친다.
+**What's next:** 커널에서 유저스페이스로의 권한 이전이 완성되면 프로세스 격리가 강화될 전망이다. 마이크로커널 OS의 실용적 구현 사례로 학술적·산업적 주목도 모두 높다.
 
-**Source:** [that HDD churn](https://i.redd.it/vjoxnk07serg1.png)
+**Source:** [Capability-Based Security for Redox: Namespace and CWD as Capabilities](https://www.redox-os.org/news/nlnet-cap-nsmgr-cwd/)
+
+---
+
+## 3. "AI 슬롭 없음" — 750페이지 프로덕션 셀프호스팅 가이드
+
+r/SelfHosted에 등장한 750페이지짜리 프로덕션 셀프호스팅 가이드가 스코어 1498, 153개 댓글을 기록하며 폭발적 반응을 이끌어냈다. 제목에 "NO AI SLOP"을 명시한 점이 핵심이다 — AI 생성 콘텐츠 홍수 속에서 인간이 직접 작성한 고품질 기술 문서에 대한 수요가 여전히 강하다는 신호다.
+
+**Why it matters:** tech-review 파이프라인에서 소스 신뢰도를 평가할 때 "NO AI SLOP" 같은 명시적 태그가 커뮤니티 큐레이션 신호로 기능하기 시작했다는 점이 중요하다. 현재 파이프라인의 소스 필터링 기준에 콘텐츠 출처 신뢰도 지표를 추가하는 근거가 된다.
+
+- 750페이지 분량으로 프로덕션 앱 셀프호스팅 전반을 다루는 종합 가이드다
+- r/SelfHosted에서 스코어 1498, 153개 댓글로 높은 참여율을 기록했다
+- "NO AI SLOP" 명시는 인간 작성 콘텐츠에 대한 커뮤니티의 명시적 선호를 공개적으로 드러낸 것이다
+
+**What's next:** AI 생성 기술 문서가 넘쳐날수록 검증된 인간 작성 콘텐츠를 큐레이션하는 채널의 가치가 올라갈 것이다. 품질 신호로서 "출처 명시"의 중요성이 커진다.
+
+**Source:** [Free 750-page guide to self-hosting production apps - NO AI SLOP](https://i.redd.it/unvl3nq1okrg1.jpeg)
 
 ---
 
