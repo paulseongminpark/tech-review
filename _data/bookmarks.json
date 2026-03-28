@@ -1944,5 +1944,115 @@
       "mcp-memory 온톨로지 설계 시 에이전트 메모리 패턴 참고"
     ],
     "why_it_matters": "에이전트 생태계 커뮤니티의 Claude Code 사용 패턴 공유는 tech-review 콘텐츠 파이프라인의 소스 다양화에 기여한다."
+  },
+  {
+    "id": "bm-064",
+    "author": "mem0ai",
+    "date": "2026-03-27",
+    "added_at": "2026-03-28",
+    "url": "https://x.com/mem0ai/status/2037545669695844399",
+    "text": "http://x.com/i/article/2032868736978587648",
+    "whats_happening": "트위터 게시글 링크가 제공되었으나, 내용이 직접적으로 포함되어 있지 않아 구체적인 사건이나 발표를 파악할 수 없습니다.",
+    "translation": "http://x.com/i/article/2032868736978587648",
+    "tech_stack": [],
+    "apply_points": [],
+    "why_it_matters": "Credit balance is too low",
+    "tweet_id": "2037545669695844399"
+  },
+  {
+    "id": "bm-065",
+    "author": "advaitpaliwal",
+    "date": "2026-03-25",
+    "added_at": "2026-03-28",
+    "url": "https://x.com/advaitpaliwal/status/2036900468056875332",
+    "text": "I built Feynman, Claude Code for research.\n\nI gave it a question and it came back 30 minutes later with a cited meta analysis.\n\nIt can also replicate experiments on Runpod, audit claims against code, and simulate peer review.\n\nOpen source &amp; MIT license, link below",
+    "whats_happening": "Feynman과 Claude Code를 연구용으로 개발했으며, 질문에 대해 30분 만에 인용된 메타 분석 결과를 제공한다. 또한 Runpod에서 실험을 재현하고, 코드에 대한 주장 감사를 수행하며, 동료 검토 시뮬레이션도 가능하다.",
+    "translation": "I built Feynman, Claude Code for research.\n\nI gave it a question and it came back 30 minutes later with a cited meta analysis.\n\nIt can also replicate experiments on Runpod, audit claims against code, and simulate peer review.\n\nOpen source & MIT license, link below",
+    "tech_stack": [
+      "Feynman",
+      "Claude Code",
+      "Runpod"
+    ],
+    "apply_points": [
+      "mcp-memory에서 Paul 프로젝트 질문 응답 속도 개선에 활용한다",
+      "실험 재현 기능을 통해 프로젝트 검증 절차를 강화한다",
+      "코드 감사 및 동료 검토 시뮬레이션으로 품질 관리에 적용한다"
+    ],
+    "why_it_matters": "Credit balance is too low",
+    "tweet_id": "2036900468056875332"
+  },
+  {
+    "id": "bm-066",
+    "author": "TheVixhal",
+    "date": "2026-03-26",
+    "added_at": "2026-03-28",
+    "url": "https://x.com/TheVixhal/status/2037236399691489797",
+    "text": "http://x.com/i/article/2037179050448609283",
+    "whats_happening": "트위터에서 특정 기사의 링크가 공유되었으나, 본문 내용은 제공되지 않아 구체적인 사건을 파악할 수 없음.",
+    "translation": "http://x.com/i/article/2037179050448609283",
+    "tech_stack": [],
+    "apply_points": [
+      "링크만 공유된 경우, 본문 내용을 자동으로 추출하는 기능을 검토한다.",
+      "프로젝트 내 링크 기반 정보 수집 모듈의 정확도를 향상시킨다.",
+      "외부 링크 분석 시 사용자 경험을 고려한 요약 기능을 도입한다."
+    ],
+    "why_it_matters": "Credit balance is too low",
+    "tweet_id": "2037236399691489797"
+  },
+  {
+    "id": "bm-067",
+    "author": "KSimback",
+    "date": "2026-03-26",
+    "added_at": "2026-03-28",
+    "url": "https://x.com/KSimback/status/2037168696259403929",
+    "text": "http://x.com/i/article/2036202416173989888",
+    "whats_happening": "트위터 게시글에서 특정 기사 링크가 공유되었으며, 해당 기사는 최신 기술 동향이나 이슈를 다루고 있을 가능성이 높다.",
+    "translation": "http://x.com/i/article/2036202416173989888",
+    "tech_stack": [],
+    "apply_points": [
+      "mcp-memory에서 recall('Paul 프로젝트')로 최신 기술 동향을 반영한다.",
+      "프로젝트 기획 시 외부 기사 링크를 참고하여 정보 신뢰도를 높인다.",
+      "기술 리뷰 시 관련 최신 기사를 주기적으로 점검한다."
+    ],
+    "why_it_matters": "Credit balance is too low",
+    "tweet_id": "2037168696259403929"
+  },
+  {
+    "id": "bm-068",
+    "author": "NickSpisak_",
+    "date": "2026-03-16",
+    "added_at": "2026-03-28",
+    "url": "https://x.com/NickSpisak_/status/2033518072724705437",
+    "text": "http://x.com/i/article/2033406892899217408",
+    "whats_happening": "트위터 게시글 링크가 제공되었으나, 내용이 직접 포함되어 있지 않아 분석이 불가함.",
+    "translation": "트위터 게시글 링크가 제공되었으나, 내용이 직접 포함되어 있지 않아 분석이 불가함.",
+    "tech_stack": [],
+    "apply_points": [],
+    "why_it_matters": "Credit balance is too low",
+    "tweet_id": "2033518072724705437"
+  },
+  {
+    "id": "bm-069",
+    "author": "heynavtoor",
+    "date": "2026-03-25",
+    "added_at": "2026-03-28",
+    "url": "https://x.com/heynavtoor/status/2036702519959962060",
+    "text": "🚨 OpenAI charges $0.006/minute. Google charges $0.024. AWS charges $0.024.\n\nSomeone just open sourced a tool that does it for $0. And it's faster than all of them.\n\nIt's called Insanely Fast Whisper. And that's not hype. That's the benchmark.\n\n150 minutes of audio. 98 seconds to transcribe. On your own machine. No API key. No cloud. No per-minute billing.\n\nHere's what the numbers look like:\n\n→ Whisper Large v3 + Flash Attention 2: 150 min of audio in 98 seconds\n→ Distil Whisper + Flash Attention 2: 150 min in 78 seconds\n→ Standard Whisper without optimization: 31 minutes for the same job\n→ That's a 19x speedup. Same model. Same accuracy. Just faster.\n\nHere's what it does:\n\n→ One command to transcribe any audio file or URL\n→ Speaker diarization — knows WHO said WHAT\n→ Transcription AND translation to other languages\n→ Runs on NVIDIA GPUs and Mac (Apple Silicon)\n→ Flash Attention 2 for maximum speed\n→ Clean JSON output with timestamps\n→ Works with every Whisper model variant\n\nHere's the wildest part:\n\nhttp://Otter.ai charges $100/year. Rev charges $1.50/minute. Descript charges $24/month. Enterprise transcription contracts cost thousands.\n\nPodcasters, journalists, researchers, lawyers, content creators — anyone still paying for transcription is lighting money on fire.\n\n8.8K GitHub stars. 633 forks. MIT License.\n\n100% Open Source.\n\n(Link in the comments)",
+    "whats_happening": "OpenAI, Google, AWS의 음성 인식 요금과 비교해 무료이면서도 더 빠른 오픈소스 도구 'Insanely Fast Whisper'가 공개되었다. 150분 분량의 오디오를 98초 만에 전사하며, API 키나 클라우드, 분당 요금 없이 로컬에서 실행 가능하다.",
+    "translation": "🚨 OpenAI는 분당 $0.006를 청구한다. Google은 $0.024, AWS도 $0.024를 청구한다. 누군가가 무료로, 그것보다 빠른 도구를 오픈소스로 공개했다. 이름은 Insanely Fast Whisper다. 이건 과장이 아니다. 벤치마크 결과다. 150분 분량의 오디오를 98초 만에 전사한다. 자신의 컴퓨터에서, API 키도, 클라우드도, 분당 요금도 없다. 숫자는 이렇다: → Whisper Large v3 + Flash Attention 2: 150분 오디오를 98초에 → Distil Whisper + Flash Attention 2: 150분을 78초에 → 최적화 없는 표준 Whisper: 같은 작업에 31분 → 19배 속도 향상. 같은 모델, 같은 정확도, 단지 더 빠르다. 기능은 다음과 같다: → 한 명령어로 모든 오디오 파일이나 URL 전사 → 화자 분리 — 누가 무엇을 말했는지 인식 → 전사 및 다른 언어로 번역 → NVIDIA GPU와 Mac(Apple Silicon)에서 실행 → 최대 속도를 위한 Flash Attention 2 → 타임스탬프가 포함된 깔끔한 JSON 출력 → 모든 Whisper 모델 변형과 호환 가장 놀라운 점은: http://Otter.ai는 연 $100, Rev는 분당 $1.50, Descript는 월 $24, 기업용 전사 계약은 수천 달러를 청구한다. 팟캐스터, 기자, 연구자, 변호사, 콘텐츠 제작자 등 아직 전사 비용을 지불하는 사람은 돈을 불태우는 셈이다. 8.8K GitHub 스타, 633 포크, MIT 라이선스. 100% 오픈소스. (링크는 댓글에)",
+    "tech_stack": [
+      "Whisper Large v3",
+      "Distil Whisper",
+      "Flash Attention 2",
+      "NVIDIA GPUs",
+      "Apple Silicon"
+    ],
+    "apply_points": [
+      "mcp-memory에서 recall('Paul 프로젝트')로 빠른 음성 전사 도구 적용 가능성 확인",
+      "Flash Attention 2를 활용해 전사 속도 개선 방안 모색",
+      "로컬 실행 가능한 오픈소스 전사 도구로 비용 절감 시도"
+    ],
+    "why_it_matters": "Credit balance is too low",
+    "tweet_id": "2036702519959962060"
   }
 ]
