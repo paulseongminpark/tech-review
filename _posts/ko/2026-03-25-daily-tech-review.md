@@ -18,7 +18,7 @@ AI 도구 생태계를 노린 PyPI 공급망 공격이 Claude Code로 탐지되�
 
 2026년 3월 24일 10:52, litellm v1.82.8이 PyPI에 업로드되었다. 해당 버전에는 대응하는 GitHub 태그가 없었고 — 공식 최신 버전은 v1.82.6이었다. 피해자 엔지니어 Callum McMahon은 노트북이 멈추는 현상을 시작으로 조사에 착수했고, Claude Code 단일 대화 세션 안에서 악성코드를 분석한 뒤 PyPI 측에 격리를 요청하는 전 과정을 완료했다. 악성코드는 ~/.config/sysmon/sysmon.py 영속성 설치를 시도했고, 11k 프로세스 포크 폭탄으로 강제 재부팅을 유발했다. litellm_init.pth (34 KB) 파일에는 자격증명 탈취, Kubernetes 횡적 이동, 외부 유출 코드가 포함되어 있었다.
 
-**Why it matters:** Paul의 orchestration 스택은 litellm을 LLM 라우터로 사용할 가능성이 있고, mcp-memory 서버 및 futuresearch-mcp-legacy 같은 MCP 의존성 체인이 동일한 취약점을 공유할 수 있다. 공격 탐지 자체가 Claude Code 대화 로그로 공개되었다는 점은 tech-review 파이프라인 자동화에서 LLM-assisted security monitoring 패턴의 실증 사례다.
+**Why it matters:** Paul의 멀티AI 조율 스택은 litellm을 LLM 라우터로 사용할 가능성이 있고, 외부 메모리 서버 및 MCP 의존성 체인이 동일한 취약점을 공유할 수 있다. 공격 탐지 자체가 Claude Code 대화 로그로 공개되었다는 점은 뉴스 파이프라인 자동화에서 LLM-assisted security monitoring 패턴의 실증 사례다.
 
 - 10:52 업로드 → 11:13 Claude Code 조사 시작 → 11:40 악성코드 확인 → 11:58 Docker 격리 환경에서 재검증 → 12:00 PyPI 신고: 총 68분
 - futuresearch-mcp-legacy가 의존성으로 litellm을 당겨오면서 Cursor 실행 시 감염 — MCP 서버 간접 의존성이 공격 경로가 됨
@@ -34,7 +34,7 @@ AI 도구 생태계를 노린 PyPI 공급망 공격이 Claude Code로 탐지되�
 
 보안 연구자 xdavidhu는 Tesla 버그 바운티 참가를 위해 eBay에서 충돌 차량 부품을 구매해 Model 3 컴퓨터를 책상 위에서 구동하는 데 성공했다. 핵심 부품인 MCU(Media Control Unit)와 Autopilot 컴퓨터는 iPad 크기, 약 500쪽 책 두께의 수냉식 케이스 형태로 eBay에서 $200–$300에 구할 수 있었다. 터치스크린은 별도로 $175에 구입했고, 전원 공급은 0–30V 가변 DC 파워 서플라이를 사용했으며 최대 8A까지 소비했다. 가장 난관은 케이블이었다 — 대부분의 판매자가 커넥터 직후에서 케이블을 절단해두었기 때문이다. Tesla가 공개한 Electrical Reference 서비스 문서에서 디스플레이 케이블이 6핀(12V·GND 2핀 + 데이터 4핀), Rosenberger 99K10D-1D5A5-D 커넥터를 사용함을 확인했다.
 
-**Why it matters:** Tesla가 배선 다이어그램을 공개 서비스 사이트에 게시한다는 사실은 하드웨어 보안 연구자에게 강력한 레버리지가 된다. orchestration 파이프라인 관점에서, "충돌 차량 → eBay → 책상 위 OS 부팅"이라는 물리적 공격 표면이 소프트웨어 버그 바운티와 교차하는 방식은 embedded system 보안의 현실적 접근법을 보여준다.
+**Why it matters:** Tesla가 배선 다이어그램을 공개 서비스 사이트에 게시한다는 사실은 하드웨어 보안 연구자에게 강력한 레버리지가 된다. 시스템 운영 관점에서, "충돌 차량 → eBay → 책상 위 OS 부팅"이라는 물리적 공격 표면이 소프트웨어 버그 바운티와 교차하는 방식은 embedded system 보안의 현실적 접근법을 보여준다.
 
 - MCU + AP 컴퓨터는 조수석 앞, 글로브박스 뒤편에 위치 — 크기는 iPad, 두께는 ~500쪽 책
 - Tesla 공식 서비스 사이트에서 특정 차종·부품 검색 시 배선도·핀맵 공개 확인 가능
