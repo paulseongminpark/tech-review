@@ -1,11 +1,6 @@
-선택 기준: Hardware 주제 우선 → Mac Pro 단종(1위), Tesla MCU 분해(2위), iOS 26 Memory Integrity Enforcement(3위, 하드웨어 보안 기능).
-
----
-
-```markdown
 ---
 layout: post
-title: "Mac Pro 단종, Tesla MCU 책상 위 부팅, iOS 26 메모리 보안"
+title: "SK하이닉스 미국 IPO 추진, 소니 메모리카드 판매 전면 중단, MS 내부에서 Windows 11 계정 의무화 폐지 논의"
 date: 2026-03-27
 lang: ko
 permalink: /ko/2026/03/27/daily-tech-review/
@@ -15,55 +10,55 @@ source_type: free-sources
 ---
 
 ## Today in One Line
-Apple이 Mac Pro를 조용히 단종시키면서 프로 데스크탑 시장에서 Mac Studio로 라인업을 완전히 재편했다.
+메모리 반도체 공급 위기가 SK하이닉스 미국 상장 추진으로 전환점을 맞는 사이, 소니는 메모리카드 판매를 전면 중단했고 마이크로소프트 내부에서는 Windows 11 계정 의무화 폐지 논의가 불붙고 있다.
 
 ---
 
-## 1. Apple, Mac Pro 공식 단종 — "향후 하드웨어 계획 없음"
+## 1. SK하이닉스, 100억~140억 달러 미국 IPO 추진으로 'RAMmageddon' 해소 기대
 
-Apple이 9to5Mac에 Mac Pro 단종을 공식 확인했다. Mac Pro 구매 페이지는 Mac 홈페이지로 리디렉션되며, 모든 제품 레퍼런스가 삭제됐다. Apple은 미래 Mac Pro 하드웨어에 대한 계획이 없다고 명시했다. 현재 Mac Pro 디자인은 2019년 Pro Display XDR과 함께 출시됐고 2023년 6월에 M2 Ultra로 업그레이드됐으나, 이후 M3 Ultra 탑재 Mac Studio가 출시되는 동안에도 $6,999 가격표를 유지하며 방치됐다.
+SK하이닉스가 2026년 하반기 미국 증시 상장을 목표로 SEC에 F-1 양식을 비밀 제출했다. 예상 조달 규모는 100억~140억 달러로, AI 시스템 구동의 핵심 부품인 HBM(고대역폭 메모리) 최대 공급사로서의 위상을 반영한다. 현재 시가총액은 약 4,400억 달러이지만, 한국 상장 특성상 미국 동종 기업 대비 밸류에이션 할인을 받아왔다는 분석이다.
 
-**Why it matters:** tech-review 블로그가 추적하는 하드웨어 라인업 전략의 핵심 변화다. Apple 데스크탑이 iMac(M4), Mac mini(M4/M4 Pro), Mac Studio 3종으로 정리되면서 "확장성 대신 통합 메모리"라는 Apple Silicon 방향성이 최종 확인됐다. 포트폴리오 Tech Review 섹션에서 Apple 칩 전략 흐름을 다룰 때 이 단종을 분기점으로 쓸 수 있다.
+**Why it matters:** Paul의 AI 파이프라인 인프라(mcp-memory 4685+ 노드, context-cascade 시스템)는 모두 HBM 기반 GPU에 의존한다. SK하이닉스의 미국 상장이 생산 투자를 가속화하면 AI 칩 공급망 안정화로 이어져 인프라 비용 예측 가능성이 높아진다.
 
-- Mac Studio 최상위 사양: M3 Ultra, 32코어 CPU, 80코어 GPU, 256GB 통합 메모리, 16TB SSD
-- macOS Tahoe 26.2에서 Thunderbolt 5 RDMA로 복수 Mac 연결 지원 — Mac Pro 역할 대체 수단
-- 랩탑 라인업도 MacBook Neo / Air / Pro 3종으로 정리, 역대 가장 명확한 Mac 제품 구조
+- TSMC 사례처럼 미국 상장 시 밸류에이션 프리미엄 확보 기대 — 기존 한국 상장 대비 할인 해소 목표
+- 최대 주주 SK스퀘어는 한국 지주회사법상 지분 20% 이상 유지 의무 — 신주 약 2% 발행으로 이 조건 충족하면서 목표 금액 조달 가능
+- 서울 소재 반도체 애널리스트는 "생산 역량은 미국 칩 메이커에 비견되거나 일부에서 더 강하다"고 평가
 
-**What's next:** Mac Studio가 프로 데스크탑 포지션을 흡수하면서 다음 M4 Ultra 탑재 여부가 주목된다. Mac Pro 충성 사용자들의 이탈 방향(Linux 워크스테이션, Windows)도 관전 포인트다.
+**What's next:** 2026년 하반기 상장 완료 시 HBM 생산 설비 투자 가속화가 예상된다. Micron 대비 밸류에이션 격차 해소 여부가 시장의 핵심 관심사다.
 
-**Source:** [Apple discontinues the Mac Pro](https://9to5mac.com/2026/03/26/apple-discontinues-the-mac-pro/)
-
----
-
-## 2. Tesla Model 3 MCU를 $500 미만으로 책상 위에서 부팅하다
-
-보안 연구자 David Hu가 eBay에서 사고 차량 부품을 모아 Tesla Model 3의 차량용 컴퓨터를 책상 위에서 부팅하는 데 성공했다. MCU(Media Control Unit)와 오토파일럿 컴퓨터(AP)가 적층된 이 유닛은 iPad 크기에 500페이지 두께 책 정도로, eBay에서 $200~$300에 구할 수 있었다. 전체 세팅은 12V DC 파워서플라이, $175짜리 터치스크린, 디스플레이 케이블로 구성됐으며 피크 시 최대 8A를 소비했다.
-
-**Why it matters:** Tesla가 모든 차량의 배선 "Electrical Reference"를 공개 서비스 사이트에서 제공한다는 사실 자체가 흥미롭다. 디스플레이 연결에 6핀 케이블(12V/GND 2핀 + 데이터 4핀, Rosenberger 99K10D-1D5A5-D 커넥터)을 쓴다는 스펙까지 공개돼 있다. 차량 보안 연구의 진입 장벽이 하드웨어 접근성과 직결된다는 점에서, 임베디드·보안 하드웨어 방향에 관심 있는 Paul 프로젝트의 아이디에이션 소재가 된다.
-
-- MCU 단독 부팅 후 화면 없이도 차량 OS가 기동됨 — 레드 LED 점등으로 확인
-- Rosenberger 커넥터는 소량 구매 불가, BMW LVDS 케이블이 핀 호환 대안으로 발견됨
-- 연구 목적은 Tesla 버그 바운티 프로그램 참여 — 실제 하드웨어 없이는 취약점 발견 불가
-
-**What's next:** MCU 부팅 이후 오토파일럿 컴퓨터와 통신하는 프로토콜 분석 및 실제 취약점 발굴이 이어질 전망이다. 차량용 임베디드 보안 연구의 저비용 진입 방법론으로 주목받을 것이다.
-
-**Source:** [Running Tesla Model 3's computer on my desk using parts from crashed cars](https://bugs.xdavidhu.me/tesla/2026/03/23/running-tesla-model-3s-computer-on-my-desk-using-parts-from-crashed-cars/)
+**Source:** [Memory chip giant SK hynix could help end 'RAMmageddon' with blockbuster US IPO](https://techcrunch.com/2026/03/27/memory-chip-giant-sk-hynix-could-help-end-rammageddon-with-blockbuster-us-ipo/)
 
 ---
 
-## 3. iOS 26 Memory Integrity Enforcement vs. 유출된 스파이웨어 툴
+## 2. 소니, 메모리카드 판매 전면 중단 — 헬륨 부족까지 겹친 복합 공급 위기
 
-Google, iVerify, Lookout의 연구자들이 Coruna와 DarkSword라는 해킹 툴이 전 세계 피해자를 광범위하게 노리고 있음을 문서화했다. 이 툴들이 최근 온라인에 유출돼 누구나 구버전 iOS 사용자를 공격할 수 있는 상황이 됐다. 공격자에는 러시아 스파이와 중국 사이버 범죄자가 포함되며, 해킹된 웹사이트나 가짜 페이지를 통해 대량 피해자를 노린다.
+소니 재팬이 2026년 3월 27일부로 CFexpress Type A, Type B 및 대부분의 SDXC/SDHC 메모리카드 제품 주문 접수를 전면 중단했다. 이유로는 글로벌 반도체(메모리) 부족과 "기타 요인"을 들었으며, 일부 매체는 이란 전쟁으로 인한 헬륨 부족이 칩 제조 공정에 추가 타격을 주고 있다고 분석했다. 소수의 Type B 모델과 저가형 SF-UZ 시리즈 SD카드만 생산이 유지되고 있으며, 재개 시점은 "당분간" 미정이다.
 
-**Why it matters:** 하드웨어 수준의 보안 분기가 시작됐다. iPhone 17 + iOS 26의 Memory Integrity Enforcement는 메모리 손상 버그를 차단하도록 설계됐으며, DarkSword가 바로 이 메모리 손상 버그에 의존했다. 즉, 최신 하드웨어를 쓰는 사용자와 구형 기기 사용자 사이에 사실상 보안 계층이 두 개로 나뉜다. 하드웨어-소프트웨어 통합 보안 설계의 중요성을 보여주는 사례로, Apple Silicon 전략 분석에서 직접 인용할 수 있다.
+**Why it matters:** 소비자용 메모리카드 공급 중단은 AI 서버용 메모리 수요가 소비자 시장까지 잠식하는 RAMmageddon 현상의 단면이다. Paul의 로컬 AI 개발 환경에서 쓰이는 스토리지 비용 상승과 같은 구조적 압박이다.
 
-- Memory Integrity Enforcement: iOS 26 + iPhone 17 전용 — 이전 모델은 동일 OS 업데이트에도 미적용
-- iOS 18 이하 또는 구형 기기 사용자는 메모리 기반 익스플로잇에 여전히 노출
-- Apple의 대응 전략: 최신 모델용 메모리 안전 코드 + Lockdown Mode (제한적 적용)
+- CFexpress와 SDXC/SDHC 거의 전 라인업 주문 중단 — 딜러와 일반 소비자 모두 해당
+- 소니는 같은 날 PS5 가격 인상도 발표 — 메모리 비용 압박이 동시에 두 방향으로 전이
+- 이란 관련 헬륨 부족이 반도체 제조 공정에 새로운 리스크 변수로 등장
 
-**What's next:** 구형 iPhone 보유자가 많은 시장에서 Coruna/DarkSword 파생 공격이 확산될 위험이 있다. Apple이 구형 기기 지원 종료를 언제 공식화하느냐가 다음 변수다.
+**What's next:** 소니 메모리카드 공급 재개 시점은 글로벌 반도체 수급 정상화에 달려 있다. 단기 해소가 어렵다는 전망이 우세하다.
 
-**Source:** [Apple made strides with iOS 26 security, but leaked hacking tools still leave millions exposed to spyware attacks](https://techcrunch.com/2026/03/26/apple-made-strides-with-ios-26-security-but-leaked-hacking-tools-still-leave-millions-exposed-to-spyware-attacks/)
+**Source:** [Sony temporarily suspends memory card sales due to shortages](https://www.theverge.com/tech/902828/sony-sd-cfexpress-memory-card-shortage)
+
+---
+
+## 3. MS 내부에서 Windows 11 계정 의무화 폐지 목소리 거세져
+
+Windows 11 설치 시 마이크로소프트 계정을 강제하는 정책에 대해 MS 내부에서 반발이 커지고 있다고 Windows Central이 보도했다. 이 이슈는 HN에서만 604점, 439개 댓글을 기록하며 이번 주 가장 많은 커뮤니티 반응을 이끌어냈다. 현재 공식 정책은 설치 과정에서 인터넷 연결과 MS 계정을 모두 요구한다.
+
+**Why it matters:** 로컬 AI 환경(로컬 LLM, 개인 지식그래프 인프라)을 운영하는 개발자에게 계정 없는 Windows 설치는 데이터 주권과 직결된다. Paul의 orchestration 시스템처럼 온프레미스 파이프라인을 구축하는 경우 MS 계정 의존성을 줄이는 것이 실질적 의미를 가진다.
+
+- Rufus 같은 우회 도구가 존재하지만 공식 지원은 없는 상태 — 내부 반발이 공식화되면 첫 공식 우회 경로가 될 수 있음
+- HN 커뮤니티에서는 계정 의무화를 "하드웨어 소유권 침해"로 규정하는 시각이 다수
+- 내부 반발의 배경에는 Linux 전환 사례 증가와 사용자 불만 누적이 있다는 분석
+
+**What's next:** 공식 정책 변경까지는 임원급 결정이 필요하다. 내부 논의가 공개 발표로 이어질지는 미지수다.
+
+**Source:** [People inside Microsoft are fighting to drop mandatory Microsoft Account](https://www.windowscentral.com/microsoft/windows-11/people-inside-microsoft-are-fighting-to-drop-windows-11s-mandatory-microsoft-account-requirements-during-setup)
 
 ---
 
