@@ -1,15 +1,65 @@
 ---
 layout: post
-title: "2026-03-28 Daily Tech Review"
+title: "태양광 효율 130% 돌파 · 구글 2029년 양자 암호 붕괴 경고 · Windows 11 계정 강제 내부 반발"
 date: 2026-03-28
 lang: ko
 permalink: /ko/2026/03/28/daily-tech-review/
 pair: 2026-03-28-daily-tech-review
-tags: ["use-cases", "healthcare", "education", "policy"]
-source_type: perplexity
+tags: ["ai-usecase", "enterprise", "adoption", "regulation"]
+source_type: free-sources
 ---
 
+## Today in One Line
+태양광의 물리적 효율 한계가 무너지고, 구글이 2029년 양자 암호 붕괴를 공식 경고하며, 마이크로소프트 내부에서 Windows 11 계정 강제 정책에 반기가 들고 있다.
 
-Today in One Line지난 48시간 동안 미국 연방 차원의 AI 입법 프레임워크 제안, 에너지·화학 산업의 자율 운영 가속, AI 기반 원격 심장 진단 상용화가 동시에 발표되며 AI가 규제·산업·의료 현장에서 ‘본격 인프라’ 단계로 진입하고 있다.. [미국 백악관, 전국 단일 AI 규제틀 제안으로 주(州) 규제를 우회하는 방향을 굳혔다]3월 20일 백악관이 「National Policy Framework for Artificial Intelligence: Legislative Recommendations」를 공개했고, 3월 23~27일 사이 주요 로펌·정책기관이 이를 해설하는 분석 보고서를 연달아 내며 실질적인 입법 논의의 시동이 걸렸다.  이 프레임워크는 아동 보호, 에너지 비용, 데이터센터 인허가, 사기 방지, 지식재산권, 표현의 자유, 혁신·노동력 개발, 그리고 주(州) AI 법률의 연방 차원 선점(preemption)까지 7대 영역에서 구체적인 입법 방향을 제시한다.Why it matters: 이 프레임워크는 “파편화된 주별 규제”를 막고 기업이 하나의 연방 규칙만 따르면 되도록 하자는 것으로, 실제 AI 서비스·데이터센터 배치의 규제 리스크 구조를 크게 바꾼다.  동시에 새로운 전담 AI 규제기관을 만들지 말고, 기존 금융·보건·에너지 등 부문별 규제기관과 산업 주도 표준에 맡기자는 입장이어서, 미국은 ‘최소 규제+산업 주도’ 모델로 실무 적용을 가속하는 쪽에 무게를 두고 있다.프레임워크는 아동 온라인 보호, 에너지 비용 통제, AI 기반 사기 방지, 노동력 재훈련, 지식재산 보호, 정부의 AI 검열 방지, 그리고 “과도한 주 법률의 선제적 무효화”를 의회 입법 우선순위로 명시한다.백악관은 특히 데이터센터 건설 인허가 간소화, 전력 인프라 확충, 소기업 AI 도입 지원(보조금·세액공제·기술 지원 등)을 의회에 요청하며, AI 인프라와 실사용 확대를 동시에 밀어붙이겠다는 입장을 분명히 했다.이 프레임워크는 2025년 12월의 행정명령 14365 「Ensuring a National Policy Framework for Artificial Intelligence」와 직접 연결되며, 해당 행정명령은 ‘더 엄격한 AI 규제를 도입한 주에 대해 소송·보조금 제한으로 압박하겠다’는 방침을 이미 천명한 바 있다.What's next: 의회가 프레임워크에 따라 실제 입법을 추진할 경우, 대형 모델 개발·데이터센터·전국 단위 서비스에는 규제가 완화되지만, 주 정부가 자체적으로 기업용 AI 활용을 제약할 수 있는 여지는 크게 줄어들 가능성이 크다.Source: [President Donald J. Trump Unveils National AI Legislative Framework](whitehouse)2. [Schneider Electric 글로벌 조사, 에너지·화학 기업이 2030년까지 평균 80% 자율 운영을 목표로 AI 투자를 가속하고 있다]Schneider Electric이 3월 27일 발표한 「Global Autonomous Maturity Report」는 12개국 400명의 에너지·화학 업계 임원을 조사한 결과, 현재 운영의 평균 자율화 수준이 약 70%에 달하며 2030년에는 80% 수준까지 끌어올리겠다는 계획이 지배적이라고 밝혔다.  응답 기업들은 이미 전체 운영의 약 3분의 1이 ‘완전 자율’ 상태에 있으며, 2030년까지 “거의 절반이 완전 자동화”될 것이라고 답해 AI·자율 운영이 사실상 차세대 기본 운영 모델이 되고 있음을 보여준다.Why it matters: 에너지·화학은 안전·규제가 강하고 설비 수명이 길어 변화가 느린 산업으로 여겨졌지만, 이 보고서는 AI 수요 급증과 인력 부족, 에너지 비용 압박이 맞물리며 “자율 운영이 아니면 생존이 어렵다”는 인식이 확산되고 있음을 수치로 보여준다.  또한 응답자의 49%가 자율 운영 가속의 핵심 동력으로 AI를 꼽으면서, 전력망·정유·석유화학 플랜트의 디지털 트윈·고급 제어·예측 정비에 AI를 깊이 박는 쪽으로 CAPEX가 재배분되고 있음을 시사한다.조사 대상 400명 가운데 31.5%는 향후 5년 내 자율 운영 고도화를 “크리티컬(priority critical)” 과제로, 10년 관점에서는 44%가 최상위 전략 과제로 꼽았고, 5% 미만만이 ‘낮은 우선순위’라고 답했다.Schneider Electric은 ARC Advisory Group의 5단계 자율성 모델을 활용해 현재 글로벌 평균 수준을 3.52/5로 평가했으며, 이를 약 70% 자율성으로 환산했고, 2030년 목표치는 4.02(약 80% 자율성)로 제시했다.응답자의 59%는 자율·AI 도입을 늦추면 운영비가 상승할 것이라고 경고했고, 52%는 인력난 악화, 48%는 경쟁력 저하를 우려하는 등 “도입 지연이 곧 비용·리스크 증가”라는 인식이 지배적이다.What's next: GCC와 아시아가 현재 자율 운영 성숙도에서 앞서 있고 북미는 데이터센터·AI 전력 수요를 배경으로 가장 공격적인 도입 속도를 예고한 만큼, 향후 5년간 AI 기반 자율 플랜트 기술·솔루션의 매출과 인수합병이 이 지역을 중심으로 집중될 가능성이 크다.Source: [Global study shows energy industry ramping up investment in autonomous operations by 2030 as AI reshapes performance](globenewswire)3. [AI 원격 심장 진단, 캐나다 원주민 커뮤니티로 확산되며 ‘병원 밖 AI 의료 인프라’가 현실이 되고 있다]3월 27일 발표된 「MedTech's Edge: How AI and Remote Diagnostics Drive Scalable Value」 보도자료에 따르면, 캐나다 토론토 기반 의료기기 기업 VentriPoint Diagnostics가 밴쿠버의 원주민 소유 의료 서비스 기업 First Light Health와 파트너십을 맺고 AI 기반 심장 초음파 진단을 캐나다 원주민·오지 커뮤니티에 제공하는 원격 진단 모델을 본격 가동하고 있다.  동시에 이 자료는 Ernst & Young의 2026년 전망과 NVIDIA의 헬스케어 설문을 인용해, 외래·앰뷸러토리 중심의 탈(脫)병원 구조 전환과 AI 진단 영상의 ROI가 이미 ‘측정 가능한 수준’에 도달했음을 보여준다.Why it matters: 이 사례는 “고가 MRI·대형 병원”에 의존하던 심장 진단을, 저가 초음파+AI 소프트웨어 조합으로 원주민 마을·지방 클리닉까지 확장하는 모델로, AI가 의료 접근성과 비용 구조를 동시에 뒤흔드는 전형적인 실사용 사례다.  또한 EY·NVIDIA 수치를 보면 미국 헬스케어 조직의 70%가 이미 AI를 배치했고 절반 이상이 진단 영상 영역에서 명시적인 투자수익률(ROI)을 보고 있어, AI 의료가 ‘파일럿’이 아니라 운영단계에 진입했음을 시사한다.Ernst & Young의 2026 아웃룩에 따르면, 미국 헬스케어 인프라 투자에서 가장 큰 자본이 흘러들어가는 영역은 대형 종합병원이 아니라 외래 클리닉과 앰뷸러토리 서비스이며, 이들이 전체 섹터의 주요 성장 엔진으로 부상하고 있다.NVIDIA의 2026 헬스케어 설문조사는 의료 조직의 70%가 이미 AI를 적극 배치하고 있으며, 이 가운데 절반이 넘는 기관이 AI 기반 진단 영상에서 “명확하고 측정 가능한 ROI”를 경험하고 있다고 보고한다.VentriPoint의 VMS+ 시스템은 표준 2D 심장 초음파를 3D 용적 이미지로 재구성해 MRI 수준에 근접한 정확도를 내면서도 비용과 인프라 요구 수준은 크게 낮추며, 어떤 제조사의 초음파 장비와도 연동 가능하도록 설계되어 있다.What's next: VentriPoint와 First Light Health는 브리티시컬럼비아·유콘·앨버타·매니토바·뉴브런즈윅에서 모델을 검증한 뒤, 동일한 AI·원격 판독 모델을 전 세계 의료 취약 지역으로 확장한다는 계획이어서, 향후 몇 년 안에 ‘AI 원격 심장 진단’이 글로벌 표준 옵션으로 자리 잡을 가능성이 크다.Source: [MedTech's Edge: How AI and Remote Diagnostics Drive Scalable Value](prnewswire)
+---
+
+## 1. 태양광 효율 130% — 샤클리-케이서 한계를 넘다
+
+규슈대학교와 독일 요하네스 구텐베르크 대학 공동 연구팀이 2026년 3월 25일 미국화학회지(JACS)에 발표한 연구에서, 몰리브덴 기반 스핀 플립 발광체를 이용해 태양광 에너지 변환 효율 약 130%를 달성했다. 핵심 메커니즘은 단일항 핵분열(Singlet Fission, SF)이다. 기존에는 광자 하나가 단일 엑시톤 하나만 생성했지만, SF를 통해 고에너지 광자 하나에서 삼중항 엑시톤 두 개를 만들어낼 수 있다. 이번 연구는 에너지를 가로채는 포르스터 공명 에너지 전달(FRET) 문제를 분자 수준 설계로 차단함으로써 수십 년간 태양전지의 절대 장벽으로 여겨진 Shockley-Queisser 한계를 돌파했다.
+
+**Why it matters:** Paul의 mcp-memory와 멀티AI 오케스트레이션 파이프라인은 고밀도 컴퓨팅 자원을 상시 소모한다. AI 인프라 운영 비용의 가장 큰 비중은 전력이다. 태양광 효율 패러다임 전환은 클라우드·엣지 서버 전력 비용 곡선을 근본적으로 바꾸는 신호다.
+
+- 에너지 변환 효율 약 130% — 기존 100% 한계를 30% 초과
+- SF 원리: 광자 1개 → 삼중항 엑시톤 2개 생성, 에너지 배가 가능
+- 테트라센 등 기존 SF 소재의 FRET 손실 문제를 몰리브덴 스핀 플립 발광체로 해결
+
+**What's next:** 실험실 수준의 효율을 상용 패널에 통합하는 단계가 남아 있다. 연구팀은 삼중항 엑시톤 포획 효율을 더 높이는 후속 연구를 이어가고 있다.
+
+**Source:** [Scientists Just Broke the Solar Power Limit Everyone Thought Was Absolute](https://scitechdaily.com/scientists-just-broke-the-solar-power-limit-everyone-thought-was-absolute/)
+
+---
+
+## 2. 구글 공식 경고: 2029년이면 현재 암호화가 뚫린다
+
+구글이 2026년 3월 26일 공식 블로그를 통해 은행, 정부, 기술 기업들에게 양자컴퓨터 위협에 즉각 대비할 것을 촉구했다. 구글은 "현재 정보를 보호하는 암호화가 수년 내 대규모 양자컴퓨터에 의해 쉽게 깨질 수 있다"고 명시했다. 구글은 이미 자사의 위협 모델을 재조정해 인증 서비스와 디지털 서명 마이그레이션에서 양자 후 암호화(Post-Quantum Cryptography) 전환을 최우선 과제로 설정했으며, 다른 엔지니어링 팀들도 동일하게 따를 것을 권고했다. 현재 구글, 마이크로소프트, 미국·영국 대학들이 양자 시스템 구축 경쟁 중이지만, 수십만~수백만 개의 안정적인 큐비트 확보를 위한 물리적·기술적 장벽은 여전히 크다고 구글은 덧붙였다.
+
+**Why it matters:** Paul의 시스템 전반 — mcp-memory API, context-cascade 파이프라인, 멀티AI 조율 레이어 — 은 모두 API 인증과 전송 암호화에 의존한다. 2029년은 3년 후다. 지금 설계하는 인프라가 Post-Quantum 전환 비용을 얼마나 낮추느냐가 장기 운영 리스크를 결정한다.
+
+- 구글: "2029년 이전에 기존 암호화 표준에 심각한 위협" 예고
+- 현재 양자컴퓨터는 절대영도 냉각에 대량 헬륨 필요, 레이저 정렬에 수 주 소요 등 실용화 장벽 존재
+- 구글이 먼저 인증 서비스·디지털 서명 마이그레이션에서 Post-Quantum 암호화 전환 단행
+
+**What's next:** 구글의 공개 경고를 계기로 기업들의 Post-Quantum 마이그레이션 로드맵 수립이 본격화될 전망이다. 현존 인증 시스템을 얼마나 빨리 교체하느냐가 2029년 이전 보안 리스크를 결정한다.
+
+**Source:** [Google warns quantum computers could hack encrypted systems by 2029](https://www.theguardian.com/technology/2026/mar/26/google-quantum-computers-crack-encryption-2029)
+
+---
+
+## 3. 마이크로소프트 내부에서 Windows 11 계정 의무화 폐지 운동
+
+Windows Central 보도에 따르면, 마이크로소프트 내부 직원들이 Windows 11 설치(Setup) 과정에서 마이크로소프트 계정 연결을 강제하는 현행 정책에 반대하는 움직임을 벌이고 있다. 현재 Windows 11은 설치 중 인터넷 연결과 마이크로소프트 계정 로그인을 기본으로 요구하며, 이를 우회하려면 비공식적인 기술 조작이 필요하다. 내부 반발의 핵심 논거는 사용자 자율성 침해와 프라이버시 우려로 알려졌다.
+
+**Why it matters:** OS 설치 단계의 계정 강제 연결은 반복적·자동화된 환경 구성이 필요한 시나리오에서 병목이 된다. Paul의 멀티AI 파이프라인처럼 여러 도구와 환경을 조율하는 작업흐름에서, OS 수준의 외부 계정 의존성은 프리셋 구성과 재현 가능성을 낮춘다.
+
+- Windows 11 현행 정책: 설치 중 인터넷 연결 + 마이크로소프트 계정 필수
+- 우회 수단: 레지스트리 편집, 네트워크 차단 등 비공식 방법에 의존
+- 내부 반발 논거: 사용자 자율성 침해 및 프라이버시 우려
+
+**What's next:** 마이크로소프트의 공식 입장은 아직 나오지 않았다. 내부 반발이 정책 변화로 이어질지, 아니면 우회 방법의 공식화로 절충될지가 향후 관전 포인트다.
+
+**Source:** [People inside Microsoft are fighting to drop mandatory Microsoft Account](https://www.windowscentral.com/microsoft/windows-11/people-inside-microsoft-are-fighting-to-drop-windows-11s-mandatory-microsoft-account-requirements-during-setup)
+
+---
 
 ## Comments
