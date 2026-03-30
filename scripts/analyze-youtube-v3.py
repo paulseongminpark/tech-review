@@ -3,7 +3,7 @@
 analyze-youtube-v3.py — YouTube 파이프라인 v3
 
 Stage 1: yt-dlp 자막(1차) → Groq Whisper(2차) → transcript
-Stage 2: Gemini Flash → 구조화 (structurize)
+Stage 2: OpenAI gpt-5.4 → 구조화 (structurize)
 Stage 3: Claude Sonnet + recall() → apply_points 5W1H
 Stage 4: OpenAI gpt-4.1-mini → 한글 번역
 Stage 5: 검증 + push
@@ -209,31 +209,42 @@ def extract_transcript_groq(video_id):
         audio_path.unlink(missing_ok=True)
 
 
-# ── Step 3: 구조화 (Gemini Flash) ─────────────────────
+# ── Step 3: 구조화 (OpenAI gpt-5.4) ──────────────────
 def structurize(title, transcript):
-    """Gemini 2.5 Flash로 Smart Brevity 구조화"""
-    if not GEMINI_API_KEY:
-        log("    [구조화] GEMINI_API_KEY 없음")
+    """OpenAI gpt-5.4로 Smart Brevity 구조화"""
+    if not OPENAI_API_KEY:
+        log("    [구조화] OPENAI_API_KEY 없음")
         return None
 
     prompt_template = (CONFIG_DIR / "structuring-prompt.md").read_text(encoding="utf-8")
     prompt = prompt_template.replace("{title}", title).replace("{transcript}", transcript[:50000])
 
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={GEMINI_API_KEY}"
     body = json.dumps({
-        "contents": [{"parts": [{"text": prompt}]}],
-        "generationConfig": {"temperature": 0.3, "maxOutputTokens": 32768},
+        "model": "gpt-5.4",
+        "messages": [
+            {"role": "system", "content": "You are a transcript structurizer. Output ONLY valid JSON, no markdown code blocks."},
+            {"role": "user", "content": prompt},
+        ],
+        "temperature": 0.3,
+        "max_completion_tokens": 32768,
     }).encode("utf-8")
 
     for attempt in range(3):
         try:
-            req = urllib.request.Request(url, data=body, headers={"Content-Type": "application/json"})
-            resp = urllib.request.urlopen(req, timeout=120)
+            req = urllib.request.Request(
+                "https://api.openai.com/v1/chat/completions",
+                data=body,
+                headers={"Content-Type": "application/json", "Authorization": f"Bearer {OPENAI_API_KEY}"},
+            )
+            resp = urllib.request.urlopen(req, timeout=180)
             data = json.loads(resp.read().decode("utf-8"))
-            text = data.get("candidates", [{}])[0].get("content", {}).get("parts", [{}])[0].get("text", "").strip()
+            text = data["choices"][0]["message"]["content"].strip()
 
             text = re.sub(r"^```json\s*", "", text)
             text = re.sub(r"\s*```$", "", text.strip())
+            m = re.search(r"\{[\s\S]*\}", text)
+            if m:
+                text = m.group(0)
             result = json.loads(text)
             return result
         except urllib.error.HTTPError as e:
@@ -417,7 +428,7 @@ def main():
             continue
 
         # Step 3: 구조화
-        log("  [S2] 구조화 (Gemini Flash)...")
+        log("  [S2] 구조화 (gpt-5.4)...")
         summary = structurize(title, transcript)
         if not summary:
             log("    구조화 실패 — 스킵")
