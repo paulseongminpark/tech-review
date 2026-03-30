@@ -139,14 +139,17 @@ def main():
     run(["node", str(SCRIPT_DIR / "build-sources-feed.js")])
 
     # add-bookmark.py가 이미 commit+push 하므로, sources.json만 추가 커밋
-    run(["git", "pull", "--rebase", "origin", "master"])
+    # commit 먼저 → pull --rebase → push (unstaged changes로 pull 실패 방지)
     run(["git", "add", "sources.json"])
     run(["git", "commit", "-m", f"[auto] sources.json 갱신 (twitter +{added})"])
+    run(["git", "pull", "--rebase", "origin", "master"])
     r = run(["git", "push"])
     if r.returncode != 0:
         log("  push 실패 — pull 후 재시도")
-        run(["git", "pull", "--rebase"])
-        run(["git", "push"])
+        run(["git", "pull", "--rebase", "origin", "master"])
+        r = run(["git", "push"])
+        if r.returncode != 0:
+            log("  [FAIL] push 최종 실패")
 
     log(f"=== 파이프라인 완료 (+{added}개) ===")
 

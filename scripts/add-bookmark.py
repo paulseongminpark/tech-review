@@ -68,14 +68,21 @@ def generate_wim_twitter(summary: dict) -> str | None:
     }, indent=2, ensure_ascii=False)
     full_prompt = wim_prompt + "\n" + compact
     try:
+        env = os.environ.copy()
+        env.pop("ANTHROPIC_API_KEY", None)  # blog/.env의 만료 키 제거 → OAuth 사용
         result = subprocess.run(
             [CLAUDE_PATH, "-p", "--setting-sources", "user"],
             input=full_prompt.encode("utf-8"),
             capture_output=True, timeout=120,
-            cwd="C:/windows/temp", env={**os.environ}
+            cwd="C:/windows/temp", env=env,
         )
+        if result.returncode != 0:
+            return None
         wim_text = result.stdout.decode("utf-8", errors="replace").strip()
         if not wim_text or len(wim_text) < 20:
+            return None
+        # 에러 메시지 거부
+        if any(err in wim_text.lower() for err in ["credit balance", "rate limit", "unauthorized", "api key"]):
             return None
         # Why it matters 추출
         why_match = re.search(

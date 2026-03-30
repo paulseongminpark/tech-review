@@ -287,20 +287,50 @@ def generate_apply_points(summary, title):
 - 1개만."""
 
     try:
+        env = os.environ.copy()
+        env.pop("ANTHROPIC_API_KEY", None)
         result = subprocess.run(
-            [CLAUDE_CMD, "-p", "--model", "claude-sonnet-4-6", "--output-format", "text",
+            [CLAUDE_CMD, "-p", "--model", "claude-sonnet-4-6", "--output-format", "json",
              "--allowedTools", "mcp__memory__recall"],
             input=prompt.encode("utf-8"),
             capture_output=True, timeout=120, cwd=str(BLOG_DIR),
+            env=env,
         )
+        if result.returncode != 0:
+            stderr = result.stderr.decode("utf-8", errors="replace").strip()[:200]
+            log(f"    [AP] CLI 실패 (rc={result.returncode}): {stderr}")
+            return None
         raw = result.stdout.decode("utf-8", errors="replace").strip()
-        raw = re.sub(r"^```json\s*", "", raw)
-        raw = re.sub(r"\s*```$", "", raw.strip())
-        ap = json.loads(raw)
+        if not raw:
+            log("    [AP] 실패: 빈 응답")
+            return None
+        # --output-format json → {"result": "..."} 구조. result 추출
+        wrapper = json.loads(raw)
+        text = wrapper.get("result", raw) if isinstance(wrapper, dict) else raw
+        # JSON 코드펜스 제거
+        text = re.sub(r"^```json\s*", "", str(text).strip())
+        text = re.sub(r"```\s*$", "", text.strip())
+        # JSON 객체만 추출 (앞뒤 자연어 텍스트 제거)
+        match = re.search(r'\{[^{}]*"level"\s*:', text)
+        if match:
+            brace = 0
+            start = match.start()
+            for i in range(start, len(text)):
+                if text[i] == '{': brace += 1
+                elif text[i] == '}': brace -= 1
+                if brace == 0:
+                    text = text[start:i+1]
+                    break
+        ap = json.loads(text)
         log(f"    [AP] L{ap.get('level','?')}: {ap.get('what','')[:40]}")
         return ap
     except Exception as e:
         log(f"    [AP] 실패: {e}")
+        # 디버깅용: 원본 응답 로그
+        try:
+            log(f"    [AP] raw: {raw[:200]}")
+        except Exception:
+            pass
         return None
 
 

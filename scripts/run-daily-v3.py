@@ -157,7 +157,16 @@ def parse_lobsters(url):
              "tags": i.get("tags",[])} for i in data[:15]]
 
 def parse_arxiv(url):
-    xml = fetch_url(url)
+    import time as _time
+    for attempt in range(2):
+        try:
+            xml = fetch_url(url, timeout=30)
+            break
+        except Exception:
+            if attempt == 0:
+                _time.sleep(3)
+            else:
+                raise
     ns = {"a": "http://www.w3.org/2005/Atom"}
     root = ET.fromstring(xml)
     items = []
@@ -445,21 +454,27 @@ else:
 if os.path.exists(post_dest) and not ANY_FAIL:
     log("[Step 7] 배포...")
     try:
-        pull_r = subprocess.run(["git", "pull", "--rebase", "origin", "master"], cwd=BLOG, capture_output=True, text=True, timeout=30, encoding="utf-8")
-        if pull_r.returncode != 0:
-            log(f"  [WARN] pull --rebase 실패 (rc={pull_r.returncode}): {(pull_r.stdout or pull_r.stderr).strip()[:80]}")
-            subprocess.run(["git", "rebase", "--abort"], cwd=BLOG, capture_output=True, timeout=10)
-            ANY_FAIL = True
+        # commit 먼저 → pull --rebase → push (unstaged 상태에서 pull 실패 방지)
         subprocess.run(["git", "add", "_posts/ko/", "_data/sections/"], cwd=BLOG, capture_output=True, timeout=10)
         r = subprocess.run(["git", "commit", "-m", f"[auto] {POST_DATE} daily post ({DAY_TOPIC}, free-sources v3)"],
                           cwd=BLOG, capture_output=True, text=True, timeout=30, encoding="utf-8")
         log(f"  commit: {r.stdout.strip()[:80]}")
+        pull_r = subprocess.run(["git", "pull", "--rebase", "origin", "master"], cwd=BLOG, capture_output=True, text=True, timeout=30, encoding="utf-8")
+        if pull_r.returncode != 0:
+            log(f"  [WARN] pull --rebase 실패 (rc={pull_r.returncode}): {(pull_r.stdout or pull_r.stderr).strip()[:80]}")
+            subprocess.run(["git", "rebase", "--abort"], cwd=BLOG, capture_output=True, timeout=10)
         r = subprocess.run(["git", "push"], cwd=BLOG, capture_output=True, text=True, timeout=60, encoding="utf-8")
         push_out = (r.stdout or r.stderr).strip()[:80]
         log(f"  push: {push_out}")
         if r.returncode != 0:
-            log(f"  [WARN] push 실패 — 수동 확인 필요")
-            ANY_FAIL = True
+            log("  push 실패 — pull 후 재시도")
+            subprocess.run(["git", "pull", "--rebase", "origin", "master"], cwd=BLOG, capture_output=True, timeout=30)
+            r = subprocess.run(["git", "push"], cwd=BLOG, capture_output=True, text=True, timeout=60, encoding="utf-8")
+            push_out = (r.stdout or r.stderr).strip()[:80]
+            log(f"  push 재시도: {push_out}")
+            if r.returncode != 0:
+                log("  [FAIL] push 최종 실패")
+                ANY_FAIL = True
     except Exception as e:
         log(f"  git FAIL: {e}")
         ANY_FAIL = True

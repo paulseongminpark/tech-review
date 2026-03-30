@@ -1,6 +1,11 @@
 #!/usr/bin/env python3
-"""bm-045~055 재분석 — Codex GPT-5.4 + mcp-memory recall"""
-import json, os, re, subprocess, sys, tempfile
+"""깨진 북마크 재분석 — OpenAI gpt-4.1-mini + Claude WIM
+
+Usage:
+  python reprocess-bookmarks.py                    # "Credit balance" 깨진 것만
+  python reprocess-bookmarks.py --ids bm-064,bm-065  # 특정 ID 지정
+"""
+import json, os, re, subprocess, sys, urllib.request
 from pathlib import Path
 
 sys.stdout.reconfigure(encoding="utf-8")
@@ -9,124 +14,159 @@ SCRIPT_DIR = Path(__file__).parent
 BLOG_DIR = SCRIPT_DIR.parent
 BOOKMARKS_JSON = BLOG_DIR / "_data" / "bookmarks.json"
 
+from dotenv import load_dotenv
+load_dotenv(BLOG_DIR / ".env")
+load_dotenv(Path("C:/dev/01_projects/06_mcp-memory/.env"))
+
+CLAUDE_PATH = "C:/Users/pauls/AppData/Roaming/npm/claude.cmd"
+WIM_PROMPT_PATH = BLOG_DIR / "config" / "wim-prompt.md"
+
 PROMPT_TEMPLATE = """\
-먼저 mcp-memory의 recall 도구를 호출해서 Paul의 현재 프로젝트 컨텍스트를 파악하라.
-recall 쿼리: "Paul orchestration mcp-memory tech-review 프로젝트 현재 작업"
-
-recall 결과를 바탕으로 아래 작업을 수행하라.
-
 다음 트위터 게시글을 아래 JSON 형식으로 처리해라.
 반드시 JSON만 출력. 마크다운 코드블록 없이 순수 JSON만.
 
+주의: why_it_matters 필드는 생성하지 마라.
+
 {{
   "whats_happening": "무슨 일인가 — 1-2문장, 핵심 사건·발표·발견을 구체적으로",
-  "why_it_matters": "왜 중요한가 — 1-2문장, 임팩트와 의미 중심",
-  "translation": "원문을 거의 그대로 한글로 번역. 요약 금지. 원문의 문장 구조·뉘앙스·어조를 최대한 살릴 것. 원문이 리스트면 리스트로, 문단이면 문단으로.",
+  "translation": "원문을 거의 그대로 한글로 번역. 요약 금지.",
   "tech_stack": ["언급된 실제 기술/도구/라이브러리명만"],
-  "apply_points": ["recall로 파악한 Paul의 실제 프로젝트에 구체적으로 적용 가능한 것. 한 문장으로 간결하게. 파일 경로 금지. 일반론 금지."]
+  "apply_points": ["적용 가능한 포인트. 한 문장으로 간결하게."]
 }}
 
 규칙:
 - whats_happening: 1-2문장. 사건 중심.
-- why_it_matters: 1-2문장. 의미 중심.
-- translation: 번역이지 요약이 아님. 원문 길이의 90% 이상 유지. 영어 고유명사는 영어 유지.
+- translation: 원문 길이의 90% 이상 유지. 영어 고유명사 유지.
 - tech_stack: 없으면 []
-- apply_points: 한 문장씩, 최대 3개. 파일 경로·backtick 금지. 50자 이내.
-- 전부 한국어. 단, 고유명사(라이브러리명, 회사명, 인명)는 영어 유지.
+- apply_points: 최대 3개. 50자 이내.
+- 전부 한국어. 고유명사(라이브러리명, 회사명, 인명)는 영어 유지.
 
 트위터 내용:
 {text}
 """
 
 
-def summarize_with_codex(text, bm_id):
+def summarize_openai(text):
+    api_key = os.environ.get("OPENAI_API_KEY", "")
+    if not api_key:
+        print("  OPENAI_API_KEY 없음")
+        return None
     prompt = PROMPT_TEMPLATE.format(text=text[:8000])
-
-    with tempfile.NamedTemporaryFile(
-        mode="w", suffix=".txt", delete=False, encoding="utf-8", dir=BLOG_DIR
-    ) as tf:
-        tf.write(prompt)
-        tf_path = tf.name
-
     try:
-        out_path = BLOG_DIR / f"_codex_reprocess_{bm_id}.json"
-        result = subprocess.run(
-            [
-                "codex.cmd", "exec",
-                f"파일 {tf_path} 을 읽고 지시대로 JSON을 만들어서 {out_path} 에 저장해라. 순수 JSON만.",
-                "--full-auto",
+        body = json.dumps({
+            "model": "gpt-4.1-mini",
+            "messages": [
+                {"role": "system", "content": "You are a tweet analyzer. Output ONLY valid JSON, no markdown code blocks."},
+                {"role": "user", "content": prompt}
             ],
-            capture_output=True, text=True, timeout=300,
-            encoding="utf-8", errors="replace",
-            cwd=str(BLOG_DIR)
+            "temperature": 0.3,
+            "max_completion_tokens": 4096,
+        }).encode("utf-8")
+        req = urllib.request.Request(
+            "https://api.openai.com/v1/chat/completions",
+            data=body,
+            headers={"Content-Type": "application/json", "Authorization": f"Bearer {api_key}"}
         )
-
-        if out_path.exists():
-            raw = out_path.read_text(encoding="utf-8").strip()
-            out_path.unlink()
-        else:
-            raw = (result.stdout or "").strip()
-
+        resp = urllib.request.urlopen(req, timeout=60)
+        data = json.loads(resp.read().decode("utf-8"))
+        raw = data["choices"][0]["message"]["content"].strip()
         raw = re.sub(r"^```json\s*", "", raw)
         raw = re.sub(r"\s*```$", "", raw.strip())
-
-        json_match = re.search(r"\{[\s\S]*\}", raw)
-        if json_match:
-            raw = json_match.group(0)
-
+        m = re.search(r"\{[\s\S]*\}", raw)
+        if m:
+            raw = m.group(0)
         return json.loads(raw)
-
-    except subprocess.TimeoutExpired:
-        print("  Codex 타임아웃")
-        return None
-    except json.JSONDecodeError as e:
-        print(f"  JSON 파싱 실패: {e}")
-        return None
     except Exception as e:
-        print(f"  오류: {e}")
+        print(f"  OpenAI 실패: {e}")
         return None
-    finally:
-        try:
-            os.unlink(tf_path)
-        except Exception:
-            pass
+
+
+def generate_wim(summary):
+    if not WIM_PROMPT_PATH.exists():
+        return None
+    wim_prompt = WIM_PROMPT_PATH.read_text(encoding="utf-8")
+    compact = json.dumps({
+        "title": summary.get("whats_happening", ""),
+        "key_takeaways": [summary.get("whats_happening", "")],
+        "tech_stack": summary.get("tech_stack", []),
+        "apply_points": summary.get("apply_points", []),
+        "sections": [],
+    }, indent=2, ensure_ascii=False)
+    try:
+        env = os.environ.copy()
+        env.pop("ANTHROPIC_API_KEY", None)
+        result = subprocess.run(
+            [CLAUDE_PATH, "-p", "--setting-sources", "user"],
+            input=(wim_prompt + "\n" + compact).encode("utf-8"),
+            capture_output=True, timeout=120,
+            cwd="C:/windows/temp", env=env,
+        )
+        if result.returncode != 0:
+            return None
+        wim_text = result.stdout.decode("utf-8", errors="replace").strip()
+        if not wim_text or len(wim_text) < 20:
+            return None
+        if any(err in wim_text.lower() for err in ["credit balance", "rate limit", "unauthorized"]):
+            return None
+        m = re.search(r"\*\*Why it matters:\*\*\s*(.+?)(?=\n\n|\n\*\*|\Z)", wim_text, re.DOTALL)
+        return m.group(1).strip() if m else wim_text[:200]
+    except Exception:
+        return None
 
 
 def main():
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--ids", help="쉼표 구분 ID (예: bm-064,bm-065)")
+    args = parser.parse_args()
+
     bm = json.load(open(BOOKMARKS_JSON, encoding="utf-8"))
-    targets = [b for b in bm if b["id"] >= "bm-045"]
+
+    if args.ids:
+        target_ids = set(args.ids.split(","))
+        targets = [b for b in bm if b["id"] in target_ids]
+    else:
+        targets = [b for b in bm if b.get("why_it_matters") == "Credit balance is too low"
+                    or b.get("category") == ""]
+
     print(f"재분석 대상: {len(targets)}개")
 
     updated = 0
     for b in targets:
         text = b.get("text", "")
-        if not text or len(text) < 50:
-            print(f"  {b['id']} @{b['author']}: 본문 없음 — 스킵")
+        if not text or len(text) < 20:
+            print(f"  {b['id']}: 본문 부족 — 스킵")
             continue
 
-        print(f"\n[{b['id']}] @{b['author']} ({len(text)}자)...", end="", flush=True)
-        summary = summarize_with_codex(text, b["id"])
+        print(f"[{b['id']}] @{b.get('author','')}...", end="", flush=True)
+
+        summary = summarize_openai(text)
         if not summary:
-            print(" FAIL")
+            print(" FAIL (OpenAI)")
             continue
 
-        for key in ["whats_happening", "why_it_matters", "translation", "tech_stack", "apply_points"]:
+        wim = generate_wim(summary)
+
+        for key in ["whats_happening", "translation", "tech_stack", "apply_points"]:
             if key in summary:
                 b[key] = summary[key]
+        if wim:
+            b["why_it_matters"] = wim
+            print(f" OK+WIM")
+        else:
+            b.pop("why_it_matters", None)
+            print(f" OK (WIM 없음)")
 
         updated += 1
-        print(f" OK — {summary.get('whats_happening', '')[:50]}")
-
-        # 건마다 저장
         with open(BOOKMARKS_JSON, "w", encoding="utf-8") as f:
             json.dump(bm, f, ensure_ascii=False, indent=2)
 
-    print(f"\n{updated}/{len(targets)}개 재분석 완료")
+    print(f"\n{updated}/{len(targets)}개 완료")
 
     if updated > 0:
         os.chdir(BLOG_DIR)
         os.system("git add _data/bookmarks.json")
-        os.system(f'git commit -m "[tech-review] bm-045~055 Codex 재분석 ({updated}개)"')
+        os.system(f'git commit -m "[tech-review] 깨진 북마크 {updated}개 재분석 (OpenAI+WIM)"')
         os.system("git push")
         print("push 완료")
 
