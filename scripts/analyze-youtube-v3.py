@@ -38,7 +38,10 @@ CLAUDE_CMD = r"C:\Users\pauls\AppData\Roaming\npm\claude.cmd"
 FFMPEG = r"C:\Users\pauls\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-8.1-full_build\bin\ffmpeg.exe"
 
 PLAYLISTS = [
-    ("blog", "PLUeFkXBkSX_bgvVnbAFBvZZE03jCzzm5Q"),
+    ("claude",   "PLUeFkXBkSX_bxzWza71Mdb7JlOOg5xDDS"),
+    ("build",    "PLUeFkXBkSX_Znh-9HE9iIEzq23h3Y2eBw"),
+    ("design",   "PLUeFkXBkSX_aH1TmJ1iOolxwkJsP6DwXf"),
+    ("insight",  "PLUeFkXBkSX_bhASv37IvjLnXfCVwqQT8h"),
     ("ontology", "PLUeFkXBkSX_ZFCfP8j0peOCeOlKVhwfFx"),
 ]
 
@@ -219,7 +222,7 @@ def structurize(title, transcript):
     url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={GEMINI_API_KEY}"
     body = json.dumps({
         "contents": [{"parts": [{"text": prompt}]}],
-        "generationConfig": {"temperature": 0.3, "maxOutputTokens": 8192},
+        "generationConfig": {"temperature": 0.3, "maxOutputTokens": 32768},
     }).encode("utf-8")
 
     for attempt in range(3):

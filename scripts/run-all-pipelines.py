@@ -160,10 +160,10 @@ def _run_main():
         timeout=1800,
     )
 
-    # 2. YouTube (fetch + analyze, 최대 60분)
+    # 2. YouTube v3 (yt-dlp + Groq Whisper + Gemini Flash + Claude AP)
     results["youtube"] = run_step(
         "YouTube",
-        [PYTHON, str(SCRIPT_DIR / "analyze-youtube.py")],
+        [PYTHON, str(SCRIPT_DIR / "analyze-youtube-v3.py")],
         timeout=3600,
     )
 
