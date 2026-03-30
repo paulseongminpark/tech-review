@@ -1,0 +1,44 @@
+{
+  "date": "2026-03-30",
+  "lang": "ko",
+  "post_url": "/ko/2026/03/30/daily-tech-review/",
+  "post_title": "Meta Avocado 라인업 유출, OpenAI Model Spec 공개, 3K 파라미터로 100만 길이 외삽",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "Meta Avocado 라인업 유출 — 에이전트 모델부터 멀티모달까지",
+      "lead": "Meta 내부 모델 선택기에서 Avocado 계열 구성이 노출됐다. 확인된 변형은 최소 다섯 가지다: Avocado 9B(소형), Avocado Mango(에이전트+서브에이전트 레이블, 이미지 생성 멀티모달 추정), Avocado TOMM(\"Tool of Many Models\"), Avocado Thinking 5.6(추론 모델 최신 버전), Paricado(텍스트 전용 대화 모델). 아직 공식 발표는 없으나 내부 평가 단계임이 구체적 명칭과 ",
+      "tags": [
+        "ai-models",
+        "research",
+        "benchmarks",
+        "meta"
+      ],
+      "anchor": "meta-avocado-라인업-유출-에이전트-모델부터-멀티모달까지"
+    },
+    {
+      "index": 2,
+      "title": "OpenAI Model Spec — 모델 행동의 공개 기준서",
+      "lead": "OpenAI가 Model Spec의 구조와 작성 철학을 공개했다. Model Spec은 모델이 지시를 따르고 충돌을 해소하며 사용자 자유를 존중하고 안전하게 동작하는 방식을 정의하는 공식 프레임워크다. 2024년 첫 버전 이후 지속적으로 진화해왔으며, 사용자·개발자·연구자·정책 입안자 누구나 읽고 검토할 수 있는 형태로 공개된다. OpenAI는 이 문서가 현재 모델 행동이 완벽하다는 주장이 아니라 목표 행동을 명시적으로 정의해 훈련과 평가의 기",
+      "tags": [
+        "ai-models",
+        "research",
+        "benchmarks",
+        "openai"
+      ],
+      "anchor": "openai-model-spec-모델-행동의-공개-기준서"
+    },
+    {
+      "index": 3,
+      "title": "3천 파라미터 모델이 길이 100만 시퀀스를 완벽히 외삽",
+      "lead": "Geometric Flow Networks(GFN)라는 새로운 시퀀스 모델링 아키텍처가 공개됐다. 어텐션 기반의 통계적 상관 계산 대신, 입력이 기하학적 다양체를 통과하는 파티클의 궤적을 왜곡시키는 방식으로 계산을 처리한다. 3,164 파라미터짜리 G-SSM 모델이 길이 20의 XOR 시퀀스로 훈련된 뒤 길이 100만 시퀀스에서 100% 정확도를 달성했으며, 200회 미만의 학습 스텝으로 수렴했다. KV 캐시 없이 O(1) 상태 메모리를 유지하",
+      "tags": [
+        "ai-models",
+        "research",
+        "benchmarks"
+      ],
+      "anchor": "3천-파라미터-모델이-길이-100만-시퀀스를-완벽히-외삽"
+    }
+  ]
+}
