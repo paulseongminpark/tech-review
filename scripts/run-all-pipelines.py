@@ -153,11 +153,11 @@ def _run_main():
 
     results = {}
 
-    # 1. Daily Post (최대 90분 — DR 25분×3 + Claude 5분 + 여유)
+    # 1. Daily Post v3 (free-sources: RSS/Reddit/HN → Claude Sonnet)
     results["daily"] = run_step(
         "Daily Post",
-        [PYTHON, str(SCRIPT_DIR / "run-daily-pipeline.py"), "--date", TODAY],
-        timeout=5400,
+        [PYTHON, str(SCRIPT_DIR / "run-daily-v3.py"), TODAY],
+        timeout=1800,
     )
 
     # 2. YouTube (fetch + analyze, 최대 60분)
