@@ -3,7 +3,7 @@
 analyze-youtube-v3.py — YouTube 파이프라인 v3
 
 Stage 1: yt-dlp 자막(1차) → Groq Whisper(2차) → transcript
-Stage 2: OpenAI gpt-5.4 → 구조화 (structurize)
+Stage 2: Codex CLI gpt-5.4 → 구조화 (structurize)
 Stage 3: Claude Sonnet + recall() → apply_points 5W1H
 Stage 4: OpenAI gpt-4.1-mini → 한글 번역
 Stage 5: 검증 + push
@@ -209,58 +209,57 @@ def extract_transcript_groq(video_id):
         audio_path.unlink(missing_ok=True)
 
 
-# ── Step 3: 구조화 (OpenAI gpt-5.4) ──────────────────
-def structurize(title, transcript):
-    """OpenAI gpt-5.4로 Smart Brevity 구조화"""
-    if not OPENAI_API_KEY:
-        log("    [구조화] OPENAI_API_KEY 없음")
-        return None
+# ── Step 3: 구조화 (Codex gpt-5.4) ───────────────────
+CODEX_CMD = r"C:\Users\pauls\AppData\Roaming\npm\codex.cmd"
 
+def structurize(title, transcript):
+    """Codex CLI gpt-5.4로 Smart Brevity 구조화 (Plus 구독 내)"""
     prompt_template = (CONFIG_DIR / "structuring-prompt.md").read_text(encoding="utf-8")
     prompt = prompt_template.replace("{title}", title).replace("{transcript}", transcript[:50000])
 
-    body = json.dumps({
-        "model": "gpt-5.4",
-        "messages": [
-            {"role": "system", "content": "You are a transcript structurizer. Output ONLY valid JSON, no markdown code blocks."},
-            {"role": "user", "content": prompt},
-        ],
-        "temperature": 0.3,
-        "max_completion_tokens": 32768,
-    }).encode("utf-8")
+    out_file = TMP / f"structurize-{TODAY}-{int(time.time())}.json"
 
-    for attempt in range(3):
-        try:
-            req = urllib.request.Request(
-                "https://api.openai.com/v1/chat/completions",
-                data=body,
-                headers={"Content-Type": "application/json", "Authorization": f"Bearer {OPENAI_API_KEY}"},
-            )
-            resp = urllib.request.urlopen(req, timeout=180)
-            data = json.loads(resp.read().decode("utf-8"))
-            text = data["choices"][0]["message"]["content"].strip()
+    try:
+        result = subprocess.run(
+            [CODEX_CMD, "exec",
+             "-m", "gpt-5.4",
+             "--full-auto",
+             "-o", str(out_file),
+             prompt + "\n\n순수 JSON만 출력. 마크다운 코드블록 없이."],
+            capture_output=True, timeout=300,
+            cwd=str(BLOG_DIR),
+        )
 
-            text = re.sub(r"^```json\s*", "", text)
-            text = re.sub(r"\s*```$", "", text.strip())
-            m = re.search(r"\{[\s\S]*\}", text)
-            if m:
-                text = m.group(0)
-            result = json.loads(text)
-            return result
-        except urllib.error.HTTPError as e:
-            if e.code == 429 and attempt < 2:
-                log(f"    [구조화] 429 — {30*(attempt+1)}초 대기")
-                time.sleep(30 * (attempt + 1))
-                continue
-            log(f"    [구조화] HTTP {e.code}")
+        # 출력 파일 우선, 없으면 stdout
+        if out_file.exists():
+            raw = out_file.read_text(encoding="utf-8").strip()
+            out_file.unlink(missing_ok=True)
+        else:
+            raw = result.stdout.decode("utf-8", errors="replace").strip()
+
+        if result.returncode != 0 and not raw:
+            stderr = result.stderr.decode("utf-8", errors="replace").strip()[:200]
+            log(f"    [구조화] Codex 실패 (rc={result.returncode}): {stderr}")
             return None
-        except json.JSONDecodeError as e:
-            log(f"    [구조화] JSON 파싱 실패")
-            return None
-        except Exception as e:
-            log(f"    [구조화] 실패: {e}")
-            return None
-    return None
+
+        # JSON 추출
+        raw = re.sub(r"^```json\s*", "", raw)
+        raw = re.sub(r"\s*```$", "", raw.strip())
+        m = re.search(r"\{[\s\S]*\}", raw)
+        if m:
+            raw = m.group(0)
+        return json.loads(raw)
+
+    except subprocess.TimeoutExpired:
+        log("    [구조화] Codex 타임아웃 (300초)")
+        out_file.unlink(missing_ok=True)
+        return None
+    except json.JSONDecodeError as e:
+        log(f"    [구조화] JSON 파싱 실패: {e}")
+        return None
+    except Exception as e:
+        log(f"    [구조화] 실패: {e}")
+        return None
 
 
 # ── Step 4: Apply Points 5W1H (Claude Sonnet) ─────────
@@ -428,7 +427,7 @@ def main():
             continue
 
         # Step 3: 구조화
-        log("  [S2] 구조화 (gpt-5.4)...")
+        log("  [S2] 구조화 (Codex gpt-5.4)...")
         summary = structurize(title, transcript)
         if not summary:
             log("    구조화 실패 — 스킵")
