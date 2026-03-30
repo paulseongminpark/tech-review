@@ -445,13 +445,21 @@ else:
 if os.path.exists(post_dest) and not ANY_FAIL:
     log("[Step 7] 배포...")
     try:
-        subprocess.run(["git", "pull", "--rebase", "origin", "master"], cwd=BLOG, capture_output=True, timeout=30)
+        pull_r = subprocess.run(["git", "pull", "--rebase", "origin", "master"], cwd=BLOG, capture_output=True, text=True, timeout=30, encoding="utf-8")
+        if pull_r.returncode != 0:
+            log(f"  [WARN] pull --rebase 실패 (rc={pull_r.returncode}): {(pull_r.stdout or pull_r.stderr).strip()[:80]}")
+            subprocess.run(["git", "rebase", "--abort"], cwd=BLOG, capture_output=True, timeout=10)
+            ANY_FAIL = True
         subprocess.run(["git", "add", "_posts/ko/", "_data/sections/"], cwd=BLOG, capture_output=True, timeout=10)
         r = subprocess.run(["git", "commit", "-m", f"[auto] {POST_DATE} daily post ({DAY_TOPIC}, free-sources v3)"],
                           cwd=BLOG, capture_output=True, text=True, timeout=30, encoding="utf-8")
         log(f"  commit: {r.stdout.strip()[:80]}")
         r = subprocess.run(["git", "push"], cwd=BLOG, capture_output=True, text=True, timeout=60, encoding="utf-8")
-        log(f"  push: {(r.stdout or r.stderr).strip()[:80]}")
+        push_out = (r.stdout or r.stderr).strip()[:80]
+        log(f"  push: {push_out}")
+        if r.returncode != 0:
+            log(f"  [WARN] push 실패 — 수동 확인 필요")
+            ANY_FAIL = True
     except Exception as e:
         log(f"  git FAIL: {e}")
         ANY_FAIL = True
