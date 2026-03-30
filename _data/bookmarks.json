@@ -2054,5 +2054,22 @@
     ],
     "why_it_matters": "Credit balance is too low",
     "tweet_id": "2036702519959962060"
+  },
+  {
+    "id": "bm-070",
+    "author": "lotte_verheyden",
+    "date": "2026-03-27",
+    "added_at": "2026-03-30",
+    "url": "https://x.com/lotte_verheyden/status/2037665098983190904",
+    "text": "http://x.com/i/article/2037643907379736576",
+    "whats_happening": "트위터 게시글에서 특정 기사 링크가 공유되었으며, 해당 링크는 추가적인 정보를 제공하는 것으로 보인다.",
+    "translation": "http://x.com/i/article/2037643907379736576",
+    "tech_stack": [],
+    "apply_points": [
+      "프로젝트 관련 최신 기사 링크를 공유하여 정보 업데이트에 활용한다.",
+      "외부 링크를 통해 프로젝트 관련 추가 자료를 쉽게 접근 가능하게 한다."
+    ],
+    "why_it_matters": "Credit balance is too low",
+    "tweet_id": "2037665098983190904"
   }
 ]
