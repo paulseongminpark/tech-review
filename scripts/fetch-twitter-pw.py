@@ -165,6 +165,14 @@ def parse_tweet_result(result, tweets):
 
     tweet_url = f"https://x.com/{screen_name}/status/{tweet_id}" if screen_name and tweet_id else ""
 
+    # X Article 감지 — GraphQL에 article 본문이 있는지 기록
+    is_article = bool(re.match(r'^https?://(x\.com|twitter\.com)/i/article/\d+$', text.strip()))
+    article_keys = []
+    if is_article:
+        for key in ("article", "article_results", "unified_card"):
+            if key in result:
+                article_keys.append(key)
+
     tweet_data = {
         "id": tweet_id,
         "text": text.strip(),
@@ -172,6 +180,10 @@ def parse_tweet_result(result, tweets):
         "url": tweet_url,
         "created_at": created,
     }
+    if is_article:
+        tweet_data["is_article"] = True
+        if article_keys:
+            tweet_data["article_graphql_keys"] = article_keys
 
     # card 데이터 (링크 프리뷰, 영상 임베드)
     card = parse_card(result)

@@ -52,6 +52,49 @@ PROMPT_TEMPLATE = """\
 
 CLAUDE_PATH = "C:/Users/pauls/AppData/Roaming/npm/claude.cmd"
 WIM_PROMPT_PATH = BLOG_DIR / "config" / "wim-prompt.md"
+ARTICLE_URL_RE = re.compile(r'^https?://(x\.com|twitter\.com)/i/article/\d+$')
+CDP_URL = "http://127.0.0.1:9222"
+
+
+def fetch_article_text(tweet_url: str) -> str | None:
+    """CDP Chrome으로 X Article 본문을 가져온다.
+    tweet_url: 트윗 URL (아티클이 포함된 트윗 페이지)
+    """
+    try:
+        from playwright.sync_api import sync_playwright
+    except ImportError:
+        return None
+
+    try:
+        with sync_playwright() as p:
+            browser = p.chromium.connect_over_cdp(CDP_URL)
+            context = browser.contexts[0]
+            page = context.new_page()
+            try:
+                page.goto(tweet_url, wait_until="domcontentloaded", timeout=20000)
+                page.wait_for_timeout(5000)
+                body = page.inner_text("body")
+
+                # "Conversation" 이후 콘텐츠 추출
+                idx = body.find("Conversation")
+                content = body[idx + 12:].strip() if idx >= 0 else body
+
+                # X UI 크롬 제거: author/handle/metrics 줄 스킵
+                lines = content.split('\n')
+                start = 0
+                for i, line in enumerate(lines[:20]):
+                    s = line.strip()
+                    if re.match(r'^\d[\d,.]*[KMB]?$', s) or s in ('Subscribe', ''):
+                        start = i + 1
+                article = '\n'.join(lines[start:]).strip()
+
+                return article[:4000] if len(article) > 100 else None
+            finally:
+                page.close()
+                browser.close()
+    except Exception as e:
+        print(f" [CDP: {e}]", end="")
+        return None
 
 
 def generate_wim_twitter(summary: dict) -> str | None:
@@ -295,11 +338,20 @@ def main():
 
     for tw in new_tweets:
         print(f"  분석 중: @{tw['author']} ...", end="", flush=True)
-        # X Article 감지 — 본문 없이 아티클 URL만 있는 트윗 스킵
-        if re.match(r'^https?://(x\.com|twitter\.com)/i/article/\d+$', tw["text"].strip()):
-            print(f" SKIP (X Article — 본문 없음: {tw['text'].strip()})")
-            continue
-        summary = summarize_fn(tw["text"])
+        analysis_text = tw["text"]
+
+        # X Article 감지 — CDP로 본문 가져오기
+        if ARTICLE_URL_RE.match(tw["text"].strip()):
+            article = fetch_article_text(tw["url"])
+            if article:
+                tw["text"] = article[:500]   # 북마크 표시용
+                analysis_text = article       # 분석용 전문
+                print(" [Article→CDP]", end="", flush=True)
+            else:
+                print(f" SKIP (X Article — CDP 실패)")
+                continue
+
+        summary = summarize_fn(analysis_text)
         if not summary:
             print(" FAIL")
             continue
