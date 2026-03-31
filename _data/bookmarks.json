@@ -1951,20 +1951,21 @@
     "date": "2026-03-27",
     "added_at": "2026-03-28",
     "url": "https://x.com/mem0ai/status/2037545669695844399",
-    "text": "http://x.com/i/article/2032868736978587648",
-    "whats_happening": "OpenAI가 GPT-4 Turbo를 발표했으며, 이는 기존 GPT-4보다 더 빠르고 저렴한 모델이다. 이 모델은 ChatGPT Plus와 API에서 사용 가능하다.",
-    "translation": "OpenAI가 GPT-4 Turbo를 발표했습니다. GPT-4 Turbo는 기존 GPT-4보다 더 빠르고 저렴한 모델이며, ChatGPT Plus와 API에서 사용할 수 있습니다.",
+    "text": "The #1 repo on GitHub right now is a superagent harness, DeerFlow by ByteDance. It stores memory in JSON. Here's how it works.\n\nMost frameworks simulate memory by replaying chat history, stuffing everything into the context window and hoping the model picks what matters.\n\nDeerFlow does something different. It doesn't store conversations. It extracts facts about the user, scores them by confidence, and injects what fits within a 2,000-token budget into each prompt, async, without bloating the context.\n\nMemory Panel UI organizes everything into User Context (Work + Personal), Current Focus areas. The memory uses confidence scoring to rank facts and a 2000-token budget for injection.",
+    "whats_happening": "ByteDance의 DeerFlow가 GitHub #1을 기록 중이며, 대화 기록 재주입 대신 사실 추출·신뢰도 점수·2000토큰 예산 주입 방식으로 메모리를 관리한다.",
+    "translation": "지금 GitHub에서 #1 레포는 ByteDance의 슈퍼에이전트 하네스 DeerFlow입니다. 메모리를 JSON에 저장합니다. 작동 방식을 설명합니다.\n\n대부분의 프레임워크는 채팅 기록을 반복 재생해 메모리를 시뮬레이션합니다. 모든 것을 컨텍스트 창에 쑤셔 넣고 모델이 필요한 것을 찾아주길 기대합니다.\n\nDeerFlow는 다릅니다. 대화를 저장하지 않습니다. 사용자에 관한 사실을 추출하고 신뢰도로 점수를 매기며, 2,000토큰 예산 내에서 맞는 것만 각 프롬프트에 비동기로 주입합니다. 컨텍스트를 부풀리지 않으면서요.\n\nMemory Panel UI는 User Context(업무+개인), 현재 집중 영역으로 구성됩니다. 메모리는 신뢰도 점수로 사실을 순위 매기고 2000토큰 예산으로 주입합니다.",
     "tech_stack": [
-      "GPT-4 Turbo",
-      "ChatGPT Plus",
-      "OpenAI API"
+      "DeerFlow",
+      "ByteDance",
+      "JSON memory",
+      "confidence scoring"
     ],
     "apply_points": [
-      "더 빠르고 저렴한 AI 모델 활용 가능",
-      "API를 통한 손쉬운 AI 통합",
-      "ChatGPT Plus 구독으로 최신 모델 이용"
+      "mcp-memory의 recall 결과를 신뢰도 점수 기반으로 2000토큰 이내로 슬라이싱하라",
+      "대화 이력 재주입 대신 사실 추출 → 점수 → 예산 주입 패턴으로 orchestration 메모리 재설계",
+      "DeerFlow의 User Context 분류(업무/개인/현재 집중)를 mcp-memory 온톨로지 타입에 반영 검토"
     ],
-    "why_it_matters": "API 호출 단가가 내려가는 순간, 토큰 예산은 \"설계 제약\"에서 \"설계 자유도\"로 전환된다 — mcp-memory의 recall 빈도, tech-review 파이프라인의 중간 검증 레이어처럼, 비용 때문에 빼놨던 단계를 다시 넣을 수 있는 조건이 만들어진다.",
+    "why_it_matters": "컨텍스트 창을 대화로 채우는 게 아니라 신뢰도 점수로 선별한 사실 2000토큰만 주입한다 — mcp-memory recall 결과를 무제한 주입하던 패턴의 근본적 대안이다.",
     "tweet_id": "2037545669695844399"
   },
   {
@@ -1995,20 +1996,22 @@
     "date": "2026-03-26",
     "added_at": "2026-03-28",
     "url": "https://x.com/TheVixhal/status/2037236399691489797",
-    "text": "http://x.com/i/article/2037179050448609283",
-    "whats_happening": "OpenAI가 GPT-4 Turbo를 발표했으며, 이는 GPT-4보다 더 빠르고 저렴한 모델이다. 이 모델은 ChatGPT와 API에서 사용 가능하다.",
-    "translation": "OpenAI announced GPT-4 Turbo, a faster and cheaper version of GPT-4. It is available in ChatGPT and via API.",
+    "text": "In this article we are going to build a Vectorless, Reasoning-Based RAG System using hierarchical page indexing, where a document is turned into a tree and an LLM reasons through that tree to find the answer. No embeddings. No similarity search.\n\nThis is very similar to how we search for information in real life. When you want to find something in a textbook, you don't read every page from the beginning. You open the table of contents, find the right chapter, look at the sections inside it, and go directly to the one you need.\n\nPageIndex works the same way. You give it a document, it builds a tree where each branch is a section and each leaf is the actual text, and then when you ask it a question, an LLM navigates that tree level by level to find the right answer.\n\nStep 1: Parse the document into a hierarchical tree\nStep 2: Summarize each node bottom-up\nStep 3: Save the index to JSON\nStep 4: Retrieve by walking the tree\nStep 5: Generate the answer from retrieved context",
+    "whats_happening": "임베딩·벡터DB 없이 문서를 트리로 파싱하고 LLM이 트리를 탐색해 답을 찾는 Vectorless RAG 시스템 PageIndex를 구현하는 방법을 소개한다.",
+    "translation": "이 글에서는 계층적 페이지 인덱싱을 사용한 벡터 없는 추론 기반 RAG 시스템을 구축합니다. 문서를 트리로 변환하고 LLM이 그 트리를 탐색해 답을 찾습니다. 임베딩도, 유사도 검색도 없습니다.\n\n교과서에서 정보를 찾을 때 처음부터 모든 페이지를 읽지 않는 것처럼, 목차를 열고 챕터를 찾고 섹션을 보고 바로 그곳으로 갑니다. PageIndex도 같은 방식입니다.\n\n문서를 주면 각 브랜치가 섹션이고 각 리프가 실제 텍스트인 트리를 구성하고, 질문하면 LLM이 그 트리를 레벨별로 탐색해 정답을 찾습니다.\n\nStep 1: 문서를 계층적 트리로 파싱\nStep 2: 하위에서 상위로 각 노드 요약\nStep 3: 인덱스를 JSON으로 저장\nStep 4: 트리를 탐색해 검색\nStep 5: 검색된 컨텍스트로 답 생성",
     "tech_stack": [
-      "GPT-4 Turbo",
-      "ChatGPT",
-      "API"
+      "PageIndex",
+      "RAG",
+      "LLM tree navigation",
+      "JSON index",
+      "Python"
     ],
     "apply_points": [
-      "최신 AI 모델로 빠른 응답 구현 가능",
-      "비용 효율적인 AI 서비스 개발",
-      "API 활용으로 확장성 확보"
+      "mcp-memory의 recall이 벡터 검색 실패 시 계층 트리 탐색을 폴백으로 추가 검토",
+      "tech-review 파이프라인 문서를 트리 인덱스로 구조화해 LLM 탐색 비용 절감",
+      "임베딩 없이 JSON 트리만으로 RAG 구현 — 의존성 최소화 원칙과 일치"
     ],
-    "why_it_matters": "모델 가격이 내려가면 위임(delegation) 임계값이 바뀐다 — 지금까지 토큰 비용 때문에 직접 처리하던 작업을 API로 던질 수 있게 되면서, 오케스트레이션 설계의 비용 함수 자체가 재조정된다.",
+    "why_it_matters": "벡터DB 없이 LLM이 문서 트리를 직접 탐색한다 — 임베딩 파이프라인 없이도 정밀한 검색이 가능함을 보여주는 구체적 구현이다.",
     "tweet_id": "2037236399691489797"
   },
   {
@@ -2017,19 +2020,22 @@
     "date": "2026-03-26",
     "added_at": "2026-03-28",
     "url": "https://x.com/KSimback/status/2037168696259403929",
-    "text": "http://x.com/i/article/2036202416173989888",
-    "whats_happening": "OpenAI가 GPT-4 Turbo를 발표했으며, 이는 기존 GPT-4보다 빠르고 저렴한 버전이다.",
-    "translation": "OpenAI가 GPT-4 Turbo를 발표했습니다. 이 모델은 기존 GPT-4보다 더 빠르고 비용 효율적입니다.",
+    "text": "TLDR; a new Claude Code plugin drops every day, I ignore most of them but occasionally one catches my attention, and of those, a few genuinely change how I do things. This article highlights two that I think should be part of everyone's setup.\n\nThe two plugins are: gstack by @garrytan and Compound Engineering by Every.to. Both turn Claude Code into a more structured environment for any project.\n\ngstack: Garry Tan is President and CEO of Y Combinator. He published his entire Claude Code setup and called it gstack — 40k+ stars in 12 days. It gives you a virtual team: a CEO who stress-tests product decisions, an engineering manager who owns architecture, a designer who catches AI slop, a QA lead who opens a real browser, a security officer who runs audits, and a release engineer who ships the PR.\n\nCore commands: /office-hours, /plan-ceo-review, /plan-eng-review, /review, /qa, /retro\n\nThe philosophical core lives in ETHOS.md which Garry calls \"Boil the Lake\" — with AI, the marginal cost of completeness is near-zero, so always do the complete thing.\n\nCompound Engineering (CE) by Every.to focuses on structured engineering workflows with context management.",
+    "whats_happening": "Claude Code용 두 플러그인 gstack(Garry Tan, YC CEO)과 Compound Engineering(Every.to)을 소개한다. gstack은 가상 팀(CEO·EM·디자이너·QA·보안·릴리즈)을 Claude Code에 부여하고, CE는 구조화된 워크플로우와 컨텍스트 관리를 제공한다.",
+    "translation": "새로운 Claude Code 플러그인이 매일 쏟아지지만 대부분은 무시합니다. 가끔 하나가 눈에 띄고, 그 중 일부는 작업 방식을 진짜로 바꿉니다. 이 글은 모든 사람의 설정에 포함되어야 한다고 생각하는 두 가지를 소개합니다.\n\nYC CEO Garry Tan의 gstack — 12일 만에 40k+ 스타. CEO가 제품 결정을 검증하고, EM이 아키텍처를 소유하고, 디자이너가 AI 슬롭을 잡고, QA가 실제 브라우저를 열고, 보안 담당자가 감사를 실행하고, 릴리즈 엔지니어가 PR을 배포하는 가상 팀을 제공합니다.\n\n핵심 명령어: /office-hours, /plan-ceo-review, /plan-eng-review, /review, /qa, /retro\n\nETHOS.md의 철학적 핵심은 \"Boil the Lake\" — AI로 완전성의 한계 비용이 0에 가까워졌으니 항상 완전한 것을 하라.\n\nEvery.to의 Compound Engineering은 구조화된 엔지니어링 워크플로우와 컨텍스트 관리에 집중합니다.",
     "tech_stack": [
-      "GPT-4 Turbo",
-      "OpenAI"
+      "Claude Code",
+      "gstack",
+      "Compound Engineering",
+      "Every.to",
+      "Y Combinator"
     ],
     "apply_points": [
-      "더 빠르고 저렴한 AI 모델 활용 가능",
-      "비용 효율적인 AI 서비스 개발",
-      "최신 AI 기술 적용"
+      "gstack의 역할 분리(CEO/EM/QA/보안) 패턴을 orchestration Workers 설계에 참조",
+      "\"Boil the Lake\" 원칙 — AI 비용이 낮아졌으니 빼놨던 검증 레이어를 다시 추가하라",
+      "CE의 컨텍스트 관리 접근법을 CE v3.0 Gate 판단 기준과 비교 검토"
     ],
-    "why_it_matters": "모델 비용·속도의 임계점이 내려가면 에이전트 오케스트레이션의 설계 조건이 바뀐다 — 토큰 예산 때문에 억제했던 병렬 검증, 반복 recall 같은 호출 패턴을 구조적으로 풀 수 있게 된다.",
+    "why_it_matters": "\"완전성의 한계 비용이 0에 가깝다\" — gstack의 Boil the Lake 철학은 orchestration Workers를 3개로 줄인 Paul의 결정과 정반대 방향을 제시한다. 어느 쪽이 더 나은지 판단할 기준점이 생겼다.",
     "tweet_id": "2037168696259403929"
   },
   {
@@ -2038,20 +2044,22 @@
     "date": "2026-03-16",
     "added_at": "2026-03-28",
     "url": "https://x.com/NickSpisak_/status/2033518072724705437",
-    "text": "http://x.com/i/article/2033406892899217408",
-    "whats_happening": "OpenAI가 GPT-4 Turbo를 출시했으며, 이는 GPT-4보다 더 빠르고 저렴한 모델이다. 또한, GPT-4 Turbo는 ChatGPT 플러스와 API에서 사용 가능하다.",
-    "translation": "OpenAI가 GPT-4 Turbo를 출시했습니다. 이 모델은 GPT-4보다 더 빠르고 저렴하며, ChatGPT 플러스와 API에서 사용할 수 있습니다.",
+    "text": "If you use Claude Code, OpenClaw, Codex, OpenCode, Cursor, or any other AI coding agent — Paperclip was built for you.\n\nIt's a free, open-source tool that just launched on GitHub and hit 1.6 million views in its first week. It takes every AI agent you already use and organizes them into an actual company — with an org chart, job titles, budgets, goals, and one dashboard to manage all of them.\n\nYou're already using the workers. Paperclip gives them a company to work in.\n\nThe 8 Features That Matter Most:\n1. Org Charts — AI Company Has a Structure\n2. Goal Alignment — Every Task Connects to the Mission\n3. Heartbeats — Agents Work on a Schedule\n4. Budget Controls — No More Surprises\n\nThe Problem It Solves: Right now you probably have Claude Code in one terminal, Codex in another, Cursor open somewhere else. You're copying outputs between them. You lose track of who's doing what. Paperclip fixes all of that.\n\nCreated by @dotta. MIT license. No account. No subscription. Self-hosted.",
+    "whats_happening": "여러 AI 코딩 에이전트(Claude Code, Codex, Cursor 등)를 org chart·예산·목표가 있는 가상 회사로 조직하는 오픈소스 도구 Paperclip이 출시 첫 주 160만 뷰를 기록했다.",
+    "translation": "Claude Code, OpenClaw, Codex, OpenCode, Cursor, 그 외 AI 코딩 에이전트를 사용한다면 — Paperclip은 당신을 위해 만들어졌습니다.\n\nGitHub에 막 출시한 무료 오픈소스 도구로, 첫 주에 160만 뷰를 기록했습니다. 이미 사용 중인 모든 AI 에이전트를 실제 회사로 조직합니다 — 조직도, 직함, 예산, 목표, 그리고 모든 것을 관리하는 하나의 대시보드.\n\n이미 워커들은 있습니다. Paperclip이 그들에게 일할 회사를 줍니다.\n\n핵심 기능 8가지:\n1. 조직도 — AI 회사에 구조가 생깁니다\n2. 목표 정렬 — 모든 작업이 미션과 연결됩니다\n3. Heartbeats — 에이전트가 스케줄에 따라 작동합니다\n4. 예산 통제 — 더 이상 놀라움 없음\n\n해결하는 문제: 지금은 한 터미널에 Claude Code, 다른 터미널에 Codex, 어딘가에 Cursor가 열려 있습니다. 출력을 복사해 붙여넣고 있고, 누가 무엇을 하는지 추적을 잃습니다. Paperclip이 이것을 해결합니다.\n\n@dotta 제작. MIT 라이선스. 계정 불필요. 구독 불필요. 자체 호스팅.",
     "tech_stack": [
-      "GPT-4 Turbo",
-      "ChatGPT Plus",
-      "API"
+      "Paperclip",
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "MIT license"
     ],
     "apply_points": [
-      "더 빠르고 저렴한 AI 모델 활용 가능",
-      "ChatGPT Plus 구독자에게 새로운 기능 제공",
-      "API 통합으로 다양한 서비스에 적용 가능"
+      "orchestration의 멀티AI 위임 구조를 Paperclip org chart 방식으로 시각화 검토",
+      "Heartbeats(스케줄 기반 에이전트 실행)를 tech-review 파이프라인 자동화에 적용 가능",
+      "예산 통제 레이어를 mcp-memory TOKEN_BUDGETS 설계와 비교"
     ],
-    "why_it_matters": "모델 단가와 레이턴시가 동시에 내려가면 멀티 AI 오케스트레이션의 위임 손익분기점이 바뀐다 — \"비싸니까 직접 하자\"던 작업을 API로 던질 수 있게 되면서, 사람이 설계하고 기계가 실행하는 조건의 경계선이 재조정된다.",
+    "why_it_matters": "멀티 AI 에이전트를 \"터미널 여러 개\"가 아닌 \"조직 구조\"로 보는 관점 전환 — orchestration 시스템이 이미 구현한 위임 구조가 일반화되고 있다는 신호다.",
     "tweet_id": "2033518072724705437"
   },
   {
@@ -2084,20 +2092,22 @@
     "date": "2026-03-27",
     "added_at": "2026-03-30",
     "url": "https://x.com/lotte_verheyden/status/2037665098983190904",
-    "text": "http://x.com/i/article/2037643907379736576",
-    "whats_happening": "OpenAI가 GPT-4 Turbo를 발표했으며, 이는 GPT-4보다 빠르고 저렴한 모델이다. 이 모델은 ChatGPT와 API에서 사용 가능하다.",
-    "translation": "OpenAI가 GPT-4 Turbo를 발표했습니다. GPT-4 Turbo는 GPT-4보다 빠르고 저렴한 모델이며, ChatGPT와 API에서 사용할 수 있습니다.",
+    "text": "Autoresearch has generated a lot of excitement since Karpathy released the package, even he himself finding 20 improvements to code he'd hand-tuned for months. It's designed for optimizing code, but the underlying principle applies more broadly.\n\nWhat is Autoresearch? It's a minimal ~630-line Python script that automates the experimentation loop. An outer \"optimizer\" agent reads a target file, generates a hypothesis for how to improve it, and makes changes. An inner loop runs the modified file against an evaluator that scores the result. If the score improves, the change is kept; if not, it's discarded.\n\nThe result is hands-off iteration at machine speed. Karpathy reported ~12 experiments per hour, meaning ~100 experiments overnight.\n\nThe Setup for Autoresearching the Langfuse Skill: They focused on the prompt migration use case.\n\nScore function: score = (correctness * 0.5) + (completeness * 0.3) + (efficiency * 0.2)\n\nThey built 6 test codebases for evaluation.",
+    "whats_happening": "Karpathy가 공개한 Autoresearch를 Langfuse 스킬에 적용한 사례 — 630줄 Python 스크립트가 외부 최적화 에이전트와 내부 평가 루프를 자동화해 시간당 12회 실험, Karpathy 본인도 수개월 손튜닝 코드에서 20개 개선점을 발견했다.",
+    "translation": "Karpathy가 패키지를 공개한 이후 Autoresearch는 많은 관심을 받았습니다. 그 자신도 수개월간 손으로 튜닝한 코드에서 20가지 개선점을 발견했습니다. 코드 최적화를 위해 설계됐지만, 기저 원리는 더 넓게 적용됩니다.\n\nAutoresearch란? 실험 루프를 자동화하는 약 630줄의 최소한의 Python 스크립트입니다. 외부 \"최적화\" 에이전트가 대상 파일을 읽고, 개선 가설을 생성하고, 변경을 가합니다. 내부 루프는 수정된 파일을 평가자에 실행해 결과를 점수화합니다. 점수가 오르면 변경을 유지하고, 아니면 버립니다.\n\n결과는 기계 속도의 핸즈프리 반복입니다. Karpathy는 시간당 약 12회 실험, 즉 하룻밤에 약 100회 실험을 보고했습니다.\n\nLangfuse 스킬에 Autoresearch 적용: 프롬프트 마이그레이션 사용 사례에 집중했습니다.\n\n점수 함수: score = (정확성 * 0.5) + (완전성 * 0.3) + (효율성 * 0.2)\n\n평가를 위해 6개 테스트 코드베이스를 구축했습니다.",
     "tech_stack": [
-      "GPT-4 Turbo",
-      "ChatGPT",
-      "API"
+      "Autoresearch",
+      "Python",
+      "Langfuse",
+      "optimizer agent",
+      "evaluator loop"
     ],
     "apply_points": [
-      "빠르고 저렴한 AI 모델 활용 가능",
-      "API 통합으로 다양한 서비스 확장",
-      "최신 AI 기술 적용으로 효율성 증대"
+      "auto-iterate의 measure.py 점수 함수를 Autoresearch 패턴(correctness/completeness/efficiency)으로 재설계",
+      "mcp-memory recall 프롬프트를 Autoresearch 외부 최적화 에이전트로 자동 개선 실험 가능",
+      "tech-review 파이프라인 스킬 프롬프트를 6개 테스트 케이스로 자동 평가하는 내부 루프 도입"
     ],
-    "why_it_matters": "API 호출 비용과 지연이 동시에 줄어든다는 건 멀티 모델 분업 구조의 진입 조건이 낮아진다는 뜻이다 — 단일 모델에 모든 걸 맡기던 구조에서, 작업별로 모델을 나눠 쓰는 오케스트레이션이 비용상 현실적 선택지가 된다.",
+    "why_it_matters": "프롬프트 튜닝을 사람이 반복하는 게 아니라 평가 루프가 하룻밤에 100번 돌린다 — auto-iterate 프로젝트가 목표하는 \"시스템 건강 자동 측정\"의 다음 단계가 여기 있다.",
     "tweet_id": "2037665098983190904"
   }
 ]

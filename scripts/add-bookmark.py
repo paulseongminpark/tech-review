@@ -295,6 +295,10 @@ def main():
 
     for tw in new_tweets:
         print(f"  분석 중: @{tw['author']} ...", end="", flush=True)
+        # X Article 감지 — 본문 없이 아티클 URL만 있는 트윗 스킵
+        if re.match(r'^https?://(x\.com|twitter\.com)/i/article/\d+$', tw["text"].strip()):
+            print(f" SKIP (X Article — 본문 없음: {tw['text'].strip()})")
+            continue
         summary = summarize_fn(tw["text"])
         if not summary:
             print(" FAIL")
