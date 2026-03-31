@@ -1800,17 +1800,20 @@
     "date": "2026-03-22",
     "added_at": "2026-03-24",
     "url": "https://x.com/DhravyaShah/status/2035517012647272689",
-    "text": "http://x.com/i/article/2035506071260065792",
-    "whats_happening": "Dhravya Shah가 Claude Code 및 AI 에이전트 관련 심층 아티클을 공유했다.",
-    "translation": "Dhravya Shah의 아티클: Claude Code와 AI 에이전트 활용에 대한 심층 분석 글이다.",
+    "text": "We scored 99% on LongMemEval to prove a point. Two days ago, we announced that we scored ~99% on LongMemEval with a new memory system. The entire internet latched on to it. Everyone was really, really excited about this.\n\nAgent memory might be completely solved now. In a few years, BILLIONS of agents will be highly personalized and specialized per user - constantly learning and evolving on everything we do.\n\nA few months ago, we published our first research report showing Supermemory achieving ~85% on LongMemEval — a result that put us ahead of every publicly benchmarked memory system at the time. Today, we're publishing a new result: ~99% on LongMemEval.\n\nTo be absolutely clear upfront: this is not in our main production Supermemory engine (yet). Rather, this blog covers a new, highly experimental agentic flow we built to see exactly how far we could push the absolute limits of memory retrieval and reasoning.\n\nIntroducing our new technique: ASMR (Agentic Search and Memory Retrieval). This technique is: Really easy to implement, Does not require a Vector Database OR embeddings and can be done completely in-memory.",
+    "whats_happening": "Supermemory가 LongMemEval 99% 달성을 발표—ASMR(Agentic Search and Memory Retrieval) 기법으로 벡터DB 없이 순수 인메모리로 구현했다.",
+    "translation": "우리는 LongMemEval에서 99%를 기록해 한 가지를 증명했습니다. 이틀 전, 새로운 메모리 시스템으로 LongMemEval에서 ~99%를 기록했다고 발표했습니다. 인터넷 전체가 여기에 달라붙었습니다. 모두가 정말, 정말 흥분했습니다.\n\n에이전트 메모리가 이제 완전히 해결된 것일 수도 있습니다. 몇 년 안에 수십억 개의 에이전트가 사용자별로 고도로 개인화·전문화될 것입니다—우리가 하는 모든 것에서 끊임없이 학습하고 진화하면서요.\n\n몇 달 전, Supermemory가 LongMemEval에서 ~85%를 달성했다는 첫 번째 연구 보고서를 발표했습니다. 오늘은 새로운 결과를 발표합니다: LongMemEval ~99%.\n\n분명히 밝혀두겠습니다: 이것은 아직 메인 프로덕션 Supermemory 엔진에 적용된 것이 아닙니다. 오히려 메모리 검색과 추론의 절대적 한계를 얼마나 밀어붙일 수 있는지 보기 위해 만든 실험적 에이전틱 플로우입니다.\n\n새로운 기법을 소개합니다: ASMR(Agentic Search and Memory Retrieval). 이 기법은 구현이 매우 쉽고, 벡터 데이터베이스나 임베딩이 필요 없으며 완전히 인메모리로 구동됩니다.",
     "tech_stack": [
-      "Claude Code",
-      "AI 에이전트"
+      "Supermemory",
+      "LongMemEval",
+      "ASMR"
     ],
     "apply_points": [
-      "mcp-memory 설계 시 Dhravya의 에이전트 설계 패턴 참고 가능"
+      "mcp-memory에 ASMR 패턴 적용해 벡터DB 의존 없이 검색 정확도 개선 가능",
+      "LongMemEval 벤치마크로 mcp-memory 검색 품질 측정 기준 도입 검토",
+      "인메모리 에이전트 검색 방식을 orchestration 세션 복구 로직에 적용 가능"
     ],
-    "why_it_matters": "Claude Code 실전 사용 패턴을 정리한 글로, orchestration 설계에 적용할 수 있는 인사이트를 담고 있다."
+    "why_it_matters": "mcp-memory의 검색 아키텍처를 벡터DB 없이 99% 수준으로 끌어올릴 수 있는 구체적 기법이 공개됐다."
   },
   {
     "id": "bm-57",
@@ -1818,17 +1821,22 @@
     "date": "2026-03-20",
     "added_at": "2026-03-24",
     "url": "https://x.com/qwerty_ytrevvq/status/2034971608683618380",
-    "text": "http://x.com/i/article/2034960042680528896",
-    "whats_happening": "Qwerty가 AI 코딩 에이전트 관련 경험과 워크플로우를 아티클로 정리해 공유했다.",
-    "translation": "Qwerty의 아티클: AI 코딩 에이전트 사용 경험과 실전 워크플로우 정리.",
+    "text": "A free repository that makes your AI smarter in 5 minutes. Most people open ChatGPT and type something like \"write me an email\" or \"explain quantum physics.\" They get a mediocre response. They think AI is overhyped. The problem isn't the AI. The problem is how you talk to it.\n\nawesome-chatgpt-prompts is a GitHub repository. 143,000+ stars. Featured in Forbes. Referenced by Harvard and Columbia. 40+ academic citations. The most liked dataset on Hugging Face. #33 most popular repository in the world. The first and largest open-source prompt library for AI - launched December 2022.\n\nWorks with ChatGPT, Claude, Gemini, Llama, Mistral - any modern AI.\n\nRole = context = quality. Small changes in how you ask lead to massive changes in what you get back.\n\n150+ carefully curated prompts organized by role: \"Act as a Linux Terminal\", \"Act as a Financial Analyst\", \"Act as a Socratic Method Teacher\", \"Act as a Regex Generator\", \"Act as a Debate Partner\", \"Act as a Code Reviewer\", \"Act as a Startup Idea Validator\".",
+    "whats_happening": "awesome-chatgpt-prompts GitHub 레포(143K+ 스타)를 소개—역할 기반 프롬프트 150+개로 AI 응답 품질을 즉시 높일 수 있다.",
+    "translation": "5분 만에 AI를 더 스마트하게 만드는 무료 레포지토리. 대부분의 사람들은 ChatGPT를 열고 \"이메일 써줘\" 또는 \"양자물리학 설명해줘\" 같은 것을 입력합니다. 그러면 평범한 답변을 받습니다. AI가 과대평가됐다고 생각합니다. 문제는 AI가 아닙니다. 문제는 AI에게 말하는 방식입니다.\n\nawesome-chatgpt-prompts는 GitHub 레포지토리입니다. 143,000+ 스타. Forbes에 소개됨. Harvard와 Columbia에서 참조함. 40+ 학술 인용. Hugging Face에서 가장 많이 좋아요 받은 데이터셋. 세계 33번째로 인기 있는 레포지토리. AI를 위한 최초이자 최대 오픈소스 프롬프트 라이브러리—2022년 12월 출시.\n\nChatGPT, Claude, Gemini, Llama, Mistral 등 모든 최신 AI와 작동합니다.\n\n역할 = 맥락 = 품질. 물어보는 방식의 작은 변화가 받는 결과의 큰 변화로 이어집니다.\n\n역할별로 구성된 150+ 큐레이션 프롬프트: \"리눅스 터미널로 행동하라\", \"재무 분석가로 행동하라\", \"소크라테스식 교사로 행동하라\", \"정규식 생성기로 행동하라\", \"토론 상대로 행동하라\", \"코드 리뷰어로 행동하라\", \"스타트업 아이디어 검증자로 행동하라\".",
     "tech_stack": [
-      "AI 코딩 에이전트",
-      "Claude Code"
+      "awesome-chatgpt-prompts",
+      "ChatGPT",
+      "Claude",
+      "Gemini",
+      "Hugging Face"
     ],
     "apply_points": [
-      "tech-review 파이프라인 자동화에 참고할 수 있는 실전 워크플로우"
+      "orchestration 스킬 프롬프트 작성 시 역할 기반 구조(Act as ...) 패턴 직접 적용 가능",
+      "tech-review 블로그에 프롬프트 엔지니어링 입문 컨텐츠 소재로 활용",
+      "mcp-memory 시스템 프롬프트에 역할 프레이밍 적용해 recall 품질 개선 가능"
     ],
-    "why_it_matters": "실제 개발자가 AI 에이전트를 어떻게 일상 워크플로우에 통합하는지 보여주는 사례 연구다."
+    "why_it_matters": "143K 스타 검증된 역할 기반 프롬프트 패턴은 orchestration 스킬 설계의 즉시 적용 가능한 레퍼런스다."
   },
   {
     "id": "bm-58",
@@ -1836,18 +1844,20 @@
     "date": "2026-01-29",
     "added_at": "2026-03-24",
     "url": "https://x.com/trq212/status/2017024445244924382",
-    "text": "http://x.com/i/article/2016768930174685187",
-    "whats_happening": "Anthropic의 Thariq가 Claude Code 관련 심층 기술 아티클을 공유했다.",
-    "translation": "Thariq의 아티클: Claude Code 내부 동작 방식과 에이전트 아키텍처에 관한 기술 문서.",
+    "text": "We've published a new Claude Code plugin called playground that helps Claude generate HTML playgrounds. These are standalone HTML files that let you visualize a problem with Claude, interact with it and give you an output prompt to paste back into Claude Code.\n\nI've found this can be really good interacting with the model in ways that are not well suited for text, for example to: Visualize the architecture of the codebase, Adjust the design of a component, Brainstorm layouting and design, Tweak the balance of a game.\n\nTo get started, install the plugin in Claude code by running: /plugin marketplace update claude-plugins-official, /plugin install playground@claude-plugins-official\n\nFavorite playgrounds: Changing the design of the AskUserQuestion Tool, Critiquing your writing and getting inline suggestions, Tweaking a Remotion Video Intro, Viewing an Architecture Diagram with comments, Balancing a Superhero Rogue-like game.\n\nMy tip for creating an interesting playground — think of a unique way of interacting with the model and then ask it to express that.",
+    "whats_happening": "Anthropic이 Claude Code용 playground 플러그인을 공개—텍스트로 표현하기 어려운 시각화·디자인·게임밸런스 작업을 독립 HTML 파일로 Claude와 인터랙티브하게 진행할 수 있다.",
+    "translation": "Claude가 HTML 플레이그라운드를 생성하도록 돕는 새로운 Claude Code 플러그인 'playground'를 발표했습니다. 이것은 Claude와 함께 문제를 시각화하고, 상호작용하며, 결과 프롬프트를 Claude Code에 다시 붙여넣을 수 있는 독립 HTML 파일입니다.\n\n텍스트에 적합하지 않은 방식으로 모델과 상호작용할 때 정말 유용합니다. 예를 들어 코드베이스 아키텍처 시각화, 컴포넌트 디자인 조정, 레이아웃과 디자인 브레인스토밍, 게임 밸런스 조정 등에 활용할 수 있습니다.\n\n시작하려면 Claude Code에서 플러그인을 설치하세요: /plugin marketplace update claude-plugins-official, /plugin install playground@claude-plugins-official\n\n좋아하는 플레이그라운드: AskUserQuestion 도구 디자인 변경, 글쓰기 비평과 인라인 제안, Remotion 비디오 인트로 조정, 코멘트가 있는 아키텍처 다이어그램 보기, 슈퍼히어로 로그라이크 게임 밸런스 조정.",
     "tech_stack": [
       "Claude Code",
-      "Anthropic",
-      "AI 에이전트"
+      "playground plugin",
+      "Remotion",
+      "HTML"
     ],
     "apply_points": [
-      "orchestration 프로젝트에서 Claude Code 에이전트 통합 구조 설계에 직접 활용"
+      "orchestration 아키텍처 다이어그램을 playground로 시각화해 설계 리뷰 효율화 가능",
+      "tech-review 블로그 포스트 구조를 playground에서 인터랙티브하게 브레인스토밍 가능"
     ],
-    "why_it_matters": "Anthropic 내부 엔지니어가 공유한 Claude Code 설계 철학은 mcp-memory와 orchestration의 통합 방향을 결정하는 데 핵심 레퍼런스가 된다."
+    "why_it_matters": "텍스트 한계를 넘는 시각적 상호작용을 Claude Code에서 직접 구현할 수 있어 orchestration 설계 작업의 표현 폭이 확장된다."
   },
   {
     "id": "bm-59",
@@ -1855,18 +1865,21 @@
     "date": "2026-02-27",
     "added_at": "2026-03-24",
     "url": "https://x.com/trq212/status/2027463795355095314",
-    "text": "http://x.com/i/article/2027446899310313472",
-    "whats_happening": "Thariq가 Claude Code의 새로운 기능이나 사용 패턴에 관한 아티클을 공유했다.",
-    "translation": "Thariq의 아티클: Claude Code 신기능 및 실전 사용 패턴에 관한 업데이트.",
+    "text": "One of the hardest parts of building an agent harness is constructing its action space.\n\nClaude acts through Tool Calling, but there are a number of ways tools can be constructed in the Claude API with primitives like bash, skills and recently code execution.\n\nGiven all these options, how do you design the tools of your agent? Do you need just one tool like code execution or bash? What if you had 50 tools, one for each use case your agent might run into?\n\nTo put myself in the mind of the model I like to imagine being given a difficult math problem. What tools would you want? Paper would be the minimum, but you'd be limited. A calculator would be better. The fastest and most powerful option would be a computer, but you would have to know how to use it.\n\nThis is a useful framework for designing your agent. You want to give it tools that are shaped to its own abilities. You learn to see like an agent.\n\nHere are some lessons: Improving Elicitation & the AskUserQuestion tool — while Claude could just ask questions in plain text, answering felt slow. How could we lower friction and increase bandwidth?",
+    "whats_happening": "Anthropic의 Thariq가 에이전트 액션 스페이스 설계 교훈을 공유—도구를 에이전트 능력에 맞게 설계하는 'See like an agent' 프레임워크를 제시한다.",
+    "translation": "에이전트 하네스를 구축할 때 가장 어려운 부분 중 하나는 액션 스페이스를 구성하는 것입니다.\n\nClaude는 Tool Calling을 통해 행동하지만, Claude API에서 bash, skills, 최근의 코드 실행 같은 프리미티브로 도구를 구성하는 방법은 여러 가지가 있습니다.\n\n이 모든 옵션을 감안할 때, 에이전트의 도구를 어떻게 설계해야 할까요? 코드 실행이나 bash 같은 도구 하나만 필요할까요? 에이전트가 맞닥뜨릴 수 있는 각 사용 사례마다 하나씩 50개의 도구가 있다면 어떨까요?\n\n저는 모델의 관점에서 생각하기 위해 어려운 수학 문제를 받았다고 상상합니다. 어떤 도구를 원하겠습니까? 종이가 최소한이지만 한계가 있습니다. 계산기가 더 낫습니다. 가장 빠르고 강력한 옵션은 컴퓨터지만 사용할 줄 알아야 합니다.\n\n이것이 에이전트 설계를 위한 유용한 프레임워크입니다. 에이전트 자신의 능력에 맞게 형성된 도구를 주어야 합니다. 에이전트처럼 보는 법을 배우게 됩니다.",
     "tech_stack": [
       "Claude Code",
-      "MCP",
-      "AI 에이전트"
+      "Tool Calling",
+      "AskUserQuestion",
+      "Claude API"
     ],
     "apply_points": [
-      "tech-review 블로그의 Claude Code 관련 섹션 업데이트 시 참고"
+      "orchestration 스킬 설계 시 '에이전트 능력에 맞는 도구' 프레임워크로 도구 수 최적화",
+      "mcp-memory 도구 인터페이스를 Claude의 recall 패턴에 맞게 재설계 가능",
+      "AskUserQuestion 도구 설계 교훈을 orchestration의 사용자 입력 수집 스킬에 직접 적용"
     ],
-    "why_it_matters": "Anthropic DevRel의 Claude Code 업데이트 공유는 orchestration과 mcp-memory 프로젝트의 API 변경 대응에 직접 연관된다."
+    "why_it_matters": "Anthropic 내부에서 검증한 에이전트 도구 설계 원칙은 orchestration 스킬 아키텍처의 직접 레퍼런스다."
   },
   {
     "id": "bm-60",
@@ -1874,17 +1887,22 @@
     "date": "2026-03-20",
     "added_at": "2026-03-24",
     "url": "https://x.com/zodchiii/status/2034924354337714642",
-    "text": "http://x.com/i/article/2034917334360506369",
-    "whats_happening": "darkzodchi가 Claude Code 또는 AI 에이전트 워크플로우 관련 아티클을 공유했다.",
-    "translation": "darkzodchi의 아티클: AI 에이전트 및 Claude Code 활용 관련 인사이트.",
+    "text": "I scanned 1,000+ repos and tested 200+ skills so you don't have to. Here are the 90 AI tools that actually matter right now — skills, MCP servers, and GitHub repos in one list. Zero fluff.\n\nPart 1: Claude Skills — There are 60,000+ community skills out there. These 22 are the ones worth installing.\n\nDocument & Office (Official Anthropic): PDF Processing, DOCX, PPTX, XLSX, Doc Co-Authoring.\n\nDesign & Creative: Frontend Design (277k+ installs), Canvas Design, Algorithmic Art, Theme Factory, Web Artifacts Builder.\n\nDev & Engineering: Superpowers (96k+ stars, TDD, debugging), Systematic Debugging, File Search, Context Optimization.",
+    "whats_happening": "1000+ 레포와 200+ 스킬을 직접 테스트해 엄선한 Claude 스킬 22개·MCP 서버·GitHub 레포 목록을 정리했다.",
+    "translation": "1,000개 이상의 레포를 스캔하고 200개 이상의 스킬을 테스트했습니다. 지금 실제로 중요한 AI 도구 90개—스킬, MCP 서버, GitHub 레포를 한 목록에. 군더더기 없음.\n\n파트 1: Claude 스킬 — 60,000개 이상의 커뮤니티 스킬이 있습니다. 설치할 가치 있는 22개입니다.\n\n문서 & 오피스 (공식 Anthropic): PDF 처리, DOCX, PPTX, XLSX, 문서 공동 저작.\n\n디자인 & 창작: Frontend Design (277k+ 설치), Canvas Design, Algorithmic Art, Theme Factory, Web Artifacts Builder.\n\n개발 & 엔지니어링: Superpowers (96k+ 스타, TDD, 디버깅), Systematic Debugging, File Search, Context Optimization.",
     "tech_stack": [
       "Claude Code",
-      "AI 에이전트"
+      "MCP",
+      "Superpowers",
+      "Frontend Design",
+      "Context Optimization"
     ],
     "apply_points": [
-      "mcp-memory 외부 메모리 패턴 설계 시 커뮤니티 사례 참고"
+      "orchestration 스킬 선별 기준으로 이 큐레이션 목록 22개 항목을 우선 검토",
+      "Context Optimization 스킬을 orchestration의 CE v3 파이프라인에 통합 가능성 확인",
+      "tech-review 블로그 Claude 스킬 추천 포스트의 검증된 소스로 활용"
     ],
-    "why_it_matters": "커뮤니티 개발자들의 실전 에이전트 활용 패턴을 모아 tech-review 파이프라인 개선에 활용할 수 있다."
+    "why_it_matters": "60K+ 스킬에서 실검증으로 추린 22개 목록은 orchestration 스킬 스택 최적화의 즉시 사용 가능한 레퍼런스다."
   },
   {
     "id": "bm-61",
@@ -1933,17 +1951,21 @@
     "date": "2026-03-12",
     "added_at": "2026-03-24",
     "url": "https://x.com/kevingu/status/2031889622385729730",
-    "text": "http://x.com/i/article/2031876610975285249",
-    "whats_happening": "Kevin Gu가 Claude Code 또는 AI 에이전트 개발 관련 심층 아티클을 공유했다.",
-    "translation": "Kevin Gu의 아티클: AI 에이전트 및 Claude Code 개발 패턴에 관한 기술 분석.",
+    "text": "There are a couple of articles going around on structured context graphs for knowledge work arguing that markdown files are the best primitive. The diagnosis is true: context is the bottleneck. Companies are sitting on scattered knowledge: decisions, rationale, meeting outputs, changing priorities. Agents need a structure to traverse it without starting from zero every time.\n\nBut this ongoing romanticization of putting everything in markdown files is reinventing the database in the worst possible substrate.\n\nThe data modeling problem: The article talks about wikilinks as \"semantic connections.\" But the moment you need to query across your graph, like \"find all decisions that contradict the current roadmap,\" you're doing FTS across thousands of files. A real database gives you joins, indexes, constraints. Markdown files just give you grep.\n\nThat company directory tree? That's a schema. Decisions have a many-to-many with features. Congratulations, you've built a database.\n\nMaintenance is the real killer: If your source of truth is a Google doc and you've extracted claims into a markdown note, you now have two copies. Two copies drift. A database with a reference to the original source doesn't have this problem.",
+    "whats_happening": "마크다운 파일을 컨텍스트 그래프의 최적 기반으로 보는 흐름에 반박—FTS·두 사본 드리프트 문제를 들어 실제 데이터베이스가 더 적합하다고 주장한다.",
+    "translation": "지식 작업을 위한 구조화된 컨텍스트 그래프에 관한 기사들이 마크다운 파일이 최선의 프리미티브라고 주장합니다. 진단은 맞습니다: 컨텍스트가 병목입니다. 기업들은 흩어진 지식—결정, 근거, 회의 산출물, 변화하는 우선순위—를 보유하고 있습니다. 에이전트는 매번 처음부터 시작하지 않고 이것을 탐색할 구조가 필요합니다.\n\n하지만 모든 것을 마크다운 파일에 넣으려는 이 낭만화는 최악의 기질로 데이터베이스를 재발명하는 것입니다.\n\n데이터 모델링 문제: 이 기사는 위키링크를 '의미적 연결'이라고 합니다. 하지만 '현재 로드맵과 모순되는 모든 결정 찾기' 같은 그래프 전체 쿼리가 필요한 순간, 수천 개의 파일에 FTS를 실행해야 합니다. 실제 데이터베이스는 조인, 인덱스, 제약을 줍니다. 마크다운 파일은 grep만 줍니다.\n\n그 회사 디렉토리 트리? 그건 스키마입니다. 결정은 기능과 다대다 관계를 가집니다. 축하합니다, 데이터베이스를 만들었군요.\n\n유지보수가 진짜 킬러입니다: 소스 오브 트루스가 Google 문서이고 마크다운 노트에 내용을 추출했다면 이제 두 개의 복사본이 있습니다. 두 복사본은 드리프트합니다.",
     "tech_stack": [
-      "Claude Code",
-      "AI 에이전트"
+      "FTS",
+      "wikilinks",
+      "SQLite",
+      "Google Docs"
     ],
     "apply_points": [
-      "mcp-memory 온톨로지 설계 시 에이전트 메모리 패턴 참고"
+      "mcp-memory 온톨로지를 마크다운 대신 DB 쿼리 기반으로 설계한 현재 방향의 정당성 확인",
+      "orchestration의 STATE.md 단일 SoT 원칙을 두 사본 드리프트 방지 논거로 문서화 가능",
+      "index-system 그래프를 마크다운이 아닌 실제 DB 스키마로 강화하는 방향 검토"
     ],
-    "why_it_matters": "에이전트 생태계 커뮤니티의 Claude Code 사용 패턴 공유는 tech-review 콘텐츠 파이프라인의 소스 다양화에 기여한다."
+    "why_it_matters": "mcp-memory가 마크다운 대신 DB 기반 온톨로지를 선택한 이유를 외부에서 독립적으로 검증해주는 논거다."
   },
   {
     "id": "bm-064",
