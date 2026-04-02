@@ -1,0 +1,39 @@
+{
+  "date": "2026-04-02",
+  "lang": "ko",
+  "post_url": "/ko/2026/04/02/daily-tech-review/",
+  "post_title": "Bun 소스맵 버그가 부른 Claude Code 유출, GitHub 오픈소스 공급망 보안, 완전 로컬 열화상 프린터",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "Bun 소스맵 버그가 Claude Code 소스 유출의 근본 원인이었다",
+      "lead": "Anthropic의 Claude Code NPM 패키지에서 소스맵 파일이 노출되어 내부 소스코드가 유출됐다. r/programming에서 1,398점을 기록하며 빠르게 확산됐고, 곧이어 Bun의 프론트엔드 개발 서버 이슈(#28001)가 근본 원인으로 지목됐다. 핵심 버그는 development: false로 프로덕션 모드를 명시했음에도 소스맵이 그대로 서빙되는 것으로, Bun 1.3.10 버전(+30e609e08), Windows NT 10.",
+      "tags": [
+        "opensource",
+        "developer-tools"
+      ],
+      "anchor": "bun-소스맵-버그가-claude-code-소스-유출의-근본-원인이었다"
+    },
+    {
+      "index": 2,
+      "title": "GitHub, 오픈소스 공급망 전반의 보안 강화 방향을 제시했다",
+      "lead": "GitHub 블로그에서 오픈소스 공급망 전반에 걸친 보안 전략을 다루는 글을 게시했다. GitHub Advanced Security, Secret Protection, Code Security 등의 도구를 활용해 빌드-배포 사이클 전 과정에서 취약점을 조기에 차단하는 DevSecOps 접근을 소개한다. Healthcare, Financial services, Government 등 규제 산업을 포함해 공급망 공격 대응을 플랫폼 레벨에서 자동화하",
+      "tags": [
+        "opensource",
+        "developer-tools"
+      ],
+      "anchor": "github-오픈소스-공급망-전반의-보안-강화-방향을-제시했다"
+    },
+    {
+      "index": 3,
+      "title": "클라우드 없는 완전 로컬 오픈소스 열화상 프린터를 직접 만들었다",
+      "lead": "구독도, 계정도, 클라우드도 없는 완전 자립형 열화상 프린터 어플라이언스를 직접 제작한 사례가 r/SelfHosted에서 2,319점을 받으며 커뮤니티 최상위 화제로 올라왔다. 오픈소스 소프트웨어와 직접 조립 하드웨어를 결합해 외부 서비스 의존 없이 로컬에서 모든 처리를 완결하는 구조다. 137개의 댓글이 달리며 셀프호스팅 커뮤니티에서 재현과 변형 시도에 대한 논의가 활발하게 이어지고 있다.",
+      "tags": [
+        "opensource",
+        "developer-tools"
+      ],
+      "anchor": "클라우드-없는-완전-로컬-오픈소스-열화상-프린터를-직접-만들었다"
+    }
+  ]
+}
