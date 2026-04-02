@@ -17,7 +17,7 @@ fetch-twitter-pw.py — CDP로 기존 Chrome에 연결하여 X 북마크 자동 
   5. add-bookmark.py 체인 가능
 """
 
-import json, os, sys, time, random
+import json, os, re, sys, time, random
 from datetime import datetime
 from pathlib import Path
 from playwright.sync_api import sync_playwright
@@ -214,8 +214,8 @@ def fetch_bookmarks():
                 if tw["id"] and tw["id"] not in seen_ids:
                     seen_ids.add(tw["id"])
                     captured_tweets.append(tw)
-        except Exception:
-            pass
+        except Exception as e:
+            print(f"  [WARN] GraphQL 파싱 오류: {e}")
 
     with sync_playwright() as p:
         try:
