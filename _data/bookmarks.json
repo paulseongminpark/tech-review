@@ -2131,5 +2131,161 @@
     ],
     "why_it_matters": "프롬프트 튜닝을 사람이 반복하는 게 아니라 평가 루프가 하룻밤에 100번 돌린다 — auto-iterate 프로젝트가 목표하는 \"시스템 건강 자동 측정\"의 다음 단계가 여기 있다.",
     "tweet_id": "2037665098983190904"
+  },
+  {
+    "id": "bm-071",
+    "author": "AnthropicAI",
+    "date": "2026-04-02",
+    "added_at": "2026-04-03",
+    "url": "https://x.com/AnthropicAI/status/2039749628737019925",
+    "text": "New Anthropic research: Emotion concepts and their function in a large language model.\n\nAll LLMs sometimes act like they have emotions. But why? We found internal representations of emotion concepts that can drive Claude’s behavior, sometimes in surprising ways.",
+    "whats_happening": "Anthropic에서 대형 언어 모델 내 감정 개념과 그 기능에 관한 새로운 연구를 발표했다. 이 연구는 LLM들이 때때로 감정을 가진 것처럼 행동하는 이유와 Claude의 행동을 유도하는 감정 개념의 내부 표현을 발견했다.",
+    "translation": "New Anthropic research: Emotion concepts and their function in a large language model.\n\n모든 LLM들은 때때로 감정을 가진 것처럼 행동한다. 하지만 왜일까? 우리는 Claude의 행동을 때때로 놀라운 방식으로 이끄는 감정 개념의 내부 표현을 발견했다.",
+    "tech_stack": [
+      "LLM",
+      "Claude"
+    ],
+    "apply_points": [
+      "프로젝트 내 감정 개념의 내부 표현을 분석해 행동 예측에 활용한다.",
+      "LLM의 감정 표현 방식을 이해해 사용자 경험을 개선한다.",
+      "Claude와 같은 모델의 감정 기반 행동 패턴을 연구에 반영한다."
+    ],
+    "why_it_matters": "Claude 내부에 감정 개념이 해석 가능한 기능적 표현으로 존재하며 행동을 유도한다는 발견은, \"왜 이 반응이 나왔는가\"를 추적 가능한 영역으로 끌어올린 첫 메커니즘 지도다. 조건을 설계하려면 작동 구조부터 알아야 한다 — 블랙박스가 한 겹 벗겨졌다.",
+    "tweet_id": "2039749628737019925"
+  },
+  {
+    "id": "bm-072",
+    "author": "_avichawla",
+    "date": "2026-04-02",
+    "added_at": "2026-04-03",
+    "url": "https://x.com/_avichawla/status/2039598698548850949",
+    "text": "Another blow to Anthropic!\n\nDevs built a free and better Claude alternative that:\n\n- runs locally\n- works with any LLM\n- beats it on deep research\n- has Cowork-like capabilities\n- connects to 40+ data sources\n- self-hosts via Docker, and more.\n\n100% open-source (20k+ stars).",
+    "whats_happening": "개발자들이 Anthropic의 Claude보다 더 나은 무료 대안을 만들었으며, 이 대안은 로컬 실행, 다양한 LLM 지원, 심층 연구 능력 우수, Cowork 유사 기능, 40개 이상의 데이터 소스 연결, Docker를 통한 자체 호스팅 등을 제공한다.",
+    "translation": "Anthropic에 또 다른 타격! 개발자들이 무료이면서 더 나은 Claude 대안을 만들었는데, 이 대안은 로컬에서 실행되고, 어떤 LLM과도 작동하며, 심층 연구에서 Claude를 능가하고, Cowork와 같은 기능을 갖추었으며, 40개 이상의 데이터 소스에 연결되고, Docker를 통해 자체 호스팅이 가능하며, 그 외에도 많은 기능을 제공한다. 100% 오픈 소스(20k+ 스타).",
+    "tech_stack": [
+      "Docker",
+      "LLM"
+    ],
+    "apply_points": [
+      "mcp-memory에서 Paul 프로젝트와 유사한 오픈소스 도구 활용 가능성 검토",
+      "orchestration 단계에서 다양한 LLM과의 호환성 강화 방안 모색",
+      "tech-review 시 Docker 기반 자체 호스팅 기술 적용 검토"
+    ],
+    "why_it_matters": "멀티 LLM 호환 + 40개 데이터 소스 + Docker 셀프호스팅이 단일 오픈소스로 묶이는 순간, 빠지는 건 API 비용이 아니라 벤더 락인이다 — 오케스트레이션 레이어의 LLM 교체 가능성이 곧 아키텍처 자유도를 결정한다.",
+    "tweet_id": "2039598698548850949"
+  },
+  {
+    "id": "bm-073",
+    "author": "DeepDive_KR",
+    "date": "2026-03-31",
+    "added_at": "2026-04-03",
+    "url": "https://x.com/DeepDive_KR/status/2038878637102178480",
+    "text": "19M\n결과적으로 우리는 지금, 컨텍스트 윈도우가 사실상 천만 단위까지 열리는 시대의 시작점에 서 있습니다.\nKV cache가 줄어들면 더 긴 문맥을 더 싸게 유지할 수 있고, 더 많은 세션을 동시에 돌릴 수 있으며, 더 많은 에이전트를 병렬로 붙일 수 있습니다. 이 순간부터 AI 사용은 지능 경쟁이 아니라 속도와 운영의 경쟁으로 바뀝니다.\n여기서 중요한 포인트 하나. \n지금보다 10배 긴 컨텍스트를 쓰면서 10배 빠르게 작업하는 사람이 있다면 생산성 격차는 10배가 아니라 100배가 됩니다. \n더 많은 문맥을 동시에 유지하고, 더 많은 작업을 병렬로 처리하며, 세션을 끊지 않고 계속 이어가기 때문입니다. 결국 작업량과 속도가 동시에 올라가는 구조입니다.\n그리고 이 시점부터 승부는 하나로 수렴합니다. \n승자는 모델이 아니라 harness가 결정합니다.\n같은 모델을 써도 결과가 갈리는 이유는 앞으로 거의 전부 여기서 나옵니다.\nTurboQuant 이후 사람들이 가장 많이 하는 착각이 ",
+    "whats_happening": "컨텍스트 윈도우가 천만 단위까지 확장되는 시대가 시작되었고, KV cache 감소로 더 긴 문맥을 저렴하게 유지하며 다수 세션과 에이전트를 병렬 처리할 수 있게 되었다. 이에 따라 AI 사용 경쟁은 지능에서 속도와 운영으로 전환되고, ACTIVE_CONTEXT 중심의 작업 방식이 강조된다.",
+    "translation": "결과적으로 우리는 지금, 컨텍스트 윈도우가 사실상 천만 단위까지 열리는 시대의 시작점에 서 있습니다. KV cache가 줄어들면 더 긴 문맥을 더 싸게 유지할 수 있고, 더 많은 세션을 동시에 돌릴 수 있으며, 더 많은 에이전트를 병렬로 붙일 수 있습니다. 이 순간부터 AI 사용은 지능 경쟁이 아니라 속도와 운영의 경쟁으로 바뀝니다. 여기서 중요한 포인트 하나. 지금보다 10배 긴 컨텍스트를 쓰면서 10배 빠르게 작업하는 사람이 있다면 생산성 격차는 10배가 아니라 100배가 됩니다. 더 많은 문맥을 동시에 유지하고, 더 많은 작업을 병렬로 처리하며, 세션을 끊지 않고 계속 이어가기 때문입니다. 결국 작업량과 속도가 동시에 올라가는 구조입니다. 그리고 이 시점부터 승부는 하나로 수렴합니다. 승자는 모델이 아니라 harness가 결정합니다. 같은 모델을 써도 결과가 갈리는 이유는 앞으로 거의 전부 여기서 나옵니다. TurboQuant 이후 사람들이 가장 많이 하는 착각이 있습니다. “이제 컨텍스트 길게 넣으면 끝이겠네”, “repo 통째로 넣으면 되겠네”, “문서 다 읽게 하면 완벽해지겠네”. 전부 틀린 방향입니다. TurboQuant가 바꾼 건 “얼마나 많이 넣을 수 있냐”가 아니라 “얼마나 많이 동시에, 끊김 없이 돌릴 수 있냐”입니다. 그래서 이미 docs_canonical을 만들어둔 사람이라면 다음 단계는 명확합니다. 전체 문서를 다 읽게 하는 게 아니라 ACTIVE_CONTEXT로 현재 작업 상태만 유지하는 구조로 넘어가야 합니다. docs_canonical은 기준입니다. ARCHITECTURE, PROJECT, RULES 같은 문서는 필요할 때만 읽고, 충돌이 생겼을 때 판단 기준으로 사용합니다. 반면 ACTIVE_CONTEXT는 작업 메모리입니다. 지금 뭐 하는 중인지, 어디까지 했는지, 어떤 파일이 관련 있는지, 뭐가 막혀있는지. 이 네 가지만 10~20줄로 유지하고 매 작업마다 업데이트합니다. 핵심은 간단합니다. docs_canonical을 전부 읽는 게 아니라, ACTIVE_CONTEXT로 현재 상태만 계속 유지하는 것. 그래서 지금 당장 “무엇을 해야 하냐” 이미 docs_canonical이 있는 상태라면, 다음 5가지만 바로 적용하면 됩니다. 1. ACTIVE_CONTEXT.md를 만든다 (가장 중요) 형식은 복잡할 필요 없습니다. 아래 정도면 충분합니다. # ACTIVE_CONTEXT ## Current Goal ## Current State ## Relevant Files ## Open Issues 중요한 건 길이가 아니라 압축도입니다. 10~20줄 유지, 항상 최신 상태. 2. 작업 시작 규칙을 강제한다 프롬프트나 AGENTS.md에 아래 규칙 하나 넣으면 됩니다. Always read ACTIVE_CONTEXT.md first. Only read other docs if necessary. 이 한 줄이 컨텍스트 폭발을 막는 핵심 장치입니다. 3. 작업 종료 시 무조건 상태를 갱신한다 After completing the task: - Update ACTIVE_CONTEXT.md - Update TASKS.md 이걸 안 하면 결국 다시 초기화로 돌아갑니다. 이걸 하면 세션이 끊겨도 이어집니다. 4. docs_canonical은 “필요할 때만” 읽게 만든다 If needed: - Read ARCHITECTURE.md (relevant parts only) - Do not load full documents unless required 전체 로딩 금지. 항상 부분 참조. 5. 일정 길이 넘어가면 “압축 리셋”한다 세션이 길어지면 계속 이어가는 게 아니라: ACTIVE_CONTEXT 재정리 불필요한 컨텍스트 제거 다시 시작 즉, 하드 리셋이 아니라 소프트 리셋 구조로 운영합니다. 이 5개만 적용하면 구조가 제법 달라집니다. ACTIVE_CONTEXT 중심으로 돌아가면 한 세션에서 전체 흐름을 유지한 채 프론트, 백엔드, DB를 동시에 고려할 수 있고, 리팩토링 범위도 크게 확장됩니다. 작업을 끊지 않고 계속 밀고 갈 수 있으며, 에이전트를 병렬로 붙여도 맥락이 깨지지 않습니다. 한 줄로 정리하면 이겁니다. docs_canonical은 도서관이고, ACTIVE_CONTEXT는 책상 위 펼쳐진 책입니다. 도서관을 통째로 들고 다니는 게 아니라, 지금 필요한 페이지만 펼쳐놓는 구조입니다. 결론입니다. TurboQuant 시대의 본질은 컨텍스트 확장이 아니라 “컨텍스트 통제”입니다. 이미 docs_canonical을 만든 사람이라면 다음 레벨은 무조건 ACTIVE_CONTEXT입니다. 10배 많은 컨텍스트 윈도우 속에서, 필요한 작업을 10배 효율적으로 하기 위한 준비. 100배의 생산적 격차를 만들어 내기 위한 준비. 미리미리 해두는 게 맞는 것 같습니다.",
+    "tech_stack": [
+      "KV cache",
+      "docs_canonical",
+      "ACTIVE_CONTEXT",
+      "TurboQuant"
+    ],
+    "apply_points": [
+      "ACTIVE_CONTEXT를 도입해 현재 작업 상태만 10~20줄로 유지하라",
+      "작업 시작 시 ACTIVE_CONTEXT.md를 먼저 읽도록 규칙을 강제하라",
+      "작업 종료 후 반드시 ACTIVE_CONTEXT.md와 TASKS.md를 갱신하라"
+    ],
+    "why_it_matters": "컨텍스트 10M 시대에 경쟁축이 \"더 똑똑한 모델\"에서 \"더 빠른 운영\"으로 이동한다는 건, 시스템을 설계하는 사람이 프롬프트를 잘 쓰는 사람을 이긴다는 뜻이다. ACTIVE_CONTEXT 20줄 규율은 cascade의 \"큐레이션이 압축보다 낫다\" 원칙과 정확히 같은 결론에 도달한다.",
+    "tweet_id": "2038878637102178480"
+  },
+  {
+    "id": "bm-074",
+    "author": "shannholmberg",
+    "date": "2026-03-30",
+    "added_at": "2026-04-03",
+    "url": "https://x.com/shannholmberg/status/2038636871270424794",
+    "text": "here´s how it works and how to apply it to marketing \n63\n246\n2.8K\n388K\nwhat superpowers actually does\nthink about what a good engineer does with a new task. they dont just start coding. they read the codebase, ask questions, weigh trade-offs, write up an approach, then build.\nsuperpowers gives claude that same process. 14+ skills that kick in based on what you're doing: brainstorming, spec-first planning, TDD, subagent execution, systematic debugging.\nthe skills are mandatory. if one applies, cl",
+    "whats_happening": "Superpowers라는 프레임워크가 마케팅에 어떻게 적용되는지와 그 작동 방식을 설명하며, 7단계 파이프라인과 14가지 이상의 필수 기술을 통해 Claude가 체계적으로 작업을 수행하는 과정을 소개한다.",
+    "translation": "here´s how it works and how to apply it to marketing\n63\n246\n2.8K\n388K\nwhat superpowers actually does\nthink about what a good engineer does with a new task. they dont just start coding. they read the codebase, ask questions, weigh trade-offs, write up an approach, then build.\nsuperpowers gives claude that same process. 14+ skills that kick in based on what you're doing: brainstorming, spec-first planning, TDD, subagent execution, systematic debugging.\nthe skills are mandatory. if one applies, claude must use it. the framework has a list of 12 excuses developers use to skip workflows.\n works with cursor, codex, and gemini CLI.\nTHE 7-PHASE PIPELINE\nsuperpowers breaks every task into 7 phases. you don't always hit all 7, some tasks only need the first two or three. but the structure is there when you need it.\nphase 1: brainstorming\nthis is the one I use the most\nbefore any new feature, superpowers forces a brainstorming session. not \"ask a few questions and move on.\" a full 9-step workflow:\n> explore your project context (files, docs, recent commits)\n> ask clarifying questions one at a time (never batched, so you actually think about each answer)\n> propose 2-3 approaches with trade-offs and a recommendation\n> present the design in sections, seek your approval after each\n> write a design doc to your project\n> self-review the spec for gaps, contradictions, ambiguity\n> wait for your explicit approval before moving forward\nzero implementation until the design is approved. there´s only one exit from brainstorming: moving to the planning phase.\nphase 2: planning\nonce brainstorming is approved, superpowers generates a structured plan with dependencies, acceptance criteria, exact file paths, and order of operations.\nthe iron rule here: no placeholders allowed. any of these will fail the plan:\n> \"TBD\"\n> \"TODO\"\n> \"implement later\"\n> \"similar to task above\"\nevery single task has to contain complete, copy-pasteable instructions. the assumption is that whoever executes the plan (usually a subagent) has zero familiarity with your codebase.\nstrict, yes. but it means you see exactly what claude will build before it writes a single line. you read the plan, tweak anything thats off, approve it, and execution follows the spec.\nI've started treating these plans like mini PRDs. they're detailed enough that I could hand one to a subagent and they'd know exactly what to build.\nphase 3: subagent-driven development\nclaude dispatches subagents for independent tasks, all running in parallel. each subagent gets a fresh context window with no drift from other tasks. the main claude session never writes code itself. it just orchestrates:\n> dispatch tasks to subagents\n> review what comes back\n> track progress against the plan\nphase 4: test-driven development\nsuperpowers enforces what it calls the \"iron law\": no production code without a failing test first. if code gets written before its test, it gets deleted. \nwrite a failing test, write the simplest code that passes it, refactor. classic TDD loop, but the framework enforces it so you can't skip it when you're in a hurry.\nI don't use TDD for everything. for quick prototypes and one-off scripts, I skip this phase. but for anything that needs to be maintained, having tests written before the code means I can refactor later without guessing what's going to break.\nphase 5: two-stage code review\ntwo separate reviews per task. first review checks spec compliance: does the code match what was planned? second review checks code quality. both must pass, and they run as separate reviewer agents so the first review doesnt bias the second.\nphase 6: systematic debugging\nwhen something breaks, superpowers follows a strict protocol:\n> reproduce the bug\n> isolate the cause\n> form one hypothesis (not three)\n> make the smallest possible change\n> verify\ntheres a 3-strike rule. if 3 attempted fixes fail, the framework stops trying to patch symptoms and forces you to question the architecture. this prevents the death spiral where",
+    "tech_stack": [
+      "cursor",
+      "codex",
+      "gemini CLI",
+      "TDD"
+    ],
+    "apply_points": [
+      "프로젝트 기획 단계에서 명확한 설계 문서 작성 방식을 도입하라.",
+      "테스트 주도 개발(TDD) 원칙을 유지보수가 필요한 코드에 적용하라.",
+      "작업을 독립된 하위 에이전트에 분배해 병렬로 진행하도록 구성하라."
+    ],
+    "why_it_matters": "에이전트 품질을 결정하는 건 프롬프트가 아니라 행동 조건의 설계 밀도다 — 7단계 파이프라인과 14개 스킬이 매 세션 반복되던 컨텍스트 주입과 판단 교정을 구조적으로 없앤다.",
+    "tweet_id": "2038636871270424794"
+  },
+  {
+    "id": "bm-075",
+    "author": "meta_alchemist",
+    "date": "2026-03-31",
+    "added_at": "2026-04-03",
+    "url": "https://x.com/meta_alchemist/status/2038919582111670415",
+    "text": "Since a lot of people use Claude for UI/UX too, and constantly give images, they are breaking prompt caches, and cached prompts normally cost only 10% of what a regular prompt costs. \n\nYet, to cache it costs 25% of the original base input price. \n\nSo if a million tokens cost $5, you are literally paying $6.25 to cache it to then use it at $0.5, but if prompt caching breaks, then it costs you again and again, $6.25 per million tokens.\nEven though you're using Plans, the prompt caching will affect",
+    "whats_happening": "Claude 사용자들이 UI/UX 작업에 이미지를 자주 사용하면서 프롬프트 캐시가 깨지고 있으며, 캐시 비용이 원래 입력 비용의 25%로 비싸서 비용 부담이 커지고 있다. 또한 1M 컨텍스트 윈도우가 메모리에 문제를 더 일으키고 있어 이를 해결하는 방법을 다룬 가이드가 5단계로 구성되어 있다.",
+    "translation": "많은 사람들이 Claude를 UI/UX에도 사용하고 있고, 계속해서 이미지를 제공하기 때문에 프롬프트 캐시가 깨지고 있으며, 캐시된 프롬프트는 일반 프롬프트 비용의 10%만 들지만 캐시하는 데는 원래 기본 입력 가격의 25%가 든다. 그래서 백만 토큰에 5달러가 든다면, 캐시하는 데 6.25달러를 지불하고 그것을 0.5달러에 사용하지만 프롬프트 캐시가 깨지면 매번 백만 토큰당 6.25달러를 다시 지불하게 된다. 플랜을 사용하더라도 프롬프트 캐시는 영향을 미치므로 프롬프트 캐시를 깨지 않는 방법을 아는 것이 정말 중요하다. 또한 1M 컨텍스트 윈도우는 메모리에 도움이 되기보다는 문제를 더 많이 일으켰으며, 이 문제와 그 해결책에 대해서도 글의 나머지 부분에서 다룰 것이다. 이 가이드는 다섯 단계로 구성되어 있다: TL;DR -- 가장 영향력 있는 5가지 팁. 다른 내용을 읽지 않아도 이 다섯 가지를 하면 최소한의 노력으로 비용을 50% 이상 줄일 수 있다. 1. 간단한 작업에는 Haiku 4.5를 사용하라($1/$5 per MTok vs Sonnet의 $3/$15). 대부분의 분류, 추출, 라우팅 작업에는 더 큰 모델이 필요 없다. 2. 프롬프트 캐싱을 활성화하라. 요청에 \"cache_control\": {\"type\": \"ephemeral\"}를 추가하라. 캐시된 읽기는 표준 입력 가격의 0.1배 비용이 든다. 90% 할인이다. 3. 긴급하지 않은 작업에는 Batch API를 사용하라. 모든 토큰에 대해 50% 할인된다. 캐싱과 함께 사용하면 최대 95% 절감 가능하다. 4. 간단한 작업에는 effort 파라미터를 낮게 설정하라. Claude가 깊은 추론을 건너뛰고 적은 토큰으로 응답한다. 더 빠르고 저렴하다. 5. 작업 사이에 컨텍스트를 지워라. 모든 후속 메시지는 전체 대화를 다시 처리한다. 10턴 채팅은 조용히 토큰 사용량을 10배로 늘릴 수 있다. 전체 분석은 다음과 같다. 1단계: 무료 절감. 2분 내 구현, 노력 제로. 한 번만 해도 영구 절감. 팁 1. Haiku로 시작하라. 진심이다. Haiku 4.5: $1/$5 per MTok, Sonnet 4.6: $3/$15, Opus 4.6: $5/$25. 분류, 추출, 라우팅, 요약, 간단한 Q&A에 Haiku가 충분하다. 3-5배 절감 가능. 대부분 개발자는 일상 작업의 60-70%를 Haiku로 품질 차이 없이 처리할 수 있다. 팁 2. effort 파라미터를 사용하라. Claude Opus 4.6과 Sonnet 4.6은 effort 레벨(low, medium, high, max)을 지원한다. 낮은 effort는 추론 토큰을 줄여 지연과 비용을 크게 낮춘다. 팁 3. 불필요할 때는 extended thinking을 비활성화하라. 확장 사고 토큰은 출력 토큰으로 청구된다. 기본 예산은 요청당 수만 토큰일 수 있다. 간단한 조회, 포맷팅, 분류 작업에는 사고를 완전히 끄라. 팁 4. 복잡한 작업에는 사고 예산을 제한하라. 많은 작업에 8,000-16,000 사고 토큰이면 충분하다. 날짜 포맷팅에 10만 토큰 추론은 필요 없다. 팁 5. 사고 블록에 display: \"omitted\"를 사용하라. 앱이 Claude의 추론을 사용자에게 보여주지 않으면 이렇게 하면 첫 토큰 시간 단축에 도움이 된다. 사고 토큰 비용은 내지만 스트리밍 오버헤드는 줄인다. 팁 6. 프롬프트에 단어나 줄 제한을 설정하라. \"50단어 이하로 응답\"이나 \"최대 3개 핵심점\"은 출력 토큰을 직접 줄인다. Claude는 이런 제약을 존중한다. 짧은 지시문이 더 짧고 저렴한 응답을 만든다. 팁 7. 출력 형식을 명확히 제한하라. \"name, status, score 키가 있는 JSON 객체 반환, 설명 금지\"가 \"분석해주고 생각을 말해줘\"보다 항상 저렴하다. 열린 질문은 열린(비싼) 응답을 낳는다. 2단계: 프롬프트 구조. 5분 투자해 프롬프트를 재구성하면 즉시 효과가 있다. 팁 8. 직접적으로 작성하라. 인사말 등 불필요한 말은 토큰 낭비다. 마치 단어당 비용을 내는 것처럼 써라.",
+    "tech_stack": [
+      "Claude",
+      "Haiku 4.5",
+      "Sonnet 4.6",
+      "Opus 4.6",
+      "Batch API"
+    ],
+    "apply_points": [
+      "프롬프트 캐싱을 활성화해 비용을 크게 절감하라.",
+      "간단한 작업에는 Haiku 4.5 모델을 사용해 비용 효율을 높여라.",
+      "effort 파라미터를 낮게 설정해 토큰 사용량과 비용을 줄여라."
+    ],
+    "why_it_matters": "1M 컨텍스트 시대에 이미지 한 장이 프롬프트 캐시를 깨뜨리면 수십만 토큰을 매번 처음부터 재결제하게 된다 — 컨텍스트가 클수록 캐시 미스의 비용 승수도 커진다.",
+    "tweet_id": "2038919582111670415"
+  },
+  {
+    "id": "bm-076",
+    "author": "jack",
+    "date": "2026-03-31",
+    "added_at": "2026-04-03",
+    "url": "https://x.com/jack/status/2039003879841362278",
+    "text": "At Sequoia, we see that speed is the best predictor of start-up success. Most companies are focused on AI as a productivity enhancer. Few are focused on the potential of AI to change how we work together. Block is showing what it looks like to fundamentally rethink organization design, ultimately harnessing AI to increase speed as a compounding competitive advantage.\nTwo thousand years before the first corporate org chart, the Roman Army solved a problem that every large organization still faces",
+    "whats_happening": "Sequoia는 속도가 스타트업 성공의 최고의 예측 변수라고 보고, Block은 AI를 활용해 조직 설계를 근본적으로 재고하며 속도를 경쟁 우위로 만드는 방식을 보여주고 있다. 또한, 로마 군대부터 프러시아 군대, 미국 철도, 그리고 Frederick Taylor의 과학적 관리법까지 조직 설계와 관리 체계의 진화를 설명하고 있다.",
+    "translation": "At Sequoia, we see that speed is the best predictor of start-up success. Most companies are focused on AI as a productivity enhancer. Few are focused on the potential of AI to change how we work together. Block is showing what it looks like to fundamentally rethink organization design, ultimately harnessing AI to increase speed as a compounding competitive advantage.\nTwo thousand years before the first corporate org chart, the Roman Army solved a problem that every large organization still faces: how do you coordinate thousands of people across vast distances with limited communication?\nTheir answer was a nested hierarchy with a consistent span of control at every level. The smallest unit was the contubernium, eight soldiers who shared a tent, equipment, and a mule, led by a decanus. Ten contubernia formed a century of eighty men under a centurion. Six centuries made a cohort. Ten cohorts made a legion of roughly 5,000. At each layer, a named commander held defined authority, aggregated information from below, and relayed decisions from above. The structure (8 → 80 → 480 → 5,000) was an information routing protocol built around a simple human limitation: a leader can effectively manage somewhere between three and eight people. The Romans discovered this through centuries of warfare. Even today, the US Army's hierarchical chain follows a similar pattern. We now call it \"span of control,\" and it remains the governing constraint of every large organization on earth.\nThe next big change came from Prussia. After Napoleon's army destroyed the Prussian forces at the Battle of Jena in 1806, a group of reformers led by Scharnhorst and Gneisenau rebuilt the military around an uncomfortable truth: you cannot depend on individual genius at the top. You need a system. They created the General Staff, a dedicated class of trained officers whose job was not to fight but to plan operations, process information, and coordinate across units. Scharnhorst intended these staff officers to \"support incompetent Generals, providing the talents that might otherwise be wanting among leaders and commanders.\" This was middle management before the term existed. Professionals whose purpose was to route information, pre-compute decisions, and maintain alignment across a complex organization. The military also formalized the distinction between \"line\" and \"staff\" functions. Line advances the core mission. Staff provides specialized support. Every corporation still uses this vocabulary today.\nMilitary hierarchy entered the business world through the American railroads in the 1840s and 1850s. The U.S. Army lent West Point-trained engineers to private railroad companies, and these officers brought military organizational thinking with them. Staff and line hierarchies, divisional structure, bureaucratic systems of reporting and control: all of it was developed in the military before the railroads adopted it. In the mid-1850s, Daniel McCallum of the New York and Erie Railroad created the world's first organizational chart to manage a system stretching over 500 miles with thousands of workers. The informal management styles that worked for smaller railroads were failing. Train collisions were killing people. McCallum's chart formalized the same hierarchical logic the Romans had used: layers of authority, defined reporting lines, structured information flow. It became the blueprint for the modern corporation.\nFrederick Taylor (1856-1915), often called the \"Father of Scientific Management,\" optimized what happened within that hierarchy. Taylor broke work into specialized tasks, assigned them to trained experts, and managed through measurement rather than intuition. This produced the functional pyramid organization - a structure optimized for efficiency within the information routing system that the military had pioneered and the railroads had commercialized.",
+    "tech_stack": [
+      "AI"
+    ],
+    "apply_points": [
+      "AI를 활용해 조직 설계를 혁신하여 속도를 경쟁력으로 삼자.",
+      "계층적 조직 구조에서 권한과 정보 흐름을 명확히 정의하자.",
+      "중간 관리자의 역할을 정보 조율과 의사결정 지원에 집중시키자."
+    ],
+    "why_it_matters": "중간 관리자의 본질이 정보 라우터였다는 인식은, 그 계층을 최적화가 아니라 제거 대상으로 바꾼다 — AI 시대 조직 설계의 핵심은 속도를 \"내는\" 게 아니라 느림을 \"빼는\" 것이다.",
+    "tweet_id": "2039003879841362278"
+  },
+  {
+    "id": "bm-077",
+    "author": "0x_kaize",
+    "date": "2026-03-29",
+    "added_at": "2026-04-03",
+    "url": "https://x.com/0x_kaize/status/2038286026284667239",
+    "text": "1/ “No, I meant [your message]”\n2/ “Ugh, that's not what I wanted [your message]”\nand so on\nDon't do that!\nEvery subsequent message is added to the conversation history. Claude re-reads ALL of it every turn - burning tokens on context that didn't even help.\nToken cost per message = all previous messages + your new one.\nTotal = S × N(N+1) / 2 \n(S = avg tokens per exchange, N = message count)\nAt ~500 tokens per exchange:\n5 messages: 7.5K tokens\n10 messages: 27.5K tokens\n20 messages: 105K tokens\n30",
+    "whats_happening": "트위터 게시글은 Claude 챗봇 사용 시 토큰 비용이 메시지 누적으로 급격히 증가하는 문제와 이를 줄이기 위한 여러 최적화 방법을 설명한다. 메시지 편집, 새 채팅 시작, 질문 배치, 프로젝트 캐시 활용, 메모리 설정, 불필요 기능 끄기, 저비용 모델 사용, 작업 분산 등의 권장 사항을 제시한다.",
+    "translation": "1/ “No, I meant [your message]”\n2/ “Ugh, that's not what I wanted [your message]”\nand so on\nDon't do that!\nEvery subsequent message is added to the conversation history. Claude re-reads ALL of it every turn - burning tokens on context that didn't even help.\nToken cost per message = all previous messages + your new one.\nTotal = S × N(N+1) / 2 \n(S = avg tokens per exchange, N = message count)\nAt ~500 tokens per exchange:\n5 messages: 7.5K tokens\n10 messages: 27.5K tokens\n20 messages: 105K tokens\n30 messages: 232K tokens\nMessage 30 costs 31x more than message 1\nInstead: click Edit on your original message → fix it → regenerate. The old exchange gets replaced, not stacked.\nFix the prompt, don't feed the history.\n2. Start a fresh chat every 15–20 messages\nIn the previous section, I showed how token costs grow with every message.\nIdeally, you should start a new chat every 15–20 messages.\nNow imagine a chat with 100+ messages. At ~500 tokens per exchange, that's over 2.5 million tokens burned - most of it just re-reading old history. \nOne developer tracked his usage and found that 98.5% of tokens were spent on re-reading the history. Only 1.5% went toward actually outputting the result.\nAniket Parihar's post on LinkedIn.\nWhen a chat gets long → ask Claude to summarize everything → copy it → new chat → paste as first message.\n3. Batch your questions into one message\nMany people believe that splitting questions into separate messages leads to better results. Almost always, the opposite is true.\nThree separate prompts = three context loads.\nOne prompt with three tasks = one context load.\nYou save tokens twice: fewer context reloads, and you stay further from hitting your limit.\nInstead of:\n“Summarize this article”\n“Now list the main points”\n“Now suggest a headline”\nWrite: “Summarize this article, list the main points, and suggest a headline.”\nBonus: the answers often turn out better because Claude immediately sees the full picture.\nThree questions. One Prompt. Always!\n4. Upload recurring files to Projects\nIf you upload the same PDF to multiple chats, Claude re-tokenizes that document every single time.\nUse the Projects feature instead. \nUpload your file once → it gets cached. Every new conversation inside that project references it without burning tokens again.\nCached project content doesn't eat into your usage when you access it repeatedly. \nIf you work with contracts, briefs, style guides, or any long docs - this alone could cut your token spend dramatically.\n5. Set up Memory & User Preferences\nEvery new chat without saved context wastes 3–5 messages on setup: “I’m a marketer, I write in a casual style, I prefer short paragraphs…”\nYou've probably seen people start every prompt with \"Act as a...\" - that's tokens burned on repeat. Claude can remember this permanently.\nGo to “Settings” → “Memory and User Settings.” Save your role, communication style, and settings once. Claude will automatically apply them to every new chat.\n6. Turn off features you're not actively using\nWeb search, connectors, and “Explore” mode - all of these add tokens to every response, even if you don’t need them.\nWriting your own content? \nTurn off the “Search and Tools” feature.\nThe “Advanced Thinking” feature also consumes tokens. Keep it turned off by default. Only turn it on if your first attempt was unsatisfactory.\nRule: if you didn’t turn this feature on intentionally, turn it off.\n7. Use Haiku for simple tasks\nGrammar checking, brainstorming, formatting, quick translations, short answers - Haiku handles all of this at a much lower cost than Sonnet or Opus.\nChoosing the right model is the most important decision you make every day.\nHaiku for drafts and simple tasks → frees up 50–70% of your budget for tasks that truly require powerful models.\nMental model:\nHaiku → quick tasks, low cost\nSonnet → real work, medium cost\nOpus → deep thinking, high cost\nYou don’t need powerful models for simple tasks!\n8. Spread your work across the day\nThe Claude system uses ",
+    "tech_stack": [
+      "Claude",
+      "Haiku",
+      "Sonnet",
+      "Opus",
+      "Projects"
+    ],
+    "apply_points": [
+      "메시지 편집 기능을 활용해 토큰 낭비를 줄인다",
+      "15~20 메시지마다 새 채팅을 시작해 토큰 비용을 관리한다",
+      "프로젝트 캐시 기능을 사용해 반복 문서 토큰 소모를 줄인다"
+    ],
+    "why_it_matters": "컨텍스트 윈도우를 화폐로 관리하는 시스템에서, 메시지 누적에 따른 토큰 곡선의 기울기를 아는 것이 예산 설계의 전제 조건이다. 15~20 메시지 리셋, 모델 라우팅(Haiku→Sonnet→Opus), 프로젝트 캐시 같은 전술은 개별 팁이 아니라 — 사람이 매번 판단하지 않아도 비용이 자동으로 억제되는 조건을 까는 것이다.",
+    "tweet_id": "2038286026284667239"
   }
 ]
