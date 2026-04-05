@@ -1,6 +1,45 @@
 {
   "twitter": [
     {
+      "id": "bm-079",
+      "author": "karpathy",
+      "date": "2026-04-05",
+      "url": "https://x.com/karpathy/status/2039805659525644595",
+      "whats_happening": "최근 LLM을 활용해 개인 지식 베이스를 구축하고, 원본 데이터를 인덱싱해 마크다운 위키로 컴파일하며 Obsidian에서 관리하는 방법을 소개하고 있다. LLM이 위키를 자동으로 유지·관리하며 복잡한 질의응답과 시각화, 데이터 정합성 검사도 수행한다.",
+      "why_it_matters": "지식 외부화에서 가장 비싼 비용은 \"원본→구조화\"의 수동 큐레이션인데, LLM을 위키 컴파일러로 놓으면 이 비용이 사라진다 — 인간은 원본을 던지고 구조를 설계하는 역할만 남는다.",
+      "apply_points": [
+        "LLM을 활용해 프로젝트 문서 자동 요약 및 분류 체계 구축에 적용한다.",
+        "Obsidian을 프론트엔드로 사용해 데이터 시각화와 위키 관리 효율화한다.",
+        "LLM 기반 자동 데이터 무결성 검사 및 누락 데이터 보완 기능을 도입한다."
+      ],
+      "text": "LLM Knowledge Bases\n\n최근에 매우 유용하다고 느끼는 것: LLM을 사용해 다양한 연구 관심 주제에 대한 개인 지식 베이스를 구축하는 것. 이렇게 하면 최근 토큰 처리량의 상당 부분이 코드 조작보다는 지식(마크다운과 이미지로 저장됨) 조작에 더 많이 사용된다. 최신 LLM들은 이것에 매우 능숙하다. 그래서:\n\n데이터 수집:\n원본 문서(기사, 논문, 저장소, 데이터셋, 이미지 등)를 raw/ 디렉토리에 인덱싱한 뒤, LLM을 사용해 점진적으로 위키를 \"컴파일\"하는데, 이는 디렉토리 구조 내 .md 파일 모음이다. 위키는 raw/의 모든 데이터 요약, 백링크를 포함하고, 데이터를 개념별로 분류하며, 해당 개념에 대한 글을 작성하고 모두 연결한다. 웹 기사를 .md 파일로 변환할 때는 Obsidian Web Clipper 확장 기능을 사용하고, 관련 이미지를 로컬에 다운로드하는 단축키도 사용해 LLM이 쉽게 참조할 수 있도록 한다.\n\nIDE:\nObsidian을 IDE \"프론트엔드\"로 사용해 원본 데이터, 컴파일된 위키, 파생 시각화를 볼 수 있다. 중요한 점은 LLM이 위키의 모든 데이터를 작성하고 유지하며, 나는 거의 직접 수정하지 않는다. Marp 같은 Obsidian 플러그인으로 데이터를 다른 방식으로 렌더링하고 보는 실험도 했다.\n\nQ&A:\n위키가 충분히 커지면(예: 내 최근 연구 위키는 약 100개 기사, 40만 단어) LLM 에이전트에게 복잡한 질문을 할 수 있고, LLM이 답을 연구한다. 복잡한 RAG가 필요할 줄 알았지만, LLM이 자동으로 인덱스 파일과 문서 요약을 유지하며 이 규모에서는 관련 데이터를 쉽게 읽는다.\n\n출력:\n텍스트나 터미널 답변 대신 마크다운 파일, 슬라이드쇼(Marp 형식), matplotlib 이미지 등으로 렌더링하는 것을 선호하며, 이를 다시 Obsidian에서 본다. 쿼리에 따라 다양한 시각적 출력 형식을 상상할 수 있다. 출력물을 위키에 다시 저장해 추가 쿼리를 위해 위키를 확장하기도 한다. 탐색과 쿼리가 지식 베이스에 \"누적\"된다.\n\n린팅:\nLLM으로 위키에 대해 \"건강 검사\"를 수행해 불일치 데이터 찾기, 누락 데이터 추정(웹 검색 포함), 새로운 기사 후보를 위한 흥미로운 연결 찾기 등으로 위키를 점진적으로 정리하고 데이터 무결성을 향상시킨다. LLM은 추가 질문을 제안하고 탐색하는 데도 능숙하다.\n\n추가 도구:\n데이터 처리를 위한 도구도 개발하는데, 예를 들어 위키 위에 간단한 검색 엔진을 코딩했고, 웹 UI로 직접 사용하지만 주로 CLI를 통해 LLM에 큰 쿼리용 도구로 넘긴다.\n\n추가 탐색:\n레포가 커지면서 합성 데이터 생성과 파인튜닝을 통해 LLM이 단순 컨텍스트 윈도우가 아니라 가중치 내에 데이터를 \"알게\" 하는 방안도 고민 중이다.\n\n요약: 여러 출처의 원본 데이터를 수집하고 LLM이 .md 위키로 컴파일하며, LLM이 다양한 CLI로 질의응답과 위키 점진적 개선을 수행한다. 모두 Obsidian에서 볼 수 있고, 위키는 거의 직접 작성·수정하지 않고 LLM이 담당한다. 이 방식은 단순 스크립트 모음이 아닌 놀라운 신제품 가능성이 있다고 생각한다.",
+      "tech_stack": [
+        "LLM",
+        "Obsidian",
+        "Obsidian Web Clipper",
+        "Marp",
+        "matplotlib",
+        "CLI"
+      ]
+    },
+    {
+      "id": "bm-078",
+      "author": "tom_doerr",
+      "date": "2026-04-05",
+      "url": "https://x.com/tom_doerr/status/2039906409387610408",
+      "whats_happening": "Obsidian vault가 Claude Code 메모리를 위해 만들어졌다.",
+      "why_it_matters": "Claude Code의 메모리 구조(CLAUDE.md, rules/, MEMORY.md)는 Obsidian vault가 이미 해결한 문제 — markdown 기반 계층, 링크, 폴더 규칙 — 를 작은 스케일로 재발명한 것이다. vault를 Claude Code의 정식 메모리 소스로 승격하면 mcp-memory에서 중복 동기화 레이어 하나를 뺄 수 있다.",
+      "apply_points": [
+        "mcp-memory에서 Claude Code 관련 메모리 구조를 참고해 개선한다.",
+        "Obsidian vault 활용법을 프로젝트 문서화에 적용한다.",
+        "Claude Code 메모리 관리 방식을 포트폴리오에 반영한다."
+      ],
+      "text": "Obsidian vault for Claude Code memory\n\nhttps://github.com/breferrari/obsidian-mind",
+      "tech_stack": [
+        "Obsidian"
+      ]
+    },
+    {
       "id": "bm-077",
       "author": "0x_kaize",
       "date": "2026-04-03",
@@ -36,47 +75,6 @@
       "text": "At Sequoia, we see that speed is the best predictor of start-up success. Most companies are focused on AI as a productivity enhancer. Few are focused on the potential of AI to change how we work together. Block is showing what it looks like to fundamentally rethink organization design, ultimately harnessing AI to increase speed as a compounding competitive advantage.\nTwo thousand years before the first corporate org chart, the Roman Army solved a problem that every large organization still faces: how do you coordinate thousands of people across vast distances with limited communication?\nTheir answer was a nested hierarchy with a consistent span of control at every level. The smallest unit was the contubernium, eight soldiers who shared a tent, equipment, and a mule, led by a decanus. Ten contubernia formed a century of eighty men under a centurion. Six centuries made a cohort. Ten cohorts made a legion of roughly 5,000. At each layer, a named commander held defined authority, aggregated information from below, and relayed decisions from above. The structure (8 → 80 → 480 → 5,000) was an information routing protocol built around a simple human limitation: a leader can effectively manage somewhere between three and eight people. The Romans discovered this through centuries of warfare. Even today, the US Army's hierarchical chain follows a similar pattern. We now call it \"span of control,\" and it remains the governing constraint of every large organization on earth.\nThe next big change came from Prussia. After Napoleon's army destroyed the Prussian forces at the Battle of Jena in 1806, a group of reformers led by Scharnhorst and Gneisenau rebuilt the military around an uncomfortable truth: you cannot depend on individual genius at the top. You need a system. They created the General Staff, a dedicated class of trained officers whose job was not to fight but to plan operations, process information, and coordinate across units. Scharnhorst intended these staff officers to \"support incompetent Generals, providing the talents that might otherwise be wanting among leaders and commanders.\" This was middle management before the term existed. Professionals whose purpose was to route information, pre-compute decisions, and maintain alignment across a complex organization. The military also formalized the distinction between \"line\" and \"staff\" functions. Line advances the core mission. Staff provides specialized support. Every corporation still uses this vocabulary today.\nMilitary hierarchy entered the business world through the American railroads in the 1840s and 1850s. The U.S. Army lent West Point-trained engineers to private railroad companies, and these officers brought military organizational thinking with them. Staff and line hierarchies, divisional structure, bureaucratic systems of reporting and control: all of it was developed in the military before the railroads adopted it. In the mid-1850s, Daniel McCallum of the New York and Erie Railroad created the world's first organizational chart to manage a system stretching over 500 miles with thousands of workers. The informal management styles that worked for smaller railroads were failing. Train collisions were killing people. McCallum's chart formalized the same hierarchical logic the Romans had used: layers of authority, defined reporting lines, structured information flow. It became the blueprint for the modern corporation.\nFrederick Taylor (1856-1915), often called the \"Father of Scientific Management,\" optimized what happened within that hierarchy. Taylor broke work into specialized tasks, assigned them to trained experts, and managed through measurement rather than intuition. This produced the functional pyramid organization - a structure optimized for efficiency within the information routing system that the military had pioneered and the railroads had commercialized.",
       "tech_stack": [
         "AI"
-      ]
-    },
-    {
-      "id": "bm-075",
-      "author": "meta_alchemist",
-      "date": "2026-04-03",
-      "url": "https://x.com/meta_alchemist/status/2038919582111670415",
-      "whats_happening": "Claude 사용자들이 UI/UX 작업에 이미지를 자주 사용하면서 프롬프트 캐시가 깨지고 있으며, 캐시 비용이 원래 입력 비용의 25%로 비싸서 비용 부담이 커지고 있다. 또한 1M 컨텍스트 윈도우가 메모리에 문제를 더 일으키고 있어 이를 해결하는 방법을 다룬 가이드가 5단계로 구성되어 있다.",
-      "why_it_matters": "1M 컨텍스트 시대에 이미지 한 장이 프롬프트 캐시를 깨뜨리면 수십만 토큰을 매번 처음부터 재결제하게 된다 — 컨텍스트가 클수록 캐시 미스의 비용 승수도 커진다.",
-      "apply_points": [
-        "프롬프트 캐싱을 활성화해 비용을 크게 절감하라.",
-        "간단한 작업에는 Haiku 4.5 모델을 사용해 비용 효율을 높여라.",
-        "effort 파라미터를 낮게 설정해 토큰 사용량과 비용을 줄여라."
-      ],
-      "text": "많은 사람들이 Claude를 UI/UX에도 사용하고 있고, 계속해서 이미지를 제공하기 때문에 프롬프트 캐시가 깨지고 있으며, 캐시된 프롬프트는 일반 프롬프트 비용의 10%만 들지만 캐시하는 데는 원래 기본 입력 가격의 25%가 든다. 그래서 백만 토큰에 5달러가 든다면, 캐시하는 데 6.25달러를 지불하고 그것을 0.5달러에 사용하지만 프롬프트 캐시가 깨지면 매번 백만 토큰당 6.25달러를 다시 지불하게 된다. 플랜을 사용하더라도 프롬프트 캐시는 영향을 미치므로 프롬프트 캐시를 깨지 않는 방법을 아는 것이 정말 중요하다. 또한 1M 컨텍스트 윈도우는 메모리에 도움이 되기보다는 문제를 더 많이 일으켰으며, 이 문제와 그 해결책에 대해서도 글의 나머지 부분에서 다룰 것이다. 이 가이드는 다섯 단계로 구성되어 있다: TL;DR -- 가장 영향력 있는 5가지 팁. 다른 내용을 읽지 않아도 이 다섯 가지를 하면 최소한의 노력으로 비용을 50% 이상 줄일 수 있다. 1. 간단한 작업에는 Haiku 4.5를 사용하라($1/$5 per MTok vs Sonnet의 $3/$15). 대부분의 분류, 추출, 라우팅 작업에는 더 큰 모델이 필요 없다. 2. 프롬프트 캐싱을 활성화하라. 요청에 \"cache_control\": {\"type\": \"ephemeral\"}를 추가하라. 캐시된 읽기는 표준 입력 가격의 0.1배 비용이 든다. 90% 할인이다. 3. 긴급하지 않은 작업에는 Batch API를 사용하라. 모든 토큰에 대해 50% 할인된다. 캐싱과 함께 사용하면 최대 95% 절감 가능하다. 4. 간단한 작업에는 effort 파라미터를 낮게 설정하라. Claude가 깊은 추론을 건너뛰고 적은 토큰으로 응답한다. 더 빠르고 저렴하다. 5. 작업 사이에 컨텍스트를 지워라. 모든 후속 메시지는 전체 대화를 다시 처리한다. 10턴 채팅은 조용히 토큰 사용량을 10배로 늘릴 수 있다. 전체 분석은 다음과 같다. 1단계: 무료 절감. 2분 내 구현, 노력 제로. 한 번만 해도 영구 절감. 팁 1. Haiku로 시작하라. 진심이다. Haiku 4.5: $1/$5 per MTok, Sonnet 4.6: $3/$15, Opus 4.6: $5/$25. 분류, 추출, 라우팅, 요약, 간단한 Q&A에 Haiku가 충분하다. 3-5배 절감 가능. 대부분 개발자는 일상 작업의 60-70%를 Haiku로 품질 차이 없이 처리할 수 있다. 팁 2. effort 파라미터를 사용하라. Claude Opus 4.6과 Sonnet 4.6은 effort 레벨(low, medium, high, max)을 지원한다. 낮은 effort는 추론 토큰을 줄여 지연과 비용을 크게 낮춘다. 팁 3. 불필요할 때는 extended thinking을 비활성화하라. 확장 사고 토큰은 출력 토큰으로 청구된다. 기본 예산은 요청당 수만 토큰일 수 있다. 간단한 조회, 포맷팅, 분류 작업에는 사고를 완전히 끄라. 팁 4. 복잡한 작업에는 사고 예산을 제한하라. 많은 작업에 8,000-16,000 사고 토큰이면 충분하다. 날짜 포맷팅에 10만 토큰 추론은 필요 없다. 팁 5. 사고 블록에 display: \"omitted\"를 사용하라. 앱이 Claude의 추론을 사용자에게 보여주지 않으면 이렇게 하면 첫 토큰 시간 단축에 도움이 된다. 사고 토큰 비용은 내지만 스트리밍 오버헤드는 줄인다. 팁 6. 프롬프트에 단어나 줄 제한을 설정하라. \"50단어 이하로 응답\"이나 \"최대 3개 핵심점\"은 출력 토큰을 직접 줄인다. Claude는 이런 제약을 존중한다. 짧은 지시문이 더 짧고 저렴한 응답을 만든다. 팁 7. 출력 형식을 명확히 제한하라. \"name, status, score 키가 있는 JSON 객체 반환, 설명 금지\"가 \"분석해주고 생각을 말해줘\"보다 항상 저렴하다. 열린 질문은 열린(비싼) 응답을 낳는다. 2단계: 프롬프트 구조. 5분 투자해 프롬프트를 재구성하면 즉시 효과가 있다. 팁 8. 직접적으로 작성하라. 인사말 등 불필요한 말은 토큰 낭비다. 마치 단어당 비용을 내는 것처럼 써라.",
-      "tech_stack": [
-        "Claude",
-        "Haiku 4.5",
-        "Sonnet 4.6",
-        "Opus 4.6",
-        "Batch API"
-      ]
-    },
-    {
-      "id": "bm-074",
-      "author": "shannholmberg",
-      "date": "2026-04-03",
-      "url": "https://x.com/shannholmberg/status/2038636871270424794",
-      "whats_happening": "Superpowers라는 프레임워크가 마케팅에 어떻게 적용되는지와 그 작동 방식을 설명하며, 7단계 파이프라인과 14가지 이상의 필수 기술을 통해 Claude가 체계적으로 작업을 수행하는 과정을 소개한다.",
-      "why_it_matters": "에이전트 품질을 결정하는 건 프롬프트가 아니라 행동 조건의 설계 밀도다 — 7단계 파이프라인과 14개 스킬이 매 세션 반복되던 컨텍스트 주입과 판단 교정을 구조적으로 없앤다.",
-      "apply_points": [
-        "프로젝트 기획 단계에서 명확한 설계 문서 작성 방식을 도입하라.",
-        "테스트 주도 개발(TDD) 원칙을 유지보수가 필요한 코드에 적용하라.",
-        "작업을 독립된 하위 에이전트에 분배해 병렬로 진행하도록 구성하라."
-      ],
-      "text": "here´s how it works and how to apply it to marketing\n63\n246\n2.8K\n388K\nwhat superpowers actually does\nthink about what a good engineer does with a new task. they dont just start coding. they read the codebase, ask questions, weigh trade-offs, write up an approach, then build.\nsuperpowers gives claude that same process. 14+ skills that kick in based on what you're doing: brainstorming, spec-first planning, TDD, subagent execution, systematic debugging.\nthe skills are mandatory. if one applies, claude must use it. the framework has a list of 12 excuses developers use to skip workflows.\n works with cursor, codex, and gemini CLI.\nTHE 7-PHASE PIPELINE\nsuperpowers breaks every task into 7 phases. you don't always hit all 7, some tasks only need the first two or three. but the structure is there when you need it.\nphase 1: brainstorming\nthis is the one I use the most\nbefore any new feature, superpowers forces a brainstorming session. not \"ask a few questions and move on.\" a full 9-step workflow:\n> explore your project context (files, docs, recent commits)\n> ask clarifying questions one at a time (never batched, so you actually think about each answer)\n> propose 2-3 approaches with trade-offs and a recommendation\n> present the design in sections, seek your approval after each\n> write a design doc to your project\n> self-review the spec for gaps, contradictions, ambiguity\n> wait for your explicit approval before moving forward\nzero implementation until the design is approved. there´s only one exit from brainstorming: moving to the planning phase.\nphase 2: planning\nonce brainstorming is approved, superpowers generates a structured plan with dependencies, acceptance criteria, exact file paths, and order of operations.\nthe iron rule here: no placeholders allowed. any of these will fail the plan:\n> \"TBD\"\n> \"TODO\"\n> \"implement later\"\n> \"similar to task above\"\nevery single task has to contain complete, copy-pasteable instructions. the assumption is that whoever executes the plan (usually a subagent) has zero familiarity with your codebase.\nstrict, yes. but it means you see exactly what claude will build before it writes a single line. you read the plan, tweak anything thats off, approve it, and execution follows the spec.\nI've started treating these plans like mini PRDs. they're detailed enough that I could hand one to a subagent and they'd know exactly what to build.\nphase 3: subagent-driven development\nclaude dispatches subagents for independent tasks, all running in parallel. each subagent gets a fresh context window with no drift from other tasks. the main claude session never writes code itself. it just orchestrates:\n> dispatch tasks to subagents\n> review what comes back\n> track progress against the plan\nphase 4: test-driven development\nsuperpowers enforces what it calls the \"iron law\": no production code without a failing test first. if code gets written before its test, it gets deleted. \nwrite a failing test, write the simplest code that passes it, refactor. classic TDD loop, but the framework enforces it so you can't skip it when you're in a hurry.\nI don't use TDD for everything. for quick prototypes and one-off scripts, I skip this phase. but for anything that needs to be maintained, having tests written before the code means I can refactor later without guessing what's going to break.\nphase 5: two-stage code review\ntwo separate reviews per task. first review checks spec compliance: does the code match what was planned? second review checks code quality. both must pass, and they run as separate reviewer agents so the first review doesnt bias the second.\nphase 6: systematic debugging\nwhen something breaks, superpowers follows a strict protocol:\n> reproduce the bug\n> isolate the cause\n> form one hypothesis (not three)\n> make the smallest possible change\n> verify\ntheres a 3-strike rule. if 3 attempted fixes fail, the framework stops trying to patch symptoms and forces you to question the architecture. this prevents the death spiral where",
-      "tech_stack": [
-        "cursor",
-        "codex",
-        "gemini CLI",
-        "TDD"
       ]
     }
   ],
