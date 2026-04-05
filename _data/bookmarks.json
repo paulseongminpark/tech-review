@@ -2287,5 +2287,50 @@
     ],
     "why_it_matters": "컨텍스트 윈도우를 화폐로 관리하는 시스템에서, 메시지 누적에 따른 토큰 곡선의 기울기를 아는 것이 예산 설계의 전제 조건이다. 15~20 메시지 리셋, 모델 라우팅(Haiku→Sonnet→Opus), 프로젝트 캐시 같은 전술은 개별 팁이 아니라 — 사람이 매번 판단하지 않아도 비용이 자동으로 억제되는 조건을 까는 것이다.",
     "tweet_id": "2038286026284667239"
+  },
+  {
+    "id": "bm-078",
+    "author": "tom_doerr",
+    "date": "2026-04-03",
+    "added_at": "2026-04-05",
+    "url": "https://x.com/tom_doerr/status/2039906409387610408",
+    "text": "Obsidian vault for Claude Code memory\n\nhttps://github.com/breferrari/obsidian-mind",
+    "whats_happening": "Obsidian vault가 Claude Code 메모리를 위해 만들어졌다.",
+    "translation": "Obsidian vault for Claude Code memory\n\nhttps://github.com/breferrari/obsidian-mind",
+    "tech_stack": [
+      "Obsidian"
+    ],
+    "apply_points": [
+      "mcp-memory에서 Claude Code 관련 메모리 구조를 참고해 개선한다.",
+      "Obsidian vault 활용법을 프로젝트 문서화에 적용한다.",
+      "Claude Code 메모리 관리 방식을 포트폴리오에 반영한다."
+    ],
+    "why_it_matters": "Claude Code의 메모리 구조(CLAUDE.md, rules/, MEMORY.md)는 Obsidian vault가 이미 해결한 문제 — markdown 기반 계층, 링크, 폴더 규칙 — 를 작은 스케일로 재발명한 것이다. vault를 Claude Code의 정식 메모리 소스로 승격하면 mcp-memory에서 중복 동기화 레이어 하나를 뺄 수 있다.",
+    "tweet_id": "2039906409387610408"
+  },
+  {
+    "id": "bm-079",
+    "author": "karpathy",
+    "date": "2026-04-02",
+    "added_at": "2026-04-05",
+    "url": "https://x.com/karpathy/status/2039805659525644595",
+    "text": "LLM Knowledge Bases\n\nSomething I'm finding very useful recently: using LLMs to build personal knowledge bases for various topics of research interest. In this way, a large fraction of my recent token throughput is going less into manipulating code, and more into manipulating knowledge (stored as markdown and images). The latest LLMs are quite good at it. So:\n\nData ingest:\nI index source documents (articles, papers, repos, datasets, images, etc.) into a raw/ directory, then I use an LLM to incrementally \"compile\" a wiki, which is just a collection of .md files in a directory structure. The wiki includes summaries of all the data in raw/, backlinks, and then it categorizes data into concepts, writes articles for them, and links them all. To convert web articles into .md files I like to use the Obsidian Web Clipper extension, and then I also use a hotkey to download all the related images to local so that my LLM can easily reference them.\n\nIDE:\nI use Obsidian as the IDE \"frontend\" where I can view the raw data, the the compiled wiki, and the derived visualizations. Important to note that the LLM writes and maintains all of the data of the wiki, I rarely touch it directly. I've played with a few Obsidian plugins to render and view data in other ways (e.g. Marp for slides).\n\nQ&A:\nWhere things get interesting is that once your wiki is big enough (e.g. mine on some recent research is ~100 articles and ~400K words), you can ask your LLM agent all kinds of complex questions against the wiki, and it will go off, research the answers, etc. I thought I had to reach for fancy RAG, but the LLM has been pretty good about auto-maintaining index files and brief summaries of all the documents and it reads all the important related data fairly easily at this ~small scale.\n\nOutput:\nInstead of getting answers in text/terminal, I like to have it render markdown files for me, or slide shows (Marp format), or matplotlib images, all of which I then view again in Obsidian. You can imagine many other visual output formats depending on the query. Often, I end up \"filing\" the outputs back into the wiki to enhance it for further queries. So my own explorations and queries always \"add up\" in the knowledge base.\n\nLinting:\nI've run some LLM \"health checks\" over the wiki to e.g. find inconsistent data, impute missing data (with web searchers), find interesting connections for new article candidates, etc., to incrementally clean up the wiki and enhance its overall data integrity. The LLMs are quite good at suggesting further questions to ask and look into.\n\nExtra tools:\nI find myself developing additional tools to process the data, e.g. I vibe coded a small and naive search engine over the wiki, which I both use directly (in a web ui), but more often I want to hand it off to an LLM via CLI as a tool for larger queries. \n\nFurther explorations:\nAs the repo grows, the natural desire is to also think about synthetic data generation + finetuning to have your LLM \"know\" the data in its weights instead of just context windows.\n\nTLDR: raw data from a given number of sources is collected, then compiled by an LLM into a .md wiki, then operated on by various CLIs by the LLM to do Q&A and to incrementally enhance the wiki, and all of it viewable in Obsidian. You rarely ever write or edit the wiki manually, it's the domain of the LLM. I think there is room here for an incredible new product instead of a hacky collection of scripts.",
+    "whats_happening": "최근 LLM을 활용해 개인 지식 베이스를 구축하고, 원본 데이터를 인덱싱해 마크다운 위키로 컴파일하며 Obsidian에서 관리하는 방법을 소개하고 있다. LLM이 위키를 자동으로 유지·관리하며 복잡한 질의응답과 시각화, 데이터 정합성 검사도 수행한다.",
+    "translation": "LLM Knowledge Bases\n\n최근에 매우 유용하다고 느끼는 것: LLM을 사용해 다양한 연구 관심 주제에 대한 개인 지식 베이스를 구축하는 것. 이렇게 하면 최근 토큰 처리량의 상당 부분이 코드 조작보다는 지식(마크다운과 이미지로 저장됨) 조작에 더 많이 사용된다. 최신 LLM들은 이것에 매우 능숙하다. 그래서:\n\n데이터 수집:\n원본 문서(기사, 논문, 저장소, 데이터셋, 이미지 등)를 raw/ 디렉토리에 인덱싱한 뒤, LLM을 사용해 점진적으로 위키를 \"컴파일\"하는데, 이는 디렉토리 구조 내 .md 파일 모음이다. 위키는 raw/의 모든 데이터 요약, 백링크를 포함하고, 데이터를 개념별로 분류하며, 해당 개념에 대한 글을 작성하고 모두 연결한다. 웹 기사를 .md 파일로 변환할 때는 Obsidian Web Clipper 확장 기능을 사용하고, 관련 이미지를 로컬에 다운로드하는 단축키도 사용해 LLM이 쉽게 참조할 수 있도록 한다.\n\nIDE:\nObsidian을 IDE \"프론트엔드\"로 사용해 원본 데이터, 컴파일된 위키, 파생 시각화를 볼 수 있다. 중요한 점은 LLM이 위키의 모든 데이터를 작성하고 유지하며, 나는 거의 직접 수정하지 않는다. Marp 같은 Obsidian 플러그인으로 데이터를 다른 방식으로 렌더링하고 보는 실험도 했다.\n\nQ&A:\n위키가 충분히 커지면(예: 내 최근 연구 위키는 약 100개 기사, 40만 단어) LLM 에이전트에게 복잡한 질문을 할 수 있고, LLM이 답을 연구한다. 복잡한 RAG가 필요할 줄 알았지만, LLM이 자동으로 인덱스 파일과 문서 요약을 유지하며 이 규모에서는 관련 데이터를 쉽게 읽는다.\n\n출력:\n텍스트나 터미널 답변 대신 마크다운 파일, 슬라이드쇼(Marp 형식), matplotlib 이미지 등으로 렌더링하는 것을 선호하며, 이를 다시 Obsidian에서 본다. 쿼리에 따라 다양한 시각적 출력 형식을 상상할 수 있다. 출력물을 위키에 다시 저장해 추가 쿼리를 위해 위키를 확장하기도 한다. 탐색과 쿼리가 지식 베이스에 \"누적\"된다.\n\n린팅:\nLLM으로 위키에 대해 \"건강 검사\"를 수행해 불일치 데이터 찾기, 누락 데이터 추정(웹 검색 포함), 새로운 기사 후보를 위한 흥미로운 연결 찾기 등으로 위키를 점진적으로 정리하고 데이터 무결성을 향상시킨다. LLM은 추가 질문을 제안하고 탐색하는 데도 능숙하다.\n\n추가 도구:\n데이터 처리를 위한 도구도 개발하는데, 예를 들어 위키 위에 간단한 검색 엔진을 코딩했고, 웹 UI로 직접 사용하지만 주로 CLI를 통해 LLM에 큰 쿼리용 도구로 넘긴다.\n\n추가 탐색:\n레포가 커지면서 합성 데이터 생성과 파인튜닝을 통해 LLM이 단순 컨텍스트 윈도우가 아니라 가중치 내에 데이터를 \"알게\" 하는 방안도 고민 중이다.\n\n요약: 여러 출처의 원본 데이터를 수집하고 LLM이 .md 위키로 컴파일하며, LLM이 다양한 CLI로 질의응답과 위키 점진적 개선을 수행한다. 모두 Obsidian에서 볼 수 있고, 위키는 거의 직접 작성·수정하지 않고 LLM이 담당한다. 이 방식은 단순 스크립트 모음이 아닌 놀라운 신제품 가능성이 있다고 생각한다.",
+    "tech_stack": [
+      "LLM",
+      "Obsidian",
+      "Obsidian Web Clipper",
+      "Marp",
+      "matplotlib",
+      "CLI"
+    ],
+    "apply_points": [
+      "LLM을 활용해 프로젝트 문서 자동 요약 및 분류 체계 구축에 적용한다.",
+      "Obsidian을 프론트엔드로 사용해 데이터 시각화와 위키 관리 효율화한다.",
+      "LLM 기반 자동 데이터 무결성 검사 및 누락 데이터 보완 기능을 도입한다."
+    ],
+    "why_it_matters": "지식 외부화에서 가장 비싼 비용은 \"원본→구조화\"의 수동 큐레이션인데, LLM을 위키 컴파일러로 놓으면 이 비용이 사라진다 — 인간은 원본을 던지고 구조를 설계하는 역할만 남는다.",
+    "tweet_id": "2039805659525644595"
   }
 ]
