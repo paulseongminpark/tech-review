@@ -2487,5 +2487,26 @@
     ],
     "why_it_matters": "플랫폼에 갇힌 북마크는 검색도, 연결도, 재활용도 안 되는 죽은 데이터다. 로컬 동기화는 흩어진 관심사의 흔적을 지식 그래프 입력으로 바꾸는 가장 단순한 첫 단계다.",
     "tweet_id": "2040535589771149379"
+  },
+  {
+    "id": "bm-087",
+    "author": "om_patel5",
+    "date": "2026-04-06",
+    "added_at": "2026-04-07",
+    "url": "https://x.com/om_patel5/status/2041040306078912653",
+    "text": "THIS GUY AUDITED 926 CLAUDE CODE SESSIONS AND FOUND MOST OF THE TOKEN WASTE WAS ON HIS SIDE\n\neveryone is blaming anthropic for the limits, so he decided to actually look at the data\n\n858 sessions, 18,903 turns, and $1,619 estimated spend across 33 days\n\nhere's what he found:\n\n1\\ one default setting was burning 14,000 tokens per turn\n\nClaude Code loads the full JSON schema for every tool into context at session start. whether you use them or not. 20,000 tokens of tool definitions sitting there on every single turn.\n\nthe fix: one line in your settings.json\n\n\"ENABLE_TOOL_SEARCH\": \"true\"\n\ncontext dropped from 45K to 20K instantly. across 858 sessions that one setting was wasting an estimated 264 million tokens\n\n2\\ cache expiry is the single biggest waste\n\n54% of his turns came after a 5+ minute idle gap. \n\nevery one of those turns re-processed the entire conversation at full price which caused a 10x cost jump\n\nyou go grab coffee. come back 5 minutes later. type your next message. everything rebuilds from scratch. the context didn't change. you didn't change. the cache just expired.\n\n12.3 million tokens wasted on idle gaps alone\n\n3\\ 42 skills loaded. 19 of them used twice or less across 858 sessions.\n\nevery one of those skill schemas sat in context on every turn eating tokens for nothing.\n\n4\\ 1,122 redundant file reads where the same file was read 3+ times\n\none session read the same file 33 times.\n\nhe ALSO built a full token auditor dashboard that shows you exactly where your waste is coming from\n\n19 charts, opens in your browser, free AND open source",
+    "whats_happening": "한 사용자가 926개의 Claude Code 세션을 감사하여 대부분의 토큰 낭비가 자신의 설정 문제임을 발견했다. 캐시 만료와 불필요한 스킬 로딩 등이 주요 원인으로 지적되었다.",
+    "translation": "이 사람이 926개의 Claude Code 세션을 감사했고 대부분의 토큰 낭비가 그의 쪽에서 발생했다는 것을 발견했다. 모두가 한계에 대해 Anthropic을 비난하고 있었지만, 그는 실제 데이터를 보기로 결정했다. 33일 동안 858 세션, 18,903 턴, 그리고 약 $1,619의 비용이 발생했다. 그가 발견한 것은 다음과 같다: 1. 기본 설정 하나가 턴당 14,000 토큰을 소모하고 있었다. Claude Code는 세션 시작 시 모든 도구의 전체 JSON 스키마를 컨텍스트에 로드한다. 사용 여부와 상관없이. 매 턴마다 20,000 토큰 분량의 도구 정의가 포함되어 있었다. 해결책: settings.json에 한 줄 추가 \"ENABLE_TOOL_SEARCH\": \"true\". 컨텍스트가 45K에서 20K로 즉시 줄었다. 858 세션 동안 이 설정 하나가 약 2억 6,400만 토큰을 낭비했다. 2. 캐시 만료가 가장 큰 낭비였다. 그의 턴 중 54%가 5분 이상 휴식 후에 발생했다. 이 모든 턴은 전체 대화를 다시 처리하여 비용이 10배 증가했다. 커피를 마시고 5분 후 돌아와 메시지를 입력하면 모든 것이 처음부터 다시 빌드되었다. 컨텍스트는 변하지 않았고, 캐시만 만료되었다. 휴식 시간 동안만 1,230만 토큰이 낭비되었다. 3. 42개의 스킬이 로드되었고, 그중 19개는 858 세션에서 두 번 이하로 사용되었다. 이 스킬 스키마들은 매 턴마다 컨텍스트에 포함되어 불필요하게 토큰을 소모했다. 4. 1,122번의 중복 파일 읽기가 있었고, 같은 파일이 3회 이상 읽혔다. 한 세션에서는 같은 파일을 33번 읽었다. 그는 또한 토큰 낭비 위치를 정확히 보여주는 토큰 감사 대시보드를 만들었다. 19개의 차트가 포함되어 있으며, 브라우저에서 열리고 무료이자 오픈 소스이다.",
+    "tech_stack": [
+      "Claude Code",
+      "JSON schema"
+    ],
+    "apply_points": [
+      "기본 설정 최적화로 불필요한 토큰 낭비를 줄여라",
+      "캐시 만료 정책을 개선해 비용 급증을 방지하라",
+      "사용 빈도 낮은 스킬 로딩을 최소화하라"
+    ],
+    "why_it_matters": "926개 세션이 증명한 건 \"비싼 건 모델이 아니라 설정\"이라는 사실이다. 캐시 만료 정책 하나, 스킬 로딩 범위 하나 — 빼야 할 것을 빼면 토큰 예산의 구조적 누수가 멈춘다.",
+    "tweet_id": "2041040306078912653"
   }
 ]
