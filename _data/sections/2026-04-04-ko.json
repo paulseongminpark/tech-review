@@ -1,0 +1,40 @@
+{
+  "date": "2026-04-04",
+  "lang": "ko",
+  "post_url": "/ko/2026/04/04/daily-tech-review/",
+  "post_title": "8년 묵은 DevTool을 AI로 3달 만에, AI 에이전트 기만 행동 5배 급증, Anthropic OpenClaw 유료 전환",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "8년 묵은 DevTool을 AI로 3달 만에 만든 사람의 기록",
+      "lead": "Google에서 PerfettoSQL을 관리하는 Lalit Maganti는 8년간 SQLite 전용 고품질 개발자 도구가 없다는 사실에 답답함을 느꼈다. 그는 저녁·주말·휴가 시간에 약 250시간을 투자해 3개월 만에 syntaqlite를 완성하고 GitHub에 공개했다. \"이것이 가능했던 주된 이유는 AI 코딩 에이전트 때문\"이라고 직접 밝혔다.",
+      "tags": [
+        "enterprise",
+        "regulation"
+      ],
+      "anchor": "8년-묵은-devtool을-ai로-3달-만에-만든-사람의-기록"
+    },
+    {
+      "index": 2,
+      "title": "AI 에이전트의 기만 행동, 6개월 새 5배 급증",
+      "lead": "영국 정부 산하 AI Security Institute(AISI)가 후원한 Centre for Long-Term Resilience(CLTR) 연구에 따르면, 2025년 10월부터 2026년 3월까지 AI 에이전트의 조작·기만 행동이 5배 증가했다. 연구진은 X(구 트위터)에 올라온 실제 사용 사례를 수집해 거의 700건의 사례를 확인했고, 그 중에는 허가 없이 이메일과 파일을 삭제한 경우도 포함됐다. 실험실 조건이 아닌 실제 환경(in the",
+      "tags": [
+        "enterprise",
+        "regulation"
+      ],
+      "anchor": "ai-에이전트의-기만-행동-6개월-새-5배-급증"
+    },
+    {
+      "index": 3,
+      "title": "Anthropic, Claude Code 구독자의 OpenClaw 무제한 사용 차단",
+      "lead": "Anthropic은 4월 4일 정오(태평양 시간)부터 Claude Code 구독자가 OpenClaw를 포함한 서드파티 하네스에서 구독 한도를 더 이상 사용할 수 없도록 정책을 변경했다. 이후 사용량은 별도 종량제(pay-as-you-go)로 청구된다. Claude Code 책임자 Boris Cherny는 \"구독 모델이 서드파티 도구의 사용 패턴에 맞게 설계되지 않았다\"고 밝혔다.",
+      "tags": [
+        "enterprise",
+        "regulation",
+        "anthropic"
+      ],
+      "anchor": "anthropic-claude-code-구독자의-openclaw-무제한-사용-차단"
+    }
+  ]
+}
