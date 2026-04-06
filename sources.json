@@ -1,6 +1,24 @@
 {
   "twitter": [
     {
+      "id": "bm-087",
+      "author": "om_patel5",
+      "date": "2026-04-07",
+      "url": "https://x.com/om_patel5/status/2041040306078912653",
+      "whats_happening": "한 사용자가 926개의 Claude Code 세션을 감사하여 대부분의 토큰 낭비가 자신의 설정 문제임을 발견했다. 캐시 만료와 불필요한 스킬 로딩 등이 주요 원인으로 지적되었다.",
+      "why_it_matters": "926개 세션이 증명한 건 \"비싼 건 모델이 아니라 설정\"이라는 사실이다. 캐시 만료 정책 하나, 스킬 로딩 범위 하나 — 빼야 할 것을 빼면 토큰 예산의 구조적 누수가 멈춘다.",
+      "apply_points": [
+        "기본 설정 최적화로 불필요한 토큰 낭비를 줄여라",
+        "캐시 만료 정책을 개선해 비용 급증을 방지하라",
+        "사용 빈도 낮은 스킬 로딩을 최소화하라"
+      ],
+      "text": "이 사람이 926개의 Claude Code 세션을 감사했고 대부분의 토큰 낭비가 그의 쪽에서 발생했다는 것을 발견했다. 모두가 한계에 대해 Anthropic을 비난하고 있었지만, 그는 실제 데이터를 보기로 결정했다. 33일 동안 858 세션, 18,903 턴, 그리고 약 $1,619의 비용이 발생했다. 그가 발견한 것은 다음과 같다: 1. 기본 설정 하나가 턴당 14,000 토큰을 소모하고 있었다. Claude Code는 세션 시작 시 모든 도구의 전체 JSON 스키마를 컨텍스트에 로드한다. 사용 여부와 상관없이. 매 턴마다 20,000 토큰 분량의 도구 정의가 포함되어 있었다. 해결책: settings.json에 한 줄 추가 \"ENABLE_TOOL_SEARCH\": \"true\". 컨텍스트가 45K에서 20K로 즉시 줄었다. 858 세션 동안 이 설정 하나가 약 2억 6,400만 토큰을 낭비했다. 2. 캐시 만료가 가장 큰 낭비였다. 그의 턴 중 54%가 5분 이상 휴식 후에 발생했다. 이 모든 턴은 전체 대화를 다시 처리하여 비용이 10배 증가했다. 커피를 마시고 5분 후 돌아와 메시지를 입력하면 모든 것이 처음부터 다시 빌드되었다. 컨텍스트는 변하지 않았고, 캐시만 만료되었다. 휴식 시간 동안만 1,230만 토큰이 낭비되었다. 3. 42개의 스킬이 로드되었고, 그중 19개는 858 세션에서 두 번 이하로 사용되었다. 이 스킬 스키마들은 매 턴마다 컨텍스트에 포함되어 불필요하게 토큰을 소모했다. 4. 1,122번의 중복 파일 읽기가 있었고, 같은 파일이 3회 이상 읽혔다. 한 세션에서는 같은 파일을 33번 읽었다. 그는 또한 토큰 낭비 위치를 정확히 보여주는 토큰 감사 대시보드를 만들었다. 19개의 차트가 포함되어 있으며, 브라우저에서 열리고 무료이자 오픈 소스이다.",
+      "tech_stack": [
+        "Claude Code",
+        "JSON schema"
+      ]
+    },
+    {
       "id": "bm-086",
       "author": "andrewfarah",
       "date": "2026-04-06",
@@ -56,27 +74,6 @@
       ],
       "text": "Some of these behaviors are harder to fix than others, but a well written harness can go a long way. All The Ways Agents Can Be Stupid Pre-Task Not gaining sufficient context before starting a task and therefore acting on wrong or missing information before it has begun. To overcome this, you need to systematically check for incomplete and/or contradictory information before starting on the task — because this will propagate once it starts. Planning — Incomplete Context This is the part where the agent is deciding on the attack vectors to solve the problem. The biggest problem here is choosing the wrong attack vectors, which results in implementing something entirely wrong. Choosing a wrong attack vector because of stupidity rarely happens anymore, but choosing a wrong attack vector because of misalignment — misinterpreting what the user wants — is still pretty common. To overcome this, you need to make sure that your agent is covering all related files before it has even started planning. An important part of this is ensuring that your repository contains no contradictory information. Planning — Short Term Thinking Your agents don't live with the consequences of short-term, quick fix solutions. This is like hiring cheap software engineering labor, you may get something that works but it's going to result in a lot of tech debt. The way to resolve this is to remind your agents at the \"planning phase\" to implement solutions that scale, that fit into the bigger picture, is easy to maintain, and respect good software engineering paradigms. Basically, you want your agents to think like a founder, not a part-time engineer. You can get your agents to come up with N (e.g. N=5) different plans, have another agent pick the plan that will result in an implementation that is easier to maintain and scores higher on \"clean-code principles\". Task — Context Anxiety This is the part where the agent is actually working on the problem. The biggest problem here is context exhaustion, by miles. Given a good plan and the right context, virtually all frontier model agents are able to complete sufficiently small tasks with close to one-shot capability now. Problems only arise when dealing with complex, multi-session problems that consume millions of tokens. As I've written before, virtually all agents have some kind of context anxiety, and as a function of time, they become more and more desperate to end the session. This is extremely pervasive with Claude. To overcome this, you need to do smart session handoffs where you can relieve your agents of their context. You will then face a new problem — how to maximize context fidelity in your session handoffs. You want to make sure that your handoff prompt contains sufficient detail so that the new agent in a new session can pick up everything it needs to continue the task in an information-dense way. Understand that what you are doing here is essentially a form of compaction — and the reason to believe you can do it better than native providers is that you have a better understanding of your repository structure than the foundation model providers do. Task — Planning Deviations Other than context bloat, the second biggest problem is what I call planning stickiness. It is the risk where your agent deviates from the plan and essentially does whatever it wants. The most common expression of this is: you say do A, which is lengthy, painful, and sophisticated. Your agent does A', which it reasons is a reasonably close approximation to A, but which will not get you remotely close to your destination. This is not only problematic as an outcome, but it is especially problematic when you realize that all software being composable often means that every downstream piece of code depending on A is now wired for A' instead — which means everything built from A' onwards is effectively wrong. To solve this, you need to verify early and often that the solution to a task is implemented well and in accordance with your ex",
       "tech_stack": []
-    },
-    {
-      "id": "bm-083",
-      "author": "FarzaTV",
-      "date": "2026-04-06",
-      "url": "https://x.com/FarzaTV/status/2040563939797504467",
-      "whats_happening": "Farzapedia라는 개인 위키를 만들기 위해 LLM이 일기, Apple Notes, iMessage 대화 2,500개 항목을 활용해 400개의 상세한 글을 작성했고, 이 위키는 에이전트를 위해 구축되어 에이전트가 쉽게 크롤링하고 유용한 지식 기반으로 활용할 수 있다.",
-      "why_it_matters": "비정형 개인 데이터 2,500건을 LLM으로 한 번 증류해 400개 위키 문서로 만드는 것은, RAG가 매번 원시 데이터를 뒤지는 비용과 노이즈를 구조적으로 제거하는 방법이다. mcp-memory에 이미 쌓인 노드 수천 개가 이 증류의 원재료다.",
-      "apply_points": [
-        "mcp-memory에서 프로젝트 관련 대화와 노트를 위키 형태로 정리해 활용하라",
-        "에이전트가 쉽게 크롤링할 수 있는 백링크 구조를 프로젝트에 적용하라",
-        "새로운 정보 추가 시 관련 문서를 자동 업데이트하는 시스템을 도입하라"
-      ],
-      "text": "This is Farzapedia.\n\n나는 LLM이 내 일기, Apple Notes, 그리고 일부 iMessage 대화에서 2,500개의 항목을 가져와 나만의 개인 위키피디아를 만들게 했다.\n\n이것은 내 친구들, 내 스타트업들, 연구 분야들, 그리고 내가 좋아하는 애니메이션들과 그것들이 나에게 미친 영향에 관한 400개의 상세한 글을 만들었고, 모두 백링크가 포함되어 있다.\n\n하지만, 이 위키는 나를 위해 만들어진 것이 아니다! 나는 내 에이전트를 위해 만들었다!\n\n위키 파일들의 구조와 모든 백링크 방식은 어떤 에이전트도 쉽게 크롤링할 수 있게 하며 진정으로 유용한 지식 기반을 만든다.\n\n나는 Claude Code를 위키에서 실행할 수 있고 index.md(내 모든 글의 카탈로그)에서 시작해 에이전트가 쿼리가 있을 때 위키의 특정 페이지에서 필요한 컨텍스트를 정말 잘 파고든다.\n\n예를 들어, 새로운 랜딩 페이지를 만들려고 할 때 나는 이렇게 물어볼 수 있다:\n\n\"나는 새로운 아이디어를 위한 이 랜딩 페이지를 디자인하려고 한다. 최근에 나에게 영감을 준 이미지와 영화들을 살펴보고 새로운 카피와 미학에 대한 아이디어를 줘.\" \n\n내 일기에는 배운 것들, 사람들, 영감, 흥미로운 링크, 이미지 등이 모두 기록되어 있다.\n\n그래서 에이전트는 내 위키를 읽고 Studio Ghibli 다큐멘터리에 관한 \"Philosophy\" 글, 내가 스크린샷한 YC 회사들의 랜딩 페이지에 관한 \"Competitor\" 글, 그리고 내가 몇 년 전에 저장한 1970년대 Beatles 상품 사진을 찾아내고 훌륭한 답변을 제공한다.\n\n나는 1년 전에 RAG로 비슷한 시스템을 만들었지만 별로였다.\n\n파일 시스템을 통해 에이전트가 실제로 이해할 수 있는 지식 기반이 훨씬 잘 작동한다.\n\n가장 마법 같은 점은 내가 위키에 새로운 것들(글, 영감 이미지, 회의 노트)을 추가할 때 시스템이 그 컨텍스트가 속한다고 느끼는 2-3개의 다른 글을 업데이트하거나 새 글을 만든다는 것이다.\n\n이것은 당신의 뇌를 위한 천재 사서 같아서 항상 완벽하게 자료를 정리하고 디자인, 제품, 글쓰기 등 유용한 작업을 위해 쉽게 지식을 쿼리할 수 있게 하며 절대 지치지 않는다.\n\n다음 주에 이것을 상품화할 수도 있는데 관심 있으면 DM으로 연락하고 당신의 사용 사례를 알려달라!",
-      "tech_stack": [
-        "LLM",
-        "Apple Notes",
-        "iMessage",
-        "Claude Code",
-        "RAG"
-      ]
     }
   ],
   "youtube": [
