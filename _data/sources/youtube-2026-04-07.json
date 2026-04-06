@@ -327,6 +327,14 @@
             "content": "AI 시대에는 느린 예측보다 빠른 적응과 윤리적 사용이 생존과 기회를 가른다."
           }
         ]
+      },
+      "apply_points": {
+        "level": 1,
+        "where": "tech-review / scripts/analyze-youtube-v3.py",
+        "what": "YouTube 분석 프롬프트에 'personal_application' 섹션 추가 — 각 영상의 인사이트를 Paul 시스템 기준 L1/L2/L3 액션으로 자동 추출",
+        "why": "영상 핵심: AI 시대 경쟁력 = 모델 활용 능력 + 빠른 실험. Paul은 멀티AI 오케스트레이션을 운영 중이나 '인사이트→실행 변환' 단계가 수동. 분석 출력에 구조화된 signal을 내장하면 인사이트가 inbox에서 소멸하지 않고 시스템으로 흘러든다.",
+        "how": "analyze-youtube-v3.py의 LLM 호출 프롬프트 끝에 personal_application 블록 추가. 출력 스키마에 {level, where, what, why, how, when} 5필드 포함. key_takeaways 생성 직후 동일 호출에서 추출.",
+        "when": "오늘 analyze-youtube-v3.py 다음 수정 시"
       }
     }
   }
