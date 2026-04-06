@@ -1,80 +1,81 @@
 {
   "twitter": [
     {
-      "id": "bm-079",
-      "author": "karpathy",
-      "date": "2026-04-05",
-      "url": "https://x.com/karpathy/status/2039805659525644595",
-      "whats_happening": "최근 LLM을 활용해 개인 지식 베이스를 구축하고, 원본 데이터를 인덱싱해 마크다운 위키로 컴파일하며 Obsidian에서 관리하는 방법을 소개하고 있다. LLM이 위키를 자동으로 유지·관리하며 복잡한 질의응답과 시각화, 데이터 정합성 검사도 수행한다.",
-      "why_it_matters": "지식 외부화에서 가장 비싼 비용은 \"원본→구조화\"의 수동 큐레이션인데, LLM을 위키 컴파일러로 놓으면 이 비용이 사라진다 — 인간은 원본을 던지고 구조를 설계하는 역할만 남는다.",
+      "id": "bm-086",
+      "author": "andrewfarah",
+      "date": "2026-04-06",
+      "url": "https://x.com/andrewfarah/status/2040535589771149379",
+      "whats_happening": "첫 번째 오픈 소스 프로젝트를 공유하며, X 북마크를 로컬에 다운로드하고 동기화하는 CLI 도구를 발표했다. 이 도구는 무료로 제공된다.",
+      "why_it_matters": "플랫폼에 갇힌 북마크는 검색도, 연결도, 재활용도 안 되는 죽은 데이터다. 로컬 동기화는 흩어진 관심사의 흔적을 지식 그래프 입력으로 바꾸는 가장 단순한 첫 단계다.",
       "apply_points": [
-        "LLM을 활용해 프로젝트 문서 자동 요약 및 분류 체계 구축에 적용한다.",
-        "Obsidian을 프론트엔드로 사용해 데이터 시각화와 위키 관리 효율화한다.",
-        "LLM 기반 자동 데이터 무결성 검사 및 누락 데이터 보완 기능을 도입한다."
+        "mcp-memory에서 recall('Paul 프로젝트') 후 CLI 도구 동기화 기능 적용 검토",
+        "X 북마크 로컬 동기화 방식을 프로젝트 오케스트레이션에 활용",
+        "무료 오픈 소스 배포 전략을 포트폴리오에 반영"
       ],
-      "text": "LLM Knowledge Bases\n\n최근에 매우 유용하다고 느끼는 것: LLM을 사용해 다양한 연구 관심 주제에 대한 개인 지식 베이스를 구축하는 것. 이렇게 하면 최근 토큰 처리량의 상당 부분이 코드 조작보다는 지식(마크다운과 이미지로 저장됨) 조작에 더 많이 사용된다. 최신 LLM들은 이것에 매우 능숙하다. 그래서:\n\n데이터 수집:\n원본 문서(기사, 논문, 저장소, 데이터셋, 이미지 등)를 raw/ 디렉토리에 인덱싱한 뒤, LLM을 사용해 점진적으로 위키를 \"컴파일\"하는데, 이는 디렉토리 구조 내 .md 파일 모음이다. 위키는 raw/의 모든 데이터 요약, 백링크를 포함하고, 데이터를 개념별로 분류하며, 해당 개념에 대한 글을 작성하고 모두 연결한다. 웹 기사를 .md 파일로 변환할 때는 Obsidian Web Clipper 확장 기능을 사용하고, 관련 이미지를 로컬에 다운로드하는 단축키도 사용해 LLM이 쉽게 참조할 수 있도록 한다.\n\nIDE:\nObsidian을 IDE \"프론트엔드\"로 사용해 원본 데이터, 컴파일된 위키, 파생 시각화를 볼 수 있다. 중요한 점은 LLM이 위키의 모든 데이터를 작성하고 유지하며, 나는 거의 직접 수정하지 않는다. Marp 같은 Obsidian 플러그인으로 데이터를 다른 방식으로 렌더링하고 보는 실험도 했다.\n\nQ&A:\n위키가 충분히 커지면(예: 내 최근 연구 위키는 약 100개 기사, 40만 단어) LLM 에이전트에게 복잡한 질문을 할 수 있고, LLM이 답을 연구한다. 복잡한 RAG가 필요할 줄 알았지만, LLM이 자동으로 인덱스 파일과 문서 요약을 유지하며 이 규모에서는 관련 데이터를 쉽게 읽는다.\n\n출력:\n텍스트나 터미널 답변 대신 마크다운 파일, 슬라이드쇼(Marp 형식), matplotlib 이미지 등으로 렌더링하는 것을 선호하며, 이를 다시 Obsidian에서 본다. 쿼리에 따라 다양한 시각적 출력 형식을 상상할 수 있다. 출력물을 위키에 다시 저장해 추가 쿼리를 위해 위키를 확장하기도 한다. 탐색과 쿼리가 지식 베이스에 \"누적\"된다.\n\n린팅:\nLLM으로 위키에 대해 \"건강 검사\"를 수행해 불일치 데이터 찾기, 누락 데이터 추정(웹 검색 포함), 새로운 기사 후보를 위한 흥미로운 연결 찾기 등으로 위키를 점진적으로 정리하고 데이터 무결성을 향상시킨다. LLM은 추가 질문을 제안하고 탐색하는 데도 능숙하다.\n\n추가 도구:\n데이터 처리를 위한 도구도 개발하는데, 예를 들어 위키 위에 간단한 검색 엔진을 코딩했고, 웹 UI로 직접 사용하지만 주로 CLI를 통해 LLM에 큰 쿼리용 도구로 넘긴다.\n\n추가 탐색:\n레포가 커지면서 합성 데이터 생성과 파인튜닝을 통해 LLM이 단순 컨텍스트 윈도우가 아니라 가중치 내에 데이터를 \"알게\" 하는 방안도 고민 중이다.\n\n요약: 여러 출처의 원본 데이터를 수집하고 LLM이 .md 위키로 컴파일하며, LLM이 다양한 CLI로 질의응답과 위키 점진적 개선을 수행한다. 모두 Obsidian에서 볼 수 있고, 위키는 거의 직접 작성·수정하지 않고 LLM이 담당한다. 이 방식은 단순 스크립트 모음이 아닌 놀라운 신제품 가능성이 있다고 생각한다.",
+      "text": "sharing my first open source project\n\na CLI for downloading and syncing your X bookmarks locally so your agent can access them. it's free\n\n›  npm install -g fieldtheory\n›  login to your X account in a chrome tab\n›  ft sync (done!)\n\nbonus:\n›  ft viz\n›  ft classify",
       "tech_stack": [
-        "LLM",
-        "Obsidian",
-        "Obsidian Web Clipper",
-        "Marp",
-        "matplotlib",
+        "npm",
         "CLI"
       ]
     },
     {
-      "id": "bm-078",
-      "author": "tom_doerr",
-      "date": "2026-04-05",
-      "url": "https://x.com/tom_doerr/status/2039906409387610408",
-      "whats_happening": "Obsidian vault가 Claude Code 메모리를 위해 만들어졌다.",
-      "why_it_matters": "Claude Code의 메모리 구조(CLAUDE.md, rules/, MEMORY.md)는 Obsidian vault가 이미 해결한 문제 — markdown 기반 계층, 링크, 폴더 규칙 — 를 작은 스케일로 재발명한 것이다. vault를 Claude Code의 정식 메모리 소스로 승격하면 mcp-memory에서 중복 동기화 레이어 하나를 뺄 수 있다.",
+      "id": "bm-085",
+      "author": "kevingu",
+      "date": "2026-04-06",
+      "url": "https://x.com/kevingu/status/2039843234760073341",
+      "whats_happening": "AutoAgent라는 오픈 소스 라이브러리를 출시하여 24시간 이상 자율적으로 에이전트를 최적화해 SpreadsheetBench와 TerminalBench에서 각각 1위를 차지했다. 이 라이브러리는 수작업 없이 메타 에이전트가 작업 에이전트의 하네스를 조정하며 성능을 향상시킨다.",
+      "why_it_matters": "에이전트 하네스 튜닝에서 인간의 손을 빼는 게 가능해졌다 — 메타 에이전트가 24시간 자율 반복으로 벤치마크 1위를 찍었다는 건, 오케스트레이션의 다음 계단이 \"조율자 자체를 자동화하는 것\"임을 실증한다.",
       "apply_points": [
-        "mcp-memory에서 Claude Code 관련 메모리 구조를 참고해 개선한다.",
-        "Obsidian vault 활용법을 프로젝트 문서화에 적용한다.",
-        "Claude Code 메모리 관리 방식을 포트폴리오에 반영한다."
+        "메타 에이전트와 작업 에이전트 분리로 역할 전문화 적용",
+        "실패 추적을 분석해 자동 개선하는 루프 도입",
+        "도메인 특화 도구와 검증 루프 자율 생성 활용"
       ],
-      "text": "Obsidian vault for Claude Code memory\n\nhttps://github.com/breferrari/obsidian-mind",
+      "text": "오늘 우리는 AutoAgent를 출시합니다. 이는 어떤 도메인에서든 에이전트를 자율적으로 개선하는 오픈 소스 라이브러리입니다. AutoAgent는 24시간 이상 최적화한 후 SpreadsheetBench에서 96.5%로 1위, TerminalBench에서 GPT-5 점수 55.1%로 1위를 기록했습니다. 이 리더보드의 다른 모든 항목은 수작업으로 설계된 반면, 우리의 것은 그렇지 않았습니다. 에이전트들은 하네스 엔지니어링에 병목 현상이 있었지만, 우리는 여전히 원시적인 그리드 서치를 하고 있습니다: 조정, 평가, 오류 추적 읽기, 반복. 이것은 에이전트가 생산 벤치마크에서 수동 하네스 튜닝을 자율적으로 능가할 수 있다는 첫 번째 구체적인 증거입니다. 여기에서 이용 가능합니다: https://github.com/kevinrgu/autoagent. 작동 방식은 다음과 같습니다. AutoAgent를 평가가 있는 작업 도메인에 지정하면, 메타 에이전트가 작업 에이전트의 하네스를 실험합니다: 프롬프트 조정, 도구 추가, 오케스트레이션 개선을 통해 성능이 향상될 때까지 반복합니다. 설정은 최소한으로 설계되었습니다: 작업 에이전트는 단지 bash 도구로 시작합니다. program.md는 메타 에이전트에 연구 방향을 제공합니다. agent.py는 작업 에이전트입니다. Harbor 어댑터가 벤치마크에 연결합니다. 메타 에이전트는 수천 개의 병렬 샌드박스를 가동하여 작업 에이전트를 개선합니다. 24시간 후 도메인 특화 도구, 검증 루프, 오케스트레이션 로직이 모두 자율적으로 발견됩니다. 루프는 다음과 같습니다: 1. 에이전트 하네스 편집 2. 작업 실행 3. 성능 측정 4. 실패 추적 읽기 5. 개선 유지, 실패 복귀 6. 반복. 이것이 작동하는 이유는 에이전트처럼 보기 때문입니다. 우리는 에이전트가 우리보다 에이전트를 더 잘 이해한다는 것을 발견했습니다. Claude Code 팀은 '에이전트처럼 보기'에 대해 썼으며, 모델의 마음에 자신을 두고 그 능력에 맞는 도구를 설계하는 것입니다. 우리는 시스템에 우리의 직관을 투영하지만 모델과 공감하는 데 서툽니다. AutoAgent는 이를 운영화합니다. 메타 에이전트는 작업 에이전트의 추론 추적을 읽고 이미 자신에 대한 암묵적 이해를 가지고 있습니다. 자신의 한계와 경향을 알고 있어, 작업 에이전트가 14단계에서 방향을 잃으면 실패 모드를 자신의 세계관의 일부로 이해하고 수정합니다. 우리는 이를 '모델 공감'이라고 부릅니다. 실제 결과로 Claude 메타 에이전트와 Claude 작업 에이전트 조합이 Claude 메타 에이전트와 GPT 작업 에이전트 조합보다 뛰어났습니다. 같은 모델 쌍이 이기는 이유는 메타 에이전트가 내부 모델이 실제로 이해하는 하네스를 작성하기 때문이며, 같은 가중치를 공유하고 그 모델이 어떻게 추론하는지 정확히 알기 때문입니다. 에이전트가 99백분위수 인간 성능을 넘어서면서, 좋은 하네스 설계에 대한 우리의 직관은 잘못된 선험 지식이 되었습니다. AlphaZero처럼 그들은 원리에서부터 발견해야 합니다. 우리가 프로그래밍하지 않은 출현 행동들: 소규모 편집을 위해 전체 테스트 대신 고립된 작업을 실행해 반복 속도를 크게 높이고 계산 비용을 절감했습니다. 강제 검증 루프: 결정론적 자기 점검과 형식 검증기를 구축했습니다. 주요 작업 예산과 자기 수정용 보너스 턴을 예산에 포함했습니다. 테스트 작성: 작업 에이전트가 각 작업에 대한 자체 단위 테스트와 점검을 구축하도록 유도했습니다. 점진적 공개: 결과가 넘칠 때 긴 컨텍스트를 파일로 덤프했습니다. 오케스트레이션 로직: 도메인 요구에 따라 작업별 하위 에이전트와 핸드오프를 구축했습니다. 결과: AutoAgent는 SpreadsheetBench에서 96.5%, TerminalBench에서 55.1%를 기록하며 리더보드 최고 점수를 달성했습니다. 에이전트는 24시간 이상 자율적으로 반복하며 자신의 실패 추적을 분석하고 개선했습니다. 배운 점: 분할이 도움이 됩니다. 한 에이전트가 자신을 개선하려 했지만 실패했습니다. 도메인에 능숙한 것과 그 도메인을 개선하는 것은 다른 능력입니다. 메타/작업 분할이 각자의 전문성을 가능하게 합니다. 추적이 전부입니다. 점수만 주고 궤적을 주지 않으면 개선 속도가 크게 떨어졌습니다.",
       "tech_stack": [
-        "Obsidian"
+        "AutoAgent",
+        "SpreadsheetBench",
+        "TerminalBench",
+        "bash",
+        "Harbor adapter",
+        "Claude Code",
+        "GPT",
+        "AlphaZero"
       ]
     },
     {
-      "id": "bm-077",
-      "author": "0x_kaize",
-      "date": "2026-04-03",
-      "url": "https://x.com/0x_kaize/status/2038286026284667239",
-      "whats_happening": "트위터 게시글은 Claude 챗봇 사용 시 토큰 비용이 메시지 누적으로 급격히 증가하는 문제와 이를 줄이기 위한 여러 최적화 방법을 설명한다. 메시지 편집, 새 채팅 시작, 질문 배치, 프로젝트 캐시 활용, 메모리 설정, 불필요 기능 끄기, 저비용 모델 사용, 작업 분산 등의 권장 사항을 제시한다.",
-      "why_it_matters": "컨텍스트 윈도우를 화폐로 관리하는 시스템에서, 메시지 누적에 따른 토큰 곡선의 기울기를 아는 것이 예산 설계의 전제 조건이다. 15~20 메시지 리셋, 모델 라우팅(Haiku→Sonnet→Opus), 프로젝트 캐시 같은 전술은 개별 팁이 아니라 — 사람이 매번 판단하지 않아도 비용이 자동으로 억제되는 조건을 까는 것이다.",
+      "id": "bm-084",
+      "author": "systematicls",
+      "date": "2026-04-06",
+      "url": "https://x.com/systematicls/status/2038241033755168959",
+      "whats_happening": "에이전트가 작업을 수행할 때 발생하는 여러 가지 문제점과 이를 극복하기 위한 전략들이 설명되고 있다. 특히 불완전한 맥락, 잘못된 계획 선택, 단기적 사고, 컨텍스트 소진, 계획 이탈 문제 등이 다뤄진다.",
+      "why_it_matters": "에이전트 실패는 모델 능력이 아니라 조건 설계의 문제다 — 불완전한 맥락, 컨텍스트 소진, 계획 이탈은 전부 에이전트가 놓인 환경의 결함이며, 세션 전환 시 컨텍스트 전달 구조와 사전 점검 루틴을 설계하면 구조적으로 제거할 수 있다.",
       "apply_points": [
-        "메시지 편집 기능을 활용해 토큰 낭비를 줄인다",
-        "15~20 메시지마다 새 채팅을 시작해 토큰 비용을 관리한다",
-        "프로젝트 캐시 기능을 사용해 반복 문서 토큰 소모를 줄인다"
+        "작업 시작 전 불완전하거나 모순된 정보를 체계적으로 점검하라.",
+        "계획 단계에서 여러 대안을 만들어 유지보수 쉬운 방안을 선택하라.",
+        "세션 전환 시 충분한 정보 전달로 컨텍스트 소진 문제를 완화하라."
       ],
-      "text": "1/ “No, I meant [your message]”\n2/ “Ugh, that's not what I wanted [your message]”\nand so on\nDon't do that!\nEvery subsequent message is added to the conversation history. Claude re-reads ALL of it every turn - burning tokens on context that didn't even help.\nToken cost per message = all previous messages + your new one.\nTotal = S × N(N+1) / 2 \n(S = avg tokens per exchange, N = message count)\nAt ~500 tokens per exchange:\n5 messages: 7.5K tokens\n10 messages: 27.5K tokens\n20 messages: 105K tokens\n30 messages: 232K tokens\nMessage 30 costs 31x more than message 1\nInstead: click Edit on your original message → fix it → regenerate. The old exchange gets replaced, not stacked.\nFix the prompt, don't feed the history.\n2. Start a fresh chat every 15–20 messages\nIn the previous section, I showed how token costs grow with every message.\nIdeally, you should start a new chat every 15–20 messages.\nNow imagine a chat with 100+ messages. At ~500 tokens per exchange, that's over 2.5 million tokens burned - most of it just re-reading old history. \nOne developer tracked his usage and found that 98.5% of tokens were spent on re-reading the history. Only 1.5% went toward actually outputting the result.\nAniket Parihar's post on LinkedIn.\nWhen a chat gets long → ask Claude to summarize everything → copy it → new chat → paste as first message.\n3. Batch your questions into one message\nMany people believe that splitting questions into separate messages leads to better results. Almost always, the opposite is true.\nThree separate prompts = three context loads.\nOne prompt with three tasks = one context load.\nYou save tokens twice: fewer context reloads, and you stay further from hitting your limit.\nInstead of:\n“Summarize this article”\n“Now list the main points”\n“Now suggest a headline”\nWrite: “Summarize this article, list the main points, and suggest a headline.”\nBonus: the answers often turn out better because Claude immediately sees the full picture.\nThree questions. One Prompt. Always!\n4. Upload recurring files to Projects\nIf you upload the same PDF to multiple chats, Claude re-tokenizes that document every single time.\nUse the Projects feature instead. \nUpload your file once → it gets cached. Every new conversation inside that project references it without burning tokens again.\nCached project content doesn't eat into your usage when you access it repeatedly. \nIf you work with contracts, briefs, style guides, or any long docs - this alone could cut your token spend dramatically.\n5. Set up Memory & User Preferences\nEvery new chat without saved context wastes 3–5 messages on setup: “I’m a marketer, I write in a casual style, I prefer short paragraphs…”\nYou've probably seen people start every prompt with \"Act as a...\" - that's tokens burned on repeat. Claude can remember this permanently.\nGo to “Settings” → “Memory and User Settings.” Save your role, communication style, and settings once. Claude will automatically apply them to every new chat.\n6. Turn off features you're not actively using\nWeb search, connectors, and “Explore” mode - all of these add tokens to every response, even if you don’t need them.\nWriting your own content? \nTurn off the “Search and Tools” feature.\nThe “Advanced Thinking” feature also consumes tokens. Keep it turned off by default. Only turn it on if your first attempt was unsatisfactory.\nRule: if you didn’t turn this feature on intentionally, turn it off.\n7. Use Haiku for simple tasks\nGrammar checking, brainstorming, formatting, quick translations, short answers - Haiku handles all of this at a much lower cost than Sonnet or Opus.\nChoosing the right model is the most important decision you make every day.\nHaiku for drafts and simple tasks → frees up 50–70% of your budget for tasks that truly require powerful models.\nMental model:\nHaiku → quick tasks, low cost\nSonnet → real work, medium cost\nOpus → deep thinking, high cost\nYou don’t need powerful models for simple tasks!\n8. Spread your work across the day\nThe Claude system uses ",
-      "tech_stack": [
-        "Claude",
-        "Haiku",
-        "Sonnet",
-        "Opus",
-        "Projects"
-      ]
+      "text": "Some of these behaviors are harder to fix than others, but a well written harness can go a long way. All The Ways Agents Can Be Stupid Pre-Task Not gaining sufficient context before starting a task and therefore acting on wrong or missing information before it has begun. To overcome this, you need to systematically check for incomplete and/or contradictory information before starting on the task — because this will propagate once it starts. Planning — Incomplete Context This is the part where the agent is deciding on the attack vectors to solve the problem. The biggest problem here is choosing the wrong attack vectors, which results in implementing something entirely wrong. Choosing a wrong attack vector because of stupidity rarely happens anymore, but choosing a wrong attack vector because of misalignment — misinterpreting what the user wants — is still pretty common. To overcome this, you need to make sure that your agent is covering all related files before it has even started planning. An important part of this is ensuring that your repository contains no contradictory information. Planning — Short Term Thinking Your agents don't live with the consequences of short-term, quick fix solutions. This is like hiring cheap software engineering labor, you may get something that works but it's going to result in a lot of tech debt. The way to resolve this is to remind your agents at the \"planning phase\" to implement solutions that scale, that fit into the bigger picture, is easy to maintain, and respect good software engineering paradigms. Basically, you want your agents to think like a founder, not a part-time engineer. You can get your agents to come up with N (e.g. N=5) different plans, have another agent pick the plan that will result in an implementation that is easier to maintain and scores higher on \"clean-code principles\". Task — Context Anxiety This is the part where the agent is actually working on the problem. The biggest problem here is context exhaustion, by miles. Given a good plan and the right context, virtually all frontier model agents are able to complete sufficiently small tasks with close to one-shot capability now. Problems only arise when dealing with complex, multi-session problems that consume millions of tokens. As I've written before, virtually all agents have some kind of context anxiety, and as a function of time, they become more and more desperate to end the session. This is extremely pervasive with Claude. To overcome this, you need to do smart session handoffs where you can relieve your agents of their context. You will then face a new problem — how to maximize context fidelity in your session handoffs. You want to make sure that your handoff prompt contains sufficient detail so that the new agent in a new session can pick up everything it needs to continue the task in an information-dense way. Understand that what you are doing here is essentially a form of compaction — and the reason to believe you can do it better than native providers is that you have a better understanding of your repository structure than the foundation model providers do. Task — Planning Deviations Other than context bloat, the second biggest problem is what I call planning stickiness. It is the risk where your agent deviates from the plan and essentially does whatever it wants. The most common expression of this is: you say do A, which is lengthy, painful, and sophisticated. Your agent does A', which it reasons is a reasonably close approximation to A, but which will not get you remotely close to your destination. This is not only problematic as an outcome, but it is especially problematic when you realize that all software being composable often means that every downstream piece of code depending on A is now wired for A' instead — which means everything built from A' onwards is effectively wrong. To solve this, you need to verify early and often that the solution to a task is implemented well and in accordance with your ex",
+      "tech_stack": []
     },
     {
-      "id": "bm-076",
-      "author": "jack",
-      "date": "2026-04-03",
-      "url": "https://x.com/jack/status/2039003879841362278",
-      "whats_happening": "Sequoia는 속도가 스타트업 성공의 최고의 예측 변수라고 보고, Block은 AI를 활용해 조직 설계를 근본적으로 재고하며 속도를 경쟁 우위로 만드는 방식을 보여주고 있다. 또한, 로마 군대부터 프러시아 군대, 미국 철도, 그리고 Frederick Taylor의 과학적 관리법까지 조직 설계와 관리 체계의 진화를 설명하고 있다.",
-      "why_it_matters": "중간 관리자의 본질이 정보 라우터였다는 인식은, 그 계층을 최적화가 아니라 제거 대상으로 바꾼다 — AI 시대 조직 설계의 핵심은 속도를 \"내는\" 게 아니라 느림을 \"빼는\" 것이다.",
+      "id": "bm-083",
+      "author": "FarzaTV",
+      "date": "2026-04-06",
+      "url": "https://x.com/FarzaTV/status/2040563939797504467",
+      "whats_happening": "Farzapedia라는 개인 위키를 만들기 위해 LLM이 일기, Apple Notes, iMessage 대화 2,500개 항목을 활용해 400개의 상세한 글을 작성했고, 이 위키는 에이전트를 위해 구축되어 에이전트가 쉽게 크롤링하고 유용한 지식 기반으로 활용할 수 있다.",
+      "why_it_matters": "비정형 개인 데이터 2,500건을 LLM으로 한 번 증류해 400개 위키 문서로 만드는 것은, RAG가 매번 원시 데이터를 뒤지는 비용과 노이즈를 구조적으로 제거하는 방법이다. mcp-memory에 이미 쌓인 노드 수천 개가 이 증류의 원재료다.",
       "apply_points": [
-        "AI를 활용해 조직 설계를 혁신하여 속도를 경쟁력으로 삼자.",
-        "계층적 조직 구조에서 권한과 정보 흐름을 명확히 정의하자.",
-        "중간 관리자의 역할을 정보 조율과 의사결정 지원에 집중시키자."
+        "mcp-memory에서 프로젝트 관련 대화와 노트를 위키 형태로 정리해 활용하라",
+        "에이전트가 쉽게 크롤링할 수 있는 백링크 구조를 프로젝트에 적용하라",
+        "새로운 정보 추가 시 관련 문서를 자동 업데이트하는 시스템을 도입하라"
       ],
-      "text": "At Sequoia, we see that speed is the best predictor of start-up success. Most companies are focused on AI as a productivity enhancer. Few are focused on the potential of AI to change how we work together. Block is showing what it looks like to fundamentally rethink organization design, ultimately harnessing AI to increase speed as a compounding competitive advantage.\nTwo thousand years before the first corporate org chart, the Roman Army solved a problem that every large organization still faces: how do you coordinate thousands of people across vast distances with limited communication?\nTheir answer was a nested hierarchy with a consistent span of control at every level. The smallest unit was the contubernium, eight soldiers who shared a tent, equipment, and a mule, led by a decanus. Ten contubernia formed a century of eighty men under a centurion. Six centuries made a cohort. Ten cohorts made a legion of roughly 5,000. At each layer, a named commander held defined authority, aggregated information from below, and relayed decisions from above. The structure (8 → 80 → 480 → 5,000) was an information routing protocol built around a simple human limitation: a leader can effectively manage somewhere between three and eight people. The Romans discovered this through centuries of warfare. Even today, the US Army's hierarchical chain follows a similar pattern. We now call it \"span of control,\" and it remains the governing constraint of every large organization on earth.\nThe next big change came from Prussia. After Napoleon's army destroyed the Prussian forces at the Battle of Jena in 1806, a group of reformers led by Scharnhorst and Gneisenau rebuilt the military around an uncomfortable truth: you cannot depend on individual genius at the top. You need a system. They created the General Staff, a dedicated class of trained officers whose job was not to fight but to plan operations, process information, and coordinate across units. Scharnhorst intended these staff officers to \"support incompetent Generals, providing the talents that might otherwise be wanting among leaders and commanders.\" This was middle management before the term existed. Professionals whose purpose was to route information, pre-compute decisions, and maintain alignment across a complex organization. The military also formalized the distinction between \"line\" and \"staff\" functions. Line advances the core mission. Staff provides specialized support. Every corporation still uses this vocabulary today.\nMilitary hierarchy entered the business world through the American railroads in the 1840s and 1850s. The U.S. Army lent West Point-trained engineers to private railroad companies, and these officers brought military organizational thinking with them. Staff and line hierarchies, divisional structure, bureaucratic systems of reporting and control: all of it was developed in the military before the railroads adopted it. In the mid-1850s, Daniel McCallum of the New York and Erie Railroad created the world's first organizational chart to manage a system stretching over 500 miles with thousands of workers. The informal management styles that worked for smaller railroads were failing. Train collisions were killing people. McCallum's chart formalized the same hierarchical logic the Romans had used: layers of authority, defined reporting lines, structured information flow. It became the blueprint for the modern corporation.\nFrederick Taylor (1856-1915), often called the \"Father of Scientific Management,\" optimized what happened within that hierarchy. Taylor broke work into specialized tasks, assigned them to trained experts, and managed through measurement rather than intuition. This produced the functional pyramid organization - a structure optimized for efficiency within the information routing system that the military had pioneered and the railroads had commercialized.",
+      "text": "This is Farzapedia.\n\n나는 LLM이 내 일기, Apple Notes, 그리고 일부 iMessage 대화에서 2,500개의 항목을 가져와 나만의 개인 위키피디아를 만들게 했다.\n\n이것은 내 친구들, 내 스타트업들, 연구 분야들, 그리고 내가 좋아하는 애니메이션들과 그것들이 나에게 미친 영향에 관한 400개의 상세한 글을 만들었고, 모두 백링크가 포함되어 있다.\n\n하지만, 이 위키는 나를 위해 만들어진 것이 아니다! 나는 내 에이전트를 위해 만들었다!\n\n위키 파일들의 구조와 모든 백링크 방식은 어떤 에이전트도 쉽게 크롤링할 수 있게 하며 진정으로 유용한 지식 기반을 만든다.\n\n나는 Claude Code를 위키에서 실행할 수 있고 index.md(내 모든 글의 카탈로그)에서 시작해 에이전트가 쿼리가 있을 때 위키의 특정 페이지에서 필요한 컨텍스트를 정말 잘 파고든다.\n\n예를 들어, 새로운 랜딩 페이지를 만들려고 할 때 나는 이렇게 물어볼 수 있다:\n\n\"나는 새로운 아이디어를 위한 이 랜딩 페이지를 디자인하려고 한다. 최근에 나에게 영감을 준 이미지와 영화들을 살펴보고 새로운 카피와 미학에 대한 아이디어를 줘.\" \n\n내 일기에는 배운 것들, 사람들, 영감, 흥미로운 링크, 이미지 등이 모두 기록되어 있다.\n\n그래서 에이전트는 내 위키를 읽고 Studio Ghibli 다큐멘터리에 관한 \"Philosophy\" 글, 내가 스크린샷한 YC 회사들의 랜딩 페이지에 관한 \"Competitor\" 글, 그리고 내가 몇 년 전에 저장한 1970년대 Beatles 상품 사진을 찾아내고 훌륭한 답변을 제공한다.\n\n나는 1년 전에 RAG로 비슷한 시스템을 만들었지만 별로였다.\n\n파일 시스템을 통해 에이전트가 실제로 이해할 수 있는 지식 기반이 훨씬 잘 작동한다.\n\n가장 마법 같은 점은 내가 위키에 새로운 것들(글, 영감 이미지, 회의 노트)을 추가할 때 시스템이 그 컨텍스트가 속한다고 느끼는 2-3개의 다른 글을 업데이트하거나 새 글을 만든다는 것이다.\n\n이것은 당신의 뇌를 위한 천재 사서 같아서 항상 완벽하게 자료를 정리하고 디자인, 제품, 글쓰기 등 유용한 작업을 위해 쉽게 지식을 쿼리할 수 있게 하며 절대 지치지 않는다.\n\n다음 주에 이것을 상품화할 수도 있는데 관심 있으면 DM으로 연락하고 당신의 사용 사례를 알려달라!",
       "tech_stack": [
-        "AI"
+        "LLM",
+        "Apple Notes",
+        "iMessage",
+        "Claude Code",
+        "RAG"
       ]
     }
   ],
