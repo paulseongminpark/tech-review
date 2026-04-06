@@ -1,0 +1,41 @@
+{
+  "date": "2026-03-25",
+  "lang": "ko",
+  "post_url": "/ko/2026/03/25/daily-tech-review/",
+  "post_title": "LiteLLM 공급망 공격 탐지, Tesla 보안 연구, Mac Pro 단종",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "LiteLLM 1.82.8 PyPI 공급망 공격 — Claude Code로 분석·신고까지",
+      "lead": "2026년 3월 24일 10:52, litellm v1.82.8이 PyPI에 업로드되었다. 해당 버전에는 대응하는 GitHub 태그가 없었고 — 공식 최신 버전은 v1.82.6이었다. 피해자 엔지니어 Callum McMahon은 노트북이 멈추는 현상을 시작으로 조사에 착수했고, Claude Code 단일 대화 세션 안에서 악성코드를 분석한 뒤 PyPI 측에 격리를 요청하는 전 과정을 완료했다. 악성코드는 ~/.config/sysmon/sysmo",
+      "tags": [
+        "security",
+        "apple",
+        "llm"
+      ],
+      "anchor": "litellm-1828-pypi-공급망-공격-claude-code로-분석·신고까지"
+    },
+    {
+      "index": 2,
+      "title": "충돌 차량 부품으로 Tesla Model 3 컴퓨터를 책상에서 부팅하기",
+      "lead": "보안 연구자 xdavidhu는 Tesla 버그 바운티 참가를 위해 eBay에서 충돌 차량 부품을 구매해 Model 3 컴퓨터를 책상 위에서 구동하는 데 성공했다. 핵심 부품인 MCU(Media Control Unit)와 Autopilot 컴퓨터는 iPad 크기, 약 500쪽 책 두께의 수냉식 케이스 형태로 eBay에서 $200–$300에 구할 수 있었다. 터치스크린은 별도로 $175에 구입했고, 전원 공급은 0–30V 가변 DC 파워 서플라이를",
+      "tags": [
+        "security",
+        "apple"
+      ],
+      "anchor": "충돌-차량-부품으로-tesla-model-3-컴퓨터를-책상에서-부팅하기"
+    },
+    {
+      "index": 3,
+      "title": "Apple, Mac Pro 공식 단종 — 후속 제품 계획 없음",
+      "lead": "Apple이 Mac Pro를 공식 단종했다. 9to5Mac에 따르면 Mac Pro 구매 페이지는 Mac 홈페이지로 리다이렉트되며 모든 관련 항목이 삭제되었고, Apple은 향후 Mac Pro 하드웨어 계획이 없음을 직접 확인했다. 현행 Mac Pro 디자인은 2019년 Pro Display XDR과 함께 출시되었으며, 2023년 6월 M2 Ultra로 업데이트된 이후 M3 Ultra가 탑재된 Mac Studio가 등장할 때까지 $6,999 가격",
+      "tags": [
+        "security",
+        "apple",
+        "ma"
+      ],
+      "anchor": "apple-mac-pro-공식-단종-후속-제품-계획-없음"
+    }
+  ]
+}

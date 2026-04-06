@@ -1,7 +1,4 @@
 ---
-
-```markdown
----
 layout: post
 title: "이란 미사일 AWS 중동 직격, 오라클 3만 명 이메일 해고, MS Copilot '오락용' 선언"
 date: 2026-04-05
