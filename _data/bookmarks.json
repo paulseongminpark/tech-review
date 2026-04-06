@@ -2332,5 +2332,160 @@
     ],
     "why_it_matters": "지식 외부화에서 가장 비싼 비용은 \"원본→구조화\"의 수동 큐레이션인데, LLM을 위키 컴파일러로 놓으면 이 비용이 사라진다 — 인간은 원본을 던지고 구조를 설계하는 역할만 남는다.",
     "tweet_id": "2039805659525644595"
+  },
+  {
+    "id": "bm-080",
+    "author": "coreyganim",
+    "date": "2026-04-05",
+    "added_at": "2026-04-06",
+    "url": "https://x.com/coreyganim/status/2040842449384276268",
+    "text": "Best breakdown of Karpathy's \"second brain\" system I've seen. My co-founder turned it into an actual step-by-step build.\n\nThe 80/20:\n\n1. Three folders: raw/ (dump everything), wiki/ (AI organizes it), outputs/ (AI answers your questions)\n2. One schema file (CLAUDE.md) that tells the AI how to organize your knowledge. Copy the template in the article.\n3. Don't organize anything by hand. Drop raw files in, tell the AI \"compile the wiki.\" Walk away.\n4. Ask questions against your own knowledge base. Save the answers back. Every question makes the next one better.\n5. Monthly health check: have the AI flag contradictions, missing sources, and gaps.\n6. Skip Obsidian. A folder of .md files and a good schema beats 47 plugins every time.\n\nHe includes a free skill that scaffolds the whole system in 60 seconds.",
+    "whats_happening": "Karpathy의 'second brain' 시스템을 가장 잘 설명한 내용을 공유하며, 공동 창업자가 이를 실제 단계별 빌드로 전환했다. 시스템 구성과 운영 방법을 상세히 소개한다.",
+    "translation": "Karpathy의 \"second brain\" 시스템에 대한 최고의 분석을 봤다. 내 공동 창업자가 그것을 실제 단계별 빌드로 만들었다.\n\n80/20 법칙:\n\n1. 세 개의 폴더: raw/ (모든 것을 덤프), wiki/ (AI가 정리), outputs/ (AI가 질문에 답변)\n2. 하나의 스키마 파일 (CLAUDE.md)로 AI에게 지식을 어떻게 정리할지 알려준다. 기사에 있는 템플릿을 복사하라.\n3. 손으로 아무것도 정리하지 마라. raw 파일을 넣고 AI에게 \"wiki를 컴파일해\"라고 말하라. 그리고 떠나라.\n4. 자신의 지식 기반에 질문하라. 답변을 저장하라. 모든 질문이 다음 질문을 더 좋게 만든다.\n5. 월간 건강 점검: AI가 모순, 누락된 출처, 빈틈을 표시하게 하라.\n6. Obsidian을 건너뛰라. .md 파일 폴더와 좋은 스키마가 47개의 플러그인보다 항상 낫다.\n\n그는 60초 만에 전체 시스템을 구성하는 무료 스킬도 포함했다.",
+    "tech_stack": [
+      "CLAUDE.md",
+      "Obsidian",
+      ".md 파일"
+    ],
+    "apply_points": [
+      "AI가 지식 정리를 자동화하도록 스키마 파일을 활용하라.",
+      "원시 데이터를 AI에 맡기고 수동 정리를 피하라.",
+      "월간 AI 점검으로 지식 베이스의 오류와 누락을 발견하라."
+    ],
+    "why_it_matters": "수동 큐레이션을 빼고 스키마 파일로 AI가 정리하게 만드는 구조는, 외부 뇌의 유지비용을 시스템 자체가 감당하도록 조건을 재설계한 것이다. CLAUDE.md + Obsidian이라는 동일 스택 위에서, 월간 AI 점검 루프는 mcp-memory의 ontology-health-check 파이프라인과 직접 합류점이 생긴다.",
+    "tweet_id": "2040842449384276268"
+  },
+  {
+    "id": "bm-081",
+    "author": "Hesamation",
+    "date": "2026-04-05",
+    "added_at": "2026-04-06",
+    "url": "https://x.com/Hesamation/status/2040820834428658008",
+    "text": "bro created an AI job search system for Claude Code that scored 700+ job applications and actually got him a job. \n\nAND IT'S NOW OPEN-SOURCE.\n\nIt scans multiple company career pages, rewrites your CV per job, and even fills application forms. The repo has:\n> 14 skill modes (evaluate, scan, PDF, ...)\n> Go terminal dashboard\n> ATS-optimized PDF generation via Playwright\n> 45+ companies pre-configured (Anthropic, OpenAI, ElevenLabs, Stripe...)\n\nGitHub: https://github.com/santifer/career-ops",
+    "whats_happening": "한 사용자가 Claude Code를 위해 700개 이상의 구직 신청서를 평가하고 실제로 취업에 성공한 AI 구직 시스템을 만들었으며, 이 시스템이 이제 오픈소스로 공개되었다.",
+    "translation": "bro가 Claude Code를 위해 700개 이상의 구직 신청서를 평가하고 실제로 그에게 취업 기회를 준 AI 구직 시스템을 만들었다. 그리고 이제 그것은 오픈소스이다. 이 시스템은 여러 회사의 채용 페이지를 스캔하고, 각 구직 공고에 맞게 이력서를 다시 작성하며, 심지어 지원서 작성도 자동으로 한다. 저장소에는 14가지 스킬 모드(평가, 스캔, PDF 등), Go 터미널 대시보드, Playwright를 통한 ATS 최적화 PDF 생성, 45개 이상의 사전 구성된 회사(Anthropic, OpenAI, ElevenLabs, Stripe 등)가 포함되어 있다. GitHub: https://github.com/santifer/career-ops",
+    "tech_stack": [
+      "Go",
+      "Playwright",
+      "GitHub"
+    ],
+    "apply_points": [
+      "mcp-memory에서 recall('Paul 프로젝트')로 AI 기반 자동화 기능을 참고해 지원서 작성에 적용한다",
+      "다양한 회사별 맞춤 이력서 작성 방식을 프로젝트에 도입한다",
+      "터미널 대시보드 UI를 참고해 프로젝트 모니터링 기능을 개선한다"
+    ],
+    "why_it_matters": "\"적합도 판단\"이라는 인간 고유의 반복 인지작업을 Go + Playwright + Claude Code 파이프라인으로 통째로 외부화하고, 700건 평가 끝에 실제 취업이라는 결과를 낸 첫 번째 공개 사례다. 코딩 보조가 아니라 \"조건 설계 → 자율 판단 → 실행\"의 완결된 에이전트 패턴이 프로덕션에서 작동함을 증명한다.",
+    "tweet_id": "2040820834428658008"
+  },
+  {
+    "id": "bm-082",
+    "author": "karpathy",
+    "date": "2026-04-04",
+    "added_at": "2026-04-06",
+    "url": "https://x.com/karpathy/status/2040470801506541998",
+    "text": "Wow, this tweet went very viral!\n\nI wanted share a possibly slightly improved version of the tweet in an \"idea file\". The idea of the idea file is that in this era of LLM agents, there is less of a point/need of sharing the specific code/app, you just share the idea, then the other person's agent customizes & builds it for your specific needs.\n\nSo here's the idea in a gist format: https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f\n\nYou can give this to your agent and it can build you your own LLM wiki and guide you on how to use it etc. It's intentionally kept a little bit abstract/vague because there are so many directions to take this in. And ofc, people can adjust the idea or contribute their own in the Discussion which is cool.",
+    "whats_happening": "트윗이 매우 바이럴되었고, LLM 에이전트 시대에 맞춰 아이디어 파일 형식으로 트윗의 개선된 버전을 공유했다. 아이디어 파일은 구체적인 코드나 앱 대신 아이디어만 공유하면 상대방 에이전트가 맞춤화하여 구축하는 개념이다.",
+    "translation": "와, 이 트윗이 엄청나게 바이럴되었어요!\n\n저는 트윗의 약간 개선된 버전을 \"아이디어 파일\"에 공유하고 싶었어요. 아이디어 파일의 개념은 LLM 에이전트 시대에 특정 코드나 앱을 공유할 필요가 줄어들고, 단지 아이디어만 공유하면 상대방의 에이전트가 당신의 특정 요구에 맞게 맞춤화하고 구축해준다는 것입니다.\n\n그래서 여기 gist 형식으로 아이디어를 공유합니다: https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f\n\n이걸 당신의 에이전트에게 주면 당신만의 LLM 위키를 만들고 사용하는 방법을 안내해줄 수 있습니다. 의도적으로 약간 추상적이고 모호하게 유지했는데, 왜냐하면 이걸 발전시킬 수 있는 방향이 너무 많기 때문입니다. 그리고 물론, 사람들은 아이디어를 조정하거나 토론에서 자신의 아이디어를 기여할 수 있는데, 그게 멋집니다.",
+    "tech_stack": [
+      "LLM agents",
+      "gist"
+    ],
+    "apply_points": [
+      "LLM 에이전트가 아이디어를 맞춤화하는 방식을 프로젝트에 적용해보자.",
+      "아이디어 파일 형식으로 프로젝트 아이디어를 공유하는 문화를 도입하자.",
+      "추상적 아이디어를 기반으로 다양한 방향성을 탐색하는 방식을 활용하자."
+    ],
+    "why_it_matters": "구현을 빼고 의도만 남기면 공유의 성격이 '복제'에서 '생성 조건'으로 전환된다 — 받는 쪽 에이전트가 각자의 맥락에 맞게 구축하므로, 하나의 아이디어가 N개의 서로 다른 결과물로 분기한다.",
+    "tweet_id": "2040470801506541998"
+  },
+  {
+    "id": "bm-083",
+    "author": "FarzaTV",
+    "date": "2026-04-04",
+    "added_at": "2026-04-06",
+    "url": "https://x.com/FarzaTV/status/2040563939797504467",
+    "text": "This is Farzapedia.\n\nI had an LLM take 2,500 entries from my diary, Apple Notes, and some iMessage convos to create a personal Wikipedia for me.\n\nIt made 400 detailed articles for my friends, my startups, research areas, and even my favorite animes and their impact on me complete with backlinks.\n\nBut, this Wiki was not built for me! I built it for my agent!\n\nThe structure of the wiki files and how it's all backlinked is very easily crawlable by any agent + makes it a truly useful knowledge base.\n\nI can spin up Claude Code on the wiki and starting at index.md (a catalog of all my articles) the agent does a really good job at drilling into the specific pages on my wiki it needs context on when I have a query.\n\nFor example, when trying to cook up a new landing page I may ask:\n\n\"I'm trying to design this landing page for a new idea I have. Please look into the images and films that inspired me recently and give me ideas for new copy and aesthetics\".\n\nIn my diary I kept track of everything from: learnings, people, inspo, interesting links, images.\n\nSo the agent reads my wiki and pulls up my \"Philosophy\" articles from notes on a Studio Ghibli documentary, \"Competitor\" articles with YC companies whose landing pages I screenshotted, and pics of 1970s Beatles merch I saved years ago. And it delivers a great answer.\n\nI built a similar system to this a year ago with RAG but it was ass.\n\nA knowledge base that lets an agent find what it needs via a file system it actually understands just works better.\n\nThe most magical thing now is as I add new things to my wiki (articles, images of inspo, meeting notes) the system will likely update 2-3 different articles where it feels that context belongs, or, just creates a new article.\n\nIt's like this super genius librarian for your brain that's always filing stuff for your perfectly and also let's you easily query the knowledge for tasks useful to you (ex. design, product, writing, etc) and it never gets tired.\n\nI might spend next week productizing this, if that's of interest to you DM me + tell me your usecase!",
+    "whats_happening": "Farzapedia라는 개인 위키를 만들기 위해 LLM이 일기, Apple Notes, iMessage 대화 2,500개 항목을 활용해 400개의 상세한 글을 작성했고, 이 위키는 에이전트를 위해 구축되어 에이전트가 쉽게 크롤링하고 유용한 지식 기반으로 활용할 수 있다.",
+    "translation": "This is Farzapedia.\n\n나는 LLM이 내 일기, Apple Notes, 그리고 일부 iMessage 대화에서 2,500개의 항목을 가져와 나만의 개인 위키피디아를 만들게 했다.\n\n이것은 내 친구들, 내 스타트업들, 연구 분야들, 그리고 내가 좋아하는 애니메이션들과 그것들이 나에게 미친 영향에 관한 400개의 상세한 글을 만들었고, 모두 백링크가 포함되어 있다.\n\n하지만, 이 위키는 나를 위해 만들어진 것이 아니다! 나는 내 에이전트를 위해 만들었다!\n\n위키 파일들의 구조와 모든 백링크 방식은 어떤 에이전트도 쉽게 크롤링할 수 있게 하며 진정으로 유용한 지식 기반을 만든다.\n\n나는 Claude Code를 위키에서 실행할 수 있고 index.md(내 모든 글의 카탈로그)에서 시작해 에이전트가 쿼리가 있을 때 위키의 특정 페이지에서 필요한 컨텍스트를 정말 잘 파고든다.\n\n예를 들어, 새로운 랜딩 페이지를 만들려고 할 때 나는 이렇게 물어볼 수 있다:\n\n\"나는 새로운 아이디어를 위한 이 랜딩 페이지를 디자인하려고 한다. 최근에 나에게 영감을 준 이미지와 영화들을 살펴보고 새로운 카피와 미학에 대한 아이디어를 줘.\" \n\n내 일기에는 배운 것들, 사람들, 영감, 흥미로운 링크, 이미지 등이 모두 기록되어 있다.\n\n그래서 에이전트는 내 위키를 읽고 Studio Ghibli 다큐멘터리에 관한 \"Philosophy\" 글, 내가 스크린샷한 YC 회사들의 랜딩 페이지에 관한 \"Competitor\" 글, 그리고 내가 몇 년 전에 저장한 1970년대 Beatles 상품 사진을 찾아내고 훌륭한 답변을 제공한다.\n\n나는 1년 전에 RAG로 비슷한 시스템을 만들었지만 별로였다.\n\n파일 시스템을 통해 에이전트가 실제로 이해할 수 있는 지식 기반이 훨씬 잘 작동한다.\n\n가장 마법 같은 점은 내가 위키에 새로운 것들(글, 영감 이미지, 회의 노트)을 추가할 때 시스템이 그 컨텍스트가 속한다고 느끼는 2-3개의 다른 글을 업데이트하거나 새 글을 만든다는 것이다.\n\n이것은 당신의 뇌를 위한 천재 사서 같아서 항상 완벽하게 자료를 정리하고 디자인, 제품, 글쓰기 등 유용한 작업을 위해 쉽게 지식을 쿼리할 수 있게 하며 절대 지치지 않는다.\n\n다음 주에 이것을 상품화할 수도 있는데 관심 있으면 DM으로 연락하고 당신의 사용 사례를 알려달라!",
+    "tech_stack": [
+      "LLM",
+      "Apple Notes",
+      "iMessage",
+      "Claude Code",
+      "RAG"
+    ],
+    "apply_points": [
+      "mcp-memory에서 프로젝트 관련 대화와 노트를 위키 형태로 정리해 활용하라",
+      "에이전트가 쉽게 크롤링할 수 있는 백링크 구조를 프로젝트에 적용하라",
+      "새로운 정보 추가 시 관련 문서를 자동 업데이트하는 시스템을 도입하라"
+    ],
+    "why_it_matters": "비정형 개인 데이터 2,500건을 LLM으로 한 번 증류해 400개 위키 문서로 만드는 것은, RAG가 매번 원시 데이터를 뒤지는 비용과 노이즈를 구조적으로 제거하는 방법이다. mcp-memory에 이미 쌓인 노드 수천 개가 이 증류의 원재료다.",
+    "tweet_id": "2040563939797504467"
+  },
+  {
+    "id": "bm-084",
+    "author": "systematicls",
+    "date": "2026-03-29",
+    "added_at": "2026-04-06",
+    "url": "https://x.com/systematicls/status/2038241033755168959",
+    "text": "Some of these behaviors are harder to fix than others, but a well written harness can go a long way.\nAll The Ways Agents Can Be Stupid\nPre-Task\nNot gaining sufficient context before starting a task and therefore acting on wrong or missing information before it has begun. To overcome this, you need to systematically check for incomplete and/or contradictory information before starting on the task — because this will propagate once it starts.\nPlanning — Incomplete Context\nThis is the part where th",
+    "whats_happening": "에이전트가 작업을 수행할 때 발생하는 여러 가지 문제점과 이를 극복하기 위한 전략들이 설명되고 있다. 특히 불완전한 맥락, 잘못된 계획 선택, 단기적 사고, 컨텍스트 소진, 계획 이탈 문제 등이 다뤄진다.",
+    "translation": "Some of these behaviors are harder to fix than others, but a well written harness can go a long way. All The Ways Agents Can Be Stupid Pre-Task Not gaining sufficient context before starting a task and therefore acting on wrong or missing information before it has begun. To overcome this, you need to systematically check for incomplete and/or contradictory information before starting on the task — because this will propagate once it starts. Planning — Incomplete Context This is the part where the agent is deciding on the attack vectors to solve the problem. The biggest problem here is choosing the wrong attack vectors, which results in implementing something entirely wrong. Choosing a wrong attack vector because of stupidity rarely happens anymore, but choosing a wrong attack vector because of misalignment — misinterpreting what the user wants — is still pretty common. To overcome this, you need to make sure that your agent is covering all related files before it has even started planning. An important part of this is ensuring that your repository contains no contradictory information. Planning — Short Term Thinking Your agents don't live with the consequences of short-term, quick fix solutions. This is like hiring cheap software engineering labor, you may get something that works but it's going to result in a lot of tech debt. The way to resolve this is to remind your agents at the \"planning phase\" to implement solutions that scale, that fit into the bigger picture, is easy to maintain, and respect good software engineering paradigms. Basically, you want your agents to think like a founder, not a part-time engineer. You can get your agents to come up with N (e.g. N=5) different plans, have another agent pick the plan that will result in an implementation that is easier to maintain and scores higher on \"clean-code principles\". Task — Context Anxiety This is the part where the agent is actually working on the problem. The biggest problem here is context exhaustion, by miles. Given a good plan and the right context, virtually all frontier model agents are able to complete sufficiently small tasks with close to one-shot capability now. Problems only arise when dealing with complex, multi-session problems that consume millions of tokens. As I've written before, virtually all agents have some kind of context anxiety, and as a function of time, they become more and more desperate to end the session. This is extremely pervasive with Claude. To overcome this, you need to do smart session handoffs where you can relieve your agents of their context. You will then face a new problem — how to maximize context fidelity in your session handoffs. You want to make sure that your handoff prompt contains sufficient detail so that the new agent in a new session can pick up everything it needs to continue the task in an information-dense way. Understand that what you are doing here is essentially a form of compaction — and the reason to believe you can do it better than native providers is that you have a better understanding of your repository structure than the foundation model providers do. Task — Planning Deviations Other than context bloat, the second biggest problem is what I call planning stickiness. It is the risk where your agent deviates from the plan and essentially does whatever it wants. The most common expression of this is: you say do A, which is lengthy, painful, and sophisticated. Your agent does A', which it reasons is a reasonably close approximation to A, but which will not get you remotely close to your destination. This is not only problematic as an outcome, but it is especially problematic when you realize that all software being composable often means that every downstream piece of code depending on A is now wired for A' instead — which means everything built from A' onwards is effectively wrong. To solve this, you need to verify early and often that the solution to a task is implemented well and in accordance with your ex",
+    "tech_stack": [],
+    "apply_points": [
+      "작업 시작 전 불완전하거나 모순된 정보를 체계적으로 점검하라.",
+      "계획 단계에서 여러 대안을 만들어 유지보수 쉬운 방안을 선택하라.",
+      "세션 전환 시 충분한 정보 전달로 컨텍스트 소진 문제를 완화하라."
+    ],
+    "why_it_matters": "에이전트 실패는 모델 능력이 아니라 조건 설계의 문제다 — 불완전한 맥락, 컨텍스트 소진, 계획 이탈은 전부 에이전트가 놓인 환경의 결함이며, 세션 전환 시 컨텍스트 전달 구조와 사전 점검 루틴을 설계하면 구조적으로 제거할 수 있다.",
+    "tweet_id": "2038241033755168959"
+  },
+  {
+    "id": "bm-085",
+    "author": "kevingu",
+    "date": "2026-04-02",
+    "added_at": "2026-04-06",
+    "url": "https://x.com/kevingu/status/2039843234760073341",
+    "text": "today we're releasing AutoAgent, an open source library for autonomously improving an agent on any domain.\nAutoAgent hit both the #1 on SpreadsheetBench (96.5%) and the #1 GPT-5 score on TerminalBench (55.1%) after optimizing for 24+ hours\nevery other entry on those leaderboards was hand-engineered. ours wasn't.\nagents have been bottlenecked by harness engineering, yet we're still doing primitive grid search: tweak, eval, read error traces, repeat\nthis is the first concrete evidence that an agen",
+    "whats_happening": "AutoAgent라는 오픈 소스 라이브러리를 출시하여 24시간 이상 자율적으로 에이전트를 최적화해 SpreadsheetBench와 TerminalBench에서 각각 1위를 차지했다. 이 라이브러리는 수작업 없이 메타 에이전트가 작업 에이전트의 하네스를 조정하며 성능을 향상시킨다.",
+    "translation": "오늘 우리는 AutoAgent를 출시합니다. 이는 어떤 도메인에서든 에이전트를 자율적으로 개선하는 오픈 소스 라이브러리입니다. AutoAgent는 24시간 이상 최적화한 후 SpreadsheetBench에서 96.5%로 1위, TerminalBench에서 GPT-5 점수 55.1%로 1위를 기록했습니다. 이 리더보드의 다른 모든 항목은 수작업으로 설계된 반면, 우리의 것은 그렇지 않았습니다. 에이전트들은 하네스 엔지니어링에 병목 현상이 있었지만, 우리는 여전히 원시적인 그리드 서치를 하고 있습니다: 조정, 평가, 오류 추적 읽기, 반복. 이것은 에이전트가 생산 벤치마크에서 수동 하네스 튜닝을 자율적으로 능가할 수 있다는 첫 번째 구체적인 증거입니다. 여기에서 이용 가능합니다: https://github.com/kevinrgu/autoagent. 작동 방식은 다음과 같습니다. AutoAgent를 평가가 있는 작업 도메인에 지정하면, 메타 에이전트가 작업 에이전트의 하네스를 실험합니다: 프롬프트 조정, 도구 추가, 오케스트레이션 개선을 통해 성능이 향상될 때까지 반복합니다. 설정은 최소한으로 설계되었습니다: 작업 에이전트는 단지 bash 도구로 시작합니다. program.md는 메타 에이전트에 연구 방향을 제공합니다. agent.py는 작업 에이전트입니다. Harbor 어댑터가 벤치마크에 연결합니다. 메타 에이전트는 수천 개의 병렬 샌드박스를 가동하여 작업 에이전트를 개선합니다. 24시간 후 도메인 특화 도구, 검증 루프, 오케스트레이션 로직이 모두 자율적으로 발견됩니다. 루프는 다음과 같습니다: 1. 에이전트 하네스 편집 2. 작업 실행 3. 성능 측정 4. 실패 추적 읽기 5. 개선 유지, 실패 복귀 6. 반복. 이것이 작동하는 이유는 에이전트처럼 보기 때문입니다. 우리는 에이전트가 우리보다 에이전트를 더 잘 이해한다는 것을 발견했습니다. Claude Code 팀은 '에이전트처럼 보기'에 대해 썼으며, 모델의 마음에 자신을 두고 그 능력에 맞는 도구를 설계하는 것입니다. 우리는 시스템에 우리의 직관을 투영하지만 모델과 공감하는 데 서툽니다. AutoAgent는 이를 운영화합니다. 메타 에이전트는 작업 에이전트의 추론 추적을 읽고 이미 자신에 대한 암묵적 이해를 가지고 있습니다. 자신의 한계와 경향을 알고 있어, 작업 에이전트가 14단계에서 방향을 잃으면 실패 모드를 자신의 세계관의 일부로 이해하고 수정합니다. 우리는 이를 '모델 공감'이라고 부릅니다. 실제 결과로 Claude 메타 에이전트와 Claude 작업 에이전트 조합이 Claude 메타 에이전트와 GPT 작업 에이전트 조합보다 뛰어났습니다. 같은 모델 쌍이 이기는 이유는 메타 에이전트가 내부 모델이 실제로 이해하는 하네스를 작성하기 때문이며, 같은 가중치를 공유하고 그 모델이 어떻게 추론하는지 정확히 알기 때문입니다. 에이전트가 99백분위수 인간 성능을 넘어서면서, 좋은 하네스 설계에 대한 우리의 직관은 잘못된 선험 지식이 되었습니다. AlphaZero처럼 그들은 원리에서부터 발견해야 합니다. 우리가 프로그래밍하지 않은 출현 행동들: 소규모 편집을 위해 전체 테스트 대신 고립된 작업을 실행해 반복 속도를 크게 높이고 계산 비용을 절감했습니다. 강제 검증 루프: 결정론적 자기 점검과 형식 검증기를 구축했습니다. 주요 작업 예산과 자기 수정용 보너스 턴을 예산에 포함했습니다. 테스트 작성: 작업 에이전트가 각 작업에 대한 자체 단위 테스트와 점검을 구축하도록 유도했습니다. 점진적 공개: 결과가 넘칠 때 긴 컨텍스트를 파일로 덤프했습니다. 오케스트레이션 로직: 도메인 요구에 따라 작업별 하위 에이전트와 핸드오프를 구축했습니다. 결과: AutoAgent는 SpreadsheetBench에서 96.5%, TerminalBench에서 55.1%를 기록하며 리더보드 최고 점수를 달성했습니다. 에이전트는 24시간 이상 자율적으로 반복하며 자신의 실패 추적을 분석하고 개선했습니다. 배운 점: 분할이 도움이 됩니다. 한 에이전트가 자신을 개선하려 했지만 실패했습니다. 도메인에 능숙한 것과 그 도메인을 개선하는 것은 다른 능력입니다. 메타/작업 분할이 각자의 전문성을 가능하게 합니다. 추적이 전부입니다. 점수만 주고 궤적을 주지 않으면 개선 속도가 크게 떨어졌습니다.",
+    "tech_stack": [
+      "AutoAgent",
+      "SpreadsheetBench",
+      "TerminalBench",
+      "bash",
+      "Harbor adapter",
+      "Claude Code",
+      "GPT",
+      "AlphaZero"
+    ],
+    "apply_points": [
+      "메타 에이전트와 작업 에이전트 분리로 역할 전문화 적용",
+      "실패 추적을 분석해 자동 개선하는 루프 도입",
+      "도메인 특화 도구와 검증 루프 자율 생성 활용"
+    ],
+    "why_it_matters": "에이전트 하네스 튜닝에서 인간의 손을 빼는 게 가능해졌다 — 메타 에이전트가 24시간 자율 반복으로 벤치마크 1위를 찍었다는 건, 오케스트레이션의 다음 계단이 \"조율자 자체를 자동화하는 것\"임을 실증한다.",
+    "tweet_id": "2039843234760073341"
+  },
+  {
+    "id": "bm-086",
+    "author": "andrewfarah",
+    "date": "2026-04-04",
+    "added_at": "2026-04-06",
+    "url": "https://x.com/andrewfarah/status/2040535589771149379",
+    "text": "sharing my first open source project\n\na CLI for downloading and syncing your X bookmarks locally so your agent can access them. it's free\n\n›  npm install -g fieldtheory\n›  login to your X account in a chrome tab\n›  ft sync (done!)\n\nbonus:\n›  ft viz\n›  ft classify",
+    "whats_happening": "첫 번째 오픈 소스 프로젝트를 공유하며, X 북마크를 로컬에 다운로드하고 동기화하는 CLI 도구를 발표했다. 이 도구는 무료로 제공된다.",
+    "translation": "sharing my first open source project\n\na CLI for downloading and syncing your X bookmarks locally so your agent can access them. it's free\n\n›  npm install -g fieldtheory\n›  login to your X account in a chrome tab\n›  ft sync (done!)\n\nbonus:\n›  ft viz\n›  ft classify",
+    "tech_stack": [
+      "npm",
+      "CLI"
+    ],
+    "apply_points": [
+      "mcp-memory에서 recall('Paul 프로젝트') 후 CLI 도구 동기화 기능 적용 검토",
+      "X 북마크 로컬 동기화 방식을 프로젝트 오케스트레이션에 활용",
+      "무료 오픈 소스 배포 전략을 포트폴리오에 반영"
+    ],
+    "why_it_matters": "플랫폼에 갇힌 북마크는 검색도, 연결도, 재활용도 안 되는 죽은 데이터다. 로컬 동기화는 흩어진 관심사의 흔적을 지식 그래프 입력으로 바꾸는 가장 단순한 첫 단계다.",
+    "tweet_id": "2040535589771149379"
   }
 ]
