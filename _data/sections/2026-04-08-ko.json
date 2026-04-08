@@ -1,0 +1,36 @@
+{
+  "date": "2026-04-08",
+  "lang": "ko",
+  "post_url": "/ko/2026/04/08/daily-tech-review/",
+  "post_title": "Project Glasswing; 아폴로 11호의 57년 버그; 콘크리트 노트북 스탠드",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "Project Glasswing: AI가 방어 사이버보안의 최전선에 선다",
+      "lead": "Anthropic이 오늘 Project Glasswing을 발표했다. AWS, Apple, Broadcom, Cisco, CrowdStrike, Google, JPMorganChase, Linux Foundation, Microsoft, NVIDIA, Palo Alto Networks가 파트너로 이름을 올렸다. 핵심은 미공개 신규 프런티어 모델 Claude Mythos Preview로, 이 모델이 이미 모든 주요 운영체제와 웹 브라우저에서 수천",
+      "tags": [
+        "enterprise"
+      ],
+      "anchor": "project-glasswing-ai가-방어-사이버보안의-최전선에-선다"
+    },
+    {
+      "index": 2,
+      "title": "57년간 숨겨진 아폴로 11호 버그를 AI가 찾아냈다",
+      "lead": "영국 소프트웨어 컨설팅사 JUXT의 CTO Henry Garner 팀이 Apollo Guidance Computer(AGC) 코드에서 57년간 발견되지 않은 버그를 찾아냈다. Claude와 오픈소스 행동 명세 언어 Allium을 사용해 13만 줄의 AGC 어셈블리를 1만 2500줄의 명세로 증류했다. 버그는 자이로스코프 제어 코드의 LGYRO 리소스 락이 오류 경로(BADEND)에서 해제되지 않는 것으로, 수정에 필요한 코드는 단 4바이트다.",
+      "tags": [
+        "enterprise"
+      ],
+      "anchor": "57년간-숨겨진-아폴로-11호-버그를-ai가-찾아냈다"
+    },
+    {
+      "index": 3,
+      "title": "콘크리트로 노트북 스탠드를 직접 만들었다",
+      "lead": "개발자 Sam Burns가 순수 콘크리트로 노트북 스탠드를 제작했다. 브루탈리즘 건축 양식과 어반 익스플로레이션(urbex) 미학을 결합한 디자인으로, 2024년 포스트가 최근 HN에서 696점을 받으며 재조명됐다. \"소프트웨어를 만드는 사람이 물리적 물건도 직접 만든다\"는 메이커 감각이 개발자 커뮤니티의 공감을 얻었다.",
+      "tags": [
+        "enterprise"
+      ],
+      "anchor": "콘크리트로-노트북-스탠드를-직접-만들었다"
+    }
+  ]
+}
