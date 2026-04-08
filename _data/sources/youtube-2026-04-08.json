@@ -1,0 +1,268 @@
+[
+  {
+    "video_id": "2IfAVV7ewO0",
+    "title": "They solved AI��s memory problem!",
+    "url": "https://www.youtube.com/watch?v=2IfAVV7ewO0",
+    "playlist": "build",
+    "fetched_at": "2026-04-08",
+    "transcript": "This is a pretty big deal. This recent breakthrough by the team behind Kimmy, which is like another deep seek, completely shatters our limitation of building better AI models. Not only does this fix the amnesia problem of current AI, but in fact, they've kind of created a new architecture design which can even reconfigure itself and kind of learn things on the fly. Before we jump into the paper, let's understand the problem a bit more. Imagine you're taking the hardest math exam of your life. Not a quick quiz, but a brutal problem that requires like 50 steps. Now, you start off strong, you can easily do step one, step two, step three, and so on. It's pretty easy. But once you get to step 48, your brain is overloaded. It's completely overwhelmed by the sheer volume of numbers you had to process. Your working memory just maxes out. You're staring at these massive complicated calculations, but you've completely lost the thread of what you originally set out to solve. It's like you kind of have localized amnesia. You're thinking so deeply that you're just drowning out your own earlier thoughts. This is a very common human problem. Our working memory has strict physical limits. If we think too long or too deep, we just get overwhelmed. And strangely enough, it turns out that the massive trillion parameter AI models that we use every day, like GPT or Gemini, they're suffering from the exact same amnesia. But this recent breakthrough actually presents a cure for this AI amnesia. So, the paper is called attention residuals by the Kimmy team. And this is a super fascinating read, but it's extremely technical. So, in this video, I'm going to break everything down for you so it's easy to understand. Let's jump right in. First, let's start with a brief background on the design of AI models today. To understand why the AI gets overwhelmed, we first need to look at how these models are actually built. When we talk about large language models, we're talking about really deep models that have over like a hundred sequential blocks or layers. And each block performs a ton of really complex matrix calculations. Conceptually, you can think of it like this. The first layer would process the raw text. The next layer might look at grammatical patterns. The next one starts to understand intent. The next layer might analyze text even deeper, and the next one even deeper. By the time you reach like the 120th layer, the model is performing some incredibly abstract and deep thinking. Now, for years, we couldn't actually build these models to be very deep. If you made the model too deep, it would be really hard to train. Really quickly, here's how an AI model learns. During training, the AI compares its response with the answer, and if it gets the answer wrong, then it incurs a loss or a penalty. And this penalty flows backwards through the model to tweak its parameters so that next time it would be less wrong. This is a process called backpropagation and gradient descent. However, if you build these models too deeply, in other words, if you stack too many layers together, this learning signal which flows backwards through the model would simply vanish before it could even reach the beginning of the model. So, this problem is called the vanishing gradient problem. Fortunately, in 2015, researchers came up with a fix called residual connections. The idea was really simple. Instead of each layer trying to completely transform the information it receives, you let the original data skip the layer entirely and add it back to the end. Think of this as like a shortcut or highway for information to zip through the network without much change. And it's this highway that allowed us to scale models from only a few dozen layers to hundreds or even thousands of layers deep. And this is how we design modern AI models. But as the Kimmy team points out in their new paper, this highway is actually a huge fundamental flaw. In fact, this is what leads to the amnesia that AI experiences when it handles a ton of stuff at once. Because we're just adding the results of every layer together, layer after layer, the final result is just one massive cumulative pile of data. The total magnitude of the signal increases the deeper it gets. As this signal gets larger and larger, the importance of any single layer's contribution shrinks. So, this kind of buries early information and makes it really hard to retrieve or remember. Essentially, we've built a system where the AI is thinking so hard and adding so many new thoughts to the pile that it can no longer remember what it was thinking at the beginning of the problem. Here's a nice analogy on how you can think of this. Imagine 50 chefs lined up in a kitchen representing like 50 layers of our AI. The first chef chops some delicate basil and throws it in the empty pot. They pass it to chef two who dumps in a gallon of beef broth. Chef three adds some potatoes. Chef four adds tomatoes. Chef five hauls over a whole crate of their own ingredients. Chef six tips in a sack of his ingredients. And chef seven dumps in some other ingredients, and so on and so forth, until it reaches the 50th chef. Now, because it has gone through 50 chefs, each pouring their own ingredients in there, not only is the bowl of soup just overflowing, but when you taste the final soup, it gets really hard to taste the original basil from the first chef. Because everything is just mixed into this giant slop. And this also creates a second problem. The layers in this deep AI model have to produce stronger and stronger signals just to have any noticeable influence on the final result. It's like these layers have to scream to be heard over the noise of earlier layers. Going back to our analogy, after the 50 chefs make this massive pot of soup, if you decide that it needs to be a bit saltier, well, you can't just add a pinch of salt anymore. You need to add a massive bag of it just to make it a bit saltier because of the sheer volume of the pot of soup. At this point, you might be wondering, well, if the problem is just the signal getting too big, can't we just scale it down? For example, can't we add a volume dial to earlier layers to turn down their signals and also volume dials to later layers to amplify their signals? Well, in short, we've already tried that. There are already some clever ways such as scaled residual paths or multi-stream recurrences. But in short, none of these actually solved the core issue. They all had the same fundamental flaw with each layer getting the single aggregated result of all the previous layers. Everything was just mixed and compressed together like a giant pot of soup with so many ingredients, you can't make out anything. Now, the proposal from this paper from the Kimmy team is absolutely brilliant. They took a step back and actually realized that we already have a solution to this. Now, before I go over the solution, it's important to give you a brief history of AI language models. You see, current AI models are based off of this transformer architecture, and this allows AI to do some incredible stuff like writing a poem for you or writing an essay or even a complete research report. It's able to understand natural language so well because the transformer is able to understand context. For example, take the sentence the cat didn't cross the street because it was too tired. Note that it could refer to the street or the cat. But when we humans read it, we know that it's referring to the cat because of context. Now, before transformers came out, it was actually really hard for a language model to actually understand this context. Before transformers, the best thing we had was recurrent neural networks or RNN for short. The architecture looks something like this. And these models processed text one word at a time. It basically compresses everything that it sees before inside a hidden state, which you can think of as like a memory. Now, if you give an RNN a huge amount of text to process, then it suffers heavily from the same kind of amnesia. By the time the model reached the end of your paragraph, it would easily forget earlier parts. That's because it's compressing the past information so much. As it reads the paragraph, it keeps compressing and compressing that eventually its memory just becomes overloaded and it fails to remember the earliest stuff. But transformers, on the other hand, was able to fix this issue by introducing this attention mechanism. Instead of passing along a single compressed memory, the model can look back at any previous word directly and see which ones are relevant to the current word. That means it could selectively get exactly the information it needed. And this was the breakthrough that made modern AI possible. In fact, if you're curious about the technical details on how a transformer actually works, definitely see this video where I did a deep dive on the transformer. Anyways, the design of this transformer led to the aha moment from the Kimmy researchers. Modern transformer models already solved this amnesia problem of older recurrent neural networks by processing text using attention. But instead of the text dimension in a paragraph, what if they applied the same fix for the depth dimension of an AI model? After all, an AI model that's hundreds of thousands of layers deep is pretty much the same thing as a paragraph of text. And the way it's currently designed is like a recurrent neural network. As data flows forward, it compresses all its calculations into one cumulative signal, layer after layer, which makes it suffer from amnesia. Signals get diluted, intermediate steps get entangled, and by the time you reach the final layers, the original signal is barely recoverable. Just like an RNN fails to process a long piece of text. So, it seems like we might have the answer hiding in plain sight. What if we added attention to these residual connections of a very deep AI model. Hence, the name of the paper, attention residuals. So, here's how the Kimi team designed it. It's a lot of math under the hood, but let me explain this to you in simple terms. Instead of just being a conveyor belt where information flows from one end to the other linearly, now for every layer, it can actually reach back and look at any previous layers output. This prevents the AI from getting confused or forgetting its earlier thoughts as it thinks deeper. Now, to do this, the model uses a system of query, key, and value vectors, or QKV for short, exactly like the attention mechanism of the transformer. Again, if you're not familiar with the transformer, I highly recommend you watch this video first. But anyways, you can think of each layer as having a specific query or question. It's like they're each asking, \"Okay, what do I need from all the previous layers before me? What information am I looking for?\" And then, the key is like a label for each previous layer describing its contents. The key is like each layer raising its hand and saying, \"All right, here's where I am. Here's what I represent. See if your query matches what I have to offer.\" And then, the value is the actual information inside each layer. So, how it works is, let's say this is our current layer that's processing data. Well, it could compare its query to every layer's key before it and see how well they match. And if it's a good match, that means that previous layer would have some relevant information for the current layer. And then, it would mix in the value of that layer with the output. This brilliant design allows the AI to stay perfectly focused on the most important details, no matter how many steps of thinking it has to do, no matter how many layers the model has. Each layer can selectively choose which layer's information to use instead of just using an incredibly messy cumulative signal. Going back to our chef analogy, now instead of just each chef throwing their ingredients into a massive pot of soup and mixing everything together, with this attention residual method, it's like each layer walks into a buffet. Every previous layer lays out its output in a clean separate dish. One tray for potatoes, one for carrots, one for tomatoes, and so on. Each layer gets to selectively choose exactly what it needs. Some layers matter a lot, while others get ignored entirely. And that's the beauty of this design. Each layer can adjust what it searches based on what it's processing. If the model sees a word like therefore, it might pull heavily from the layers that specialize in logic or order. Or when it sees the word betrayed, it might shift its focus toward layers that involve emotion or relationships. At least conceptually, that's how you can think of this. And in theory, this should solve the amnesia problem, right? Well, just when you think we solved it, reality slaps you hard in the face. You see, when we scale this to the size of the top AI models with hundreds of billions or even over a trillion parameters, you run straight into a brick wall of physics limitations. If you've been keeping up with AI lately, you've probably seen a ton of tools that can spit out wild videos or avatars in seconds. But here's the real question, can you actually turn any of that into something useful? That's the problem I have. These AI clips are great, but I still need to stitch everything together and edit them further myself. You still need editing skills, a voiceover, music, captions, branding, etc. Well, that's where Wondercraft comes in. Wondercraft is an AI video studio built to help you create complete polished videos that are actually ready to publish. It's a full platform with templates and workflows designed for anyone who wants complete high-quality videos. And ready to publish means ready to monetize. These are kinds of videos you can actually upload, run ads on, sell courses with, or use for client work. Here's how it works. You start by picking a workflow. Things like explainers or onboarding, training videos, promotional videos, even video podcasts. Then, you add your idea and answer a few questions, and Wondercraft generates a full first draft for you. For example, let's select the explainer video workflow, and let's get it to create a short kids video explaining the history of the Roman Empire. Let's press run. And then, here I can select different custom styles. So, for example, let's select this playful pastel style. You can also select all these different languages, the video type, format, duration, and the pace. And here's our result. Long ago, the story of Rome began with twin brothers, Romulus and Remus, raised by a wolf. Rome grew from a small village into a powerful republic, where senators made laws for everyone. Soon, great emperors ruled. The Roman army was very strong, marching across many far-off lands. In one go, Wondercraft generates the video with B-roll, captions, music, and a voiceover. From there, I can refine it further in the studio, just like a video editor. I can move things around, or I can also just chat with this AI to edit it for me. It's not just a one-off clip. You can edit it, brand it, and turn it into something you'd actually upload and make money from. Wondercraft is trusted by big teams at companies like Amazon and Spotify, and it's just as useful for small businesses, agencies, or solo creators. If you want to automate complete high-quality videos with AI, check out Wondercraft. Use my link in the description below, and go make your first video for free. You see, a state-of-the-art model like GPT or Gemini is usually so big that one top-tier GPU can't fit the entire model. After all, even the H100 GPU only has 80 GB of memory, whereas these top AI models might be over a terabyte in size. So, how the AI labs overcome this is currently the model lives inside multiple racks in a data center. This is also called pipeline parallelism, where they slice the model up. For example, layers 1 to 10 might be on server rack A, 11 to 20 might be on the next server rack in a different part of the data center, and they would each be connected by fiber optic cables. Now, traditionally, this ain't a problem. When server A finishes its work, it's just one single compressed output that would be sent to the next data server. And then, once that block finishes, it would send one output to the next server, and so on. It's just one linear sequence. But with this new buffet style of attention residuals, where every layer needs to inspect the previous layers to make its decision, suddenly you aren't sending one output in one direction anymore. If for each layer, it has to talk to all the previous layers before it, then the data traffic just explodes. It requires a lot more communication between different server racks, which makes it extremely inefficient. So, with this current attention residuals design, you can't actually apply this to huge models in a data center. We also need to consider the infrastructure limitations. So, the Kimi team came up with something brilliant called block attention residuals. In simple terms, the model is basically broken down into separate blocks, and within each block, we have these new attention residuals, which can understand context, but between different blocks, we just have the old linear communication. The layers inside each block combine their work into one representative summary, and only this is sent to the next server rack. So, this way, it includes the benefits of these attention residuals, where each layer can look at previous layers outputs in a buffet style, but it can also be efficiently applied to multiple server racks without having an insane amount of data transfer back and forth, which slows everything down. So, it's awesome that the Kimi team didn't just publish something theoretical. They even applied it to real-life infrastructure to make sure it works. All right, so that's the design of everything, but how well does this work? Well, the results were pretty shocking. Here's one figure from the paper for your reference. The blue line is the base model without attention residuals. The red line is with full attention residuals. The orange line is with block attention residuals, where you segment the model based on server racks. And you can see that for both models with attention residuals, they achieve the same amount of performance during training while using 1.25 times less compute. This might not sound huge at first, but at the scale of modern AI, where a single training run can cost tens or even hundreds of millions of dollars, that difference is massive. It means saving millions of dollars or building significantly more powerful models for the exact same budget. In fact, here it says that this new attention residual method even outperforms DeepSeek's recent breakthrough called MHC, which stands for manifold constraint hyperconnections. So, this is a huge breakthrough, but efficiency isn't the most exciting part. The real breakthrough shows up in reasoning. In GPQA Diamond, which is like a really hard benchmark filled with graduate-level science questions, the model with attention residuals jumps by 7.5 points, which is a huge leap. This shows that the model actually performs better, especially for multi-step reasoning tasks. And if you look at MMLU, which is another benchmark designed to evaluate world knowledge and reasoning capabilities. So, this covers things from STEM subjects, humanities, social sciences, law, and more. Again, the model with attention residuals performs better. In terms of all these general knowledge benchmarks, the model with attention residuals just scores better than the base model. The same pattern applies if you look at specialized tasks in math and coding. These are tasks that require really long multi-step reasoning, not just pattern matching, and that's exactly where this new architecture shines. Now, under the hood, what's really happening is that the model fixes the core issue we talked about earlier, which is signal dilution. Instead of letting internal representations grow uncontrollably as they pass through layer after layer, as you can see from this red line from a normal model, adding attention residuals would keep the signal bounded and stable. You can see this green line looks a lot more stable. It doesn't just explode exponentially, and the earlier signal doesn't get buried. And because of that, something subtle but incredibly important happens. The learning process itself becomes more balanced. So, if you look at this other figure from the paper, these are the gradients, so the signals that tell the model how to improve, and as you can see, with attention residuals, this signal is also distributed more evenly across all layers. Every part of the network gets a clear, usable learning signal. The entire system becomes healthier. But we're not done yet. This breakthrough also changes how we design models. Traditionally, going deeper was quite risky. Too many layers and the signal would collapse. Researchers were terrified of making networks too deep because the amnesia would take over. They were forced to build wider models instead. But these were slow and inefficient. But now, with attention residuals, that constraint disappears. Now, we can actually build deeper and deeper models without this amnesia problem. But this brings us to the next question, which is should we build wider models or deeper models? Which ones actually perform better? Well, the Kimi researchers also took that into consideration, and they ran a massive experiment. They trained 25 different models with different shapes. Some of them are short and wide, others deep and narrow, but all of them had the same number of parameters so that it's an equal comparison. And the goal was to see which models performed better. So, here is the result. This is figure seven from the paper. It's quite a technical figure, but the takeaway here is that both architectures improved as they became deeper, not wider. But the base models without attention residuals hit a wall. If you go too deep, the performance collapsed. However, the models with attention residuals pushed this even further. They kept improving, and you can build even deeper models. In other words, depth is no longer a limitation. It's an advantage. And this unlocks something powerful. Now, you can build models that think in longer chains, models that specialize layer by layer, models that don't lose their earlier reasoning as they go deeper. In fact, the most fascinating part is when you actually take a look inside the model. The researchers visualized the attention patterns across different layers, essentially mapping how each layer pulls information from other layers. And what they found almost looks like a brain scan. First, there's locality. So, most layers still rely on their immediate neighbors. That's the default, step-by-step processing. But then you see something new. You see some sudden long-range connections. A layer deep in the network would suddenly reach all the way back to like the earlier layers, completely skipping everything in between. It's like the model realizes, wait, I need to revisit the original premise. And it dynamically rewires itself to do exactly that. It creates its own residual connections on the fly. And then there's specialization. Different types of layers behave differently. Some act like short-term memory, focusing locally. Others act like global coordinators, pulling information from across the entire network. The system isn't uniform anymore. It's structured, organized, almost hierarchical in function, exactly like how the human brain works. And this leads to a profound shift in how we think about neural networks. With attention residuals, they're no longer static pipelines. They're actually dynamic systems. Instead of a fixed sequence of operations, the model can now constantly reconfigure itself based on what it receives. For every input it receives, it builds a custom pathway through its layers, uses it, and then discards it. It's not just computing, but it's like it's routing and selecting and deciding. And this brings up a really fascinating insight. By using these attention residuals, they don't just improve performance, but they change the nature of the system itself. This turns a static structure into something fluid and adaptive. If you zoom out, it starts to look strangely familiar. It starts to resemble the human brain. Because when humans think, we don't just accumulate thoughts blindly. We pause, we go back, and we retrieve past information. We also ignore irrelevant ideas and focus on what matters. We kind of manage our own internal attention. And that's exactly what these attention residuals do. And also, as we learn, our brain is constantly rewiring itself, strengthening useful connections, pruning away the noise, and also building new connections that it finds would be relevant. This ability is known as neural plasticity. And now, with these attention residuals, AI can kind of do the same thing. It's not just remembering better, but deciding what to remember. It can rewire its own connections based on context. Perhaps this might be the next step in designing self-improving AI that can continuously learn over time. All right, that was quite the deep dive. As you can see, this paper is incredibly deep and technical, so I had to simplify a ton of stuff, but that is the gist of it. Hopefully, I've made it easy enough for you to understand, and and I hope you can see how this can change how we design better AI models in the future. Let me know in the comments what you think of this. As always, I will be on the lookout for the top AI news and tools to share with you. So, if you enjoyed this video, remember to like, share, subscribe, and stay tuned for more content. Also, there's just so much happening in the world of AI every week. I can't possibly cover everything on my YouTube channel. So, to really stay up to date with all that's going on in AI, be sure to subscribe to my free weekly newsletter. The link to that will be in the description below. Thanks for watching, and I'll see you in the next one.",
+    "transcript_ko": "이건 정말 큰 사건입니다. Kimmy 팀이 최근에 이룬 혁신적인 돌파구는 또 다른 딥 시크(Deep Seek)와 같은 것으로, 더 나은 AI 모델을 만드는 데 있어서 우리의 한계를 완전히 깨버렸습니다. 이 기술은 현재 AI가 겪고 있는 건망증 문제를 해결할 뿐만 아니라, 사실상 스스로 재구성하고 즉석에서 학습할 수 있는 새로운 아키텍처 설계를 만들어냈습니다. 논문을 살펴보기 전에 문제를 좀 더 이해해 봅시다. 인생에서 가장 어려운 수학 시험을 치르고 있다고 상상해 보세요. 빠른 퀴즈가 아니라 50단계나 되는 아주 어려운 문제입니다. 처음에는 1단계, 2단계, 3단계까지 쉽게 풀 수 있습니다. 꽤 쉽죠. 하지만 48단계에 도달하면 뇌가 과부하에 걸립니다. 처리해야 할 숫자의 양에 완전히 압도당하는 거죠. 작업 기억이 한계에 다다릅니다. 복잡한 계산을 바라보면서도 원래 풀고자 했던 문제의 실마리를 완전히 잃어버립니다. 마치 국소적인 건망증에 걸린 것과 같습니다. 너무 깊게 생각하느라 이전 생각들이 사라지는 거죠. 이건 매우 흔한 인간의 문제입니다. 우리의 작업 기억은 엄격한 물리적 한계가 있습니다. 너무 오래, 너무 깊게 생각하면 압도당하게 됩니다. 이상하게도, 우리가 매일 사용하는 수조 개의 파라미터를 가진 거대한 AI 모델들, 예를 들어 GPT나 Gemini도 똑같은 건망증을 겪고 있습니다. 하지만 이번 돌파구는 이 AI 건망증에 대한 치료법을 제시합니다. 이 논문은 Kimmy 팀이 발표한 ‘attention residuals’라는 제목의 논문입니다. 매우 흥미로운 내용이지만 기술적으로 매우 어렵습니다. 그래서 이 영상에서는 쉽게 이해할 수 있도록 모든 내용을 풀어 설명하겠습니다. 바로 시작해 봅시다.\n\n먼저, 오늘날 AI 모델 설계에 대한 간단한 배경부터 살펴봅시다. AI가 왜 과부하에 걸리는지 이해하려면, 이 모델들이 어떻게 만들어지는지 알아야 합니다. 대형 언어 모델은 100개 이상의 연속된 블록 또는 레이어로 구성된 매우 깊은 모델입니다. 각 블록은 복잡한 행렬 계산을 수행합니다. 개념적으로 보면, 첫 번째 레이어는 원시 텍스트를 처리합니다. 다음 레이어는 문법 패턴을 살펴보고, 그 다음 레이어는 의도를 이해하기 시작합니다. 그 다음 레이어는 텍스트를 더 깊게 분석하고, 계속해서 더 깊이 분석합니다. 120번째 레이어에 도달하면 모델은 매우 추상적이고 깊은 사고를 수행하는 셈입니다.\n\n수년간 우리는 이런 모델을 깊게 쌓는 데 어려움을 겪었습니다. 너무 깊게 만들면 학습이 매우 어려워집니다. AI 모델 학습 방식은 이렇습니다. 학습 중에 AI는 자신의 답변과 정답을 비교하고, 틀리면 손실(loss)이나 패널티를 받습니다. 이 패널티는 모델을 거꾸로 흐르며 파라미터를 조정해 다음에는 덜 틀리도록 만듭니다. 이 과정을 역전파(backpropagation)와 경사 하강법(gradient descent)이라 부릅니다. 하지만 너무 깊게 쌓으면, 이 학습 신호가 모델의 시작 부분에 도달하기 전에 사라져 버립니다. 이를 소실되는 그래디언트 문제(vanishing gradient problem)라고 합니다. 다행히 2015년에 연구자들이 잔차 연결(residual connections)이라는 해결책을 내놓았습니다. 아이디어는 간단합니다. 각 레이어가 받은 정보를 완전히 변환하려 하지 말고, 원래 데이터를 레이어를 완전히 건너뛰어 끝에 더하는 것입니다. 이것은 정보가 거의 변하지 않고 네트워크를 빠르게 지나는 지름길이나 고속도로와 같습니다. 이 고속도로 덕분에 모델을 수십 레이어에서 수백, 수천 레이어로 확장할 수 있었습니다. 이것이 현대 AI 모델 설계 방식입니다.\n\n하지만 Kimmy 팀이 새 논문에서 지적하듯이, 이 고속도로는 근본적인 큰 결함입니다. 사실 이것이 AI가 한꺼번에 많은 정보를 처리할 때 겪는 건망증의 원인입니다. 각 레이어의 결과를 계속 더하기 때문에 최종 결과는 거대한 누적 데이터 더미가 됩니다. 신호의 총 크기는 깊어질수록 커지고, 신호가 커질수록 개별 레이어의 기여도는 줄어듭니다. 그래서 초기 정보가 묻히고 기억하거나 회수하기 어려워집니다. 본질적으로 AI가 너무 열심히 생각하고 너무 많은 새로운 생각을 더해 처음 문제를 생각할 때의 내용을 기억하지 못하는 시스템을 만든 셈입니다.\n\n좋은 비유가 있습니다. 50명의 요리사가 주방에 줄지어 서 있다고 상상해 보세요. 이 50명이 AI의 50개 레이어를 나타냅니다. 첫 번째 요리는 섬세한 바질을 다져 빈 냄비에 넣습니다. 두 번째 요리는 소 한 통을 붓고, 세 번째는 감자를 넣고, 네 번째는 토마토를 넣고, 다섯 번째는 자신만의 재료 한 상자를 들고 옵니다. 여섯 번째는 자루에 든 재료를 붓고, 일곱 번째도 다른 재료를 붓는 식으로 50번째 요리사까지 계속됩니다. 50명의 요리사가 각자 재료를 넣었기 때문에 냄비는 넘쳐나고, 최종 수프를 맛보면 첫 번째 요리사가 넣은 바질 맛을 구분하기 어렵습니다. 모든 재료가 뒤섞여 거대한 혼합물이 된 거죠.\n\n이로 인해 두 번째 문제도 발생합니다. 깊은 AI 모델의 레이어들은 최종 결과에 눈에 띄는 영향을 주기 위해 점점 더 강한 신호를 내야 합니다. 마치 이전 레이어의 소음을 뚫고 소리쳐야 들리는 것과 같습니다. 요리 비유로 돌아가면, 50명의 요리사가 만든 거대한 수프에 소금을 더 넣어야 할 때, 조금만 넣는 것으로는 부족하고 엄청난 양을 넣어야 겨우 조금 더 짭짤해집니다.\n\n여기서 궁금할 수 있습니다. 신호가 너무 커지는 게 문제라면, 신호 크기를 줄이면 되지 않을까요? 예를 들어, 초기 레이어 신호는 줄이고 나중 레이어 신호는 키우는 볼륨 조절 다이얼을 달면 어떨까요? 사실 이미 scaled residual paths나 multi-stream recurrences 같은 똑똑한 방법들이 시도되었지만, 근본 문제는 해결하지 못했습니다. 모든 레이어가 이전 레이어들의 단일 누적 결과만 받기 때문에, 모든 정보가 뒤섞여 거대한 수프처럼 되어버립니다.\n\nKimmy 팀의 이번 논문 제안은 정말 기발합니다. 한 걸음 물러서서 이미 해결책이 있다는 것을 깨달았습니다. 그 전에 AI 언어 모델의 역사를 간단히 짚고 넘어가야 합니다. 현재 AI 모델은 transformer 아키텍처를 기반으로 합니다. 덕분에 AI는 시를 쓰거나 에세이를 작성하거나 연구 보고서를 완성하는 등 놀라운 일을 할 수 있습니다. transformer는 문맥을 이해할 수 있기 때문에 자연어를 잘 이해합니다. 예를 들어, “The cat didn't cross the street because it was too tired.”라는 문장을 보면, ‘it’이 길을 가리키는지 고양이를 가리키는지 모호합니다. 하지만 인간은 문맥을 통해 ‘it’이 고양이임을 압니다.\n\ntransformer가 나오기 전에는 이런 문맥 이해가 어려웠습니다. 당시 최고의 모델은 RNN(Recurrent Neural Network)이었는데, 이 모델은 단어를 한 번에 한 단어씩 처리하며, 이전 정보를 숨겨진 상태(hidden state)라는 메모리에 압축해 저장합니다. 하지만 긴 텍스트를 처리할 때 RNN은 건망증에 시달립니다. 문단 끝에 도달하면 초기 부분을 잊어버리기 쉽습니다. 계속 압축하다 보니 메모리가 과부하되고 초기 정보를 기억하지 못하는 거죠.\n\n반면 transformer는 attention 메커니즘을 도입해 이 문제를 해결했습니다. 단일 압축 메모리를 전달하는 대신, 현재 단어와 관련된 이전 단어를 직접 찾아볼 수 있습니다. 필요한 정보를 선택적으로 가져올 수 있죠. 이것이 현대 AI를 가능하게 한 혁신입니다. transformer 작동 원리에 대해 궁금하면 제가 만든 딥 다이브 영상을 참고하세요.\n\n이 transformer 설계가 Kimmy 연구진에게 ‘아하’ 순간을 주었습니다. 현대 transformer 모델은 이전 RNN의 건망증 문제를 텍스트 차원에서 attention으로 해결했습니다. 그렇다면 AI 모델의 깊이 차원에도 같은 해결책을 적용하면 어떨까요? 수십만 레이어 깊이의 AI 모델은 사실 긴 문단과 같습니다. 현재 설계는 RNN과 같아서, 데이터가 앞으로 흐르면서 모든 계산을 누적 신호 하나로 압축해 건망증에 시달립니다. 신호가 희석되고 중간 단계가 얽히며, 마지막 레이어에 도달하면 원래 신호를 거의 복원할 수 없습니다. 마치 RNN이 긴 텍스트를 처리하지 못하는 것과 같습니다.\n\n그래서 정답이 눈앞에 있는 듯합니다. 아주 깊은 AI 모델의 잔차 연결에 attention을 추가하는 겁니다. 그래서 논문 제목도 attention residuals입니다.\n\nKimmy 팀의 설계는 이렇습니다. 수학적으로 복잡하지만 간단히 설명하면, 정보가 한쪽 끝에서 다른 쪽 끝으로 선형적으로 흐르는 컨베이어 벨트가 아니라, 각 레이어가 이전 레이어의 출력을 자유롭게 참조할 수 있도록 했습니다. 이렇게 하면 AI가 깊게 생각할 때 초기 생각을 잊거나 혼란스러워하지 않습니다.\n\n이를 위해 모델은 transformer의 attention 메커니즘과 똑같이 query, key, value 벡터(QKV)를 사용합니다. transformer에 익숙하지 않다면 관련 영상을 먼저 보는 걸 추천합니다. 각 레이어는 특정 쿼리, 즉 “이전 레이어들 중에서 내가 필요한 정보는 무엇인가?”라는 질문을 갖고 있습니다. 키는 각 이전 레이어가 자신이 무엇을 나타내는지 알려주는 라벨입니다. 값은 각 레이어 내부의 실제 정보입니다. 현재 레이어가 자신의 쿼리를 이전 레이어들의 키와 비교해 얼마나 잘 맞는지 평가합니다. 잘 맞으면 해당 레이어의 값을 출력에 섞습니다.\n\n이 기발한 설계 덕분에 AI는 얼마나 많은 사고 단계를 거치든, 모델이 몇 레이어든 가장 중요한 세부사항에 집중할 수 있습니다. 각 레이어는 단순히 누적된 지저분한 신호를 사용하는 대신, 선택적으로 어떤 레이어의 정보를 쓸지 결정합니다.\n\n요리사 비유로 돌아가면, 이제 각 요리가 거대한 수프 냄비에 재료를 섞는 대신, 뷔페처럼 각 재료를 별도의 접시에 담아 놓습니다. 각 레이어는 자신에게 필요한 접시를 골라 담습니다. 어떤 재료는 중요해서 많이 쓰고, 어떤 재료는 무시합니다. 이 설계의 아름다움은 각 레이어가 처리하는 내용에 따라 검색 대상을 조절할 수 있다는 점입니다. 예를 들어 ‘therefore’라는 단어가 나오면 논리나 순서에 특화된 레이어에서 정보를 끌어오고, ‘betrayed’라는 단어가 나오면 감정이나 관계에 특화된 레이어에 집중할 수 있습니다. 개념적으로 이렇게 생각할 수 있습니다.\n\n이론적으로는 이 방법이 건망증 문제를 해결해야 합니다. 하지만 현실은 그렇게 호락호락하지 않습니다. 수천억, 심지어 조 단위 파라미터를 가진 최상위 AI 모델에 이 방법을 적용하면 물리적 한계라는 벽에 부딪힙니다.\n\n최근 AI 분야를 따라가고 있다면, 몇 초 만에 멋진 영상이나 아바타를 만들어내는 도구들을 많이 봤을 겁니다. 하지만 진짜 문제는, 그런 결과물을 실제로 쓸모 있게 만들 수 있느냐는 점입니다. AI가 만든 클립은 훌륭하지만, 여전히 직접 편집하고, 보이스오버, 음악, 자막, 브랜딩 등을 추가해야 합니다.\n\n바로 여기서 Wondercraft가 등장합니다. Wondercraft는 완성도 높은 동영상을 쉽게 제작할 수 있도록 도와주는 AI 비디오 스튜디오입니다. 템플릿과 워크플로우가 갖춰져 있어 누구나 완성도 높은 영상을 만들 수 있습니다. ‘출판 준비 완료’란 곧 ‘수익화 준비 완료’를 의미합니다. 이 영상들은 실제로 업로드하고 광고를 붙이거나, 강의를 판매하거나, 클라이언트 작업에 사용할 수 있습니다.\n\n사용법은 간단합니다. 워크플로우를 선택합니다. 예를 들어 설명 영상, 온보딩, 교육 영상, 홍보 영상, 비디오 팟캐스트 등이 있습니다. 아이디어를 입력하고 몇 가지 질문에 답하면 Wondercraft가 완성된 초안을 만들어 줍니다. 예를 들어 설명 영상 워크플로우를 선택하고, 로마 제국 역사를 설명하는 어린이용 짧은 영상을 만들어 보겠습니다. 실행 버튼을 누르면 다양한 스타일을 선택할 수 있습니다. 예를 들어 장난기 가득한 파스텔 스타일을 선택할 수 있고, 언어, 영상 유형, 형식, 길이, 속도도 조절 가능합니다.\n\n결과는 이렇습니다. “옛날 옛적에 로마 이야기는 늑대에게 키워진 쌍둥이 형제 로물루스와 레무스에서 시작되었습니다. 로마는 작은 마을에서 강력한 공화국으로 성장했고, 원로원 의원들이 모두를 위한 법을 만들었습니다. 곧 위대한 황제들이 통치했고, 로마 군대는 매우 강해 멀리 떨어진 땅까지 행진했습니다.” Wondercraft는 B-roll, 자막, 음악, 보이스오버가 포함된 영상을 한 번에 생성합니다. 이후에는 더 세밀하게 편집할 수 있습니다.",
+    "summary": {
+      "sections": [
+        {
+          "heading": "AI 기억 한계를 깨다",
+          "body": "발표자는 Kimi team의 recent breakthrough를 AI 설계의 큰 전환점으로 제시한다. 이 논문은 현재 AI의 기억상실 문제를 고치는 데서 끝나지 않고, 스스로 구조를 재구성하며 상황에 맞게 학습하는 설계까지 제안한다. 설명을 위해 영상은 50단계짜리 극도로 어려운 수학 문제를 풀다가 48단계쯤에서 처음 목표를 잊어버리는 인간의 working memory 비유를 든다. 발표자에 따르면 GPT와 Gemini 같은 거대 모델도 생각이 깊어질수록 같은 종류의 amnesia를 겪는다. 영상의 목적은 attention residuals 논문을 쉬운 언어로 풀어서 이 기억 문제의 원인과 해법을 보여주는 것이다.",
+          "highlights": [
+            "이 논문은 현재 AI의 기억상실 문제를 고치는 데서 끝나지 않고, 스스로 구조를 재구성하며 상황에 맞게 학습하는 설계까지 제안한다.",
+            "발표자에 따르면 GPT와 Gemini 같은 거대 모델도 생각이 깊어질수록 같은 종류의 amnesia를 겪는다."
+          ],
+          "quote": "This is a pretty big deal."
+        },
+        {
+          "heading": "Residual이 기억을 묻었다",
+          "body": "현대 LLM은 100개가 넘는 sequential block이나 layer를 쌓아 올린 매우 깊은 구조로 설명된다. 학습 중에는 정답과의 차이에서 나온 loss가 backpropagation과 gradient descent를 통해 뒤로 흐르며 파라미터를 조정한다. 과거에는 layer를 너무 깊게 쌓으면 이 학습 신호가 앞부분까지 도달하기 전에 사라지는 vanishing gradient problem 때문에 훈련이 어려웠다. 2015년의 residual connections는 원래 입력을 layer를 건너뛰어 끝에 다시 더하는 shortcut을 제공해 이 문제를 완화했고, 그래서 수백에서 수천 layer까지 확장이 가능해졌다. 하지만 Kimi team은 이 누적 덧셈 구조가 모든 layer의 결과를 하나의 거대한 신호 더미로 압축해 초기 정보의 비중을 점점 묻어버린다고 지적한다. 그 결과 앞쪽 정보는 찾기 어려워지고, 뒤쪽 layer는 최종 결과에 영향을 주기 위해 더 큰 신호를 내야 하며, 영상은 이를 50명의 셰프가 한 냄비에 재료를 계속 붓는 수프 비유로 설명한다.",
+          "highlights": [
+            "하지만 Kimi team은 이 누적 덧셈 구조가 모든 layer의 결과를 하나의 거대한 신호 더미로 압축해 초기 정보의 비중을 점점 묻어버린다고 지적한다."
+          ],
+          "quote": "This problem is called the vanishing gradient problem."
+        },
+        {
+          "heading": "옛 해법을 깊이에 옮기다",
+          "body": "이 해법의 출발점은 language model의 역사 비교다. Transformer 이전의 RNN은 텍스트를 한 단어씩 처리하면서 과거 정보를 hidden state라는 압축된 기억에 계속 밀어 넣었다. 그래서 문단이 길어질수록 앞부분 정보를 잊는 같은 유형의 amnesia가 쉽게 발생했다. 반면 transformer의 attention mechanism은 현재 단어가 필요할 때 이전 단어들을 직접 다시 살펴볼 수 있게 해 문맥 이해를 크게 끌어올렸다. 발표자는 Kimi team의 핵심 통찰을 텍스트 차원에서 RNN의 기억 문제를 풀었던 attention을, 이번에는 모델의 depth 차원에 적용한 것으로 설명한다. 즉, 현재의 깊은 모델은 layer를 따라 누적 신호 하나로 압축된다는 점에서 RNN처럼 동작하고, attention residuals는 그 구조를 transformer식으로 바꾸자는 제안이다.",
+          "highlights": [
+            "발표자는 Kimi team의 핵심 통찰을 텍스트 차원에서 RNN의 기억 문제를 풀었던 attention을, 이번에는 모델의 depth 차원에 적용한 것으로 설명한다."
+          ],
+          "quote": "What if we added attention to these residual connections of a very deep AI model."
+        },
+        {
+          "heading": "층마다 필요한 것만 고른다",
+          "body": "attention residuals에서는 각 layer가 바로 이전 결과만 받는 대신 자신보다 앞선 어떤 layer의 출력이든 다시 살펴볼 수 있다. 이때 transformer와 같은 QKV, 즉 query, key, value vectors가 사용된다. 현재 layer의 query는 무엇이 필요한지 묻는 질문이고, 각 이전 layer의 key는 자신이 담고 있는 정보의 라벨이며, value는 실제 내용이다. 현재 layer는 자신의 query를 이전 layer들의 key와 비교해 맞는 정보를 찾아내고, 관련된 value만 골라 출력에 섞는다. 각 레이어는 더 이상 지저분한 누적 신호 하나를 받는 대신, 이전 레이어들 중 필요한 정보만 선택해 가져온다. 영상은 이를 하나의 냄비가 아니라 재료가 따로 담긴 buffet로 비유하며, 입력에 따라 어떤 layer는 논리 순서 쪽 정보를 더 끌어오고 다른 layer는 감정이나 관계 쪽 정보를 더 참고할 수 있다고 설명한다.",
+          "highlights": [
+            "각 레이어는 더 이상 지저분한 누적 신호 하나를 받는 대신, 이전 레이어들 중 필요한 정보만 선택해 가져온다."
+          ]
+        },
+        {
+          "heading": "데이터센터 장벽을 넘겨라",
+          "body": "문제는 이 설계를 초거대 모델에 그대로 적용하면 물리적 한계에 부딪힌다는 점이다. 영상에 따르면 GPT나 Gemini 급 모델은 1TB를 넘을 수 있어 H100 GPU 한 장의 80GB 메모리로는 담기지 않기 때문에, 실제로는 여러 서버 랙에 model을 나눠 담는 pipeline parallelism이 쓰인다. 기존 구조에서는 각 서버가 작업을 마친 뒤 하나의 압축된 출력만 다음 서버로 보내면 되므로 통신이 단순하다. 하지만 full attention residuals에서는 각 layer가 자신보다 앞선 많은 layer와 상호작용해야 해서 서버 랙 사이의 데이터 트래픽이 급격히 늘어난다. 그래서 Kimi team은 block attention residuals를 제안했고, 블록 내부에서는 attention residuals를 쓰되 블록 사이에서는 대표 summary 하나만 전달하게 만들었다. 이 설계는 기억 문제를 줄이는 장점을 유지하면서도 데이터센터 인프라에서 과도한 통신 비용을 피하려는 현실적 절충안으로 제시된다.",
+          "highlights": [
+            "그래서 Kimi team은 block attention residuals를 제안했고, 블록 내부에서는 attention residuals를 쓰되 블록 사이에서는 대표 summary 하나만 전달하게 만들었다."
+          ],
+          "quote": "We also need to consider the infrastructure limitations."
+        },
+        {
+          "heading": "성능은 싸게 오른다",
+          "body": "실험 결과에서 base model 대비 full attention residuals와 block attention residuals 모두 같은 training performance를 내면서 1.25배 적은 compute를 사용했다고 설명된다. 발표자는 현대 AI의 학습 비용이 한 번에 수천만 달러에서 수억 달러까지 갈 수 있기 때문에, 이 차이만으로도 수백만 달러 절감이나 같은 예산으로 더 강한 모델 구축이 가능하다고 본다. 영상은 이 방법이 DeepSeek의 MHC, 즉 manifold constraint hyperconnections보다도 더 낫다고 소개한다. 더 중요한 변화는 reasoning에서 나타나는데, GPQA Diamond에서는 attention residuals를 넣은 모델이 7.5포인트 상승했다고 설명한다. MMLU와 일반 지식, 수학, coding 과제에서도 같은 방향의 개선이 보고되며, 특히 긴 multi-step reasoning에서 강점이 두드러진다. 논문 해석에 따르면 이는 내부 표현의 크기가 폭주하지 않고 더 안정적으로 유지되며, gradient도 layer 전반에 더 고르게 분배되기 때문이다.",
+          "highlights": [
+            "실험 결과에서 base model 대비 full attention residuals와 block attention residuals 모두 같은 training performance를 내면서 1.25배 적은 compute를 사용했다고 설명된다.",
+            "더 중요한 변화는 reasoning에서 나타나는데, GPQA Diamond에서는 attention residuals를 넣은 모델이 7.5포인트 상승했다고 설명한다."
+          ],
+          "quote": "the model with attention residuals jumps by 7.5 points, which is a huge leap."
+        },
+        {
+          "heading": "깊이는 제약이 아니다",
+          "body": "이 논문은 성능 향상뿐 아니라 모델 설계 기준도 바꾼다고 영상은 주장한다. 기존에는 layer를 너무 깊게 만들면 신호가 무너지고 amnesia가 심해질까 두려워서, 연구자들이 더 깊은 모델보다 더 넓은 모델을 선호했다고 설명한다. Kimi team은 총 파라미터 수를 같게 맞춘 25개의 모델을 훈련해 짧고 넓은 구조와 깊고 좁은 구조를 비교했다. 결과적으로 두 계열 모두 깊어질수록 좋아졌지만, attention residuals가 없는 base model은 일정 깊이를 넘으면 성능이 무너졌다. 반대로 attention residuals가 있는 모델은 더 깊게 가도 개선이 이어졌고, 영상은 이를 depth가 더 이상 limitation이 아니라 advantage가 된 순간으로 해석한다. 이 변화는 layer별 specialization, 더 긴 reasoning chain, 초기 추론을 잃지 않는 깊은 모델 설계를 가능하게 만든다.",
+          "highlights": [
+            "반대로 attention residuals가 있는 모델은 더 깊게 가도 개선이 이어졌고, 영상은 이를 depth가 더 이상 limitation이 아니라 advantage가 된 순간으로 해석한다."
+          ],
+          "quote": "depth is no longer a limitation. It's an advantage."
+        },
+        {
+          "heading": "모델이 스스로 길을 짠다",
+          "body": "연구진이 layer 사이 attention pattern을 시각화하자, 대부분은 가까운 이웃을 참고하지만 일부는 멀리 떨어진 초기 layer로 갑자기 되돌아가는 long-range connection이 나타났다. 발표자는 이를 모델이 원래 premise를 다시 확인해야 할 때 중간 단계를 건너뛰고 필요한 지점으로 되돌아가는 현상으로 해석한다. 또 어떤 layer는 local short-term memory처럼 움직이고, 어떤 layer는 네트워크 전역을 조율하는 global coordinator처럼 행동해 기능적 specialization도 드러났다고 말한다. 이 때문에 attention residuals가 들어간 네트워크는 더 이상 고정된 pipeline이 아니라 입력마다 경로를 새로 짜고, 사용한 뒤 버리는 dynamic system으로 묘사된다. 발표자는 이런 적응성과 재배선 능력이 인간의 attention과 neural plasticity를 닮았다고 비교한다. 그리고 이것이 맥락에 맞게 스스로 연결을 바꾸며 시간이 지나도 계속 배우는 self-improving AI 설계의 다음 단계가 될 수 있다고 전망한다.",
+          "highlights": [
+            "이 때문에 attention residuals가 들어간 네트워크는 더 이상 고정된 pipeline이 아니라 입력마다 경로를 새로 짜고, 사용한 뒤 버리는 dynamic system으로 묘사된다.",
+            "그리고 이것이 맥락에 맞게 스스로 연결을 바꾸며 시간이 지나도 계속 배우는 self-improving AI 설계의 다음 단계가 될 수 있다고 전망한다."
+          ],
+          "quote": "It creates its own residual connections on the fly."
+        }
+      ],
+      "key_takeaways": [
+        "attention residuals는 깊은 모델의 누적 residual 신호가 초기 정보를 묻어버리는 기억 문제를 겨냥한다.",
+        "핵심 아이디어는 transformer의 attention을 텍스트 차원이 아니라 layer depth 차원에 적용하는 것이다.",
+        "full attention residuals의 통신 폭증 문제를 해결하기 위해 block attention residuals가 제안됐다.",
+        "실험에서는 같은 학습 성능에 1.25배 적은 compute를 썼고, GPQA Diamond 등 reasoning benchmark가 개선됐다.",
+        "이 설계는 더 깊은 모델을 위험이 아닌 advantage로 바꾸고, 입력마다 경로를 다시 짜는 동적 네트워크 가능성을 보여준다."
+      ],
+      "tech_stack": [
+        "attention residuals",
+        "block attention residuals",
+        "residual connections",
+        "backpropagation",
+        "gradient descent",
+        "transformer",
+        "attention mechanism",
+        "recurrent neural networks (RNN)",
+        "query, key, and value vectors (QKV)",
+        "pipeline parallelism",
+        "GPT",
+        "Gemini",
+        "H100 GPU",
+        "DeepSeek",
+        "MHC"
+      ],
+      "smart_brevity": {
+        "why": "이 영상은 초거대 AI가 왜 깊어질수록 앞선 추론을 잊는지, 그리고 그 병목을 아키텍처 수준에서 어떻게 풀 수 있는지 설명한다. 이 문제가 풀리면 더 긴 reasoning, 더 효율적인 학습, 더 깊은 모델 설계가 동시에 가능해진다.",
+        "what": "attention residuals는 AI의 깊이에서 생기는 기억상실을 transformer식 선택 접근으로 풀려는 설계다.\n\n영상은 먼저 residual connections가 vanishing gradient를 해결했지만 누적 신호를 비대하게 만들어 초기 정보를 묻어버렸다고 설명한다. 이어 RNN이 긴 문맥을 잊고 transformer가 attention으로 이를 해결한 역사를 끌어와, 같은 해법을 text가 아니라 layer depth에 적용한 것이 attention residuals라고 정리한다. 실제 동작은 각 layer가 QKV를 써서 필요한 이전 layer만 직접 참조하는 방식이며, giant soup가 아닌 buffet처럼 필요한 정보만 고른다.\n\n하지만 full attention residuals는 데이터센터의 pipeline parallelism 환경에서 서버 랙 간 통신량을 폭증시킨다. 그래서 논문은 block attention residuals로 블록 내부만 attention하게 만들고 블록 사이에는 summary만 넘겨 현실 배치를 가능하게 했다. 결과적으로 같은 성능에 1.25배 적은 compute를 썼고, GPQA Diamond, MMLU, 수학, coding 과제에서 개선이 보고됐다.\n\n결론은 명확하다. attention residuals는 깊이를 더 이상 위험이 아니라 advantage로 바꾸며, 모델을 고정 파이프라인이 아니라 입력마다 경로를 재구성하는 dynamic system으로 밀어 올린다.",
+        "axioms": [
+          {
+            "label": "Why it matters",
+            "content": "깊은 모델의 기억 손실을 줄이면 긴 multi-step reasoning과 더 효율적인 학습을 동시에 끌어올릴 수 있다."
+          },
+          {
+            "label": "Driving the news",
+            "content": "이 영상의 출발점은 Kimi team의 새 논문 attention residuals다."
+          },
+          {
+            "label": "The big picture",
+            "content": "Transformer가 RNN의 문맥 기억 문제를 attention으로 풀었듯, 이 논문은 같은 원리를 모델 depth 차원에 적용한다."
+          },
+          {
+            "label": "By the numbers",
+            "content": "영상은 같은 training performance에 1.25배 적은 compute와 GPQA Diamond 7.5포인트 상승을 핵심 수치로 제시한다."
+          },
+          {
+            "label": "Zoom in",
+            "content": "50명의 셰프가 한 냄비에 재료를 붓는 비유는 residual 누적이 초기 정보를 어떻게 묻어버리는지 직관적으로 보여준다."
+          },
+          {
+            "label": "Yes, but",
+            "content": "full attention residuals는 서버 랙 간 통신량이 폭증해 초거대 데이터센터 환경에 바로 적용하기 어렵다."
+          },
+          {
+            "label": "Be smart",
+            "content": "이 결과는 같은 파라미터 수라면 더 넓게 키우기보다 더 깊게 설계하는 쪽이 유리할 수 있음을 시사한다."
+          },
+          {
+            "label": "Between the lines",
+            "content": "이 설계의 함의는 정확도 향상보다 크며, 모델을 고정 연산 파이프라인에서 입력별 동적 경로 시스템으로 바꾼다."
+          },
+          {
+            "label": "What's next",
+            "content": "발표자는 attention residuals가 맥락에 따라 연결을 다시 짜며 계속 학습하는 self-improving AI의 다음 단계가 될 수 있다고 본다."
+          },
+          {
+            "label": "The bottom line",
+            "content": "영상의 결론은 depth가 더 이상 limitation이 아니라 advantage라는 것이다."
+          }
+        ]
+      },
+      "apply_points": {
+        "level": 2,
+        "where": "mcp-memory (recall 알고리즘)",
+        "what": "오래된 고품질 노드가 최신 노드에 묻히는 recency bias 보정 설계",
+        "why": "attention residuals의 핵심 문제 — 깊은 레이어 누적 신호가 초기 정보를 매몰 — 가 mcp-memory에도 동일하게 존재함. 현재 hybrid search(Vector+FTS5+Graph)는 최신·고빈도 노드를 암묵적으로 우선하므로, 오래되었지만 quality 높은 핵심 노드(예: #754 v=121 orchestration 원칙)가 검색에서 밀릴 위험이 구조적으로 내재됨"
+      }
+    }
+  },
+  {
+    "video_id": "jZu4sgZOOO4",
+    "title": "nodepad: a design experiment in spatial thinking (open source)",
+    "url": "https://www.youtube.com/watch?v=jZu4sgZOOO4",
+    "playlist": "design",
+    "fetched_at": "2026-04-08",
+    "transcript": "Welcome to Notepad. Most AI based thinking tools are built around asking questions and chatting. You type a prompt, you get an answer. You type another prompt, you get a different answer. The interaction is sequential and the AI is always at the center of it. Notepad works differently. You put down what you know, your own thoughts, what you're reading, what you're wondering about. The app builds structure around it as you go. You just focus on tapping. The AI isn't something you talk to. It's more like a research partner sitting quietly beside you, annotating everything you add and finding threads between things you didn't connect yourself. No chat, no prompts, you just think. You can simply start by adding your own open router API key. That's the only credential the app uses. Everything stays in your browser. Type a thought and see how the system enriches it. Keep adding more and everything will be classified and enriched for you. You can adjust the text either to title or the enrichment itself as well. You can even change that category after. You can also force a category using hashtags as you type. After a period of typing, the system will suggest a thesis. This is based on what you've written so far. You can add it to your own stack or simply ignore it. All features can be accessed from a command K menu. You can change the view from tiling to camban to a graph view. Each view helps you look at your own thoughts differently. After you're done with a project, you can export as a markdown file. This gives you a properly structured document. You can think of it as a briefing before writing, a gap finder, an outline structure, or even as a structured context for another agent. Since everything is local, you can export your space as a notepad file. It preserves everything, all annotations, connections, and synthesis history. You can share the file with someone else to import it or continue on a different machine. In Notepad, the AI isn't the final output. AI just helps in formalizing your thoughts and expanding on them. It is the thinking that makes whatever comes next better.",
+    "transcript_ko": "Notepad에 오신 것을 환영합니다. 대부분의 AI 기반 사고 도구는 질문을 하고 대화하는 방식으로 만들어졌습니다. 프롬프트를 입력하면 답변을 받고, 또 다른 프롬프트를 입력하면 다른 답변을 받는 식이죠. 상호작용은 순차적이며 AI가 항상 중심에 있습니다. Notepad는 다르게 작동합니다. 당신이 알고 있는 것, 자신의 생각, 읽고 있는 내용, 궁금한 점을 적어 놓으면 앱이 그 주위에 구조를 만들어 줍니다. 당신은 단지 탭하는 데 집중하면 됩니다. AI는 대화 상대가 아닙니다. 조용히 옆에 앉아 당신이 추가하는 모든 것을 주석 달고, 당신이 직접 연결하지 못한 것들 사이의 연관성을 찾아내는 연구 파트너와 같습니다. 대화도, 프롬프트도 없고, 당신은 그냥 생각하기만 하면 됩니다. 간단히 자신의 Open Router API 키를 추가하는 것으로 시작할 수 있습니다. 이게 앱이 사용하는 유일한 인증 정보입니다. 모든 것은 브라우저 내에 머뭅니다. 생각을 입력하면 시스템이 그것을 풍부하게 만들어 줍니다. 계속 추가하면 모든 것이 분류되고 풍부해집니다. 텍스트를 제목이나 풍부하게 하는 내용으로 조정할 수도 있습니다. 나중에 그 카테고리를 변경하는 것도 가능합니다. 입력할 때 해시태그로 카테고리를 강제로 지정할 수도 있습니다. 일정 시간 입력 후에는 지금까지 작성한 내용을 바탕으로 시스템이 논지를 제안합니다. 이를 자신의 스택에 추가하거나 무시할 수 있습니다. 모든 기능은 command K 메뉴에서 접근할 수 있습니다. 뷰는 타일, 칸반, 그래프 뷰로 변경할 수 있습니다. 각 뷰는 자신의 생각을 다르게 바라보는 데 도움을 줍니다. 프로젝트가 끝나면 마크다운 파일로 내보낼 수 있습니다. 이렇게 하면 제대로 구조화된 문서를 얻을 수 있습니다. 글쓰기 전 브리핑, 빈틈 찾기, 개요 구조, 또는 다른 에이전트를 위한 구조화된 컨텍스트로 생각할 수 있습니다. 모든 것이 로컬에 있기 때문에 공간을 노트패드 파일로 내보낼 수 있습니다. 모든 주석, 연결, 합성 기록을 보존합니다. 이 파일을 다른 사람과 공유해 가져오거나 다른 기기에서 이어서 작업할 수 있습니다. Notepad에서 AI는 최종 결과물이 아닙니다. AI는 단지 당신의 생각을 형식화하고 확장하는 데 도움을 줄 뿐입니다. 더 나은 결과를 만드는 것은 바로 당신의 사고입니다.",
+    "summary": {
+      "sections": [
+        {
+          "heading": "채팅 중심을 버려라",
+          "body": "대부분의 AI 기반 사고 도구는 질문을 던지고 답을 받는 방식으로 설계된다. 사용자는 프롬프트를 입력하고 답을 받은 뒤 다시 다른 프롬프트를 입력한다. 이 상호작용은 순차적이며 AI가 항상 중심에 놓인다. Notepad는 이 방식과 다르게 작동한다. 영상은 채팅보다 사용자의 사고 기록 자체를 작업의 중심으로 옮긴다.",
+          "highlights": [
+            "이 상호작용은 순차적이며 AI가 항상 중심에 놓인다."
+          ],
+          "quote": "The interaction is sequential and the AI is always at the center of it."
+        },
+        {
+          "heading": "생각만 쌓고 연결하라",
+          "body": "사용자는 자신이 아는 것, 자기 생각, 읽고 있는 것, 궁금한 것을 적어 내려간다. 앱은 사용자가 써 내려가는 동안 그 주변에 구조를 만든다. 사용자는 탭핑에만 집중하면 된다. AI는 대화 상대가 아니라 조용히 옆에 앉아 있는 연구 파트너처럼 작동한다. 시스템은 사용자가 직접 연결하지 않은 실마리까지 주석을 달고 이어 준다.",
+          "highlights": [
+            "시스템은 사용자가 직접 연결하지 않은 실마리까지 주석을 달고 이어 준다."
+          ],
+          "quote": "It's more like a research partner sitting quietly beside you, annotating everything you add and finding threads between things you didn't connect yourself."
+        },
+        {
+          "heading": "브라우저 안에 남겨라",
+          "body": "시작은 자신의 open router API key를 추가하는 것으로 충분하다. 영상에 따르면 앱이 사용하는 자격 증명은 그것뿐이다. 모든 것은 브라우저 안에 남는다. 입력한 생각과 그 구조화 과정은 브라우저 안에서 진행된다. 이 흐름은 로컬 동작을 전제로 소개된다.",
+          "highlights": [
+            "모든 것은 브라우저 안에 남는다."
+          ],
+          "quote": "Everything stays in your browser."
+        },
+        {
+          "heading": "분류를 직접 조정하라",
+          "body": "생각을 입력하면 시스템은 그 내용을 바로 enrichment한다. 더 많이 추가할수록 항목은 자동으로 분류되고 enrichment된다. 사용자는 제목과 enrichment 텍스트를 직접 수정할 수 있다. 필요하면 분류도 나중에 바꿀 수 있다. 입력하면서 hashtags를 쓰면 원하는 분류를 강제로 지정할 수도 있다.",
+          "highlights": [
+            "더 많이 추가할수록 항목은 자동으로 분류되고 enrichment된다."
+          ],
+          "quote": "You can also force a category using hashtags as you type."
+        },
+        {
+          "heading": "시야를 바꿔 보라",
+          "body": "어느 정도 입력이 쌓이면 시스템은 지금까지 쓴 내용을 바탕으로 thesis를 제안한다. 사용자는 그 제안을 자신의 stack에 추가하거나 그냥 무시할 수 있다. 기능들은 모두 command K menu에서 접근할 수 있다. 화면은 tiling, camban, graph view 사이에서 바꿀 수 있다. 각 view는 같은 생각을 다른 방식으로 보게 만든다.",
+          "highlights": [
+            "어느 정도 입력이 쌓이면 시스템은 지금까지 쓴 내용을 바탕으로 thesis를 제안한다."
+          ],
+          "quote": "After a period of typing, the system will suggest a thesis."
+        },
+        {
+          "heading": "산출물을 바로 꺼내라",
+          "body": "프로젝트가 끝나면 결과를 markdown file로 export할 수 있다. 이 export는 제대로 구조화된 문서를 만든다. 영상은 이 문서를 글을 쓰기 전 briefing, gap finder, outline structure, 또 다른 agent를 위한 structured context로 설명한다. 모든 것이 로컬이기 때문에 공간 전체를 notepad file로도 export할 수 있다. 그 파일은 annotations, connections, synthesis history를 보존하고 다른 사람과 공유하거나 다른 기기에서 이어서 쓰게 해 준다.",
+          "highlights": [
+            "모든 것이 로컬이기 때문에 공간 전체를 notepad file로도 export할 수 있다."
+          ],
+          "quote": "You can think of it as a briefing before writing, a gap finder, an outline structure, or even as a structured context for another agent."
+        },
+        {
+          "heading": "AI를 조연에 둬라",
+          "body": "영상의 마지막 메시지는 AI가 최종 출력이 아니라는 점이다. AI는 사용자의 생각을 formalizing하고 expanding하는 데만 도움을 준다. 더 중요한 것은 그다음에 나올 결과물보다 먼저 사고의 질을 높이는 일이다. 이 도구의 초점은 답변 생성이 아니라 생각 자체를 더 낫게 만드는 데 있다. 그래서 이후에 이어질 작업이 더 좋아진다.",
+          "highlights": [
+            "영상의 마지막 메시지는 AI가 최종 출력이 아니라는 점이다."
+          ],
+          "quote": "In Notepad, the AI isn't the final output. AI just helps in formalizing your thoughts and expanding on them. It is the thinking that makes whatever comes next better."
+        }
+      ],
+      "key_takeaways": [
+        "Notepad는 순차적 채팅과 프롬프트 중심 AI 도구와 달리 사용자의 사고 기록을 중심에 둔다.",
+        "AI는 조용한 연구 파트너처럼 annotations, 분류, enrichment, 연결 찾기를 맡는다.",
+        "앱은 open router API key만 사용하며 모든 내용은 브라우저 안에 남는다.",
+        "사용자는 제목, enrichment, 분류를 수정하고 hashtags, thesis 제안, 여러 view를 활용해 생각을 다듬을 수 있다.",
+        "결과는 markdown file과 notepad file로 export할 수 있으며 AI의 역할은 최종 답변이 아니라 더 나은 다음 작업을 돕는 것이다."
+      ],
+      "tech_stack": [
+        "Notepad",
+        "open router API key",
+        "markdown file"
+      ],
+      "smart_brevity": {
+        "why": "이 영상은 AI 도구의 가치를 답변 생성이 아니라 사고 구조화 능력으로 옮긴다. 글쓰기 준비, 맥락 정리, 다음 agent 작업의 품질까지 생각의 정교함이 좌우된다는 점에서 중요하다.",
+        "what": "Notepad는 AI에게 묻는 대신 사용자가 적어 내려간 생각을 구조화하는 사고 도구다. 영상은 기존 AI thinking tools가 프롬프트와 응답의 순차적 상호작용에 묶여 있고 AI가 중심에 선다고 대비한다. Notepad에서는 사용자가 아는 것, 읽는 것, 궁금한 것을 계속 적으면 시스템이 분류, enrichment, 연결을 붙이고 thesis까지 제안한다. 사용자는 제목, enrichment, 분류를 수정할 수 있고 hashtags로 분류를 강제할 수 있으며 command K menu와 여러 view를 통해 같은 생각을 다르게 볼 수 있다. 결과물은 markdown file이나 notepad file로 export되며 annotations, connections, synthesis history도 보존된다. 결론적으로 이 앱은 AI를 최종 산출물이 아니라 사고를 더 정교하게 만드는 조용한 보조자로 배치한다.",
+        "axioms": [
+          {
+            "label": "Why it matters",
+            "content": "이 도구는 AI를 답변 엔진이 아니라 생각을 구조화하는 보조자로 재정의한다."
+          },
+          {
+            "label": "The big picture",
+            "content": "대부분의 AI 기반 사고 도구는 순차적 채팅과 프롬프트 교환을 중심으로 움직인다고 영상은 대비한다."
+          },
+          {
+            "label": "Be smart",
+            "content": "자신이 아는 것과 읽는 것, 궁금한 것을 먼저 쌓아 두면 시스템이 분류와 enrichment, 연결을 맡는다."
+          },
+          {
+            "label": "Zoom in",
+            "content": "사용자는 hashtags로 분류를 강제하고, thesis 제안을 고르며, tiling·camban·graph view로 같은 생각을 다시 볼 수 있다."
+          },
+          {
+            "label": "Between the lines",
+            "content": "이 설계는 더 많은 프롬프트보다 더 나은 사고 구조가 이후 결과를 좌우한다는 관점을 드러낸다."
+          },
+          {
+            "label": "The bottom line",
+            "content": "AI는 최종 출력이 아니라 다음 작업의 질을 높이기 위해 사고를 formalizing하고 expanding하는 역할에 머문다."
+          }
+        ]
+      }
+    }
+  }
+]
