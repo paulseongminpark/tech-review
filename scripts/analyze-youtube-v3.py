@@ -220,13 +220,15 @@ def structurize(title, transcript):
     out_file = TMP / f"structurize-{TODAY}-{int(time.time())}.json"
 
     try:
+        full_prompt = prompt + "\n\n순수 JSON만 출력. 마크다운 코드블록 없이."
         result = subprocess.run(
             [CODEX_CMD, "exec",
              "-m", "gpt-5.4",
              "--full-auto",
-             "-o", str(out_file),
-             prompt + "\n\n순수 JSON만 출력. 마크다운 코드블록 없이."],
+             "-o", str(out_file)],
+            input=full_prompt,
             capture_output=True, timeout=300,
+            text=True, encoding="utf-8",
             cwd=str(BLOG_DIR),
         )
 
@@ -235,10 +237,10 @@ def structurize(title, transcript):
             raw = out_file.read_text(encoding="utf-8").strip()
             out_file.unlink(missing_ok=True)
         else:
-            raw = result.stdout.decode("utf-8", errors="replace").strip()
+            raw = (result.stdout or "").strip()
 
         if result.returncode != 0 and not raw:
-            stderr = result.stderr.decode("utf-8", errors="replace").strip()[:200]
+            stderr = (result.stderr or "").strip()[:200]
             log(f"    [구조화] Codex 실패 (rc={result.returncode}): {stderr}")
             return None
 
@@ -303,7 +305,7 @@ def generate_apply_points(summary, title):
             [CLAUDE_CMD, "-p", "--model", "claude-sonnet-4-6", "--output-format", "json",
              "--allowedTools", "mcp__memory__recall"],
             input=prompt.encode("utf-8"),
-            capture_output=True, timeout=120, cwd=str(BLOG_DIR),
+            capture_output=True, timeout=240, cwd=str(BLOG_DIR),
             env=env,
         )
         if result.returncode != 0:

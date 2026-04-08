@@ -36,7 +36,7 @@ PROMPT_TEMPLATE = """\
   "whats_happening": "무슨 일인가 — 1-2문장, 핵심 사건·발표·발견을 구체적으로",
   "translation": "원문을 거의 그대로 한글로 번역. 요약 금지. 원문의 문장 구조·뉘앙스·어조를 최대한 살릴 것. 원문이 리스트면 리스트로, 문단이면 문단으로.",
   "tech_stack": ["언급된 실제 기술/도구/라이브러리명만"],
-  "apply_points": ["mcp-memory에서 recall('Paul 프로젝트')로 현재 상태를 조회한 뒤, 실제 프로젝트(orchestration, mcp-memory, tech-review, portfolio)에 적용 가능한 것을 작성. 한 문장으로 간결하게. 파일 경로 금지. 일반론 금지."]
+  "apply_points": ["개발자가 자신의 프로젝트에 적용할 수 있는 구체적 행동. 한 문장으로 간결하게. 파일 경로 금지. 일반론 금지."]
 }}
 
 규칙:

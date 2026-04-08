@@ -139,7 +139,8 @@ def main():
     run(["node", str(SCRIPT_DIR / "build-sources-feed.js")])
 
     # add-bookmark.py가 이미 commit+push 하므로, sources.json만 추가 커밋
-    # commit 먼저 → pull --rebase → push (unstaged changes로 pull 실패 방지)
+    # stash → commit → pull --rebase → push → stash pop (unstaged changes 보호)
+    run(["git", "stash", "--include-untracked"])
     run(["git", "add", "sources.json"])
     run(["git", "commit", "-m", f"[auto] sources.json 갱신 (twitter +{added})"])
     run(["git", "pull", "--rebase", "origin", "master"])
@@ -150,6 +151,9 @@ def main():
         r = run(["git", "push"])
         if r.returncode != 0:
             log("  [FAIL] push 최종 실패")
+
+    # stash pop (다른 프로세스의 unstaged changes 복원)
+    run(["git", "stash", "pop"])
 
     log(f"=== 파이프라인 완료 (+{added}개) ===")
 
