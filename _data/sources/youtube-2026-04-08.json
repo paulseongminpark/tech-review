@@ -152,7 +152,8 @@
         "what": "오래된 고품질 노드가 최신 노드에 묻히는 recency bias 보정 설계",
         "why": "attention residuals의 핵심 문제 — 깊은 레이어 누적 신호가 초기 정보를 매몰 — 가 mcp-memory에도 동일하게 존재함. 현재 hybrid search(Vector+FTS5+Graph)는 최신·고빈도 노드를 암묵적으로 우선하므로, 오래되었지만 quality 높은 핵심 노드(예: #754 v=121 orchestration 원칙)가 검색에서 밀릴 위험이 구조적으로 내재됨"
       }
-    }
+    },
+    "playlist_index": 5
   },
   {
     "video_id": "jZu4sgZOOO4",
@@ -263,6 +264,18 @@
           }
         ]
       }
-    }
+    },
+    "playlist_index": 10
+  },
+  {
+    "video_id": "kCc8FmEb1nY",
+    "title": "Let's build GPT: from scratch, in code, spelled out.",
+    "channel": "Andrej Karpathy",
+    "published_at": "",
+    "fetched_at": "2026-04-08",
+    "playlist_index": 4,
+    "url": "https://www.youtube.com/watch?v=kCc8FmEb1nY",
+    "playlist": "build",
+    "source_type": "youtube"
   }
 ]

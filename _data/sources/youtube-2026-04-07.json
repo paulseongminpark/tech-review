@@ -176,7 +176,8 @@
         "how": "measure.py 출력을 LLM이 읽어 개선 제안 3개 생성 → STATE.md에 pending_proposals 섹션 추가 → Paul이 approve/reject만",
         "when": "v5.1 크로스세션 통신 완료 직후 (현재 활성 파이프라인 11_paul-master-gpt_0316 종료 시점)"
       }
-    }
+    },
+    "playlist_index": 22
   },
   {
     "video_id": "E0Q96IKXx6Q",
@@ -336,7 +337,8 @@
         "how": "analyze-youtube-v3.py의 LLM 호출 프롬프트 끝에 personal_application 블록 추가. 출력 스키마에 {level, where, what, why, how, when} 5필드 포함. key_takeaways 생성 직후 동일 호출에서 추출.",
         "when": "오늘 analyze-youtube-v3.py 다음 수정 시"
       }
-    }
+    },
+    "playlist_index": 23
   },
   {
     "video_id": "kCc8FmEb1nY",
@@ -449,6 +451,7 @@
           }
         ]
       }
-    }
+    },
+    "playlist_index": 4
   }
 ]
