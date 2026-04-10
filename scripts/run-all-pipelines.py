@@ -13,7 +13,7 @@ Task Scheduler: 매일 05:00 KST (1개 태스크로 통합)
   - "Wake the computer to run this task" 권장
 """
 
-import json, os, subprocess, sys, time
+import json, os, subprocess, sys, time, socket
 from datetime import datetime
 from pathlib import Path
 
@@ -34,9 +34,24 @@ PYTHON = sys.executable
 def log(msg):
     ts = datetime.now().strftime("%H:%M:%S")
     line = f"[{ts}] {msg}"
-    print(line)
+    print(line, flush=True)
     with open(LOG_FILE, "a", encoding="utf-8") as f:
         f.write(line + "\n")
+
+
+def wait_for_network(timeout=120):
+    """DNS가 응답할 때까지 대기. Modern Standby 웨이크 후 네트워크 지연 대응."""
+    log("[NET] 네트워크 연결 확인 중...")
+    deadline = time.time() + timeout
+    while time.time() < deadline:
+        try:
+            socket.create_connection(("8.8.8.8", 53), timeout=3).close()
+            log("[NET] 네트워크 OK")
+            return True
+        except OSError:
+            time.sleep(5)
+    log("[NET] 네트워크 연결 실패 — 타임아웃")
+    return False
 
 
 def ensure_cdp_chrome():
@@ -143,6 +158,11 @@ def _run_main():
     log(f"=== Tech Review 마스터 파이프라인 ({TODAY}) ===")
     log(f"{'='*60}")
 
+    # 네트워크 대기 (Modern Standby 웨이크 후 지연 대응)
+    if not wait_for_network():
+        log("[ABORT] 네트워크 없음 — 종료 (exit 1)")
+        sys.exit(1)
+
     # CDP Chrome 보장 (Daily DR + Twitter에 필요)
     if not ensure_cdp_chrome():
         log("[WARN] CDP 없이 진행 — DR/Twitter 실패 가능")
@@ -184,6 +204,7 @@ def _run_main():
     failed = [n for n, ok in results.items() if not ok]
     if failed:
         log(f"실패: {', '.join(failed)}")
+        sys.exit(1)
     else:
         log("전체 성공")
 
