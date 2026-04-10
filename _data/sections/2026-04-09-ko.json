@@ -1,0 +1,41 @@
+{
+  "date": "2026-04-09",
+  "lang": "ko",
+  "post_url": "/ko/2026/04/09/daily-tech-review/",
+  "post_title": "r/programming LLM 금지령 · 논문 읽은 에이전트가 llama.cpp를 15% 빠르게 · C/C++의 Cargo, craft 공개",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "r/programming의 LLM 콘텐츠 임시 금지: 플랫폼이 아닌 커뮤니티가 먼저 선을 그었다",
+      "lead": "프로그래밍 서브레딧 역사에서 공지 하나가 2,692 추천을 받은 일은 거의 없다. r/programming 모더레이터들이 LLM 생성 콘텐츠에 대한 임시 금지를 선언했고, 282개의 댓글이 달리며 개발자 커뮤니티에서 가장 뜨거운 토론이 됐다. 배경은 단순하다. AI가 생성한 기사, 요약, 코드 설명이 서브레딧에 쏟아지면서 실제 개발자의 경험과 통찰이 묻히기 시작했다. 신호 대 잡음비가 임계점을 넘었다고 판단한 것이다. \"임시\"라는 단서가 붙어 ",
+      "tags": [
+        "opensource",
+        "developer-tools",
+        "llm"
+      ],
+      "anchor": "rprogramming의-llm-콘텐츠-임시-금지-플랫폼이-아닌-커뮤니티가-먼저-선을-그었다"
+    },
+    {
+      "index": 2,
+      "title": "코드만 읽은 에이전트 vs. 논문을 읽은 에이전트: llama.cpp에서 15% 차이가 났다",
+      "lead": "SkyPilot 팀은 하나의 가설을 검증하려 했다. 코딩 에이전트가 논문과 경쟁 프로젝트를 먼저 읽으면 더 나은 최적화를 찾아낼 수 있을까. 실험 대상은 llama.cpp의 CPU 추론 경로였다. 코드베이스만 준 에이전트는 얕은 가설만 내놨다. \"이 두 메모리 패스를 퓨전해야 할까?\", \"이 워크로드는 컴퓨트 바운드인가 메모리 바운드인가?\"라는 질문에 코드만으로는 답이 나오지 않는다는 게 금방 드러났다. 연구 단계를 추가하자 상황이 달라졌다. ",
+      "tags": [
+        "opensource",
+        "developer-tools",
+        "ma"
+      ],
+      "anchor": "코드만-읽은-에이전트-vs-논문을-읽은-에이전트-llamacpp에서-15-차이가-났다"
+    },
+    {
+      "index": 3,
+      "title": "C/C++에도 Cargo가 생겼다: craft",
+      "lead": "Rust 개발자가 C++ 프로젝트를 처음 만질 때 받는 충격이 있다. CMakeLists.txt, FindPackage, 수동 의존성 관리 — Cargo에 익숙해진 손이 멈추는 지점이다. craft는 이 갭을 정면으로 겨냥한 오픈소스 빌드 도구다. craft.toml 파일 하나에 프로젝트를 기술하면 CMake 설정 생성, 의존성 관리, 워크플로우 자동화까지 처리한다. CMake를 대체하는 것이 아니라 CMake 위에 Cargo 같은 경험을 얹는",
+      "tags": [
+        "opensource",
+        "developer-tools"
+      ],
+      "anchor": "cc에도-cargo가-생겼다-craft"
+    }
+  ]
+}
