@@ -1,0 +1,42 @@
+{
+  "date": "2026-04-10",
+  "lang": "ko",
+  "post_url": "/ko/2026/04/10/daily-tech-review/",
+  "post_title": "NASA Artemis II 내결함성 컴퓨터 / ChatGPT $100 Pro 신설 / Claude Code 비용 재배분",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "달까지 가는 컴퓨터는 어떻게 설계하는가",
+      "lead": "우주에서는 재부팅이 없다. NASA가 Artemis II 임무를 위해 내결함성 컴퓨터를 어떻게 구축했는지가 ACM Communications에 공개됐다. Artemis II는 달 궤도를 도는 첫 유인 임무다. 4명의 우주비행사가 탑승한 오리온 캡슐이 지구에서 수십만 킬로미터 떨어진 공간을 비행하는 동안, 하드웨어가 오류를 낸다고 지상에서 달려올 수는 없다. 내결함성 설계란 이 조건에서 출발한다. 단순히 잘 만든 컴퓨터가 아니라, 우주 방사선과 ",
+      "tags": [
+        "chips",
+        "datacenter",
+        "cloud"
+      ],
+      "anchor": "달까지-가는-컴퓨터는-어떻게-설계하는가"
+    },
+    {
+      "index": 2,
+      "title": "ChatGPT $100 Pro 신설: AI 코딩 구독 전쟁의 새 전선",
+      "lead": "OpenAI가 월 $100짜리 ChatGPT Pro 티어를 새로 출시했다. 이름에서 혼란이 시작된다. 이미 $200짜리 \"Pro\"가 존재하는데, 같은 이름의 티어가 하나 더 생겼다. OpenAI의 설명에 따르면 신규 $100 Pro는 코딩 에이전트 Codex 사용량을 Plus 대비 5배 제공하며 \"장시간 고강도 Codex 세션에 최적\"이다. $20 Plus에서 $200 Pro로의 간격이 너무 컸다는 판단인지, 그 사이에 계단을 하나 더 놓은 셈",
+      "tags": [
+        "chips",
+        "datacenter",
+        "cloud"
+      ],
+      "anchor": "chatgpt-100-pro-신설-ai-코딩-구독-전쟁의-새-전선"
+    },
+    {
+      "index": 3,
+      "title": "$100짜리 Claude 구독을 쓰지 않기로 한 이유",
+      "lead": "$100을 내고도 한도에 막힌다는 불만은 조용히 쌓이고 있었다. AMD의 AI 수석 디렉터를 포함해 여러 개발자들이 같은 경험을 공유했고, 한 개발자가 구체적인 대안을 제시했다. 전략은 단순하다. Claude Pro $100을 해지하고 Zed 에디터 $10/월에 OpenRouter $90/월을 예치한다. 총액은 같다. 구조가 다르다. 구독 모델은 월간 윈도우 안에 사용량을 채우지 못하면 소멸된다. OpenRouter는 API 방식으로 사용한 만",
+      "tags": [
+        "chips",
+        "datacenter",
+        "cloud"
+      ],
+      "anchor": "100짜리-claude-구독을-쓰지-않기로-한-이유"
+    }
+  ]
+}
