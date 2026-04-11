@@ -361,25 +361,28 @@ log(f"  프롬프트: {len(claude_prompt)}자")
 for attempt in range(2):
     try:
         prompt_data = Path(prompt_path).read_bytes()
-        # Windows .cmd 래퍼 타임아웃 문제 우회: taskkill /T /F
-        proc = subprocess.Popen(
-            [CLAUDE_CMD, "-p", "--model", "claude-sonnet-4-6", "--output-format", "text"],
-            stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
-            cwd=BLOG,
-        )
-        try:
-            stdout, stderr = proc.communicate(input=prompt_data, timeout=300)
-        except subprocess.TimeoutExpired:
-            subprocess.run(["taskkill", "/T", "/F", "/PID", str(proc.pid)],
-                          capture_output=True, timeout=10)
-            try:
-                proc.wait(timeout=5)
-            except Exception:
-                pass
+        # Windows .cmd 래퍼 타임아웃: threading.Timer + taskkill
+        import threading as _th
+        result = [None]
+        def _run_claude():
+            result[0] = subprocess.run(
+                [CLAUDE_CMD, "-p", "--model", "claude-sonnet-4-6", "--output-format", "text"],
+                input=prompt_data,
+                capture_output=True, timeout=600, cwd=BLOG,
+            )
+        t = _th.Thread(target=_run_claude, daemon=True)
+        t.start()
+        t.join(timeout=300)
+        if t.is_alive():
+            subprocess.run("taskkill /F /IM claude.exe 2>nul",
+                          shell=True, capture_output=True, timeout=10)
             log(f"  [WARN] 타임아웃 (attempt {attempt+1})")
             continue
-
-        output = stdout.decode("utf-8", errors="replace").strip()
+        r = result[0]
+        if not r:
+            log(f"  [FAIL] 결과 없음 (attempt {attempt+1})")
+            continue
+        output = r.stdout.decode("utf-8", errors="replace").strip()
         # 코드블록 감싸기 제거 (```markdown ... ```)
         output = re.sub(r'^```\w*\n', '', output)
         output = re.sub(r'\n```\s*$', '', output)

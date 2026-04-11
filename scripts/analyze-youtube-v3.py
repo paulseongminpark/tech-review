@@ -221,41 +221,53 @@ def structurize(title, transcript):
 
     try:
         full_prompt = prompt + "\n\n순수 JSON만 출력. 마크다운 코드블록 없이."
-        # Windows .cmd 래퍼 + subprocess timeout 문제 우회:
-        # taskkill /T /F로 프로세스 트리 전체 kill
-        proc = subprocess.Popen(
-            [CODEX_CMD, "exec",
-             "-m", "gpt-5.4",
-             "--full-auto",
-             "--skip-git-repo-check",
-             "-o", str(out_file)],
-            stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
-            text=True, encoding="utf-8",
-            cwd=str(BLOG_DIR),
-        )
-        try:
-            stdout, stderr = proc.communicate(input=full_prompt, timeout=300)
-        except subprocess.TimeoutExpired:
-            # taskkill /T로 프로세스 트리 전체 kill (cmd.exe + node 자식 포함)
-            subprocess.run(["taskkill", "/T", "/F", "/PID", str(proc.pid)],
-                          capture_output=True, timeout=10)
-            try:
-                proc.wait(timeout=5)
-            except Exception:
-                pass
+        # Windows .cmd 래퍼: communicate() timeout이 안 먹음
+        # -o 파일로 출력 받고, threading.Timer로 강제 kill
+        import threading as _th
+
+        # 프롬프트를 임시 파일로 전달 (stdin pipe 대신)
+        prompt_file = TMP / f"prompt-struct-{int(time.time())}.txt"
+        prompt_file.write_text(full_prompt, encoding="utf-8")
+
+        result = [None]
+        def _run_codex():
+            result[0] = subprocess.run(
+                [CODEX_CMD, "exec",
+                 "-m", "gpt-5.4",
+                 "--full-auto",
+                 "--skip-git-repo-check",
+                 "-o", str(out_file)],
+                stdin=open(str(prompt_file), "r", encoding="utf-8"),
+                capture_output=True, timeout=600,
+                text=True, encoding="utf-8",
+                cwd=str(BLOG_DIR),
+            )
+
+        t = _th.Thread(target=_run_codex, daemon=True)
+        t.start()
+        t.join(timeout=300)
+        prompt_file.unlink(missing_ok=True)
+
+        if t.is_alive():
+            # 타임아웃 — taskkill로 Codex 프로세스 트리 전체 kill
+            subprocess.run("taskkill /F /IM codex.exe 2>nul & taskkill /F /IM Codex.exe 2>nul",
+                          shell=True, capture_output=True, timeout=10)
             log("    [구조화] Codex 타임아웃 (300초)")
             out_file.unlink(missing_ok=True)
             return None
 
+        r = result[0]
         # 출력 파일 우선, 없으면 stdout
         if out_file.exists():
             raw = out_file.read_text(encoding="utf-8").strip()
             out_file.unlink(missing_ok=True)
+        elif r:
+            raw = (r.stdout or "").strip()
         else:
-            raw = (stdout or "").strip()
+            raw = ""
 
-        if proc.returncode != 0 and not raw:
-            log(f"    [구조화] Codex 실패 (rc={proc.returncode}): {(stderr or '').strip()[:200]}")
+        if r and r.returncode != 0 and not raw:
+            log(f"    [구조화] Codex 실패 (rc={r.returncode}): {(r.stderr or '').strip()[:200]}")
             return None
 
         # JSON 추출
@@ -311,28 +323,33 @@ def generate_apply_points(summary, title):
     try:
         env = os.environ.copy()
         env.pop("ANTHROPIC_API_KEY", None)
-        proc = subprocess.Popen(
-            [CLAUDE_CMD, "-p", "--model", "claude-sonnet-4-6", "--output-format", "json",
-             "--allowedTools", "mcp__memory__recall"],
-            stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
-            cwd=str(BLOG_DIR), env=env,
-        )
-        try:
-            stdout, stderr = proc.communicate(input=prompt.encode("utf-8"), timeout=240)
-        except subprocess.TimeoutExpired:
-            subprocess.run(["taskkill", "/T", "/F", "/PID", str(proc.pid)],
-                          capture_output=True, timeout=10)
-            try:
-                proc.wait(timeout=5)
-            except Exception:
-                pass
+        import threading as _th
+
+        result = [None]
+        def _run_claude():
+            result[0] = subprocess.run(
+                [CLAUDE_CMD, "-p", "--model", "claude-sonnet-4-6", "--output-format", "json",
+                 "--allowedTools", "mcp__memory__recall"],
+                input=prompt.encode("utf-8"),
+                capture_output=True, timeout=600, cwd=str(BLOG_DIR), env=env,
+            )
+
+        t = _th.Thread(target=_run_claude, daemon=True)
+        t.start()
+        t.join(timeout=240)
+
+        if t.is_alive():
+            subprocess.run("taskkill /F /IM claude.exe 2>nul & taskkill /F /IM node.exe /FI \"WINDOWTITLE eq claude*\" 2>nul",
+                          shell=True, capture_output=True, timeout=10)
             log("    [AP] Claude 타임아웃 (240초)")
             return None
 
-        if proc.returncode != 0:
-            log(f"    [AP] CLI 실패 (rc={proc.returncode}): {stderr.decode('utf-8', errors='replace').strip()[:200]}")
+        r = result[0]
+        if not r or r.returncode != 0:
+            stderr = r.stderr.decode("utf-8", errors="replace").strip()[:200] if r else "no result"
+            log(f"    [AP] CLI 실패: {stderr}")
             return None
-        raw = stdout.decode("utf-8", errors="replace").strip()
+        raw = r.stdout.decode("utf-8", errors="replace").strip()
         if not raw:
             log("    [AP] 실패: 빈 응답")
             return None
