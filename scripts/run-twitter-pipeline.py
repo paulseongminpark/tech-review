@@ -30,7 +30,7 @@ sys.stderr.reconfigure(encoding="utf-8")
 def log(msg):
     ts = datetime.now().strftime("%H:%M:%S")
     line = f"[{ts}] {msg}"
-    print(line)
+    print(line, flush=True)
     LOG_FILE.parent.mkdir(exist_ok=True)
     with open(LOG_FILE, "a", encoding="utf-8") as f:
         f.write(line + "\n")

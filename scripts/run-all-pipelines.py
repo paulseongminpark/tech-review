@@ -13,7 +13,7 @@ Task Scheduler: 매일 05:00 KST (1개 태스크로 통합)
   - "Wake the computer to run this task" 권장
 """
 
-import json, os, subprocess, sys, time, socket
+import atexit, json, os, subprocess, sys, time, socket, threading
 from datetime import datetime
 from pathlib import Path
 
@@ -30,13 +30,18 @@ sys.stderr.reconfigure(encoding="utf-8")
 
 PYTHON = sys.executable
 
+LOCK_MAX_AGE = 4 * 3600  # 4시간 이상 된 lock = stale
+
 
 def log(msg):
     ts = datetime.now().strftime("%H:%M:%S")
     line = f"[{ts}] {msg}"
     print(line, flush=True)
-    with open(LOG_FILE, "a", encoding="utf-8") as f:
-        f.write(line + "\n")
+    try:
+        with open(LOG_FILE, "a", encoding="utf-8") as f:
+            f.write(line + "\n")
+    except Exception:
+        pass  # 로그 실패해도 파이프라인은 계속
 
 
 def wait_for_network(timeout=120):
@@ -86,32 +91,45 @@ def ensure_cdp_chrome():
 
 
 def run_step(name, cmd, timeout=3600):
-    """단일 파이프라인 실행"""
+    """단일 파이프라인 실행 — 실시간 로깅"""
     log(f"\n{'='*50}")
     log(f"[{name}] 시작")
     log(f"{'='*50}")
     try:
-        result = subprocess.run(
-            cmd, capture_output=True, text=True,
-            encoding="utf-8", errors="replace",
-            cwd=str(BLOG_DIR), timeout=timeout,
+        proc = subprocess.Popen(
+            cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+            cwd=str(BLOG_DIR), encoding="utf-8", errors="replace",
         )
-        if result.stdout:
-            for line in result.stdout.strip().split("\n"):
-                log(f"  {line}")
-        if result.returncode != 0:
-            log(f"[{name}] 실패 (exit {result.returncode})")
-            if result.stderr:
-                for line in result.stderr.strip().split("\n")[-5:]:
-                    log(f"  ERR: {line}")
+
+        # 실시간으로 stdout 읽어서 로깅 (크래시 전 로그 보존)
+        def _stream_output():
+            try:
+                for line in proc.stdout:
+                    log(f"  {line.rstrip()}")
+            except Exception:
+                pass
+
+        reader = threading.Thread(target=_stream_output, daemon=True)
+        reader.start()
+        proc.wait(timeout=timeout)
+        reader.join(timeout=5)
+
+        if proc.returncode != 0:
+            log(f"[{name}] 실패 (exit {proc.returncode})")
             return False
         log(f"[{name}] 완료")
         return True
     except subprocess.TimeoutExpired:
+        proc.kill()
+        proc.wait(timeout=10)
         log(f"[{name}] 타임아웃 ({timeout}초)")
         return False
     except Exception as e:
         log(f"[{name}] 오류: {e}")
+        try:
+            proc.kill()
+        except Exception:
+            pass
         return False
 
 
@@ -119,22 +137,39 @@ LOCK_FILE = BLOG_DIR / "_tmp" / "master-pipeline.lock"
 
 
 def acquire_lock():
-    """중복 실행 방지. 이미 돌고 있으면 즉시 종료."""
+    """중복 실행 방지. stale lock (4시간+) 자동 제거."""
     LOCK_FILE.parent.mkdir(exist_ok=True)
     if LOCK_FILE.exists():
         try:
             lock_data = json.loads(LOCK_FILE.read_text(encoding="utf-8"))
             lock_pid = lock_data.get("pid", 0)
-            # 프로세스 살아있는지 확인
-            import ctypes
-            kernel32 = ctypes.windll.kernel32
-            handle = kernel32.OpenProcess(0x1000, False, lock_pid)  # PROCESS_QUERY_LIMITED_INFORMATION
-            if handle:
-                kernel32.CloseHandle(handle)
-                log(f"[ABORT] 이미 실행 중 (PID {lock_pid}, 시작: {lock_data.get('started','')})")
-                sys.exit(0)
+            lock_started = lock_data.get("started", "")
+
+            # 타임스탬프 기반 만료 체크 (4시간 이상 = stale)
+            if lock_started:
+                lock_time = datetime.fromisoformat(lock_started)
+                age_sec = (datetime.now() - lock_time).total_seconds()
+                if age_sec > LOCK_MAX_AGE:
+                    log(f"[LOCK] stale lock 제거 (PID {lock_pid}, {age_sec/3600:.1f}시간 전)")
+                    LOCK_FILE.unlink(missing_ok=True)
+                    # stale lock 제거 후 진행
+                else:
+                    # 프로세스 살아있는지 확인
+                    import ctypes
+                    kernel32 = ctypes.windll.kernel32
+                    handle = kernel32.OpenProcess(0x1000, False, lock_pid)
+                    if handle:
+                        kernel32.CloseHandle(handle)
+                        log(f"[ABORT] 이미 실행 중 (PID {lock_pid}, 시작: {lock_started})")
+                        sys.exit(0)
+                    else:
+                        log(f"[LOCK] dead lock 제거 (PID {lock_pid} 죽음)")
+                        LOCK_FILE.unlink(missing_ok=True)
+            else:
+                LOCK_FILE.unlink(missing_ok=True)
         except Exception:
-            pass  # lock 파일 손상 — 무시하고 진행
+            LOCK_FILE.unlink(missing_ok=True)  # 손상된 lock 제거
+
     LOCK_FILE.write_text(json.dumps({
         "pid": os.getpid(),
         "started": datetime.now().isoformat(),
@@ -142,11 +177,15 @@ def acquire_lock():
 
 
 def release_lock():
-    LOCK_FILE.unlink(missing_ok=True)
+    try:
+        LOCK_FILE.unlink(missing_ok=True)
+    except Exception:
+        pass
 
 
 def main():
     acquire_lock()
+    atexit.register(release_lock)  # 비정상 종료 시에도 lock 정리 시도
     try:
         _run_main()
     finally:
