@@ -154,7 +154,8 @@
           }
         ]
       }
-    }
+    },
+    "playlist_index": 20
   },
   {
     "video_id": "DSL6jSzkpIU",
@@ -298,7 +299,8 @@
           }
         ]
       }
-    }
+    },
+    "playlist_index": 21
   },
   {
     "video_id": "Y0wb27QFaFU",
@@ -450,6 +452,18 @@
           }
         ]
       }
-    }
+    },
+    "playlist_index": 21
+  },
+  {
+    "video_id": "dM88BinBwmk",
+    "title": "Why Do They Fear Palantir? (The Invisible Power of the AI ​​Age)",
+    "channel": "백색나무",
+    "published_at": "",
+    "fetched_at": "2026-04-11",
+    "playlist_index": 24,
+    "url": "https://www.youtube.com/watch?v=dM88BinBwmk",
+    "playlist": "insight",
+    "source_type": "youtube"
   }
 ]
