@@ -281,9 +281,12 @@ ALL_VIDEOS.push(...UNIQUE);
 
 const PLAYLIST_ORDER = ['claude', 'build', 'design', 'insight', 'ontology'];
 ALL_VIDEOS.sort((a, b) => {
-  const oa = Math.max(PLAYLIST_ORDER.indexOf(a.playlist), 0);
-  const ob = Math.max(PLAYLIST_ORDER.indexOf(b.playlist), 0);
-  if (oa !== ob) return oa - ob;
+  const fa = a.fetched_at || '';
+  const fb = b.fetched_at || '';
+  if (fa !== fb) return fb.localeCompare(fa);
+  const pa = a.published_at || '';
+  const pb = b.published_at || '';
+  if (pa !== pb) return pb.localeCompare(pa);
   return (a.playlist_index ?? 9999) - (b.playlist_index ?? 9999);
 });
 
