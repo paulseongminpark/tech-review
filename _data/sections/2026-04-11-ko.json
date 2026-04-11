@@ -1,0 +1,39 @@
+{
+  "date": "2026-04-11",
+  "lang": "ko",
+  "post_url": "/ko/2026/04/11/daily-tech-review/",
+  "post_title": "우크라이나 지상 로봇 2만 1천 건의 임무, 사라지는 언어의 지식 지도, WireGuard Windows 복귀",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "우크라이나, 지상 로봇으로 2만 1천 건의 임무를 수행하다",
+      "lead": "우크라이나 국방부가 2026년 1분기 수치를 공개했다. 지상 무인 차량(UGV)이 분기 전체에서 2만 1,500건의 임무를 수행했고, 3월 한 달에만 9,000건을 넘겼다. 지난해 11월 2,900건이었으니 5개월 만에 세 배가 된 셈이다. 사용 부대 수도 67개에서 167개로 급증했다.",
+      "tags": [
+        "enterprise",
+        "regulation"
+      ],
+      "anchor": "우크라이나-지상-로봇으로-2만-1천-건의-임무를-수행하다"
+    },
+    {
+      "index": 2,
+      "title": "연간 9개 언어와 함께 사라지는 지식을 지도에 올리다",
+      "lead": "연간 9개 언어가 소멸하고 있다. 언어학적 손실이 아니다. 그 언어들이 담고 있는 생태학, 화재 관리, 항법, 의학, 천문학, 농업, 수문학, 날씨 예측 지식이 함께 사라지는 것이다. Deep Time Research Institute가 공개한 Knowledge Extinction Dashboard는 이 손실을 지도와 도메인 분류로 시각화한다.",
+      "tags": [
+        "enterprise",
+        "regulation"
+      ],
+      "anchor": "연간-9개-언어와-함께-사라지는-지식을-지도에-올리다"
+    },
+    {
+      "index": 3,
+      "title": "WireGuard, 관료주의를 뚫고 Windows로 돌아오다",
+      "lead": "WireGuard for Windows가 오랜 공백 끝에 v0.6과 커널 드라이버 WireGuardNT v0.11을 동시에 출시했다. 업데이트가 멈춰 있었던 이유는 새 NT 커널 드라이버를 Microsoft에 서명 요청했을 때 계정이 정지되었기 때문이다. 개발자 Jason Donenfeld가 Hacker News 댓글에서 처음 이를 공개했고, 이후 Twitter에서도 알렸다. 인터넷 반응이 커지자 Microsoft가 하루 만에 계정을 복구했다.",
+      "tags": [
+        "enterprise",
+        "regulation"
+      ],
+      "anchor": "wireguard-관료주의를-뚫고-windows로-돌아오다"
+    }
+  ]
+}
