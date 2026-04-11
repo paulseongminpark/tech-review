@@ -360,12 +360,28 @@ log(f"  프롬프트: {len(claude_prompt)}자")
 
 for attempt in range(2):
     try:
-        with open(prompt_path, "r", encoding="utf-8") as pf:
-            result = subprocess.run(
-                [CLAUDE_CMD, "-p", "--model", "claude-sonnet-4-6", "--output-format", "text"],
-                stdin=pf, capture_output=True, timeout=300, cwd=BLOG
-            )
-        output = result.stdout.decode("utf-8", errors="replace").strip()
+        prompt_data = Path(prompt_path).read_bytes()
+        # Windows .cmd 래퍼 타임아웃 문제 우회: CREATE_NEW_PROCESS_GROUP
+        proc = subprocess.Popen(
+            [CLAUDE_CMD, "-p", "--model", "claude-sonnet-4-6", "--output-format", "text"],
+            stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+            cwd=BLOG,
+            creationflags=subprocess.CREATE_NEW_PROCESS_GROUP,
+        )
+        try:
+            stdout, stderr = proc.communicate(input=prompt_data, timeout=300)
+        except subprocess.TimeoutExpired:
+            import signal
+            try:
+                os.kill(proc.pid, signal.CTRL_BREAK_EVENT)
+            except Exception:
+                pass
+            proc.kill()
+            proc.wait(timeout=10)
+            log(f"  [WARN] 타임아웃 (attempt {attempt+1})")
+            continue
+
+        output = stdout.decode("utf-8", errors="replace").strip()
         # 코드블록 감싸기 제거 (```markdown ... ```)
         output = re.sub(r'^```\w*\n', '', output)
         output = re.sub(r'\n```\s*$', '', output)
@@ -380,8 +396,6 @@ for attempt in range(2):
             break
         else:
             log(f"  [WARN] 출력 부족 ({len(output)}자), retry...")
-    except subprocess.TimeoutExpired:
-        log(f"  [WARN] 타임아웃 (attempt {attempt+1})")
     except Exception as e:
         log(f"  [FAIL] {e}")
         break

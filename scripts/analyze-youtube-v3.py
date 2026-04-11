@@ -221,28 +221,43 @@ def structurize(title, transcript):
 
     try:
         full_prompt = prompt + "\n\n순수 JSON만 출력. 마크다운 코드블록 없이."
-        result = subprocess.run(
+        # Windows .cmd 래퍼 + subprocess timeout 문제 우회:
+        # CREATE_NEW_PROCESS_GROUP으로 프로세스 그룹 생성 → 타임아웃 시 그룹 전체 kill
+        proc = subprocess.Popen(
             [CODEX_CMD, "exec",
              "-m", "gpt-5.4",
              "--full-auto",
              "--skip-git-repo-check",
              "-o", str(out_file)],
-            input=full_prompt,
-            capture_output=True, timeout=300,
+            stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
             text=True, encoding="utf-8",
             cwd=str(BLOG_DIR),
+            creationflags=subprocess.CREATE_NEW_PROCESS_GROUP,
         )
+        try:
+            stdout, stderr = proc.communicate(input=full_prompt, timeout=300)
+        except subprocess.TimeoutExpired:
+            # 프로세스 그룹 전체 kill (cmd.exe + node 자식 포함)
+            import signal
+            try:
+                os.kill(proc.pid, signal.CTRL_BREAK_EVENT)
+            except Exception:
+                pass
+            proc.kill()
+            proc.wait(timeout=10)
+            log("    [구조화] Codex 타임아웃 (300초)")
+            out_file.unlink(missing_ok=True)
+            return None
 
         # 출력 파일 우선, 없으면 stdout
         if out_file.exists():
             raw = out_file.read_text(encoding="utf-8").strip()
             out_file.unlink(missing_ok=True)
         else:
-            raw = (result.stdout or "").strip()
+            raw = (stdout or "").strip()
 
-        if result.returncode != 0 and not raw:
-            stderr = (result.stderr or "").strip()[:200]
-            log(f"    [구조화] Codex 실패 (rc={result.returncode}): {stderr}")
+        if proc.returncode != 0 and not raw:
+            log(f"    [구조화] Codex 실패 (rc={proc.returncode}): {(stderr or '').strip()[:200]}")
             return None
 
         # JSON 추출
@@ -253,10 +268,6 @@ def structurize(title, transcript):
             raw = m.group(0)
         return json.loads(raw)
 
-    except subprocess.TimeoutExpired:
-        log("    [구조화] Codex 타임아웃 (300초)")
-        out_file.unlink(missing_ok=True)
-        return None
     except json.JSONDecodeError as e:
         log(f"    [구조화] JSON 파싱 실패: {e}")
         return None
@@ -302,18 +313,30 @@ def generate_apply_points(summary, title):
     try:
         env = os.environ.copy()
         env.pop("ANTHROPIC_API_KEY", None)
-        result = subprocess.run(
+        proc = subprocess.Popen(
             [CLAUDE_CMD, "-p", "--model", "claude-sonnet-4-6", "--output-format", "json",
              "--allowedTools", "mcp__memory__recall"],
-            input=prompt.encode("utf-8"),
-            capture_output=True, timeout=240, cwd=str(BLOG_DIR),
-            env=env,
+            stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+            cwd=str(BLOG_DIR), env=env,
+            creationflags=subprocess.CREATE_NEW_PROCESS_GROUP,
         )
-        if result.returncode != 0:
-            stderr = result.stderr.decode("utf-8", errors="replace").strip()[:200]
-            log(f"    [AP] CLI 실패 (rc={result.returncode}): {stderr}")
+        try:
+            stdout, stderr = proc.communicate(input=prompt.encode("utf-8"), timeout=240)
+        except subprocess.TimeoutExpired:
+            import signal
+            try:
+                os.kill(proc.pid, signal.CTRL_BREAK_EVENT)
+            except Exception:
+                pass
+            proc.kill()
+            proc.wait(timeout=10)
+            log("    [AP] Claude 타임아웃 (240초)")
             return None
-        raw = result.stdout.decode("utf-8", errors="replace").strip()
+
+        if proc.returncode != 0:
+            log(f"    [AP] CLI 실패 (rc={proc.returncode}): {stderr.decode('utf-8', errors='replace').strip()[:200]}")
+            return None
+        raw = stdout.decode("utf-8", errors="replace").strip()
         if not raw:
             log("    [AP] 실패: 빈 응답")
             return None
