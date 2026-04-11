@@ -225,6 +225,7 @@ def structurize(title, transcript):
             [CODEX_CMD, "exec",
              "-m", "gpt-5.4",
              "--full-auto",
+             "--skip-git-repo-check",
              "-o", str(out_file)],
             input=full_prompt,
             capture_output=True, timeout=300,
