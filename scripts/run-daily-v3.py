@@ -361,23 +361,21 @@ log(f"  프롬프트: {len(claude_prompt)}자")
 for attempt in range(2):
     try:
         prompt_data = Path(prompt_path).read_bytes()
-        # Windows .cmd 래퍼 타임아웃 문제 우회: CREATE_NEW_PROCESS_GROUP
+        # Windows .cmd 래퍼 타임아웃 문제 우회: taskkill /T /F
         proc = subprocess.Popen(
             [CLAUDE_CMD, "-p", "--model", "claude-sonnet-4-6", "--output-format", "text"],
             stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
             cwd=BLOG,
-            creationflags=subprocess.CREATE_NEW_PROCESS_GROUP,
         )
         try:
             stdout, stderr = proc.communicate(input=prompt_data, timeout=300)
         except subprocess.TimeoutExpired:
-            import signal
+            subprocess.run(["taskkill", "/T", "/F", "/PID", str(proc.pid)],
+                          capture_output=True, timeout=10)
             try:
-                os.kill(proc.pid, signal.CTRL_BREAK_EVENT)
+                proc.wait(timeout=5)
             except Exception:
                 pass
-            proc.kill()
-            proc.wait(timeout=10)
             log(f"  [WARN] 타임아웃 (attempt {attempt+1})")
             continue
 

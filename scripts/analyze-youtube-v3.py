@@ -222,7 +222,7 @@ def structurize(title, transcript):
     try:
         full_prompt = prompt + "\n\n순수 JSON만 출력. 마크다운 코드블록 없이."
         # Windows .cmd 래퍼 + subprocess timeout 문제 우회:
-        # CREATE_NEW_PROCESS_GROUP으로 프로세스 그룹 생성 → 타임아웃 시 그룹 전체 kill
+        # taskkill /T /F로 프로세스 트리 전체 kill
         proc = subprocess.Popen(
             [CODEX_CMD, "exec",
              "-m", "gpt-5.4",
@@ -232,19 +232,17 @@ def structurize(title, transcript):
             stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
             text=True, encoding="utf-8",
             cwd=str(BLOG_DIR),
-            creationflags=subprocess.CREATE_NEW_PROCESS_GROUP,
         )
         try:
             stdout, stderr = proc.communicate(input=full_prompt, timeout=300)
         except subprocess.TimeoutExpired:
-            # 프로세스 그룹 전체 kill (cmd.exe + node 자식 포함)
-            import signal
+            # taskkill /T로 프로세스 트리 전체 kill (cmd.exe + node 자식 포함)
+            subprocess.run(["taskkill", "/T", "/F", "/PID", str(proc.pid)],
+                          capture_output=True, timeout=10)
             try:
-                os.kill(proc.pid, signal.CTRL_BREAK_EVENT)
+                proc.wait(timeout=5)
             except Exception:
                 pass
-            proc.kill()
-            proc.wait(timeout=10)
             log("    [구조화] Codex 타임아웃 (300초)")
             out_file.unlink(missing_ok=True)
             return None
@@ -318,18 +316,16 @@ def generate_apply_points(summary, title):
              "--allowedTools", "mcp__memory__recall"],
             stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
             cwd=str(BLOG_DIR), env=env,
-            creationflags=subprocess.CREATE_NEW_PROCESS_GROUP,
         )
         try:
             stdout, stderr = proc.communicate(input=prompt.encode("utf-8"), timeout=240)
         except subprocess.TimeoutExpired:
-            import signal
+            subprocess.run(["taskkill", "/T", "/F", "/PID", str(proc.pid)],
+                          capture_output=True, timeout=10)
             try:
-                os.kill(proc.pid, signal.CTRL_BREAK_EVENT)
+                proc.wait(timeout=5)
             except Exception:
                 pass
-            proc.kill()
-            proc.wait(timeout=10)
             log("    [AP] Claude 타임아웃 (240초)")
             return None
 
