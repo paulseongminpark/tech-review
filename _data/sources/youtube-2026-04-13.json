@@ -151,7 +151,8 @@
           }
         ]
       }
-    }
+    },
+    "playlist_index": 0
   },
   {
     "video_id": "l5Diqeoffa4",
@@ -307,6 +308,7 @@
           }
         ]
       }
-    }
+    },
+    "playlist_index": 1
   }
 ]
