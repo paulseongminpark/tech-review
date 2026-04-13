@@ -2,41 +2,30 @@
   "date": "2026-04-13",
   "lang": "ko",
   "post_url": "/ko/2026/04/13/daily-tech-review/",
-  "post_title": "AI 에이전트 벤치마크 전부가 뚫렸다 / $165로 25종 mRNA 모델 학습 / 뉴욕 지하철 800대가 재즈를 연주하는 법",
+  "post_title": "AI 벤치마크 8개 전부 해킹됐다 / Claude Mythos, 198건으로 '수천 건' 주장",
   "source_type": "perplexity",
   "sections": [
     {
       "index": 1,
-      "title": "AI 에이전트 벤치마크 전부가 뚫렸다",
-      "lead": "UC 버클리 RDI 팀은 자동화된 스캐닝 에이전트로 8개 주요 AI 에이전트 벤치마크를 감사했다. 결론은 간단했다 — SWE-bench, WebArena, OSWorld, GAIA, Terminal-Bench, FieldWorkArena, CAR-bench 모두 해킹 가능했다. 에이전트는 단 한 번의 LLM 호출도 없이, 실제 태스크는 하나도 풀지 않고 거의 만점을 기록했다. Terminal-Bench 89개 태스크에서 100%, SWE-ben",
+      "title": "벤치마크는 전부 뚫렸다",
+      "lead": "버클리 RDI(Center for Responsible, Decentralized Intelligence) 연구팀은 AI 에이전트 평가에 가장 많이 쓰이는 8개 벤치마크—SWE-bench, WebArena, OSWorld, GAIA, Terminal-Bench, FieldWorkArena, CAR-bench—를 자동으로 감사하는 에이전트를 만들었다. 결론은 단순했다: 단 하나의 태스크도 실제로 풀지 않고 모든 벤치마크에서 만점에 가까운 점수를 ",
       "tags": [
         "ai-models",
         "research",
         "benchmarks"
       ],
-      "anchor": "ai-에이전트-벤치마크-전부가-뚫렸다"
+      "anchor": "벤치마크는-전부-뚫렸다"
     },
     {
       "index": 2,
-      "title": "$165로 25종에 걸친 mRNA 언어 모델 학습",
-      "lead": "OpenMed 팀이 HuggingFace 블로그에 올린 글은 조용하지만 무게감 있는 수치를 담고 있다. 25개 생물 종의 mRNA 언어 모델을 $165에 학습했다. 파이프라인은 ESMFold를 사용한 단백질 구조 예측, 서열 설계, 코돈 최적화 단계로 구성됐으며 30개의 단백질 체인을 직접 처리했다. 언어 모델링이 뉴클레오타이드 서열에도 적용되는 건 이미 알려진 방향이었다. 그러나 종간 비교 모델 학습이 대형 기관의 고비용 연산 자원 없이도 가",
+      "title": "Claude Mythos: \"수천 개의 제로데이\"는 198건 검토에서 나왔다",
+      "lead": "Anthropic은 Claude Mythos가 \"수천 건의 심각한 제로데이\"를 발견할 수 있다고 발표했다. Tom's Hardware는 이 주장이 실제로는 198건의 수동 검토에만 근거한다고 지적했다. \"수천 건\"과 198건 사이의 간극이 어떻게 만들어졌는지가 핵심이다.",
       "tags": [
         "ai-models",
         "research",
         "benchmarks"
       ],
-      "anchor": "165로-25종에-걸친-mrna-언어-모델-학습"
-    },
-    {
-      "index": 3,
-      "title": "뉴욕 지하철 800대에게 악기를 하나씩 줬다",
-      "lead": "Train Jazz는 뉴욕 지하철 실시간 운행 데이터를 음악으로 변환한다. 약 800대의 열차 각각이 하나의 악기를 맡는다 — 워킹 베이스, 피아노, 색소폰, 비브라폰, 브러시. 열차가 노선 위 어디에 있느냐가 정확히 음표의 위치를 결정한다. 러시아워에는 화음이 빽빽하게 채워지고, 새벽 3시에는 침묵이 길어진다. 지금 이 순간 울리는 음악은 이전에 없었고 이후에도 없을 것이다 — 실시간 데이터가 반복 불가능한 즉흥 연주를 무한 생성하는 구조다.",
-      "tags": [
-        "ai-models",
-        "research",
-        "benchmarks"
-      ],
-      "anchor": "뉴욕-지하철-800대에게-악기를-하나씩-줬다"
+      "anchor": "claude-mythos-수천-개의-제로데이는-198건-검토에서-나왔다"
     }
   ]
 }
