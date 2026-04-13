@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "AI 벤치마크 8개 전부 해킹됐다 / Claude Mythos, 198건으로 '수천 건' 주장"
+title: "AI 벤치마크 8개 전부 해킹됐다 / Claude Mythos, 198건으로 '수천 건' 주장 / $165로 25종 mRNA 언어 모델 학습"
 date: 2026-04-13
 lang: ko
 permalink: /ko/2026/04/13/daily-tech-review/
@@ -11,7 +11,7 @@ source_type: free-sources
 
 ## Today in One Line
 
-AI 역량 측정의 두 기둥이 같은 날 흔들렸다. 버클리 연구팀은 주요 에이전트 벤치마크 8개 전부를 실제 문제 해결 없이 만점으로 해킹할 수 있음을 증명했고, Tom's Hardware는 Anthropic이 Claude Mythos의 보안 능력을 198건의 수동 검토만으로 "수천 건의 제로데이"로 포장했다고 지적했다. 측정 도구가 신뢰를 잃으면, 그 위에 세워진 모든 주장도 함께 흔들린다.
+AI 역량 측정의 두 기둥이 같은 날 흔들렸다. 버클리 연구팀은 주요 에이전트 벤치마크 8개 전부를 실제 문제 해결 없이 만점으로 해킹할 수 있음을 증명했고, Tom's Hardware는 Anthropic이 Claude Mythos의 보안 능력을 198건의 수동 검토만으로 "수천 건의 제로데이"로 포장했다고 지적했다. 한편 $165로 25종의 mRNA 언어 모델을 학습한 팀이 있다 — 측정이 흔들리는 동안, 실제 과학 문제에 모델을 투입한 결과물은 조용히 쌓이고 있다.
 
 ---
 
@@ -51,6 +51,23 @@ Anthropic은 Claude Mythos가 "수천 건의 심각한 제로데이"를 발견�
 **What's next:** 독립 감사나 방법론 공개 없이 Claude Mythos의 보안 역량 주장은 논쟁 상태로 남는다. 벤치마크도 못 믿고 마케팅도 못 믿는 상황에서, 실제 배포 환경에서 쌓이는 피드백만이 남는다.
 
 **Source:** [Anthropic's Claude Mythos isn't a sentient super-hacker, it's a sales pitch](https://www.tomshardware.com/tech-industry/artificial-intelligence/anthropics-claude-mythos-isnt-a-sentient-super-hacker-its-a-sales-pitch-claims-of-thousands-of-severe-zero-days-rely-on-just-198-manual-reviews)
+
+벤치마크도, 마케팅도 신뢰할 수 없다면 — 실제 과학 문제에 모델을 투입한 결과물이 남는다.
+
+## 3. $165로 25종에 걸친 mRNA 언어 모델 학습
+
+OpenMed 팀이 HuggingFace 블로그에 올린 글은 숫자부터 눈길을 끈다. 25개 생물 종의 mRNA 코돈 최적화 모델을, AWS 스팟 인스턴스 기준 $165에 학습했다. A100 80GB GPU 4장으로 총 55시간 — 멀티스피시즈 베이스 모델 48시간, 종별 파인튜닝 7시간이었다. 파이프라인은 ESMFold 단백질 구조 예측, ProteinMPNN 역접힘 서열 설계, CodonRoBERTa 코돈 최적화 세 단계로 구성됐다.
+
+아키텍처 비교에서 흥미로운 결과가 나왔다. NLP에서 강세인 ModernBERT를 그대로 가져왔더니 perplexity가 26.24로, 처음부터 생물학 데이터로 학습한 CodonRoBERTa(4.01)보다 6배 이상 나빴다. NLP 사전학습 가중치가 코돈 패턴 학습을 오히려 방해한다는 뜻이다. 또 하나의 발견 — 하이퍼파라미터 튜닝(학습률 1e-4→5e-5, 워밍업 확대)으로 CAI 상관계수가 0.025에서 0.404로 16배 뛰었지만, perplexity는 거의 변하지 않았다. MLM loss만으로는 생물학적 유의미성을 측정할 수 없다는 뜻이다.
+
+**Why it matters:** $165는 단순한 비용 절감 이야기가 아니다. 381,283개 CDS 서열을 69개 코돈 + 25개 종 토큰으로 엮어 하나의 유니버설 모델로 만들었고, 데이터가 8,500개뿐인 대장균에서도 전이 학습이 작동했다. mRNA 백신 최적화나 신약 후보 탐색처럼 연산 비용이 진입 장벽이었던 영역에서, 대형 기관 바깥의 연구자가 종간 일반화 실험을 할 수 있게 됐다는 것이 핵심이다.
+
+- ModernBERT 실패는 도메인 특화 학습의 필요성을 수치로 증명했다
+- 6종의 312M/92M 파라미터 모델이 Apache 2.0으로 공개 예정이다
+
+**What's next:** 비용 접근성이 생물학적 유효성으로 연결되는지가 다음 검증 지점이다. 이 파이프라인이 실제 신약 후보 탐색 사이클에 투입됐을 때 어떤 출력 품질을 내는지, 아직 답이 없다.
+
+**Source:** [Training mRNA Language Models Across 25 Species for $165](https://huggingface.co/blog/OpenMed/training-mrna-models-25-species)
 
 ---
 
