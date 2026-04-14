@@ -1,7 +1,4 @@
 ---
-
-```markdown
----
 layout: post
 title: "저커버그 AI 분신 / MS 에이전트 라이선스 구상 / 오라클 알고리즘 감원 논란"
 date: 2026-04-14
