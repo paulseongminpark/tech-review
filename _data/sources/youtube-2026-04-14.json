@@ -173,7 +173,8 @@
           }
         ]
       }
-    }
+    },
+    "playlist_index": 25
   },
   {
     "video_id": "TlpFc7x8SHo",
@@ -332,7 +333,8 @@
           }
         ]
       }
-    }
+    },
+    "playlist_index": 27
   },
   {
     "video_id": "zVEb19AwkqM",
@@ -471,6 +473,29 @@
           }
         ]
       }
-    }
+    },
+    "playlist_index": 28
+  },
+  {
+    "video_id": "w1QD28jkeAg",
+    "title": "AI 에이전트로 매출 100억 만든 스타트업 | 인핸스 이승현",
+    "channel": "EO Korea",
+    "published_at": "",
+    "fetched_at": "2026-04-14",
+    "playlist_index": 26,
+    "url": "https://www.youtube.com/watch?v=w1QD28jkeAg",
+    "playlist": "insight",
+    "source_type": "youtube"
+  },
+  {
+    "video_id": "5G6f8SyJotw",
+    "title": "2026.04.08 학습은 망각의 과정 - LLM 훈련과 손실 압축 - 학습은 망각이다  AI를 이해하는 새로운 방법",
+    "channel": "Ki-jung Kim (akaslany)",
+    "published_at": "",
+    "fetched_at": "2026-04-14",
+    "playlist_index": 29,
+    "url": "https://www.youtube.com/watch?v=5G6f8SyJotw",
+    "playlist": "insight",
+    "source_type": "youtube"
   }
 ]
