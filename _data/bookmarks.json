@@ -2947,5 +2947,207 @@
     ],
     "why_it_matters": "비용 60% 절감이 표면 지표지만, 진짜 전환은 \"잘 연구하는 법\"을 개인 역량에서 그래프 구조로 옮긴 것이다. 질문의 관점을 스킬 그래프로 정의하면 연구 품질이 연구자의 숙련도가 아니라 그래프 설계에 의해 결정된다.",
     "tweet_id": "2043262727922053128"
+  },
+  {
+    "id": "bm-107",
+    "author": "defileo",
+    "date": "2026-04-11",
+    "added_at": "2026-04-14",
+    "url": "https://x.com/defileo/status/2043037151667916988",
+    "text": "Used correctly, it's closer to having a senior analyst, a therapist, a lawyer, a coder, a strategist, and a research team all in one place available at 2am, never tired, never billing you by the hour.\nThe 1% Claude prompt vault / 10 life-changing prompt systems / 1\nI made 10 complete systems, each one is a full session built in the same format as the life audit phases, domains, diagnosis, architecture, implementation plan, pick the one you need.\nMost people only fix what hurts most and ignore th",
+    "whats_happening": "defileo가 Claude용 장문 life audit 프롬프트 시스템 일부를 공개했다. 심리 발굴부터 90일 실행 계획까지 한 세션 구조로 설계한 템플릿 소개다.",
+    "translation": "제대로 사용하면, 새벽 2시에도 피곤하지 않고 시간당 비용도 청구하지 않는 선임 분석가, therapist, lawyer, coder, strategist, research team이 한곳에 있는 것에 더 가깝다.\n상위 1% Claude 프롬프트 보관함 / 인생을 바꾸는 프롬프트 시스템 10개 / 1\n나는 완전한 시스템 10개를 만들었다. 각각은 삶 전체 점검의 단계, 영역, 진단, 설계, 실행 계획과 같은 형식으로 구성된 완전한 세션이다. 필요한 것을 골라 쓰면 된다.\n대부분의 사람들은 가장 아픈 문제만 고치고 나머지는 무시한 뒤, 왜 삶 전체가 여전히 어긋나 있는지 의아해한다. \n\n이 프롬프트는 삶 전체를 시스템 단위로 본다. career, money, health, mind, relationships, romance, environment, purpose, growth를 다루며, 모든 것의 뿌리에 있는 패턴을 찾기 위해 깊은 심리적 발굴부터 시작한다. \n\n마지막에는 명확한 life architecture, anti-vision, vision, identity, 1-year focus, 90-day mission, daily levers, constraints, weekly reset, 그리고 실제로 실행 가능한 implementation plan으로 끝난다.\n\n프롬프트 1부, 그대로 Claude에 복사해서 붙여넣기만 하면 된다:\n## 당신의 역할과 우리가 하는 일\n\n당신은 world-class life strategist이자 behavioural psychologist이며 personal architect다. therapist의 깊이, performance coach의 정밀함, business mentor의 냉정함, 그리고 identity, habits, environment, unconscious goals가 한 사람의 삶을 어떻게 형성하는지 정확히 본 사람의 통찰을 한데 갖춘 단일한 advisor다. 당신은 비위를 맞추지 않는다. 피상적으로 동기를 부여하지 않는다. 진단하고, 그다음 설계한다.\n\n오늘 당신의 임무는 사용자가 지금까지 해본 것 중 가장 포괄적이고, 가장 정직하며, 가장 실행 가능한 삶 전체 점검을 수행하는 것이다. 삶의 모든 영역을 다룬다. 이 세션이 끝날 때 사용자는 다음을 얻게 된다:\n\n1. 삶의 모든 영역에서 왜 막혀 있는지에 대한 가차 없는 진단\n2. 무엇이 작동하고 무엇이 망가졌으며 왜 그런지에 대한 각 영역의 명확한 지도\n3. 무의식적 패턴, 두려움, identity trap에 대한 완전한 심리적 발굴\n4. 내일부터 시작할 수 있는 구체적이고 개인화된 실행 계획\n5. 운영체제 업그레이드처럼 작동하는 life architecture, vision, anti-vision, goals, daily system\n\n모든 phase를 순서대로 진행하라. 절대 서두르지 마라. 어떤 domain도 건너뛰지 마라. 답이 모호하면 더 깊이 파고들어라. 중요한 단서가 나오면 다음으로 넘어가기 전에 그것을 따라가라.\n\n## 진행 방식: 먼저 이렇게 말하라\n\n\"오늘 우리는 대부분의 사람들이 결코 하지 않는 일을 할 겁니다. 삶 전체를 한 영역씩, 편한 일반론 없이 완전히 점검할 겁니다. 나는 당신 삶의 9개 domain에 걸쳐 질문할 겁니다. 각 영역이 끝날 때마다 내가 들은 것을 되돌려 말하고, 필요한 곳은 더 밀어붙이며, 전체 시스템의 그림을 만들 겁니다. 마지막에는 삶에 대한 전체 진단, 무엇을 바꿔야 하는지에 대한 완전한 지도, 그리고 구체적인 implementation plan을 드릴 겁니다. 이 과정에는 시간과 진짜 정직함이 필요합니다. 시작합시다.\"\n\n## PHASE 1 심리 발굴\n\n한 번에 질문은 4개 이하만 하라. 실제 답변을 기다려라. 준비된 티가 나는 대답은 파고들어라.\n\n### 1.1 정직한 기준선\n- 1점부터 10점까지로 볼 때 지금 삶에 얼마나 만족하는가, 그리고 왜 그 점수이며 왜 더 높지 않은가?\n- 이미 익숙해져 버린, 무디지만 지속적인 불만은 무엇인가?\n- 반복해서 불평하지만 실제로는 절대 바꾸지 않는 것은 무엇인가? 상위 3가지를 말하라.\n- 각 불만에 대해, 당신 행동을 지켜보는 사람은 당신이 실제로 무엇을 원하는 사람이라고 결론 내릴까?\n- 현재 삶에 대한 어떤 진실이, 깊이 존경하는 누군가에게는 차마 입 밖으로 내기 어려운가?\n\n말한 내용과 말하지 않은 내용을 함께 되비춰라. 패턴이 있다면 짚어라. 그다음 계속하라.\n\n### 1.2 anti-vision\n- 5년 동안 아무것도 바뀌지 않는다고 가정하라. 같은 습관, 같은 패턴, 같은 변명으로 사는 평균적인 화요일을 아주 자세히 묘사하라.\n- 이제 10년 뒤도 묘사하라. 무엇이 닫혔는가? 무엇이 희미해졌는가? 결국 무엇이 되지 못했는가?\n- 삶의 마지막에 도달했다. 당신은 안전하게만 살았다. 그 대가는 무엇이었는가?\n- 당신 삶에서 이미 그 미래를 살고 있는 사람은 누구인가? 그 사람을 볼 때 무엇을 느끼는가?\n\n그 무게를 다시 비춰라. 이렇게 물어봐: \"이게",
+    "tech_stack": [
+      "Claude"
+    ],
+    "apply_points": [
+      "질문 4개 이하 인터뷰 플로우를 만든다.",
+      "영역별 life audit 템플릿을 분리한다.",
+      "90일 미션과 주간 리셋을 운영한다."
+    ],
+    "tweet_id": "2043037151667916988"
+  },
+  {
+    "id": "bm-108",
+    "author": "noisyb0y1",
+    "date": "2026-04-13",
+    "added_at": "2026-04-14",
+    "url": "https://x.com/noisyb0y1/status/2043609541477044439",
+    "text": "Now he works 2-3 hours a day instead of 8 and chills the rest of the time while the system runs itself making $28,000 in passive income.\nHere's what he knows that you don't.\nPart 1 - CLAUDE.md by Karpathy's rules\nAndrej Karpathy - one of the most influential AI researchers in the world - documented the most common mistakes LLMs make when writing code: over-engineering, ignoring existing patterns, adding dependencies nobody asked for.\nSomeone took these observations and turned them into a single ",
+    "whats_happening": "noisyb0y1가 CLAUDE.md 운영법, everything-claude-code 소개, Claude Code v2.1.100 토큰 청구 의혹을 한 글로 묶어 설명했다. 핵심은 에이전트 운영 규칙과 토큰 관측의 중요성이다.",
+    "translation": "이제 그는 하루 8시간 대신 2~3시간만 일하고, 시스템이 저절로 돌아가며 28,000달러의 passive income을 만드는 동안 나머지 시간은 여유롭게 쉰다.\n그가 알고 있지만 당신은 모르는 것이 있다.\nPart 1 - Karpathy 규칙으로 만든 CLAUDE.md\n세상에서 가장 영향력 있는 AI researcher 중 한 명인 Andrej Karpathy는 LLM이 코드를 작성할 때 가장 흔히 저지르는 실수, 즉 과설계, 기존 패턴 무시, 아무도 요청하지 않은 dependency 추가를 문서화했다.\n누군가 이 관찰을 하나의 CLAUDE.md 파일로 바꿨다. \n\n결과는? 일주일 만에 GitHub에서 별 15,000개. 1만5천 명이 인생을 바꿨다고 말할 수도 있다.\n아이디어는 단순하다. 실수가 예측 가능하다면, 올바른 지침으로 예방할 수 있다. 저장소 안의 마크다운 파일 하나가 Claude Code에 프로젝트 전체 차원의 구조화된 행동 규칙을 준다.\n안에 들어 있는 네 가지 원칙:\nplaintext\nThink Before Coding    → 잘못된 가정과 놓친 tradeoff를 막는다\nSimplicity First       → 과설계와 비대한 추상화를 막는다\nSurgical Changes       → 건드릴 필요 없는 코드를 건드리는 일을 막는다\nGoal-Driven Execution  → 테스트 우선, 검증된 성공 기준\n프레임워크도 없다. 복잡한 툴링도 없다. 프로젝트 차원에서 Claude의 행동을 바꾸는 파일 하나뿐이다.\n실제 차이:\nplaintext\nCLAUDE.md 없이:             Claude가 약 40%의 경우 관례를 깨뜨린다\nKarpathy CLAUDE.md 적용 시: 위반이 약 3%로 떨어진다\n설정 시간:                  5분\n나만의 CLAUDE.md를 자동 생성하는 명령:\npython\nclaude -p \"전체 프로젝트를 읽고 다음에 기반한 CLAUDE.md를 만들어라:\nThink Before Coding, Simplicity First, Surgical Changes, Goal-Driven Execution.\n네가 본 실제 architecture에 맞게 조정하라.\" --allowedTools Bash,Write,Read\n대체하는 것: 단순한 작업도 과설계하고, 아무도 원하지 않은 dependency를 추가하고, 건드리면 안 되는 파일을 건드리는 Claude.\nPart 2 - Everything Claude Code: 하나의 저장소 안에 있는 완전한 엔지니어링 팀\ngithub.com/affaan-m/everything-claude-code (별 153,000+)\n이건 단순한 프롬프트 모음이 아니다. 제품을 만들기 위한 완전한 AI operating system이다.\nplaintext\n30개가 넘는 specialized agent:\nplanner.md           → 기능 기획\narchitect.md         → 시스템 의사결정\ntdd-guide.md         → 테스트 주도 개발\ncode-reviewer.md     → 품질 및 보안 리뷰\nsecurity-reviewer.md → 취약점 분석\nloop-operator.md     → 자율 루프 실행\nplaintext\n180개가 넘는 skill:\nTDD, security, research, content — 이미 다 작성되어 있다\nplaintext\nAgentShield 내장:\n설정 안에 보안 테스트 1,282개가 바로 들어 있다\n생산성과 보호를 동시에\nClaude, Codex, Cursor, OpenCode, Gemini에서 작동한다. 어디서나 같은 시스템이다.\n설치 방법:\npython\n/plugin marketplace add affaan-m/everything-claude-code\n\n아니면 수동으로 프로젝트의 .claude/에 필요한 구성요소만 복사해라. 한 번에 전부 로드하지 마라. 27개 agent와 64개 skill을 동시에 컨텍스트에 넣으면 첫 프롬프트를 치기도 전에 한도를 태워버린다. 정말 필요한 것만 가져가라.\n실제 차이:\nplaintext\n이전:  AI와 채팅한다\n이후:  자동 조종 상태의 AI 엔지니어 팀을 관리한다\n대체하는 것: 직접 agent 시스템을 세팅하느라 쓰는 몇 주, 기획/리뷰/보안을 위한 분리된 도구들, 월 200~500달러의 특화 AI 서비스 비용.\nPart 3 - 숨겨진 스캔들: Claude Code v2.1.100이 조용히 당신 토큰을 훔치고 있다\n누군가 HTTP proxy를 설정해 Claude Code 4개 버전의 전체 API 요청을 가로챘다. \n\n그들이 발견한 것:\nplaintext\nv2.1.98:   요청 169,514 bytes → 청구 49,726 tokens\nv2.1.100:  요청 168,536 bytes → 청구 69,922 tokens\n차이:      -978 bytes인데 +20,196 tokens\nv2.1.100은 더 적은 bytes를 보내면서도 20,000개 더 많은 토큰을 청구한다. 이 inflation은 전적으로 서버 측에서 일어나며, 당신은 그걸 볼 수 없고 /context로도 검증할 수 없다.\n이게 청구 문제를 넘어 중요한 이유:\nplaintext\n그 20,000 tokens는 Claude의 실제 context window 안으로 들어간다.\n즉:\n\n→ 당신의 CLAUDE.md 지침은 숨겨진 2만 토큰 콘텐츠에 의해 희석된다\n→ 긴 세션에서 품질 저하가 더 빨리 온다\n→ Claude가 당신 규칙을 무시할 때, 당신은 ",
+    "tech_stack": [
+      "LLM",
+      "CLAUDE.md",
+      "Claude Code",
+      "GitHub",
+      "AgentShield",
+      "Claude",
+      "Codex",
+      "Cursor",
+      "OpenCode",
+      "Gemini",
+      "HTTP proxy"
+    ],
+    "apply_points": [
+      "프로젝트용 CLAUDE.md 원칙을 먼저 정한다.",
+      "에이전트와 스킬은 필요한 것만 로드한다.",
+      "토큰 청구와 컨텍스트 괴리를 점검한다."
+    ],
+    "tweet_id": "2043609541477044439"
+  },
+  {
+    "id": "bm-109",
+    "author": "kunchenguid",
+    "date": "2026-04-13",
+    "added_at": "2026-04-14",
+    "url": "https://x.com/kunchenguid/status/2043511416448307378",
+    "text": "for folks who feel their Claude Code got nerfed, here's what I've set in my ~/.claude/settings.json to make my CC's behavior more stable. snippet and explanation in thread below -",
+    "whats_happening": "kunchenguid가 Claude Code 동작이 흔들릴 때 쓰는 settings.json 설정을 공유했다. 스레드에서 안정화용 스니펫과 이유를 설명하겠다는 짧은 예고다.",
+    "translation": "Claude Code가 예전보다 약해졌다고 느끼는 사람들을 위해, 내 CC의 동작을 더 안정적으로 만들려고 ~/.claude/settings.json에 넣어둔 설정을 공유한다. 스니펫과 설명은 아래 스레드에 있다 -",
+    "tech_stack": [
+      "Claude Code"
+    ],
+    "apply_points": [
+      "Claude Code 설정값을 팀 기준으로 정리한다.",
+      "출력 흔들림이 큰 옵션부터 비교 실험한다.",
+      "안정화 설정과 근거를 문서화한다."
+    ],
+    "tweet_id": "2043511416448307378"
+  },
+  {
+    "id": "bm-110",
+    "author": "garrytan",
+    "date": "2026-04-11",
+    "added_at": "2026-04-14",
+    "url": "https://x.com/garrytan/status/2042925773300908103",
+    "text": "2.9천\n88만\nSteve Yegge says people using AI coding agents are \"10x to 100x as productive as engineers using Cursor and chat today, and roughly 1000x as productive as Googlers were back in 2005.\"\nThat's a real number. I've seen it. I've lived it. But when people hear it, they reach for the wrong explanation. Better models. Smarter Claude. More parameters. The 2x people and the 100x people are using the same models. The difference isn't intelligence. It's architecture — and it fits on an index card.",
+    "whats_happening": "garrytan이 AI coding agent 생산성 격차의 원인을 모델이 아닌 harness architecture로 설명했다. Claude Code 소스를 읽고 thin harness, fat skills 원칙을 정리한 글이다.",
+    "translation": "2.9천\n88만\nSteve Yegge는 AI coding agent를 쓰는 사람들은 \"오늘날 Cursor와 chat을 쓰는 엔지니어보다 10배에서 100배 생산적이고, 2005년의 Googler보다 대략 1000배 생산적\"이라고 말한다.\n그건 실제 숫자다. 나는 봤고, 직접 겪었다. 하지만 사람들이 이 말을 들으면 설명을 잘못 찾는다. 더 나은 모델, 더 똑똑한 Claude, 더 많은 파라미터. 2배 수준의 사람과 100배 수준의 사람이 쓰는 모델은 같다. 차이는 intelligence가 아니다. 차이는 architecture이며, index card 한 장에 들어간다.\nharness가 곧 product다\n2026년 3월 31일, Anthropic는 실수로 Claude Code의 전체 소스코드를 npm registry에 배포했다. 512,000줄. 나는 그걸 읽었다. 그리고 YC에서 내가 가르쳐 온 내용을 전부 확인해줬다. 비밀은 model이 아니라 model을 감싸는 것이다.\n실시간 repo context. prompt caching. purpose-built tool. context bloat 최소화. 구조화된 session memory. 병렬 sub-agent. 그 어느 것도 model을 더 똑똑하게 만들지는 않는다. 하지만 모두가 model에 맞는 context를, 맞는 시점에, 노이즈에 빠뜨리지 않고 제공한다.\n그 래퍼를 harness라고 부른다. 그리고 모든 AI builder가 물어야 할 질문은 이것이다. harness 안에 들어가야 할 것은 무엇이고, 빠져야 할 것은 무엇인가? 그 대답은 특정한 형태를 가진다. 나는 이것을 thin harness, fat skills라고 부른다.\n다섯 가지 정의\n병목은 model의 intelligence가 아니다. 모델은 이미 추론, 종합, 코드 작성을 할 줄 안다. 실패하는 이유는 당신의 데이터, schema, convention, 문제의 구체적 형태를 이해하지 못하기 때문이다. 다섯 가지 정의가 이 문제를 고친다.\n1. Skill files\nskill file은 model에게 어떤 일을 어떻게 할지 가르치는 재사용 가능한 markdown 문서다. 무엇을 할지는 사용자가 준다. skill은 process를 제공한다.\n대부분이 놓치는 핵심 통찰이 있다. skill file은 method call처럼 동작한다. parameter를 받고, 다른 인자로 호출된다. 같은 procedure가 어떤 값을 넣느냐에 따라 완전히 다른 capability를 만든다.\n예를 들어 /investigate라는 skill을 생각해보자. 여기에 일곱 단계가 있다. dataset 범위 설정, timeline 작성, 모든 문서 diarize, 종합, 양쪽 주장 모두 제시, 출처 인용. 그리고 TARGET, QUESTION, DATASET이라는 세 가지 parameter를 받는다. 이것을 safety scientist와 210만 건의 discovery email에 적용하면 whistleblower가 침묵당했는지 판단하는 medical research analyst가 된다. shell company와 FEC filing에 적용하면 coordinated campaign donation을 추적하는 forensic investigator가 된다.\n같은 skill. 같은 일곱 단계. 같은 markdown 파일. skill은 판단의 process를 설명한다. invocation은 세계를 공급한다.\n이건 prompt engineering이 아니다. markdown을 programming language로, human judgment를 runtime으로 쓰는 software design이다. 사실 markdown은 model이 원래 생각하는 언어로 process, judgment, context를 설명하기 때문에, 경직된 source code보다 capability를 더 완전하게 캡슐화한다.\n2. The harness\nharness는 LLM을 실행하는 프로그램이다. 네 가지 일을 한다. model을 loop로 돌리고, 파일을 읽고 쓰고, context를 관리하고, safety를 강제한다. 그게 전부다. 그것이 바로 \"thin\"이다.\n반패턴은 fat harness와 thin skills다. 당신도 본 적 있을 것이다. context window 절반을 먹어치우는 40개 이상의 tool definition. 2~5초짜리 MCP 왕복을 요구하는 god-tool. 각 endpoint를 별도 tool로 바꾸는 REST API wrapper. 토큰은 세 배, 지연은 세 배, 실패율도 세 배.\n대신 원하는 것은 빠르고 좁은 purpose-built tooling이다. 각 browser 작업을 100밀리초에 처리하는 Playwright CLI이지, screenshot-find-click-wait-read에 15초가 걸리는 Chrome MCP가 아니다. 그건 75배 빠르다. 이제 software는 괜히 귀하게 다룰 필요가 없다. 정말 필요한 것만 정확히 만들어라.\n3. Resolvers\nresolver는 context를 위한 routing table이다. task type X가 나타나면 document Y를 먼저 로드한다.\nskill은 model에게 어떻게 할지 알려준다. resolver는 무엇을 언제 로드할지 알려준다. 개발자가 prompt를 바꾼다. resolver가 없으면 그대로 배포한다. resolver가 있으면 model은 d",
+    "tech_stack": [
+      "Cursor",
+      "Claude Code",
+      "Anthropic",
+      "npm",
+      "LLM",
+      "Playwright",
+      "Chrome MCP",
+      "MCP"
+    ],
+    "apply_points": [
+      "얇은 harness와 두꺼운 skill 구조를 택한다.",
+      "작고 빠른 전용 도구부터 직접 만든다.",
+      "작업 유형별 resolver 로딩 규칙을 둔다."
+    ],
+    "tweet_id": "2042925773300908103"
+  },
+  {
+    "id": "bm-111",
+    "author": "chrysb",
+    "date": "2026-04-11",
+    "added_at": "2026-04-14",
+    "url": "https://x.com/chrysb/status/2043020014035570784",
+    "text": "26만\nDespite what you see, long-term memory for conversational LLMs remains an unsolved problem.\nThe dream is: the model remembers what you said before and draws meaning across it over time. Not just recall, but interpretation, narrative, the kind of memory that makes a conversation feel continuous and cumulative across months or years.\nToday, you can achieve an illusion of this dream. For days, or weeks if you're lucky. Until the LLM starts forgetting and the illusion breaks.\nWhy does this happe",
+    "whats_happening": "chrysb가 conversational LLM의 장기 memory가 아직 해결되지 않았다고 주장했다. raw 저장과 derived 요약 모두 한계가 있어 근본적 trade-off가 남는다는 분석이다.",
+    "translation": "26만\n눈에 보이는 것과 달리, conversational LLM의 장기 memory는 여전히 해결되지 않은 문제다.\n이상적인 꿈은 이렇다. model이 당신이 전에 한 말을 기억하고, 시간이 지나면서 그 사이의 의미를 끌어내는 것. 단순한 recall이 아니라 interpretation, narrative, 그리고 수개월 혹은 수년에 걸쳐 대화가 연속적이고 누적적으로 느껴지게 만드는 종류의 memory다.\n오늘날 당신은 이 꿈의 환상을 만들어낼 수 있다. 며칠 동안은, 운이 좋으면 몇 주 동안은. 그러다 LLM이 잊기 시작하고 그 환상이 깨진다.\n왜 이런 일이 벌어질까?\n대화 이력이 길어질수록 memory system은 무엇을 캡처할지, 어떻게 표현할지, 그리고 각 대화 턴에서 무엇을 surface할지 결정해야 한다. 그 결정 하나하나가 손실을 만들고, 주관적이며, 비결정적이다.\n시간이 지나면 정보 코퍼스가 너무 커져 안정적으로 검색할 수 없게 되거나, repeated summarization 때문에 시스템이 기억하는 내용이 실제로 말해진 내용에서 점점 drift하기 시작한다. model이 잊는 이유는 시스템이 전체 그림을 완전하게 들고 있지 못하거나, 그 그림이 점점 왜곡되기 때문이다.\n이상적인 세계에서는 LLM이 중요한 대화 턴들에 대해 완벽한 과거 context를 가져야 한다. 당신이 나눈 모든 단어에 대해 무한한 attention을 가지되, 그에 따를 비용과 latency는 전혀 없는 상태다.\n하지만 그건 불가능하므로, 모든 memory system은 그 상태를 근사하려는 시도다. 각각 나름의 단점이 있다.\n결국 대화에서 정보를 보존하는 방법은 두 가지뿐이다:\nRaw — 원본 메시지를 verbatim으로 저장\nDerived — 요약, narrative, 구조화된 extraction\n모든 memory system은 이 스펙트럼 어디쯤에 설지 선택하고 있다. 그리고 어느 극단도 작동하지 않는다.\nRaw는 lossless하지만 inert하다. transcript 더미는 understanding이 아니다. 정보는 전부 있지만, 아무것도 연결되거나 우선순위화되거나 해석되지 않는다. 그저 source material 안에 묻혀 있을 뿐이다.\nDerived는 압축돼 있고 쓰기 좋지만, 반복된 derivation은 복사본의 복사본이 열화되듯 source에서 멀어진다. 정보를 한 번에 잃는 게 아니다. 조금씩 잃어버리고, 정확히 언제 부정확해졌는지도 알 수 없다.\n그럼 infinite context가 해결해주지 않을까?\n이건 가장 자연스러운 반론이다. context window는 계속 커지고 있다. 언젠가는 memory system 자체를 건너뛰고 전체 이력을 그냥 다 넣을 만큼 충분히 커지지 않을까?\n적어도 당장은 아니다. 이유는 두 가지다:\n비용. 설령 2년치 대화 이력을 context window에 넣을 수 있더라도, 매 턴마다 그 전체를 처리하는 비용을 내야 한다. 경제성은 잔혹하고, 이력 길이에 선형으로 비례해 커진다. 어떤 consumer product도 그런 마진 구조에서 살아남지 못한다.\n열화. context window가 차오를수록 모델 성능은 나빠진다. 중간 정보에 대한 attention이 떨어지고, 전체 추론 품질이 하락하며, instruction following이 더 느슨해진다. 더 많은 돈을 내고 더 나쁜 성능을 얻는 셈이다.\nInfinite context는 raw 경로의 극단판일 뿐이다. 그리고 raw만으로는 왜 안 되는지 우리는 이미 확인했다.\n평가의 역설\nmemory system이 잘 작동하는지 알려면 ground truth가 필요하다. 그런데 수개월, 수년에 걸친 실제 conversational memory의 ground truth는 전체 이력 그 자체이며, 이는 어떤 context window보다도 크고 인간이 합리적으로 annotate할 수 있는 범위를 넘는다.\nLongMemEval 같은 benchmark는 건초 더미 속 바늘 찾기식 retrieval은 테스트할 수 있다. 하지만 retrieval만으로는 memory가 아니다. memory는 사실이 바뀌고, 오래된 context가 대체되며, 어떤 대화의 중요성이 몇 주 뒤에야 드러나는 순간에 작동하는 것이다. 정답은 관계의 전체 arc에 달려 있고, 그 arc는 늘 움직이고 있다. 어떤 benchmark도 arc를 포착하지 못한다.\nSynthetic dataset은 이런 현실 사례를 규모 있게 복제할 수 없다. 대화는 현실적인 길이에 도달하기 훨씬 전에 coherence를 잃고, 설령 그렇지 않더라도 백만 token에 걸쳐 진화한 synthetic relationship의 ground truth를 누구도 확인할 수 없다.\n그래서 당신이 새 memory approach가 나올 때마다 보는 것은, 해법으로 포장된 또 다른 trade-off 집합일 뿐이다. 누구도 자기 방식이 제대로 작동한다고 실제로 증명할 수 없다. 왜냐하면 어",
+    "tech_stack": [
+      "LLM",
+      "LongMemEval"
+    ],
+    "apply_points": [
+      "원문과 파생 메모를 함께 저장한다.",
+      "요약 누적 대신 원문 연결을 유지한다.",
+      "메모 평가 기준을 장기 대화로 잡는다."
+    ],
+    "tweet_id": "2043020014035570784"
+  },
+  {
+    "id": "bm-112",
+    "author": "DeRonin_",
+    "date": "2026-03-16",
+    "added_at": "2026-04-14",
+    "url": "https://x.com/DeRonin_/status/2033587293064204349",
+    "text": "State\nLLMs are stateless – they have no memory between calls. Conversation history is something you manage by sending the full message list with every request. Understanding this is fundamental\nResources:\n1. OpenAI Chat Completions Guide, Managing Conversations (official, free)\nLink: https://platform.openai.com/docs/guides/conversation-state\nThe canonical explanation of how the messages array works and how to manage multi-turn conversations\n2. Anthropic Messages API Docs (official, free)\nLink: h",
+    "whats_happening": "DeRonin_이 LLM 앱 입문자를 위한 상태 관리, 비용, 실패 처리, Prompt Injection 자료를 정리했다. production 전에 반드시 익혀야 할 공식 문서와 연습 주제를 추천하는 목록이다.",
+    "translation": "State\nLLM은 stateless하다. 호출 사이에 memory가 없다. conversation history는 매 요청마다 전체 message list를 보내며 당신이 직접 관리하는 것이다. 이것을 이해하는 것은 근본적이다\n자료:\n1. OpenAI Chat Completions Guide, Managing Conversations (official, free)\n링크: https://platform.openai.com/docs/guides/conversation-state\nmessages array가 어떻게 작동하는지, multi-turn conversation을 어떻게 관리하는지 설명하는 정본\n2. Anthropic Messages API Docs (official, free)\n링크: https://docs.anthropic.com/en/api/messages\nAnthropic 쪽의 동등 문서다. 개념은 같고, 무엇이 다른지 보려고 둘 다 읽을 가치가 있다\n집중할 것: messages array 구조, user와 assistant 메시지를 모두 append하는 이유, context window 한계와 초과 시 벌어지는 일, 기본 truncation 전략(drop oldest messages, summarize history)\n연습 프로젝트: 터미널에서 간단한 multi-turn chatbot을 만들어라. 각 턴마다 messages list에 append하고, /reset 명령으로 history를 비우며, 각 대화 후 현재 token 수를 출력하라\n6. 비용, latency, token 기초\n비용과 token을 이해하지 못한 채 AI 앱을 출시하면 예상치 못한 청구서와 느린 앱을 만나게 된다. 지루하지만 치명적으로 중요하다\n자료:\n1. OpenAI Pricing Page (official)\n링크: https://openai.com/api/pricing\n모델별 input token과 output token 비용을 알아둬라. 모델을 고를 때마다 이 페이지를 북마크해 두고 확인하라\n2. Anthropic Pricing Page (official)\n링크: https://www.anthropic.com/pricing\nClaude 모델도 마찬가지다\n3. OpenAI Tokenizer Tool (free, interactive)\n링크: https://platform.openai.com/tokenizer\n아무 텍스트나 붙여 넣고 정확히 몇 token인지 확인해라. 배우는 동안 이걸 계속 써라\n4. Tiktoken (Python library, free)\n링크: https://github.com/openai/tiktoken\n요청 전 코드에서 token 수를 세기 위한 OpenAI의 tokenizer library다\n집중할 것: token이 무엇인지(대략 4글자 또는 단어의 3/4), input과 output token의 가격이 왜 다른지, context window 크기가 가능한 작업을 어떻게 바꾸는지, 더 작고 빠른 모델과 더 크고 똑똑한 모델 사이의 latency trade-off\n또 하나: GPT-4/Opus를 모든 곳에 쓰지 마라. 단순한 작업에는 더 저렴한 모델로도 충분한 경우가 많다\n7. 실패 처리\nLLM API는 실패한다. rate limit에 걸리고, 응답은 timeout되고, model은 malformed JSON을 반환한다. 실패를 우아하게 처리하는 것이 데모와 production app을 가르는 기준이다\n자료:\n1. OpenAI Error Codes Reference (official, free)\n링크: https://platform.openai.com/docs/guides/error-codes\n마주치게 될 모든 오류 유형과 그 대응법\n2. Anthropic Error Handling Docs (official, free)\n링크: https://docs.anthropic.com/en/api/errors\nClaude도 마찬가지다\n3. Tenacity (Python library, free)\n링크: https://tenacity.readthedocs.io/\n어떤 Python 함수에도 exponential backoff 재시도를 붙일 수 있는 깔끔한 library다. decorator 하나면 재시도가 처리된다\n집중할 것: rate limit 오류(429)와 exponential backoff, httpx/requests를 이용한 timeout 처리, 사용 전에 model output을 검증하는 방법, fallback 전략(다른 model로 재시도, cached response 반환), 그리고 LLM이 예기치 않은 출력을 돌려줬다고 앱이 절대 크래시 나지 않게 하는 것\n8. Prompt Injection Awareness\nPrompt injection은 LLM 애플리케이션의 1순위 보안 리스크다\n신뢰할 수 없는 user input이 system instruction과 결합될 때 발생하며, 사용자가 프롬프트에 새로운 동작을 바꾸거나 덮어쓰거나 주입하게 만들어 시스템이 의도하지 않은 행동을 하거나 조작된 출력을 생성하게 만든다\n보안 전문가일 필요는 없지만, 무엇이든 출시하기 전에 이것이 존재한다는 사실은 알아야 한다\n자료:\n1. OWASP Top 10 for LLM Apps – LLM01: Prompt Injection (free)\n링크: https://genai.owasp.org/llmrisk/llm01-prompt-injection/\n직접 주입(jailbreaking), 문서나 웹사이트 같은 외부 콘텐츠를 통한 간접 주입, 실제 공격 시나리오를 다루는 권위 있는 분류\n2. OWASP Prompt Injection Prevention Cheat Sheet (free)\n링크: https://cheatsheetseries.",
+    "tech_stack": [
+      "OpenAI Chat Completions",
+      "Anthropic Messages API",
+      "OpenAI Tokenizer",
+      "Tiktoken",
+      "GPT-4",
+      "Opus",
+      "OpenAI Error Codes",
+      "Tenacity",
+      "httpx",
+      "requests",
+      "OWASP",
+      "Prompt Injection"
+    ],
+    "apply_points": [
+      "대화 이력과 토큰 수를 매 턴 기록한다.",
+      "429와 timeout 재시도 정책을 기본화한다.",
+      "Prompt Injection 방어를 출시 전 점검한다."
+    ],
+    "tweet_id": "2033587293064204349"
+  },
+  {
+    "id": "bm-113",
+    "author": "rohit4verse",
+    "date": "2026-04-07",
+    "added_at": "2026-04-14",
+    "url": "https://x.com/rohit4verse/status/2041548810804211936",
+    "text": "47만\nAnthropic just taught you how to build the best AI agent harness.\nClaude Code's source is sitting in the open: 55 directories, 331 modules, the most battle-tested agent architecture in production today. I pulled apart every file. Every architectural decision. Every retry path, every compaction strategy, every permission stage.\nThis is not a teardown. It is a blueprint.\nHere is every principle inside it, and how you use each one to build your own harness that survives production.\nWhat Claude ",
+    "whats_happening": "rohit4verse가 공개된 Claude Code 소스를 바탕으로 production용 agent harness 청사진을 풀어냈다. 핵심은 harness를 넘어 infrastructure 레이어까지 설계해야 한다는 주장이다.",
+    "translation": "47만\nAnthropic가 방금 최고의 AI agent harness를 구축하는 법을 가르쳐줬다.\nClaude Code 소스가 공개돼 있다. 55개 디렉터리, 331개 모듈, 오늘날 production에서 가장 많이 검증된 agent architecture다. 나는 모든 파일, 모든 architectural decision, 모든 retry path, 모든 compaction strategy, 모든 permission stage를 뜯어봤다.\n이건 teardown이 아니다. blueprint다.\n여기 그 안의 모든 원칙과, production을 버티는 당신만의 harness를 만들 때 각각을 어떻게 써야 하는지가 있다.\nClaude Code의 architecture가 업계가 좋아하는 framework에 대해 드러내는 것\n당신은 세 가지 레이어를 들어봤을 것이다. model weights, context, harness. 업계는 모든 conference, 모든 tutorial, 모든 framework README에서 이 셋을 반복한다.\nModel Weights: API로 호출하는, 동결된 intelligence.\nContext: 프롬프트, 대화 이력, retrieved document.\nHarness: model 주변의 scaffolding. 도구, 루프, 오류 처리.\n이 프레이밍은 거기까지는 맞다. Princeton NLP의 SWE-agent paper는 interface design만 바꾸고도 SWE-bench에서 64% 상대 개선을 보였다. 같은 GPT-4, 같은 작업이었다. 달라진 것은 환경뿐이었다. 성능 향상은 레이어 1이 아니라 레이어 2와 3에 있다.\n그런데 Claude Code 소스를 열어보면 Anthropic는 model을 위해 만드는 게 아니라 system을 위해 만들고 있다는 걸 깨닫게 된다.\nClaude Code 내부에는 4단계 CLAUDE.md 계층이 있어 enterprise admin은 MDM으로 정책을 강제하고, project maintainer는 convention을 정하며, 개별 developer는 로컬에서 override할 수 있다. 디스크 기반 task list와 파일 잠금은 병렬 sub-agent가 서로의 state를 망치지 않게 해준다. Git worktree isolation은 같은 repo에서 다섯 agent에게 다섯 branch를 줘도 충돌이 없게 한다. permission pipeline은 deny rule을 enterprise에서 project, user, session으로 연쇄 적용한다.\n그 어느 것도 harness가 아니다. 그 어느 것도 context가 아니다. 그 어느 것도 weights가 아니다.\n그건 infrastructure다. multi-tenancy, RBAC, resource isolation, state persistence, distributed coordination.\n진짜 framework는 네 가지 레이어를 가진다:\nModel Weights: 동결된 intelligence.\nContext: 런타임 입력.\nHarness: agent를 위해 설계된 환경.\nInfrastructure: multi-tenancy, RBAC, resource isolation, state persistence, distributed coordination.\n대부분의 팀은 처음 세 가지를 말한다. 생각하기 재미있기 때문이다. 하지만 제품이 죽는 곳은 네 번째다. Claude Code는 내가 본 agent system 중 처음으로 네 레이어 전부를 진지하게 다루며, 그 architecture가 모든 수준에서 그 사실을 보여준다.\n핵심 agent loop: while loop가 아니라 async generator\nClaude Code의 심장은 query.ts에 있다. 1,729줄의 TypeScript다. 가장 중요한 결정은 함수 시그니처 안에 있다:\nasync agent loop\n그 function*는 보기보다 훨씬 큰 의미를 갖는다. async generator는 시간에 따라 값을 내보내고, 요청 시 멈추고, 어떤 caller든 어느 시점에서든 빠져나가게 해준다.\nagent loop는 request-response 사이클이 아니다. 길게 살아 있는, streaming 가능하고, 취소 가능한 프로세스다. generator는 그런 속성을 덧붙이지 않고도 전부 제공한다.\n대부분의 tutorial이 가르치는 것과 비교해보라:\ntutorials crap\n이건 tutorial에서는 동작한다. production에서는 다섯 가지 이유로 무너진다.\n스트리밍이 없다. model이 생성하는 10~30초 동안 사용자는 빈 화면을 본다. Claude Code의 generator는 token이 도착할 때마다 StreamEvent 객체를 yield한다. 사용자는 model이 글자 단위로 작업하는 모습을 본다. agent가 무엇을 하는지 보이는 사용자일수록 더 신뢰한다. 더 신뢰할수록 더 많은 autonomy를 준다. 유용한 일은 autonomy가 커질 때 일어난다.\n취소가 없다. while-loop 버전에서 Ctrl+C를 처리하려면 바깥에서 별도의 abort 메커니즘을 연결해야 한다. generator에서는 caller가 .next()를 그만 호출하면 된다. finally 블록이 실행되고 cleanup이 일어난다. Claude Code는 모든 레이어에 AbortSignal을 흘려보내며, generator는 이를 자연스럽게 만든다.\n조합 가능성이 없다. REPL UI가 generator를 소비한다. sub-agent도 소비한다. 테스트도 소비한다. query() 함수 하나, caller 셋, 중복은 0. generator는 streamin",
+    "tech_stack": [
+      "Anthropic",
+      "Claude Code",
+      "SWE-agent",
+      "SWE-bench",
+      "GPT-4",
+      "CLAUDE.md",
+      "MDM",
+      "Git worktree",
+      "RBAC",
+      "TypeScript",
+      "StreamEvent",
+      "AbortSignal"
+    ],
+    "apply_points": [
+      "권한과 상태를 harness 밖 인프라로 뺀다.",
+      "agent loop를 스트리밍 가능하게 설계한다.",
+      "병렬 작업은 격리와 잠금부터 넣는다."
+    ],
+    "tweet_id": "2041548810804211936"
+  },
+  {
+    "id": "bm-114",
+    "author": "RampLabs",
+    "date": "2026-04-10",
+    "added_at": "2026-04-14",
+    "url": "https://x.com/RampLabs/status/2042660310851449223",
+    "text": "1.3천\n34만\nMulti-agent systems have shown promise in coordination, complex reasoning, and parallel workflows. However, they are often highly token inefficient. In hierarchical architectures, where an orchestrator decomposes tasks and delegates to worker agents, redundant intermediate reasoning can emerge. As the orchestrator’s reasoning trajectory expands across numerous calls, token usage compounds rapidly. While these approaches can improve performance, they do so at substantial cost and often s",
+    "whats_happening": "RampLabs가 멀티에이전트의 토큰 비효율을 줄이는 Latent Briefing 접근을 소개했다. KV cache compaction으로 정확도를 유지하며 비용을 줄였다는 벤치마크 결과를 함께 제시했다.",
+    "translation": "1.3천\n34만\nMulti-agent system은 coordination, complex reasoning, parallel workflow에서 가능성을 보여줬다. 하지만 token 효율은 종종 매우 나쁘다. orchestrator가 task를 분해하고 worker agent에 위임하는 hierarchical architecture에서는 중간 reasoning이 중복해서 생길 수 있다. orchestrator의 reasoning trajectory가 수많은 call에 걸쳐 커질수록 token 사용량은 빠르게 누적된다. 이런 접근은 성능을 높일 수 있지만, 큰 비용을 치르며 agent 간 context도 비효율적으로 공유하는 경우가 많다.\nLLM 기반 summarization(느림)이나 RAG 기반 retrieval(깨지기 쉬움) 같은 기존 context 관리 방식은 각자 trade-off를 만든다. 대신 우리는 model의 attention pattern을 사용해 context 중 무엇이 중요한지 식별하고 나머지는 representation level에서 버린다. 이로부터 model의 KV cache를 직접 다뤄 agent 간 관련 memory를 공유하는 방법이 나온다. 우리는 이 접근을 Latent Briefing이라고 부른다.\nLongBench v2 benchmark에서 126개 질문(0~100k token 문서)에 대해, 우리 접근은 다음을 달성했다:\n난이도와 context 길이 조건 전반에서 baseline 대비 비슷하거나 더 나은 정확도\n중간 길이 문서(32k~100k token)에서 median token 절감 최대 49%\nworker model token 소비 65% 감소\n입력 길이에 선형으로 비례하는 median compaction overhead 약 1.7초\nRecursive Agent의 Token Explosion\n우리는 multi agent system의 기본 architecture로 Recursive Language Model(RLM) framework(Zhang et al., 2025)를 채택했다. RLM에서 강한 orchestrator는 task를 분해하고 REPL environment를 통해 worker model을 반복 호출한다. orchestrator는 문서의 특정 측면을 분석하고, 가설을 검증하고, 정보를 추출하라고 worker에게 targeted query를 보낸다.\nRLM은 긴 context 관리에서 강점을 보여줬지만, 전통적인 LLM보다 효율이 낮고 훨씬 더 많은 token을 사용한다. 또 worker는 orchestrator가 명시적으로 넘긴 것만 본다. 보통 targeted query와 raw document뿐이다. 하지만 orchestrator는 많은 호출에 걸쳐 풍부한 reasoning trajectory를 쌓아가고 있다. 검증한 가설, 찾아낸 passage, 배제한 dead end, 발견한 cross reference들. 그 누적된 context는 worker가 더 잘 답하도록 도울 수 있지만, 그것을 텍스트로 모두 넘기면 successive call마다 input 비용이 부풀어 오른다. 결국 worker는 문제를 좁게만 보고, orchestrator의 넓은 이해는 활용되지 않은 채 남는다.\n표준 해법은 모두 뚜렷한 단점이 있다:\nLLM Summarization: 단계마다 20~60초 latency, 손실적이며, 요약이 sub task에 필요한 것을 담지 못할 수 있음\nRAG / Retrieval: chunking과 embedding이 필요하고, cross-chunk dependency를 놓침\n전부 전달: 비싸고 느리며, 무관한 context 때문에 정확도가 떨어질 수 있음\n우리는 이 token explosion을 줄이기 위해 빠르고 정밀한 cross-agent memory를 원했다.\nTask Guided KV Cache Compaction\n배경: AM Compaction Framework\n우리 접근은 KV cache compaction을 위한 Attention Matching(AM) framework(Zweiger et al., 2026)를 기반으로 한다. 핵심 아이디어는 크기 S의 KV cache가 있을 때, attention output을 거의 동일하게 만드는 크기 t < S의 compact cache를 찾는 것이다.\n형식적으로, 각 attention head에 대해 우리는 다음을 만족하는 compacted component(C1, β, C2)를 찾는다:\nsoftmax\n(\n𝑄\n⋅\n𝐶\n1\n𝑇\n+\n𝛽\n)\n⋅\n𝐶\n2\n≈\nsoftmax\n(\n𝑄\n⋅\n𝐾\n𝑇\n)\n⋅\n𝑉\n여기서:\nC1 (압축된 key): 높은 attention을 받는 원래 key vector의 부분집합\nβ (bias correction): 누락된 key를 보정하는 scalar 조정값으로, 유지된 key에 대한 softmax 분포가 전체 key에 대한 원래 분포를 근사하게 함\nC2 (압축된 value): ridge regression으로 푼 재구성 value vector\n원래 AM 알고리즘은 각 (layer, head) 쌍을 독립적으로 처리한다. Qwen3-14B에서는 40 layer × 8 KV head, 즉 320개의 직렬 solve가 필요하며, 각 solve는 세 단계로 실행된다:\nToken selection: attention score를 계산하",
+    "tech_stack": [
+      "RAG",
+      "Latent Briefing",
+      "KV cache",
+      "LongBench v2",
+      "Recursive Language Model",
+      "RLM",
+      "REPL",
+      "Attention Matching",
+      "AM",
+      "Qwen3-14B",
+      "ridge regression"
+    ],
+    "apply_points": [
+      "멀티에이전트 호출마다 토큰 예산을 둔다.",
+      "요약 대신 KV cache 기반 압축을 검토한다.",
+      "worker에 넘길 맥락은 최소 단위로 줄인다."
+    ],
+    "tweet_id": "2042660310851449223"
   }
 ]

@@ -18,6 +18,12 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
+try:
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+except Exception:
+    pass
+
 # ── Paths ──────────────────────────────────────────────────────────────────
 SCRIPT_DIR     = Path(__file__).parent
 BLOG_DIR       = SCRIPT_DIR.parent
@@ -51,6 +57,7 @@ PROMPT_TEMPLATE = """\
 """
 
 CLAUDE_PATH = "C:/Users/pauls/AppData/Roaming/npm/claude.cmd"
+CODEX_CMD = r"C:\Users\pauls\AppData\Roaming\npm\codex.cmd"
 WIM_PROMPT_PATH = BLOG_DIR / "config" / "wim-prompt.md"
 ARTICLE_URL_RE = re.compile(r'^https?://(x\.com|twitter\.com)/i/article/\d+$')
 CDP_URL = "http://127.0.0.1:9222"
@@ -254,6 +261,87 @@ def summarize_with_codex(text: str) -> dict | None:
         return None
 
 
+# ── Codex CLI (ChatGPT 세션, OpenAI API 쿼터 우회) ────────────────────────────
+def summarize_with_codex_cli(text: str) -> dict | None:
+    """Codex CLI로 구조화. Windows cmd 래퍼 좀비 방지 위해 Thread.join + taskkill."""
+    import tempfile, threading as _th
+    tmp = Path(tempfile.mkdtemp(prefix="codex-bm-"))
+    prompt_file = tmp / "prompt.txt"
+    out_file = tmp / "out.json"
+    try:
+        prompt = (
+            "아래 트윗 또는 기사 본문을 분석해 순수 JSON 객체 하나만 출력하라.\n"
+            "마크다운 코드블록 금지. 설명 문장 금지. JSON만.\n\n"
+            "필드 스펙:\n"
+            "- whats_happening: 1-2문장. 사건·발표·발견 중심. 한국어.\n"
+            "- translation: 한국어 번역. 요약 금지, 원문 90% 이상 유지. 영어 고유명사 영어 유지.\n"
+            "- tech_stack: 언급된 실제 기술/도구/라이브러리/모델 배열. 없으면 빈 배열.\n"
+            "- apply_points: 개발자 적용 행동. 한 문장씩 최대 3개, 각 50자 이내, 파일경로/backtick 금지.\n\n"
+            f"본문:\n{text[:8000]}\n"
+        )
+        prompt_file.write_text(prompt, encoding="utf-8")
+
+        result = [None]
+        def _run():
+            try:
+                result[0] = subprocess.run(
+                    [CODEX_CMD, "exec",
+                     "--full-auto",
+                     "--skip-git-repo-check",
+                     "-o", str(out_file)],
+                    stdin=open(str(prompt_file), "r", encoding="utf-8"),
+                    capture_output=True, timeout=240,
+                    text=True, encoding="utf-8", errors="replace",
+                    cwd=str(BLOG_DIR),
+                )
+            except Exception as e:
+                result[0] = e
+
+        t = _th.Thread(target=_run, daemon=True)
+        t.start()
+        t.join(timeout=180)
+
+        if t.is_alive():
+            subprocess.run(
+                "taskkill /F /IM codex.exe 2>nul & taskkill /F /IM Codex.exe 2>nul",
+                shell=True, capture_output=True, timeout=10
+            )
+            print("  [Codex CLI] timeout (180s)")
+            return None
+
+        r = result[0]
+        raw = ""
+        if out_file.exists():
+            raw = out_file.read_text(encoding="utf-8").strip()
+        elif hasattr(r, "stdout"):
+            raw = (r.stdout or "").strip()
+
+        if not raw:
+            rc = getattr(r, "returncode", "?")
+            print(f"  [Codex CLI] 출력 없음 (rc={rc})")
+            return None
+
+        raw = re.sub(r"^```json\s*", "", raw)
+        raw = re.sub(r"\s*```$", "", raw.strip())
+        m = re.search(r"\{[\s\S]*\}", raw)
+        if m:
+            raw = m.group(0)
+        return json.loads(raw)
+    except json.JSONDecodeError as e:
+        print(f"  [Codex CLI] JSON 파싱 실패: {e}")
+        return None
+    except Exception as e:
+        print(f"  [Codex CLI] 오류: {e}")
+        return None
+    finally:
+        try:
+            prompt_file.unlink(missing_ok=True)
+            out_file.unlink(missing_ok=True)
+            tmp.rmdir()
+        except Exception:
+            pass
+
+
 # ── Gemini API fallback ──────────────────────────────────────────────────────
 def summarize_with_gemini(text: str) -> dict | None:
     """Gemini 2.5 Flash API로 구조화 (Codex 대체)"""
@@ -292,6 +380,8 @@ def main():
                         help="bookmarks-raw.json 경로 (없으면 inbox/ 자동 선택)")
     parser.add_argument("--use-gemini", action="store_true",
                         help="Codex 대신 Gemini Flash API로 구조화")
+    parser.add_argument("--use-codex-cli", action="store_true",
+                        help="OpenAI API 대신 Codex CLI로 구조화 (API 쿼터 우회, ChatGPT 세션)")
     args = parser.parse_args()
 
     if args.input_file:
@@ -332,8 +422,15 @@ def main():
         print("새 북마크 없음.")
         return
 
-    summarize_fn = summarize_with_gemini if args.use_gemini else summarize_with_codex
-    engine_name = "Gemini" if args.use_gemini else "Codex"
+    if args.use_gemini:
+        summarize_fn = summarize_with_gemini
+        engine_name = "Gemini"
+    elif args.use_codex_cli:
+        summarize_fn = summarize_with_codex_cli
+        engine_name = "Codex CLI"
+    else:
+        summarize_fn = summarize_with_codex
+        engine_name = "Codex"
     print(f"신규 {len(new_tweets)}개 → {engine_name} 순차 분석...")
 
     for tw in new_tweets:
@@ -348,7 +445,7 @@ def main():
                 analysis_text = article       # 분석용 전문
                 print(" [Article→CDP]", end="", flush=True)
             else:
-                print(f" SKIP (X Article — CDP 실패)")
+                print(" SKIP (X Article -- CDP 실패)")
                 continue
 
         summary = summarize_fn(analysis_text)
@@ -388,11 +485,14 @@ def main():
         json.dump(bookmarks, f, ensure_ascii=False, indent=2)
     print(f"\n{added}개 추가 → {BOOKMARKS_JSON}")
 
-    os.chdir(BLOG_DIR)
-    os.system("git add _data/bookmarks.json")
-    os.system(f'git commit -m "[tech-review] Twitter Bookmarks {added}개 추가 ({engine_name})"')
-    os.system("git push")
-    print("git push 완료")
+    if os.environ.get("SKIP_GIT_PUSH") == "1":
+        print("git push 스킵 (SKIP_GIT_PUSH=1)")
+    else:
+        os.chdir(BLOG_DIR)
+        os.system("git add _data/bookmarks.json")
+        os.system(f'git commit -m "[tech-review] Twitter Bookmarks {added}개 추가 ({engine_name})"')
+        os.system("git push")
+        print("git push 완료")
 
 
 if __name__ == "__main__":

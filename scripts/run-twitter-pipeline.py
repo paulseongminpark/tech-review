@@ -118,12 +118,12 @@ def main():
         fetched = len(json.load(f))
     log(f"  수집 완료: {fetched}개")
 
-    # Step 3: Codex 분석 (신규만)
-    log("[3/4] Codex 분석 (add-bookmark.py)")
+    # Step 3: Codex CLI 분석 (신규만) — OpenAI API 429 우회
+    log("[3/4] Codex CLI 분석 (add-bookmark.py --use-codex-cli)")
     before = count_bookmarks()
     r = run(
-        [sys.executable, str(SCRIPT_DIR / "add-bookmark.py"), str(inbox_file)],
-        timeout=4800,  # 80분 (병렬 3 workers × 건당 3분 × 최대 20개)
+        [sys.executable, str(SCRIPT_DIR / "add-bookmark.py"), "--use-codex-cli", str(inbox_file)],
+        timeout=4800,  # 80분 (건당 최대 3분 × 최대 20개)
     )
     after = count_bookmarks()
     added = after - before
