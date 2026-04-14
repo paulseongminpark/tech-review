@@ -5,7 +5,7 @@ analyze-youtube-v3.py — YouTube 파이프라인 v3
 Stage 1: yt-dlp 자막(1차) → Groq Whisper(2차) → transcript
 Stage 2: Codex CLI gpt-5.4 → 구조화 (structurize)
 Stage 3: Claude Sonnet + recall() → apply_points 5W1H
-Stage 4: OpenAI gpt-4.1-mini → 한글 번역
+Stage 4: Claude 4.5 Sonnet (OAuth) → 한글 번역
 Stage 5: 검증 + push
 
 Task Scheduler 05:20 KST
@@ -30,9 +30,6 @@ TODAY = datetime.now(KST).strftime("%Y-%m-%d")
 load_dotenv(BLOG_DIR / ".env")
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
 GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")
-
-load_dotenv(Path("C:/dev/01_projects/06_mcp-memory/.env"))
-OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY", "")
 
 CLAUDE_CMD = r"C:\Users\pauls\AppData\Roaming\npm\claude.cmd"
 FFMPEG = r"C:\Users\pauls\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-8.1-full_build\bin\ffmpeg.exe"
@@ -383,10 +380,10 @@ def generate_apply_points(summary, title):
         return None
 
 
-# ── Step 5: 번역 (OpenAI gpt-4.1-mini) ────────────────
+# ── Step 5: 번역 (Claude 4.5 Sonnet, OAuth) ────────────────
 def translate_transcript(transcript):
-    """영어 transcript → 한글 번역"""
-    if not OPENAI_API_KEY or not transcript:
+    """영어 transcript → 한글 번역 (Claude 4.5 Sonnet via OAuth)."""
+    if not transcript:
         return None
 
     # 이미 한국어면 스킵
@@ -395,25 +392,54 @@ def translate_transcript(transcript):
         log("    [번역] 이미 한국어 — 스킵")
         return transcript
 
-    body = json.dumps({
-        "model": "gpt-4.1-mini",
-        "messages": [
-            {"role": "system", "content": "Translate English to natural Korean. Keep proper nouns/tech terms in English. Output only translated text."},
-            {"role": "user", "content": transcript[:15000]}
-        ],
-        "temperature": 0.3,
-        "max_completion_tokens": 16384,
-    }).encode("utf-8")
+    prompt = (
+        "다음 영문 transcript를 자연스러운 한국어로 번역하라.\n\n"
+        "규칙:\n"
+        "- 고유명사/기술용어/라이브러리명/회사명은 영어 그대로 유지\n"
+        "- 요약 금지. 원문 구조·길이를 유지.\n"
+        "- 번역문만 출력. 설명·인사말·메타코멘트 금지.\n\n"
+        "원문:\n" + transcript[:30000]
+    )
 
     try:
-        req = urllib.request.Request("https://api.openai.com/v1/chat/completions",
-                                     data=body,
-                                     headers={"Content-Type": "application/json",
-                                              "Authorization": f"Bearer {OPENAI_API_KEY}"})
-        resp = urllib.request.urlopen(req, timeout=120)
-        data = json.loads(resp.read().decode("utf-8"))
-        translated = data["choices"][0]["message"]["content"].strip()
-        log(f"    [번역] {len(translated)}자")
+        import threading as _th
+        env = os.environ.copy()
+        env.pop("ANTHROPIC_API_KEY", None)  # blog/.env의 만료 키 제거 → OAuth 사용
+
+        result = [None]
+        def _run_claude():
+            result[0] = subprocess.run(
+                [CLAUDE_CMD, "-p", "--model", "claude-sonnet-4-5"],
+                input=prompt.encode("utf-8"),
+                capture_output=True, timeout=600, cwd=str(BLOG_DIR), env=env,
+            )
+
+        t = _th.Thread(target=_run_claude, daemon=True)
+        t.start()
+        t.join(timeout=360)
+
+        if t.is_alive():
+            subprocess.run(
+                'taskkill /F /IM claude.exe 2>nul & taskkill /F /IM node.exe /FI "WINDOWTITLE eq claude*" 2>nul',
+                shell=True, capture_output=True, timeout=10
+            )
+            log("    [번역] Claude 타임아웃 (360초)")
+            return None
+
+        r = result[0]
+        if not r or r.returncode != 0:
+            stderr = (r.stderr.decode("utf-8", errors="replace").strip()[:200] if r else "no result")
+            log(f"    [번역] Claude 실패: {stderr}")
+            return None
+        translated = r.stdout.decode("utf-8", errors="replace").strip()
+        if not translated or len(translated) < 20:
+            log("    [번역] 빈/짧은 응답")
+            return None
+        low = translated.lower()
+        if any(e in low for e in ["credit balance", "rate limit", "unauthorized", "api key"]):
+            log("    [번역] 에러 응답 감지")
+            return None
+        log(f"    [번역] {len(translated)}자 (Claude 4.5 Sonnet)")
         return translated
     except Exception as e:
         log(f"    [번역] 실패: {e}")
