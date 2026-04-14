@@ -2,36 +2,36 @@
   "date": "2026-03-18",
   "lang": "ko",
   "post_url": "/ko/2026/03/18/daily-tech-review/",
-  "post_title": "신세계 250MW AI 팩토리, World AgentKit 사람 인증, 빅테크 11사 사기 방지 공동전선",
+  "post_title": "NVIDIA 1조달러 AaaS 전환, 엔터프라이즈 AI 권한 관리 경고, 신세계 250MW AI 팩토리",
   "source_type": "perplexity",
   "sections": [
     {
       "index": 1,
-      "title": "신세계그룹이 250MW 'AI 팩토리'로 유통을 넘어 AI 클라우드 수익원에 진입한다",
-      "lead": "2026년 3월 16일 신세계그룹이 Reflection AI와 한국 내 전력용량 250MW 규모 AI 데이터센터 구축을 추진하는 전략적 파트너십 MOU를 체결했다. 더벨은 이 결정을 전통 유통 중심 구조에서 AI 인프라·클라우드로 포트폴리오를 확장하는 전략으로 해석했다.",
+      "title": "NVIDIA — 2027년까지 AI 칩 매출 1조달러, SaaS를 'AaaS(에이전트 서비스)'로 전환 예고",
+      "lead": "2026년 3월 16일 GTC 기조연설에서 젠슨 황 CEO는 AI 칩 판매로 2027년까지 최소 1조 달러 매출을 전망했다. AI 시장이 학습 중심에서 추론·실행 중심으로 넘어가면서, 모든 소프트웨어 기업이 '업무를 대신 수행하는 에이전트'를 파는 AaaS 모델로 재편될 것이라 강조했다. 추론·에이전트 워크로드 쪽 GPU 수요가 학습용보다 빠르게 성장할 것이라는 전망도 나왔다. 에이전트 보안·오케스트레이션용 'NemoClaw' 플랫폼도 소개됐다",
       "tags": [
-        "enterprise"
+        "enterprise",
+        "nvidia"
       ],
-      "anchor": "신세계그룹이-250mw-ai-팩토리로-유통을-넘어-ai-클라우드-수익원에-진입한다"
+      "anchor": "nvidia-2027년까지-ai-칩-매출-1조달러-saas를-aaas에이전트-서비스로-전환-예고"
     },
     {
       "index": 2,
-      "title": "World가 AI 쇼핑 에이전트에 '사람 인증' 레이어를 얹어 에이전트 커머스를 제도권 결제로 끌어당긴다",
-      "lead": "2026년 3월 17일 TechCrunch 보도에 따르면, Tools for Humanity는 에이전트 커머스용 검증 도구 'AgentKit' 베타를 공개했다. Sam Altman이 공동창업한 'World' 프로젝트의 \"proof of human\" 인증 기술로, AI 에이전트 뒤의 실제 인간 승인 여부를 확인하는 구조다.",
+      "title": "엔터프라이즈 AI의 아킬레스건 — '에이전트는 누구의 권한으로 행동하는가'",
+      "lead": "VentureBeat가 3월 16일 AI 에이전트가 CRM·DB·이메일을 대행하는 상황에서, 에이전트의 정체성·권한 체계가 엔터프라이즈 AI의 핵심 취약점이 되고 있다고 보도했다. 1Password, Corridor, Okta 등은 개발자들이 API 키를 프롬프트에 직접 붙여넣는 위험 패턴이 광범위하게 퍼져 있다고 경고했다. Gartner는 2026년까지 대기업 75%가 AI 관련 데이터 노출·권한 오남용을 경험할 것으로 전망했다. Corrid",
       "tags": [
         "enterprise"
       ],
-      "anchor": "world가-ai-쇼핑-에이전트에-사람-인증-레이어를-얹어-에이전트-커머스를-제도권-결제로-끌어당긴다"
+      "anchor": "엔터프라이즈-ai의-아킬레스건-에이전트는-누구의-권한으로-행동하는가"
     },
     {
       "index": 3,
-      "title": "Google·Target 등 11개사가 '사기 방지'에 AI를 공식 공동전선으로 올려 리테일 신뢰비용을 재정의한다",
-      "lead": "2026년 3월 16일 Axios는 Google, Microsoft, LinkedIn, Meta, Amazon, OpenAI, Adobe, Pinterest, Target, Levi's, Match Group 등 11개사가 온라인 사기·스캠 대응을 위한 자발적 합의 \"Industry Accord Against Online Scams & Fraud\"에 서명했다고 단독 보도했다.",
+      "title": "신세계 — 250MW AI 데이터센터 추진, 유통→AI 인프라 사업자 전환",
+      "lead": "2026년 3월 16일 신세계그룹이 미국 AI 스타트업 Reflection AI와 250MW 규모 AI 데이터센터 구축 MOU를 체결했다. 단일 기업 국내 최대 규모이며, IT 업계는 인프라 투자만 10조원 이상으로 추산한다. Reflection AI는 2024년 구글 DeepMind 출신이 창업한 스타트업으로 기업가치는 80억 달러이고 엔비디아 GPU 공급이 전제다. 구조는 명확하게 나뉜다. 신세계가 부지·전력·운영을 맡고, Reflectio",
       "tags": [
-        "enterprise",
-        "google"
+        "enterprise"
       ],
-      "anchor": "google·target-등-11개사가-사기-방지에-ai를-공식-공동전선으로-올려-리테일-신뢰비용을-재정의한"
+      "anchor": "신세계-250mw-ai-데이터센터-추진-유통ai-인프라-사업자-전환"
     }
   ]
 }

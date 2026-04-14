@@ -7,30 +7,31 @@
   "sections": [
     {
       "index": 1,
-      "title": "Project Glasswing: AI가 방어 사이버보안의 최전선에 선다",
-      "lead": "Anthropic이 오늘 Project Glasswing을 발표했다. AWS, Apple, Broadcom, Cisco, CrowdStrike, Google, JPMorganChase, Linux Foundation, Microsoft, NVIDIA, Palo Alto Networks가 파트너로 이름을 올렸다. 핵심은 미공개 신규 프런티어 모델 Claude Mythos Preview로, 이 모델이 이미 모든 주요 운영체제와 웹 브라우저에서 수천",
+      "title": "Project Glasswing: Anthropic이 테크 전체를 한 방에 모았다",
+      "lead": "이런 파트너 목록은 흔치 않다. AWS, Apple, Broadcom, Cisco, CrowdStrike, Google, JPMorganChase, Linux Foundation, Microsoft, NVIDIA, Palo Alto Networks — 평소라면 서로 경쟁하는 이름들이 하나의 발표문에 나란히 올라왔다. Anthropic이 오늘 발표한 Project Glasswing의 핵심은 미공개 프런티어 모델 Claude Mythos Previ",
       "tags": [
-        "enterprise"
+        "enterprise",
+        "anthropic"
       ],
-      "anchor": "project-glasswing-ai가-방어-사이버보안의-최전선에-선다"
+      "anchor": "project-glasswing-anthropic이-테크-전체를-한-방에-모았다"
     },
     {
       "index": 2,
-      "title": "57년간 숨겨진 아폴로 11호 버그를 AI가 찾아냈다",
-      "lead": "영국 소프트웨어 컨설팅사 JUXT의 CTO Henry Garner 팀이 Apollo Guidance Computer(AGC) 코드에서 57년간 발견되지 않은 버그를 찾아냈다. Claude와 오픈소스 행동 명세 언어 Allium을 사용해 13만 줄의 AGC 어셈블리를 1만 2500줄의 명세로 증류했다. 버그는 자이로스코프 제어 코드의 LGYRO 리소스 락이 오류 경로(BADEND)에서 해제되지 않는 것으로, 수정에 필요한 코드는 단 4바이트다.",
+      "title": "아폴로 11호에 57년간 숨어 있던 버그, 4바이트로 고친다",
+      "lead": "1969년 7월 20일, 닐 암스트롱과 버즈 올드린이 달 표면을 걸었다. 그 위를 마이클 콜린스가 사령선 컬럼비아호로 달을 공전하고 있었다. 콜린스의 비행을 제어한 것은 Apollo Guidance Computer — 13만 줄의 어셈블리로 작성된, 인류 역사상 가장 정밀하게 검토된 소프트웨어 중 하나다. 2003년에 소스가 공개된 이후 수천 명의 개발자가 읽었다. 아무도 찾지 못한 버그가 하나 있었다.",
       "tags": [
         "enterprise"
       ],
-      "anchor": "57년간-숨겨진-아폴로-11호-버그를-ai가-찾아냈다"
+      "anchor": "아폴로-11호에-57년간-숨어-있던-버그-4바이트로-고친다"
     },
     {
       "index": 3,
-      "title": "콘크리트로 노트북 스탠드를 직접 만들었다",
-      "lead": "개발자 Sam Burns가 순수 콘크리트로 노트북 스탠드를 제작했다. 브루탈리즘 건축 양식과 어반 익스플로레이션(urbex) 미학을 결합한 디자인으로, 2024년 포스트가 최근 HN에서 696점을 받으며 재조명됐다. \"소프트웨어를 만드는 사람이 물리적 물건도 직접 만든다\"는 메이커 감각이 개발자 커뮤니티의 공감을 얻었다.",
+      "title": "콘크리트로 노트북 스탠드를 만든 개발자",
+      "lead": "개발자 Sam Burns는 순수 콘크리트로 노트북 스탠드를 만들었다. 브루탈리즘 건축의 거친 질감과 어반 익스플로레이션의 미학이 합쳐진 물건이다. 2024년에 올린 제작기가 2년 뒤인 지금 Hacker News에서 696점을 받으며 다시 떠올랐다는 것 자체가 흥미롭다. 소프트웨어를 만드는 사람이 물리적 물건도 직접 만든다는 사실이 개발자 커뮤니티에서 공감을 얻었고, 시중 제품을 사는 대신 직접 설계하고 직접 부어 만드는 감각은 코드를 쓰는 감각",
       "tags": [
         "enterprise"
       ],
-      "anchor": "콘크리트로-노트북-스탠드를-직접-만들었다"
+      "anchor": "콘크리트로-노트북-스탠드를-만든-개발자"
     }
   ]
 }

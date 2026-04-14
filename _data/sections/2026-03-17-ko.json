@@ -2,43 +2,43 @@
   "date": "2026-03-17",
   "lang": "ko",
   "post_url": "/ko/2026/03/17/daily-tech-review/",
-  "post_title": "오픈 웨이트 진영에서 256k 컨텍스트의 통합형 모델(Mistral Small 4), 정형증명 기반 '검증형' 코딩 에이전트(Leanstral), 의료 로봇 '행동' 데이터를 대규모로 개방한 Open-H-Embodiment(778시간) 및 수술 로봇용 VLA/WFM이 ",
+  "post_title": "Britannica-OpenAI 저작권 소송, GTC 2026 인프라 1조달러, Mistral Forge+Leanstral 동시 공개",
   "source_type": "perplexity",
   "sections": [
     {
       "index": 1,
-      "title": "Mistral Small 4 공개 — Instruct·Reasoning·Coding·Vision을 한 모델로 통합",
-      "lead": "미스트랄은 2026년 3월 16일 Mistral Small 4를 공개하며, 추론(Reasoning)·멀티모달·에이전틱 코딩 역량을 단일 모델로 통합했다. 핵심 스펙으로 MoE 128 experts(토큰당 4개 활성화), 119B total parameters, 256k 컨텍스트, 그리고 요청별로 조절 가능한 `reasoning_effort`를 제시했다.",
+      "title": "Britannica·Merriam-Webster, OpenAI 상대 저작권·상표권 소송 제기",
+      "lead": "2026년 3월 16일 Encyclopedia Britannica와 자회사 Merriam-Webster가 뉴욕 맨해튼 연방법원에 OpenAI를 제소했다. 소장은 두 가지를 주장한다. 하나는 약 10만 건 기사를 허가 없이 GPT 학습에 사용했다는 저작권 침해이고, 다른 하나는 ChatGPT가 그 내용을 near-verbatim으로 재현하면서 'Britannica'를 출처로 명시한 잘못된 AI 출력을 내보냈다는 상표권 침해다. 두 번째 주장이 더",
       "tags": [
         "ai-models",
         "research",
         "benchmarks",
-        "ma"
+        "openai"
       ],
-      "anchor": "mistral-small-4-공개-instruct·reasoning·coding·vision을-한-모델로-통"
+      "anchor": "britannica·merriam-webster-openai-상대-저작권·상표권-소송-제기"
     },
     {
       "index": 2,
-      "title": "Leanstral 공개 — Lean 4 정형증명 '검증'에 최적화된 오픈소스 코드 에이전트",
-      "lead": "미스트랄은 같은 날 Lean 4 형식 검증(정형증명)용 오픈소스 코드 에이전트 Leanstral을 발표했다. \"코드를 생성하는 에이전트\"를 넘어, 검증(증명)이라는 '완전한 판정자(perfect verifier)'가 있는 영역에서 반복 실행(pass)로 성능을 끌어올리는 전략을 전면에 둔 것이 특징이다.",
-      "tags": [
-        "ai-models",
-        "research",
-        "benchmarks"
-      ],
-      "anchor": "leanstral-공개-lean-4-정형증명-검증에-최적화된-오픈소스-코드-에이전트"
-    },
-    {
-      "index": 3,
-      "title": "NVIDIA·Hugging Face, 의료 로봇 Physical AI 공개 데이터셋·기초 모델 동시 발표",
-      "lead": "NVIDIA는 Hugging Face 블로그를 통해 2026년 3월 16일 의료 로봇 영역의 공개 데이터셋 Open-H-Embodiment와 수술 로봇용 기초 모델·시뮬레이터를 발표했다. 778시간 규모(CC-BY-4.0)의 로봇 학습 데이터를 포함하며, GR00T-H(수술 로봇 정책/VLA)와 Cosmos-H-Surgical-Simulator(행동 조건부 수술 영상 생성 WFM)를 함께 제시했다.",
+      "title": "NVIDIA GTC 2026 — AI 인프라 1조달러 전망, Vera Rubin·Groq 3 공개",
+      "lead": "2026년 3월 16일 산호세 GTC에서 젠슨 황 CEO가 Vera Rubin 플랫폼, Groq 3 LPU, Space-1 모듈을 공개하며 2025~2027 누적 AI 인프라 주문 규모 최대 1조 달러를 전망했다. '모델 전쟁'에서 '인프라·플랫폼 전쟁'으로의 전환을 선언한 자리였다. Google Cloud, IBM, Hugging Face가 파트너십을 맺었고, Nemotron Coalition이라는 오픈소스 연구소·스타트업 컨소시엄이 출범했다",
       "tags": [
         "ai-models",
         "research",
         "benchmarks",
         "nvidia"
       ],
-      "anchor": "nvidia·hugging-face-의료-로봇-physical-ai-공개-데이터셋·기초-모델-동시-발표"
+      "anchor": "nvidia-gtc-2026-ai-인프라-1조달러-전망-vera-rubin·groq-3-공개"
+    },
+    {
+      "index": 3,
+      "title": "Mistral AI — 엔터프라이즈 'Forge' 플랫폼 + 오픈소스 형식 검증 에이전트 'Leanstral'",
+      "lead": "Mistral AI가 GTC 2026에서 두 가지를 동시에 공개했다. 하나는 기업 내부 데이터로 커스텀 모델을 훈련할 수 있는 'Forge' 플랫폼이고, 다른 하나는 Lean 4 형식 검증용 오픈소스 에이전트 'Leanstral'이다. Leanstral은 6B 활성 파라미터로 120B급 성능을 내며 Apache 2.0으로 공개됐다. CEO 아르튀르 멩슈는 2026년 ARR 10억 달러 궤도를 밝혔다. Forge는 RAG나 프롬프트 엔지니어링을 ",
+      "tags": [
+        "ai-models",
+        "research",
+        "benchmarks"
+      ],
+      "anchor": "mistral-ai-엔터프라이즈-forge-플랫폼-오픈소스-형식-검증-에이전트-leanstral"
     }
   ]
 }

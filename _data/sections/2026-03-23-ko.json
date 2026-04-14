@@ -8,7 +8,7 @@
     {
       "index": 1,
       "title": "NVIDIA Nemotron-Cascade 2: 30B MoE로 구현한 고밀도 추론",
-      "lead": "NVIDIA가 30B Mixture-of-Experts(MoE) 모델인 **Nemotron-Cascade 2**를 공개했습니다. 총 30B 파라미터 중 단 3B만 활성화되는 이 모델은 'Cascade RL'이라는 새로운 사후 학습 기법을 통해 적은 자원으로도 최상급 추론 능력을 보여줍니다.",
+      "lead": "NVIDIA가 Nemotron-Cascade 2를 공개했다. 총 30B 파라미터의 Mixture-of-Experts 모델이지만, 실제 추론 시 활성화되는 파라미터는 단 3B — 전체의 10%에 불과하다. 그럼에도 벤치마크 성능은 Qwen2.5-35B-A3B를 능가하고, Nemotron-3 Super 120B와 대등한 수준의 추론 밀도를 달성했다. 이것이 가능했던 핵심은 Cascade RL이라는 새로운 사후 학습 기법이다. 256K의 긴 컨텍스트",
       "tags": [
         "ai-models",
         "research",
@@ -20,7 +20,7 @@
     {
       "index": 2,
       "title": "MiniMax M2.7: 스스로 진화하는 에이전트 모델의 첫걸음",
-      "lead": "중국의 MiniMax가 자가 개선(Self-improvement) 능력을 갖춘 **M2.7** 모델을 발표했습니다. 이 모델은 복잡한 추론 과정에서 스스로 피드백을 주고받으며 성능을 높이는 '자율 진화'에 초점을 맞췄습니다.",
+      "lead": "중국의 MiniMax가 자가 개선 능력을 갖춘 M2.7 모델을 발표했다. 이 모델의 핵심은 Interleaved Thinking — 추론과 행동을 정교하게 엮어내는 기법이다. OpenClaw 벤치마크에서 100단계 이상의 추론을 수행하며 기존 대비 약 30%의 성능 향상을 기록했고, SWE-Pro에서 56.22%를 달성해 Claude 3.5 Opus와 대등하거나 이를 넘어서는 코딩·에이전트 성능을 보여줬다. 단순 텍스트 생성을 넘어 터미널 제어",
       "tags": [
         "ai-models",
         "research",
@@ -32,7 +32,7 @@
     {
       "index": 3,
       "title": "Mamba-3: 트랜스포머를 앞지른 차세대 SSM",
-      "lead": "Together AI, CMU, Princeton 등이 협력하여 **Mamba-3**를 공개했습니다. 트랜스포머 아키텍처의 한계를 극복하기 위한 SSM(State Space Model) 기반의 이 모델은 성능과 속도라는 두 마리 토끼를 모두 잡았습니다.",
+      "lead": "Together AI, CMU, Princeton이 협력해 Mamba-3를 공개했다. 트랜스포머 아키텍처의 한계를 극복하기 위한 SSM(State Space Model) 기반 모델로, 동일 조건에서 트랜스포머 기반 모델보다 벤치마크 점수가 약 4% 높으면서도 추론 속도는 최대 7배 빠르다. 핵심 기술은 두 가지다. MIMO(Multi-Input Multi-Output) SSM과 지수-사다리꼴(exponential-trapezoidal) 커널을 ",
       "tags": [
         "ai-models",
         "research",

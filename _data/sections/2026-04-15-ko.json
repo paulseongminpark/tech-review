@@ -1,0 +1,38 @@
+{
+  "date": "2026-04-15",
+  "lang": "ko",
+  "post_url": "/ko/2026/04/15/daily-tech-review/",
+  "post_title": "DaVinci, 사진 시장에 무료로 진입 · Backblaze, 아무 말 없이 백업 멈춰 · Google, 뒤로가기 버튼 조작에 스팸 규정",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "Blackmagic Design이 Adobe Lightroom에 선전포고했다",
+      "lead": "Blackmagic Design은 영상 편집 소프트웨어 DaVinci Resolve로 수년간 할리우드 컬러리스트들의 신뢰를 쌓아왔다. 그 신뢰를 이번에는 사진 시장으로 가져간다. DaVinci Resolve 21에 추가된 Photo 페이지는 무료 버전과 $295짜리 Studio 버전으로 제공되며, 사진 작가들에게 노드 기반 색보정 워크플로우를 처음으로 열어준다. Canon, Fujifilm, Nikon, Sony, iPhone ProRAW를 포",
+      "tags": [
+        "enterprise",
+        "ma"
+      ],
+      "anchor": "blackmagic-design이-adobe-lightroom에-선전포고했다"
+    },
+    {
+      "index": 2,
+      "title": "Backblaze는 백업을 멈췄고, 아무도 알려주지 않았다",
+      "lead": "Robert Reese는 10년 넘게 Backblaze를 써왔다. 2015년에 시작해, 하드드라이브 장애가 났을 때 실제로 복구에 성공했고, 지인들에게 적극 추천까지 했다. 신뢰는 충분히 쌓여 있었다. 균열이 시작된 건 2025년, GitHub 저장소의 git 히스토리를 실수로 날렸을 때였다. Backblaze가 언제부터인가 .git 폴더를 백업하지 않고 있었다. 설정 화면의 제외 목록 어디에도 이 사실은 적혀 있지 않았다. 그러다 Reddit",
+      "tags": [
+        "enterprise"
+      ],
+      "anchor": "backblaze는-백업을-멈췄고-아무도-알려주지-않았다"
+    },
+    {
+      "index": 3,
+      "title": "Google이 뒤로가기 버튼 조작을 스팸으로 규정했다",
+      "lead": "Google은 검색 중앙 블로그를 통해 \"back button hijacking\"에 대한 새 스팸 정책을 발표했다. 사용자가 브라우저의 뒤로가기 버튼을 누를 때, 검색 결과 대신 다른 페이지로 보내거나 현재 페이지에 묶어두는 방식이다. JavaScript로 브라우저 히스토리를 조작해 구현한다. SEO 관점에서는 체류 시간을 늘려 순위를 올리는 수법이었고, 광고 수익을 극대화하는 콘텐츠 팜에서 특히 자주 쓰였다. Google은 이 관행을 사용자 ",
+      "tags": [
+        "enterprise",
+        "google"
+      ],
+      "anchor": "google이-뒤로가기-버튼-조작을-스팸으로-규정했다"
+    }
+  ]
+}

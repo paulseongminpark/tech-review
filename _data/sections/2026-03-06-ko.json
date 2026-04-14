@@ -8,7 +8,7 @@
     {
       "index": 1,
       "title": "NVIDIA, 광학 기술에 $40억 투자…데이터센터 확장 본격화",
-      "lead": "NVIDIA가 Lumentum과 Coherent에 각각 $20억씩 투자하며 다중 기가와트급 AI 팩토리 구축을 가속화한다.(http://nvidianews.nvidia.com/news/nvidia-announces-strategic-partnership-with-lumentum-to-develop-state-of-the-art-optics-technology)",
+      "lead": "NVIDIA가 Lumentum과 Coherent에 각각 $20억씩 투자하며 다중 기가와트급 AI 팩토리 구축을 가속화한다.",
       "tags": [
         "chips",
         "datacenter",
@@ -20,7 +20,7 @@
     {
       "index": 2,
       "title": "Amazon, OpenAI에 $500억 투자…AWS 독점 지위 강화",
-      "lead": "Amazon이 OpenAI에 초기 $150억 투자를 시작으로 총 $500억까지 투입하며, OpenAI는 AWS의 커스텀 AI 칩 Trainium 약 2GW를 2027년까지 소비하기로 약정했다.(https://www.geekwire.com/2026/filings-how-amazons-50b-openai-deal-actually-works-and-what-theyre-keeping-secret/)",
+      "lead": "Amazon이 OpenAI에 초기 $150억 투자를 시작으로 총 $500억까지 투입하며, OpenAI는 AWS의 커스텀 AI 칩 Trainium 약 2GW를 2027년까지 소비하기로 약정했다.",
       "tags": [
         "chips",
         "datacenter",
@@ -35,7 +35,7 @@
     {
       "index": 3,
       "title": "NVIDIA, Vera Rubin HBM4 대역폭 22.2TB/s로 업그레이드…AMD와의 경쟁 심화",
-      "lead": "NVIDIA가 Vera Rubin NVL72 서버의 HBM4 메모리 대역폭을 기존 대비 10% 상향조정한 22.2TB/s로 설정하여 AMD의 Instinct MI455X(19.6TB/s)를 압도하기로 결정했다.(https://www.letsdatascience.com/blog/nvidia-just-shipped-the-most-powerful-ai-chip-ever-made)",
+      "lead": "NVIDIA가 Vera Rubin NVL72 서버의 HBM4 메모리 대역폭을 기존 대비 10% 상향조정한 22.2TB/s로 설정하여 AMD의 Instinct MI455X(19.6TB/s)를 압도하기로 결정했다.",
       "tags": [
         "chips",
         "datacenter",

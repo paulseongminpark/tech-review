@@ -2,7 +2,7 @@
   "date": "2026-04-13",
   "lang": "ko",
   "post_url": "/ko/2026/04/13/daily-tech-review/",
-  "post_title": "AI 벤치마크 8개 전부 해킹됐다 / Claude Mythos, 198건으로 '수천 건' 주장",
+  "post_title": "AI 벤치마크 8개 전부 해킹됐다 / Claude Mythos, 198건으로 '수천 건' 주장 / $165로 25종 mRNA 언어 모델 학습",
   "source_type": "perplexity",
   "sections": [
     {
@@ -26,6 +26,17 @@
         "benchmarks"
       ],
       "anchor": "claude-mythos-수천-개의-제로데이는-198건-검토에서-나왔다"
+    },
+    {
+      "index": 3,
+      "title": "$165로 25종에 걸친 mRNA 언어 모델 학습",
+      "lead": "OpenMed 팀이 HuggingFace 블로그에 올린 글은 숫자부터 눈길을 끈다. 25개 생물 종의 mRNA 코돈 최적화 모델을, AWS 스팟 인스턴스 기준 $165에 학습했다. A100 80GB GPU 4장으로 총 55시간 — 멀티스피시즈 베이스 모델 48시간, 종별 파인튜닝 7시간이었다. 파이프라인은 ESMFold 단백질 구조 예측, ProteinMPNN 역접힘 서열 설계, CodonRoBERTa 코돈 최적화 세 단계로 구성됐다.",
+      "tags": [
+        "ai-models",
+        "research",
+        "benchmarks"
+      ],
+      "anchor": "165로-25종에-걸친-mrna-언어-모델-학습"
     }
   ]
 }

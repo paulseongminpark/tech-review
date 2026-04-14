@@ -8,7 +8,7 @@
     {
       "index": 1,
       "title": "LinkedIn이 당신의 브라우저를 몰래 스캔하고 있다",
-      "lead": "Fairlinked e.V.가 운영하는 BrowserGate 캠페인에 따르면, LinkedIn은 사용자가 linkedin.com을 방문할 때마다 숨겨진 코드가 컴퓨터에 설치된 소프트웨어를 검색하고 그 결과를 LinkedIn 서버와 미국-이스라엘 사이버보안 기업을 포함한 제3자에게 전송하고 있다. 사용자는 이를 알지 못하며 동의를 구하지도 않는다. 스캔 대상에는 509개의 구직 도구, 무슬림 신자를 식별하는 익스텐션, 정치 성향을 드러내는 익스텐",
+      "lead": "Fairlinked e.V.가 운영하는 BrowserGate 캠페인은 LinkedIn이 사용자 모르게 수행해온 것을 문서로 정리해 공개했다. linkedin.com을 방문하는 순간, 숨겨진 코드가 컴퓨터에 설치된 소프트웨어를 조용히 훑는다. 그 결과는 LinkedIn 서버와 미국-이스라엘 사이버보안 기업을 포함한 제3자에게 전송되며, 사용자에게는 동의를 구하지 않는다.",
       "tags": [
         "chips",
         "datacenter",
@@ -19,7 +19,7 @@
     {
       "index": 2,
       "title": "아르테미스 우주선 컴퓨터에서 Outlook 2개가 실행 중 — 이유를 모른다",
-      "lead": "우주비행사들이 우주선 탑재 컴퓨터에서 Microsoft Outlook 인스턴스가 두 개 동시에 실행되고 있어 휴스턴에 연락했다. NASA는 원격으로 컴퓨터에 접속해 원인을 파악 중이다. 블루스카이에 올라온 Niki Grayson의 게시글로 알려졌으며, 게시 시각은 2026년 4월 2일이다.",
+      "lead": "2026년 4월 2일, 블루스카이에 Niki Grayson의 게시글이 올라왔다. 아르테미스 우주선 탑재 컴퓨터에서 Microsoft Outlook 인스턴스가 두 개 동시에 실행 중이라는 내용이었다. 우주비행사들은 직접 Houston에 연락해 상황을 보고했고, NASA는 원격으로 컴퓨터에 접속해 원인 파악에 나섰다.",
       "tags": [
         "chips",
         "datacenter",
@@ -30,7 +30,7 @@
     {
       "index": 3,
       "title": "프로덕션 출시 당일 디스크 100% — NixOS 서버 실전 복구기",
-      "lead": "Hetzner에서 운영하는 4GB RAM, 40GB 디스크의 NixOS 서버가 출시 직후 디스크를 100% 소진해 다운됐다. 2.2GB짜리 디지털 파일을 제공하는 서버였는데, 출시 공지 직후 수백 명이 동시에 접속하면서 공간이 가득 찼다. 주범은 8.5GB의 Plausible Analytics clickhouse 데이터베이스와 15GB의 /nix/store였다.",
+      "lead": "Hetzner에서 운영하는 NixOS 서버의 스펙은 4GB RAM, 40GB 디스크였다. 이 서버의 역할은 2.2GB짜리 디지털 파일을 제공하는 것이었고, 출시 공지가 올라가자 수백 명이 동시에 접속했다. 디스크는 순식간에 100%를 찍었다. 주범은 두 곳이었다. 8.5GB에 달하는 Plausible Analytics의 clickhouse 데이터베이스와 15GB를 차지한 /nix/store였다.",
       "tags": [
         "chips",
         "datacenter",
