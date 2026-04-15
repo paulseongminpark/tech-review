@@ -1,0 +1,39 @@
+{
+  "date": "2026-04-16",
+  "lang": "ko",
+  "post_url": "/ko/2026/04/16/daily-tech-review/",
+  "post_title": "Cal.com 코드 비공개화의 교훈, Xata 오픈소스 Postgres, GitHub Stacked PRs",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "Cal.com이 코드를 닫는다, 그리고 그 오해에 대하여",
+      "lead": "Cal.com이 오픈소스 코드를 비공개로 전환하겠다고 밝혔다. 이유는 AI 위협이다. 자신들의 코드베이스가 경쟁 제품을 만드는 데 활용된다는 것이다. 이에 대해 Strix는 제목부터 단호하게 반박한다. \"오픈소스는 죽지 않았다. Cal.com이 잘못된 교훈을 얻은 것이다.\" AI 시대에 오픈소스 기업이 직면하는 딜레마는 실재한다. 코드를 공개하면 기여와 신뢰를 얻지만, 동시에 자신의 코드베이스가 경쟁자의 학습 데이터가 된다. Cal.com의 선",
+      "tags": [
+        "opensource",
+        "developer-tools"
+      ],
+      "anchor": "calcom이-코드를-닫는다-그리고-그-오해에-대하여"
+    },
+    {
+      "index": 2,
+      "title": "Xata: 오픈소스 Postgres, 브랜칭을 스토리지 레벨로 끌어내리다",
+      "lead": "Xata가 오픈소스 클라우드 네이티브 Postgres 플랫폼을 공개했다. 핵심은 Copy-on-Write 방식의 브랜칭이다. 수 테라바이트의 데이터를 스토리지 레벨에서 복사하는 데 걸리는 시간이 몇 초에 불과하다. 기존 데이터베이스 브랜칭은 대부분 논리적 복사나 스냅샷 방식이라 대용량에서는 실용적이지 않았다. Xata는 이를 Kubernetes 위에서 자기 호스팅할 수 있는 형태로 만들었고, Scale-to-zero도 지원한다. 사용하지 않을 ",
+      "tags": [
+        "opensource",
+        "developer-tools"
+      ],
+      "anchor": "xata-오픈소스-postgres-브랜칭을-스토리지-레벨로-끌어내리다"
+    },
+    {
+      "index": 3,
+      "title": "GitHub Stacked PRs: 큰 변경을 쌓는 방법",
+      "lead": "GitHub이 Stacked PRs를 프라이빗 프리뷰로 공개했다. 아이디어는 간결하다. 큰 변경을 작은 PR들의 체인으로 분해하고, 각 PR이 독립적으로 리뷰되면서 스택 전체가 함께 머지된다. main을 베이스로 auth-layer, api-routes, frontend가 차례로 쌓이는 구조다. 기존에도 서드파티 도구들이 이 방식을 지원했지만, GitHub 네이티브 지원은 결이 다르다. PR UI에 스택 맵이 표시되고, 브랜치 보호 규칙은 최종",
+      "tags": [
+        "opensource",
+        "developer-tools"
+      ],
+      "anchor": "github-stacked-prs-큰-변경을-쌓는-방법"
+    }
+  ]
+}
