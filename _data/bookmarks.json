@@ -3149,5 +3149,215 @@
       "worker에 넘길 맥락은 최소 단위로 줄인다."
     ],
     "tweet_id": "2042660310851449223"
+  },
+  {
+    "id": "bm-115",
+    "author": "witcheer",
+    "date": "2026-04-15",
+    "added_at": "2026-04-18",
+    "url": "https://x.com/witcheer/status/2044456778843238689",
+    "text": "there are 450+ repos tagged \"agent-memory\" on github and 460+ tagged \"context-management.\" me and my agentic best friends went through them.\nwhat I expected to find: 40 tools doing roughly the same thing with different APIs.\nwhat I actually found: two fundamentally different paradigms, almost no one drawing the line between them, and a category that doesn't have a name yet.\nI run a 24/7 agent setup on a Mac Mini M4. every session compounds on the last. that setup is the reason I noticed the spli",
+    "whats_happening": "작성자는 GitHub의 agent-memory와 context-management 저장소 900여 개를 검토해 에이전트 메모리 생태계가 두 패러다임으로 갈린다고 정리했다. 대화 사실을 추출하는 memory backends보다, 세션 간 누적되는 파일 기반 context substrates가 장기·멀티프로젝트 작업에 더 잘 맞는다는 주장이다.",
+    "translation": "GitHub에는 \"agent-memory\" 태그가 붙은 repos가 450개 이상 있고 \"context-management\" 태그가 붙은 repos는 460개 이상 있다. 나와 내 agentic한 절친들이 그것들을 훑어봤다.\n내가 발견할 거라 예상한 것: API만 다른 채로 대체로 같은 일을 하는 도구 40개.\n내가 실제로 발견한 것: 근본적으로 다른 두 가지 패러다임, 그 둘 사이에 선을 긋는 사람은 거의 없다는 점, 그리고 아직 이름조차 없는 한 범주.\n나는 Mac Mini M4에서 24/7 agent 설정을 돌린다. 모든 session은 바로 이전 session 위에 누적된다. 그 설정 덕분에 나는 이 분리를 알아챘다. 대부분의 memory 도구는 내가 하는 일을 지탱할 수 없었고, 할 수 있는 것들은 memory 도구로조차 이야기되지 않고 있었다.\n지도가 여기 있다.\nThe Two Camps\ncamp 1: memory backends - 이 도구들은 대화에서 사실을 추출하고, 그것을 vector databases에 저장한 다음, 네가 요청할 때 관련 사실을 가져온다. 자동화된 note-taker다. 필요할 때를 위해 보관해 두었다가 다시 꺼낸다.\ncamp 2: context substrates - 이들은 session을 넘어 누적되는, 구조화되고 사람이 읽을 수 있는 context를 유지한다. 아무것도 \"추출\"되지 않는다. context 자체가 files다. 너의 agent는 그것을 읽고, 그 안에서 작업하고, 다시 그 안에 써 넣으며, 그 전체가 시간에 따라 누적된다.\ncamp 1이 묻는 것: \"AI가 무엇을 기억해야 하는가?\"\ncamp 2가 묻는 것: \"AI는 어떤 context 안에서 작업해야 하는가?\"\n이 공간의 대부분(그리고 GitHub stars의 대부분)은 camp 1에 있다. 하지만 실제로 연속적이고 multi-session이며 multi-project인 작업으로 확장되는 아키텍처가 등장하는 곳은 camp 2다. 그리고 언어도 그 방향으로 바뀌기 시작하고 있다.\nCamp 1: The Memory Backends\nMem0 — 53.1k stars\n채택 기준으로는 이 범주의 리더다. 네 가지 연산: add, search, update, delete. 대화에서 사실을 추출해 세 단계(user, session, agent)에 저장하고, hybrid search로 다시 가져온다.\n통합은 극도로 쉽다. Python과 TypeScript SDK가 있다. 거의 모든 것과 작동한다.\n한계: memories는 평평한 엔트리다. 그 사이에 관계가 없다. 모든 추출에는 LLM 호출이 필요하므로 품질은 전적으로 extraction prompt가 얼마나 좋은지에 달려 있다. 그리고 한번 저장되면 진화하지 않는다. 1월의 사실과 4월의 사실이 나란히 놓이지만, 하나가 다른 하나를 대체할 수도 있다는 개념이 없다.\nMemPalace — 46.2k stars\nlocal-first verbatim memory다. 사실을 추출하는 대신, MemPalace는 대화를 단어 그대로 저장하고 wings(entities), rooms(topics), drawers(original content)로 정리한다. 검색은 ChromaDB로 한다.\n벤치마크 수치는 이 분야 최고다: raw semantic search만으로 LongMemEval에서 retrieval recall 96.6%, API 호출도 없고 LLM도 없다. hybrid pipeline으로 98.4%. LLM reranking을 쓰면 99%+.\n한계: verbatim 저장은 선형적으로 커진다. 많이 말할수록 더 커진다. 압축도 없고 합성도 없다. 문제를 \"내가 3주 전에 말한 그 내용을 찾아줘\"로 정의한다면 이게 최고의 도구다. 문제를 \"다섯 개 프로젝트에 걸친 내 작업의 현재 상태를 알려줘\"로 정의한다면 잘못된 도구다.\nSupermemory — 21.8k stars\n스스로를 분명하게 \"memory is not RAG\"라고 포지셔닝한다. 차별점은 temporal awareness다. 예를 들어 \"방금 San Francisco로 이사했어\"라고 말하면 예전 도시 정보가 대체된다. 만료된 사실은 자동으로 잊힌다. user profiles은 안정적인 사실과 최근 활동을 결합하며 retrieval 지연은 약 50ms다.\nGoogle Drive, Gmail, Notion, OneDrive, GitHub용 connectors가 있다. PDFs, images, videos, code 전반에 걸친 multi-modal도 지원한다. 자체 benchmark framework인 MemoryBench를 만들었고, LongMemEval, LoCoMo, ConvoMem에서 #1이라고 주장한다.\ncamp 1의 대부분 도구는 사실을 영구적인 것으로 취급한다. Supermemory는 그것을 진화하는 것으로 다룬다. 저장만이 아니라 state를 생각한다는 점에서, camp 1이 갈 수 있는 가장 가까운 지점이다.\nHoncho — 2.4k stars\n더 작지만 아키텍처는 뚜렷하게 다르다. Honcho는 인간과 agents를 모두 하나의 통합 모델 안의 \"peers\"로 취급한다. 비동기 reasoning service가 백그라운드에서 돌며, 각 peer의 sessions로부터 심리적 통찰을 끌어낸다. 단지 네가 무엇을 말했는지 기억하는 게 아니라, 네가 어떻게 생각하는지를 모델링한다.\nPostgreSQL + pgvector가 필요하다. AGPL-3.0(제약적)이다. 대부분보다 인프라가 무겁다.\n가장 가까운 것은",
+    "tech_stack": [
+      "GitHub",
+      "Mac Mini M4",
+      "Mem0",
+      "MemPalace",
+      "Supermemory",
+      "Honcho",
+      "vector databases",
+      "Python",
+      "TypeScript",
+      "LLM",
+      "ChromaDB",
+      "RAG",
+      "Google Drive",
+      "Gmail",
+      "Notion",
+      "OneDrive",
+      "PostgreSQL",
+      "pgvector",
+      "MemoryBench",
+      "LongMemEval",
+      "LoCoMo",
+      "ConvoMem"
+    ],
+    "apply_points": [
+      "장기 에이전트는 메모리와 컨텍스트를 분리하라.",
+      "추출형 메모리는 시간 갱신 규칙을 넣어라.",
+      "멀티세션엔 사람이 읽는 상태 파일을 남겨라."
+    ],
+    "why_it_matters": "900개 저장소를 훑어 내린 \"memory vs context substrate\" 구분은, mcp-memory가 지금 앓고 있는 정체성 혼란을 정확히 찌른다. 추출형 fact store와 세션 누적 파일은 다른 문제를 푸는 도구인데, 하나로 묶으려다 둘 다 망가뜨려 왔다.",
+    "tweet_id": "2044456778843238689"
+  },
+  {
+    "id": "bm-116",
+    "author": "ashpreetbedi",
+    "date": "2026-04-14",
+    "added_at": "2026-04-18",
+    "url": "https://x.com/ashpreetbedi/status/2044098660586111022",
+    "text": "New post: Systems Engineering\n\nCoding agents have lowered the barrier to writing code, but they haven't lowered the requirements of production software.\n\nAgentic software is just software. The agent replaces business logic. Everything else is the same.\n\nhttps://www.ashpreetbedi.com/articles/systems-engineering",
+    "whats_happening": "Systems Engineering라는 새 글이 올라왔고, 코딩 에이전트 시대에도 프로덕션 소프트웨어의 엔지니어링 기준은 그대로라는 주장을 담고 있다. 글은 에이전트가 비즈니스 로직을 대체할 뿐, 나머지 시스템 요구사항은 동일하다고 본다.",
+    "translation": "새 글: Systems Engineering\n\n코딩 에이전트는 코드를 작성하는 진입장벽을 낮췄지만, 프로덕션 소프트웨어의 요구사항까지 낮추지는 못했다.\n\n에이전트형 소프트웨어는 그냥 소프트웨어다. 에이전트가 비즈니스 로직을 대체한다. 나머지는 모두 같다.\n\nhttps://www.ashpreetbedi.com/articles/systems-engineering",
+    "tech_stack": [],
+    "apply_points": [
+      "에이전트 코드도 운영 기준으로 검증하라.",
+      "비즈니스 로직 외 시스템 설계를 분리하라.",
+      "테스트·관측성·배포 절차를 유지하라."
+    ],
+    "why_it_matters": "에이전트가 코드를 쓴다고 해서 \"프로덕션\"의 정의가 느슨해지는 게 아니다 — 비즈니스 로직만 교체될 뿐, 테스트·관측성·배포·장애 복구 기준은 그대로 남는다. 에이전트 결과물을 \"프로토타입 품질\"로 봐주는 암묵적 관용을 거부해야, 시스템이 무너지지 않는다.",
+    "tweet_id": "2044098660586111022"
+  },
+  {
+    "id": "bm-117",
+    "author": "trq212",
+    "date": "2026-04-15",
+    "added_at": "2026-04-18",
+    "url": "https://x.com/trq212/status/2044548257058328723",
+    "text": "In my recent calls with Claude Code users, one theme keeps coming up: the 1M token context window is a double-edged sword. \nIt lets Claude Code operate autonomously for longer and handle tasks more reliably, but it also opens the door to context pollution if you're not deliberate about managing your sessions.\nSession management matters more than ever and there seem to be a lot of questions about it. Do you keep one session open in a terminal, or two? Start fresh with every prompt? When should yo",
+    "whats_happening": "Claude Code 사용자들과의 최근 통화에서 1M token context window가 더 긴 자율 작업과 높은 신뢰성을 가능하게 하는 동시에, 세션 관리를 소홀히 하면 context pollution을 키우는 양날의 검이라는 점이 반복적으로 제기됐다. 글은 context rot, compaction, rewind, subagents 같은 메커니즘과 새 세션을 시작할 시점이 실제 사용 경험을 크게 좌우한다고 설명한다.",
+    "translation": "최근 Claude Code 사용자들과 통화하면서 한 가지 주제가 계속 나왔다. 1M token context window는 양날의 검이라는 점이다.\n이것은 Claude Code가 더 오랫동안 자율적으로 작동하고 작업을 더 안정적으로 처리하게 해주지만, 세션을 신중하게 관리하지 않으면 context pollution이 생길 여지도 함께 연다.\nSession management는 그 어느 때보다 중요해졌고, 이에 대한 질문도 많은 것 같다. 터미널에서 세션 하나를 계속 열어두어야 할까, 아니면 두 개를 열어둘까? 프롬프트마다 새로 시작해야 할까? 언제 compact, rewind, 또는 subagents를 써야 할까? 나쁜 compact는 무엇 때문에 발생할까?\n놀랄 만큼 많은 디테일이 여기 얽혀 있고, 그것들 대부분은 당신의 context window를 어떻게 관리하느냐에서 나온다.\nContext, Compaction & Context Rot 빠른 입문\ncontext window는 모델이 다음 응답을 생성할 때 한 번에 \"볼 수 있는\" 모든 것이다. 여기에는 system prompt, 지금까지의 대화, 모든 tool call과 그 출력, 그리고 읽은 모든 파일이 포함된다. Claude Code의 context window는 백만 토큰이다.\n안타깝게도 context를 사용하는 데에는 약간의 비용이 있는데, 흔히 context rot라고 부른다. context rot는 context가 커질수록 모델 성능이 저하된다는 관찰을 뜻한다. attention이 더 많은 토큰에 분산되고, 오래되고 관련 없는 내용이 현재 작업에서 주의를 흐리기 시작하기 때문이다. 우리의 1MM context model에서는 대략 300-400k tokens 부근에서 어느 정도의 context rot가 발생하는 것을 보지만, 이것은 작업에 매우 크게 좌우되며 엄격한 규칙은 아니다.\ncontext window에는 하드 컷오프가 있으므로, context window의 끝에 가까워지면 지금까지 해온 작업을 더 작은 설명으로 요약한 뒤 새로운 context window에서 작업을 이어가야 한다. 우리는 이것을 compaction이라고 부른다. 원하면 직접 compaction을 트리거할 수도 있다.\nEvery Turn Is a Branching Point\n방금 Claude에게 어떤 일을 시켰고 그것이 끝났다고 해보자. 이제 당신의 context 안에는 몇 가지 정보(tool calls, tool outputs, 당신의 지시)가 들어 있다. 그리고 다음에 무엇을 할지에 대해 놀랄 만큼 많은 선택지가 생긴다:\nContinue — 같은 세션에서 다른 메시지를 보낸다\n/rewind (esc esc) — 이전 메시지로 돌아가 그 지점에서 다시 시도한다\n/clear — 보통 방금 배운 것을 정리한 brief와 함께 새 세션을 시작한다\nCompact — 지금까지의 세션을 요약하고 그 요약 위에서 계속 진행한다\nSubagents — 다음 작업 덩어리를 자체적으로 깨끗한 context를 가진 agent에게 위임하고, 그 결과만 다시 가져온다\n가장 자연스러운 선택은 그냥 계속 진행하는 것이지만, 나머지 네 가지 선택지는 context를 관리하도록 돕기 위해 존재한다.\n언제 새 세션을 시작해야 하는가\n새로운 1M context windows는 이제 더 긴 작업을 더 안정적으로 할 수 있게 해준다. 예를 들어 full-stack app을 처음부터 만들게 하는 일 같은 것이다. 하지만 모델의 context가 아직 바닥나지 않았다고 해서, 새 세션을 시작하지 말아야 한다는 뜻은 아니다.\n우리의 일반적인 경험칙은, 새 작업을 시작할 때는 새 세션도 함께 시작해야 한다는 것이다.\n애매한 영역은 서로 관련된 작업을 할 때인데, 그중 일부 context는 여전히 필요하지만 전부가 필요한 것은 아닐 수 있다.\n예를 들어 방금 구현한 기능의 documentation을 작성하는 경우다. 새 세션을 시작할 수도 있겠지만, 그러면 Claude는 방금 구현한 파일들을 다시 읽어야 하므로 더 느리고 더 비싸질 것이다. documentation은 아주 높은 지능 민감도가 필요한 작업이 아닐 수도 있으므로, 관련 파일을 다시 읽지 않아도 되는 효율상의 이점 때문에 추가 context를 감수할 만하다.\n고치기보다 Rewind하기\n좋은 context management를 보여주는 습관을 하나만 꼽으라면, 나는 rewind를 꼽겠다.\nClaude Code에서는 Esc를 두 번 누르거나(/rewind 실행) 이전 메시지 어느 지점으로든 돌아가서 그 지점에서 다시 프롬프트할 수 있다. 그 지점 이후의 메시지들은 context에서 제거된다.\nRewind는 수정 지시보다 더 나은 접근인 경우가 많다. 예를 들어 Claude가 파일 다섯 개를 읽고 어떤 접근을 시도했는데, 그것이 잘 되지 않았다고 해보자. 본능적으로는 \"그건 잘 안 됐어, 대신 X를 시도해\"라고 치고 싶을 수 있다. 하지만 더 나은 방법은 파일을 읽은 직후 지점으로 rewind한 다음, what you로 다시 프롬프트하는 것이다.",
+    "tech_stack": [
+      "Claude Code"
+    ],
+    "apply_points": [
+      "새 작업마다 세션을 새로 시작한다.",
+      "수정 전 rewind로 분기점을 되돌린다.",
+      "긴 작업은 compact와 subagents로 나눈다."
+    ],
+    "why_it_matters": "1M 컨텍스트는 \"더 많이 넣을 수 있다\"가 아니라 \"언제 버릴지를 설계해야 한다\"는 문제로 축을 옮긴다. rewind·compact·subagent는 기능이 아니라 세션을 **끊는 기술** — 오래 붙잡는 사람이 이기는 게 아니라, 제때 자르는 사람이 이긴다.",
+    "tweet_id": "2044548257058328723"
+  },
+  {
+    "id": "bm-118",
+    "author": "mbwsims",
+    "date": "2026-04-14",
+    "added_at": "2026-04-18",
+    "url": "https://x.com/mbwsims/status/2044111320967196678",
+    "text": "Teach Claude Code to think systematically.\n\nI got tired of having the same conversation with Claude Code. Review this for security. Are these tests sufficient? Can you find patterns in my codebase and update the instruction files? The answers were ok but inconsistent: no clear methodology, no memory between sessions, no systematic depth. \n\nSo I built one Claude Code plugin, then another. Before I knew it I had five, covering instruction files, test coverage, security, codebase analysis, and code evolution. I decided to merge them into one integrated plugin. Claude universe was available so I figured why not…  \n\nThe Claude Universe plugin: teach Claude Code to think systematically\n\nGithub link (entirely open source): https://github.com/mbwsims/claude-universe\n\nMore at http://claudeuniverse.com",
+    "whats_happening": "작성자는 Claude Code의 보안 리뷰, 테스트 검토, 코드베이스 분석 응답이 일관되지 않다고 느껴 이를 보완하는 통합 plugin인 Claude Universe를 만들었다. 기존에 따로 만들던 5개의 plugin을 하나로 합쳤고, GitHub에 오픈 소스로 공개했다.",
+    "translation": "Claude Code에게 체계적으로 생각하는 법을 가르치세요.\n\n나는 Claude Code와 똑같은 대화를 계속 반복하는 데 지쳤다. 이걸 보안 관점에서 리뷰해줘. 이 테스트들로 충분한가? 내 코드베이스에서 패턴을 찾아서 instruction files를 업데이트해줄 수 있나? 답변들은 괜찮았지만 일관성이 없었다. 명확한 방법론도 없고, 세션 간 메모리도 없고, 체계적인 깊이도 없었다.\n\n그래서 나는 Claude Code plugin 하나를 만들었고, 또 하나를 만들었다. 정신을 차려보니 다섯 개가 되어 있었고, instruction files, test coverage, security, codebase analysis, code evolution을 다루고 있었다. 나는 그것들을 하나의 통합 plugin으로 합치기로 했다. Claude universe가 비어 있었으니, 왜 안 하겠나 싶었다...\n\nClaude Universe plugin: Claude Code에게 체계적으로 생각하는 법을 가르치기\n\nGithub 링크(전체 오픈 소스): https://github.com/mbwsims/claude-universe\n\n더 보기: http://claudeuniverse.com",
+    "tech_stack": [
+      "Claude Code",
+      "Claude Universe",
+      "GitHub"
+    ],
+    "apply_points": [
+      "반복 요청을 통합 플러그인으로 묶어라.",
+      "보안·테스트 점검 기준을 명문화하라.",
+      "세션 간 규칙과 맥락을 저장하라."
+    ],
+    "why_it_matters": "Claude Code의 응답 품질이 세션마다 요동치는 건 많은 유저가 체감하는 문제인데, 이걸 \"규칙을 세션 외부에 고정하는 plugin\"으로 해결한 접근이 핵심이다. 모델 튜닝이 아니라 조건 설계로 일관성을 만든 사례 — Claude를 바꾸려 하지 말고, Claude가 매번 돌아오는 자리를 바꾸라는 것.",
+    "tweet_id": "2044111320967196678"
+  },
+  {
+    "id": "bm-119",
+    "author": "Outsideris",
+    "date": "2026-04-14",
+    "added_at": "2026-04-18",
+    "url": "https://x.com/Outsideris/status/2044089951852343428",
+    "text": "https://bits-bytes-nn.github.io/insights/agentic-ai/2026/04/05/evolution-of-ai-agentic-patterns.html\n이렇게 잘 정리된 글로 흐름을 보니 재밌네요.",
+    "whats_happening": "2026년 4월 5일 게시된 이 글은 2022~2026년 AI 에이전트 개발 패러다임이 Prompt Engineering에서 Context Engineering, 다시 Harness Engineering으로 이동했다고 정리한다. 핵심 주장은 모델 자체보다 컨텍스트 구성, 에이전트 루프, 검증·보안·도구 통합을 포함한 하네스 설계가 실제 프로덕션 성능을 좌우한다는 것이다.",
+    "translation": "제공된 원문 링크는 이미 한국어 기사라 별도 번역이 필요 없다.",
+    "tech_stack": [
+      "GitHub Copilot",
+      "OpenAI Codex",
+      "ChatGPT",
+      "GPT-3",
+      "GPT-4",
+      "GPT-4o",
+      "Claude 3.5 Sonnet",
+      "Gemini",
+      "Cursor",
+      "RAG",
+      "AST",
+      "MCP",
+      "A2A",
+      "OpenAI Agents SDK",
+      "Claude Code",
+      "Playwright",
+      "React",
+      "Vite",
+      "FastAPI",
+      "SQLite",
+      "Context Hub",
+      "Stripe API"
+    ],
+    "apply_points": [
+      "컨텍스트 조립 파이프라인부터 설계하라.",
+      "린트·테스트·평가 루프를 기본 장착하라.",
+      "외부입력·민감데이터·상태변경 동시권한을 막아라."
+    ],
+    "why_it_matters": "모델이 아니라 하네스가 성능을 결정한다는 주장은 \"더 나은 모델을 기다린다\"는 전제를 깨뜨린다. 컨텍스트 조립·에이전트 루프·검증·보안은 결국 조건 설계이고, 이 관점에서 보면 orchestration과 mcp-memory는 이미 하네스 엔지니어링을 하고 있었던 셈이다.",
+    "tweet_id": "2044089951852343428"
+  },
+  {
+    "id": "bm-120",
+    "author": "techwith_ram",
+    "date": "2026-04-14",
+    "added_at": "2026-04-18",
+    "url": "https://x.com/techwith_ram/status/2044032272081588395",
+    "text": "So, you have built a knowledge graph. It has millions of nodes, hundreds of edge types, and a pile of triples that would make any data engineer proud. Then someone asks a perfectly reasonable question, like \n\"Find all companies that collaborated with Indian AI leaders in the past decade and also built solutions funded by G20 government initiatives.\"  and there we go, the query takes four minutes to return.\nThat is not a data problem. That is a query problem. And it is the thing this post is abou",
+    "whats_happening": "대규모 지식 그래프에서 복잡한 질의가 몇 분씩 걸리는 원인을 데이터 문제가 아니라 질의 최적화 문제로 분석한 장문 글이 공유됐다. 글은 subgraph matching의 조합 폭발과 Apache Jena TDB, Virtuoso식 인덱싱, bitmap index 같은 최적화 기법을 설명한다.",
+    "translation": "자, 당신은 지식 그래프를 만들었습니다. 수백만 개의 노드, 수백 가지의 엣지 타입, 그리고 어떤 데이터 엔지니어라도 자랑스러워할 만큼 많은 트리플이 있죠. 그런데 누군가 아주 합리적인 질문을 합니다.\n'지난 10년 동안 인도 AI 리더들과 협업했고, 동시에 G20 정부 이니셔티브의 자금을 받아 구축된 솔루션도 만든 모든 회사를 찾아라.' 그러면 그대로, 쿼리 결과가 나오기까지 4분이 걸립니다.\n이건 데이터 문제가 아닙니다. 쿼리 문제입니다. 그리고 이 글은 바로 그 이야기를 다룹니다.\n저는 모든 주요 최적화 기법의 범주를 훑고, 그 뒤에 있는 실제 알고리즘을 보고, 각각이 왜 작동하는지 이해하고, 언제 무엇을 꺼내 써야 하는지 정리해보겠습니다.\n한 가지 말씀드리자면, 이 글은 매우 깁니다. 그리고 여러분이 제 지난 글을 읽어보셨기를 바랍니다. 아직이라면 먼저 그 글을 읽어보시길 권합니다. 여기 있습니다 👇\n𝗿𝗮𝗺𝗮𝗸𝗿𝘂𝘀𝗵𝗻𝗮— 𝗲/𝗮𝗰𝗰\n@techwith_ram\n·\nApr 11\nArticle\nEverything Is Connected\n제목이 조금 철학적인 것 같죠? 그렇지 않나요?\n걱정 마세요, 끝에 가면 이해하게 될 겁니다. 자, 한 장면을 상상해봅시다. 당신은 서점에 서 있습니다. 소설 한 권을 집어 듭니다. 표지에는 저자의...\n10\n48\n345\n33K\n자, 시작해봅시다...\n문제 공간\nKG 쿼리는 본질적으로 subgraph matching 문제입니다. 일부 노드는 값이 채워져 있고 일부는 미지수로 남아 있는 작은 그래프 패턴을 기술한 뒤, 시스템에게 큰 그래프 안에서 그 패턴이 나타나는 모든 위치를 찾으라고 요청하는 것입니다.\n이런 질문을 상상해보세요. 'Food 카테고리의 제품을 PRODUCES하는 회사와 IS_PARTNER_OF 관계인 기관에서 WORKS_AT하는 사람을 KNOWS하는 사람을 찾아라.' 이것은 4개의 hop, 5개의 노드 타입, 4개의 엣지 타입입니다. 각 hop마다 시스템은 잠재적으로 수천 개의 매칭 노드로 fan-out할 수 있습니다. 4번째 hop에 도달할 즈음이면 수백만 개의 조합을 평가하고 있을 수 있습니다. 그 대부분은 매치되지 않겠지만, 그래도 확인은 해야 합니다.\nDesigned by @techwith_ram\n여기 간단한 멘털 모델이 있습니다. 그래프의 모든 노드가 평균 50개의 이웃을 가진다고 가정해봅시다. 이는 중간 규모의 지식 그래프에서는 합리적인 가정입니다. 아무 최적화가 없는 4-hop 쿼리는 최대 50^4 = 625만 개의 후보 경로를 방문합니다.\n그럼 6-hop 쿼리는?\n50^6 = 156억. 하드웨어가 빨라도 brute force는 전혀 확장되지 않습니다.\n인덱싱 전략\n트래버설 알고리즘으로 들어가기 전부터, 가장 영향력이 큰 단일 최적화는 올바른 인덱스를 갖추는 것입니다. 좋은 인덱스는 수백만 개의 트리플을 스캔하는 일을 수백 건의 lookup으로 바꿉니다. 이 일은 지루하고 화려하지도 않습니다. 하지만 production graph database가 분이 아니라 밀리초 단위로 응답하는 이유이기도 합니다.\n1. 트리플 인덱싱\n지식 그래프의 모든 사실은 트리플이라는 점을 기억하세요: (Subject, Predicate, Object). 순진한 시스템은 이것들을 평평한 리스트에 저장합니다. 'predicate가 BORN_IN인 모든 트리플'을 찾는다는 것은 찾을 때까지 모든 트리플을 스캔한다는 뜻이며 O(n) 시간입니다.\nApache Jena의 TDB와 Virtuoso 같은 시스템이 사용하는 표준 해법은 S, P, O의 각 순열마다 하나씩, 총 6개의 정렬 인덱스를 유지하는 것입니다:\nmarkdown\n모든 트리플 (S, P, O)에 대해, 6개의 정렬된 B-tree 인덱스를 유지합니다:\n\nSPO: Subject, 그다음 Predicate, 그다음 Object 순으로 정렬\nSOP: Subject, 그다음 Object, 그다음 Predicate 순으로 정렬\nPSO: Predicate, 그다음 Subject, 그다음 Object 순으로 정렬\nPOS: Predicate, 그다음 Object, 그다음 Subject 순으로 정렬\nOSP: Object, 그다음 Subject, 그다음 Predicate 순으로 정렬\nOPS: Object, 그다음 Predicate, 그다음 Subject 순으로 정렬\n\n( ?x  BORN_IN  Warsaw ) 같은 쿼리 패턴의 경우:\n  1. 우리는 P=BORN_IN이고 O=Warsaw라는 것을 압니다\n  2. POS 인덱스를 고릅니다\n  3. (BORN_IN, Warsaw)까지 binary search를 합니다\n  4. 매칭되는 모든 S 값을 읽어냅니다 -- O(log n + k), 여기서 k = 결과 수\n\n비용: 저장 공간 6배. 이점: 어떤 lookup 패턴이든(S known, P known, O known, SP known, PO known, SO known) 올바른 인덱스로 full scan 없이 처리됩니다.\n2. predicate filtering을 위한 bitmap 인덱스\npredicate 집합이 제한되어 있을 때, 예를 들어 그래프 전체에 200개의 고유 관계 타입이 있을 때, bitmap 인덱스는 여러 predicate를 한 번에 필터링하는 쿼리에 매우 효율적입니다.\n각 predicate는 하나의 비트를 가집니다.",
+    "tech_stack": [
+      "Apache Jena TDB",
+      "Virtuoso",
+      "B-tree",
+      "bitmap index"
+    ],
+    "apply_points": [
+      "느린 KG 쿼리는 홉 수와 fan-out부터 계산하라.",
+      "트리플 저장은 SPO~OPS 인덱스 설계를 검토하라.",
+      "다중 predicate 필터는 bitmap index를 우선 보라."
+    ],
+    "why_it_matters": "대규모 지식그래프의 지연을 \"데이터가 크다\"가 아니라 subgraph matching의 조합 폭발로 재정의한 것이 핵심이다. mcp-memory가 커질수록 문제는 저장이 아니라 질의 경로 설계로 옮겨간다 — 인덱스 축(SPO/POS/OSP)을 먼저 설계하지 않으면 노드 수가 아니라 fan-out이 시스템을 죽인다.",
+    "tweet_id": "2044032272081588395"
+  },
+  {
+    "id": "bm-121",
+    "author": "rsarver",
+    "date": "2026-04-06",
+    "added_at": "2026-04-18",
+    "url": "https://x.com/rsarver/status/2041148425366843500",
+    "text": "I'm a VC in the middle of a fundraise, sitting on boards, helping portfolio companies, and angel investing on the side. I've worked with great human EAs and chiefs of staff over the years, so I know what high-leverage support actually looks like. When the first AI APIs came out, I tried to build an AI version of that as a product and couldn't make it work. \nWhen OpenClaw launched I went deep immediately and haven't stopped. I have helped a number of friends set it up and each of them have asked ",
+    "whats_happening": "한 VC가 OpenClaw 기반 AI 비서 'Stella'를 구축한 경험을 공유하며, 핵심 차별점으로 메모리 레이어와 지속 개선 루프를 설명하고 있다. 관심이 충분하면 이 전체 시스템을 패키징해 오픈소스로 공개하겠다고 밝혔다.",
+    "translation": "나는 지금 fundraise 한가운데에 있는 VC이고, 여러 board에 앉아 있으며, portfolio company들을 돕고, 한편으로는 angel investing도 하고 있다. 나는 그동안 뛰어난 인간 EA들과 chiefs of staff와 함께 일해봤기 때문에, 실제로 high-leverage support가 어떤 모습인지 알고 있다. 첫 AI APIs가 나왔을 때, 나는 그것의 AI 버전을 제품으로 만들어보려고 했지만 제대로 작동하게 만들 수 없었다.\nWhen OpenClaw가 출시되자 나는 즉시 깊게 파고들었고, 그 뒤로 멈춘 적이 없다. 나는 여러 친구들이 이걸 세팅하도록 도왔고, 그들 모두 내가 무엇을 해서 이것을 configure하고 super power했는지 물어봤다. @ryancarson의 글(링크는 댓글에 있음)에서 그가 자신의 OpenClaw assistant를 어떻게 만들었는지 본 것도 정말 좋았고, 거기에 대한 반응을 보고 내가 결국 지금까지 만들어온 것을 정리해 써야겠다고 마음먹게 됐다.\n지금 내가 가진 것은 내가 함께 일해본 어떤 인간 chief of staff보다도 더 유능하다. 그것은 어떤 commitment도 절대 잊지 않고, 시키지 않아도 작은 일들을 처리하며, 말해주지 않아도 중요한 일을 표시해주고, 매주 더 나아진다. 게다가 잠들지도 않고 지치지도 않는다. 아직 약간의 bumps는 있지만, 매주 점점 줄어들고 있다.\n이 중 어떤 것이든 흥미롭다면 알려달라. 충분한 관심이 있다면 이 전체 시스템을 패키징해서 오픈소스로 공개하겠다.\n무엇이 훌륭한 chief of staff를 만드는가?\n내가 만든 것을 하나씩 설명하기 전에, 훌륭한 chief of staff가 실제로 무엇을 하는지 생각해볼 필요가 있다. 직무 설명이 아니라, 진짜 leverage 말이다. 내가 함께 일해본 최고의 사람들은 소음을 걸러서 정말 맞는 것만 내게 도달하게 했고, 내가 모든 meeting에 준비된 상태로 들어가고 그 이후에도 아무것도 빠지지 않도록 했으며, 진행 중인 모든 것의 전체 그림을 유지하면서 어디가 미끄러지고 있는지 표시해줬고, 관계를 추적하며 중요한 모든 사람과 어디까지 와 있는지 알고 있었고, 모든 것이 계속 움직이게 만드는 일간 및 주간 리듬을 만들었다.\n그녀의 이름은 Stella다. 그녀는 이 모든 것을 처리하고, 아래에서 각각을 하나씩 설명하겠다. 하지만 내 세팅이 다른 OpenClaw 빌드들과 진짜로 다른 두 가지는 그 모든 것 아래에 있는 memory layer와, 시스템이 매주 더 좋아지게 만드는 continuous improvement loop다. 나는 이것들이 모든 것을 복리처럼 키우게 만드는 요소이기 때문에 여기서부터 시작하고 싶다.\nMemory: 기반\nSession memory는 거짓말이다. 대화 기록을 작업 컨텍스트로 취급하는 assistant는 가장 답답한 순간에 반드시 실패한다.\n나는 두 개의 레이어를 만들었다. 첫 번째는 daily notes다: 하루에 하나의 markdown 파일(memory/YYYY-MM-DD.md)로, 일어난 모든 것의 raw log 역할을 한다. 참석한 meeting, 내려진 결정, 추가되고 완료된 작업, 대화 중 나온 맥락까지. sessions에서 하루 종일 내용을 가져와 이것들을 자동으로 기록하는 script도 하나 만들었다.\n두 번째는 MEMORY.md 안의 장기 memory인데, Stella 자신이 curate한다. 핵심 인물들, 진행 중인 프로젝트들, 배운 교훈들, 내려진 결정들. Stella는 주기적으로 daily notes에서 이것을 synthesize하고, startup 시 이것을 읽으며 지금 무엇이 중요한지 스스로 방향을 잡는다.\n처리된 모든 meeting, triage된 모든 email, 추적된 모든 task는 계속해서 이 그림에 다시 반영된다. 이 레이어가 없으면 당신은 기억상실이 있는 유능한 assistant를 갖게 된다. 이 레이어가 있으면 몇 달 동안 당신 곁에서 일했고 아무것도 잊지 않는 사람에 더 가까운 무언가를 갖게 된다.\n나는 또 이 모든 것이 database가 아니라 flat markdown 파일에 살아 있다는 점을 매우 가치 있게 여기게 됐다. 나는 어떤 memory 파일이든 열어서 읽고, 뭔가 잘못됐으면 수정하고, assistant가 무엇을 알고 있는지 정확히 이해할 수 있다. 전체를 git에 백업하고 어떤 것이든 즉시 복원할 수 있다. 나와 assistant가 내 세계를 이해하는 방식 사이에 abstraction layer가 없기 때문에, 나는 그것을 더 신뢰하게 되고 뭔가 어긋났을 때 더 빨리 고칠 수 있다.\n여기서 레이어들이 진짜로 함께 맞물린다. 나는 여러 국가에 걸쳐 100명 이상의 LP contact가 포함된 fundraise를 관리하고 있다. Stella는 전체 pipeline을 추적하고, 각 LP와 contact에 대한 context를 유지하며, 모든 관계가 어디에 서 있는지 알고 있다. 첫 meeting들을 위해, 나는 그녀가 그 fund와 그들이나 그들의 최근 콘텐츠를 조사하도록 하는 규칙을 만들었다.",
+    "tech_stack": [
+      "AI APIs",
+      "OpenClaw",
+      "Markdown",
+      "Git"
+    ],
+    "apply_points": [
+      "대화 로그와 장기 기억을 분리하라.",
+      "주간 회고로 메모리를 계속 갱신하라.",
+      "평문 저장과 버전관리로 신뢰를 높여라."
+    ],
+    "why_it_matters": "메모리 레이어와 주간 회고 루프의 결합은 \"외부 뇌를 어떻게 살아있게 유지하는가\"라는 질문의 실전 답변이다. Stella가 평문·Git 기반으로 기억을 관리한다는 점은 mcp-memory의 온톨로지 방향성과 정확히 겹치며, 블랙박스형 메모리가 아니라 사람이 읽고 수정 가능한 층위로 두는 선택이 핵심이다.",
+    "tweet_id": "2041148425366843500"
+  },
+  {
+    "id": "bm-122",
+    "author": "songjunkr",
+    "date": "2026-04-11",
+    "added_at": "2026-04-18",
+    "url": "https://x.com/songjunkr/status/2042932936014729563",
+    "text": "gemma4-26b의 완벽한 파인튜닝을 성공했습니다.\n\n- 0/100 refusal 완벽 무검열\n- 툴콜/토크나이저 모델 태생 이슈 해결\n- 벤치기준 기존 대비 성능 10% 향상\n- 출력토큰 속도 10% 향상\n- 프롬프트 처리속도 약 90% 향상\n\n완벽한 모델이 완성되었다고 생각합니다.\n\ngguf / mlx 두개 버전 ⬇️",
+    "whats_happening": "작성자는 Gemma 4 26B 파인튜닝을 성공적으로 마쳤고, 무검열 수준의 refusal 제거와 툴콜·토크나이저 이슈 해결을 주장하고 있다. 또한 벤치 성능, 출력 토큰 속도, 프롬프트 처리 속도가 각각 개선됐으며 GGUF와 MLX 버전 배포를 예고했다.",
+    "translation": "Gemma 4 26B의 완벽한 파인튜닝을 성공했습니다.\n\n- 0/100 refusal 완벽 무검열\n- 툴콜/토크나이저 모델 태생 이슈 해결\n- 벤치 기준 기존 대비 성능 10% 향상\n- 출력 토큰 속도 10% 향상\n- 프롬프트 처리 속도 약 90% 향상\n\n완벽한 모델이 완성되었다고 생각합니다.\n\nGGUF / MLX 두 개 버전 ⬇️",
+    "tech_stack": [
+      "Gemma 4 26B",
+      "GGUF",
+      "MLX"
+    ],
+    "apply_points": [
+      "토크나이저·툴콜 호환성을 먼저 검증하라.",
+      "추론 속도와 프롬프트 속도를 분리 측정하라.",
+      "GGUF와 MLX 배포본을 함께 제공하라."
+    ],
+    "why_it_matters": "상용 모델의 refusal과 툴콜 불안정을 파인튜닝 한 번으로 걷어낸 사례가 쌓이고 있다는 건, 로컬 LLM을 \"성능 타협한 대안\"이 아니라 자기 조건에 맞게 재설계 가능한 재료로 쓸 수 있다는 뜻이다. 특히 토크나이저·툴콜 이슈 해결이 속도 개선과 동시에 이뤄졌다는 주장은, 이 둘이 서로 다른 레이어의 문제라는 통념을 흔든다.",
+    "tweet_id": "2042932936014729563"
   }
 ]
