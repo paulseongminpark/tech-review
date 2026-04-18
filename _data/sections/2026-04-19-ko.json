@@ -1,0 +1,36 @@
+{
+  "date": "2026-04-19",
+  "lang": "ko",
+  "post_url": "/ko/2026/04/19/daily-tech-review/",
+  "post_title": "AI 반발이 폭력으로 번지다, Anna's Archive $322M 배상, 5달러 트래커가 군함을 추적하다",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "AI에 화염병이 날아들다",
+      "lead": "지난 금요일, 텍사스 스프링 출신의 20세 청년 Daniel Moreno-Gama가 OpenAI CEO Sam Altman의 샌프란시스코 자택 앞에 화염병을 던졌다. 같은 날 그는 OpenAI 본사 앞에서 의자로 창문을 부수려 했고, 한 시간 만에 체포됐다. 이틀 뒤 일요일에는 두 명이 추가로 체포됐는데, 이번에는 Altman의 자택 인근에서 총기까지 발사됐다. 그의 온라인 채팅에는 기술 CEO들을 \"루이지\" 방식으로 처단해야 한다는 발언이 남",
+      "tags": [
+        "weekly"
+      ],
+      "anchor": "ai에-화염병이-날아들다"
+    },
+    {
+      "index": 2,
+      "title": "Anna's Archive, $322M 배상 판결",
+      "lead": "섀도 라이브러리 Anna's Archive가 지난주 3억 2200만 달러 배상 명령을 받았다. Spotify, Universal Music Group, Warner Music Group, Sony Music이 제기한 소송에서다. 이 라이브러리는 Spotify에서 2억 5600만 행의 트랙 메타데이터와 8600만 개의 오디오 파일을 긁어 BitTorrent로 배포하려 했고, 스스로를 \"세계 최초의 음악 보존 아카이브\"로 불렀다. 초기 청구액은 1",
+      "tags": [
+        "weekly"
+      ],
+      "anchor": "annas-archive-322m-배상-판결"
+    },
+    {
+      "index": 3,
+      "title": "5달러 트래커가 군함을 추적하다",
+      "lead": "네덜란드 군함에 엽서 한 장이 배달됐다. 안에는 5달러짜리 블루투스 트래커가 숨겨져 있었다. 결과는 5억 8500만 달러짜리 군함의 위치가 24시간 동안 외부에 노출된 것이다. 공격의 복잡성은 제로에 가깝다. 정교한 사이버 침투 도구도, 내부자도, 암호화 우회 기법도 필요 없었다. 누구나 살 수 있는 상업용 하드웨어와, 군함에도 오가는 일반 우편 시스템만으로 충분했다.",
+      "tags": [
+        "weekly"
+      ],
+      "anchor": "5달러-트래커가-군함을-추적하다"
+    }
+  ]
+}
