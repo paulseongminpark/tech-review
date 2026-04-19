@@ -359,50 +359,67 @@ prompt_path = os.path.join(TMP, f"prompt-{POST_DATE}.txt")
 Path(prompt_path).write_text(claude_prompt, encoding="utf-8")
 log(f"  프롬프트: {len(claude_prompt)}자")
 
-for attempt in range(2):
+CLAUDE_TIMEOUT_SEC = 900  # Claude CLI 응답 대기 (Sonnet 16K 프롬프트는 5~10분 소요)
+MIN_OUTPUT_LEN = 1500     # 최소 출력 길이 (정상 4000~7000자, 1500 미만은 결손)
+
+for attempt in range(3):  # 2회 → 3회 (짧은 출력은 retry로 회복 가능)
+    raw_output_path = os.path.join(TMP, f"claude-raw-{POST_DATE}-a{attempt+1}.txt")
     try:
         prompt_data = Path(prompt_path).read_bytes()
-        # Windows .cmd 래퍼 타임아웃: threading.Timer + taskkill
-        import threading as _th
-        result = [None]
-        def _run_claude():
-            result[0] = subprocess.run(
+        # Popen + stdout 파일 직접 redirect (capture_output 메모리 버퍼링 회피).
+        # Common Mistakes: capture_output로 대량 출력 버퍼링 금지 → 메모리 압박 + 크래시 시 로그 유실.
+        with open(raw_output_path, "wb") as out_f:
+            proc = subprocess.Popen(
                 [CLAUDE_CMD, "-p", "--model", "claude-sonnet-4-6", "--output-format", "text"],
-                input=prompt_data,
-                capture_output=True, timeout=600, cwd=BLOG,
+                stdin=subprocess.PIPE,
+                stdout=out_f,
+                stderr=subprocess.PIPE,
+                cwd=BLOG,
             )
-        t = _th.Thread(target=_run_claude, daemon=True)
-        t.start()
-        t.join(timeout=300)
-        if t.is_alive():
-            subprocess.run("taskkill /F /IM claude.exe 2>nul",
-                          shell=True, capture_output=True, timeout=10)
-            log(f"  [WARN] 타임아웃 (attempt {attempt+1})")
-            continue
-        r = result[0]
-        if not r:
-            log(f"  [FAIL] 결과 없음 (attempt {attempt+1})")
-            continue
-        output = r.stdout.decode("utf-8", errors="replace").strip()
-        # 코드블록 감싸기 제거 (```markdown ... ```)
-        output = re.sub(r'^```\w*\n', '', output)
-        output = re.sub(r'\n```\s*$', '', output)
-        # front matter(---) 이전 junk 제거
-        fm_match = re.search(r'^---\s*\n', output, re.MULTILINE)
-        if fm_match and fm_match.start() > 0:
-            output = output[fm_match.start():]
+            try:
+                _, stderr = proc.communicate(input=prompt_data, timeout=CLAUDE_TIMEOUT_SEC)
+            except subprocess.TimeoutExpired:
+                # Common Mistakes: cmd.exe만 죽으면 자식 좀비 → claude.exe 직접 kill
+                subprocess.run("taskkill /F /IM claude.exe 2>nul",
+                              shell=True, capture_output=True, timeout=10)
+                proc.wait(timeout=10)
+                log(f"  [WARN] 타임아웃 {CLAUDE_TIMEOUT_SEC}초 (attempt {attempt+1})")
+                continue
 
-        if len(output) >= 500:
+        if proc.returncode != 0:
+            err = stderr.decode("utf-8", errors="replace")[:200] if stderr else "no stderr"
+            log(f"  [WARN] Claude exit {proc.returncode} (attempt {attempt+1}): {err}")
+            continue
+
+        output = Path(raw_output_path).read_text(encoding="utf-8", errors="replace").strip()
+
+        # ── 출력 정제 (4/14, 4/20 사고 패턴 방어) ──
+        # 패턴: Claude가 본문 앞에 메타 텍스트 + ```markdown 래퍼 + 본문 + ``` + 트레일링 설명 추가
+        # 1) 모든 ``` 마커 제거 (위치 무관, line 단위)
+        output = re.sub(r'^[ \t]*```[a-zA-Z]*[ \t]*$\n?', '', output, flags=re.MULTILINE)
+        # 2) 진짜 front matter 시작점: `---` 다음 줄에 `layout: post`가 와야 함
+        fm_start_match = re.search(r'^---\s*\n\s*layout:\s*post', output, flags=re.MULTILINE)
+        if fm_start_match:
+            start = fm_start_match.start()
+            # 3) 진짜 끝: `## Comments` 라인 (없으면 본문 끝)
+            comments_match = re.search(r'^## Comments\s*$', output[start:], flags=re.MULTILINE)
+            if comments_match:
+                end = start + comments_match.end()
+                output = output[start:end] + "\n"
+            else:
+                output = output[start:]
+
+        if len(output) >= MIN_OUTPUT_LEN:
             Path(post_path).write_text(output, encoding="utf-8")
             log(f"  [OK] {len(output)}자 (attempt {attempt+1})")
             break
         else:
-            log(f"  [WARN] 출력 부족 ({len(output)}자), retry...")
+            log(f"  [WARN] 출력 부족 ({len(output)}자, 최소 {MIN_OUTPUT_LEN}), retry...")
     except Exception as e:
-        log(f"  [FAIL] {e}")
-        break
+        log(f"  [WARN] attempt {attempt+1} 예외: {e}")
+        continue
 else:
-    log("  [FAIL] Claude 2회 실패")
+    log(f"  [FAIL] Claude 3회 실패. raw 출력은 {TMP}/claude-raw-{POST_DATE}-*.txt 참조")
     ANY_FAIL = True
 
 
@@ -472,15 +489,23 @@ else:
 if os.path.exists(post_dest) and not ANY_FAIL:
     log("[Step 7] 배포...")
     try:
-        # commit 먼저 → pull --rebase → push (unstaged 상태에서 pull 실패 방지)
+        # 안전 패턴: 우리 파일만 add → commit → 나머지 stash → pull rebase → push → stash pop
+        # (다른 파이프라인의 untracked/modified가 pull rebase를 막는 상황 방지)
         subprocess.run(["git", "add", "_posts/ko/", "_data/sections/"], cwd=BLOG, capture_output=True, timeout=10)
         r = subprocess.run(["git", "commit", "-m", f"[auto] {POST_DATE} daily post ({DAY_TOPIC}, free-sources v3)"],
                           cwd=BLOG, capture_output=True, text=True, timeout=30, encoding="utf-8")
         log(f"  commit: {r.stdout.strip()[:80]}")
-        pull_r = subprocess.run(["git", "pull", "--rebase", "origin", "master"], cwd=BLOG, capture_output=True, text=True, timeout=30, encoding="utf-8")
+
+        stash_r = subprocess.run(["git", "stash", "--include-untracked"],
+                                cwd=BLOG, capture_output=True, text=True, timeout=30, encoding="utf-8")
+        stashed = "No local changes" not in (stash_r.stdout or "")
+
+        pull_r = subprocess.run(["git", "pull", "--rebase", "origin", "master"],
+                               cwd=BLOG, capture_output=True, text=True, timeout=30, encoding="utf-8")
         if pull_r.returncode != 0:
-            log(f"  [WARN] pull --rebase 실패 (rc={pull_r.returncode}): {(pull_r.stdout or pull_r.stderr).strip()[:80]}")
+            log(f"  [WARN] pull --rebase 실패: {(pull_r.stdout or pull_r.stderr).strip()[:80]}")
             subprocess.run(["git", "rebase", "--abort"], cwd=BLOG, capture_output=True, timeout=10)
+
         r = subprocess.run(["git", "push"], cwd=BLOG, capture_output=True, text=True, timeout=60, encoding="utf-8")
         push_out = (r.stdout or r.stderr).strip()[:80]
         log(f"  push: {push_out}")
@@ -488,11 +513,13 @@ if os.path.exists(post_dest) and not ANY_FAIL:
             log("  push 실패 — pull 후 재시도")
             subprocess.run(["git", "pull", "--rebase", "origin", "master"], cwd=BLOG, capture_output=True, timeout=30)
             r = subprocess.run(["git", "push"], cwd=BLOG, capture_output=True, text=True, timeout=60, encoding="utf-8")
-            push_out = (r.stdout or r.stderr).strip()[:80]
-            log(f"  push 재시도: {push_out}")
+            log(f"  push 재시도: {(r.stdout or r.stderr).strip()[:80]}")
             if r.returncode != 0:
                 log("  [FAIL] push 최종 실패")
                 ANY_FAIL = True
+
+        if stashed:
+            subprocess.run(["git", "stash", "pop"], cwd=BLOG, capture_output=True, timeout=30)
     except Exception as e:
         log(f"  git FAIL: {e}")
         ANY_FAIL = True
@@ -512,3 +539,4 @@ Path(log_path).write_text("\n".join(LOG), encoding="utf-8")
 if ANY_FAIL:
     alert_path = os.path.join(TMP, f"alert-{POST_DATE}.txt")
     Path(alert_path).write_text(f"Daily Post FAIL: {POST_DATE}\n" + "\n".join(l for l in LOG if "FAIL" in l), encoding="utf-8")
+    sys.exit(1)

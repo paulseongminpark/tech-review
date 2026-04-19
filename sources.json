@@ -1,115 +1,113 @@
 {
   "twitter": [
     {
-      "id": "bm-114",
-      "author": "RampLabs",
-      "date": "2026-04-14",
-      "url": "https://x.com/RampLabs/status/2042660310851449223",
-      "whats_happening": "RampLabs가 멀티에이전트의 토큰 비효율을 줄이는 Latent Briefing 접근을 소개했다. KV cache compaction으로 정확도를 유지하며 비용을 줄였다는 벤치마크 결과를 함께 제시했다.",
-      "why_it_matters": "",
-      "apply_points": [
-        "멀티에이전트 호출마다 토큰 예산을 둔다.",
-        "요약 대신 KV cache 기반 압축을 검토한다.",
-        "worker에 넘길 맥락은 최소 단위로 줄인다."
-      ],
-      "text": "1.3천\n34만\nMulti-agent system은 coordination, complex reasoning, parallel workflow에서 가능성을 보여줬다. 하지만 token 효율은 종종 매우 나쁘다. orchestrator가 task를 분해하고 worker agent에 위임하는 hierarchical architecture에서는 중간 reasoning이 중복해서 생길 수 있다. orchestrator의 reasoning trajectory가 수많은 call에 걸쳐 커질수록 token 사용량은 빠르게 누적된다. 이런 접근은 성능을 높일 수 있지만, 큰 비용을 치르며 agent 간 context도 비효율적으로 공유하는 경우가 많다.\nLLM 기반 summarization(느림)이나 RAG 기반 retrieval(깨지기 쉬움) 같은 기존 context 관리 방식은 각자 trade-off를 만든다. 대신 우리는 model의 attention pattern을 사용해 context 중 무엇이 중요한지 식별하고 나머지는 representation level에서 버린다. 이로부터 model의 KV cache를 직접 다뤄 agent 간 관련 memory를 공유하는 방법이 나온다. 우리는 이 접근을 Latent Briefing이라고 부른다.\nLongBench v2 benchmark에서 126개 질문(0~100k token 문서)에 대해, 우리 접근은 다음을 달성했다:\n난이도와 context 길이 조건 전반에서 baseline 대비 비슷하거나 더 나은 정확도\n중간 길이 문서(32k~100k token)에서 median token 절감 최대 49%\nworker model token 소비 65% 감소\n입력 길이에 선형으로 비례하는 median compaction overhead 약 1.7초\nRecursive Agent의 Token Explosion\n우리는 multi agent system의 기본 architecture로 Recursive Language Model(RLM) framework(Zhang et al., 2025)를 채택했다. RLM에서 강한 orchestrator는 task를 분해하고 REPL environment를 통해 worker model을 반복 호출한다. orchestrator는 문서의 특정 측면을 분석하고, 가설을 검증하고, 정보를 추출하라고 worker에게 targeted query를 보낸다.\nRLM은 긴 context 관리에서 강점을 보여줬지만, 전통적인 LLM보다 효율이 낮고 훨씬 더 많은 token을 사용한다. 또 worker는 orchestrator가 명시적으로 넘긴 것만 본다. 보통 targeted query와 raw document뿐이다. 하지만 orchestrator는 많은 호출에 걸쳐 풍부한 reasoning trajectory를 쌓아가고 있다. 검증한 가설, 찾아낸 passage, 배제한 dead end, 발견한 cross reference들. 그 누적된 context는 worker가 더 잘 답하도록 도울 수 있지만, 그것을 텍스트로 모두 넘기면 successive call마다 input 비용이 부풀어 오른다. 결국 worker는 문제를 좁게만 보고, orchestrator의 넓은 이해는 활용되지 않은 채 남는다.\n표준 해법은 모두 뚜렷한 단점이 있다:\nLLM Summarization: 단계마다 20~60초 latency, 손실적이며, 요약이 sub task에 필요한 것을 담지 못할 수 있음\nRAG / Retrieval: chunking과 embedding이 필요하고, cross-chunk dependency를 놓침\n전부 전달: 비싸고 느리며, 무관한 context 때문에 정확도가 떨어질 수 있음\n우리는 이 token explosion을 줄이기 위해 빠르고 정밀한 cross-agent memory를 원했다.\nTask Guided KV Cache Compaction\n배경: AM Compaction Framework\n우리 접근은 KV cache compaction을 위한 Attention Matching(AM) framework(Zweiger et al., 2026)를 기반으로 한다. 핵심 아이디어는 크기 S의 KV cache가 있을 때, attention output을 거의 동일하게 만드는 크기 t < S의 compact cache를 찾는 것이다.\n형식적으로, 각 attention head에 대해 우리는 다음을 만족하는 compacted component(C1, β, C2)를 찾는다:\nsoftmax\n(\n𝑄\n⋅\n𝐶\n1\n𝑇\n+\n𝛽\n)\n⋅\n𝐶\n2\n≈\nsoftmax\n(\n𝑄\n⋅\n𝐾\n𝑇\n)\n⋅\n𝑉\n여기서:\nC1 (압축된 key): 높은 attention을 받는 원래 key vector의 부분집합\nβ (bias correction): 누락된 key를 보정하는 scalar 조정값으로, 유지된 key에 대한 softmax 분포가 전체 key에 대한 원래 분포를 근사하게 함\nC2 (압축된 value): ridge regression으로 푼 재구성 value vector\n원래 AM 알고리즘은 각 (layer, head) 쌍을 독립적으로 처리한다. Qwen3-14B에서는 40 layer × 8 KV head, 즉 320개의 직렬 solve가 필요하며, 각 solve는 세 단계로 실행된다:\nToken selection: attention score를 계산하",
-      "tech_stack": [
-        "RAG",
-        "Latent Briefing",
-        "KV cache",
-        "LongBench v2",
-        "Recursive Language Model",
-        "RLM",
-        "REPL",
-        "Attention Matching",
-        "AM",
-        "Qwen3-14B",
-        "ridge regression"
-      ]
-    },
-    {
-      "id": "bm-113",
-      "author": "rohit4verse",
-      "date": "2026-04-14",
-      "url": "https://x.com/rohit4verse/status/2041548810804211936",
-      "whats_happening": "rohit4verse가 공개된 Claude Code 소스를 바탕으로 production용 agent harness 청사진을 풀어냈다. 핵심은 harness를 넘어 infrastructure 레이어까지 설계해야 한다는 주장이다.",
-      "why_it_matters": "",
-      "apply_points": [
-        "권한과 상태를 harness 밖 인프라로 뺀다.",
-        "agent loop를 스트리밍 가능하게 설계한다.",
-        "병렬 작업은 격리와 잠금부터 넣는다."
-      ],
-      "text": "47만\nAnthropic가 방금 최고의 AI agent harness를 구축하는 법을 가르쳐줬다.\nClaude Code 소스가 공개돼 있다. 55개 디렉터리, 331개 모듈, 오늘날 production에서 가장 많이 검증된 agent architecture다. 나는 모든 파일, 모든 architectural decision, 모든 retry path, 모든 compaction strategy, 모든 permission stage를 뜯어봤다.\n이건 teardown이 아니다. blueprint다.\n여기 그 안의 모든 원칙과, production을 버티는 당신만의 harness를 만들 때 각각을 어떻게 써야 하는지가 있다.\nClaude Code의 architecture가 업계가 좋아하는 framework에 대해 드러내는 것\n당신은 세 가지 레이어를 들어봤을 것이다. model weights, context, harness. 업계는 모든 conference, 모든 tutorial, 모든 framework README에서 이 셋을 반복한다.\nModel Weights: API로 호출하는, 동결된 intelligence.\nContext: 프롬프트, 대화 이력, retrieved document.\nHarness: model 주변의 scaffolding. 도구, 루프, 오류 처리.\n이 프레이밍은 거기까지는 맞다. Princeton NLP의 SWE-agent paper는 interface design만 바꾸고도 SWE-bench에서 64% 상대 개선을 보였다. 같은 GPT-4, 같은 작업이었다. 달라진 것은 환경뿐이었다. 성능 향상은 레이어 1이 아니라 레이어 2와 3에 있다.\n그런데 Claude Code 소스를 열어보면 Anthropic는 model을 위해 만드는 게 아니라 system을 위해 만들고 있다는 걸 깨닫게 된다.\nClaude Code 내부에는 4단계 CLAUDE.md 계층이 있어 enterprise admin은 MDM으로 정책을 강제하고, project maintainer는 convention을 정하며, 개별 developer는 로컬에서 override할 수 있다. 디스크 기반 task list와 파일 잠금은 병렬 sub-agent가 서로의 state를 망치지 않게 해준다. Git worktree isolation은 같은 repo에서 다섯 agent에게 다섯 branch를 줘도 충돌이 없게 한다. permission pipeline은 deny rule을 enterprise에서 project, user, session으로 연쇄 적용한다.\n그 어느 것도 harness가 아니다. 그 어느 것도 context가 아니다. 그 어느 것도 weights가 아니다.\n그건 infrastructure다. multi-tenancy, RBAC, resource isolation, state persistence, distributed coordination.\n진짜 framework는 네 가지 레이어를 가진다:\nModel Weights: 동결된 intelligence.\nContext: 런타임 입력.\nHarness: agent를 위해 설계된 환경.\nInfrastructure: multi-tenancy, RBAC, resource isolation, state persistence, distributed coordination.\n대부분의 팀은 처음 세 가지를 말한다. 생각하기 재미있기 때문이다. 하지만 제품이 죽는 곳은 네 번째다. Claude Code는 내가 본 agent system 중 처음으로 네 레이어 전부를 진지하게 다루며, 그 architecture가 모든 수준에서 그 사실을 보여준다.\n핵심 agent loop: while loop가 아니라 async generator\nClaude Code의 심장은 query.ts에 있다. 1,729줄의 TypeScript다. 가장 중요한 결정은 함수 시그니처 안에 있다:\nasync agent loop\n그 function*는 보기보다 훨씬 큰 의미를 갖는다. async generator는 시간에 따라 값을 내보내고, 요청 시 멈추고, 어떤 caller든 어느 시점에서든 빠져나가게 해준다.\nagent loop는 request-response 사이클이 아니다. 길게 살아 있는, streaming 가능하고, 취소 가능한 프로세스다. generator는 그런 속성을 덧붙이지 않고도 전부 제공한다.\n대부분의 tutorial이 가르치는 것과 비교해보라:\ntutorials crap\n이건 tutorial에서는 동작한다. production에서는 다섯 가지 이유로 무너진다.\n스트리밍이 없다. model이 생성하는 10~30초 동안 사용자는 빈 화면을 본다. Claude Code의 generator는 token이 도착할 때마다 StreamEvent 객체를 yield한다. 사용자는 model이 글자 단위로 작업하는 모습을 본다. agent가 무엇을 하는지 보이는 사용자일수록 더 신뢰한다. 더 신뢰할수록 더 많은 autonomy를 준다. 유용한 일은 autonomy가 커질 때 일어난다.\n취소가 없다. while-loop 버전에서 Ctrl+C를 처리하려면 바깥에서 별도의 abort 메커니즘을 연결해야 한다. generator에서는 caller가 .next()를 그만 호출하면 된다. finally 블록이 실행되고 cleanup이 일어난다. Claude Code는 모든 레이어에 AbortSignal을 흘려보내며, generator는 이를 자연스럽게 만든다.\n조합 가능성이 없다. REPL UI가 generator를 소비한다. sub-agent도 소비한다. 테스트도 소비한다. query() 함수 하나, caller 셋, 중복은 0. generator는 streamin",
-      "tech_stack": [
-        "Anthropic",
-        "Claude Code",
-        "SWE-agent",
-        "SWE-bench",
-        "GPT-4",
-        "CLAUDE.md",
-        "MDM",
-        "Git worktree",
-        "RBAC",
-        "TypeScript",
-        "StreamEvent",
-        "AbortSignal"
-      ]
-    },
-    {
-      "id": "bm-112",
+      "id": "bm-125",
       "author": "DeRonin_",
-      "date": "2026-04-14",
-      "url": "https://x.com/DeRonin_/status/2033587293064204349",
-      "whats_happening": "DeRonin_이 LLM 앱 입문자를 위한 상태 관리, 비용, 실패 처리, Prompt Injection 자료를 정리했다. production 전에 반드시 익혀야 할 공식 문서와 연습 주제를 추천하는 목록이다.",
-      "why_it_matters": "",
+      "date": "2026-04-20",
+      "url": "https://x.com/DeRonin_/status/2045420155434320270",
+      "whats_happening": "Claude Code에서 토큰 사용량을 60~90%까지 줄일 수 있다고 주장하는 GitHub 저장소 10개를 정리한 글이다. 터미널 출력 필터링, SQLite 샌드박싱, Tree-sitter 기반 코드 그래프, MCP 캐싱·검색 같은 접근을 소개하고 워크플로별로 2~3개만 골라 조합하라고 제안한다.",
+      "why_it_matters": "토큰 절감 도구들이 쏟아진다는 건, Claude Code 워크플로의 병목이 \"모델 성능\"이 아니라 \"컨텍스트 관리\"로 이동했다는 신호다. 60~90% 절감 주장 대부분은 터미널 출력·심볼 탐색·MCP 캐싱처럼 **읽지 않아도 될 것을 안 읽게 만드는** 빼기 전략이고, 이게 orchestration의 /cascade·recall 설계 방향과 정확히 일치한다.",
       "apply_points": [
-        "대화 이력과 토큰 수를 매 턴 기록한다.",
-        "429와 timeout 재시도 정책을 기본화한다.",
-        "Prompt Injection 방어를 출시 전 점검한다."
+        "터미널 출력이 많으면 RTK를 먼저 붙여라.",
+        "대형 저장소면 심볼 탐색형 도구를 써라.",
+        "새 세션마다 /context로 잔량을 확인하라."
       ],
-      "text": "State\nLLM은 stateless하다. 호출 사이에 memory가 없다. conversation history는 매 요청마다 전체 message list를 보내며 당신이 직접 관리하는 것이다. 이것을 이해하는 것은 근본적이다\n자료:\n1. OpenAI Chat Completions Guide, Managing Conversations (official, free)\n링크: https://platform.openai.com/docs/guides/conversation-state\nmessages array가 어떻게 작동하는지, multi-turn conversation을 어떻게 관리하는지 설명하는 정본\n2. Anthropic Messages API Docs (official, free)\n링크: https://docs.anthropic.com/en/api/messages\nAnthropic 쪽의 동등 문서다. 개념은 같고, 무엇이 다른지 보려고 둘 다 읽을 가치가 있다\n집중할 것: messages array 구조, user와 assistant 메시지를 모두 append하는 이유, context window 한계와 초과 시 벌어지는 일, 기본 truncation 전략(drop oldest messages, summarize history)\n연습 프로젝트: 터미널에서 간단한 multi-turn chatbot을 만들어라. 각 턴마다 messages list에 append하고, /reset 명령으로 history를 비우며, 각 대화 후 현재 token 수를 출력하라\n6. 비용, latency, token 기초\n비용과 token을 이해하지 못한 채 AI 앱을 출시하면 예상치 못한 청구서와 느린 앱을 만나게 된다. 지루하지만 치명적으로 중요하다\n자료:\n1. OpenAI Pricing Page (official)\n링크: https://openai.com/api/pricing\n모델별 input token과 output token 비용을 알아둬라. 모델을 고를 때마다 이 페이지를 북마크해 두고 확인하라\n2. Anthropic Pricing Page (official)\n링크: https://www.anthropic.com/pricing\nClaude 모델도 마찬가지다\n3. OpenAI Tokenizer Tool (free, interactive)\n링크: https://platform.openai.com/tokenizer\n아무 텍스트나 붙여 넣고 정확히 몇 token인지 확인해라. 배우는 동안 이걸 계속 써라\n4. Tiktoken (Python library, free)\n링크: https://github.com/openai/tiktoken\n요청 전 코드에서 token 수를 세기 위한 OpenAI의 tokenizer library다\n집중할 것: token이 무엇인지(대략 4글자 또는 단어의 3/4), input과 output token의 가격이 왜 다른지, context window 크기가 가능한 작업을 어떻게 바꾸는지, 더 작고 빠른 모델과 더 크고 똑똑한 모델 사이의 latency trade-off\n또 하나: GPT-4/Opus를 모든 곳에 쓰지 마라. 단순한 작업에는 더 저렴한 모델로도 충분한 경우가 많다\n7. 실패 처리\nLLM API는 실패한다. rate limit에 걸리고, 응답은 timeout되고, model은 malformed JSON을 반환한다. 실패를 우아하게 처리하는 것이 데모와 production app을 가르는 기준이다\n자료:\n1. OpenAI Error Codes Reference (official, free)\n링크: https://platform.openai.com/docs/guides/error-codes\n마주치게 될 모든 오류 유형과 그 대응법\n2. Anthropic Error Handling Docs (official, free)\n링크: https://docs.anthropic.com/en/api/errors\nClaude도 마찬가지다\n3. Tenacity (Python library, free)\n링크: https://tenacity.readthedocs.io/\n어떤 Python 함수에도 exponential backoff 재시도를 붙일 수 있는 깔끔한 library다. decorator 하나면 재시도가 처리된다\n집중할 것: rate limit 오류(429)와 exponential backoff, httpx/requests를 이용한 timeout 처리, 사용 전에 model output을 검증하는 방법, fallback 전략(다른 model로 재시도, cached response 반환), 그리고 LLM이 예기치 않은 출력을 돌려줬다고 앱이 절대 크래시 나지 않게 하는 것\n8. Prompt Injection Awareness\nPrompt injection은 LLM 애플리케이션의 1순위 보안 리스크다\n신뢰할 수 없는 user input이 system instruction과 결합될 때 발생하며, 사용자가 프롬프트에 새로운 동작을 바꾸거나 덮어쓰거나 주입하게 만들어 시스템이 의도하지 않은 행동을 하거나 조작된 출력을 생성하게 만든다\n보안 전문가일 필요는 없지만, 무엇이든 출시하기 전에 이것이 존재한다는 사실은 알아야 한다\n자료:\n1. OWASP Top 10 for LLM Apps – LLM01: Prompt Injection (free)\n링크: https://genai.owasp.org/llmrisk/llm01-prompt-injection/\n직접 주입(jailbreaking), 문서나 웹사이트 같은 외부 콘텐츠를 통한 간접 주입, 실제 공격 시나리오를 다루는 권위 있는 분류\n2. OWASP Prompt Injection Prevention Cheat Sheet (free)\n링크: https://cheatsheetseries.",
+      "text": "Claude Code에서 토큰을 60~90% 덜 쓰게 해주는 GitHub repo 10개:\n\n1. RTK (Rust Token Killer)\n\ncontext에 들어가기 전에 터미널 출력을 필터링하는 CLI proxy\n\n- 일반적인 개발 명령에서 60~90% 감소\n- 바이너리 하나, 의존성 0개\n- Claude Code, Cursor, Copilot과 함께 동작\n\nRepo: http://github.com/rtk-ai/rtk\n\n2. Context Mode\n\nraw tool 출력을 context에 쏟아붓는 대신 SQLite에 샌드박싱한다\n\n- Playwright, GitHub, 로그에서 context 98% 감소\n- 대화에는 깔끔한 요약만 들어간다\n- Claude Code plugin으로 동작\n\nRepo: http://github.com/mksglu/context-mode\n\n3. code-review-graph\n\nTree-sitter로 codebase를 매핑하는 로컬 knowledge graph\n\n- Claude는 전체 repo가 아니라 중요한 것만 읽는다\n- 대형 monorepo에서 토큰 49배 감소\n- 평균 리뷰에서 6.8배\n\nRepo: http://github.com/tirth8205/code-review-graph\n\n4. Token Savior\n\n전체 파일이 아니라 symbol 기준으로 코드를 탐색하는 MCP server\n\n- 코드 내비게이션에서 97% 감소\n- 세션 간 지속 메모리\n- 69개 도구, 외부 의존성 0개\n\nRepo: http://github.com/Mibayy/token-savior\n\n5. Caveman Claude\n\n출력 토큰을 줄이기 위해 Claude가 원시인처럼 말하게 만든다\n\n- 출력 65~75% 감소\n- 한 줄 설치\n- 기술적 정확성은 완전히 유지\n\nRepo: http://github.com/JuliusBrussee/caveman\n\n6. claude-token-efficient\n\n응답을 짧게 유지해주는 CLAUDE.md 파일 하나\n\n- 그대로 넣어 쓰면 된다, 코드 변경 없음\n- 무거운 워크플로에서 출력 장황함을 줄인다\n- 출력이 많은 세션에 가장 적합\n\nRepo: http://github.com/drona23/claude-token-efficient\n\n7. token-optimizer-mcp\n\n캐싱, 압축, smart tool intelligence를 갖춘 MCP server\n\n- 지능형 캐싱으로 95%+ 토큰 감소\n- 반복되는 tool 출력을 압축한다\n\nRepo: http://github.com/ooples/token-optimizer-mcp\n\n8. claude-token-optimizer\n\n어떤 프로젝트든 최적화하는 재사용 가능한 setup prompt\n\n- 5분 안에 90% 토큰 절약\n- 문서 토큰 사용량을 11K에서 1.3K로 줄인다\n\nRepo: http://github.com/nadimtuhin/claude-token-optimizer\n\n9. token-optimizer\n\n당신의 context를 조용히 갉아먹는 ghost token을 찾아낸다\n\n- 품질 손실 없이 compaction을 버틴다\n- context 품질 저하를 고친다\n\nRepo: http://github.com/alexgreensh/token-optimizer\n\n10. claude-context (by Zilliz)\n\n전체 codebase를 context로 만드는 code search MCP\n\n- 동등한 retrieval 품질로 약 40% 감소\n- hybrid BM25 + dense vector search\n\nRepo: http://github.com/zilliztech/claude-context\n\n[ 어떻게 조합할까 ]:\n\n10개가 다 필요하진 않다. 당신의 워크플로에 맞게 2~3개를 고르라:\n\n> 터미널 출력이 많다? RTK\n> 코드베이스가 크다? code-review-graph + Token Savior\n> MCP server가 많다? Context Mode\n> 빠른 해결책? Caveman + claude-token-efficient\n\n대부분의 사람들은 자신도 모르게 토큰을 태우고 있다\n\n새 세션에서 /context를 실행해, 한 단어도 치기 전에 얼마나 사라졌는지 봐라\n\n나중에 당신 지갑이 고마워할 거다 :<)",
       "tech_stack": [
-        "OpenAI Chat Completions",
-        "Anthropic Messages API",
-        "OpenAI Tokenizer",
-        "Tiktoken",
-        "GPT-4",
-        "Opus",
-        "OpenAI Error Codes",
-        "Tenacity",
-        "httpx",
-        "requests",
-        "OWASP",
-        "Prompt Injection"
+        "Claude Code",
+        "RTK",
+        "Context Mode",
+        "code-review-graph",
+        "Token Savior",
+        "Caveman Claude",
+        "claude-token-efficient",
+        "token-optimizer-mcp",
+        "claude-token-optimizer",
+        "token-optimizer",
+        "claude-context",
+        "Cursor",
+        "Copilot",
+        "SQLite",
+        "Playwright",
+        "GitHub",
+        "Tree-sitter",
+        "MCP",
+        "CLAUDE.md",
+        "BM25",
+        "dense vector search"
       ]
     },
     {
-      "id": "bm-111",
-      "author": "chrysb",
-      "date": "2026-04-14",
-      "url": "https://x.com/chrysb/status/2043020014035570784",
-      "whats_happening": "chrysb가 conversational LLM의 장기 memory가 아직 해결되지 않았다고 주장했다. raw 저장과 derived 요약 모두 한계가 있어 근본적 trade-off가 남는다는 분석이다.",
-      "why_it_matters": "",
+      "id": "bm-124",
+      "author": "ctatedev",
+      "date": "2026-04-20",
+      "url": "https://x.com/ctatedev/status/2045568934254960835",
+      "whats_happening": "터미널을 HTML과 접근성 트리로 노출해 브라우저 기반 자동화와 e2e 테스트를 단순화하는 방법이 소개됐다. wterm과 agent-browser를 조합해 한 브라우저의 opencode가 다른 브라우저의 Claude Code를 조작하는 데모가 공개됐다.",
+      "why_it_matters": "터미널을 HTML+접근성 트리로 노출한다는 건 \"AI가 AI를 조작하는\" 계층이 드디어 표준 브라우저 자동화 스택 위로 올라왔다는 뜻이다. opencode가 Claude Code를 브라우저로 클릭·입력하는 데모는 agent-to-agent 인터페이스를 MCP 같은 전용 프로토콜 없이 웹 접근성 트리로 해결할 수 있다는 증명이다.",
       "apply_points": [
-        "원문과 파생 메모를 함께 저장한다.",
-        "요약 누적 대신 원문 연결을 유지한다.",
-        "메모 평가 기준을 장기 대화로 잡는다."
+        "접근성 트리 기반 자동화를 검토하라.",
+        "터미널 UI를 HTML로 노출하라.",
+        "e2e를 클릭·입력 흐름으로 단순화하라."
       ],
-      "text": "26만\n눈에 보이는 것과 달리, conversational LLM의 장기 memory는 여전히 해결되지 않은 문제다.\n이상적인 꿈은 이렇다. model이 당신이 전에 한 말을 기억하고, 시간이 지나면서 그 사이의 의미를 끌어내는 것. 단순한 recall이 아니라 interpretation, narrative, 그리고 수개월 혹은 수년에 걸쳐 대화가 연속적이고 누적적으로 느껴지게 만드는 종류의 memory다.\n오늘날 당신은 이 꿈의 환상을 만들어낼 수 있다. 며칠 동안은, 운이 좋으면 몇 주 동안은. 그러다 LLM이 잊기 시작하고 그 환상이 깨진다.\n왜 이런 일이 벌어질까?\n대화 이력이 길어질수록 memory system은 무엇을 캡처할지, 어떻게 표현할지, 그리고 각 대화 턴에서 무엇을 surface할지 결정해야 한다. 그 결정 하나하나가 손실을 만들고, 주관적이며, 비결정적이다.\n시간이 지나면 정보 코퍼스가 너무 커져 안정적으로 검색할 수 없게 되거나, repeated summarization 때문에 시스템이 기억하는 내용이 실제로 말해진 내용에서 점점 drift하기 시작한다. model이 잊는 이유는 시스템이 전체 그림을 완전하게 들고 있지 못하거나, 그 그림이 점점 왜곡되기 때문이다.\n이상적인 세계에서는 LLM이 중요한 대화 턴들에 대해 완벽한 과거 context를 가져야 한다. 당신이 나눈 모든 단어에 대해 무한한 attention을 가지되, 그에 따를 비용과 latency는 전혀 없는 상태다.\n하지만 그건 불가능하므로, 모든 memory system은 그 상태를 근사하려는 시도다. 각각 나름의 단점이 있다.\n결국 대화에서 정보를 보존하는 방법은 두 가지뿐이다:\nRaw — 원본 메시지를 verbatim으로 저장\nDerived — 요약, narrative, 구조화된 extraction\n모든 memory system은 이 스펙트럼 어디쯤에 설지 선택하고 있다. 그리고 어느 극단도 작동하지 않는다.\nRaw는 lossless하지만 inert하다. transcript 더미는 understanding이 아니다. 정보는 전부 있지만, 아무것도 연결되거나 우선순위화되거나 해석되지 않는다. 그저 source material 안에 묻혀 있을 뿐이다.\nDerived는 압축돼 있고 쓰기 좋지만, 반복된 derivation은 복사본의 복사본이 열화되듯 source에서 멀어진다. 정보를 한 번에 잃는 게 아니다. 조금씩 잃어버리고, 정확히 언제 부정확해졌는지도 알 수 없다.\n그럼 infinite context가 해결해주지 않을까?\n이건 가장 자연스러운 반론이다. context window는 계속 커지고 있다. 언젠가는 memory system 자체를 건너뛰고 전체 이력을 그냥 다 넣을 만큼 충분히 커지지 않을까?\n적어도 당장은 아니다. 이유는 두 가지다:\n비용. 설령 2년치 대화 이력을 context window에 넣을 수 있더라도, 매 턴마다 그 전체를 처리하는 비용을 내야 한다. 경제성은 잔혹하고, 이력 길이에 선형으로 비례해 커진다. 어떤 consumer product도 그런 마진 구조에서 살아남지 못한다.\n열화. context window가 차오를수록 모델 성능은 나빠진다. 중간 정보에 대한 attention이 떨어지고, 전체 추론 품질이 하락하며, instruction following이 더 느슨해진다. 더 많은 돈을 내고 더 나쁜 성능을 얻는 셈이다.\nInfinite context는 raw 경로의 극단판일 뿐이다. 그리고 raw만으로는 왜 안 되는지 우리는 이미 확인했다.\n평가의 역설\nmemory system이 잘 작동하는지 알려면 ground truth가 필요하다. 그런데 수개월, 수년에 걸친 실제 conversational memory의 ground truth는 전체 이력 그 자체이며, 이는 어떤 context window보다도 크고 인간이 합리적으로 annotate할 수 있는 범위를 넘는다.\nLongMemEval 같은 benchmark는 건초 더미 속 바늘 찾기식 retrieval은 테스트할 수 있다. 하지만 retrieval만으로는 memory가 아니다. memory는 사실이 바뀌고, 오래된 context가 대체되며, 어떤 대화의 중요성이 몇 주 뒤에야 드러나는 순간에 작동하는 것이다. 정답은 관계의 전체 arc에 달려 있고, 그 arc는 늘 움직이고 있다. 어떤 benchmark도 arc를 포착하지 못한다.\nSynthetic dataset은 이런 현실 사례를 규모 있게 복제할 수 없다. 대화는 현실적인 길이에 도달하기 훨씬 전에 coherence를 잃고, 설령 그렇지 않더라도 백만 token에 걸쳐 진화한 synthetic relationship의 ground truth를 누구도 확인할 수 없다.\n그래서 당신이 새 memory approach가 나올 때마다 보는 것은, 해법으로 포장된 또 다른 trade-off 집합일 뿐이다. 누구도 자기 방식이 제대로 작동한다고 실제로 증명할 수 없다. 왜냐하면 어",
+      "text": "터미널 자동화 + e2e 테스트가 해결됐다.\n\n이제 snapshot, click, type만큼 단순하다:\n\n– wterm은 terminal-in-html을 렌더링하고, 모든 셀을 a11y tree에 넣는다\n– agent-browser는 a11y tree를 통해 페이지를 자동화한다\n\n여기 한 브라우저의 opencode가 다른 브라우저의 Claude Code를 구동하는 모습이다",
+      "tech_stack": [
+        "wterm",
+        "agent-browser",
+        "opencode",
+        "Claude Code"
+      ]
+    },
+    {
+      "id": "bm-123",
+      "author": "techNmak",
+      "date": "2026-04-20",
+      "url": "https://x.com/techNmak/status/2045204764179226695",
+      "whats_happening": "LLM이 작동하는 방식을 배우는 인터랙티브 3D 학습 자료가 소개되고 있다. Embedding부터 Output까지 Transformer의 핵심 구성요소를 단계별로 다룬다고 홍보한다.",
+      "why_it_matters": "Transformer 내부의 행렬 연산을 3D 공간으로 옮긴 순간, 수식을 머리로 추적하던 부담이 \"공간에서 궤적을 따라가는\" 감각 작업으로 바뀐다. LLM을 블랙박스가 아니라 \"들여다볼 수 있는 기관\"으로 다루게 된다는 점이 핵심이다.",
+      "apply_points": [
+        "구성요소별 시각화 자료로 복습하라.",
+        "Attention 흐름을 직접 따라가며 이해하라.",
+        "논문과 데모를 함께 보며 비교하라."
+      ],
+      "text": "LLM이 어떻게 작동하는지 배우는 가장 좋은 방법입니다.\n\n인터랙티브합니다. 3D입니다. 단계별입니다.\n\n다루는 내용:\n→ Embedding\n→ Layer Norm\n→ Self-Attention\n→ MLP\n→ Transformer layers\n→ Softmax\n→ Output\n\n논문 읽기만 멈추세요. 보기 시작하세요.\n\n링크는 댓글에 있습니다.\n\n지금 바로 저장하세요.",
       "tech_stack": [
         "LLM",
-        "LongMemEval"
+        "Embedding",
+        "Layer Normalization",
+        "Self-Attention",
+        "MLP",
+        "Transformer",
+        "Softmax"
+      ]
+    },
+    {
+      "id": "bm-122",
+      "author": "songjunkr",
+      "date": "2026-04-18",
+      "url": "https://x.com/songjunkr/status/2042932936014729563",
+      "whats_happening": "작성자는 Gemma 4 26B 파인튜닝을 성공적으로 마쳤고, 무검열 수준의 refusal 제거와 툴콜·토크나이저 이슈 해결을 주장하고 있다. 또한 벤치 성능, 출력 토큰 속도, 프롬프트 처리 속도가 각각 개선됐으며 GGUF와 MLX 버전 배포를 예고했다.",
+      "why_it_matters": "상용 모델의 refusal과 툴콜 불안정을 파인튜닝 한 번으로 걷어낸 사례가 쌓이고 있다는 건, 로컬 LLM을 \"성능 타협한 대안\"이 아니라 자기 조건에 맞게 재설계 가능한 재료로 쓸 수 있다는 뜻이다. 특히 토크나이저·툴콜 이슈 해결이 속도 개선과 동시에 이뤄졌다는 주장은, 이 둘이 서로 다른 레이어의 문제라는 통념을 흔든다.",
+      "apply_points": [
+        "토크나이저·툴콜 호환성을 먼저 검증하라.",
+        "추론 속도와 프롬프트 속도를 분리 측정하라.",
+        "GGUF와 MLX 배포본을 함께 제공하라."
+      ],
+      "text": "Gemma 4 26B의 완벽한 파인튜닝을 성공했습니다.\n\n- 0/100 refusal 완벽 무검열\n- 툴콜/토크나이저 모델 태생 이슈 해결\n- 벤치 기준 기존 대비 성능 10% 향상\n- 출력 토큰 속도 10% 향상\n- 프롬프트 처리 속도 약 90% 향상\n\n완벽한 모델이 완성되었다고 생각합니다.\n\nGGUF / MLX 두 개 버전 ⬇️",
+      "tech_stack": [
+        "Gemma 4 26B",
+        "GGUF",
+        "MLX"
       ]
     }
   ],
   "youtube": [
     {
-      "title": "Pi Coding Agent Just Destroyed Claude Code (Here's Why)",
+      "title": "Harness Engineering: How to Build Software When Humans Steer, Agents Execute Ryan Lopopolo, OpenAI",
       "channel": "",
-      "video_id": "qOhaaJMGzwM",
-      "url": "https://www.youtube.com/watch?v=qOhaaJMGzwM",
-      "why": "이 영상은 코딩 에이전트 경쟁의 핵심이 기능 수가 아니라 컨텍스트 예산, 통제권, 실행 비용이라는 점을 드러낸다. 이는 개발자가 어떤 도구를 고를지뿐 아니라, 2026년형 멀티 에이전트 AI 시스템을 어떤 기반 위에 쌓을지 결정하게 만든다.",
-      "section_count": 10,
+      "video_id": "am_oeAoUhew",
+      "url": "https://www.youtube.com/watch?v=am_oeAoUhew",
+      "why": "이 발표는 에이전트 시대에 엔지니어의 병목이 코드 작성이 아니라 기준 정의, context 설계, 검증 자동화로 이동했다는 점을 보여준다. 팀이 여전히 사람 중심 프로세스에 머물면 새 용량을 얻고도 throughput과 품질을 함께 잃을 수 있다.",
+      "section_count": 8,
       "published_at": ""
     }
   ]

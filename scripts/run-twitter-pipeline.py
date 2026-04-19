@@ -145,17 +145,21 @@ def main():
     run(["git", "commit", "-m", f"[auto] sources.json 갱신 (twitter +{added})"])
     run(["git", "pull", "--rebase", "origin", "master"])
     r = run(["git", "push"])
-    if r.returncode != 0:
+    push_ok = r.returncode == 0
+    if not push_ok:
         log("  push 실패 — pull 후 재시도")
         run(["git", "pull", "--rebase", "origin", "master"])
         r = run(["git", "push"])
-        if r.returncode != 0:
+        push_ok = r.returncode == 0
+        if not push_ok:
             log("  [FAIL] push 최종 실패")
 
     # stash pop (다른 프로세스의 unstaged changes 복원)
     run(["git", "stash", "pop"])
 
     log(f"=== 파이프라인 완료 (+{added}개) ===")
+    if not push_ok:
+        sys.exit(1)
 
 
 if __name__ == "__main__":

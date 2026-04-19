@@ -562,6 +562,7 @@ def main():
     if ANY_FAIL:
         (TMP / f"alert-youtube-{TODAY}.txt").write_text(
             f"YouTube FAIL: {TODAY}\n" + "\n".join(l for l in LOG if "FAIL" in l), encoding="utf-8")
+        sys.exit(1)
 
 
 if __name__ == "__main__":

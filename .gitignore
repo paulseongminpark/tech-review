@@ -25,3 +25,32 @@ scripts/_credentials/
 # Temp
 _tmp/
 _data/analyze-status.json
+
+# YouTube transcript 임시 파일 (push --rebase 차단 원인, 2026-04-19 사고)
+transcript_*.txt
+transcript_*.vtt
+transcript_temp.*
+tmp*.txt
+
+# 기타 빌드/락 파일
+Gemfile.lock
+deno.lock
+inbox/bookmarks-raw-*.json
+inbox/transcript_*.md
+
+# Codex 임시 파일
+_codex_*.json
+
+# Twitter 북마크 이미지 (자동 수집, 별도 관리)
+assets/bm-images/[0-9]*_[0-9]*.jpg
+
+# 스크립트 로컬 파일
+scripts/_logs/
+scripts/_run-today.bat
+scripts/_*.ps1
+scripts/run-daily-v3.bat
+scripts/watch-youtube.ps1
+scripts/progress.ps1
+scripts/fix-transcripts.py
+scripts/generate-wim-26.py
+scripts/fetch-free-sources.py
