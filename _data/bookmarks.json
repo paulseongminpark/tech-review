@@ -3359,5 +3359,94 @@
     ],
     "why_it_matters": "상용 모델의 refusal과 툴콜 불안정을 파인튜닝 한 번으로 걷어낸 사례가 쌓이고 있다는 건, 로컬 LLM을 \"성능 타협한 대안\"이 아니라 자기 조건에 맞게 재설계 가능한 재료로 쓸 수 있다는 뜻이다. 특히 토크나이저·툴콜 이슈 해결이 속도 개선과 동시에 이뤄졌다는 주장은, 이 둘이 서로 다른 레이어의 문제라는 통념을 흔든다.",
     "tweet_id": "2042932936014729563"
+  },
+  {
+    "id": "bm-123",
+    "author": "techNmak",
+    "date": "2026-04-17",
+    "added_at": "2026-04-20",
+    "url": "https://x.com/techNmak/status/2045204764179226695",
+    "text": "This is the best way to learn how LLMs work.\n\nInteractive. 3D. Step-by-step.\n\nCovers:\n→ Embedding\n→ Layer Norm\n→ Self-Attention\n→ MLP\n→ Transformer layers\n→ Softmax\n→ Output\n\nStop reading papers. Start seeing.\n\nLink in comments.\n\nSave this immediately.",
+    "whats_happening": "LLM이 작동하는 방식을 배우는 인터랙티브 3D 학습 자료가 소개되고 있다. Embedding부터 Output까지 Transformer의 핵심 구성요소를 단계별로 다룬다고 홍보한다.",
+    "translation": "LLM이 어떻게 작동하는지 배우는 가장 좋은 방법입니다.\n\n인터랙티브합니다. 3D입니다. 단계별입니다.\n\n다루는 내용:\n→ Embedding\n→ Layer Norm\n→ Self-Attention\n→ MLP\n→ Transformer layers\n→ Softmax\n→ Output\n\n논문 읽기만 멈추세요. 보기 시작하세요.\n\n링크는 댓글에 있습니다.\n\n지금 바로 저장하세요.",
+    "tech_stack": [
+      "LLM",
+      "Embedding",
+      "Layer Normalization",
+      "Self-Attention",
+      "MLP",
+      "Transformer",
+      "Softmax"
+    ],
+    "apply_points": [
+      "구성요소별 시각화 자료로 복습하라.",
+      "Attention 흐름을 직접 따라가며 이해하라.",
+      "논문과 데모를 함께 보며 비교하라."
+    ],
+    "why_it_matters": "Transformer 내부의 행렬 연산을 3D 공간으로 옮긴 순간, 수식을 머리로 추적하던 부담이 \"공간에서 궤적을 따라가는\" 감각 작업으로 바뀐다. LLM을 블랙박스가 아니라 \"들여다볼 수 있는 기관\"으로 다루게 된다는 점이 핵심이다.",
+    "tweet_id": "2045204764179226695"
+  },
+  {
+    "id": "bm-124",
+    "author": "ctatedev",
+    "date": "2026-04-18",
+    "added_at": "2026-04-20",
+    "url": "https://x.com/ctatedev/status/2045568934254960835",
+    "text": "Terminal automation + e2e testing solved\n\nNow as simple as snapshot, click, type:\n\n– wterm renders terminal-in-html, every cell in the a11y tree\n– agent-browser automates pages via the a11y tree\n\nHere's opencode in one browser driving Claude Code in another",
+    "whats_happening": "터미널을 HTML과 접근성 트리로 노출해 브라우저 기반 자동화와 e2e 테스트를 단순화하는 방법이 소개됐다. wterm과 agent-browser를 조합해 한 브라우저의 opencode가 다른 브라우저의 Claude Code를 조작하는 데모가 공개됐다.",
+    "translation": "터미널 자동화 + e2e 테스트가 해결됐다.\n\n이제 snapshot, click, type만큼 단순하다:\n\n– wterm은 terminal-in-html을 렌더링하고, 모든 셀을 a11y tree에 넣는다\n– agent-browser는 a11y tree를 통해 페이지를 자동화한다\n\n여기 한 브라우저의 opencode가 다른 브라우저의 Claude Code를 구동하는 모습이다",
+    "tech_stack": [
+      "wterm",
+      "agent-browser",
+      "opencode",
+      "Claude Code"
+    ],
+    "apply_points": [
+      "접근성 트리 기반 자동화를 검토하라.",
+      "터미널 UI를 HTML로 노출하라.",
+      "e2e를 클릭·입력 흐름으로 단순화하라."
+    ],
+    "why_it_matters": "터미널을 HTML+접근성 트리로 노출한다는 건 \"AI가 AI를 조작하는\" 계층이 드디어 표준 브라우저 자동화 스택 위로 올라왔다는 뜻이다. opencode가 Claude Code를 브라우저로 클릭·입력하는 데모는 agent-to-agent 인터페이스를 MCP 같은 전용 프로토콜 없이 웹 접근성 트리로 해결할 수 있다는 증명이다.",
+    "tweet_id": "2045568934254960835"
+  },
+  {
+    "id": "bm-125",
+    "author": "DeRonin_",
+    "date": "2026-04-18",
+    "added_at": "2026-04-20",
+    "url": "https://x.com/DeRonin_/status/2045420155434320270",
+    "text": "10 GitHub repos to spend 60-90% less tokens in Claude Code:\n\n1. RTK (Rust Token Killer)\n\nCLI proxy that filters terminal output before it hits your context\n\n- 60-90% reduction on common dev commands\n- one binary, zero dependencies\n- works with Claude Code, Cursor, Copilot\n\nRepo: http://github.com/rtk-ai/rtk\n\n2. Context Mode\n\nSandboxes raw tool output into SQLite instead of dumping it into context\n\n- 98% context reduction on Playwright, GitHub, logs\n- only clean summaries enter your conversation\n- works as Claude Code plugin\n\nRepo: http://github.com/mksglu/context-mode\n\n3. code-review-graph\n\nLocal knowledge graph that maps your codebase with Tree-sitter\n\n- Claude reads only what matters, not the entire repo\n- 49x token reduction on large monorepos\n- 6.8x on average reviews\n\nRepo: http://github.com/tirth8205/code-review-graph\n\n4. Token Savior\n\nMCP server that navigates code by symbols, not full files\n\n- 97% reduction on code navigation\n- persistent memory across sessions\n- 69 tools, zero external deps\n\nRepo: http://github.com/Mibayy/token-savior\n\n5. Caveman Claude\n\nmakes Claude talk like a caveman to cut output tokens\n\n- 65-75% output reduction\n- one-line install\n- keeps full technical accuracy\n\nRepo: http://github.com/JuliusBrussee/caveman\n\n6. claude-token-efficient\n\none CLAUDE.md file that keeps responses terse\n\n- drop-in, no code changes\n- reduces output verbosity on heavy workflows\n- best for output-heavy sessions\n\nRepo: http://github.com/drona23/claude-token-efficient\n\n7. token-optimizer-mcp\n\nMCP server with caching, compression, and smart tool intelligence\n\n- 95%+ token reduction through intelligent caching\n- compresses repeated tool outputs\n\nRepo: http://github.com/ooples/token-optimizer-mcp\n\n8. claude-token-optimizer\n\nreusable setup prompts for optimizing any project\n\n- 90% token savings in 5 minutes\n- reduces doc token usage from 11K to 1.3K\n\nRepo: http://github.com/nadimtuhin/claude-token-optimizer\n\n9. token-optimizer\n\nfinds ghost tokens that silently eat your context\n\n- survives compaction without losing quality\n- fixes context quality decay\n\nRepo: http://github.com/alexgreensh/token-optimizer\n\n10. claude-context (by Zilliz)\n\ncode search MCP that makes your entire codebase the context\n\n- ~40% reduction with equivalent retrieval quality\n- hybrid BM25 + dense vector search\n\nRepo: http://github.com/zilliztech/claude-context\n\n[ how to stack them ]:\n\nyou don't need all 10. pick 2-3 based on your workflow:\n\n> heavy terminal output? RTK\n> big codebase? code-review-graph + Token Savior\n> lots of MCP servers? Context Mode\n> quick fix? Caveman + claude-token-efficient\n\nmost people are burning tokens without knowing it\n\nrun /context in a fresh session and see how much is gone before you even type a word\n\nyour pocket will thank me later :<)",
+    "whats_happening": "Claude Code에서 토큰 사용량을 60~90%까지 줄일 수 있다고 주장하는 GitHub 저장소 10개를 정리한 글이다. 터미널 출력 필터링, SQLite 샌드박싱, Tree-sitter 기반 코드 그래프, MCP 캐싱·검색 같은 접근을 소개하고 워크플로별로 2~3개만 골라 조합하라고 제안한다.",
+    "translation": "Claude Code에서 토큰을 60~90% 덜 쓰게 해주는 GitHub repo 10개:\n\n1. RTK (Rust Token Killer)\n\ncontext에 들어가기 전에 터미널 출력을 필터링하는 CLI proxy\n\n- 일반적인 개발 명령에서 60~90% 감소\n- 바이너리 하나, 의존성 0개\n- Claude Code, Cursor, Copilot과 함께 동작\n\nRepo: http://github.com/rtk-ai/rtk\n\n2. Context Mode\n\nraw tool 출력을 context에 쏟아붓는 대신 SQLite에 샌드박싱한다\n\n- Playwright, GitHub, 로그에서 context 98% 감소\n- 대화에는 깔끔한 요약만 들어간다\n- Claude Code plugin으로 동작\n\nRepo: http://github.com/mksglu/context-mode\n\n3. code-review-graph\n\nTree-sitter로 codebase를 매핑하는 로컬 knowledge graph\n\n- Claude는 전체 repo가 아니라 중요한 것만 읽는다\n- 대형 monorepo에서 토큰 49배 감소\n- 평균 리뷰에서 6.8배\n\nRepo: http://github.com/tirth8205/code-review-graph\n\n4. Token Savior\n\n전체 파일이 아니라 symbol 기준으로 코드를 탐색하는 MCP server\n\n- 코드 내비게이션에서 97% 감소\n- 세션 간 지속 메모리\n- 69개 도구, 외부 의존성 0개\n\nRepo: http://github.com/Mibayy/token-savior\n\n5. Caveman Claude\n\n출력 토큰을 줄이기 위해 Claude가 원시인처럼 말하게 만든다\n\n- 출력 65~75% 감소\n- 한 줄 설치\n- 기술적 정확성은 완전히 유지\n\nRepo: http://github.com/JuliusBrussee/caveman\n\n6. claude-token-efficient\n\n응답을 짧게 유지해주는 CLAUDE.md 파일 하나\n\n- 그대로 넣어 쓰면 된다, 코드 변경 없음\n- 무거운 워크플로에서 출력 장황함을 줄인다\n- 출력이 많은 세션에 가장 적합\n\nRepo: http://github.com/drona23/claude-token-efficient\n\n7. token-optimizer-mcp\n\n캐싱, 압축, smart tool intelligence를 갖춘 MCP server\n\n- 지능형 캐싱으로 95%+ 토큰 감소\n- 반복되는 tool 출력을 압축한다\n\nRepo: http://github.com/ooples/token-optimizer-mcp\n\n8. claude-token-optimizer\n\n어떤 프로젝트든 최적화하는 재사용 가능한 setup prompt\n\n- 5분 안에 90% 토큰 절약\n- 문서 토큰 사용량을 11K에서 1.3K로 줄인다\n\nRepo: http://github.com/nadimtuhin/claude-token-optimizer\n\n9. token-optimizer\n\n당신의 context를 조용히 갉아먹는 ghost token을 찾아낸다\n\n- 품질 손실 없이 compaction을 버틴다\n- context 품질 저하를 고친다\n\nRepo: http://github.com/alexgreensh/token-optimizer\n\n10. claude-context (by Zilliz)\n\n전체 codebase를 context로 만드는 code search MCP\n\n- 동등한 retrieval 품질로 약 40% 감소\n- hybrid BM25 + dense vector search\n\nRepo: http://github.com/zilliztech/claude-context\n\n[ 어떻게 조합할까 ]:\n\n10개가 다 필요하진 않다. 당신의 워크플로에 맞게 2~3개를 고르라:\n\n> 터미널 출력이 많다? RTK\n> 코드베이스가 크다? code-review-graph + Token Savior\n> MCP server가 많다? Context Mode\n> 빠른 해결책? Caveman + claude-token-efficient\n\n대부분의 사람들은 자신도 모르게 토큰을 태우고 있다\n\n새 세션에서 /context를 실행해, 한 단어도 치기 전에 얼마나 사라졌는지 봐라\n\n나중에 당신 지갑이 고마워할 거다 :<)",
+    "tech_stack": [
+      "Claude Code",
+      "RTK",
+      "Context Mode",
+      "code-review-graph",
+      "Token Savior",
+      "Caveman Claude",
+      "claude-token-efficient",
+      "token-optimizer-mcp",
+      "claude-token-optimizer",
+      "token-optimizer",
+      "claude-context",
+      "Cursor",
+      "Copilot",
+      "SQLite",
+      "Playwright",
+      "GitHub",
+      "Tree-sitter",
+      "MCP",
+      "CLAUDE.md",
+      "BM25",
+      "dense vector search"
+    ],
+    "apply_points": [
+      "터미널 출력이 많으면 RTK를 먼저 붙여라.",
+      "대형 저장소면 심볼 탐색형 도구를 써라.",
+      "새 세션마다 /context로 잔량을 확인하라."
+    ],
+    "why_it_matters": "토큰 절감 도구들이 쏟아진다는 건, Claude Code 워크플로의 병목이 \"모델 성능\"이 아니라 \"컨텍스트 관리\"로 이동했다는 신호다. 60~90% 절감 주장 대부분은 터미널 출력·심볼 탐색·MCP 캐싱처럼 **읽지 않아도 될 것을 안 읽게 만드는** 빼기 전략이고, 이게 orchestration의 /cascade·recall 설계 방향과 정확히 일치한다.",
+    "tweet_id": "2045420155434320270"
   }
 ]
