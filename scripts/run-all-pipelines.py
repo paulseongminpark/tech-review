@@ -233,6 +233,16 @@ def _run_main():
         timeout=5400,
     )
 
+    # 4. Health Check — 사고 패턴 자동 감지 (2026-04-20 추가)
+    # 표시/분석 데이터 모순, hardcoded limit hit, front matter 래퍼 잔재 등을 즉시 감지.
+    # — Why: 이전 사고들(4/5, 4/14, 4/20 front matter 래퍼 / 4/3~4/18 Twitter truncate / 4/17~4/20 마스터 거짓 OK)
+    #         이 모두 사용자 점검 시에야 발견됨. 자동 감지로 사고 첫날에 알림.
+    results["health"] = run_step(
+        "Health Check",
+        [PYTHON, str(SCRIPT_DIR / "health-check.py")],
+        timeout=60,
+    )
+
     # 결과 요약
     log(f"\n{'='*60}")
     log("=== 결과 요약 ===")

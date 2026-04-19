@@ -95,12 +95,9 @@ def fetch_article_text(tweet_url: str) -> str | None:
                         start = i + 1
                 article = '\n'.join(lines[start:]).strip()
 
-                # 2026-04-20 수정: limit 4000 → 8000 (29건이 4000자 hit, 원본 더 길었을 가능성)
-                # 분석 프롬프트도 8000자로 통일됨 (line 225/280/357 text[:8000])
-                MAX_ARTICLE = 8000
-                if len(article) > MAX_ARTICLE:
-                    print(f" [TRUNC: {len(article)}>{MAX_ARTICLE}]", end="")
-                    article = article[:MAX_ARTICLE]
+                # 2026-04-20 (3차 수정, 근본): hard limit 자체 제거.
+                # 표시용 text는 풀 원문 보존. 분석 프롬프트에서만 별도 truncate(line 225/280/357 text[:8000]).
+                # — Why: limit이 표시/분석 모두에 일괄 적용되면 두 데이터가 어느 한쪽 기준에서 모순됨 (사용자 점검 시 발견된 문제).
                 return article if len(article) > 100 else None
             finally:
                 page.close()
