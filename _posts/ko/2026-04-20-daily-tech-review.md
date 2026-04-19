@@ -1,7 +1,4 @@
 ---
-
-```markdown
----
 layout: post
 title: "Claude Code 커맨드 인젝션 취약점 3건 / Claude Design, Figma에 도전 / VLM은 왜 감정을 못 읽나"
 date: 2026-04-20
@@ -69,10 +66,4 @@ Anthropic이 Claude Design을 공개했다. 프롬프트를 입력하면 UI 프�
 ---
 
 ## Comments
-```
 
----
-
-저장 경로: _posts/ko/2026-04-20-daily-tech-review.md
-
-선택된 3건: Claude Code 보안 취약점(CVE-2026-35022), Claude Design 출시, VLM 감정 인식 연구. 저장 권한 허용하면 즉시 파일 생성한다.

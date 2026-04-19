@@ -1,0 +1,43 @@
+{
+  "date": "2026-04-20",
+  "lang": "ko",
+  "post_url": "/ko/2026/04/20/daily-tech-review/",
+  "post_title": "Claude Code 커맨드 인젝션 취약점 3건 / Claude Design, Figma에 도전 / VLM은 왜 감정을 못 읽나",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "Claude Code, CVSS 9.8 — 커맨드 인젝션 취약점 3건",
+      "lead": "Anthropic의 Claude Code AI 에이전트에서 커맨드 인젝션 취약점 3건이 드러났다. 모두 CVE-2026-35022로 묶여 CVSS 9.8이라는 최고 수준의 위험 점수를 받았다. 첫 번째 취약점(VULN-01)은 TERMINAL 환경 변수를 읽는 과정에서 발생한다. Node.js 런타임이 이 변수를 셸 명령 문자열에 직접 삽입하므로, .env 파일이나 CI/CD 설정에 메타문자만 심으면 사용자 권한 전체로 임의 코드가 실행된다. ",
+      "tags": [
+        "ai-models",
+        "research",
+        "benchmarks"
+      ],
+      "anchor": "claude-code-cvss-98-커맨드-인젝션-취약점-3건"
+    },
+    {
+      "index": 2,
+      "title": "Claude Design: 프롬프트 한 줄로 프로토타입을 — Figma에 도전장",
+      "lead": "Anthropic이 Claude Design을 공개했다. 프롬프트를 입력하면 UI 프로토타입을 생성해 주는 도구다. VentureBeat는 이를 Figma에 대한 직접 도전으로 평가했다. 텍스트 설명에서 곧바로 인터페이스 프로토타입을 만든다는 개념 자체가 완전히 새롭지는 않다. v0(Vercel), Bolt, Lovable 같은 도구들이 이미 이 영역에서 먼저 자리를 잡았다. 그러나 Anthropic이 직접 뛰어들었다는 것은 신호가 다르다. 이",
+      "tags": [
+        "ai-models",
+        "research",
+        "benchmarks",
+        "ma"
+      ],
+      "anchor": "claude-design-프롬프트-한-줄로-프로토타입을-figma에-도전장"
+    },
+    {
+      "index": 3,
+      "title": "VLM은 왜 인간의 감정을 못 읽나",
+      "lead": "시각-언어 모델(VLM)은 최근 몇 년간 수많은 시각 태스크에서 인상적인 성과를 냈다. 그런데 지능형 시스템이 인간과 상호작용하는 데 가장 기본이 되는 능력인 감정 인식에서 VLM이 유독 취약하다는 연구가 arXiv에 게재됐다. 물체 분류, 장면 이해, 시각적 질의응답은 잘하면서 왜 감정만 안 되는가. 이 질문은 표면적인 성능 지표 너머를 들여다보게 만든다. 감정은 문맥 의존적이고 문화적 편차가 크다. 표정 하나에도 미묘한 강도 차이가 있고, ",
+      "tags": [
+        "ai-models",
+        "research",
+        "benchmarks"
+      ],
+      "anchor": "vlm은-왜-인간의-감정을-못-읽나"
+    }
+  ]
+}
