@@ -95,7 +95,13 @@ def fetch_article_text(tweet_url: str) -> str | None:
                         start = i + 1
                 article = '\n'.join(lines[start:]).strip()
 
-                return article[:4000] if len(article) > 100 else None
+                # 2026-04-20 수정: limit 4000 → 8000 (29건이 4000자 hit, 원본 더 길었을 가능성)
+                # 분석 프롬프트도 8000자로 통일됨 (line 225/280/357 text[:8000])
+                MAX_ARTICLE = 8000
+                if len(article) > MAX_ARTICLE:
+                    print(f" [TRUNC: {len(article)}>{MAX_ARTICLE}]", end="")
+                    article = article[:MAX_ARTICLE]
+                return article if len(article) > 100 else None
             finally:
                 page.close()
                 browser.close()
