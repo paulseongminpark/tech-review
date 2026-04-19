@@ -441,8 +441,10 @@ def main():
         if ARTICLE_URL_RE.match(tw["text"].strip()):
             article = fetch_article_text(tw["url"])
             if article:
-                tw["text"] = article[:500]   # 북마크 표시용
-                analysis_text = article       # 분석용 전문
+                # 2026-04-20 수정: [:500] truncate 제거. text=원문 전문, translation=전문 번역으로 일치.
+                # 표시 영역 길이 제어는 frontend(twitter.html 모달/카드)가 담당.
+                tw["text"] = article
+                analysis_text = article
                 print(" [Article→CDP]", end="", flush=True)
             else:
                 print(" SKIP (X Article -- CDP 실패)")

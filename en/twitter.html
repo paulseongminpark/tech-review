@@ -185,7 +185,8 @@ function openModal(i) {
   const whatsHappening = bm.whats_happening || bm.smart_brevity?.why || '';
   const whyItMatters   = bm.why_it_matters  || bm.smart_brevity?.what || '';
   const applyList = (bm.apply_points || []).map(p => `<li>${escHtml(p)}</li>`).join('');
-  const tweetContent   = bm.translation || bm.text || '';
+  // 영문 페이지: 원문(text) 우선, 없으면 translation fallback (영문 페이지에서 한국어 번역 노출 방지, 2026-04-20 수정)
+  const tweetContent   = bm.text || bm.translation || '';
 
   document.getElementById('bm-modal-left').innerHTML = `
     <div class="bm-modal-meta">
