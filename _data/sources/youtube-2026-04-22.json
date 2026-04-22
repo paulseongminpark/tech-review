@@ -171,6 +171,7 @@
         "how": "settings.json의 allowedTools에 에이전트별 glob 패턴 추가: planning 에이전트는 **/00_*/읽기 전용, build 에이전트는 src/** 쓰기 허용, review 에이전트는 쓰기 전체 차단. 기존 agentic-os-roadmap 스킬과 병행해 규칙 문서화",
         "when": "orchestration 다음 세션 착수 전 (현재 21개 미커밋 정리 후)"
       }
-    }
+    },
+    "playlist_index": 11
   }
 ]
