@@ -1,0 +1,39 @@
+{
+  "date": "2026-04-23",
+  "lang": "ko",
+  "post_url": "/ko/2026/04/23/daily-tech-review/",
+  "post_title": "GitHub CLI가 당신을 관찰하기 시작했다, Dropbox가 87GB짜리 모노레포를 20GB로 줄인 방법, Gleam 모노레포를 GitHub Actions로 돌리는 법",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "GitHub CLI가 당신을 관찰하기 시작했다",
+      "lead": "GitHub CLI는 터미널에서 PR을 열고 이슈를 닫는 데 쓰는 오픈소스 도구다. 소스가 공개되어 있고, 동작을 예측할 수 있고, 별다른 설명 없이도 믿고 쓸 수 있다는 것이 이 도구의 암묵적 가치였다. 그런데 GitHub는 최근 이 CLI에 수도익명(pseudoanonymous) 텔레메트리를 도입했다. 이유는 공식 문서에 명시되어 있다: \"에이전틱 채택이 늘어나면서 기능이 실제로 어떻게 쓰이는지 파악해야 한다. 새 서브커맨드를 출시했을 때 ",
+      "tags": [
+        "opensource",
+        "developer-tools"
+      ],
+      "anchor": "github-cli가-당신을-관찰하기-시작했다"
+    },
+    {
+      "index": 2,
+      "title": "Dropbox가 87GB짜리 Git 모노레포를 20GB로 줄인 방법",
+      "lead": "Git은 본래 소규모 프로젝트를 위해 설계됐다. 수년간 코드가 쌓이고 바이너리가 들어오고 히스토리가 누적되면, 어느 순간 클론 한 번에 몇 분이 걸리고 CI 시간이 폭발한다. Dropbox는 그 임계점을 넘었다. 모노레포가 87GB까지 불어난 것이다. Dropbox는 이 문제를 GitHub 엔지니어링 팀과 직접 협업해 해결했고, 결과는 20GB였다. 약 77%를 줄인 셈이다. 세부 기술은 공개된 기사에서 모두 다루지 않지만, 이 숫자가 전달하는",
+      "tags": [
+        "opensource",
+        "developer-tools"
+      ],
+      "anchor": "dropbox가-87gb짜리-git-모노레포를-20gb로-줄인-방법"
+    },
+    {
+      "index": 3,
+      "title": "Gleam 모노레포를 GitHub Actions로 돌리는 법",
+      "lead": "Gleam은 Erlang BEAM 위에서 돌아가는 정적 타입 함수형 언어다. 이 언어로 만든 EYG라는 스크립팅 언어 프로젝트는 \"더 나은 bash\"를 목표로 하며, 12개 이상의 패키지로 구성된 모노레포로 운영된다. 패키지마다 타깃 런타임이 다르다. 일부는 BEAM, 일부는 Bun(JavaScript), 일부는 양쪽 모두를 지원한다. 이 복잡성을 하나의 GitHub Actions 워크플로우로 처리하는 방식이 공개됐다. 핵심은 런타임별 job ",
+      "tags": [
+        "opensource",
+        "developer-tools"
+      ],
+      "anchor": "gleam-모노레포를-github-actions로-돌리는-법"
+    }
+  ]
+}
