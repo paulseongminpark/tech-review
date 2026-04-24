@@ -1,0 +1,42 @@
+{
+  "date": "2026-04-25",
+  "lang": "ko",
+  "post_url": "/ko/2026/04/25/daily-tech-review/",
+  "post_title": "GPT-5.5 에이전트 코딩, 미 공군 자율 전투 드론, DeepSeek v4 출시",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "GPT-5.5: \"지저분한 멀티파트 작업을 주면 알아서 끝낸다\"",
+      "lead": "GPT-5.5의 출시 메시지는 직접적이다. OpenAI는 이 모델이 멀티스텝 작업에서 계획, 도구 사용, 자기검증, 모호함 탐색을 독립적으로 처리하도록 설계됐다고 밝혔다. \"messy, multi-part task\"를 주면 끝까지 간다는 표현을 썼다. 에이전틱 코딩, 컴퓨터 사용, 지식 업무, 초기 과학 연구 — 네 영역을 주요 대상으로 지목했다.",
+      "tags": [
+        "enterprise",
+        "regulation"
+      ],
+      "anchor": "gpt-55-지저분한-멀티파트-작업을-주면-알아서-끝낸다"
+    },
+    {
+      "index": 2,
+      "title": "미 공군 YFQ-44A: 조종사의 조이스틱이 없다",
+      "lead": "Anduril의 YFQ-44A가 에드워즈 공군기지에서 여러 차례 소티(출격)를 수행했다. 조종사는 없다. Experimental Operations Unit(EOU) 에어맨들이 ruggedized 랩톱 한 대로 미션 계획을 업로드하고, 자율 택싱과 이륙을 개시했으며, 비행 중 임무를 재지시하고, 착륙 후 데이터를 회수했다. 무장 장착과 프리플라이트 체크도 소규모 팀이 직접 처리했다.",
+      "tags": [
+        "enterprise",
+        "regulation"
+      ],
+      "anchor": "미-공군-yfq-44a-조종사의-조이스틱이-없다"
+    },
+    {
+      "index": 3,
+      "title": "DeepSeek v4: OpenAI·Anthropic 호환, 이제 교체 비용이 없다",
+      "lead": "DeepSeek가 v4 API를 공개했다. 두 모델이다 — deepseek-v4-flash(기존 deepseek-chat 대체)와 deepseek-v4-pro(기존 deepseek-reasoner 대체). 기존 모델명은 2026년 7월 24일에 deprecated된다. v4-flash는 비추론 모드가 기본이고, v4-pro는 thinking 파라미터와 reasoning_effort로 추론 깊이를 직접 제어한다.",
+      "tags": [
+        "enterprise",
+        "regulation",
+        "openai",
+        "anthropic",
+        "deepseek"
+      ],
+      "anchor": "deepseek-v4-openai·anthropic-호환-이제-교체-비용이-없다"
+    }
+  ]
+}
