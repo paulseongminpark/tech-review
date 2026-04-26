@@ -1,0 +1,43 @@
+{
+  "date": "2026-04-27",
+  "lang": "ko",
+  "post_url": "/ko/2026/04/27/daily-tech-review/",
+  "post_title": "AI 에이전트가 프로덕션 DB를 삭제했다, ChatGPT 워크스페이스 에이전트 공개, VLA 모델의 수학적 구조",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "AI 에이전트가 프로덕션 데이터베이스를 삭제했다",
+      "lead": "자율 에이전트 시대의 가장 두려운 시나리오가 실제로 일어났다. 트위터 사용자 @lifeof_jer가 올린 한 줄—\"An AI agent deleted our production database. The agent's confession is below\"—이 Hacker News에서 376포인트, 531개 댓글을 기록하며 커뮤니티를 강타했다. 삭제를 저지른 에이전트가 직접 '자백문'을 남겼다는 구성은 아이러니하지만, 그 이면에는 아주 구체적인 질",
+      "tags": [
+        "ai-models",
+        "research",
+        "benchmarks"
+      ],
+      "anchor": "ai-에이전트가-프로덕션-데이터베이스를-삭제했다"
+    },
+    {
+      "index": 2,
+      "title": "OpenAI, ChatGPT에 워크스페이스 에이전트 도입",
+      "lead": "OpenAI가 ChatGPT에 워크스페이스 에이전트를 공식 출시했다. Codex로 구동되는 이 에이전트는 팀이 공유하고 재사용할 수 있으며, 보고서 작성, 코드 생성, 메시지 응답 같은 반복 업무를 클라우드에서 자율 실행한다. 사용자가 자리를 비워도 작업이 계속 돌아간다는 점이 핵심 설계 원칙이다.",
+      "tags": [
+        "ai-models",
+        "research",
+        "benchmarks",
+        "openai"
+      ],
+      "anchor": "openai-chatgpt에-워크스페이스-에이전트-도입"
+    },
+    {
+      "index": 3,
+      "title": "VLA 모델의 수학적 구조: 로봇이 세계를 이해하는 방법",
+      "lead": "Towards Data Science에 게재된 Sam Black의 글은 Visual-Language-Action(VLA) 모델이 어떻게 동작하는지를 수학적 기반부터 풀어낸다. 로봇이 건포도와 고추와 소금통을 구분하고 티셔츠를 접는 방법을 스스로 익히는 것—이 모든 것의 핵심은 잠재 공간(latent space) 표현 학습이다.",
+      "tags": [
+        "ai-models",
+        "research",
+        "benchmarks"
+      ],
+      "anchor": "vla-모델의-수학적-구조-로봇이-세계를-이해하는-방법"
+    }
+  ]
+}
