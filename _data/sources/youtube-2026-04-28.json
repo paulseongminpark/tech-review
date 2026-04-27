@@ -1,0 +1,142 @@
+[
+  {
+    "video_id": "dCII2R2uis8",
+    "title": "The One Number That Explains Why Deep Learning Works (In 5 Minutes)",
+    "url": "https://www.youtube.com/watch?v=dCII2R2uis8",
+    "playlist": "insight",
+    "fetched_at": "2026-04-28",
+    "transcript": "What makes data hard to learn? This is a very interesting topic and the answer is that sometimes the labels themselves are responsible for hard learning. Like these two examples, if labels are very complex, they require that the model be very flexible and thus we have overfitting problem. But sometimes the problem is the data itself. Like these two examples with the same global shape, but when we zoom in, we see that locally one data is more complex than other. So, how we can measure these differences in local structures? One way is to focus on a single point and examine its neighbors. You see, for noisy regions, it seems that the neighbors just [music] spread out in multiple directions without any pattern. &gt;&gt; [music] &gt;&gt; And local neighborhood becomes less and less informative. So, local intrinsic dimension is our mathematical tool here. What it does is that it quantifies how complex the data is around the reference point. We do this by looking at distances to its neighbors. The formula might look like a little bit complex, but it is actually very simple. Here, RI is the distance to the Ith nearest neighbor. And RK is the distance to the Kth, the farthest point in our local neighborhood. So, instead of using raw distances, we look at the ratio RK over RI. This tells us how quickly distances grow outward. When data lies on a simple structure, ratios are larger and dimension stays low. When data is spreads in many directions, like the examples I showed you have a noisy data, ratio shrinks and dimension grows. So, now let's see um through a visual example how this looks like. And you may ask, if having noisy data is a problem, then at least some of the machine learning algorithms should be dedicated to reduce this noise and improve the learning. And the answer is that you're right. Actually, there are some algorithms that do this directly or indirectly. So, for example, neural networks can do this implicitly or explicitly. As the information passes through the layers, it can remove the noise and naturally reduce the LID. And autoencoders, for example, can do this explicitly. And PCA is another good one. It reduces the redundant information and consequently it reduces also the LID. So, just look at here. When we project our data on the first principal component, for example, we are effectively reducing the noise. And one interesting application of LID is that we can use it for outlier detection. So, look at this example. An outlier is a point that just sits far away from the normal data. And when we increase the the radius, uh it makes the LID to just to become a very big number. And this happens because when we increase the radius, all the neighbors appear all at once. And what about large language models? Well, there is this paper from almost two years ago that use intrinsic dimension to detect hallucination uh and truthfulness in large language models. And their idea is somehow similar to what we talked when when I was explaining the outlier detection. And they say that when an LLM is telling the truth, its internal thoughts that can be represented with some embeddings are more structured. And compared to hallucinated answers, locally they seem to have more patterns and less noise. So, I think that's it, guys. Thank you for watching and don't forget to subscribe.",
+    "transcript_ko": "",
+    "summary": {
+      "sections": [
+        {
+          "heading": "학습 난도 갈린다",
+          "body": "데이터가 학습하기 어려운 이유는 하나가 아니라는 점이 이 영상의 출발점이다. 때로는 레이블 자체가 학습을 어렵게 만든다. 레이블이 매우 복잡하면 모델은 더 유연해져야 하고, 그 결과 과적합 문제가 생긴다. 반대로 문제는 데이터 자체에 있을 수도 있다. 겉으로는 같은 전체 형태를 보여도, 가까이서 보면 한 데이터가 다른 데이터보다 더 복잡한 국소 구조를 가질 수 있다.",
+          "highlights": [
+            "때로는 레이블 자체가 학습을 어렵게 만든다.",
+            "레이블이 매우 복잡하면 모델은 더 유연해져야 하고, 그 결과 과적합 문제가 생긴다.",
+            "겉으로는 같은 전체 형태를 보여도, 가까이서 보면 한 데이터가 다른 데이터보다 더 복잡한 국소 구조를 가질 수 있다."
+          ],
+          "quote": "What makes data hard to learn?"
+        },
+        {
+          "heading": "이웃이 복잡성 드러낸다",
+          "body": "이 차이를 측정하는 한 방법은 하나의 점에 집중해 그 이웃들을 살펴보는 것이다. 영상은 특히 noisy region에서 이웃들이 여러 방향으로 흩어져 보인다고 설명한다. 이 경우 국소 이웃은 점점 덜 informative해진다. 즉, 주변 점들이 일정한 패턴을 만들지 못할수록 그 지점의 구조를 읽기 어려워진다. 그래서 국소 구조의 질을 보려면 전체 모양보다 가까운 이웃의 배치를 먼저 봐야 한다.",
+          "highlights": [
+            "이 차이를 측정하는 한 방법은 하나의 점에 집중해 그 이웃들을 살펴보는 것이다.",
+            "이 경우 국소 이웃은 점점 덜 informative해진다.",
+            "그래서 국소 구조의 질을 보려면 전체 모양보다 가까운 이웃의 배치를 먼저 봐야 한다."
+          ],
+          "quote": "And local neighborhood becomes less and less informative."
+        },
+        {
+          "heading": "LID가 답한다",
+          "body": "이때 쓰이는 수학적 도구가 local intrinsic dimension, 즉 LID다. LID는 기준점 주변 데이터가 얼마나 복잡한지 정량화한다. 계산은 그 점에서 이웃들까지의 거리를 보는 방식으로 이뤄진다. 공식은 복잡해 보일 수 있지만 영상은 실제 아이디어는 매우 단순하다고 말한다. 핵심은 국소 영역 안에서 거리가 바깥으로 얼마나 빨리 커지는지를 보는 데 있다.",
+          "highlights": [
+            "이때 쓰이는 수학적 도구가 local intrinsic dimension, 즉 LID다.",
+            "LID는 기준점 주변 데이터가 얼마나 복잡한지 정량화한다.",
+            "핵심은 국소 영역 안에서 거리가 바깥으로 얼마나 빨리 커지는지를 보는 데 있다."
+          ],
+          "quote": "So, local intrinsic dimension is our mathematical tool here."
+        },
+        {
+          "heading": "비율이 차원 키운다",
+          "body": "영상은 raw distance 대신 RK over RI라는 비율을 본다고 설명한다. 여기서 RI는 i번째 최근접 이웃까지의 거리이고, RK는 국소 이웃 중 가장 먼 k번째 이웃까지의 거리다. 데이터가 단순한 구조 위에 놓여 있으면 이 비율은 더 커지고 차원은 낮게 유지된다. 반대로 데이터가 많은 방향으로 퍼져 있으면 비율은 줄고 차원은 커진다. 즉, LID는 거리가 퍼지는 방식만으로 국소 노이즈와 구조적 복잡성을 읽어낸다.",
+          "highlights": [
+            "영상은 raw distance 대신 RK over RI라는 비율을 본다고 설명한다.",
+            "데이터가 단순한 구조 위에 놓여 있으면 이 비율은 더 커지고 차원은 낮게 유지된다.",
+            "반대로 데이터가 많은 방향으로 퍼져 있으면 비율은 줄고 차원은 커진다."
+          ],
+          "quote": "So, instead of using raw distances, we look at the ratio RK over RI."
+        },
+        {
+          "heading": "노이즈는 줄일 수 있다",
+          "body": "영상은 noisy data가 문제라면 이를 줄이는 알고리즘도 있어야 한다는 질문을 직접 받는다. 답은 그렇다는 것이다. neural networks는 층을 거치며 정보를 전달하는 과정에서 암묵적 또는 명시적으로 노이즈를 줄이고 자연스럽게 LID를 낮출 수 있다. autoencoders는 이를 더 명시적으로 할 수 있는 예로 제시된다. PCA 역시 중복 정보를 줄이고, 첫 번째 principal component로 투영할 때 효과적으로 노이즈를 줄이면서 결과적으로 LID도 낮춘다.",
+          "highlights": [
+            "답은 그렇다는 것이다.",
+            "neural networks는 층을 거치며 정보를 전달하는 과정에서 암묵적 또는 명시적으로 노이즈를 줄이고 자연스럽게 LID를 낮출 수 있다.",
+            "PCA 역시 중복 정보를 줄이고, 첫 번째 principal component로 투영할 때 효과적으로 노이즈를 줄이면서 결과적으로 LID도 낮춘다."
+          ],
+          "quote": "And the answer is that you're right."
+        },
+        {
+          "heading": "이상치는 차원이 튄다",
+          "body": "LID의 흥미로운 응용 중 하나는 outlier detection이다. 이상치는 정상 데이터에서 멀리 떨어져 있는 점으로 설명된다. 이 경우 반지름을 키우면 LID가 매우 큰 숫자가 된다. 이유는 반지름이 커지는 순간 이웃들이 한꺼번에 나타나기 때문이다. 그래서 LID의 급격한 증가는 그 점이 정상적인 국소 구조 밖에 있다는 신호로 읽힌다.",
+          "highlights": [
+            "LID의 흥미로운 응용 중 하나는 outlier detection이다.",
+            "이 경우 반지름을 키우면 LID가 매우 큰 숫자가 된다.",
+            "이유는 반지름이 커지는 순간 이웃들이 한꺼번에 나타나기 때문이다."
+          ],
+          "quote": "And one interesting application of LID is that we can use it for outlier detection."
+        },
+        {
+          "heading": "LLM 환각도 읽힌다",
+          "body": "영상은 large language models에도 비슷한 아이디어가 적용된다고 소개한다. 거의 2년 전의 한 논문은 intrinsic dimension을 사용해 hallucination과 truthfulness를 감지했다고 한다. 아이디어는 outlier detection 설명과 어느 정도 비슷하다. LLM이 진실을 말할 때는 embeddings로 표현할 수 있는 내부 생각이 더 구조적이라고 설명한다. 반대로 hallucinated answer는 국소적으로 패턴이 적고 노이즈가 더 많아 보인다는 것이 이 영상의 요지다.",
+          "highlights": [
+            "영상은 large language models에도 비슷한 아이디어가 적용된다고 소개한다.",
+            "거의 2년 전의 한 논문은 intrinsic dimension을 사용해 hallucination과 truthfulness를 감지했다고 한다.",
+            "반대로 hallucinated answer는 국소적으로 패턴이 적고 노이즈가 더 많아 보인다는 것이 이 영상의 요지다."
+          ],
+          "quote": "when an LLM is telling the truth, its internal thoughts that can be represented with some embeddings are more structured."
+        }
+      ],
+      "key_takeaways": [
+        "학습 난이도는 레이블의 복잡성 때문일 수도 있고 데이터의 국소 구조 때문일 수도 있다.",
+        "LID는 한 점 주변 이웃 거리의 퍼짐을 이용해 국소 복잡성을 정량화한다.",
+        "단순한 구조에서는 거리 비율이 커지고 LID는 낮아지며, 여러 방향으로 퍼진 noisy 구조에서는 비율이 줄고 LID는 커진다.",
+        "neural networks, autoencoders, PCA는 노이즈를 줄이거나 중복 정보를 제거해 LID를 낮출 수 있다.",
+        "LID는 outlier detection뿐 아니라 large language models의 hallucination과 truthfulness 분석에도 응용될 수 있다."
+      ],
+      "tech_stack": [
+        "local intrinsic dimension",
+        "neural networks",
+        "autoencoders",
+        "PCA",
+        "large language models",
+        "embeddings"
+      ],
+      "smart_brevity": {
+        "why": "이 영상은 딥러닝이 잘 작동하는 이유를 모델 크기나 데이터 양이 아니라 데이터의 국소 구조라는 관점에서 설명한다. 데이터를 얼마나 잘 배울 수 있는지 판단하려면 레이블 복잡성뿐 아니라 노이즈와 구조를 함께 봐야 한다는 점이 중요하다.",
+        "what": "딥러닝이 잘 작동하는 이유를 이해하려면 데이터의 local intrinsic dimension, 즉 LID를 봐야 한다. 영상은 먼저 학습 난이도가 레이블의 복잡성 때문일 수도 있고 데이터 자체의 국소 복잡성 때문일 수도 있다고 구분한다. 그다음 하나의 점과 그 이웃들 사이 거리를 보고 RK over RI 비율로 국소 구조를 측정하는 방법을 설명한다. 단순한 구조에서는 거리가 더 질서 있게 벌어져 LID가 낮고, noisy한 구조에서는 여러 방향으로 퍼져 LID가 높아진다는 점이 핵심 사례다. 이어서 neural networks, autoencoders, PCA가 노이즈를 줄이며 LID를 낮출 수 있다고 연결하고, outlier detection과 large language models의 hallucination 감지까지 응용 범위를 확장한다. 결론은 데이터의 국소 차원을 보면 왜 어떤 데이터는 잘 배우고 어떤 데이터는 어렵게 배우는지 한 숫자로 설명할 수 있다는 것이다.",
+        "axioms": [
+          {
+            "label": "Why it matters",
+            "content": "데이터의 학습 난이도를 이해하려면 레이블뿐 아니라 국소 구조의 복잡성까지 함께 봐야 한다."
+          },
+          {
+            "label": "The big picture",
+            "content": "이 영상은 딥러닝의 성능을 모델 자체보다 데이터의 국소 기하 구조로 해석하는 관점을 제시한다."
+          },
+          {
+            "label": "Zoom in",
+            "content": "하나의 점과 그 이웃들의 거리 비율을 보면 noisy region과 단순한 구조를 구분할 수 있다."
+          },
+          {
+            "label": "Be smart",
+            "content": "데이터가 어려운 이유를 분석할 때는 전역 모양보다 주변 이웃이 얼마나 패턴 있게 퍼지는지를 먼저 보라."
+          },
+          {
+            "label": "By the numbers",
+            "content": "LID는 RI와 RK 같은 최근접 이웃 거리의 비율을 사용해 국소 복잡성을 수치화한다."
+          },
+          {
+            "label": "Between the lines",
+            "content": "노이즈를 줄이는 알고리즘의 효과는 단순한 성능 향상이 아니라 데이터의 국소 차원을 낮추는 데 있다."
+          },
+          {
+            "label": "Yes, but",
+            "content": "학습 난이도는 noisy data만의 문제가 아니라 복잡한 레이블에서도 발생할 수 있다."
+          },
+          {
+            "label": "What's next",
+            "content": "이 아이디어는 outlier detection을 넘어 large language models의 hallucination과 truthfulness 분석에도 이어진다."
+          },
+          {
+            "label": "The bottom line",
+            "content": "LID는 데이터가 왜 어렵거나 쉬운지 설명하는 핵심 숫자로 제시된다."
+          }
+        ]
+      }
+    }
+  }
+]
