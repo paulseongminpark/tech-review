@@ -1,0 +1,39 @@
+{
+  "date": "2026-04-30",
+  "lang": "ko",
+  "post_url": "/ko/2026/04/30/daily-tech-review/",
+  "post_title": "Ghostty, GitHub을 떠나다 / GitHub 가용성 공식 입장 / Before GitHub",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "Ghostty, GitHub을 떠나다",
+      "lead": "Mitchell Hashimoto는 GitHub 유저 번호 1299번이다. 2008년 2월에 가입했고, 그 이후 18년 동안 — 인생의 절반이 넘는 시간 동안 — 하루도 빠짐없이 GitHub을 열었다. 새벽 4시 기숙사에서 커밋을 올리고, 신혼여행 중 아내가 잠든 틈에 GitHub 이슈를 들여다봤다. 첫 오픈소스 프로젝트 Vagrant를 시작한 동기도 결국 GitHub에 입사하고 싶어서였다고 그는 말한다. 스무 살의 첫 발표에서 \"이게 잘 되면",
+      "tags": [
+        "opensource",
+        "developer-tools"
+      ],
+      "anchor": "ghostty-github을-떠나다"
+    },
+    {
+      "index": 2,
+      "title": "GitHub의 공식 입장: 가용성 업데이트",
+      "lead": "Ghostty 이전 선언이 업계 전반의 주목을 받자, GitHub은 공식 블로그를 통해 가용성에 관한 공개 입장을 발표했다. 타이밍 자체가 모든 것을 말해준다. 평소라면 운영 공지 수준으로 조용히 처리됐을 장애 이슈가, Hashimoto의 글과 맞물리면서 커뮤니티 전체의 압력을 만들어냈다. GitHub Actions, PR 리뷰, 저장소 접근 — 현대 개발자의 일상 워크플로우가 단 하나의 플랫폼에 묶여 있을 때, 가용성 문제는 단순한 불편이 아",
+      "tags": [
+        "opensource",
+        "developer-tools"
+      ],
+      "anchor": "github의-공식-입장-가용성-업데이트"
+    },
+    {
+      "index": 3,
+      "title": "Before GitHub — 오픈소스는 GitHub 이전에도 살아있었다",
+      "lead": "Flask와 Jinja2를 만든 Armin Ronacher는 \"GitHub 이전\"을 회상하는 글을 썼다. SourceForge, 직접 운영하던 Trac 설치본, Subversion 저장소, 그리고 Bitbucket. GitHub이 등장하기 전 OSS 인프라는 분산되어 있었고, 대부분 개발자가 직접 통제하는 서버 위에 있었다. GitHub이 그 모든 것을 흡수하면서 네트워크 효과가 폭발했다. 코드를 올리는 것도, 가져다 쓰는 것도 거의 마찰 없이",
+      "tags": [
+        "opensource",
+        "developer-tools"
+      ],
+      "anchor": "before-github-오픈소스는-github-이전에도-살아있었다"
+    }
+  ]
+}
