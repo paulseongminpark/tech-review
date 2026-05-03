@@ -4552,5 +4552,28 @@
     ],
     "why_it_matters": "Claude 기본 메모리는 컨텍스트 외부화의 가짜 해법이다 — 잊는 시점이 불규칙하고 정리 권한이 사용자에게 없다. 3단계(정리 → Markdown 컨텍스트 → Notion+MCP)는 결국 \"메모리를 LLM 밖으로 빼라\"는 한 문장으로 수렴하며, 이건 mcp-memory가 이미 가는 방향과 동일하다.",
     "tweet_id": "2046966170868486512"
+  },
+  {
+    "id": "bm-164",
+    "author": "heynavtoor",
+    "date": "2026-04-30",
+    "added_at": "2026-05-03",
+    "url": "https://x.com/heynavtoor/status/2049747639638655297",
+    "text": "10 things smart people read every morning that no one talks about.\n\nThe richest, sharpest, most curious people on Earth start their day with these. Most people have never heard of half of them.\n\n1. Paul Graham's Essays\nThe startup philosophy every successful founder has read. Twenty years of writing. Free in a single archive.\nSite → https://paulgraham.com/articles.html\n\n2. Stratechery\nBen Thompson's weekly tech analysis. Read by executives in 85+ countries. The New York Times called it \"one of the most interesting sources of analysis on any subject.\"\nSite → https://stratechery.com\n\n3. The Marginalian\nMaria Popova's 19-year archive of book-distilled wisdom on art, science, philosophy, and life. Free. No ads. No algorithm.\nSite → https://www.themarginalian.org\n\n4. The Almanack of Naval Ravikant\nNaval's complete framework on wealth, happiness, and clear thinking. The 244-page PDF is free on his site.\nSite → https://www.navalmanack.com\n\n5. Farnam Street\nShane Parrish's blog on the mental models Charlie Munger and Warren Buffett actually use to make decisions.\nSite → https://fs.blog\n\n6. Lenny's Newsletter\nThe product playbook from the operators who built Airbnb, Stripe, Notion, and Figma. Free posts every week.\nSite → https://www.lennysnewsletter.com\n\n7. Sahil Bloom's Newsletter\nOne free essay every Saturday on principles, frameworks, and timeless ideas. 800K+ subscribers.\nSite → https://www.sahilbloom.com\n\n8. Stripe Press\nThe most beautifully designed publishing house on the internet. Books on technology, business, and ideas. Many available free online.\nSite → https://press.stripe.com\n\n9. Astral Codex Ten\nScott Alexander's writing on psychology, science, AI, and how to think clearly. Free. The blog every smart person you know quietly reads.\nSite → https://www.astralcodexten.com\n\n10. Morning Brew\nThe 5-minute daily business briefing 4M+ professionals read with their coffee. Free in your inbox every morning.\nSite → https://www.morningbrew.com\n\nHere's the wildest part:\n\nThe smartest people on Earth read the same things every morning. Most of it is free.\n\nMost people never find it.\n\nSave this before you forget.\n\n100% free. Forever.",
+    "whats_happening": "한 게시물이 똑똑한 사람들이 매일 아침 읽는다고 주장하는 10가지 무료 또는 유명 읽을거리 목록을 소개한다. Paul Graham Essays, Stratechery, The Marginalian, Naval Ravikant, Farnam Street 등 지식 콘텐츠와 뉴스레터가 추천됐다.",
+    "translation": "똑똑한 사람들이 매일 아침 읽지만 아무도 이야기하지 않는 10가지.\n\n지구상에서 가장 부유하고, 날카롭고, 호기심 많은 사람들은 이것들로 하루를 시작한다. 대부분의 사람들은 그중 절반도 들어본 적이 없다.\n\n1. Paul Graham's Essays\n성공한 창업자라면 모두 읽었다는 스타트업 철학. 20년간의 글. 하나의 아카이브에서 무료로 제공된다.\nSite → https://paulgraham.com/articles.html\n\n2. Stratechery\nBen Thompson의 주간 기술 분석. 85개국 이상 임원들이 읽는다. The New York Times는 이를 “어떤 주제에 대해서도 가장 흥미로운 분석 출처 중 하나”라고 불렀다.\nSite → https://stratechery.com\n\n3. The Marginalian\nMaria Popova가 19년 동안 쌓아온, 예술·과학·철학·삶에 관한 책에서 증류한 지혜의 아카이브. 무료. 광고 없음. 알고리즘 없음.\nSite → https://www.themarginalian.org\n\n4. The Almanack of Naval Ravikant\n부, 행복, 명료한 사고에 관한 Naval의 완전한 프레임워크. 244페이지 PDF가 그의 사이트에서 무료로 제공된다.\nSite → https://www.navalmanack.com\n\n5. Farnam Street\nShane Parrish의 블로그로, Charlie Munger와 Warren Buffett이 실제로 의사결정에 사용하는 멘탈 모델을 다룬다.\nSite → https://fs.blog\n\n6. Lenny's Newsletter\nAirbnb, Stripe, Notion, Figma를 만든 운영자들에게서 나온 제품 플레이북. 매주 무료 글이 올라온다.\nSite → https://www.lennysnewsletter.com\n\n7. Sahil Bloom's Newsletter\n원칙, 프레임워크, 시대를 초월한 아이디어에 관한 무료 에세이 한 편이 매주 토요일 발행된다. 구독자 80만 명 이상.\nSite → https://www.sahilbloom.com\n\n8. Stripe Press\n인터넷에서 가장 아름답게 디자인된 출판사. 기술, 비즈니스, 아이디어에 관한 책들. 많은 책이 온라인에서 무료로 제공된다.\nSite → https://press.stripe.com\n\n9. Astral Codex Ten\n심리학, 과학, AI, 그리고 명료하게 생각하는 법에 관한 Scott Alexander의 글. 무료. 당신이 아는 모든 똑똑한 사람이 조용히 읽는 블로그.\nSite → https://www.astralcodexten.com\n\n10. Morning Brew\n400만 명 이상의 전문가가 커피와 함께 읽는 5분짜리 일일 비즈니스 브리핑. 매일 아침 받은편지함으로 무료 제공.\nSite → https://www.morningbrew.com\n\n가장 놀라운 부분은 이것이다:\n\n지구상에서 가장 똑똑한 사람들은 매일 아침 같은 것들을 읽는다. 대부분은 무료다.\n\n대부분의 사람들은 절대 이것을 발견하지 못한다.\n\n잊기 전에 저장하라.\n\n100% 무료. 영원히.",
+    "tech_stack": [
+      "AI",
+      "Stripe",
+      "Notion",
+      "Figma"
+    ],
+    "apply_points": [
+      "검증된 장문 아카이브를 학습 루틴에 추가한다.",
+      "제품·비즈니스 뉴스레터를 정기 구독한다.",
+      "읽은 내용을 팀 의사결정 메모로 정리한다."
+    ],
+    "why_it_matters": "이런 \"10대 필독 리스트\"는 큐레이션의 외주화다 — 누군가의 취향을 빌려 자기 사고의 입력값을 정한다는 건, 외부화 시스템을 운영하는 입장에서 가장 경계해야 할 패턴이다. Paul Graham이나 Farnam Street가 좋은 소스인지가 아니라, \"똑똑한 사람들이 읽는 것\"을 따라 읽는 행위 자체가 자기만의 연결망을 만들 기회를 죽인다는 게 핵심이다.",
+    "tweet_id": "2049747639638655297"
   }
 ]
