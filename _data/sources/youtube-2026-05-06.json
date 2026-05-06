@@ -163,6 +163,7 @@
         "how": "code-reviewer 완료 후 '기존 테이블에 없는 실수 패턴'이 발견되면 common-mistakes.md 테이블에 | 실수 | 올바른 방법 | 날짜 | 행을 자동 append. commit-writer 호출 이전 단계에 삽입.",
         "when": "다음 code-reviewer 에이전트 실행 시 (인프라 변경 없이 즉시 적용 가능)"
       }
-    }
+    },
+    "playlist_index": 13
   }
 ]
