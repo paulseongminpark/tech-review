@@ -4623,5 +4623,101 @@
     ],
     "why_it_matters": "26B 모델이 tool calling과 토크나이저 이슈까지 안정화됐다면, mcp-memory의 분류·요약 같은 반복 작업을 클라우드 밖으로 뺄 수 있는 후보가 하나 더 늘었다. refusal 제거는 단순한 빼기가 아니라 모델이 거절하는 조건 자체를 재설계한 것이고, 그 대가로 안전 회귀의 책임이 배포자에게 넘어온다.",
     "tweet_id": "2042932936014729563"
+  },
+  {
+    "id": "bm-167",
+    "author": "omarsar0",
+    "date": "2026-05-06",
+    "added_at": "2026-05-07",
+    "url": "https://x.com/omarsar0/status/2052062654810980618",
+    "text": "arXiv Papers → LLM Artifacts\n\nThis is how I keep up with AI research now.\n\nIt's like having access to the most personalized arXiv feed.\n\nAutomations run everyday to curate papers based a set of rules and insights.\n\nCurated papers are indexed and power the artifacts.\n\nAgent convert papers to LLM wikis (based on @karpathy idea), which means insights are indexed and easily searchable and reusable.\n\nI feel like LLM Artifacts is the natural evolution to LLM Wikis. It's about making that knowledge actionable.\n\nArtifacts are customizable via agents. Artifacts can interact with agents and are dynamic in nature. Anything can be injected into the artifact as needed (insights, components, suggested experiments, action items, etc).\n\nI can take action on Artifact items with my agent orchestrator (Electron app).\n\nSo I can ask questions about any paper and automate experiments in the background right from within the artifact.\n\nThis is more than a visual. It's not a single prompt. It's several proactive agents coordinating to surface interesting facts, knowledge, and insights that I can act on a researcher.\n\nAgents are not just for generating useful artifacts, they are useful to keep learning and staying on the cutting edge of knowledge. Stay tuned for more.",
+    "whats_happening": "작성자는 arXiv 논문을 자동 큐레이션·색인해 LLM Artifacts와 LLM Wikis로 바꾸는 연구 추적 워크플로를 소개한다. 여러 에이전트가 논문 인사이트를 추출하고 Electron 앱에서 질문과 실험 자동화를 실행하게 만든다는 내용이다.",
+    "translation": "arXiv Papers → LLM Artifacts\n\n이것이 내가 이제 AI research를 따라가는 방식이다.\n\n가장 개인화된 arXiv feed에 접근할 수 있는 것과 같다.\n\nAutomations는 매일 실행되어 일련의 규칙과 insights를 기반으로 papers를 curate한다.\n\nCurated papers는 indexed되고 artifacts를 구동한다.\n\nAgent가 papers를 LLM wikis로 변환한다(@karpathy 아이디어 기반). 이는 insights가 indexed되어 쉽게 searchable하고 reusable하다는 뜻이다.\n\n나는 LLM Artifacts가 LLM Wikis의 자연스러운 진화라고 느낀다. 그것은 그 knowledge를 actionable하게 만드는 것이다.\n\nArtifacts는 agents를 통해 customizable하다. Artifacts는 agents와 interact할 수 있고 본질적으로 dynamic하다. 필요한 것은 무엇이든 artifact에 injected될 수 있다(insights, components, suggested experiments, action items 등).\n\n나는 내 agent orchestrator(Electron app)로 Artifact items에 대해 action을 취할 수 있다.\n\n그래서 artifact 안에서 바로 어떤 paper에 대해서든 질문하고 background에서 experiments를 automate할 수 있다.\n\n이것은 visual 그 이상이다. 단일 prompt가 아니다. 내가 researcher로서 action할 수 있는 interesting facts, knowledge, insights를 surface하기 위해 여러 proactive agents가 coordinate하는 것이다.\n\nAgents는 useful artifacts를 generate하는 데만 쓰이는 것이 아니라, learning을 계속하고 knowledge의 cutting edge에 머무는 데에도 유용하다. 더 많은 내용을 기대해 달라.",
+    "tech_stack": [
+      "arXiv",
+      "LLM",
+      "LLM Artifacts",
+      "LLM Wikis",
+      "Agents",
+      "Electron"
+    ],
+    "apply_points": [
+      "논문 큐레이션 규칙을 자동화한다.",
+      "인사이트를 색인해 검색 가능하게 만든다.",
+      "에이전트로 실험 실행까지 연결한다."
+    ],
+    "why_it_matters": "논문을 읽는 순간과 그 내용이 검색 가능한 지식이 되는 순간 사이의 간격을, 이 워크플로우는 에이전트 체인으로 닫는다. 인사이트 추출에 그치지 않고 실험 실행까지 자동화한다는 점이 결정적인데 — 이는 논문을 \"소비할 텍스트\"가 아닌 \"실행할 오브젝트\"로 재정의하겠다는 선언이다.",
+    "tweet_id": "2052062654810980618"
+  },
+  {
+    "id": "bm-168",
+    "author": "akshay_pachaar",
+    "date": "2026-05-05",
+    "added_at": "2026-05-07",
+    "url": "https://x.com/akshay_pachaar/status/2051589749689962949",
+    "text": "Claude Code used 3x fewer tokens with one change:\n\n- Before: 10.4M tokens · 10 errors · $9.21\n- After: 3.7M tokens · 0 errors · $2.81\n\nI used Insforge Skills + CLI as the backend context engineering layer for Claude Code (open-source and local).\n\nRepo: https://github.com/InsForge/InsForge\n\n(don't forget to star 🌟)",
+    "whats_happening": "작성자는 Insforge Skills + CLI를 Claude Code의 백엔드 컨텍스트 엔지니어링 레이어로 사용해 토큰 사용량, 오류, 비용이 크게 줄었다고 밝혔다. InsForge의 오픈소스 로컬 레포를 함께 소개했다.",
+    "translation": "Claude Code가 한 가지 변경으로 토큰을 3배 적게 사용했습니다:\n\n- 이전: 10.4M 토큰 · 10개 오류 · $9.21\n- 이후: 3.7M 토큰 · 0개 오류 · $2.81\n\n저는 Claude Code를 위한 백엔드 컨텍스트 엔지니어링 레이어로 Insforge Skills + CLI를 사용했습니다(오픈소스이며 로컬).\n\nRepo: https://github.com/InsForge/InsForge\n\n(star 누르는 것 잊지 마세요 🌟)",
+    "tech_stack": [
+      "Claude Code",
+      "Insforge Skills",
+      "CLI",
+      "InsForge",
+      "GitHub"
+    ],
+    "apply_points": [
+      "컨텍스트 레이어로 토큰 사용량을 측정한다",
+      "CLI 기반 로컬 도구로 재현성을 확인한다",
+      "변경 전후 비용과 오류를 함께 기록한다"
+    ],
+    "why_it_matters": "컨텍스트 엔지니어링을 별도 레이어로 분리하는 순간 측정이 가능해진다 — 토큰·오류·비용이 동시에 줄었다는 건 모델 성능이 아니라 컨텍스트 구조가 결과를 결정한다는 증거다. Insforge는 그 주장을 오픈소스 CLI로 재현 가능하게 만들었다.",
+    "tweet_id": "2051589749689962949"
+  },
+  {
+    "id": "bm-169",
+    "author": "MATLAB",
+    "date": "2026-05-05",
+    "added_at": "2026-05-07",
+    "url": "https://x.com/MATLAB/status/2051612619086135802",
+    "text": "Introducing the MATLAB Agentic Toolkit\n\nGet started 👉 https://spr.ly/6019BBw4zH",
+    "whats_happening": "MathWorks가 MATLAB Agentic Toolkit을 소개하고 시작 링크를 공유했다.",
+    "translation": "MATLAB Agentic Toolkit 소개\n\n시작하기 👉 https://spr.ly/6019BBw4zH",
+    "tech_stack": [
+      "MATLAB",
+      "MATLAB Agentic Toolkit"
+    ],
+    "apply_points": [
+      "MATLAB 기반 에이전트 기능을 검토한다",
+      "공식 시작 문서로 사용법을 확인한다"
+    ],
+    "why_it_matters": "수십 년간 시뮬레이션·신호처리·제어 시스템의 폐쇄 왕국이었던 MATLAB이 에이전트에게 문을 열었다. LLM이 수치 해석 도구 전체를 직접 호출할 수 있게 됐다는 건, \"AI가 설계→실행→검증 루프를 닫을 수 있는\" 도메인이 소프트웨어를 넘어 엔지니어링·과학 계산으로 확장됐다는 의미다.",
+    "tweet_id": "2051612619086135802"
+  },
+  {
+    "id": "bm-170",
+    "author": "alex_whedon",
+    "date": "2026-05-05",
+    "added_at": "2026-05-07",
+    "url": "https://x.com/alex_whedon/status/2051663268704636937",
+    "text": "Introducing SubQ - a major breakthrough in LLM intelligence.\n\nIt is the first model built on a fully sub-quadratic sparse-attention architecture (SSA),\n\nAnd the first frontier model with a 12 million token context window which is:\n\n- 52x faster than FlashAttention at 1MM tokens\n- Less than 5% the cost of Opus\n\nTransformer-based LLMs waste compute by processing every possible relationship between words (standard attention).\n\nOnly a small fraction actually matter.\n\n@subquadratic finds and focuses only on the ones that do.\n\nThat's nearly 1,000x less compute and a new way for LLMs to scale.",
+    "whats_happening": "SubQ가 완전한 sub-quadratic sparse-attention architecture 기반의 최초 모델이자 1,200만 토큰 컨텍스트 윈도우를 가진 frontier model로 소개됐다. 발표문은 FlashAttention 대비 속도와 Opus 대비 비용 효율을 강조한다.",
+    "translation": "SubQ 소개 - LLM 지능의 중대한 돌파구.\n\n이는 완전한 sub-quadratic sparse-attention architecture (SSA)를 기반으로 구축된 최초의 모델이며,\n\n12 million token context window를 가진 최초의 frontier model입니다. 이는:\n\n- 1MM tokens에서 FlashAttention보다 52배 빠름\n- Opus 비용의 5% 미만\n\nTransformer-based LLMs는 단어들 사이의 가능한 모든 관계를 처리함으로써 compute를 낭비합니다(standard attention).\n\n실제로 중요한 것은 아주 작은 일부뿐입니다.\n\n@subquadratic은 중요한 관계만 찾아내고 거기에만 집중합니다.\n\n이는 거의 1,000배 적은 compute이며 LLM이 확장되는 새로운 방식입니다.",
+    "tech_stack": [
+      "SubQ",
+      "LLM",
+      "sub-quadratic sparse-attention architecture",
+      "SSA",
+      "FlashAttention",
+      "Opus",
+      "Transformer",
+      "standard attention"
+    ],
+    "apply_points": [
+      "장문 컨텍스트 비용과 지연 시간을 벤치마크하라.",
+      "희소 어텐션 도입 가능성을 검토하라.",
+      "긴 입력 처리 요구사항을 재평가하라."
+    ],
+    "why_it_matters": "Attention이 O(n²)이라는 10년의 전제가 실전 frontier 모델에서 처음으로 깨졌다. 1,200만 토큰 컨텍스트는 단순히 \"더 길다\"가 아니라 — 전체 코드베이스와 수개월의 대화를 단일 패스로 읽는 질적 전환이며, Opus 대비 낮은 비용이 사실이라면 설계 질문이 \"장문 컨텍스트를 언제 쓸까\"에서 \"어떻게 설계할까\"로 바뀐다.",
+    "tweet_id": "2051663268704636937"
   }
 ]
