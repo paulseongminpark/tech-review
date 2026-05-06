@@ -1,0 +1,40 @@
+{
+  "date": "2026-05-07",
+  "lang": "ko",
+  "post_url": "/ko/2026/05/07/daily-tech-review/",
+  "post_title": "RSS가 구글보다 많은 트래픽을 보낸다, 구글 탈출 자가호스팅, Cloudflare·Stripe의 에이전트 오픈 프로토콜",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "RSS가 구글보다 트래픽을 더 많이 보낸다",
+      "lead": "Terence Eden은 자신의 블로그에 가벼운 로컬 통계 수집 기능을 추가했다. 목적은 단순했다: 방문자가 어디서 오는지 대략 파악하는 것. 28일치 데이터를 모아보니 예상과 다른 그림이 나왔다. 구글이 상위를 차지하는 건 맞았지만, RSS와 뉴스레터 구독자가 전체 트래픽의 약 25%를 차지했다—단일 경로로는 구글에 맞먹는 수치다. Bing은 하루에도 상위 20위 안에 들기 힘들었고, Twitter는 트래픽 소스 목록에서 거의 사라졌다. 그 ",
+      "tags": [
+        "opensource",
+        "developer-tools"
+      ],
+      "anchor": "rss가-구글보다-트래픽을-더-많이-보낸다"
+    },
+    {
+      "index": 2,
+      "title": "구글이 내 삶을 날려버리기 전에—자가호스팅으로 탈출하는 법",
+      "lead": "r/SelfHosted에서 score 288을 기록한 이 게시물의 제목은 길게 설명이 필요 없다: \"구글이 갑자기 내 삶을 날려버리는 걸 피하려면 어떻게 자가호스팅을 해야 하냐?\" 이 질문은 새로운 게 아니다. 그런데 지금도, 아니 지금이기 때문에 이 커뮤니티에서 반복해서 올라온다. 이메일, 파일, 사진, 캘린더, 연락처—현대인의 디지털 생활 대부분이 구글 계정 하나에 묶여 있다. 계정 정지는 당사자에게 아무 경고 없이 일어나고, 항소 절차는 ",
+      "tags": [
+        "opensource",
+        "developer-tools"
+      ],
+      "anchor": "구글이-내-삶을-날려버리기-전에자가호스팅으로-탈출하는-법"
+    },
+    {
+      "index": 3,
+      "title": "Cloudflare와 Stripe가 함께 만든 에이전트 배포 오픈 프로토콜",
+      "lead": "Cloudflare가 Stripe와 공동 설계한 프로토콜을 공개했다. 핵심은 이렇다: AI 에이전트가 사람의 개입 없이 Cloudflare 계정을 생성하고, 도메인을 구매하고, 앱을 배포한다. Stripe CLI의 Projects 플러그인을 설치하고 로그인하면, 에이전트는 서비스 카탈로그 조회(Discovery) → 신원 증명(Authorization) → 배포 순서로 처음부터 끝까지 진행한다. 이미 Cloudflare 계정이 있으면 OAuth",
+      "tags": [
+        "opensource",
+        "developer-tools",
+        "cloud"
+      ],
+      "anchor": "cloudflare와-stripe가-함께-만든-에이전트-배포-오픈-프로토콜"
+    }
+  ]
+}
