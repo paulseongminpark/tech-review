@@ -4575,5 +4575,53 @@
     ],
     "why_it_matters": "이런 \"10대 필독 리스트\"는 큐레이션의 외주화다 — 누군가의 취향을 빌려 자기 사고의 입력값을 정한다는 건, 외부화 시스템을 운영하는 입장에서 가장 경계해야 할 패턴이다. Paul Graham이나 Farnam Street가 좋은 소스인지가 아니라, \"똑똑한 사람들이 읽는 것\"을 따라 읽는 행위 자체가 자기만의 연결망을 만들 기회를 죽인다는 게 핵심이다.",
     "tweet_id": "2049747639638655297"
+  },
+  {
+    "id": "bm-165",
+    "author": "omarsar0",
+    "date": "2026-05-01",
+    "added_at": "2026-05-06",
+    "url": "https://x.com/omarsar0/status/2050261229315477988",
+    "text": "// Recursive Multi-Agent Systems //\n\nGreat read for the weekend.\n\n(bookmark it)\n\nMulti-agent systems often pass full text messages between agents at every step. This leads to token bloat, latency, and context dilution which all grow with the number of agents.\n\nRecursiveMAS asks a different question: what if agents collaborated through recursive computation in a shared latent space, instead of through text?\n\nA multi-agent system can be treated as a recursive computation, where each agent acts like an RLM layer, iteratively passing latent representations to the next and forming a looped interaction process.\n\nThey introduce a RecursiveLink module that generates latent thoughts and transfers state directly between heterogeneous agents, plus an inner-outer loop learning algorithm with shared gradient-based credit assignment across the team.\n\nThink of it as agents passing notes in their own internal language instead of rewriting everything in English each turn. Less talking, more thinking.\n\nThe numbers are strong. Across 9 benchmarks spanning math, science, medicine, search, and code generation: 8.3% average accuracy gain over baselines, 1.2×–2.4× end-to-end inference speedup, and 34.6%–75.6% reduction in token usage.\n\nWhy does it matter?\n\nIf agent-to-agent communication is the next real bottleneck (and it is), latent-space recursion is one of the cleaner ways to scale collaboration without paying a token tax for every coordination step.\n\nPaper: https://arxiv.org/abs/2604.25917\n\nLearn to build effective AI agents in our academy: https://academy.dair.ai/",
+    "whats_happening": "RecursiveMAS 논문이 멀티 에이전트 간 텍스트 메시지 전달의 토큰 비효율을 줄이기 위해 공유 latent space 기반 재귀 협업 방식을 제안했다. 벤치마크 9개에서 정확도 향상, 추론 속도 개선, 토큰 사용량 감소를 보고했다.",
+    "translation": "// Recursive Multi-Agent Systems //\n\n주말에 읽기 좋은 글입니다.\n\n(북마크하세요)\n\nMulti-agent systems는 종종 모든 단계에서 agents 사이에 전체 텍스트 메시지를 전달합니다. 이는 agents 수가 늘어날수록 모두 증가하는 token bloat, latency, context dilution으로 이어집니다.\n\nRecursiveMAS는 다른 질문을 던집니다: agents가 텍스트가 아니라 공유 latent space 안의 recursive computation을 통해 협업한다면 어떨까요?\n\nMulti-agent system은 recursive computation으로 다룰 수 있으며, 여기서 각 agent는 RLM layer처럼 작동하고, latent representations를 다음으로 반복적으로 전달하며 looped interaction process를 형성합니다.\n\n그들은 latent thoughts를 생성하고 heterogeneous agents 사이에서 state를 직접 전송하는 RecursiveLink module을 도입하며, 팀 전체에 걸친 shared gradient-based credit assignment를 가진 inner-outer loop learning algorithm도 함께 제시합니다.\n\n각 turn마다 모든 것을 영어로 다시 쓰는 대신, agents가 자신들의 내부 언어로 쪽지를 주고받는 것으로 생각하면 됩니다. 말은 줄이고, 생각은 늘리는 방식입니다.\n\n수치는 강력합니다. math, science, medicine, search, code generation을 아우르는 9개 benchmarks에서: baselines 대비 평균 정확도 8.3% 향상, end-to-end inference speedup 1.2×–2.4×, token usage 34.6%–75.6% 감소입니다.\n\n왜 중요할까요?\n\nagent-to-agent communication이 다음의 진짜 bottleneck이라면(그리고 실제로 그렇다면), latent-space recursion은 모든 coordination step마다 token tax를 지불하지 않고 collaboration을 확장하는 더 깔끔한 방법 중 하나입니다.\n\nPaper: https://arxiv.org/abs/2604.25917\n\n우리 academy에서 효과적인 AI agents 구축을 배우세요: https://academy.dair.ai/",
+    "tech_stack": [
+      "RecursiveMAS",
+      "RecursiveLink",
+      "RLM",
+      "multi-agent systems",
+      "AI agents"
+    ],
+    "apply_points": [
+      "에이전트 간 전체 텍스트 전달을 줄여라.",
+      "협업 루프의 토큰 비용을 계측하라.",
+      "잠재 상태 공유 구조를 실험하라."
+    ],
+    "why_it_matters": "텍스트 직렬화는 에이전트 협업의 디폴트가 아니라 임시방편이었다. RecursiveMAS가 latent space 공유로 정확도·속도·토큰을 동시에 잡았다는 건, 멀티 에이전트의 병목이 모델이 아니라 **메시지 포맷**에 있었다는 뜻이다.",
+    "tweet_id": "2050261229315477988"
+  },
+  {
+    "id": "bm-166",
+    "author": "jun_song",
+    "date": "2026-04-11",
+    "added_at": "2026-05-06",
+    "url": "https://x.com/jun_song/status/2042932936014729563",
+    "text": "gemma4-26b의 완벽한 파인튜닝을 성공했습니다.\n\n- 0/100 refusal 완벽 무검열\n- 툴콜/토크나이저 모델 태생 이슈 해결\n- 벤치기준 기존 대비 성능 10% 향상\n- 출력토큰 속도 10% 향상\n- 프롬프트 처리속도 약 90% 향상\n\n완벽한 모델이 완성되었다고 생각합니다.\n\ngguf / mlx 두개 버전 ⬇️",
+    "whats_happening": "gemma4-26b 파인튜닝 성공을 발표하며 refusal 제거, 툴콜·토크나이저 이슈 해결, 성능과 처리 속도 향상을 주장했다. GGUF와 MLX 두 가지 배포 버전을 제공한다고 밝혔다.",
+    "translation": "gemma4-26b의 완벽한 파인튜닝을 성공했습니다.\n\n- 0/100 refusal 완벽 무검열\n- 툴콜/토크나이저 모델 태생 이슈 해결\n- 벤치기준 기존 대비 성능 10% 향상\n- 출력토큰 속도 10% 향상\n- 프롬프트 처리속도 약 90% 향상\n\n완벽한 모델이 완성되었다고 생각합니다.\n\nGGUF / MLX 두개 버전 ⬇️",
+    "tech_stack": [
+      "gemma4-26b",
+      "GGUF",
+      "MLX",
+      "tool calling",
+      "tokenizer"
+    ],
+    "apply_points": [
+      "refusal 회귀 테스트를 자동화한다.",
+      "GGUF와 MLX 배포물을 각각 검증한다.",
+      "프롬프트 처리량 벤치를 기준화한다."
+    ],
+    "why_it_matters": "26B 모델이 tool calling과 토크나이저 이슈까지 안정화됐다면, mcp-memory의 분류·요약 같은 반복 작업을 클라우드 밖으로 뺄 수 있는 후보가 하나 더 늘었다. refusal 제거는 단순한 빼기가 아니라 모델이 거절하는 조건 자체를 재설계한 것이고, 그 대가로 안전 회귀의 책임이 배포자에게 넘어온다.",
+    "tweet_id": "2042932936014729563"
   }
 ]
