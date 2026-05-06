@@ -1,0 +1,36 @@
+{
+  "date": "2026-05-06",
+  "lang": "ko",
+  "post_url": "/ko/2026/05/06/daily-tech-review/",
+  "post_title": "Chrome의 무단 4GB AI 설치, AI 도입해도 조직은 못 배운다, 생물학적 컴퓨팅의 공포",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "Chrome이 4GB AI 모델을 몰래 설치하고 있다",
+      "lead": "Google Chrome은 현재 사용자 동의 없이 4GB 파일을 기기에 쓰고 있다. OptGuideOnDeviceModel 디렉토리 안의 weights.bin이 바로 Gemini Nano의 가중치 파일이다. 프라이버시 연구자 Alexander Hanff가 이를 발견했을 때 Chrome은 어떤 동의 다이얼로그도 표시하지 않았고, 사용자가 파일을 삭제하면 자동으로 재다운로드된다. 이미 Anthropic이 Claude Desktop 설치 시 7개 C",
+      "tags": [
+        "enterprise"
+      ],
+      "anchor": "chrome이-4gb-ai-모델을-몰래-설치하고-있다"
+    },
+    {
+      "index": 2,
+      "title": "AI를 도입해도 기업은 아무것도 배우지 못한다",
+      "lead": "Ethan Mollick은 오래 전부터 이 역설을 경고해왔다. 개인의 AI 생산성 향상이 자동으로 조직 학습으로 이어지지 않는다는 것. Robert Glaser는 이 상태를 \"지저분한 중간(messy middle)\"이라고 부른다. GitHub Copilot 라이선스가 전사에 배포되고, ChatGPT Enterprise가 스택 어딘가에 있고, Claude나 Gemini나 Cursor가 팀 곳곳에서 쓰인다. 그런데 같은 회사 안에서 동시에 이런 일",
+      "tags": [
+        "enterprise"
+      ],
+      "anchor": "ai를-도입해도-기업은-아무것도-배우지-못한다"
+    },
+    {
+      "index": 3,
+      "title": "생물학적 컴퓨팅이 두렵다",
+      "lead": "ChatGPT 출시부터 AI 공간에 있어온 한 개발자가 조용히 두려움을 고백했다. 여러 LLM을 직접 실험했고, 사이드 프로젝트를 만들었고, 직접 모델을 구현하며 수학까지 파고들었다. 그런데 생물학적 컴퓨팅 앞에서 처음으로 다른 종류의 두려움을 느꼈다고 한다. AI는 적어도 우리가 이해하는 연산 패러다임 안에 있었다. 실리콘, 트랜지스터, 행렬 곱셈. 생물학적 컴퓨팅은 다르다. 신경세포나 DNA 기반 연산이 실용화되면, 지금까지 쌓아온 직관과 ",
+      "tags": [
+        "enterprise"
+      ],
+      "anchor": "생물학적-컴퓨팅이-두렵다"
+    }
+  ]
+}
