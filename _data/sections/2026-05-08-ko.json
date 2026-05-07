@@ -1,0 +1,43 @@
+{
+  "date": "2026-05-08",
+  "lang": "ko",
+  "post_url": "/ko/2026/05/08/daily-tech-review/",
+  "post_title": "SpaceX 5.5조 칩 공장 Terafab, Anthropic-Colossus 전면 계약, 인도 Skyroot 유니콘 등극",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "SpaceX, 텍사스에 55조 원 규모 AI 칩 공장 \"Terafab\" 건설",
+      "lead": "로켓 회사가 반도체를 만든다는 발상은 1년 전만 해도 농담에 가까웠다. 그런데 그게 현실이 됐다. SpaceX는 텍사스주 오스틴에 최소 550억 달러를 투자해 AI 칩 생산 공장 Terafab을 건설할 계획이다. Grimes County에 제출된 공개 청문회 신청서 — 세금 감면 요청을 위한 — 에서 이 숫자가 공개됐고, 추가 단계가 완공될 경우 총투자액은 1,190억 달러까지 늘어날 수 있다고 명시됐다. Musk가 3월에 처음 발표했을 때 제",
+      "tags": [
+        "chips",
+        "datacenter",
+        "cloud"
+      ],
+      "anchor": "spacex-텍사스에-55조-원-규모-ai-칩-공장-terafab-건설"
+    },
+    {
+      "index": 2,
+      "title": "Anthropic, SpaceX Colossus 전체 용량 계약 — Claude Code 한도 즉시 두 배",
+      "lead": "Anthropic CEO Dario Amodei는 샌프란시스코에서 열린 Code with Claude 컨퍼런스에서 SpaceX와의 계약을 발표했다 — 멤피스 Colossus 데이터센터의 전체 컴퓨트 용량을 Anthropic이 사용한다는 내용이다. 발표는 즉각적인 효과와 함께 왔다. Claude Code의 5시간 창 한도가 Pro와 Max 구독자 기준으로 두 배가 됐고, 피크 타임 한도 축소 조치가 완전히 사라졌다. Opus 모델의 API 한도도",
+      "tags": [
+        "chips",
+        "datacenter",
+        "cloud",
+        "anthropic"
+      ],
+      "anchor": "anthropic-spacex-colossus-전체-용량-계약-claude-code-한도-즉시-두-배"
+    },
+    {
+      "index": 3,
+      "title": "인도 최초 우주 스타트업 유니콘 Skyroot, Vikram-1 궤도 발사 초읽기",
+      "lead": "Skyroot Aerospace가 인도 최초의 우주 테크 유니콘이 됐다. 6,000만 달러 신규 투자로 기업 가치가 11억 달러(프리머니 기준)에 달했다 — 2023년 5억 달러 대비 두 배 이상이다. Sherpalo Ventures와 GIC가 약 5,000만 달러의 프라이머리 에쿼티를 공동 리드했고, BlackRock 계열 펀드가 약 1,000만 달러의 구조화 부채를 맡았다. 타이밍이 우연이 아니다. Vikram-1 로켓은 이미 스리하리코타 ",
+      "tags": [
+        "chips",
+        "datacenter",
+        "cloud"
+      ],
+      "anchor": "인도-최초-우주-스타트업-유니콘-skyroot-vikram-1-궤도-발사-초읽기"
+    }
+  ]
+}
