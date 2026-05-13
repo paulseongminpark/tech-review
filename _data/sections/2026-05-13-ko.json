@@ -1,0 +1,37 @@
+{
+  "date": "2026-05-13",
+  "lang": "ko",
+  "post_url": "/ko/2026/05/13/daily-tech-review/",
+  "post_title": "Bambu Lab의 오픈소스 배신, XBOW의 AI 취약점 사냥, Google의 Gemini 랩탑",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "Bambu Lab: 오픈소스 위에 집을 짓고, 문을 잠갔다",
+      "lead": "Bambu Lab은 한때 소비자용 3D 프린터 시장의 게임 체인저였다. slic3r → Prusa Slicer → Bambu Studio → OrcaSlicer로 이어지는 AGPLv3 포크 체인 위에 자신의 제품을 쌓아올렸고, 커뮤니티는 그 생태계를 자발적으로 확장했다. 그 신뢰가 지난해 클라우드 의존 정책 도입 이후 금이 가기 시작했고, 이번에 결정적인 선을 넘었다. OrcaSlicer-bambulabs — Bambu 클라우드를 거치지 않고 ",
+      "tags": [
+        "enterprise"
+      ],
+      "anchor": "bambu-lab-오픈소스-위에-집을-짓고-문을-잠갔다"
+    },
+    {
+      "index": 2,
+      "title": "XBOW: 1바이트로 서버를 뚫다, AI가 옆에 앉아서",
+      "lead": "XBOW는 네이티브 코드 취약점 자동 발견 제품을 개발 중인 보안 스타트업이다. CVE-2026-45185는 그 제품 테스트의 부산물로 나왔다 — Exim 메일 서버에서 인증 없이 원격 코드 실행이 가능한 취약점. Exim은 전 세계 수백만 서버에서 기본 SMTP 데몬으로 돌아간다. 버그의 형태는 이렇다: TLS 연결이 닫힐 때 GnuTLS(Ubuntu 24.04 LTS 기본값)가 transfer buffer를 해제하는데, 그 직후 BDAT 수",
+      "tags": [
+        "enterprise"
+      ],
+      "anchor": "xbow-1바이트로-서버를-뚫다-ai가-옆에-앉아서"
+    },
+    {
+      "index": 3,
+      "title": "Googlebook: Chromebook이 아니다, 처음부터 AI다",
+      "lead": "\"Intelligence is the new spec.\" Google이 가을 출시 예정인 Googlebook 티저에 내건 문구다. 외형은 Chromebook 후계자처럼 보이지만 포지셔닝은 전혀 다르다. Gemini를 기기 수준에서 통합한 AI-native 노트북 — Magic Pointer로 화면 어디서든 선택해 Gemini에게 묻고, Create My Widget으로 말 한마디에 커스텀 위젯을 만들고, Android 17 스마트폰의 앱을 설치",
+      "tags": [
+        "enterprise",
+        "google"
+      ],
+      "anchor": "googlebook-chromebook이-아니다-처음부터-ai다"
+    }
+  ]
+}
