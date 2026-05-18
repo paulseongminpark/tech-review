@@ -1,0 +1,48 @@
+{
+  "date": "2026-05-19",
+  "lang": "ko",
+  "post_url": "/ko/2026/05/19/daily-tech-review/",
+  "post_title": "에릭 슈미트 야유, MS Copilot 3% 사용률, 리누스 토르발즈의 경고",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "졸업식장의 야유",
+      "lead": "에릭 슈미트가 애리조나 대학교 졸업식 연설에서 고함과 야유를 받았다. 1만 명의 졸업생 앞에서 그는 기술의 역사를 노트북에서 스마트폰, 인터넷, 소셜 미디어로 추적하며 연설을 이어갔다. 그가 AI를 꺼낸 순간 분위기가 뒤집혔다. \"여러분 중 많은 이들이 무엇을 느끼는지 안다\"고 슈미트는 말했다. \"두려움이 있다는 것을. 들린다.\" 하지만 그 두려움을 만든 당사자가 공감을 표하는 장면 자체가 아이러니였다.",
+      "tags": [
+        "google",
+        "microsoft",
+        "meta",
+        "apple",
+        "nvidia"
+      ],
+      "anchor": "졸업식장의-야유"
+    },
+    {
+      "index": 2,
+      "title": "Copilot 3%의 진실",
+      "lead": "마이크로소프트에서 12년 이상 근무하며 사티아 나델라 CEO의 기술 자문을 4년간 맡았던 Mat Velloso가 회사의 AI 전략이 \"근본적으로 실패하고 있다\"고 선언했다. 이후 Google DeepMind와 Meta Superintelligence Labs VP를 거친 그가 지목한 핵심 수치는 하나였다. Copilot 유료 구독자 중 실제로 Copilot을 사용하는 비율이 3% 미만이라는 것이다.",
+      "tags": [
+        "google",
+        "microsoft",
+        "meta",
+        "apple",
+        "nvidia"
+      ],
+      "anchor": "copilot-3의-진실"
+    },
+    {
+      "index": 3,
+      "title": "리누스 토르발즈의 경고",
+      "lead": "리누스 토르발즈가 Linux 7.1 RC4를 배포하면서 커뮤니티에 이례적인 경고를 날렸다. AI 기반 버그 탐지 도구들 때문에 리눅스 보안 메일링 리스트가 \"거의 완전히 관리 불가능한 상태\"가 됐다는 것이다. 여러 연구자들이 같은 AI 도구로 같은 버그를 찾아내고, 각자 별개의 리포트를 올리면서 중복 보고가 폭증했다.",
+      "tags": [
+        "google",
+        "microsoft",
+        "meta",
+        "apple",
+        "nvidia"
+      ],
+      "anchor": "리누스-토르발즈의-경고"
+    }
+  ]
+}
