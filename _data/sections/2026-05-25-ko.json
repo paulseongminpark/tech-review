@@ -1,0 +1,44 @@
+{
+  "date": "2026-05-25",
+  "lang": "ko",
+  "post_url": "/ko/2026/05/25/daily-tech-review/",
+  "post_title": "OpenAI, 이산기하학 80년 추측 반박 | Open Agent Leaderboard 공개 | Anthropic, 소기업용 Skills 출시",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "OpenAI 모델, 이산기하학 80년 추측을 반박하다",
+      "lead": "1946년 Paul Erdős가 처음 제기한 단위거리 문제는 조합기하학에서 가장 유명한 미해결 과제 중 하나였다. 질문 자체는 단순하다. 평면 위에 n개의 점을 놓을 때, 거리가 정확히 1인 쌍의 최대 개수는? 2005년 이산기하학 교과서가 \"설명하기 가장 쉬운 조합기하학 문제\"라고 부를 정도로 명료하지만, 수십 년간 수학자들은 정사각형 격자 구조가 최적에 가깝다는 믿음에 정착해 있었다. OpenAI의 내부 범용 추론 모델이 이 믿음을 깼다. ",
+      "tags": [
+        "ai-models",
+        "research",
+        "benchmarks",
+        "openai"
+      ],
+      "anchor": "openai-모델-이산기하학-80년-추측을-반박하다"
+    },
+    {
+      "index": 2,
+      "title": "Open Agent Leaderboard: 모델이 아닌 시스템을 평가한다",
+      "lead": "지금까지 AI 벤치마크 대부분은 모델 단위로 점수를 매겼다. 하지만 에이전트를 실제로 배포해본 사람이라면 안다. 결과는 모델 하나가 결정하지 않는다. 어떤 도구를 쓰는지, 어떻게 계획을 세우는지, 단계 간에 무엇을 기억하는지, 실패했을 때 어떻게 회복하는지가 모두 성능에 영향을 미치고, 같은 모델도 설계에 따라 결과와 비용이 크게 달라진다. IBM Research가 HuggingFace와 함께 공개한 Open Agent Leaderboard는 ",
+      "tags": [
+        "ai-models",
+        "research",
+        "benchmarks"
+      ],
+      "anchor": "open-agent-leaderboard-모델이-아닌-시스템을-평가한다"
+    },
+    {
+      "index": 3,
+      "title": "Anthropic, 소기업용 Skills 공식 출시",
+      "lead": "Anthropic이 소기업을 위한 Skills를 공식 출시했다. Reddit r/ClaudeAI에서 1500점 이상의 반응과 69개의 댓글을 끌어낸 이 발표는, 개발자 커뮤니티에서 기다리던 것이 실현됐다는 반응이 지배적이었다. Skills는 Claude에 특정 업무 맥락과 워크플로우를 부여해 맞춤화된 동작을 가능하게 하는 기능이다. 이번 출시가 주목받는 이유는 타깃이 소기업이라는 점이다. 지금까지 AI 자동화의 진지한 활용은 엔지니어링 인력과 ",
+      "tags": [
+        "ai-models",
+        "research",
+        "benchmarks",
+        "anthropic"
+      ],
+      "anchor": "anthropic-소기업용-skills-공식-출시"
+    }
+  ]
+}
