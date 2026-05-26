@@ -1,0 +1,37 @@
+{
+  "date": "2026-05-27",
+  "lang": "ko",
+  "post_url": "/ko/2026/05/27/daily-tech-review/",
+  "post_title": "오픈소스로 반도체 회사 세우기, 네덜란드의 M&A 차단, SwiftUI Mac 앱 실전기",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "공짜 IP로 반도체 회사를 세울 수 있을까",
+      "lead": "반도체 설계는 순수한 지적재산권 싸움이다. 세계 최고 두뇌들이 만든 아이디어가 수조 달러의 가치를 만들어내는 이 산업에서, IP를 소유하지 못하면 사업 자체가 없다는 것이 정설이다. 그런데 aesc silicon의 창업자 Daniel Schultz는 그 IP를 통째로 공개하면서 회사를 시작했다. 모델은 사실 새롭지 않다. Linux가 그랬고, Red Hat이 그 위에서 돈을 벌었다. 핵심 IP는 누구나 공짜로 쓸 수 있지만, 지원과 커스터마이징",
+      "tags": [
+        "enterprise"
+      ],
+      "anchor": "공짜-ip로-반도체-회사를-세울-수-있을까"
+    },
+    {
+      "index": 2,
+      "title": "디지털 주권이 M&A를 막다: 네덜란드의 결정",
+      "lead": "네덜란드 시민들이 병원 예약을 하고, 집을 사고, 정부 서비스를 이용할 때 쓰는 인증 플랫폼이 DigiD다. 이 앱의 핵심 인프라를 운영하는 회사가 Solvinity인데, 지난해 11월 IBM에서 분사한 미국계 IT 기업 Kyndryl이 인수를 발표하면서 네덜란드 정부의 레이더망에 걸렸다. 국가 온라인 신원 시스템이 외국 기업 손에 넘어간다는 것이 문제였다. 네덜란드 디지털경제 국무장관 Willemijn Aerdts는 의회에 보낸 서한에서 투자",
+      "tags": [
+        "enterprise"
+      ],
+      "anchor": "디지털-주권이-ma를-막다-네덜란드의-결정"
+    },
+    {
+      "index": 3,
+      "title": "SwiftUI로 혼자 Mac 앱을 만든다는 것",
+      "lead": "Paulo Andrade는 작년 말 iOS App Store에 Shopie를 출시했다. 관심 있는 제품을 위시리스트에 담아두고, 가격과 재고가 바뀌면 알림을 받는 앱이다. 최근 macOS 버전을 추가했는데, 다른 앱들과 달리 AppKit이나 UIKit 없이 100% SwiftUI로 만들었다. 이유는 단순하다. iOS, iPadOS, macOS에서 코드를 최대한 공유하려면 그 길밖에 없었다.",
+      "tags": [
+        "enterprise",
+        "ma"
+      ],
+      "anchor": "swiftui로-혼자-mac-앱을-만든다는-것"
+    }
+  ]
+}
