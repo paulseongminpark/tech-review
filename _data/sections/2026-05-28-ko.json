@@ -1,0 +1,41 @@
+{
+  "date": "2026-05-28",
+  "lang": "ko",
+  "post_url": "/ko/2026/05/28/daily-tech-review/",
+  "post_title": "Zig 빌드 90% 가속, MySQL 20년 버그 종결, 닫혀가는 푸시 파이프",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "Zig 빌드 시스템, 90% 빠르게 재설계되다",
+      "lead": "Zig 언어의 창시자 Andrew Kelley가 대형 브랜치를 메인에 머지했다. 이번 변경의 핵심은 빌드 프로세스를 두 개의 독립된 프로세스로 분리한 것이다. 기존에는 사용자의 build.zig 로직과 빌드 시스템 전체가 하나의 뚱뚱한 디버그 모드 프로세스로 함께 컴파일되었다. 변경 후에는 build.zig만 따로 \"configurer\" 프로세스로 컴파일되어 빌드 그래프를 직렬화된 바이너리 설정 파일로 내보낸다. 그 설정을 받아 실제 빌드를 실",
+      "tags": [
+        "opensource",
+        "developer-tools"
+      ],
+      "anchor": "zig-빌드-시스템-90-빠르게-재설계되다"
+    },
+    {
+      "index": 2,
+      "title": "MySQL, 20년 된 트리거 버그를 드디어 닫다",
+      "lead": "2005년 6월 21일, Omer Barnir라는 개발자가 MySQL 버그 트래커에 리포트를 제출했다. 외래 키 연계로 간접 업데이트되는 행에 대해 트리거가 실행되지 않는다는 내용이었다. 재현도 명확했다. 부모 테이블에서 행을 삭제하면 자식 테이블의 연계 행들이 ON DELETE SET NULL로 자동 업데이트되는데, 그 자식 테이블에 붙어있는 AFTER UPDATE 트리거는 조용히 무시되었다. @counter는 5가 되어야 했지만, 0이었다.",
+      "tags": [
+        "opensource",
+        "developer-tools"
+      ],
+      "anchor": "mysql-20년-된-트리거-버그를-드디어-닫다"
+    },
+    {
+      "index": 3,
+      "title": "Apple과 Google이 당신의 푸시 알림을 재편집하고 있다",
+      "lead": "푸시 알림은 원래 배터리 문제의 해결책으로 태어났다. 2009년 Scott Forstall이 WWDC에서 APNs를 발표했을 때, 이것은 각 앱이 개별적으로 백그라운드 폴링을 유지하지 않아도 되게 하기 위한 인프라였다. Google도 2010년 Cloud to Device Messaging으로 뒤를 따랐고, 2016년 Firebase Cloud Messaging으로 정착했다. 이 구조는 처음부터 중개자를 내포하고 있었다. 모든 알림은 Apple",
+      "tags": [
+        "opensource",
+        "developer-tools",
+        "google",
+        "apple"
+      ],
+      "anchor": "apple과-google이-당신의-푸시-알림을-재편집하고-있다"
+    }
+  ]
+}
