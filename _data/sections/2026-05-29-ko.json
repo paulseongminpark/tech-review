@@ -1,0 +1,43 @@
+{
+  "date": "2026-05-29",
+  "lang": "ko",
+  "post_url": "/ko/2026/05/29/daily-tech-review/",
+  "post_title": "Anthropic, 칩 공급망을 전략 파트너로 묶다 / Opus 4.8 Fast Mode, 3배 저렴해진 추론 효율 / Dynamic Workflows가 요구하는 새 컴퓨트 프로파일",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "Anthropic, $65B 조달 — 메모리 반도체 3사를 전략 파트너로 묶다",
+      "lead": "Anthropic이 Series H에서 $65B를 유치하며 기업가치 $965B에 도달했다. 숫자 자체는 이미 그 규모가 뉴스지만, 이번 라운드에서 진짜 주목할 부분은 따로 있다. Micron, Samsung, SK hynix가 단순 투자자가 아닌 전략적 인프라 파트너로 공식 합류했다. 이 세 회사는 세계 메모리·스토리지·로직 칩 공급의 핵심을 쥐고 있다. 동시에 Amazon과는 최대 5기가와트 규모의 신규 컴퓨트 용량 계약을 체결했고, Goog",
+      "tags": [
+        "chips",
+        "datacenter",
+        "cloud",
+        "anthropic"
+      ],
+      "anchor": "anthropic-65b-조달-메모리-반도체-3사를-전략-파트너로-묶다"
+    },
+    {
+      "index": 2,
+      "title": "Claude Opus 4.8 — Fast Mode가 3배 저렴해진 것의 진짜 의미",
+      "lead": "Anthropic이 Claude Opus 4.8을 출시했다. Opus 4.7 대비 벤치마크 전반에서 개선됐고, 가격은 동일하다. 그런데 이번 발표에서 하드웨어 관점으로 더 주목할 지점은 Fast Mode다. 2.5배 빠른 속도로 동작하는 Fast Mode가 이전 모델 대비 3배 저렴해졌다. 이것이 단순 할인 정책이 아닌 이유는, Fast Mode가 다른 소형 모델을 쓰는 것이 아니라 동일한 Opus 4.8을 다른 방식으로 실행하기 때문이다. 같",
+      "tags": [
+        "chips",
+        "datacenter",
+        "cloud"
+      ],
+      "anchor": "claude-opus-48-fast-mode가-3배-저렴해진-것의-진짜-의미"
+    },
+    {
+      "index": 3,
+      "title": "Dynamic Workflows — 초대형 에이전트 작업이 만드는 새 하드웨어 수요",
+      "lead": "Anthropic이 Claude Code에 Dynamic Workflows를 도입했다. 이 기능은 단일 컨텍스트 윈도우나 단일 추론 스텝으로는 해결하기 어려운 매우 대규모 문제를 동적으로 워크플로우를 구성해 처리한다. 소프트웨어 기능 발표처럼 보이지만, 하드웨어 관점에서는 다른 신호다. 에이전트 작업의 단위가 커질수록, 단일 GPU 추론이 아닌 분산 컴퓨트, 긴 컨텍스트를 처리하는 고대역폭 메모리, 그리고 긴 실행 시간을 버틸 수 있는 인프라가",
+      "tags": [
+        "chips",
+        "datacenter",
+        "cloud"
+      ],
+      "anchor": "dynamic-workflows-초대형-에이전트-작업이-만드는-새-하드웨어-수요"
+    }
+  ]
+}
