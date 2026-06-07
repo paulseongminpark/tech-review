@@ -1,0 +1,39 @@
+{
+  "date": "2026-06-07",
+  "lang": "ko",
+  "post_url": "/ko/2026/06/07/daily-tech-review/",
+  "post_title": "Google × SpaceX 월 $920M 컴퓨트 계약 / OpenAI가 AWS에 상륙하다 / AI 에이전트 용어, 다들 다르게 알고 있었다",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "Google이 경쟁사 인프라에 월 $920M을 쓰기로 했다",
+      "lead": "SpaceX가 AI 컴퓨트 임대 사업자로 변신하고 있다. Google은 올해 10월부터 2029년 6월까지 32개월간 월 $920M을 지불하고, SpaceX 데이터센터에 있는 약 11만 개의 Nvidia GPU와 관련 하드웨어를 임차하기로 했다. Google 클라우드 측의 설명은 솔직하다. \"Gemini Enterprise의 수요가 예상보다 훨씬 높아서 브리지 용량을 확보한 것\"이다. 계약에는 날카로운 조건이 붙었다. SpaceX가 9월 30일",
+      "tags": [
+        "weekly",
+        "google"
+      ],
+      "anchor": "google이-경쟁사-인프라에-월-920m을-쓰기로-했다"
+    },
+    {
+      "index": 2,
+      "title": "OpenAI가 AWS에 들어왔다",
+      "lead": "6월 1일, OpenAI의 프런티어 모델과 Codex가 AWS에서 공식 출시됐다. 기업들이 AI 도입을 주저하는 이유는 기술적 역량 부족이 아니라 기존 보안·컴플라이언스·조달·빌링 프로세스와의 충돌이었다. OpenAI는 Amazon Bedrock을 통해 이 마찰을 직접 제거했다. AWS를 이미 쓰는 기업이라면 별도 계약이나 보안 검토 없이 OpenAI 모델을 기존 워크플로우에 연결할 수 있게 됐다. \"평가에서 실제 배포까지 더 빠르게\"라는 문구",
+      "tags": [
+        "weekly",
+        "aws",
+        "openai"
+      ],
+      "anchor": "openai가-aws에-들어왔다"
+    },
+    {
+      "index": 3,
+      "title": "\"Harness\"와 \"Scaffold\"가 뭔지 다들 다르게 알고 있었다",
+      "lead": "ICLR 2026 현장에서 연구자 Aritra Roy Gosthipaty가 던진 질문 하나가 HuggingFace 블로그 포스트를 만들었다. \"harness와 scaffold에 대한 설명을 여러 명에게 들었는데 하나도 수렴하지 않았다.\" HuggingFace가 이에 대한 응답으로 공개한 AI 에이전트 용어집은 핵심 레이어를 이렇게 구분한다. 모델은 텍스트를 받아 텍스트를 내보내는 LLM 자체다. 스캐폴딩은 모델 주변의 행동 정의 레이어로, 시스",
+      "tags": [
+        "weekly"
+      ],
+      "anchor": "harness와-scaffold가-뭔지-다들-다르게-알고-있었다"
+    }
+  ]
+}
