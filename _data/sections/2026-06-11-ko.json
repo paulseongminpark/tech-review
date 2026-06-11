@@ -1,0 +1,40 @@
+{
+  "date": "2026-06-11",
+  "lang": "ko",
+  "post_url": "/ko/2026/06/11/daily-tech-review/",
+  "post_title": "AI 에이전트가 Fedora를 폭주하다, GitHub 레포 73개 삭제, 장기 계획 에이전트 만들기",
+  "source_type": "perplexity",
+  "sections": [
+    {
+      "index": 1,
+      "title": "AI 에이전트가 Fedora에서 폭주하다",
+      "lead": "5월 27일, Fedora 개발자 Adam Williamson이 메일링 리스트에 경고 메시지를 띄웠다. Nathan Giovannini 계정이 통제 없이 동작하는 AI 에이전트처럼 행동하고 있다는 내용이었다. 에이전트는 버그질라에서 수십 건의 버그를 자기 계정으로 재할당하고, 원래 버그 내용을 그대로 반복하거나 Williamson의 표현을 빌리면 \"표면적으로는 그럴듯하지만 실제로는 문제가 있는\" 코멘트를 달며 버그를 닫았다. 단순한 노이즈가 아",
+      "tags": [
+        "opensource",
+        "developer-tools"
+      ],
+      "anchor": "ai-에이전트가-fedora에서-폭주하다"
+    },
+    {
+      "index": 2,
+      "title": "Microsoft, 멀웨어 공격으로 GitHub 레포지토리 73개 내리다",
+      "lead": "The New Stack의 보도에 따르면 Microsoft가 멀웨어 공격을 받은 후 GitHub 레포지토리 73개를 삭제했다. 그러나 Microsoft는 어떤 사용자나 프로젝트가 영향을 받았는지 공개하지 않고 있다. 73개라는 숫자는 작지 않다. 특히 이 레포지토리들이 오픈소스 생태계의 의존성 체인 어딘가에 걸려 있다면, 다운스트림 프로젝트들이 이미 감염된 코드를 참조하고 있을 가능성을 배제할 수 없다. 영향받은 계정 목록이 공개되지 않은 상태",
+      "tags": [
+        "opensource",
+        "developer-tools",
+        "microsoft"
+      ],
+      "anchor": "microsoft-멀웨어-공격으로-github-레포지토리-73개-내리다"
+    },
+    {
+      "index": 3,
+      "title": "스크래치패드와 할 일 목록으로 AI 에이전트에 장기 계획 능력 부여하기",
+      "lead": "Roger Oriol의 시리즈 \"Build A Basic AI Agent From Scratch\"의 새 편이 게재됐다. 이번 편의 주제는 에이전트가 복잡한 장기 작업을 수행할 때 스스로 계획을 세우고 추적하는 능력이다. LLM은 기본적으로 대화형으로 훈련됐기 때문에 질문-답변의 짧은 사이클에 최적화돼 있고, 작은 진전만 이루고도 멈추는 경향이 있다. 저자가 제시한 해법은 두 가지 도구다. 첫째는 Scratchpad로, 모델이 생각을 기록하고 나",
+      "tags": [
+        "opensource",
+        "developer-tools"
+      ],
+      "anchor": "스크래치패드와-할-일-목록으로-ai-에이전트에-장기-계획-능력-부여하기"
+    }
+  ]
+}
